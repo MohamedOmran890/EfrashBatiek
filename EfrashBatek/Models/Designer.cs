@@ -1,0 +1,19 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace EfrashBatek.Models
+{
+    public class Designer
+    {
+        [ForeignKey("User")]
+        [Key]
+        public int ID { get; set; }
+        public User User { get; set; }
+        [Required]
+        public string NationalCardImage { get; set; }
+        public virtual ICollection<Design>Design { get; set; }
+
+    }
+}
