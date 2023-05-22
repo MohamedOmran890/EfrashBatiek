@@ -40,6 +40,7 @@ namespace EfrashBatek.Models
         [ForeignKey("identityUser")]
         public string IdentityId { get; set; }
         public IdentityUser identityUser { get; set; }
+        /*testtest*/
     }
     
 }
