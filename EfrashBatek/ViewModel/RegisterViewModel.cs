@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System;
+using EfrashBatek.Models;
 
 namespace EfrashBatek.ViewModel
 {
@@ -9,7 +10,7 @@ namespace EfrashBatek.ViewModel
         public int Id { get; set; }
         [Required]
         [RegularExpression("^[A-Za-z]+$", ErrorMessage = "First name can only contain alphabetical characters.")]
-        public string FirsName { get; set; }
+        public string FirstName { get; set; }
         [Required]
         [RegularExpression("^[A-Za-z]+$", ErrorMessage = "First name can only contain alphabetical characters.")]
         public string LastName { get; set; }
@@ -39,5 +40,7 @@ namespace EfrashBatek.ViewModel
         public DateTime Birthdate { get; set; }
         [Required]
         public string Image { get; set; }
+        [Required]
+        public Gender Gender { get; set; }
     }
 }
