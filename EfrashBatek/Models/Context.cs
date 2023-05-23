@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using EfrashBatek.ViewModel;
 
 namespace EfrashBatek.Models
 {
@@ -43,5 +44,7 @@ namespace EfrashBatek.Models
         DbSet<Warrantly_Request>Warrantl_Requests { get; set; }
         DbSet<WishList> WishLists { get; set; }
         DbSet<Admin> Admin { get; set; }
+        public DbSet<EfrashBatek.ViewModel.RegisterViewModel> RegisterViewModel { get; set; }
+        public DbSet<EfrashBatek.ViewModel.LoginViewModel> LoginViewModel { get; set; }
     }
 }
