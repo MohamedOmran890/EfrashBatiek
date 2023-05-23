@@ -20,26 +20,25 @@ namespace EfrashBatek.Models
         admin,
         Designer,
     }
-    public class User
+    public class User:IdentityUser
     {
 
-        [Key]
-        public int ID { get; set; }
+        [Required]
+        public string FirstName { get; set; }
+        [Required]
+        public string LastName { get; set; }
+
+        [Required]
         public int age { get; set; }
         [Required]
-        public string phone { get; set; }
-
         [Column(TypeName = "Date")]
         public DateTime BirthDate{ get; set; }
         public virtual ICollection<Address> Address { get; set; }   
         public virtual ICollection<Video> Videos { get; set; }
-
+        [Required]
         public  Gender Gender { get; set; }
-
+        [Required]
         public UserType UserType { get; set; }
-        [ForeignKey("identityUser")]
-        public string IdentityId { get; set; }
-        public IdentityUser identityUser { get; set; }
         /*testtest*/
     }
     
