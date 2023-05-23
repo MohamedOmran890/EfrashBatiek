@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace EfrashBatek.Models
 {
-    public class Context:IdentityDbContext
+    public class Context:IdentityDbContext<User>
     {
 
         public Context(DbContextOptions options) : base(options)
