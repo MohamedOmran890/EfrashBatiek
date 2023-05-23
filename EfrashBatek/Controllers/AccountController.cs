@@ -38,7 +38,14 @@ namespace EfrashBatek.Controllers
             var user = new User
             {
                 UserName = model.Username,
-                Email = model.Email
+                Email = model.Email,
+                PhoneNumber=model.Phone,
+                age=model.Age,
+                FirstName=model.FirstName,
+                LastName=model.LastName,
+                BirthDate=model.Birthdate,
+                Gender= (Gender)model.Gender,
+                
             };
 
             var result = await _userManager.CreateAsync(user, model.Password);
@@ -81,7 +88,7 @@ namespace EfrashBatek.Controllers
                     return RedirectToLocal(returnUrl);
                 }
 
-                ModelState.AddModelError("", "Invalid login attempt.");
+                ModelState.AddModelError("", "Invalid Email Or Password.");
                 return View(model);
             }
 
