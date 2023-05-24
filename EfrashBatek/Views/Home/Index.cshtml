@@ -2,16 +2,3 @@
 @{
     Layout = "_Main";
 }
-<div>
-    @foreach (var product in Model)
-   {
-    <h2>@product.ProductName</h2>
-    @foreach(var item in product.Items)
-    {
-        <img src="~/Image/1.jpg" class="active"/>
-        <h5>@item.Name</h5>
-        <h4>@item.Price</h4>
-    }
-     <a  asp-action="Index" asp-controller="Item">Add To Cart</a>
-   }
-</div>
