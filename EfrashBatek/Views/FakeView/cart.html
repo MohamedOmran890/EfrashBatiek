@@ -1,0 +1,163 @@
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>cartitem</title>
+  <link rel="stylesheet" href="css/cart.css">
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+
+</head>
+
+<body>
+  <header>
+    <a href="main.html" class="logo"><img src="image/logo.png" alt=""></a>
+
+    <ul class="navmenu">
+        <li><a href="trend.html">Products</a></li>
+        <li><a href="Empty.html">Custom order</a></li>
+        <li><a href="Empty.html">Designs</a></li>
+        <li><a href="about us.html">About Us</a></li>
+        <li><a href="log.html">Log in</a></li>
+    </ul>
+
+    <div class="nav-icon">
+        <a href="profile.html"><i class='bx bx-user'></i></a>
+        <a href="cart.html"><i class='bx bx-cart'></i></a>
+        <a href="wishlist.html"><i class='bx bx-heart' undefined></i></a>
+    </div>
+  </header>
+
+
+  <main>
+    <div class="basket">
+
+      <div class="basket-labels">
+        <ul>
+          <li class="item item-heading">Item</li>
+          <li class="price">Price</li>
+          <li class="quantity">Quantity</li>
+          <li class="subtotal">Subtotal</li>
+        </ul>
+      </div>
+
+      <div class="basket-product">
+        <div class="item">
+          <div class="product-image">
+            <img src="image/1.jpg" alt="Placholder Image 2" class="product-frame">
+          </div>
+          <div class="product-details">
+            <h1><strong><span class="item-quantity">1</span> Comfortable Armchair</strong></h1>
+
+          </div>
+        </div>
+        <div class="price">5000L.E</div>
+        <div class="quantity">
+          <input type="number" value="1" min="1" class="quantity-field" style="background-color: #cbaab1; text-align: center;">
+        </div>
+        <div class="subtotal">5000L.E</div>
+        <div class="remove">
+          <button>Remove</button>
+        </div>
+      </div>
+      <div class="basket-product">
+        <div class="item">
+          <div class="product-image">
+            <img src="image/2.png" alt="Placholder Image 2" class="product-frame">
+          </div>
+          <div class="product-details">
+            <h1><strong><span class="item-quantity">1</span> Bedroom
+
+          </div>
+        </div>
+        <div class="price">500L.E</div>
+        <div class="quantity">
+          <input type="number" value="2" min="1" class="quantity-field" style="background-color: #cbaab1; text-align: center;">
+        </div>
+        <div class="subtotal">500L.E</div>
+        <div class="remove">
+          <button>Remove</button>
+        </div>
+      </div>
+
+    </div>
+    <aside>
+      <div class="summary">
+        <div class="summary-total-items"><span class="total-items"></span> Order Summary
+        </div>
+        <div class="summary-subtotal">
+          <div class="subtotal-title">Subtotal</div>
+          <div class="subtotal-value final-value" id="basket-subtotal">130.00</div>
+          <div class="summary-promo hide">
+            <div class="promo-title">Promotion</div>
+            <div class="promo-value final-value" id="basket-promo"></div>
+          </div>
+        </div>
+        <div class="summary-delivery">
+
+        </div>
+        <div class="summary-total">
+          <div class="total-title">Total</div>
+          <div class="total-value final-value" id="basket-total">130.00</div>
+        </div>
+        <div class="summary-checkout">
+            <a href="orderinfo.html"><button class="checkout-cta">Go to Secure Checkout</button></a>
+        </div>
+      </div>
+    </aside>
+  </main>
+      <!-- contact-section -->
+    <section class="contact">
+        <div class="contact-info">
+            <div class="first-info">
+                <img src="image/logo.png" alt="">
+
+                <p>01601348732</p>
+                <p>efresh.beitak@gmail.com</p>
+
+                <div class="social-icon">
+                    <a href="#"><i class='bx bxl-facebook'></i></a>
+                    <a href="#"><i class='bx bxl-twitter'></i></a>
+                    <a href="#"><i class='bx bxl-instagram'></i></a>
+                    <a href="#"><i class='bx bxl-youtube'></i></a>
+                    <a href="#"><i class='bx bxl-linkedin'></i></a>
+                </div>
+            </div>
+
+            <div class="second-info">
+                <h4>Support</h4>
+                <a href="contact us.html">
+                    <p>Contact us</p>
+                </a>
+                <a href="about us.html"> <p>About page</p></a>
+                <p>Shopping & Resturns</p>
+                <p>Privacy</p>
+            </div>
+
+            <div class="third-info">
+                <h4>Shop</h4>
+                <p>electronic</p>
+                <p>home</p>
+                <p>Furniture</p>
+                <p>kitchen</p>
+            </div>
+
+            <div class="five">
+                <h4>JOIN OUR EMAIL NEWSLETTER</h4>
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="Input" placeholder="Enter Your Email." /><br><br>
+                        <button type="submit" class="btn btn-default submit">
+                            Submit
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+  <script src="js/cartitem.js"></script>
+
+</body>
+
+</html>
