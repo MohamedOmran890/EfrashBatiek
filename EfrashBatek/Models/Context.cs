@@ -23,7 +23,7 @@ namespace EfrashBatek.Models
             base.OnModelCreating(modelBuilder);
         }
 
-       public DbSet<Address> Addresses { get; set; }
+        public DbSet<Address> Addresses { get; set; }
         public DbSet<Brand> Brands { get; set; }
         public DbSet<Custom> Customs { get; set; }
         public DbSet<Cart> Carts { get; set; }
