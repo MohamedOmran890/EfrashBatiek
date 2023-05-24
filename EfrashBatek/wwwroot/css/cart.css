@@ -25,7 +25,6 @@ header{
 .navmenu{
     display: flex;
 }
-
 .navmenu a{
     color: #2c2c2c;
     font-size: 16px;
@@ -64,7 +63,7 @@ section{
 .main-home{
     width: 100%;
     height: 100vh;
-    background-image: url(/image/0.jpg);
+    background-image: url(0.jpg);
     background-position: center;
     background-size: cover;
     display: grid;
@@ -198,7 +197,7 @@ header.sticky{
     font-weight: 600;
 }
 .client-reviews{
-    background-color: #fbfcfd;
+    background-color: #F3F4F6;
 }
 .reviews{
     text-align: center;
@@ -315,28 +314,17 @@ header.sticky{
 .social-icon i:hover{
     transform: scale(1.3);
 }
-input{
-    padding: 4px 28px;
-    border-radius: 10px;
-    margin: 5px auto;
-    border: 1px solid #918383;
-    background-color: #f3f4f6;
-    box-shadow: 1px 2px 1px 2px rgb(230, 229, 229);
-    color: #000000;
-    outline: none;
-    font-size: 16px;
-   }
-.submit{
-    padding: 6px 13px;
-    border-radius: 8px;
-    box-shadow: 2px 2px 2px 1px rgb(81, 81, 85) ;
-    border: 1px solid rgb(129, 123, 123);
-    font-size: 14px;
-   }
-   .submit:hover{
-    background-color:#cbaab1;
-    color: rgb(246, 244, 248);
-   }
+.end-text{
+    background-color: #edfff1;
+    text-align: center;
+    padding: 20px;
+}
+.end-text p{
+    color: #111;
+    text-transform: capitalize;
+}
+
+
 /* Responsive-css */
 @media(max-width:890px){
     header{
@@ -366,7 +354,7 @@ input{
         right:-100%;
         width: 300px;
         height: 130vh;
-        background: #d0d0d0;
+        background: #edfff1;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -381,4 +369,104 @@ input{
         right: 0;
     }
 }
+.cartcard{
 
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    display: grid;
+    flex-basis: 60%;
+    display: none;
+}
+.brand{
+    background-color: #e9e9e7;
+    
+}
+.cartcard .brand img{
+    width: 200px;
+    margin: 20px 150px 0px 80px;
+    margin-left: 130px;
+}
+.cartcard .brand h1{
+    color: white;
+    margin-top: 50px;
+}
+.cartcard .brand h2{
+    margin-top: 20px;
+    color: #cbaab1;
+    margin-left: 20px;
+}
+.cartcard .brand h3{
+    margin: 20px;
+    margin-top: 10px;
+    font-size: 15px;
+    margin-right: 150px;
+  
+}
+.border{
+    border-bottom: #f1efef solid 2px;
+
+}
+.empty{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom:10px ;
+    font-family:  'Roboto', sans-serif;
+}
+.cartcard .brand input{
+    margin-left: 170px;
+    padding: 1rem 30px;
+    background: #cbaab1;
+    border: none;
+    color: white;
+    outline: none;
+    font-size: 15px;
+    cursor: pointer;
+    cursor: progress;
+    border-radius: 30px;
+}
+.cartcard .brand input:hover{
+    opacity: 0.8;
+}
+.total{
+    margin-top: 50px;
+}
+.total button{
+    border-radius: 30px;
+    width: 80%;
+    margin-left: 10%;
+    padding: 0.5rem 30px;
+    border: none;
+    color: white;
+    outline: none;
+    font-size: 15px;
+    cursor: pointer;
+    background-color: #cbaab1;
+    cursor: pointer;
+
+}
+.total button:hover{
+    opacity: 0.8;
+
+}
+.total .totall{
+    margin: 0 51px 20px ;
+    font-size: 25px;
+    font-family: sans-serif;
+
+}
+ .total .black{
+    background-color: black;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.cartcard #close{
+    position: absolute;
+    top: 60px;
+    right: 130px;
+    font-size: 20px;
+    margin-top: 10px;
+    cursor: pointer;
+    
+}
