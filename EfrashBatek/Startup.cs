@@ -1,5 +1,6 @@
 using EfrashBatek.Controllers;
 using EfrashBatek.Models;
+using EfrashBatek.service;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -32,6 +33,27 @@ namespace EfrashBatek
            UseSqlServer(Configuration.GetConnectionString("DATA")));
             services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<Context>().AddDefaultTokenProviders();
             services.AddScoped<UserManager<User>>();
+            services.AddScoped<IAddressRepository, AddressRepository>();
+            services.AddScoped<IAdminRepository, AdminRepository>();
+            services.AddScoped<IBrandRepository,BrandRepository>();
+            services.AddScoped<ICartRepository, CartRepository>();
+            services.AddScoped<ICart_ItemRepository, Cart_ItemRepository>();
+            services.AddScoped<ICustomRepository,CustomRepository>();
+            services.AddScoped<ICustomerRepository, CustomerRepository>();
+            services.AddScoped<IDesignerRepository, DesignerRepository>();
+            services.AddScoped<IDesignRepository, DesignRepository>();
+            services.AddScoped<IFeedbackRepository, FeedbackRepository>();
+            services.AddScoped<IItemRepository, ItemRepository>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
+            services.AddScoped<IOrder_ItemRepository, Order_ItemRepository>();
+            services.AddScoped<IPhotoRepository, PhotoRepository>();
+            services.AddScoped<IShopRepository, ShopRepository>();
+            services.AddScoped<IProductRepository, ProductRepository>();
+            services.AddScoped<IStaffRepository,StaffRepository>();
+            services.AddScoped<IWarrantly_RequestRepository, Warrantly_RequestRepository>();
+            services.AddScoped<IVideoRepository, VideoRepository>();
+            services.AddScoped<IWishListRepository, WishListRepository>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
