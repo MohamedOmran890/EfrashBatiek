@@ -26,6 +26,7 @@ namespace EfrashBatek.Controllers
         {
             var ans = _Product.GetAll();
             return View(ans);
+            /*************************/
         }
 
         public IActionResult Privacy()
