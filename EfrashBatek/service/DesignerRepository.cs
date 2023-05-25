@@ -14,7 +14,7 @@ namespace EfrashBatek.service
         public void Create(Designer designer)
         {
             context.designers.Add(designer);
-
+            context.SaveChanges();
         }
         /*public int Update(int id, Cart cart)
         {

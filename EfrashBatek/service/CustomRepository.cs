@@ -14,6 +14,7 @@ namespace EfrashBatek.service
         public void Create(Custom custom)
         {
             context.Customs.Add(custom);
+            context.SaveChanges();
 
         }
         public int Update(int id, Custom custom)

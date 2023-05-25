@@ -1,17 +1,43 @@
 ﻿@model List<Product>
 @{
-    Layout = "_Main";
-}
-<div>
-    @foreach (var product in Model)
-   {
-    <h2>@product.ProductName</h2>
-    @foreach(var item in product.Items)
-    {
-        <img src="~/Image/1.jpg" class="active"/>
-        <h5>@item.Name</h5>
-        <h4>@item.Price</h4>
-    }
-     <a  asp-action="Index" asp-controller="Item">Add To Cart</a>
-   }
-</div>
+    Layout = "_MainLayout";
+ }
+    <section>
+        <div class="products">
+            @foreach (var prod in Model)
+            {
+                <div class="row">
+                    <h2>@prod.ProductName</h2>
+                @if (prod.Items != null)
+                {
+                    @foreach (var item in prod.Items)
+                    {
+                        <img src="~/Image/@item.Image" alt="" />
+                        <h5>@item?.Name</h5>
+                        <div class="product-text">
+                            <h5>Sale</h5>
+                        </div>
+                        <div class="heart-icon">
+                            <i class='bx bx-heart'></i>
+                        </div>
+                        <div class="ratting">
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bx-star'></i>
+                            <i class='bx bx-star'></i>
+                        </div>
+
+                        <div class="price">
+                            <h4>comfortable armchair</h4>
+                            <h4>@item.Price</h4>
+                            <p style="text-decoration: line-through">$129</p>
+                        </div>
+                    }
+
+                    <a asp-action="Index" asp-controller="Cart">Add To Cart</a>
+                }    
+            </div>
+            }
+        </div>
+    </section>

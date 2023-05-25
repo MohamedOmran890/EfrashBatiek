@@ -44,7 +44,6 @@ namespace EfrashBatek.Models
         public DbSet<Warrantly_Request>Warrantl_Requests { get; set; }
         public DbSet<WishList> WishLists { get; set; }
         public DbSet<Admin> Admin { get; set; }
-        public DbSet<EfrashBatek.ViewModel.RegisterViewModel> RegisterViewModel { get; set; }
-        public DbSet<EfrashBatek.ViewModel.LoginViewModel> LoginViewModel { get; set; }
+       public  DbSet<Contact_Us> Contact_Us { get; set; }
     }
 }
