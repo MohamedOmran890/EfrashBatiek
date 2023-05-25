@@ -5,12 +5,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EfrashBatek.Models
 {
-    [Table("Customer")]
     public class Customer
     {
-        [ForeignKey("User")]
         [Key]
-        public int ID { get; set; }
+        public int Id { get; set; }
+        [ForeignKey("User")]
+        public string UserId { get; set; }
         public User User { get; set; }
 
         [ForeignKey("WishListId")]

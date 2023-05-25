@@ -6,9 +6,12 @@ namespace EfrashBatek.Models
 {
     public enum ProductName
     {
-
+        IKEA,
+        Wayfair,
+        Room,
+        Pottery_Barn
     }
-               
+
     public class Product
     {
 

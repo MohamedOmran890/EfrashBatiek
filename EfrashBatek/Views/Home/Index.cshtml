@@ -1,8 +1,43 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model List<Product>
+@{
+    Layout = "_MainLayout";
+ }
+    <section>
+        <div class="products">
+            @foreach (var prod in Model)
+            {
+                <div class="row">
+                    <h2>@prod.ProductName</h2>
+                @if (prod.Items != null)
+                {
+                    @foreach (var item in prod.Items)
+                    {
+                        <img src="~/Image/@item.Image" alt="" />
+                        <h5>@item?.Name</h5>
+                        <div class="product-text">
+                            <h5>Sale</h5>
+                        </div>
+                        <div class="heart-icon">
+                            <i class='bx bx-heart'></i>
+                        </div>
+                        <div class="ratting">
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bxs-star'></i>
+                            <i class='bx bx-star'></i>
+                            <i class='bx bx-star'></i>
+                        </div>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+                        <div class="price">
+                            <h4>comfortable armchair</h4>
+                            <h4>@item.Price</h4>
+                            <p style="text-decoration: line-through">$129</p>
+                        </div>
+                    }
+
+                    <a asp-action="Index" asp-controller="Cart">Add To Cart</a>
+                }    
+            </div>
+            }
+        </div>
+    </section>

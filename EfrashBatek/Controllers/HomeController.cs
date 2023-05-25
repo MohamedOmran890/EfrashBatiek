@@ -1,4 +1,5 @@
 ﻿using EfrashBatek.Models;
+using EfrashBatek.service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -12,18 +13,27 @@ namespace EfrashBatek.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private  IProductRepository _Product;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger,IProductRepository product)
         {
             _logger = logger;
+            _Product = product;
+
         }
 
         public IActionResult Index()
         {
-            return View();
+            var ans = _Product.GetAll();
+            return View(ans);
+            /*************************/
         }
 
         public IActionResult Privacy()
+        {
+            return View();
+        }
+        public IActionResult About()
         {
             return View();
         }

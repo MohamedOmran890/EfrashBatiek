@@ -14,12 +14,14 @@ namespace EfrashBatek.Models
         public string Name { get; set; }
         [Required]
         public string Description { get; set; }
+        [Required]
         public double Price { get; set; }
         [Required]
         public string Image { get; set; }
         [ForeignKey("Brand")]
         public int Brand_ID { get; set; }
         public virtual  Brand Brand { get; set; }
+        [Required]
         public int QuantityInStore { get; set; }
         [ForeignKey("Shop")]
         public int ShopID { get; set; }
