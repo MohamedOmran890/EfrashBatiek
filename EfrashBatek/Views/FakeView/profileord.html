@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>My Profile</title>
+	<link rel="icon" type="image/favicon.ico" href="/image/favicon.png">
+	<!-- CSS-link -->
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600;700&display=swap"
+		  rel="stylesheet">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+		  integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+		  crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+	<link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+	<link rel="stylesheet" type="text/css"
+		  href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/main.css">
+	<link rel="stylesheet" href="css/profile.css">
+</head>
+
+<body>
+	<header>
+		<a href="main.html" class="logo"><img src="image/logo.png" alt=""></a>
+
+		<ul class="navmenu">
+			<li><a href="trend.html">Products</a></li>
+			<li><a href="Empty.html">Custom order</a></li>
+			<li><a href="Empty.html">Designs</a></li>
+			<li><a href="about us.html">About Us</a></li>
+		</ul>
+
+		<div class="nav-icon">
+			<a href="log.html"><i class='bx bx-user'></i></a>
+			<a href="cart.html"><i class='bx bx-cart'></i></a>
+			<a href="wishlist.html"><i class='bx bx-heart' undefined></i></a>
+		</div>
+	</header>
+
+	<section class="py-5 my-5">
+		<div class="container">
+			<h1 class="mb-5">My Profile</h1>
+			<div class="bg-white shadow rounded-lg d-block d-sm-flex">
+				<div class="profile-tab-nav border-right">
+					<div class="p-4">
+						<div class="img-circle text-center mb-3">
+							<img src="image/client.png" alt="Image" class="shadow">
+						</div>
+						<h4 class="text-center">Hazem Abdelsattar</h4>
+					</div>
+					<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+
+						<a class="nav-link">
+							Hello,Hazem Abdelsattar
+						</a>
+						<a class="nav-link">
+							0 Orders of this month
+						</a>
+						<a href="profile.html"class="nav-link" role="tab" id="profile">
+							<i class="fa fa-user text-center mr-1"></i>
+							Profile
+						</a>
+						<a href="profileadd.html"class="nav-link" role="tab" id="address">
+							<i class="fa fa-home text-center mr-1"></i>
+							Address
+						</a>
+						<a href="profileord.html"class="nav-link active" role="tab" id="ordere">
+							<i class="fa fa-user text-center mr-1"></i>
+							My Orders
+						</a>
+						<a href="profilegua.html"class="nav-link"  role="tab" aria-controls="guarantee" id="guarante">
+							<i class="fa fa-tv text-center mr-1"></i>
+							Guarantee
+						</a>
+						<a href="profilepass.html"class="nav-link"  role="tab" aria-controls="password" id="password">
+							<i class="fa fa-key text-center mr-1"></i>
+							Password
+						</a>
+						<a href="log.html"class="nav-link" role="tab" >
+							Log Out
+						</a>
+					</div>
+				</div>
+				<div class="tab-pane fade show active" id="ordere" role="tabpanel" aria-labelledby="profile-tab">
+				<div class="tab-content p-4 p-md-5" id="v-pills-tabContent">
+
+					<h3 class="mb-4">Orders Settings</h3>
+
+					<center>
+						<br>
+						<br>
+						<br>
+						<br>
+						<table>
+
+							<tr>
+								<td>Order Code : </td>
+								<td>#131321</td>
+							</tr>
+							<tr>
+								<td>Total : </td>
+								<td>1200 EGP</td>
+							</tr>
+							<tr>
+								<td>Date : </td>
+								<td>2023/05/27</td>
+							</tr>
+							<tr>
+								<td>Status : </td>
+								<td>Active</td>
+							</tr>
+							<br>
+							<tr>
+								<td colspan="2" style="text-align:center;"> <a href="orderinfo.html"><button class="button123">View Order Details</button></a> </td>
+							</tr>
+
+						</table>
+					</center>
+				</div>
+
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+
+</body>
+
+</html>
