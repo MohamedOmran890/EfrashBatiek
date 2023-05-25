@@ -356,3 +356,14 @@ body {
 	border-radius: 100%;
 	border: 5px solid #fff;
 }
+header{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 10%;
+}
