@@ -1,5 +1,6 @@
 ﻿using EfrashBatek.Models;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 
 namespace EfrashBatek.service
@@ -14,6 +15,7 @@ namespace EfrashBatek.service
         public void Create(Product product)
         {
             context.Products.Add(product);
+            context.SaveChanges();
 
         }
         public int Update(int id, Product product)
@@ -41,6 +43,16 @@ namespace EfrashBatek.service
         public List<Product> GetAll()
         {
             var ans = context.Products.ToList();
+            return ans;
+        }
+        public List<Product> GetBy()
+        {
+            var ans = context.Products.ToList();
+            return ans;
+        }
+       public List<Product> GetByCategory(Category Category)
+        {
+            var ans = context.Products.Where(x => x.Category == Category).ToList();
             return ans;
         }
     }

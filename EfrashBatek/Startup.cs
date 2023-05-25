@@ -53,6 +53,7 @@ namespace EfrashBatek
             services.AddScoped<IWarrantly_RequestRepository, Warrantly_RequestRepository>();
             services.AddScoped<IVideoRepository, VideoRepository>();
             services.AddScoped<IWishListRepository, WishListRepository>();
+            services.AddScoped<IContact_UsRepository, Contact_UsRepository>();
 
         }
 

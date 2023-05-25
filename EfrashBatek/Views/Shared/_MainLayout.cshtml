@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Profile</title>
-    <link rel="icon" type="image/favicon.ico" href="/image/favicon.png">
+    <title>Efrash Batek</title>
+    <link rel="icon" type="image/favicon.ico" href="~/Image/favicon.png">
     <!-- CSS-link -->
-    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="~/css/profile.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,13 +31,13 @@
 <body>
 
     <header>
-        <a href="main.html" class="logo"><img src="image/logo.png" alt=""></a>
+        <a href="main.html" class="logo"><img src="~/image/logo.png" alt=""></a>
 
         <ul class="navmenu">
-            <li><a href="Empty.html">watch</a></li>
-            <li><a href="Empty.html">products</a></li>
-            <li><a href="Empty.html">customize order</a></li>
-            <li><a href="Empty.html">designs</a></li>
+            <li><a asp-action="Index" asp-controller="Watch">Watch</a></li>
+            <li><a href="Empty.html">Products</a></li>
+            <li><a asp-action="">customize order</a></li>
+            <li><a asp-action="Index" asp-controller="Designs">Designs</a></li>
         </ul>
 
         <div class="nav-icon">
@@ -56,36 +56,34 @@
     <section class="contact">
         <div class="contact-info">
             <div class="first-info">
-                <img src="image/logo.png" alt="">
+                <img src="~/image/logo.png" alt="">
 
                 <p>01601348732</p>
                 <p>efresh.beitak@gmail.com</p>
 
                 <div class="social-icon">
-                    <a href="Empty.html"><i class='bx bxl-facebook'></i></a>
-                    <a href="Empty.html"><i class='bx bxl-twitter'></i></a>
-                    <a href="Empty.html"><i class='bx bxl-instagram'></i></a>
-                    <a href="Empty.html"><i class='bx bxl-youtube'></i></a>
-                    <a href="Empty.html"><i class='bx bxl-linkedin'></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=100008757484239"><i class='bx bxl-facebook'></i></a>
+                    <a href="https://twitter.com/home"><i class='bx bxl-twitter'></i></a>
+                    <a href="https://www.instagram.com/mo7863051/.html"><i class='bx bxl-instagram'></i></a>
+                    <a href="https://www.youtube.com/channel/UCaQCDzKebW-atpAOP1eM38A"><i class='bx bxl-youtube'></i></a>
+                    <a href="https://www.linkedin.com/in/mohamed-omran-ab72a7233/"><i class='bx bxl-linkedin'></i></a>
                 </div>
             </div>
 
             <div class="second-info">
                 <h4>Support</h4>
-                <a href="contact us.html">
-                    <p>Contact us</p>
-                </a>
-                <a href="about us.html"> <p>About page</p></a>
-                <p>Shopping & Resturns</p>
-                <p>Privacy</p>
+                <br />
+                <a asp-action="Index" asp-controller="Contact_Us">Contact us</a>
+                <a asp-action="About" asp-controller="Home">About page</a>
+                <a>Shopping & Resturns</a>
+                <a asp-action="Privacy" asp-controller="Home">Privacy Policy</a>
             </div>
 
             <div class="third-info">
-                <h4>Shop</h4>
-                <p>electronic</p>
-                <p>home</p>
-                <p>Furniture</p>
-                <p>kitchen</p>
+                <a asp-action="Index" asp-controller="Category" asp-route-Category="Category">Shop</a>
+                <a asp-action="Index" asp-controller="Category" asp-route-Category="Category">Home</a>
+                <a asp-action="Index" asp-controller="Category" asp-route-Category="Category">Furniture</a>
+                <a asp-action="Index" asp-controller="Category" asp-route-Category="Category">kitchen</a>
             </div>
 
             <div class="five">
@@ -101,8 +99,12 @@
             </div>
         </div>
     </section>
-    <script src="main.js"></script>
-
+    <script src="~/js/main.js"></script>
+   <!--Omran Craete them cause  Clint side-->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts",false)
 </body>
 
 </html>
