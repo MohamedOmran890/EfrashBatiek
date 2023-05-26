@@ -1,0 +1,230 @@
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title> Admin Dashboard </title>
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="css/admin.css">
+     <link href="css/orders.css" rel="stylesheet" type="text/css" />
+<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+<!-- Responsive datatable examples -->
+<link href="css/orders.css" rel="stylesheet" type="text/css" />
+   </head>
+<body>
+  <div class="sidebar">
+    <div class="logo-details">
+      <i class='bx bxl-c-plus-plus'></i>
+      <span class="logo_name">Efresh Baitak</span>
+    </div>
+      <ul class="nav-links">
+        <li>
+          <a href="dash.html" >
+            <i class='bx bx-grid-alt' ></i>
+            <span class="links_name">Dashboard</span>
+          </a>
+        <li>
+          <a href="orders.html" class="active">
+            <i class='bx bx-list-ul' ></i>
+            <span class="links_name">Order list</span>
+          </a>
+        </li>
+        <li>
+          <a href="addseller.html">
+            <i class='bx bx-coin-stack' ></i>
+            <span class="links_name">Add Seller</span>
+          </a>
+        </li>
+        <li>
+          <a href="addshop.html">
+            <i class='bx bx-coin-stack' ></i>
+            <span class="links_name">Add Shop</span>
+          </a>
+        </li>
+        <li>
+          <a href="seller details.html">
+            <i class='bx bx-book-alt' ></i>
+            <span class="links_name">Seller Details</span>
+          </a>
+        </li>
+      </ul>
+  </div>
+  <section class="home-section">
+  <div class="search-box">
+      <input type="text" placeholder="Search...">
+      <i class='bx bx-search' ></i>
+      <style>
+          .search-box {
+    align-content: center;
+    position: relative;
+    height: 50px;
+    max-width: 550px;
+    width: 100%;
+    margin: 20px auto;
+  }
+
+  .search-box input {
+    height: 100%;
+    width: 100%;
+    outline: none;
+    background: #F5F6FA;
+    border: 2px solid #EFEEF1;
+    border-radius: 6px;
+    font-size: 18px;
+    padding: 0 15px;
+  }
+
+  .search-box .bx-search {
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    background: #cbaab1;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 4px;
+    line-height: 40px;
+    text-align: center;
+    color: #fff;
+    font-size: 22px;
+    transition: all 0.4 ease;
+  }
+      </style>
+  </div>
+  <div class="row">
+      <div class="col-lg-12">
+          <div class="card">
+              <div class="card-body  pt-0">
+                  <ul class="nav nav-tabs nav-tabs-custom mb-4">
+                      <li class="nav-item">
+                          <a class="nav-link fw-bold p-3 active" href="#">All Orders</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link p-3 fw-bold" href="#">Active</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link p-3 fw-bold" href="#">Unpaid</a>
+                      </li>
+                  </ul>
+                  <div class="table-responsive">
+                      <table class="table table-centered datatable dt-responsive nowrap " style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                          <thead class="thead-light">
+                              <tr>
+                                  <th style="width: 20px;">
+                                      <div class="form-checkbox">
+                                          <input type="checkbox" class="form-check-input" id="ordercheck">
+                                          <label class="form-check-label mb-0" for="ordercheck">&nbsp;</label>
+                                      </div>
+                                  </th>
+                                  <th>Order ID</th>
+                                  <th>Order Date</th>
+                                  <th>Customer Name</th>
+                                  <th>Total</th>
+                                  <th>Order Status</th>
+                                  <th>Payment Method</th>
+                                  <th>View</th>
+                                  <th>Action</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr>
+                                  <td>
+                                      <div class="form-checkbox">
+                                          <input type="checkbox" class="form-check-input" id="ordercheck1">
+                                          <label class="form-check-label mb-0" for="ordercheck1">&nbsp;</label>
+                                      </div>
+                                  </td>
+                                  <td><a href="javascript: void(0);" class="text-dark fw-bold">#NZ1572</a> </td>
+                                  <td>
+                                      04 Apr, 2020
+                                  </td>
+                                  <td>Walter Brown</td>
+                                  <td>
+                                      $172
+                                  </td>
+                                  <td>
+                                      <div class="badge badge-soft-success font-size-12">Arrived</div>
+                                  </td>
+                                  <td>
+                                      <div class="badge badge-soft-success font-size-12">Cash</div>
+                                  </td>
+                                  <td>
+                                      <button class="btn btn-rounded">View <i class="mdi mdi-download ms-2" ></i></button>
+                                      <style>
+                                          .btn{
+                                              background-color: #cbaab1;
+                                              color:#fff;
+                                          }
+                                      </style>
+                                  </td>
+                                  <td>
+                                      <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
+                                      <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
+                                      <style>
+                                          table.table td a.edit {
+                                              color: #454545;
+                                          }
+
+                                          table.table td a.delete {
+                                              color: #E34724;
+                                          }
+                                      </style>
+                                      <!--<script>
+                                          // Edit row on edit button click
+                                          $(document).on("click", ".edit", function () {
+                                              $(this).parents("tr").find("td:not(:last-child)").each(function () {
+                                                  $(this).html('<input type="text" class="form-control" value="' + $(this).text() + '">');
+                                              });
+                                              $(this).parents("tr").find(".add, .edit").toggle();
+                                              $(".add-new").attr("disabled", "disabled");
+                                          });
+                                          // Delete row on delete button click
+                                          $(document).on("click", ".delete", function () {
+                                              $(this).parents("tr").remove();
+                                              $(".add-new").removeAttr("disabled");
+                                          });
+                                      </script>-->
+                                  </td>
+                              </tr>
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- end row -->
+  <!-- JAVASCRIPT -->
+
+<script>
+  $(document).ready(function () {
+  $('#example').DataTable();
+});
+</script>
+  </section>
+
+  <script>
+    let sidebar = document.querySelector(".sidebar");
+    let sidebarBtn = document.querySelector(".sidebarBtn");
+    sidebarBtn.onclick = function () {
+      sidebar.classList.toggle("active");
+      if (sidebar.classList.contains("active")) {
+        sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+      } else
+        sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+    }
+  </script>
+</body>
+</html>
