@@ -9,5 +9,6 @@ namespace EfrashBatek.service
         int Delete(int Id);
         List<Customer> GetAll();
         Customer GetById(int Id);
+         int TotalCustomers();
     }
 }
