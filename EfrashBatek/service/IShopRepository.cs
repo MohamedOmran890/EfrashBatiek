@@ -10,5 +10,6 @@ namespace EfrashBatek.service
         List<Shop> GetAll();
         Shop GetById(int Id);
         int Update(int id, Shop shop);
+         int TotalShop();
     }
 }

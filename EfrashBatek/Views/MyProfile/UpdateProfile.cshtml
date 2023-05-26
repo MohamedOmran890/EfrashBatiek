@@ -1,0 +1,61 @@
+﻿
+@{
+	Layout= "LayoutProfile";
+}
+@model Customer 
+<div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+	<h3 class="mb-4">Account Settings</h3>
+	
+	<!--start form -->
+	<form asp-action="SaveChangesProfile" asp-controller="MyProfile"  asp-route-id="@Model.Id">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="form-group">
+					<label asp-for="User.FirstName"> First Name</label>                     
+					<input asp-for="User.FirstName" type="text" class="form-control" value=@Model.User.FirstName>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="form-group">
+					<label asp-for="User.LastName">Last Name</label>
+					<input asp-for="User.LastName" type="text" class="form-control" value="@Model.User.LastName">
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="form-group">
+					<label asp-for="User.Email">Email</label>
+					<input asp-for="User.Email" type="text" class="form-control" value="@Model.User.Email">
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="form-group">
+					<label asp-for="User.PhoneNumber">Phone number</label>
+					<input asp-for="User.PhoneNumber" type="text" class="form-control" value="@Model.User.PhoneNumber">
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="form-group">
+					<label>Zone</label>
+
+					<select id="citySelect" class="form-control">
+						
+						@*@foreach (var arg in Enum.GetValues(typeof(zone)))
+						{
+						     Console.WriteLine(arg);
+						}
+						<option value="null">Qena</option>*@
+
+					</select>
+				</div>
+			</div>
+		</div>
+		<div>
+			<input class="btn btn-primary" value="Save Changes" type="submit" style="
+
+								background-color: #cbaab1;
+								border-color: #cbaab1;">
+
+		</div>
+	</form>
+	
+</div>

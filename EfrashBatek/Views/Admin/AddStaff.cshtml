@@ -1,0 +1,55 @@
+﻿@model EfrashBatek.ViewModel.AddStaff
+@{
+    ViewData["Title"] = "AddStaff";
+}
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="SaveStaff">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="user.FirstName"></label>
+                <input asp-for="user.FirstName"  />
+                <span asp-validation-for="user.FirstName"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="user.LastName"></label>
+                <input asp-for="user.LastName" />
+                <span asp-validation-for="user.LastName"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="user.Email"></label>
+                <input asp-for="user.Email" />
+                <span asp-validation-for="user.Email"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="user.age"></label>
+                <input asp-for="user.age" />
+                <span asp-validation-for="user.age"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="user.PhoneNumber"></label>
+                <input asp-for="user.PhoneNumber" />
+                <span asp-validation-for="user.PhoneNumber"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="shop.ShopNumber" class="control-label"></label>
+                <!-- حط علامه  الاتModel.shop.ShopNumber-->
+                <select asp-for="shop.ShopNumber" class ="form-control" >Model.shop.ShopNumber</select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Add Staff" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Dashboard">Back</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
