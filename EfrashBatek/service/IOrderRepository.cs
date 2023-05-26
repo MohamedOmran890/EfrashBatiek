@@ -10,5 +10,6 @@ namespace EfrashBatek.service
         List<Order> GetAll();
         Order GetById(int Id);
         int Update(int id, Order order);
+        int TotalOrders();
     }
 }

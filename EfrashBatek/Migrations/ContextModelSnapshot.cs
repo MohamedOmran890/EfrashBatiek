@@ -486,6 +486,9 @@ namespace EfrashBatek.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ShopAddress")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");

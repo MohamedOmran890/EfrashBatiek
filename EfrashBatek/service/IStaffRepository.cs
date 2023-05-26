@@ -10,5 +10,6 @@ namespace EfrashBatek.service
         List<Staff> GetAll();
         Staff GetById(int Id);
         int Update(int id, Staff staff);
+        int TotalStaff();
     }
 }
