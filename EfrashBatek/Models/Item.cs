@@ -18,6 +18,9 @@ namespace EfrashBatek.Models
         public double Price { get; set; }
         [Required]
         public string Image { get; set; }
+        public string Image2 { get; set; }  
+        public string discount { get; set; }    
+        public int PriceAfterSale { get; set; } 
         [ForeignKey("Brand")]
         public int Brand_ID { get; set; }
         public virtual  Brand Brand { get; set; }

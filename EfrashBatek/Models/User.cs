@@ -33,7 +33,7 @@ namespace EfrashBatek.Models
         [Required]
         [Column(TypeName = "Date")]
         public DateTime BirthDate{ get; set; }
-        public virtual ICollection<Address> Address { get; set; }   
+        public virtual Address  Address { get; set; }   
         public virtual ICollection<Video> Videos { get; set; }
         [Required]
         public  Gender Gender { get; set; }
