@@ -44,5 +44,10 @@ namespace EfrashBatek.service
             var ans = context.Shops.ToList();
             return ans;
         }
+        public int TotalShop()
+        {
+            var ans = context.Shops.Count();
+            return ans;
+        }
     }
 }
