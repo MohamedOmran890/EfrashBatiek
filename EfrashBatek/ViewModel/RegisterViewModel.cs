@@ -42,5 +42,7 @@ namespace EfrashBatek.ViewModel
         public string Image { get; set; }
         [Required]
         public Gender Gender { get; set; }
+        [Required]
+        public int ShopNumber { get; set; }
     }
 }

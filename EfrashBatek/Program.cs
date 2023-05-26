@@ -67,6 +67,7 @@ namespace EfrashBatek
                 context.Items.Add(new Item { ID = 3, Name = "trtr", Brand_ID =2, Code = "7969", Price = 5000, ShopID = 2, ProductID = 2, Image = "2.jpg", Description = "yotuu", QuantityInStore = 3 });
             }
 
+
             context.SaveChanges();
     }
 }
