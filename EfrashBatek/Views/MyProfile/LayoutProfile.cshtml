@@ -1,0 +1,72 @@
+﻿
+@{
+	Layout = "CustomerLayout";
+}
+
+
+	<section class="py-5 my-5">
+		<div class="container">
+			<h1 class="mb-5">My Profile</h1>
+			<div class="bg-white shadow rounded-lg d-block d-sm-flex">
+				<div class="profile-tab-nav border-right">
+					<div class="p-4">
+						<div class="img-circle text-center mb-3">
+							<img src="image/client.png" alt="Image" class="shadow">
+						</div>
+						<h4 class="text-center">Hazem Abdelsattar</h4>
+					</div>
+					<!--links Dashboard ?? -->
+					<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+
+						<a class="nav-link">
+							Hello,Hazem Abdelsattar
+						</a>
+						<a class="nav-link">
+							0 Orders of this month
+						</a>
+						<!--action link-->
+						<a href="/MyProfile/UpdateProfile"class="nav-link active" role="tab" id="profile" >
+							<i class="fa fa-user text-center mr-1"></i>
+							Profile
+						</a>
+					<a href="/MyProfile/UpdateAddress" class="nav-link" role="tab" id="address">
+							<i class="fa fa-home text-center mr-1"></i>
+							Address
+						</a>
+					<a href="/MyProfile/ViewOrders" class="nav-link" role="tab" id="order">
+							<i class="fa fa-user text-center mr-1"></i>
+							My Orders
+						</a>
+						<a href="/MyProfile/ViewGuarantee"class="nav-link"  role="tab" aria-controls="guarantee" id="guarante">
+							<i class="fa fa-tv text-center mr-1"></i>
+							Guarantee
+						</a>
+						<a href="/MyProfile/UpdatePassword"class="nav-link"  role="tab" aria-controls="password" id="password">
+							<i class="fa fa-key text-center mr-1"></i>
+							Password
+						</a>
+						<a href="log.html"class="nav-link" role="tab" >
+							Log Out
+						</a>
+					</div>
+				</div>
+
+				<div class="tab-content p-4 p-md-5" id="v-pills-tabContent">
+
+					@RenderBody();
+
+
+
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+@{
+	await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}

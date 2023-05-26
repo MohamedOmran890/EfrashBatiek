@@ -1,3 +1,18 @@
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #cbaab1;
+}
  *{
     margin: 0;
     padding: 0;
@@ -381,4 +396,7 @@ input{
         right: 0;
     }
 }
-
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link
+{
+  background-color: #cbaab1;
+}

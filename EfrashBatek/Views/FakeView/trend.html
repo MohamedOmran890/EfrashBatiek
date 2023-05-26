@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS-link -->
+    <link rel="stylesheet" href="css/trend.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+<link rel="stylesheet"
+  href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $("#cart").click(function(){
+            $("header").hide()
+            $(".cartcard").css("position","fixed");
+            $(".cartcard").css("right","0px")
+            $("#close").css("right","0");
+            $(".cartcard").css("z-index","99999999");
+            $(".brand").css("height","100vh");
+            $(".down").hide()
+            $(".main-text").css("opacity","0.5")
+            $("header").addClass("sticky");
+
+
+        })
+    })
+    $(document).ready(function(){
+        $("#close").click(function(){
+        $("header").show()
+        $(".main-text").css("opacity","1")
+        $(".down").fadeIn()
+    })
+    })
+
+</script>
+
+<title>Efresh Beitak</title>
+</head>
+
+<body>
+    <!--header section-->
+
+    <header>
+        <a href="main.html" class="logo"><img src="image/logo.png" alt=""></a>
+
+        <ul class="navmenu">
+            <li><a href="product page.html">Products</a></li>
+            <li><a href="trend.html">Trends</a></li>
+            <li><a href="Empty.html">Custom order</a></li>
+            <li><a href="Empty.html">Designs</a></li>
+        </ul>
+
+
+        <div class="nav-icon">
+            <a href="main.html"><i class='bx bx-search'></i></a>
+            <a href="log.html"><i class='bx bx-user'></i></a>
+            <a href="cart.html"><i class='bx bx-cart'></i></a>
+            <a href="wishlist.html"><i class='bx bx-heart' undefined></i></a>
+            <div class="bx bx-menu" id="menu-icon"></div>
+        </div>
+
+
+    </header>
+
+    <div class="cartcard">
+        <i class="uil uil-multiply" id="close"></i>
+
+        <div class="brand">
+            <div class="border">
+            <h2>cart</h2>
+            <h3>You have 0 item in your bag</h3>
+        </div>
+            <img src="image/pngwing.com.png">
+            <p class="empty">Your cart is empty</p>
+            <input type="submit" value="start Shopping">
+            <div class="total">
+                <p class="totall">total</p>
+                <button class="green">View your cart </button>
+                <button class="black">check out </button>
+            </div>
+        </div>
+    </div>
+
+    <section class="main-home">
+
+
+        <div class="main-text">
+
+            <h1>we bring <span>solution</span><br> to make life easier<br> for our customer</h1>
+           <!-- <h1>New Winter <br> Collection 2022</h1>
+            <p>There's Nothing like Trend</p>-->
+
+            <a href="#" class="main-btn">customize order<i class='bx bx-right-arrow-alt' ></i></a>
+        </div>
+
+        <div class="down-arrow">
+            <a href="#trending" class="down"><i class='bx bx-down-arrow-alt' ></i></a>
+        </div>
+
+    </section>
+
+    <!-- trending-products-section -->
+    <section class="trending-product" id="trending">
+        <div class="center-text">
+            <h2>Our Trending <span>products</span></h2>
+        </div>
+
+        <div class="products">
+            <div class="row">
+                <img src="image/1.jpg" alt="">
+                <div class="product-text">
+                    <h5>Sale</h5>
+                </div>
+                <div class="heart-icon">
+                    <i class='bx bx-heart'></i>
+                </div>
+                <div class="ratting">
+                    <i class='bx bx-star'></i>
+                    <i class='bx bx-star'></i>
+                    <i class='bx bx-star'></i>
+                    <i class='bx bx-star'></i>
+                    <i class='bx bxs-star-half' ></i>
+                </div>
+
+                <div class="price">
+                    <h4>comfortable armchair</h4>
+                    <p>$99 - $129</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <img src="image/2.png" alt="">
+                <div class="product-text">
+                    <h5>New</h5>
+                </div>
+                <div class="heart-icon">
+                    <i class='bx bx-heart'></i>
+                </div>
+                <div class="ratting">
+                    <i class='bx bx-star'></i>
+                    <i class='bx bx-star'></i>
+                    <i class='bx bx-star'></i>
+                    <i class='bx bx-star'></i>
+                    <i class='bx bxs-star-half' ></i>
+                </div>
+
+                <div class="price">
+                    <h4>Formal Men Lowers</h4>
+                    <p>$99 - $129</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <img src="image/3.jpg" alt="">
+
+                <div class="heart-icon">
+                    <i class='bx bx-heart'></i>
+                </div>
+                <div class="ratting">
+                    <i class='bx bx-star'></i>
+                    <i class='bx bx-star'></i>
+                    <i class='bx bx-star'></i>
+                    <i class='bx bx-star'></i>
+                    <i class='bx bxs-star-half' ></i>
+                </div>
+
+                <div class="price">
+                    <h4>bookshelf</h4>
+                    <p>$99 - $129</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <img src="image/4.jpg" alt="">
+                <div class="product-text">
+                    <h5>Hot</h5>
+                </div>
+                <div class="heart-icon">
+                    <i class='bx bx-heart'></i>
+                </div>
+                <div class="ratting">
+                    <i class='bx bx-star'></i>
+                    <i class='bx bx-star'></i>
+                    <i class='bx bx-star'></i>
+                    <i class='bx bx-star'></i>
+                    <i class='bx bxs-star-half' ></i>
+                </div>
+
+                <div class="price">
+                    <h4>Half Fancy Lady Dress</h4>
+                    <p>$99 - $129</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <img src="image/5.png" alt="">
+
+                <div class="heart-icon">
+                    <i class='bx bx-heart'></i>
+                </div>
+                <div class="ratting">
+                    <i class='bx bx-star'></i>
+                    <i class='bx bx-star'></i>
+                    <i class='bx bx-star'></i>
+                    <i class='bx bx-star'></i>
+                    <i class='bx bxs-star-half' ></i>
+                </div>
+
+                <div class="price">
+                    <h4>Flix Flox Jeans</h4>
+                    <p>$99 - $129</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <img src="image/6.jpg" alt="">
+                <div class="product-text">
+                    <h5>Hot</h5>
+                </div>
+                <div class="heart-icon">
+                    <i class='bx bx-heart'></i>
+                </div>
+                <div class="ratting">
+                    <i class='bx bx-star'></i>
+                    <i class='bx bx-star'></i>
+                    <i class='bx bx-star'></i>
+                    <i class='bx bx-star'></i>
+                    <i class='bx bxs-star-half' ></i>
+                </div>
+
+                <div class="price">
+                    <h4>Fancy Salwar Suits</h4>
+                    <p>$99 - $129</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <img src="image/7.jpg" alt="">
+                <div class="product-text">
+                    <h5>Sale</h5>
+                </div>
+                <div class="heart-icon">
+                    <i class='bx bx-heart'></i>
+                </div>
+                <div class="ratting">
+                    <i class='bx bx-star'></i>
+                    <i class='bx bx-star'></i>
+                    <i class='bx bx-star'></i>
+                    <i class='bx bx-star'></i>
+                    <i class='bx bxs-star-half' ></i>
+                </div>
+
+                <div class="price">
+                    <h4>Printed Straight Kurta</h4>
+                    <p>$99 - $129</p>
+                </div>
+            </div>
+
+            <div class="row">
+                <img src="image/8.jpg" alt="">
+                <div class="product-text">
+                    <h5>Sale</h5>
+                </div>
+                <div class="heart-icon">
+                    <i class='bx bx-heart'></i>
+                </div>
+                <div class="ratting">
+                    <i class='bx bx-star'></i>
+                    <i class='bx bx-star'></i>
+                    <i class='bx bx-star'></i>
+                    <i class='bx bx-star'></i>
+                    <i class='bx bxs-star-half' ></i>
+                </div>
+
+                <div class="price">
+                    <h4>Crispy Air Fryer Cauliflower</h4>
+                    <p>$99 - $129</p>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!-- Client-Review-section -->
+
+    <section class="client-reviews">
+        <div class="reviews">
+            <h3>Client Reviews</h3>
+            <img src="image/omran.png" alt="">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna <br>
+                aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis <br>
+                aute irure dolor in reprehenderit in voluptate velit esse cillum.</p>
+
+                <h2>mohamed omran</h2>
+                <p>backend developer</p>
+        </div>
+    </section>
+
+    <!-- update-news-section -->
+    <!--<section class="Update-news">
+        <div class="up-center-text">
+            <h2>New Updates</h2>
+        </div>
+
+        <div class="update-cart">
+            <div class="cart">
+                <img src="image/bl-1.png" alt="">
+                <h5>26 jan 2022</h5>
+                <h4>Let's Start bring sale on this summer vacation.</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis</p>
+
+                <h6>Continue Reading..</h6>
+            </div>
+
+            <div class="cart">
+                <img src="image/bl-2.png" alt="">
+                <h5>26 jan 2022</h5>
+                <h4>Let's Start bring sale on this summer vacation.</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis</p>
+
+                <h6>Continue Reading..</h6>
+            </div>
+
+            <div class="cart">
+                <img src="image/bl-3.png" alt="">
+                <h5>26 jan 2022</h5>
+                <h4>Let's Start bring sale on this summer vacation.</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis</p>
+
+                <h6>Continue Reading..</h6>
+            </div>
+        </div>
+    </section>
+-->
+
+    <!--<div class="end-text">
+        <p>Copyright © @2022. All Rights Reserved.Designd By Saidul Islam.</p>
+    </div>
+-->
+
+<footer>
+
+  <!-- contact-section -->
+  <section class="contact">
+    <div class="contact-info">
+      <div class="first-info">
+        <img src="image/logo.png" alt="">
+        <p>+201004443226</p>
+        <p>efresh.beitak@gmail.com</p>
+
+      </div>
+
+      <div class="second-info">
+        <h4>Support</h4>
+        <a href="contact us.html">
+          <p>Contact us</p>
+        </a>
+        <a href="about us.html">
+          <p>About page</p>
+        </a>
+        <p>Shopping & Resturns</p>
+        <p>Privacy</p>
+      </div>
+
+      <div class="third-info">
+        <h4>Shop</h4>
+        <p>electronic</p>
+        <p>home</p>
+        <p>Furniture</p>
+        <p>kitchen</p>
+      </div>
+
+      <div class="five">
+        <h4>JOIN OUR EMAIL NEWSLETTER</h4>
+        <form>
+          <div class="form-group">
+            <input type="text" class="Input" placeholder="Enter Your Email." /><br><br>
+            <button type="submit" class="btn btn-default submit">
+              Submit
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+</footer>
+
+
+
+    <script src="js/trend.js"></script>
+
+</body>
+</html>
