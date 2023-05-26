@@ -20,7 +20,7 @@ namespace EfrashBatek.service
         public int Update(int id, Address address)
         {
             var obj = context.Addresses.FirstOrDefault(x => x.ID == id);
-            obj.AddressName = address.AddressName;
+            obj.StreetName = address.StreetName;
             obj.UserId = address.UserId;
             obj.OrderId = address.OrderId;
             obj.Zone = address.Zone;

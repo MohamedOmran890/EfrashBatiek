@@ -39,6 +39,7 @@ namespace EfrashBatek.Models
         public  Gender Gender { get; set; }
         [Required]
         public UserType UserType { get; set; }
+        public Zone zone { get; set; }  
         /*testtest*/
     }
     
