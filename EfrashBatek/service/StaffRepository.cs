@@ -41,5 +41,10 @@ namespace EfrashBatek.service
             var ans = context.The_Staff.ToList();
             return ans;
         }
+        public int TotalStaff()
+        {
+            var ans = context.The_Staff.Count();
+            return ans;
+        }
     }
 }

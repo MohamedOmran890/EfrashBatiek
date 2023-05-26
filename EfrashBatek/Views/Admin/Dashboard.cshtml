@@ -1,0 +1,38 @@
+﻿@using EfrashBatek.ViewModel
+@model DashboardViewModel
+
+<div class="overview-boxes">
+    <div class="box">
+        <div class="right-side">
+            <div class="box-topic">Total Order</div>
+            <div class="number">@Model.TotalOrders</div>
+            <div class="indicator">
+                <i class="bx bx-up-arrow-alt"></i>
+                <span class="text">Up from yesterday</span>
+            </div>
+        </div>
+        <i class="bx bx-cart-alt cart"></i>
+    </div>
+    <div class="box">
+        <div class="right-side">
+            <div class="box-topic">Total Shop</div>
+            <div class="number">@Model.Totalshop</div>
+            <div class="indicator">
+                <i class="bx bx-up-arrow-alt"></i>
+                <span class="text">Up from yesterday</span>
+            </div>
+        </div>
+        <i class="bx bx-cart cart three"></i>
+    </div>
+    <div class="box">
+        <div class="right-side">
+            <div class="box-topic">Total Customer</div>
+            <div class="number">@Model.TotalCustomers</div>
+            <div class="indicator">
+                <i class="bx bx-down-arrow-alt down"></i>
+                <span class="text">Down From Today</span>
+            </div>
+        </div>
+        <i class="bx bxs-cart-download cart four"></i>
+    </div>
+</div>
