@@ -1,0 +1,103 @@
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+ 
+    <title> Admin Dashboard </title>
+    <link rel="stylesheet" href="css/admin.css">
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="css/seller details.css">
+<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+   </head>
+<body>
+  <div class="sidebar">
+    <div class="logo-details">
+      <i class='bx bxl-c-plus-plus'></i>
+      <span class="logo_name">Efresh Baitak</span>
+    </div>
+      <ul class="nav-links">
+        <li>
+          <a href="dash.html">
+            <i class='bx bx-grid-alt' ></i>
+            <span class="links_name">Dashboard</span>
+          </a>
+        <li>
+          <a href="orders.html">
+            <i class='bx bx-list-ul' ></i>
+            <span class="links_name">Order list</span>
+          </a>
+        </li>
+        <li>
+          <a href="addseller.html">
+            <i class='bx bx-coin-stack' ></i>
+            <span class="links_name">Add Seller</span>
+          </a>
+        </li>
+        <li>
+          <a href="addshop.html">
+            <i class='bx bx-coin-stack' ></i>
+            <span class="links_name">Add Shop</span>
+          </a>
+        </li>
+        <li>
+          <a href="seller details.html" class="active">
+            <i class='bx bx-book-alt' ></i>
+            <span class="links_name">Seller Details</span>
+          </a>
+        </li>
+      </ul>
+  </div>
+  <section class="home-section">
+    <h2>Seller Information</h2>
+    <div class="search-box">
+        <input type="text" placeholder="Search...">
+        <i class='bx bx-search' ></i>
+    </div>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Contact Info</th>
+            <th>Action</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>John Doe</td>
+            <td>johndoe@example.com</td>
+            <td>********</td>
+            <td>123-456-7890</td>
+            <td>
+                <button>Edit</button>
+                <button>Delete</button>
+            </td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Jane Smith</td>
+            <td>janesmith@example.com</td>
+            <td>********</td>
+            <td>555-555-5555</td>
+            <td>
+                <button>Edit</button>
+                <button>Delete</button>
+            </td>
+        </tr>
+    </table>
+  </section>
+
+  <script>
+    let sidebar = document.querySelector(".sidebar");
+    let sidebarBtn = document.querySelector(".sidebarBtn");
+    sidebarBtn.onclick = function () {
+      sidebar.classList.toggle("active");
+      if (sidebar.classList.contains("active")) {
+        sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+      } else
+        sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+    }
+  </script>
+</body>
+</html>
