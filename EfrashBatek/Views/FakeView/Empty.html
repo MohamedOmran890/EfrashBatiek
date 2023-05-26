@@ -1,14 +1,10 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Efresh Beitak</title>
-    <!-- CSS-link -->
-    <link rel="stylesheet" href="css/main.css">
-
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/favicon.ico" href="/image/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600;700&display=swap"
@@ -19,28 +15,55 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-</head>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/Empty.css">
+    <title>Efresh Beitak</title>
+    </head>
 
-<body>
+    <body>
+        <!--header section-->
 
-    <header>
-      <a href="main.html" class="logo"><img src="image/logo.png" alt=""></a>
+        <header>
+            <a href="main.html" class="logo"><img src="image/logo.png" alt=""></a>
 
-      <ul class="navmenu">
-          <li><a href="trend.html">Products</a></li>
-          <li><a href="Empty.html">Custom order</a></li>
-          <li><a href="Empty.html">Designs</a></li>
-          <li><a href="about us.html">About Us</a></li>
-          <li><a href="log.html">Log in</a></li>
-      </ul>
+            <ul class="navmenu">
+                <li><a href="product page.html">Products</a></li>
+                <li><a href="trend.html">Trends</a></li>
+                <li><a href="Empty.html">Custom order</a></li>
+                <li><a href="Empty.html">Designs</a></li>
+            </ul>
 
-      <div class="nav-icon">
-          <a href="profile.html"><i class='bx bx-user'></i></a>
-          <a href="cart.html"><i class='bx bx-cart'></i></a>
-          <a href="wishlist.html"><i class='bx bx-heart' undefined></i></a>
+
+            <div class="nav-icon">
+                <a href="main.html"><i class='bx bx-search'></i></a>
+                <a href="log.html"><i class='bx bx-user'></i></a>
+                <a href="cart.html"><i class='bx bx-cart'></i></a>
+                <a href="wishlist.html"><i class='bx bx-heart' undefined></i></a>
+                <div class="bx bx-menu" id="menu-icon"></div>
+            </div>
+
+
+        </header>
+
+  <div class="cartcard">
+      <i class="uil uil-multiply" id="close"></i>
+
+      <div class="brand">
+          <div class="border">
+              <h2>cart</h2>
+              <h3>You have 0 item in your bag</h3>
+          </div>
+          <img src="image/pngwing.com.png">
+          <p class="empty">Your cart is empty</p>
+          <input type="submit" value="Start Shopping">
+          <div class="total">
+              <p class="totall">total</p>
+              <button class="green">View your cart </button>
+              <button class="black">check out </button>
+          </div>
       </div>
-    </header>
-
+  </div>
 
     <section class="main-home">
       <div>
@@ -48,9 +71,55 @@
       </div>
     </section>
 
-    <script src="main.js"></script>
+    </div>
+    </div>
+    <footer>
 
+      <!-- contact-section -->
+      <section class="contact">
+        <div class="contact-info">
+          <div class="first-info">
+            <img src="image/logo.png" alt="">
+            <p>+201004443226</p>
+            <p>efresh.beitak@gmail.com</p>
 
+          </div>
+
+          <div class="second-info">
+            <h4>Support</h4>
+            <a href="contact us.html">
+              <p>Contact us</p>
+            </a>
+            <a href="about us.html">
+              <p>About page</p>
+            </a>
+            <p>Shopping & Resturns</p>
+            <p>Privacy</p>
+          </div>
+
+          <div class="third-info">
+            <h4>Shop</h4>
+            <p>electronic</p>
+            <p>home</p>
+            <p>Furniture</p>
+            <p>kitchen</p>
+          </div>
+
+          <div class="five">
+            <h4>JOIN OUR EMAIL NEWSLETTER</h4>
+            <form>
+              <div class="form-group">
+                <input type="text" class="Input" placeholder="Enter Your Email." /><br><br>
+                <button type="submit" class="btn btn-default submit">
+                  Submit
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

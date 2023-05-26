@@ -5,41 +5,49 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Efresh Beitak</title>
     <!-- CSS-link -->
+    <link rel="stylesheet" href="css/cart.css">
     <link rel="stylesheet" href="css/main.css">
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600;700&display=swap"
         rel="stylesheet">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
         integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <title>Efresh Beitak</title>
 </head>
 
 <body>
+    <!--header section-->
 
     <header>
-      <a href="main.html" class="logo"><img src="image/logo.png" alt=""></a>
+        <a href="main.html" class="logo"><img src="image/logo.png" alt=""></a>
 
-      <ul class="navmenu">
-          <li><a href="trend.html">Products</a></li>
-          <li><a href="Empty.html">Custom order</a></li>
-          <li><a href="Empty.html">Designs</a></li>
-          <li><a href="about us.html">About Us</a></li>
-      </ul>
+        <ul class="navmenu">
+            <li><a href="product page.html">Products</a></li>
+            <li><a href="trend.html">Trends</a></li>
+            <li><a href="Empty.html">Custom order</a></li>
+            <li><a href="Empty.html">Designs</a></li>
+        </ul>
 
-      <div class="nav-icon">
-          <a href="log.html"><i class='bx bx-user'></i></a>
-          <a href="cart.html"><i class='bx bx-cart'></i></a>
-          <a href="wishlist.html"><i class='bx bx-heart' undefined></i></a>
-      </div>
+
+        <div class="nav-icon">
+            <a href="main.html"><i class='bx bx-search'></i></a>
+            <a href="log.html"><i class='bx bx-user'></i></a>
+            <a href="cart.html"><i class='bx bx-cart'></i></a>
+            <a href="wishlist.html"><i class='bx bx-heart' undefined></i></a>
+            <div class="bx bx-menu" id="menu-icon"></div>
+        </div>
+
+
     </header>
 
+    <!--main home section-->
     <section class="main-home">
         <div class="main-text">
             <h1>we bring <span>solution</span><br> to make life easier<br> for our customer</h1>
@@ -57,254 +65,715 @@
             <h2>Our Trending <span>products</span></h2>
         </div>
 
-        <div class="products">
-            <div class="row">
-              <a href="product details.html"> <img src="image/30.avif" alt=""></a>
-                <div class="product-text">
-                    <h5>Sale</h5>
-                </div>
-                <div class="heart-icon">
-                    <i class='bx bx-heart'></i>
-                </div>
-                <div class="ratting">
-                    <i class='bx bxs-star'></i>
-                    <i class='bx bxs-star'></i>
-                    <i class='bx bxs-star'></i>
-                    <i class='bx bx-star'></i>
-                    <i class='bx bx-star'></i>
-                </div>
+        <div class="product-box">
 
-                <div class="price">
-                    <h4>comfortable armchair</h4>
-                    <p>$99</p>
-                    <p style="text-decoration: line-through">$129</p>
-                </div>
-            </div>
+            <!--
+              - PRODUCT GRID
+            -->
 
-            <div class="row">
-                <a href="product details.html"> <img src="image/2.png" alt=""> </a>
-                <div class="product-text">
-                    <h5>New</h5>
-                </div>
-                <div class="heart-icon">
-                    <i class='bx bx-heart'></i>
-                </div>
-                <div class="ratting">
-                    <i class='bx bx-star'></i>
-                    <i class='bx bx-star'></i>
-                    <i class='bx bx-star'></i>
-                    <i class='bx bx-star'></i>
-                    <i class='bx bxs-star-half'></i>
-                </div>
+            <div class="product-main">
 
-                <div class="price">
-                    <h4>bedroom</h4>
-                    <p>$99</p>
-                </div>
-            </div>
+              <h2 class="title">New Products</h2>
 
-            <div class="row">
-                <a href="product details.html">  <img src="image/3.jpg" alt=""> </a>
+              <div class="product-grid">
 
-                <div class="heart-icon">
-                    <i class='bx bx-heart'></i>
-                </div>
-                <div class="ratting">
-                    <i class='bx bx-star'></i>
-                    <i class='bx bx-star'></i>
-                    <i class='bx bx-star'></i>
-                    <i class='bx bx-star'></i>
-                    <i class='bx bxs-star-half'></i>
-                </div>
+                <div class="showcase">
 
-                <div class="price">
-                    <h4>bookshelf</h4>
-                    <p>$129</p>
-                </div>
-            </div>
+                  <div class="showcase-banner">
 
-            <div class="row">
-                <a href="product details.html"> <img src="image/4.jpg" alt=""> </a>
-                <div class="product-text">
-                    <h5>Hot</h5>
-                </div>
-                <div class="heart-icon">
-                    <i class='bx bx-heart'></i>
-                </div>
-                <div class="ratting">
-                    <i class='bx bx-star'></i>
-                    <i class='bx bx-star'></i>
-                    <i class='bx bx-star'></i>
-                    <i class='bx bx-star'></i>
-                    <i class='bx bxs-star-half'></i>
-                </div>
+                    <img src="  image/products/Brown right L shaped sofa.jpg" alt="Mens Winter Leathers Jackets"
+                      width="300" class="product-img hover">
+                    <img src="  image/products/LF-L000301.jpg" alt="MEN Yarn Fleece Full-Zip Jacket"
+                      class="product-img default" width="300">
 
-                <div class="price">
-                    <h4>Half Fancy Lady Dress</h4>
-                    <p>$139</p>
-                </div>
-            </div>
+                    <p class="showcase-badge">15%</p>
 
-            <div class="row">
-                <a href="product details.html">  <img src="image/5.png" alt=""></a>
+                    <div class="showcase-actions">
 
-                <div class="heart-icon">
-                    <i class='bx bx-heart'></i>
-                </div>
-                <div class="ratting">
-                    <i class='bx bx-star'></i>
-                    <i class='bx bx-star'></i>
-                    <i class='bx bx-star'></i>
-                    <i class='bx bx-star'></i>
-                    <i class='bx bxs-star-half'></i>
-                </div>
+                      <button class="btn-action">
+                        <ion-icon name="heart-outline"></ion-icon>
+                      </button>
 
-                <div class="price">
-                    <h4>Flix Flox Jeans</h4>
-                    <p>$99</p>
-                </div>
-            </div>
+                      <button class="btn-action">
+                        <ion-icon name="bag-add-outline"></ion-icon>
+                      </button>
 
-            <div class="row">
-                <a href="product details.html">   <img src="image/6.jpg" alt=""> </a>
-                <div class="product-text" style="background-color: black;">
-                    <h5>sold out</h5>
-                </div>
-                <div class="heart-icon">
-                    <i class='bx bx-heart'></i>
-                </div>
-                <div class="ratting">
-                    <i class='bx bx-star'></i>
-                    <i class='bx bx-star'></i>
-                    <i class='bx bx-star'></i>
-                    <i class='bx bx-star'></i>
-                    <i class='bx bxs-star-half'></i>
-                </div>
-
-                <div class="price">
-                    <h4>Fancy Salwar Suits</h4>
-                    <p>$129</p>
-                </div>
-            </div>
-
-            <div class="row">
-                <a href="product details.html"><img src="image/7.jpg" alt=""></a>
-                <div class="product-text">
-                    <h5>Sale</h5>
-                </div>
-                <div class="heart-icon">
-                    <i class='bx bx-heart'></i>
-                </div>
-                <div class="ratting">
-                    <i class='bx bx-star'></i>
-                    <i class='bx bx-star'></i>
-                    <i class='bx bx-star'></i>
-                    <i class='bx bx-star'></i>
-                    <i class='bx bxs-star-half'></i>
-                </div>
-
-                <div class="price">
-                    <h4>Printed Straight Kurta</h4>
-                    <p>$80</p>
-                    <p style="text-decoration: line-through">$110</p>
-                </div>
-            </div>
-
-            <div class="row">
-                <a href="product details.html">  <img src="image/8.jpg" alt=""> </a>
-                <div class="product-text">
-                    <h5>Sale</h5>
-                </div>
-                <div class="heart-icon">
-                    <i class='bx bx-heart'></i>
-                </div>
-                <div class="ratting">
-                    <i class='bx bx-star'></i>
-                    <i class='bx bx-star'></i>
-                    <i class='bx bx-star'></i>
-                    <i class='bx bx-star'></i>
-                    <i class='bx bxs-star-half'></i>
-                </div>
-
-                <div class="price">
-                    <h4>Crispy Air Fryer Cauliflower</h4>
-                    <p>$129</p>
-                    <p style="text-decoration: line-through">$200</p>
-                </div>
-            </div>
-        </div>
-
-    </section>
-
-    <!-- Client-Review-section -->
-
-    <section class="client-reviews">
-        <div class="reviews">
-            <h3>Client Reviews</h3>
-            <img src="image/client.png" alt="">
-            <p>I recently purchased a new sofa from Efresh-betak and I couldn't be happier with my purchase.<br> The
-                selection was huge and the prices were very reasonable. I was also impressed with the customer service.
-                I had a few questions about the sofa and the customer service representative was very helpful and
-                knowledgeable. He answered all of my questions and even helped me choose the right sofa for my needs.
-                <br>The sofa was delivered on time and in perfect condition. The delivery men were very professional and
-                they took the time to set up the sofa for me. I would definitely recommend Efresh-betak to anyone
-                looking for new furniture.
-            </p>
-
-            <h2>layla ali</h2>
-            <p> Doctor </p>
-        </div>
-    </section>
-    <!-- contact-section -->
-    <section class="contact">
-        <div class="contact-info">
-            <div class="first-info">
-                <img src="image/logo.png" alt="">
-
-                <p>01601348732</p>
-                <p>efresh.beitak@gmail.com</p>
-
-                <div class="social-icon">
-                    <a href="Empty.html"><i class='bx bxl-facebook'></i></a>
-                    <a href="Empty.html"><i class='bx bxl-twitter'></i></a>
-                    <a href="Empty.html"><i class='bx bxl-instagram'></i></a>
-                    <a href="Empty.html"><i class='bx bxl-youtube'></i></a>
-                    <a href="Empty.html"><i class='bx bxl-linkedin'></i></a>
-                </div>
-            </div>
-
-            <div class="second-info">
-                <h4>Support</h4>
-                <a href="contact us.html">
-                    <p>Contact us</p>
-                </a>
-                <a href="about us.html"> <p>About page</p></a>
-                <p>Shopping & Resturns</p>
-                <p>Privacy</p>
-            </div>
-
-            <div class="third-info">
-                <h4>Shop</h4>
-                <p>electronic</p>
-                <p>home</p>
-                <p>Furniture</p>
-                <p>kitchen</p>
-            </div>
-
-            <div class="five">
-                <h4>JOIN OUR EMAIL NEWSLETTER</h4>
-                <form>
-                    <div class="form-group">
-                        <input type="text" class="Input" placeholder="Enter Your Email." /><br><br>
-                        <button type="submit" class="btn btn-default submit">
-                            Submit
-                        </button>
                     </div>
-                </form>
+
+                  </div>
+
+                  <div class="showcase-content">
+
+                    <a href="product details.html" class="showcase-category">Bed Room</a>
+
+                    <a href="product details.html"><h3 class="showcase-title">Bed Room</h3>
+                    </a>
+
+                    <div class="showcase-rating">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star-outline"></ion-icon>
+                      <ion-icon name="star-outline"></ion-icon>
+                    </div>
+
+                    <div class="price-box">
+                      <p class="price">$48.00</p>
+                      <del>$75.00</del>
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <div class="showcase">
+
+                  <div class="showcase-banner">
+                    <img src="  image/products/Brown right L shaped sofa.jpg" alt="Mens Winter Leathers Jackets"
+                      width="300" class="product-img hover">
+                    <img src="  image/products/LF-L000301.jpg" alt="MEN Yarn Fleece Full-Zip Jacket"
+                      class="product-img default" width="300">
+
+                    <p class="showcase-badge angle black">sale</p>
+
+                    <div class="showcase-actions">
+
+                      <button class="btn-action">
+                        <ion-icon name="heart-outline"></ion-icon>
+                      </button>
+
+                      <button class="btn-action">
+                        <ion-icon name="bag-add-outline"></ion-icon>
+                      </button>
+
+                    </div>
+                  </div>
+
+                  <div class="showcase-content">
+                    <a href="#" class="showcase-category">.....</a>
+
+                    <h3>
+                      <a href="#" class="showcase-title">.......</a>
+                    </h3>
+
+                    <div class="showcase-rating">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star-outline"></ion-icon>
+                      <ion-icon name="star-outline"></ion-icon>
+                    </div>
+
+                    <div class="price-box">
+                      <p class="price">$45.00</p>
+                      <del>$56.00</del>
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <div class="showcase">
+
+                  <div class="showcase-banner">
+                    <img src="  image/products/Brown right L shaped sofa.jpg" alt="Mens Winter Leathers Jackets"
+                      width="300" class="product-img hover">
+                    <img src="  image/products/LF-L000301.jpg" alt="MEN Yarn Fleece Full-Zip Jacket"
+                      class="product-img default" width="300">
+                      <div class="showcase-actions">
+
+                        <button class="btn-action">
+                          <ion-icon name="heart-outline"></ion-icon>
+                        </button>
+
+                        <button class="btn-action">
+                          <ion-icon name="bag-add-outline"></ion-icon>
+                        </button>
+
+                      </div>
+                    </div>
+
+                  <div class="showcase-content">
+                    <a href="#" class="showcase-category">.....</a>
+
+                    <h3>
+                      <a href="#" class="showcase-title">.........</a>
+                    </h3>
+
+                    <div class="showcase-rating">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star-outline"></ion-icon>
+                      <ion-icon name="star-outline"></ion-icon>
+                    </div>
+
+                    <div class="price-box">
+                      <p class="price">$58.00</p>
+                      <del>$65.00</del>
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <div class="showcase">
+
+                  <div class="showcase-banner">
+                    <img src="  image/products/Brown right L shaped sofa.jpg" alt="Mens Winter Leathers Jackets"
+                      width="300" class="product-img hover">
+                    <img src="  image/products/LF-L000301.jpg" alt="MEN Yarn Fleece Full-Zip Jacket"
+                      class="product-img default" width="300">
+
+
+                    <p class="showcase-badge angle pink">new</p>
+
+                    <div class="showcase-actions">
+                      <button class="btn-action">
+                        <ion-icon name="heart-outline"></ion-icon>
+                      </button>
+
+                      <button class="btn-action">
+                        <ion-icon name="eye-outline"></ion-icon>
+                      </button>
+
+                      <button class="btn-action">
+                        <ion-icon name="repeat-outline"></ion-icon>
+                      </button>
+
+                      <button class="btn-action">
+                        <ion-icon name="bag-add-outline"></ion-icon>
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="showcase-content">
+                    <a href="#" class="showcase-category">skirt</a>
+
+                    <h3>
+                      <a href="#" class="showcase-title">Black Floral Wrap Midi Skirt</a>
+                    </h3>
+
+                    <div class="showcase-rating">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                    </div>
+
+                    <div class="price-box">
+                      <p class="price">$25.00</p>
+                      <del>$35.00</del>
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <div class="showcase">
+
+                  <div class="showcase-banner">
+                    <img src="  image/products/Brown right L shaped sofa.jpg" alt="Mens Winter Leathers Jackets"
+                      width="300" class="product-img hover">
+                    <img src="  image/products/LF-L000301.jpg" alt="MEN Yarn Fleece Full-Zip Jacket"
+                      class="product-img default" width="300">
+
+                    <div class="showcase-actions">
+                      <button class="btn-action">
+                        <ion-icon name="heart-outline"></ion-icon>
+                      </button>
+
+                      <button class="btn-action">
+                        <ion-icon name="eye-outline"></ion-icon>
+                      </button>
+
+                      <button class="btn-action">
+                        <ion-icon name="repeat-outline"></ion-icon>
+                      </button>
+
+                      <button class="btn-action">
+                        <ion-icon name="bag-add-outline"></ion-icon>
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="showcase-content">
+                    <a href="#" class="showcase-category">casual</a>
+
+                    <h3>
+                      <a href="#" class="showcase-title">Casual Men's Brown shoes</a>
+                    </h3>
+
+                    <div class="showcase-rating">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                    </div>
+
+                    <div class="price-box">
+                      <p class="price">$99.00</p>
+                      <del>$105.00</del>
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <div class="showcase">
+
+                  <div class="showcase-banner">
+                    <img src="  image/products/Brown right L shaped sofa.jpg" alt="Mens Winter Leathers Jackets"
+                      width="300" class="product-img hover">
+                    <img src="  image/products/LF-L000301.jpg" alt="MEN Yarn Fleece Full-Zip Jacket"
+                      class="product-img default" width="300">
+
+                    <p class="showcase-badge angle black">sale</p>
+
+                    <div class="showcase-actions">
+                      <button class="btn-action">
+                        <ion-icon name="heart-outline"></ion-icon>
+                      </button>
+
+                      <button class="btn-action">
+                        <ion-icon name="eye-outline"></ion-icon>
+                      </button>
+
+                      <button class="btn-action">
+                        <ion-icon name="repeat-outline"></ion-icon>
+                      </button>
+
+                      <button class="btn-action">
+                        <ion-icon name="bag-add-outline"></ion-icon>
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="showcase-content">
+                    <a href="#" class="showcase-category">watches</a>
+
+                    <h3>
+                      <a href="#" class="showcase-title">Pocket Watch Leather Pouch</a>
+                    </h3>
+
+                    <div class="showcase-rating">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star-outline"></ion-icon>
+                      <ion-icon name="star-outline"></ion-icon>
+                    </div>
+
+                    <div class="price-box">
+                      <p class="price">$150.00</p>
+                      <del>$170.00</del>
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <div class="showcase">
+
+                  <div class="showcase-banner">
+                    <img src="  image/products/Brown right L shaped sofa.jpg" alt="Mens Winter Leathers Jackets"
+                      width="300" class="product-img hover">
+                    <img src="  image/products/LF-L000301.jpg" alt="MEN Yarn Fleece Full-Zip Jacket"
+                      class="product-img default" width="300">
+
+
+                    <div class="showcase-actions">
+                      <button class="btn-action">
+                        <ion-icon name="heart-outline"></ion-icon>
+                      </button>
+
+                      <button class="btn-action">
+                        <ion-icon name="eye-outline"></ion-icon>
+                      </button>
+
+                      <button class="btn-action">
+                        <ion-icon name="repeat-outline"></ion-icon>
+                      </button>
+
+                      <button class="btn-action">
+                        <ion-icon name="bag-add-outline"></ion-icon>
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="showcase-content">
+                    <a href="#" class="showcase-category">watches</a>
+
+                    <h3>
+                      <a href="#" class="showcase-title">Smart watche Vital Plus</a>
+                    </h3>
+
+                    <div class="showcase-rating">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star-outline"></ion-icon>
+                    </div>
+
+                    <div class="price-box">
+                      <p class="price">$100.00</p>
+                      <del>$120.00</del>
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <div class="showcase">
+
+                  <div class="showcase-banner">
+                    <img src="  image/products/Brown right L shaped sofa.jpg" alt="Mens Winter Leathers Jackets"
+                      width="300" class="product-img hover">
+                    <img src="  image/products/LF-L000301.jpg" alt="MEN Yarn Fleece Full-Zip Jacket"
+                      class="product-img default" width="300">
+
+
+                    <p class="showcase-badge angle black">sale</p>
+
+                    <div class="showcase-actions">
+                      <button class="btn-action">
+                        <ion-icon name="heart-outline"></ion-icon>
+                      </button>
+
+                      <button class="btn-action">
+                        <ion-icon name="eye-outline"></ion-icon>
+                      </button>
+
+                      <button class="btn-action">
+                        <ion-icon name="repeat-outline"></ion-icon>
+                      </button>
+
+                      <button class="btn-action">
+                        <ion-icon name="bag-add-outline"></ion-icon>
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="showcase-content">
+                    <a href="#" class="showcase-category">party wear</a>
+
+                    <h3>
+                      <a href="#" class="showcase-title">Womens Party Wear Shoes</a>
+                    </h3>
+
+                    <div class="showcase-rating">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star-outline"></ion-icon>
+                      <ion-icon name="star-outline"></ion-icon>
+                    </div>
+
+                    <div class="price-box">
+                      <p class="price">$25.00</p>
+                      <del>$30.00</del>
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <div class="showcase">
+
+                  <div class="showcase-banner">
+                    <img src="  image/products/Brown right L shaped sofa.jpg" alt="Mens Winter Leathers Jackets"
+                      width="300" class="product-img hover">
+                    <img src="  image/products/LF-L000301.jpg" alt="MEN Yarn Fleece Full-Zip Jacket"
+                      class="product-img default" width="300">
+
+                    <div class="showcase-actions">
+                      <button class="btn-action">
+                        <ion-icon name="heart-outline"></ion-icon>
+                      </button>
+
+                      <button class="btn-action">
+                        <ion-icon name="eye-outline"></ion-icon>
+                      </button>
+
+                      <button class="btn-action">
+                        <ion-icon name="repeat-outline"></ion-icon>
+                      </button>
+
+                      <button class="btn-action">
+                        <ion-icon name="bag-add-outline"></ion-icon>
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="showcase-content">
+                    <a href="#" class="showcase-category">jacket</a>
+
+                    <h3>
+                      <a href="#" class="showcase-title">Mens Winter Leathers Jackets</a>
+                    </h3>
+
+                    <div class="showcase-rating">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star-outline"></ion-icon>
+                    </div>
+
+                    <div class="price-box">
+                      <p class="price">$32.00</p>
+                      <del>$45.00</del>
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <div class="showcase">
+
+                  <div class="showcase-banner">
+                    <img src="  image/products/Brown right L shaped sofa.jpg" alt="Mens Winter Leathers Jackets"
+                      width="300" class="product-img hover">
+                    <img src="  image/products/LF-L000301.jpg" alt="MEN Yarn Fleece Full-Zip Jacket"
+                      class="product-img default" width="300">
+
+                    <p class="showcase-badge angle black">sale</p>
+
+                    <div class="showcase-actions">
+                      <button class="btn-action">
+                        <ion-icon name="heart-outline"></ion-icon>
+                      </button>
+
+                      <button class="btn-action">
+                        <ion-icon name="eye-outline"></ion-icon>
+                      </button>
+
+                      <button class="btn-action">
+                        <ion-icon name="repeat-outline"></ion-icon>
+                      </button>
+
+                      <button class="btn-action">
+                        <ion-icon name="bag-add-outline"></ion-icon>
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="showcase-content">
+                    <a href="#" class="showcase-category">sports</a>
+
+                    <h3>
+                      <a href="#" class="showcase-title">Trekking & Running Shoes - black</a>
+                    </h3>
+
+                    <div class="showcase-rating">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star-outline"></ion-icon>
+                      <ion-icon name="star-outline"></ion-icon>
+                    </div>
+
+                    <div class="price-box">
+                      <p class="price">$58.00</p>
+                      <del>$64.00</del>
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <div class="showcase">
+
+                  <div class="showcase-banner">
+                    <img src="  image/products/Brown right L shaped sofa.jpg" alt="Mens Winter Leathers Jackets"
+                      width="300" class="product-img hover">
+                    <img src="  image/products/LF-L000301.jpg" alt="MEN Yarn Fleece Full-Zip Jacket"
+                      class="product-img default" width="300">
+
+
+                    <div class="showcase-actions">
+                      <button class="btn-action">
+                        <ion-icon name="heart-outline"></ion-icon>
+                      </button>
+
+                      <button class="btn-action">
+                        <ion-icon name="eye-outline"></ion-icon>
+                      </button>
+
+                      <button class="btn-action">
+                        <ion-icon name="repeat-outline"></ion-icon>
+                      </button>
+
+                      <button class="btn-action">
+                        <ion-icon name="bag-add-outline"></ion-icon>
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="showcase-content">
+                    <a href="#" class="showcase-category">formal</a>
+
+                    <h3>
+                      <a href="#" class="showcase-title">Men's Leather Formal Wear shoes</a>
+                    </h3>
+
+                    <div class="showcase-rating">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star-outline"></ion-icon>
+                    </div>
+
+                    <div class="price-box">
+                      <p class="price">$50.00</p>
+                      <del>$65.00</del>
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <div class="showcase">
+
+                  <div class="showcase-banner">
+                    <img src="  image/products/Brown right L shaped sofa.jpg" alt="Mens Winter Leathers Jackets"
+                      width="300" class="product-img hover">
+                    <img src="  image/products/LF-L000301.jpg" alt="MEN Yarn Fleece Full-Zip Jacket"
+                      class="product-img default" width="300">
+
+                    <p class="showcase-badge angle black">sale</p>
+
+                    <div class="showcase-actions">
+                      <button class="btn-action">
+                        <ion-icon name="heart-outline"></ion-icon>
+                      </button>
+
+                      <button class="btn-action">
+                        <ion-icon name="eye-outline"></ion-icon>
+                      </button>
+
+                      <button class="btn-action">
+                        <ion-icon name="repeat-outline"></ion-icon>
+                      </button>
+
+                      <button class="btn-action">
+                        <ion-icon name="bag-add-outline"></ion-icon>
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="showcase-content">
+                    <a href="#" class="showcase-category">shorts</a>
+
+                    <h3>
+                      <a href="#" class="showcase-title">Better Basics French Terry Sweatshorts</a>
+                    </h3>
+
+                    <div class="showcase-rating">
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star"></ion-icon>
+                      <ion-icon name="star-outline"></ion-icon>
+                      <ion-icon name="star-outline"></ion-icon>
+                    </div>
+
+                    <div class="price-box">
+                      <p class="price">$78.00</p>
+                      <del>$85.00</del>
+                    </div>
+
+                  </div>
+
+                </div>
+
+              </div>
+
             </div>
-        </div>
+
+          </div>
     </section>
-    <script src="main.js"></script>
+    <!--
+    - FOOTER
+    -->
+
+    <footer>
+
+      <!-- contact-section -->
+      <section class="contact">
+        <div class="contact-info">
+          <div class="first-info">
+            <img src="image/logo.png" alt="">
+            <p>+201004443226</p>
+            <p>efresh.beitak@gmail.com</p>
+
+          </div>
+
+          <div class="second-info">
+            <h4>Support</h4>
+            <a href="contact us.html">
+              <p>Contact us</p>
+            </a>
+            <a href="about us.html">
+              <p>About page</p>
+            </a>
+            <p>Shopping & Resturns</p>
+            <p>Privacy</p>
+          </div>
+
+          <div class="third-info">
+            <h4>Shop</h4>
+            <p>electronic</p>
+            <p>home</p>
+            <p>Furniture</p>
+            <p>kitchen</p>
+          </div>
+
+          <div class="five">
+            <h4>JOIN OUR EMAIL NEWSLETTER</h4>
+            <form>
+              <div class="form-group">
+                <input type="text" class="Input" placeholder="Enter Your Email." /><br><br>
+                <button type="submit" class="btn btn-default submit">
+                  Submit
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </footer>
+
+
+
+    <script>
+        $(document).ready(function () {
+            $("#cart").click(function () {
+                $(".cartcard").css("position", "fixed");
+                $(".cartcard").css("right", "0px")
+                $("#close").css("right", "0");
+                $(".cartcard").css("z-index", "99999999");
+                $(".brand").css("height", "100vh");
+                $(".down").hide()
+                $(".main-text").css("opacity", "0.5")
+                $("header").addClass("sticky");
+
+
+            })
+        })
+        $(document).ready(function () {
+            $("#close").click(function () {
+                $("header").show()
+                $(".main-text").css("opacity", "1")
+                $(".down").fadeIn()
+            })
+        })
+
+    </script>
+    <script src="js/cart.js"></script>
 
 </body>
 
