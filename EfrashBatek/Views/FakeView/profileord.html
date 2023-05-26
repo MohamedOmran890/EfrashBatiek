@@ -18,11 +18,15 @@
 		  crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 	<link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-	<link rel="stylesheet" type="text/css"
-		  href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="css/profile2.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+
+
 	<link rel="stylesheet" href="css/profile.css">
+	<link rel="stylesheet" href="css/profile2.css">
 	<title>Efresh Beitak</title>
 	</head>
 
@@ -105,30 +109,32 @@
 						<br>
 						<br>
 						<br>
-						<table style="width:100%" >
-
-							<tr>
-								<td>Order Code : </td>
-								<td>#131321</td>
-							</tr>
-							<tr>
-								<td>Total : </td>
-								<td>1200 EGP</td>
-							</tr>
-							<tr>
-								<td>Date : </td>
-								<td>2023/05/27</td>
-							</tr>
-							<tr>
-								<td>Status : </td>
-								<td>Active</td>
-							</tr>
-							<br>
-							<tr>
-								<td colspan="2" style="text-align:center;"> <a href="orderinfo.html"><button class="button123">View Order Details</button></a> </td>
-							</tr>
-
-						</table>
+						<table id="example" class="order-table" style="margin-left: auto; margin-right: auto; width : 100%;">
+        <thead>
+            <tr>
+                <th>Order Code</th>
+                <th>Order Date</th>
+                <th>Order Link</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>#123456</td>
+                <td>2023/04/05</td>
+                <td><a href="orderinfo.html">Click Here !</a></td>
+            </tr>
+            <tr>
+                <td>#133456</td>
+                <td>2023/04/08</td>
+                <td><a href="orderinfo.html">Click Here !</a></td>
+            </tr>
+            <tr>
+                <td>#125456</td>
+                <td>2023/04/02</td>
+                <td><a href="orderinfo.html">Click Here !</a></td>
+            </tr>
+        </tbody>
+    </table>
 					</center>
 				</div>
 
@@ -183,10 +189,21 @@
 			</div>
 		</section>
 	</footer>
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.min.js"></script>
 
+
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+
+	<script>
+	$(document).ready(function () {
+	    $('#example').DataTable();
+	});
+	</script>
 
 </body>
 
