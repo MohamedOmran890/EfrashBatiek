@@ -1961,7 +1961,7 @@ input{
   \*-----------------------------------*/
 
   footer {
-    background: var(--eerie-black);
+    background: #f3f4f6;
     padding: 30px 0;
   }
 
