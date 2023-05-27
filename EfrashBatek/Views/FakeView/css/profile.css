@@ -8,6 +8,7 @@
 	 text-decoration: none;
 }
 header{
+	background: #fff;
     position: fixed;
     width: 100%;
     top: 0;
