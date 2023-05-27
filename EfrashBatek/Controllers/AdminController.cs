@@ -14,14 +14,16 @@ namespace EfrashBatek.Controllers
         IShopRepository shop;
         IStaffRepository _staff;
         private readonly UserManager<User> _userManager;
-
-        public AdminController(UserManager<User>usermanager,ICustomerRepository customer, IOrderRepository order, IShopRepository shop, IStaffRepository staff)
+        IOrder_ItemRepository _itemRepository;
+        public AdminController(UserManager<User>usermanager, ICustomerRepository customer,
+            IOrderRepository order, IShopRepository shop, IStaffRepository staff, IOrder_ItemRepository itemRepository)
         {
             this.customer = customer;
             this.order = order;
             this.shop = shop;
             this._staff = staff;
             _userManager = usermanager;
+            _itemRepository = itemRepository;
         }
         public IActionResult Dashboard()
         {
@@ -124,6 +126,12 @@ namespace EfrashBatek.Controllers
                 return Content("Error Try Again");
 
         }
+        public IActionResult Orders()
+        {
+            var ans = order.GetByShop();
+            return View(ans);
+        }
+
 
 
 

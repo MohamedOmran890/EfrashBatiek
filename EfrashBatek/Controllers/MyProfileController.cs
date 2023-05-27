@@ -22,14 +22,14 @@ namespace EfrashBatek.Controllers
 		// integer or string??  { id of user or customer or identity) ???
 		// error beacause data not founded ..
 		// there is not id with 1 ..
-		[HttpGet]
+		/*[HttpGet]
 		public IActionResult UpdateProfile(string  id )
 		{
 			Customer customer =   User.GetById(id);	
 
 			
 			return View(customer);
-		}
+		}*/
 
 		[HttpPost]
 		// id  --> from URL ..
