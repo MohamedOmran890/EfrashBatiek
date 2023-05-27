@@ -4,7 +4,7 @@
     ViewData["Title"] = "EditShop";
 }
 
-<h1>AddShop</h1>
+<h1>Edit Shop</h1>
 
 <hr />
 <div class="row">
@@ -13,22 +13,22 @@
             <div asp-validation-summary="All" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Name" class="control-label">Shop Name</label>
-                <input asp-for="Name" class="form-control" value="@Model.Name  />
+                <input asp-for="Name" class="form-control" value="@Model.Name"  />
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="ShopAddress" class="control-label">Address</label>
-                <input asp-for="ShopAddress" class="form-control" value="@Model.ShopAddress  />
+                <input asp-for="ShopAddress" class="form-control" value="@Model.ShopAddress"  />
                 <span asp-validation-for="ShopAddress" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="TaxCardImage" class="control-label">Tax Card</label>
-                <input asp-for="TaxCardImage" class="form-control" value="@Model.TaxCardImage />
+                <input asp-for="TaxCardImage" class="form-control" value="@Model.TaxCardImage" />
                 <span asp-validation-for="TaxCardImage" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="ShopNumber" class="control-label"></label>
-                <input asp-for="ShopNumber" class="form-control" value="@Model.ShopNumber  />
+                <input asp-for="ShopNumber" class="form-control" value="@Model.ShopNumber"/>
                 <span asp-validation-for="ShopNumber" class="text-danger"></span>
             </div>
             <div class="form-group">
