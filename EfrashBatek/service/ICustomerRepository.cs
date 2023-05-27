@@ -7,6 +7,7 @@ namespace EfrashBatek.service
     {
         void Create(Customer customer);
         int Delete(int Id);
+        int Edit(Customer customer, int id);
         List<Customer> GetAll();
         Customer GetById(int Id);
          int TotalCustomers();

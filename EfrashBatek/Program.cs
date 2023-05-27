@@ -29,12 +29,20 @@ namespace EfrashBatek
     {
         using var context = new Context();
         context.Database.EnsureCreated();
+          
         var Product = context.Products.FirstOrDefault(x=>x.ID==1);
+            var customer = context.Customers.FirstOrDefault(x => x.Id == 1);
+            if(customer == null)
+            {
+
+                User user = new User { Id = "11111", FirstName = "alyaa", LastName = "elhawary", Email = "alyaamamoon@gmail.com", PhoneNumber = "01111111" };
+                context.Customers.Add(new Customer { Id = 1, User = user});
+            }
         if(Product==null)
         {
-            context.Products.Add(new Product { ID=1,ProductName= (ProductName)1, Description="Ikea is Very good " });
-            context.Products.Add(new Product { ID = 2, ProductName = (ProductName)2, Description = "Wayfair is very good " });
-            context.Products.Add(new Product { ID = 3, ProductName = (ProductName)3, Description = "Room is Very good " });
+           // context.Products.Add(new Product { ID=1,ProductName= (ProductName)1, Description="Ikea is Very good " });
+            //context.Products.Add(new Product { ID = 2, ProductName = (ProductName)2, Description = "Wayfair is very good " });
+            //context.Products.Add(new Product { ID = 3, ProductName = (ProductName)3, Description = "Room is Very good " });
         }
             var brand = context.Brands.FirstOrDefault(x => x.ID == 1);
             if (brand == null)
@@ -58,6 +66,7 @@ namespace EfrashBatek
                 context.Items.Add(new Item { ID = 2, Name ="chair", Brand_ID =2,Code="87865",Price=5000,ShopID=2,ProductID=2,Image="1.jpg", Description = "yotuu", QuantityInStore = 3 });
                 context.Items.Add(new Item { ID = 3, Name = "trtr", Brand_ID =2, Code = "7969", Price = 5000, ShopID = 2, ProductID = 2, Image = "2.jpg", Description = "yotuu", QuantityInStore = 3 });
             }
+
 
             context.SaveChanges();
     }

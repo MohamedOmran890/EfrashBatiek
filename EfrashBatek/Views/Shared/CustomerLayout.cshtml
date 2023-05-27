@@ -1,109 +1,153 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Profile</title>
-    <link rel="icon" type="~/image/favicon.ico" href="~/image/favicon.png">
     <!-- CSS-link -->
-    <link rel="stylesheet" href="~/css/profile.css">
-
+    <link rel="stylesheet" href="~/css/cart.css">
+    <link rel="stylesheet" href="~/css/main.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600;700&display=swap"
           rel="stylesheet">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
           integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
           crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
     <link rel="stylesheet" type="text/css"
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" type="text/css" href="~/css/style.css">
-    <link rel="stylesheet" href="~/css/main.css">
+    <link rel="stylesheet" href="~/css/profile2.css">
+    <link rel="stylesheet" href="~/css/profile.css">
+
+    <title>Efresh Beitak</title>
 </head>
 
-
 <body>
+    <!--header section-->
 
     <header>
-        <a href="#" class="logo"><img src="logo.png" alt=""></a>
+        <a href="main.html" class="logo"><img src="~/Image/logo.png" alt=""></a>
 
         <ul class="navmenu">
-            <li><a href="#">watch</a></li>
-            <li><a href="#">products</a></li>
-            <li><a href="#">customize order</a></li>
-            <li><a href="#">designs</a></li>
+            <li><a asp-controller="" asp-action="">Products</a></li>
+            <li><a asp-controller="Home" asp-action="TrendingProducts">Trends</a></li>
+            <li><a asp-controller="" asp-action="">Custom order</a></li>
+            <li><a asp-controller="" asp-action="">Designs</a></li>
         </ul>
 
+
         <div class="nav-icon">
-            <a href="#"><i class='bx bx-search'></i></a>
-            <a href="profile.html"><i class='bx bx-user'></i></a>
+            <a href="main.html"><i class='bx bx-search'></i></a>
+            <a href="log.html"><i class='bx bx-user'></i></a>
             <a href="cart.html"><i class='bx bx-cart'></i></a>
             <a href="wishlist.html"><i class='bx bx-heart' undefined></i></a>
             <div class="bx bx-menu" id="menu-icon"></div>
         </div>
+
+
     </header>
 
+   
+   @RenderBody();
+    <footer>
 
+        <!-- contact-section -->
+        <!-- contact-section -->
+        <section class="contact">
+            <div class="contact-info">
+                <div class="first-info">
+                    <img src="~/image/logo.png" alt="">
 
+                    <p>01601348732</p>
+                    <p>efresh.beitak@gmail.com</p>
 
-    @RenderBody()
+                    <div class="social-icon">
+                        <a href="https://www.facebook.com/profile.php?id=100008757484239"><i class='bx bxl-facebook'></i></a>
+                        <a href="https://twitter.com/home"><i class='bx bxl-twitter'></i></a>
+                        <a href="https://www.instagram.com/mo7863051/.html"><i class='bx bxl-instagram'></i></a>
+                        <a href="https://www.youtube.com/channel/UCaQCDzKebW-atpAOP1eM38A"><i class='bx bxl-youtube'></i></a>
+                        <a href="https://www.linkedin.com/in/mohamed-omran-ab72a7233/"><i class='bx bxl-linkedin'></i></a>
+                    </div>
+                </div>
 
+                <div class="second-info">
+                    <h4>Support</h4>
+                    <br />
+                    <a asp-action="ContactUs" asp-controller="Contact_Us">Contact us</a>
+                    <a asp-action="AboutUs" asp-controller="Home">About page</a>
+                    <a>Shopping & Resturns</a>
+                    <a asp-action="Privacy" asp-controller="Home">Privacy Policy</a>
+                </div>
 
-    <!-- contact-section -->
-    <section class="contact">
-        <div class="contact-info">
-            <div class="first-info">
-                <img src="image/logo.png" alt="">
+                <div class="third-info">
+                    <a asp-action="Index" asp-controller="Category" asp-route-Category="Category">Shop</a>
+                    <a asp-action="Index" asp-controller="Category" asp-route-Category="Category">Home</a>
+                    <a asp-action="Index" asp-controller="Category" asp-route-Category="Category">Furniture</a>
+                    <a asp-action="Index" asp-controller="Category" asp-route-Category="Category">kitchen</a>
+                </div>
 
-                <p>01601348732</p>
-                <p>efresh.beitak@gmail.com</p>
-
-                <div class="social-icon">
-                    <a href="#"><i class='bx bxl-facebook'></i></a>
-                    <a href="#"><i class='bx bxl-twitter'></i></a>
-                    <a href="#"><i class='bx bxl-instagram'></i></a>
-                    <a href="#"><i class='bx bxl-youtube'></i></a>
-                    <a href="#"><i class='bx bxl-linkedin'></i></a>
+                <div class="five">
+                    <h4>JOIN OUR EMAIL NEWSLETTER</h4>
+                    <form>
+                        <div class="form-group">
+                            <input type="text" class="Input" placeholder="Enter Your Email." /><br><br>
+                            <button type="submit" class="btn btn-default submit">
+                                Submit
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
+        </section>
+        <script src="~/js/main.js"></script>
+        <!--Omran Craete them cause  Clint side-->
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        @section Scripts {
+            @{
+                await Html.RenderPartialAsync("_ValidationScriptsPartial");
+            }
+        }
+        @RenderSection("Scripts",false)
 
-            <div class="second-info">
-                <h4>Support</h4>
-                <a href="contact us.html">
-                    <p>Contact us</p>
-                </a>
-                <a href="about.html"> <p>About page</p></a>
-                <p>Shopping & Resturns</p>
-                <p>Privacy</p>
-            </div>
+    </footer>
 
-            <div class="third-info">
-                <h4>Shop</h4>
-                <p>electronic</p>
-                <p>home</p>
-                <p>Furniture</p>
-                <p>kitchen</p>
-            </div>
 
-            <div class="five">
-                <h4>JOIN OUR EMAIL NEWSLETTER</h4>
-                <form>
-                    <div class="form-group">
-                        <input type="text" class="Input" placeholder="Enter Your Email." /><br><br>
-                        <button type="submit" class="btn btn-default submit">
-                            Submit
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </section>
-    <script src="~/js/main.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#cart").click(function () {
+                $(".cartcard").css("position", "fixed");
+                $(".cartcard").css("right", "0px")
+                $("#close").css("right", "0");
+                $(".cartcard").css("z-index", "99999999");
+                $(".brand").css("height", "100vh");
+                $(".down").hide()
+                $(".main-text").css("opacity", "0.5")
+                $("header").addClass("sticky");
+
+
+            })
+        })
+        $(document).ready(function () {
+            $("#close").click(function () {
+                $("header").show()
+                $(".main-text").css("opacity", "1")
+                $(".down").fadeIn()
+            })
+        })
+
+    </script>
+    <script src="js/cart.js"></script>
 
 </body>
 

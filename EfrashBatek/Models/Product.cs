@@ -6,7 +6,7 @@ namespace EfrashBatek.Models
 {
     public enum ProductName
     {
-        IKEA,
+        IKEA=1,
         Wayfair,
         Room,
         Pottery_Barn
@@ -19,7 +19,7 @@ namespace EfrashBatek.Models
         [Required]
         public string Description { get; set; }
         public virtual  Category Category { get; set; }
-        public virtual  ProductName ProductName { get; set; }
+        public virtual  string ProductName { get; set; }
         public virtual ICollection<Item>Items { get; set; }
 
     }

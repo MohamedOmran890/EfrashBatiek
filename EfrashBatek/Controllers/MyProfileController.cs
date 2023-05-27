@@ -12,55 +12,64 @@ namespace EfrashBatek.Controllers
 	{
 		private readonly Context _context;
 		ICustomerRepository User;
-		public MyProfileController(Context context)
+		public MyProfileController(Context context , ICustomerRepository User )
 		{
 			_context = context;
-			User = new CustomerRepository(_context);
+			this.User = User;	
+
 		}
 
 
-		// integer or string??  { id of user or customer or identity) ???
-		// error beacause data not founded ..
-		// there is not id with 1 ..
 		[HttpGet]
-		public IActionResult UpdateProfile(string  id )
+		public IActionResult UpdateProfile(int id )
 		{
-			Customer customer =   User.GetById(id);	
-
-			
-			return View(customer);
+			Customer obj = User.GetById(id);
+			User user = new User { Id = "11111", FirstName = "alyaa", LastName = "elhawary", Email = "alyaamamoon@gmail.com", PhoneNumber = "01111111" };
+			Customer customer = new Customer { Id = 1, User = user };
+			return View(customer );
 		}
 
 		[HttpPost]
-		// id  --> from URL ..
-		// obj --> from post method 
+		
 		public IActionResult SaveChangesProfile([FromRoute] int id, Customer obj)
 		{
 
-			// update service customer doesn't found  and access
 			if(ModelState.IsValid) {
-				
 
 
+				User.Edit(obj, id); 
+			
+	
 			}
-
-			return RedirectToAction("UpdateProfile"); // redirect to action or view ?? 
+			return RedirectToAction("UpdateProfile" , id); // redirect to action or view ?? 
 		}
 		public IActionResult UpdateAddress(int id )
 		{
 			Customer obj = User.GetById(id);
-			return View(obj );
+
+			
+		   Address address = new Address { FirstName = "efef", LastName = "fefe", City = "rfrfrf"  , phone="rfrfrf"};
+			User user = new User {Address=address ,  Id = "11111", FirstName = "alyaa", LastName = "elhawary", Email = "alyaamamoon@gmail.com", PhoneNumber = "01111111" };
+
+			Customer customer  = new Customer { Id = 1, User =user  };
+			
+			return View(customer);
 		}
 		public IActionResult SaveChangesAddress([FromRoute] int id, Customer obj)
 		{
 			// update service customer doesn't found and access 
 
-			return View();
+			if (ModelState.IsValid)
+			{
+
+			   User.Edit(obj, id);
+
+
+			}
+			return RedirectToAction("UpdateAddress", id); // redirect to action or view 
 		}
 		public IActionResult ViewOrders(int id )
 		{
-
-			
 			if (id == 1)
 			{
 
@@ -79,13 +88,15 @@ namespace EfrashBatek.Controllers
 
 			return View();
 		}
-		public IActionResult ViewGuaraneet()
+		public IActionResult Warrently()
 		{
 			return View();
 		}
 
-		public IActionResult PasswordSetting()
+		public IActionResult UpdatePassword(int id)
 		{
+			Customer customer = User.GetById(id);	
+		
 			return View();
 
 		}
