@@ -20,8 +20,8 @@ namespace EfrashBatek.Models
         [Required]
         public string City { get; set; }
         [Required]
-        public string AddressName { get; set; }
-        public int BuildingNumber { get; set; }
+		public string StreetName { get; set; }
+		public int BuildingNumber { get; set; }
         [Required]
         public string FloorName { get; set; }
         public int ApartmentNumber { get; set; }
