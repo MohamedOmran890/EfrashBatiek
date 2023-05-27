@@ -1659,7 +1659,7 @@ input{
 
   .product-grid .showcase-badge.black { background: var(--eerie-black); }
 
-  .product-grid .showcase-badge.pink { background: var(--salmon-pink); }
+  .product-grid .showcase-badge.pink { background: #cbaab1; }
 
   .product-grid .showcase-actions {
     position: absolute;
@@ -1692,7 +1692,7 @@ input{
   .product-grid .showcase-content { padding: 15px 20px 0; }
 
   .product-grid .showcase-category {
-    color: var(--salmon-pink);
+    color: #cbaab1;
     font-size: var(--fs-9);
     font-weight: var(--weight-500);
     text-transform: uppercase;
@@ -1958,6 +1958,7 @@ input{
 
   /*-----------------------------------*\
     #FOOTER
+
   \*-----------------------------------*/
 
   footer {
