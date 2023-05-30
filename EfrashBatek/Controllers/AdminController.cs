@@ -1,4 +1,4 @@
-﻿using EfrashBatek.Models;
+using EfrashBatek.Models;
 using EfrashBatek.service;
 using EfrashBatek.ViewModel;
 using Microsoft.AspNetCore.Identity;
@@ -14,14 +14,16 @@ namespace EfrashBatek.Controllers
         IShopRepository shop;
         IStaffRepository _staff;
         private readonly UserManager<User> _userManager;
-
-        public AdminController(UserManager<User>usermanager,ICustomerRepository customer, IOrderRepository order, IShopRepository shop, IStaffRepository staff)
+        IOrder_ItemRepository _itemRepository;
+        public AdminController(UserManager<User>usermanager, ICustomerRepository customer,
+            IOrderRepository order, IShopRepository shop, IStaffRepository staff, IOrder_ItemRepository itemRepository)
         {
             this.customer = customer;
             this.order = order;
             this.shop = shop;
             this._staff = staff;
             _userManager = usermanager;
+            _itemRepository = itemRepository;
         }
         public IActionResult Dashboard()
         {
@@ -37,48 +39,58 @@ namespace EfrashBatek.Controllers
         {
             return View();
         }
-         public async Task<IActionResult> SaveStaff(RegisterViewModel model)
-    {
-        if (!ModelState.IsValid)
+        [HttpPost]
+        public async Task<IActionResult> SaveStaff(RegisterViewModelStaff model)
         {
-            return View("AddStaff");
-        }
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
 
-        var user = new User
-        {
-            UserName = model.Username,
-            Email = model.Email,
-            PhoneNumber=model.Phone,
-            age=model.Age,
-            FirstName=model.FirstName,
-            LastName=model.LastName,
-            Gender= (Gender)model.Gender,
+            var user = new User
+            {
+                UserName = model.Username,
+                Email = model.Email,
+                PhoneNumber = model.Phone,
+                age = model.Age,
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                BirthDate = model.Birthdate,
+                Gender = (Gender)model.Gender,
 
-        };
-            var staff = new Staff
+            };
+
+        var staff = new Staff
             {
                 UserId = user.Id,
                 ShopID = model.ShopNumber
             };
 
-            var result = await _userManager.CreateAsync(user, model.Password);
+            var result = await _userManager.CreateAsync(user, model.Password);//Created Cookies
+            var check = shop.GetById(model.ShopNumber);
+            if (result.Succeeded&&check!=null)
+            {
+                // Add user to default role
+                //  await _userManager.AddToRoleAsync(user, "User");
 
-        if (result.Succeeded)
-        {
-               _staff.Create(staff);
-            // Add user to default role
-            await _userManager.AddToRoleAsync(user, "Staff");
-            // Redirect the user to the login page
-            return RedirectToAction("Dashboard");
+                // Redirect the user to the login page
+                _staff.Create(staff);
+                return Content("Done");
+            }
+
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError("", error.Description);
+                if(check==null)
+                ModelState.AddModelError("","Not Found ShopNumber ");
+
+            }
+
+            return View("AddStaff",model);
         }
 
-        foreach (var error in result.Errors)
-        {
-            ModelState.AddModelError("", error.Description);
-        }
 
-                return View("AddStaff");
-    }
+          
 
     public IActionResult AddShop()
         {
@@ -124,6 +136,12 @@ namespace EfrashBatek.Controllers
                 return Content("Error Try Again");
 
         }
+        public IActionResult Orders()
+        {
+            var ans = order.GetByShop();
+            return View(ans);
+        }
+
 
 
 
