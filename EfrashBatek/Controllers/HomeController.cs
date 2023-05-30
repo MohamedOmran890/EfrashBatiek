@@ -22,17 +22,17 @@ namespace EfrashBatek.Controllers
 
         }
 
-        public IActionResult Index()
+       /* public IActionResult Index()
         {
             var ans = _Product.GetAll();
             return View(ans);
             /*************************/
-        }
+        }*/
 
-        public IActionResult Privacy()
+        /*public IActionResult Privacy()
         {
             return View();
-        }
+        }*/
         public IActionResult About()
         {
             return View();
