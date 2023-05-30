@@ -69,14 +69,14 @@ namespace EfrashBatek.Controllers
         }
 
         [HttpGet]
-        public IActionResult Login(string returnUrl ="~/Home/Index")
+        public IActionResult Login(string returnUrl = "~/Home/TrendingProducts")
         {
             ViewData["ReturnUrl"] = returnUrl;
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = "~/Home/Index")
+        public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = "~/Home/TrendingProducts")
         {
             ViewData["ReturnUrl"] = returnUrl;
 
@@ -107,7 +107,7 @@ namespace EfrashBatek.Controllers
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("TrendingProducts", "Home");
         }
 
         private IActionResult RedirectToLocal(string returnUrl)
@@ -118,7 +118,7 @@ namespace EfrashBatek.Controllers
             }
             else
             {
-                return RedirectToAction(nameof(HomeController.Index), "Home");
+                return RedirectToAction(nameof(HomeController.TrendingProducts), "Home");
             }
         }
     }

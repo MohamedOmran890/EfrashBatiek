@@ -82,7 +82,7 @@ namespace EfrashBatek
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");//When Open Web Open Bydefault Home 
+                    pattern: "{controller=Home}/{action=TrendingProducts}/{id?}");//When Open Web Open Bydefault Home 
             });
         }
     }
