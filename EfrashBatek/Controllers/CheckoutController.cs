@@ -18,8 +18,8 @@ namespace EfrashBatek.Controllers
         }
         public IActionResult Address()
         {
-            var ans=addressRepository.GetAll();
-            return View(ans);
+           // var ans=addressRepository.GetById();
+            return View(/*ans*/);
         }
         public IActionResult SaveAddress(Address obj)
         {

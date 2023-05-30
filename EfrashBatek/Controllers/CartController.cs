@@ -4,8 +4,9 @@ namespace EfrashBatek.Controllers
 {
     public class CartController : Controller
     {
-        public IActionResult Index()
+        public IActionResult AddToCart(int Cus)
         {
+
             return View();
         }
     }

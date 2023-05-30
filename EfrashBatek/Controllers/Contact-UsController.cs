@@ -22,6 +22,10 @@ namespace EfrashBatek.Controllers
             return Content("Your Feedback submitted successfully");
             
         }
+        public IActionResult main()
+        {
+            return View();
+        }
 
 
 

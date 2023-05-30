@@ -25,12 +25,12 @@
     </div>
 
     <div class="price">
-        <h4>comfortable armchair</h4>
+        <!-- <h4>comfortable armchair</h4>-->
         <h4>@item.Price</h4>
         <p style="text-decoration: line-through">$129</p>
     </div>
+<a asp-action="AddToCart" asp-controller="Cart" asp-route-itemId="@item.ID" asp-route-CstomerId="@item">Add To Cart</a>
 }
-<a asp-action="Index" asp-controller="Cart">Add To Cart</a>
         }
     }
 </div>

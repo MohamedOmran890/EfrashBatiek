@@ -28,7 +28,7 @@ namespace EfrashBatek
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            services.AddControllersWithViews();//For used Controller and Views
             services.AddDbContext<Context>(options => options.
            UseSqlServer(Configuration.GetConnectionString("DATA")));
             services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<Context>().AddDefaultTokenProviders();
@@ -71,7 +71,7 @@ namespace EfrashBatek
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
+            app.UseStaticFiles();//static file
 
             app.UseRouting();
             app.UseAuthentication();
@@ -82,7 +82,7 @@ namespace EfrashBatek
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");//When Open Web Open Bydefault Home 
             });
         }
     }
