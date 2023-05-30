@@ -13,26 +13,26 @@ namespace EfrashBatek.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private  IProductRepository _Product;
+        private IProductRepository _Product;
 
-        public HomeController(ILogger<HomeController> logger,IProductRepository product)
+        public HomeController(ILogger<HomeController> logger, IProductRepository product)
         {
             _logger = logger;
             _Product = product;
 
         }
 
-       /* public IActionResult Index()
-        {
-            var ans = _Product.GetAll();
-            return View(ans);
-            /*************************/
-        }*/
+        public IActionResult Index()
+         {
+             var ans = _Product.GetAll();
+             return View(ans);
+             /*************************/
+             }
 
-        /*public IActionResult Privacy()
+        public IActionResult Privacy()
         {
             return View();
-        }*/
+        }
         public IActionResult About()
         {
             return View();
