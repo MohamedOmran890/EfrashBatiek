@@ -34,6 +34,9 @@ namespace EfrashBatek.Controllers
             item.Price = 78;
             item.discount = "%15";
             item.PriceAfterSale = 48;
+            Product product3= new Product();
+            product3.ProductName = ProductName.Room;
+            item.Product =product3;
 
             Item item2 = new Item();
             item2.Name = "Bedroom";
