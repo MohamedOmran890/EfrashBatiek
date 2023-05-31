@@ -25,7 +25,7 @@ height: 400px;
   block-size: 100px;
   box-shadow: 0 0 1em rgba(0, 0, 0, 0.0625);
   inline-size: 800px;
-  margin: 5% 15% 1%;
+  margin: 8% 15% 1%;
   width: 1033px;
   border: 2px solid #cbaab1;
 }
@@ -35,7 +35,6 @@ ul.icons {
   justify-content: space-between;
   margin: auto;
 }
-
 .icon {
   display: flex;
   flex-direction: column;
