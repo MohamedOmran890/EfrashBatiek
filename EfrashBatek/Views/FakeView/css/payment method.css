@@ -2,8 +2,6 @@
   --color-background: #e1e1e2;
   --color-primary: #cbaab1;
   --font-family-base: Poppin, sans-serif;
-  --font-size-h1: 1.25rem;
-  --font-size-h2: 1rem;
 }
 
 * {
@@ -19,7 +17,7 @@ html {
   block-size: 100px;
   box-shadow: 0 0 1em rgba(0, 0, 0, 0.0625);
   inline-size: 800px;
-  margin: 8% 2% 1%;
+  margin: 8% 1% 1%;
   width: 800px;
   border: 2px solid #cbaab1;
 }
@@ -75,17 +73,7 @@ fieldset {
   padding: 0;
 }
 
-h1 {
-  font-size: var(--font-size-h1);
-  line-height: 1.2;
-  margin-block: 0 1.5em;
-}
 
-h2 {
-  font-size: var(--font-size-h2);
-  line-height: 1.2;
-  margin-block: 0 0.5em;
-}
 
 legend {
   font-weight: 600;
