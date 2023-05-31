@@ -31,7 +31,7 @@ height: 400px;
 ul.icons {
   display: flex;
   justify-content: space-between;
-  margin: autO;
+  margin: auto;
 }
 
 .icon {
