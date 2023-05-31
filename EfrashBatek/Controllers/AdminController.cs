@@ -38,49 +38,52 @@ namespace EfrashBatek.Controllers
             return View();
         }
          public async Task<IActionResult> SaveStaff(RegisterViewModel model)
-    {
-        if (!ModelState.IsValid)
-        {
-            return View("AddStaff");
-        }
+         {
+          
 
-        var user = new User
-        {
-            UserName = model.Username,
-            Email = model.Email,
-            PhoneNumber=model.Phone,
-            age=model.Age,
-            FirstName=model.FirstName,
-            LastName=model.LastName,
-            Gender= (Gender)model.Gender,
+            if (!ModelState.IsValid  || shop.GetByTaxCardNumber(model.TaxCardNumber)  == null)
+             {
+                return View("AddStaff");
+             }
+          
 
-        };
+             var user = new User
+             {
+                UserName = model.Username,
+                Email = model.Email,
+                PhoneNumber=model.Phone,
+                age=model.Age,
+                FirstName=model.FirstName,
+                LastName=model.LastName,
+                Gender= (Gender)model.Gender,
+
+            };
             var staff = new Staff
             {
                 UserId = user.Id,
-                ShopID = model.ShopNumber
+                ShopID = model.TaxCardNumber
             };
 
             var result = await _userManager.CreateAsync(user, model.Password);
 
-        if (result.Succeeded)
-        {
-               _staff.Create(staff);
-            // Add user to default role
-            await _userManager.AddToRoleAsync(user, "Staff");
-            // Redirect the user to the login page
-            return RedirectToAction("Dashboard");
-        }
+            if (result.Succeeded)
+            {
+                   _staff.Create(staff);
+                // Add user to default role
+                await _userManager.AddToRoleAsync(user, "Staff");
+                // Redirect the user to the login page
+                return RedirectToAction("Dashboard");
+            }
 
-        foreach (var error in result.Errors)
-        {
-            ModelState.AddModelError("", error.Description);
-        }
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError("", error.Description);
+            }
 
                 return View("AddStaff");
-    }
+         }
 
-    public IActionResult AddShop()
+        public IActionResult AddShop()
         {
             return View();
 

@@ -1,52 +1,52 @@
-﻿@model EfrashBatek.Models.Shop
+﻿@{
+    Layout = "AdminLayout";
+}
 
+
+@model EfrashBatek.Models.Shop
 @{
     ViewData["Title"] = "AddShop";
 }
+<!--ADD SHOP FORM-->
+<section class="home-section">
 
-<h1>AddShop</h1>
+    <form asp-action="SaveShop">
+        <div asp-validation-summary="All"></div>
+        <div class="form">
 
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="SaveShop">
-            <div asp-validation-summary="All" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label">Shop Name</label>
-                <input asp-for="Name" class="form-control" />
+            <div class="title">Add Shop </div>
+            <div class="input-container ic1">
+                <input asp-for="Name" id="Name" class="input" type="text" placeholder=" " />
+                <label asp-for="Name" for="Name" class="placeholder">Shop Name</label>
                 <span asp-validation-for="Name" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="ShopAddress" class="control-label">Address</label>
-                <input asp-for="ShopAddress" class="form-control" />
+            <div class="input-container ic2">
+                <input asp-for="TaxCardNumber" id="TaxCardNumber" class="input" type="text" placeholder=" " />
+                <label asp-for="TaxCardNumber" for="TaxCardNumber" class="placeholder">Tax Card Number</label>
+                <span asp-validation-for="TaxCardNumber" class="text-danger"></span>
+
+            </div>
+            <div class="input-container ic2">
+                <input asp-for="ShopHolder" id="ShopHolder" class="input" type="text" placeholder=" " />
+                <label asp-for="ShopHolder" for="ShopHolder" class="placeholder">Shop Holder</label>
+                <span asp-validation-for="ShopHolder" class="text-danger"></span>
+
+            </div>
+
+            <div class="input-container ic2">
+                <input asp-for="ShopAddress" id="ShopAddress" class="input" type="text" placeholder=" " />
+                <label asp-for="ShopAddress" for="ShopAddress" class="placeholder">Address</label>
                 <span asp-validation-for="ShopAddress" class="text-danger"></span>
+
             </div>
-            <div class="form-group">
-                <label asp-for="TaxCardImage" class="control-label">Tax Card</label>
-                <input asp-for="TaxCardImage" class="form-control" />
-                <span asp-validation-for="TaxCardImage" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ShopNumber" class="control-label"></label>
-                <input asp-for="ShopNumber" class="form-control" />
-                <span asp-validation-for="ShopNumber" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PhoneNumber" class="control-label"></label>
-                <input asp-for="PhoneNumber" class="form-control" />
+            <div class="input-container ic2">
+                <input asp-for="PhoneNumber" id="email" class="input" type="text" placeholder=" " />
+                <label asp-for="PhoneNumber" for="PhoneNumber" class="placeholder">Phone number</label>
                 <span asp-validation-for="PhoneNumber" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
+            <input type="submit" value="Add Shop" class="submit" />
+        </div>
+    </form>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+</section>
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
