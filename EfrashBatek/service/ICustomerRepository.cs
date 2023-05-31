@@ -10,6 +10,9 @@ namespace EfrashBatek.service
         int Edit(Customer customer, int id);
         List<Customer> GetAll();
         Customer GetById(int Id);
+        ICollection<Order> GetOrders(int id);
          int TotalCustomers();
+        Order getOrder(int customerID, int OrderID);
+
     }
 }

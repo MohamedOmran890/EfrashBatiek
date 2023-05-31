@@ -14,9 +14,10 @@ namespace EfrashBatek.Models
     public class Order
     {
         public int ID { get; set; }
-        public int OrderCode { get; set; }
+        public string  OrderCode { get; set; }
         public double TotalCost { get; set; }
         [Column(TypeName ="Date")]
+
         public DateTime OrderDate { get; set; }
         public PaymentMethod PaymentMethod { get; set; }
         [ForeignKey("Address")]
