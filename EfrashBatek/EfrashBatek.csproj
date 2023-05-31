@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Views\CheckoutController\Confirmation.cshtml" />
     <Content Remove="wwwroot\css\about us.css" />
     <Content Remove="wwwroot\css\addseller.css" />
     <Content Remove="wwwroot\css\addshop.css" />
@@ -140,6 +141,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Views\CheckoutController\Confirmation.cshtml" />
     <None Include="wwwroot\css\about us.css" />
     <None Include="wwwroot\css\addseller.css" />
     <None Include="wwwroot\css\addshop.css" />
