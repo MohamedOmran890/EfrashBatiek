@@ -5,41 +5,43 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/payment method.css" >
+    <link rel="stylesheet" href="css/payment method.css">
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
     <title>Payment Method</title>
 </head>
 
 <body>
-   <!--ICONS-->
-            <div class="x">
-                <ul class="icons">
-                    <ul>
-                        <li class="hover" style="padding: 10px;">
-                            <i class='bx bxs-location-plus' style=" font-size: 42px;"></i>
-                        </li>
-                        <li>
-                            <h2>Shipping</h2>
-                        </li>
-                    </ul>
-                    <ul>
-                        <li class="hover" style="padding: 10px 10px 10px 15px; padding: auto;">
-                            <i class='bx bx-credit-card' style=" font-size: 42px;"></i>
-                        </li>
-                        <li>
-                            <h2>Payment</h2>
-                        </li>
-                    </ul>
-                    <ul>
-                        <li class="hover" style="padding: 10px;">
-                            <i class='bx bx-badge-check' style=" font-size: 42px;"></i>
-                        </li>
-                        <li>
-                            <h2>Confirmation</h2>
-                        </li>
-                    </ul>
-                </ul>
-            </div>
+    <!--ICONS-->
+    <div class="x">
+        <ul class="icons">
+            <ul>
+                <li class="hover" style="padding: 10px;">
+                    <i class='bx bxs-location-plus' style=" font-size: 42px;"></i>
+                </li>
+                <li>
+                    <h2>Shipping</h2>
+                </li>
+            </ul>
+            <ul>
+                <li class="hover" style="padding: 10px 10px 10px 15px; padding: auto;">
+                    <i class='bx bx-credit-card' style=" font-size: 42px;"></i>
+                </li>
+                <li>
+                    <h2>Payment</h2>
+                </li>
+            </ul>
+            <ul>
+                <li class="hover" style="padding: 10px;">
+                    <i class='bx bx-badge-check' style=" font-size: 42px;"></i>
+                </li>
+                <li>
+                    <h2>Confirmation</h2>
+                </li>
+            </ul>
+        </ul>
+    </div>
+    <div class="row">
+        <div class="col-9">
             <!--PAYMENT FORM-->
             <div class="paymentform">
                 <form action="https://httpbin.org/post" class="form" method="POST">
@@ -109,43 +111,20 @@
                     </div>
                 </form>
             </div>
-            <!--ORDER SUMMARY-->
-            <aside>
-                <div class="summary">
-                    <div class="summary-total-items"><span class="total-items"></span> Order Summary
-                    </div>
-                    <div class="summary-subtotal">
-                        <div class="subtotal-title">Subtotal</div>
-                        <div class="subtotal-value final-value" id="basket-subtotal">130.00</div>
-                        <div class="summary-promo hide">
-                            <div class="promo-title">Promotion</div>
-                            <div class="promo-value final-value" id="basket-promo"></div>
-                        </div>
-                    </div>
-                    <div class="summary-delivery"> </div>
-                    <div class="summary-total">
-                        <div class="total-title">Total</div>
-                        <div class="total-value final-value" id="basket-total">130.00</div>
-                    </div>
-                    <div class="summary-checkout">
-                        <a href="orderinfo.html"><button class="checkout-cta">Go to Secure Checkout</button></a>
-                    </div>
-                </div>
-                    
-            </aside>
             <!-- VISA AND MASTERCARD ICON CODE-->
             <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
-            
+
                 <symbol id="icon-shopping-bag" viewBox="0 0 24 24">
                     <path
                         d="M20 7h-4v-3c0-2.209-1.791-4-4-4s-4 1.791-4 4v3h-4l-2 17h20l-2-17zm-11-3c0-1.654 1.346-3 3-3s3 1.346 3 3v3h-6v-3zm-4.751 18l1.529-13h2.222v1.5c0 .276.224.5.5.5s.5-.224.5-.5v-1.5h6v1.5c0 .276.224.5.5.5s.5-.224.5-.5v-1.5h2.222l1.529 13h-15.502z" />
                 </symbol>
-            
+
                 <symbol id="icon-mastercard" viewBox="0 0 504 504">
                     <path
                         d="m504 252c0 83.2-67.2 151.2-151.2 151.2-83.2 0-151.2-68-151.2-151.2 0-83.2 67.2-151.2 150.4-151.2 84.8 0 152 68 152 151.2z"
                         fill="#ffb600" />
-                    <path d="m352.8 100.8c83.2 0 151.2 68 151.2 151.2 0 83.2-67.2 151.2-151.2 151.2-83.2 0-151.2-68-151.2-151.2"
+                    <path
+                        d="m352.8 100.8c83.2 0 151.2 68 151.2 151.2 0 83.2-67.2 151.2-151.2 151.2-83.2 0-151.2-68-151.2-151.2"
                         fill="#f7981d" />
                     <path d="m352.8 100.8c83.2 0 151.2 68 151.2 151.2 0 83.2-67.2 151.2-151.2 151.2" fill="#ff8500" />
                     <path
@@ -210,7 +189,7 @@
                         d="m395.2 291.2h16.8c4.8-26.4 5.6-48 16.8-44 1.6-10.4 4-14.4 5.6-18.4 0 0-.8 0-3.2 0-7.2 0-12.8 9.6-12.8 9.6l1.6-8.8"
                         fill="#dce5e5" />
                 </symbol>
-            
+
                 <symbol id="icon-paypal" viewBox="0 0 491.2 491.2">
                     <path
                         d="m392.049 36.8c-22.4-25.6-64-36.8-116-36.8h-152.8c-10.4 0-20 8-21.6 18.4l-64 403.2c-1.6 8 4.8 15.2 12.8 15.2h94.4l24-150.4-.8 4.8c1.6-10.4 10.4-18.4 21.6-18.4h44.8c88 0 156.8-36 176.8-139.2.8-3.2.8-6.4 1.6-8.8-2.4-1.6-2.4-1.6 0 0 5.6-38.4 0-64-20.8-88"
@@ -226,10 +205,13 @@
                     <path
                         d="m441.649 153.6c-2.4-4-4-8-7.2-12-5.6-6.4-13.6-12-21.6-16.8-.8 3.2-.8 5.6-1.6 8.8-20 103.2-88.8 139.2-176.8 139.2h-44.8c-10.4 0-20 8-21.6 18.4l-25.6 161.6z"
                         fill="#0d7dbc" />
-                    <path d="m50.449 436.8h94.4l23.2-145.6c0-2.4.8-4 1.6-5.6l-131.2 131.2-.8 4.8c-.8 8 4.8 15.2 12.8 15.2z"
+                    <path
+                        d="m50.449 436.8h94.4l23.2-145.6c0-2.4.8-4 1.6-5.6l-131.2 131.2-.8 4.8c-.8 8 4.8 15.2 12.8 15.2z"
                         fill="#232c65" />
-                    <path d="m246.449 0h-123.2c-3.2 0-5.6.8-8 1.6l-12 12c-.8 1.6-1.6 3.2-1.6 4.8l-24 150.4z" fill="#436bc4" />
-                    <path d="m450.449 232.8c2.4-12 3.2-23.2 3.2-34.4l-156 156c76-.8 135.2-32 152.8-121.6z" fill="#0cb2ed" />
+                    <path d="m246.449 0h-123.2c-3.2 0-5.6.8-8 1.6l-12 12c-.8 1.6-1.6 3.2-1.6 4.8l-24 150.4z"
+                        fill="#436bc4" />
+                    <path d="m450.449 232.8c2.4-12 3.2-23.2 3.2-34.4l-156 156c76-.8 135.2-32 152.8-121.6z"
+                        fill="#0cb2ed" />
                     <path d="m248.849 471.2 12.8-80-100 100h68c9.6 0 17.6-7.2 19.2-16z" fill="#0cb2ed" />
                     <g fill="#33e2ff" opacity=".6">
                         <path d="m408.049 146.4 45.6 45.6c0-5.6-1.6-11.2-2.4-16.8l-40-40c-1.6 4-2.4 7.2-3.2 11.2z" />
@@ -245,7 +227,6 @@
                         <path d="m140.049 466.4 24.8 24.8h14.4l-36.8-36.8z" />
                     </g>
                 </symbol>
-            
                 <symbol id="icon-visa" viewBox="0 0 504 504">
                     <path d="m184.8 324.4 25.6-144h40l-24.8 144z" fill="#3c58bf" />
                     <path d="m184.8 324.4 32.8-144h32.8l-24.8 144z" fill="#293688" />
@@ -261,11 +242,16 @@
                     <path
                         d="m448.8 180.4c-9.6 0-16.8.8-20.8 10.4l-69.6 133.6h43.2l8-24h51.2l4.8 24h38.4l-33.6-144zm-28 96c3.2-8 16-42.4 16-42.4s3.2-8.8 5.6-14.4l2.4 13.6s8 36 9.6 44h-33.6z"
                         fill="#293688" />
-                    <path d="m111.2 281.2-4-20.8c-7.2-24-30.4-50.4-56-63.2l36 128h43.2l64.8-144h-43.2z" fill="#3c58bf" />
-                    <path d="m111.2 281.2-4-20.8c-7.2-24-30.4-50.4-56-63.2l36 128h43.2l64.8-144h-35.2z" fill="#293688" />
-                    <path d="m0 180.4 7.2 1.6c51.2 12 86.4 42.4 100 78.4l-14.4-68c-2.4-9.6-9.6-12-18.4-12z" fill="#ffbc00" />
-                    <path d="m0 180.4c51.2 12 93.6 43.2 107.2 79.2l-13.6-56.8c-2.4-9.6-10.4-15.2-19.2-15.2z" fill="#f7981d" />
-                    <path d="m0 180.4c51.2 12 93.6 43.2 107.2 79.2l-9.6-31.2c-2.4-9.6-5.6-19.2-16.8-23.2z" fill="#ed7c00" />
+                    <path d="m111.2 281.2-4-20.8c-7.2-24-30.4-50.4-56-63.2l36 128h43.2l64.8-144h-43.2z"
+                        fill="#3c58bf" />
+                    <path d="m111.2 281.2-4-20.8c-7.2-24-30.4-50.4-56-63.2l36 128h43.2l64.8-144h-35.2z"
+                        fill="#293688" />
+                    <path d="m0 180.4 7.2 1.6c51.2 12 86.4 42.4 100 78.4l-14.4-68c-2.4-9.6-9.6-12-18.4-12z"
+                        fill="#ffbc00" />
+                    <path d="m0 180.4c51.2 12 93.6 43.2 107.2 79.2l-13.6-56.8c-2.4-9.6-10.4-15.2-19.2-15.2z"
+                        fill="#f7981d" />
+                    <path d="m0 180.4c51.2 12 93.6 43.2 107.2 79.2l-9.6-31.2c-2.4-9.6-5.6-19.2-16.8-23.2z"
+                        fill="#ed7c00" />
                     <g fill="#051244">
                         <path d="m151.2 276.4-27.2-27.2-12.8 30.4-3.2-20c-7.2-24-30.4-50.4-56-63.2l36 128h43.2z" />
                         <path d="m225.6 324.4-34.4-35.2-6.4 35.2z" />
@@ -276,6 +262,34 @@
                     </g>
                 </symbol>
             </svg>
-            </body>
-            
-            </html>
+        </div>
+        <div class="col-3">
+            <!--ORDER SUMMARY-->
+            <aside>
+                <div class="summary">
+                    <div class="summary-total-items"><span class="total-items"></span> Order Summary
+                    </div>
+                    <div class="summary-subtotal">
+                        <div class="subtotal-title">Subtotal</div>
+                        <div class="subtotal-value final-value" id="basket-subtotal">130.00</div>
+                        <div class="summary-promo hide">
+                            <div class="promo-title">Promotion</div>
+                            <div class="promo-value final-value" id="basket-promo"></div>
+                        </div>
+                    </div>
+                    <div class="summary-delivery"> </div>
+                    <div class="summary-total">
+                        <div class="total-title">Total</div>
+                        <div class="total-value final-value" id="basket-total">130.00</div>
+                    </div>
+                    <div class="summary-checkout">
+                        <a href="orderinfo.html"><button class="checkout-cta">Go to Secure Checkout</button></a>
+                    </div>
+                </div>
+                    
+            </aside>
+        </div>
+    </div>
+</body>
+
+</html>
