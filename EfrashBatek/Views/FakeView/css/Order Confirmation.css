@@ -73,21 +73,21 @@ ul.icons {
   display: inline-block;
   margin: 0 auto;
   border: 2px solid #cbaab1;
+  width: 1025px;
 }
 /* continue button*/
 .btnRegister {
   border: none;
   border-radius: 1.5rem;
-  padding: 4%;
+  padding: 3%;
   background: #b4b4b4;
   color: #fff;
   font-weight: 600;
-  width: 5%;
+  width: 7%;
   cursor: pointer;
   transition: background-color 0.4s ease;
   align-content: center;
   margin:2%;
-  width: 900px;
 }
 .btnRegister:hover {
   background-color: #cbaab1;
