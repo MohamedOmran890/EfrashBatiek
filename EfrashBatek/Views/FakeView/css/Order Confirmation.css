@@ -1,0 +1,99 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-family: 'Jost', sans-serif;
+  list-style: none;
+  text-decoration: none;
+}
+
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap");
+
+body {
+  background: #f9f9f9;
+  font-family: "Roboto", sans-serif;
+}
+/* ICONS*/
+.row{
+height: 400px;
+}
+.x {
+  background-color: #f3f4f6;  
+  block-size: 100px;
+  box-shadow: 0 0 1em rgba(0, 0, 0, 0.0625);
+  inline-size: 800px;
+  margin: 8% 15% 1%;
+  width: 1033px;
+  border: 2px solid #cbaab1;
+}
+
+ul.icons {
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+}
+
+.icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  block-size: 1em;
+  display: inline-block;
+  fill: currentColor;
+  inline-size: 1em;
+  vertical-align: middle;
+}
+body {
+  text-align: center;
+  padding: 40px 0;
+  background: #EBF0F5;
+}
+  h1 {
+    color: #cbaab1;
+    font-family: "Nunito Sans", "Helvetica Neue", sans-serif;
+    font-weight: 900;
+    font-size: 40px;
+    margin-bottom: 10px;
+  }
+  p {
+    color: #404F5E;
+    font-family: "Nunito Sans", "Helvetica Neue", sans-serif;
+    font-size:20px;
+    margin: 0;
+  }
+ i {
+  color: #cbaab1;
+  font-size: 100px;
+  line-height: 200px;
+  margin-left:-15px;
+}
+.card {
+  background: white;
+  padding: 60px;
+  border-radius: 4px;
+  box-shadow: 0 2px 3px #C8D0D8;
+  display: inline-block;
+  margin: 0 auto;
+}
+/* continue button*/
+.btnRegister {
+  border: none;
+  border-radius: 1.5rem;
+  padding: 4%;
+  background: #b4b4b4;
+  color: #fff;
+  font-weight: 600;
+  width: 45%;
+  cursor: pointer;
+  transition: background-color 0.4s ease;
+  align-content: center;
+  margin:2%;
+}
+
+.btnRegister:hover {
+  background-color: #cbaab1;
+  /* Change the background color to red when the button is hovered over */
+}
