@@ -14,26 +14,35 @@ namespace EfrashBatek.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private IProductRepository _Product;
+        IItemRepository _Item;
 
-        public HomeController(ILogger<HomeController> logger, IProductRepository product)
+        public HomeController(ILogger<HomeController> logger, IProductRepository product, IItemRepository item)
         {
             _logger = logger;
             _Product = product;
-
+            _Item = item;
         }
 
         public IActionResult TrendingProducts()
         {
             //var ans = _Product.GetAll();
             Item item = new Item();
-            item.Name = "Bedroom";
-
+            item.Name = "utrt65u";
+           // item.ID = 2;
 
             item.Image = "Brown right L shaped sofa.jpg";
+            item.Code = "hgtg56";
+            item.Description = "gfkgfjng";
             item.Image2 = "LF-L000301.jpg";
             item.Price = 78;
             item.discount = "%15";
             item.PriceAfterSale = 48;
+            item.ShopID = 1;
+            item.Brand_ID = 1;
+            item.QuantityInStore = 1;
+            item.ProductID = 1;
+            //_Item.Create(item);
+
 
             Item item2 = new Item();
             item2.Name = "Bedroom";

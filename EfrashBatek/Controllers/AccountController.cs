@@ -1,5 +1,6 @@
 ﻿using EfrashBatek.Models;
 using EfrashBatek.ViewModel;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -89,6 +90,7 @@ namespace EfrashBatek.Controllers
 
                     if (result.Succeeded)
                     {
+                        HttpContext.Session.SetString("Id",user.Id);
                         return RedirectToLocal (returnUrl);
                     }
                 else
@@ -103,11 +105,10 @@ namespace EfrashBatek.Controllers
             return View(model);
         }
 
-        [HttpPost]
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
-            return RedirectToAction("TrendingProducts", "Home");
+            return RedirectToAction("Login", "Account");
         }
 
         private IActionResult RedirectToLocal(string returnUrl)

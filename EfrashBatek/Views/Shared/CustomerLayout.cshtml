@@ -41,8 +41,28 @@
 
         <div class="nav-icon">
             <a href="#"><i class='bx bx-search'></i></a>
+            <!--Login/Register Or Logout-->
+            <ul class="navbar-nav">
+            @if(User.Identity.IsAuthenticated==false)
+            {
+                    <li class="nav-item">
+                    <a class="nav-link text-dark" asp-action="Register" asp-controller="Account">Register</a>
+                </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-action="Login" asp-controller="Account">Sign In</a>
+                    </li>
+
+            }
+            else
+            {
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" asp-action="Logout" asp-controller="Account">LogOut</a>
+                    </li>
+
+             }
+            </ul>
             <a href="profile.html"><i class='bx bx-user'></i></a>
-            <a href="cart.html"><i class='bx bx-cart'></i></a>
+            <a asp-action="Cart"asp-controller="Cart"><i class='bx bx-cart'></i></a>
             <a href="wishlist.html"><i class='bx bx-heart' undefined></i></a>
             <div class="bx bx-menu" id="menu-icon"></div>
         </div>

@@ -14,6 +14,7 @@ namespace EfrashBatek.service
         public void Create(Item item)
         {
             context.Items.Add(item);
+            context.SaveChanges();
 
         }
         public int Update(int id, Item item)
