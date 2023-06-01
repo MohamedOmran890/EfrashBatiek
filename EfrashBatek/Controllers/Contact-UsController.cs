@@ -1,33 +1,45 @@
-﻿using EfrashBatek.Models;
+using EfrashBatek.Migrations;
+using EfrashBatek.Models;
 using EfrashBatek.service;
-using EfrashBatek.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EfrashBatek.Controllers
 {
-    public class Contact_UsController : Controller
+    public class CheckoutController : Controller
     {
-        IContact_UsRepository contact;
-      public Contact_UsController(IContact_UsRepository contact)
+        IAddressRepository addressRepository;
+        public CheckoutController(IAddressRepository Address)
         {
-            this.contact = contact;
+            addressRepository = Address;
         }
         public IActionResult Index()
         {
             return View();
         }
-        public IActionResult SaveContact(Contact_Us obj)
+        public IActionResult Address()
         {
-            contact.Create(obj);
-            return Content("Your Feedback submitted successfully");
-            
+            // var ans=addressRepository.GetById();
+            return View(/*ans*/);
+        }
+        public IActionResult SaveAddress(Address obj)
+        {
+            addressRepository.Create(obj);
+            return RedirectToAction("PaymentMethod");
+            /********/
+        }
+        public IActionResult PaymentMethod()
+        {
+            return View();
+        }
+        public IActionResult Confirmation()
+        {
+
+            return View();
         }
         public IActionResult main()
         {
             return View();
         }
-
-
 
     }
 }

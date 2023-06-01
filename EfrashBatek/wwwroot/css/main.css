@@ -23,8 +23,11 @@ header{
     max-width: 120px;
     height: auto;
 }
-.navmenu{
+.navmenu {
     display: flex;
+   
+   
+  
 }
 
 .navmenu a{
@@ -34,6 +37,7 @@ header{
     padding: 10px 20px;
     font-weight: 400;
     transition: all .42s ease;
+   
 }
 .navmenu a:hover{
     color: #EE1C47;
@@ -65,7 +69,7 @@ section{
 .main-home{
     width: 100%;
     height: 100vh;
-    background-image: url(../image/0.jpg);
+    background-image: url(../Image/0.jpg);
     background-position: center;
     background-size: cover;
     display: grid;
