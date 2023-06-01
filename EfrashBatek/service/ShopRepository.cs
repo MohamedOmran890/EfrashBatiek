@@ -20,9 +20,10 @@ namespace EfrashBatek.service
         {
             var ans = context.Shops.FirstOrDefault(x => x.ID == id);
             ans.Name = shop.Name;
-            ans.ShopNumber = shop.ShopNumber;
+         
             ans.ShopAddress = shop.ShopAddress;
-            ans.TaxCardImage = shop.TaxCardImage;
+            ans.TaxCardNumber = shop.TaxCardNumber;
+            ans.ShopHolder = shop.ShopHolder;   
             context.Shops.Update(ans);
             int num = context.SaveChanges();
             return num;
@@ -39,6 +40,12 @@ namespace EfrashBatek.service
             var ans = context.Shops.FirstOrDefault(x => x.ID == Id);
             return ans;
         }
+        public Shop GetByTaxCardNumber(string  taxCardNumber)
+        {
+            var ans = context.Shops.FirstOrDefault(x =>x.TaxCardNumber == taxCardNumber);
+            return ans ;
+        }
+
         public List<Shop> GetAll()
         {
             var ans = context.Shops.ToList();

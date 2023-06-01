@@ -1,4 +1,4 @@
-﻿@model EfrashBatek.ViewModel.RegisterViewModelStaff
+﻿@model EfrashBatek.ViewModel.RegisterViewModel
 
 @{
     ViewData["Title"] = "Add Staff";
@@ -9,22 +9,22 @@
 
 
 <!--ADD SELLER FORM-->
-<section class="home-section">
-    <form asp-action="SaveStaff" asp-controller="Admin">
+  <section class="home-section">
+      <form asp-action="SaveStaff" asp-controller="Admin">
         <div asp-validation-summary="All" class="text-danger"></div>
         <div class="form">
             <div class="title">Add Seller </div>
             <div class="input-container ic1">
 
-                <input asp-for="FirstName" id="FirstName" class="input" type="text" placeholder=" " />
-                <label asp-for="FirstName" for="FirstName" class="placeholder">First name</label>
+                <input asp-for = "FirstName"  id="FirstName" class="input" type="text" placeholder=" " />
+                <label asp-for = "FirstName"  for="FirstName" class="placeholder">First name</label>
                 <span asp-validation-for="FirstName" class="text-danger"></span>
 
             </div>
             <div class="input-container ic2">
 
-                <input asp-for="LastName" id="lastname" class="input" type="text" placeholder=" " />
-                <label asp-for="LastName" for="LastName" class="placeholder">Last name</label>
+                <input  asp-for = "LastName"  id="lastname" class="input" type="text" placeholder=" " />
+                <label asp-for ="LastName"    for="LastName" class="placeholder">Last name</label>
                 <span asp-validation-for="FirstName" class="text-danger"></span>
 
             </div>
@@ -44,12 +44,12 @@
 
             <div class="input-container ic2">
                 <input asp-for="Email" id="Email" class="input" type="text" placeholder=" " />
-                <label asp-for="Email" for="Email" class="placeholder">Email</label>
+                <label asp-for ="Email" for="Email" class="placeholder">Email</label>
                 <span asp-validation-for="Email" class="text-danger"></span>
             </div>
             <div class="input-container ic2">
                 <input asp-for="Username" id="Age" class="input" type="text" placeholder=" " />
-                <label asp-for="Username" for="Username" class="placeholder">Username</label>
+                <label  asp-for="Username" for="Username" class="placeholder">Username</label>
                 <span asp-validation-for="Username" class="text-danger"></span>
             </div>
             <div class="input-container ic2">
@@ -68,7 +68,7 @@
                 <label asp-for="Phone" for="Phone" class="placeholder">Phone number</label>
                 <span asp-validation-for="Phone" class="text-danger"></span>
             </div>
-
+           
             <div class="input-container ic2">
                 <input asp-for="TaxCardNumber" id="TaxCardNumber" class="input" type="text" placeholder=" " />
                 <label asp-for="TaxCardNumber" for="TaxCardNumber" class="placeholder">Tax Card Number</label>
@@ -78,8 +78,6 @@
             <input type="submit" value="Add Shop" class="submit" />
         </div>
 
-    </form>
-
-</section>
-
-
+      </form>
+   
+  </section>

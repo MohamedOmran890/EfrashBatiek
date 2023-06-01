@@ -13,7 +13,7 @@ namespace EfrashBatek.Models
         public User User { get; set; }
 
         [ForeignKey("Shop")]
-        public int ShopID { get; set; }
+        public string  ShopID { get; set; }
         public virtual Shop Shop { get; set; }
 
     }

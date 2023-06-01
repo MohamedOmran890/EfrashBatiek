@@ -1,4 +1,5 @@
 ﻿using EfrashBatek.Models;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Update.Internal;
 using System.Collections.Generic;
 using System.Linq;
@@ -57,6 +58,23 @@ namespace EfrashBatek.service
         {
             var ans = context.Customers.ToList();
             return ans;
+        }
+        public ICollection<Order> GetOrders (int id)
+        {
+            var ans = GetById(id);
+            var anss = ans.Orders;
+            return anss;
+        }
+        public Order getOrder (int customerID , int OrderID)
+        {
+
+            var ans = GetById(customerID);
+            var anss = ans.Orders;
+            foreach(var order in anss) { 
+              if(order.ID == OrderID) return order;
+            }
+            return null; 
+
         }
         public int TotalCustomers()
         {

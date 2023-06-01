@@ -102,10 +102,11 @@
 using EfrashBatek.Models;
 using EfrashBatek.service;
 using Microsoft.AspNetCore.Mvc;
-using EfrashBatek.service;
 using System.Linq;
 using System;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.DependencyInjection;
+using System.Collections.Generic;
 
 namespace EfrashBatek.Controllers
 {
