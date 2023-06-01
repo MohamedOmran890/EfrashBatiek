@@ -9,6 +9,7 @@ namespace EfrashBatek.Models
         public int CartID { get; set; }
         public virtual  Cart Cart { get; set; }
         public int ItemID { get; set; }
+        public string ItemName { get; set; }
         public virtual Item Item { get; set; }
 
     }

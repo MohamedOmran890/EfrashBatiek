@@ -28,7 +28,7 @@ namespace EfrashBatek
     public static void DataSeeding()
     {
         using var context = new Context();
-        context.Database.EnsureCreated();
+        //context.Database.EnsureCreated();
           
         var Product = context.Products.FirstOrDefault(x=>x.ID==1);
             var customer = context.Customers.FirstOrDefault(x => x.Id == 1);

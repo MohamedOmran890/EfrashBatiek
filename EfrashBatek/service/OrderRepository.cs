@@ -7,6 +7,7 @@ namespace EfrashBatek.service
     public class OrderRepository : IOrderRepository
     {
         Context context;
+        Order_Item item;
         public OrderRepository(Context context)
         {
             this.context = context;
@@ -51,6 +52,12 @@ namespace EfrashBatek.service
         {
             var ans = context.Orders.Count();
             return ans;
+        }
+        public List<Order_Item> GetByShop()
+        {
+            var ans = context.Order_Items.GroupBy(x => x.ShopID);
+            return (List<Order_Item>)ans;
+
         }
     }
 }

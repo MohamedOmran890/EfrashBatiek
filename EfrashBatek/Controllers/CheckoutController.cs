@@ -1,4 +1,4 @@
-using EfrashBatek.Migrations;
+﻿using EfrashBatek.Migrations;
 using EfrashBatek.Models;
 using EfrashBatek.service;
 using Microsoft.AspNetCore.Mvc;
@@ -18,7 +18,7 @@ namespace EfrashBatek.Controllers
         }
         public IActionResult Address()
         {
-           // var ans=addressRepository.GetById();
+            // var ans=addressRepository.GetById();
             return View(/*ans*/);
         }
         public IActionResult SaveAddress(Address obj)
@@ -36,6 +36,6 @@ namespace EfrashBatek.Controllers
 
             return View();
         }
-    
+
     }
 }

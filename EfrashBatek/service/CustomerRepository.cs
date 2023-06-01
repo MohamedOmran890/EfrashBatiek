@@ -30,9 +30,9 @@ namespace EfrashBatek.service
 
             ans.User.Address.FirstName = customer.User.Address.FirstName;   
             ans.User.Address.LastName = customer.User.Address.LastName;
-            ans.User.Address.StreetName = customer.User.Address.StreetName;
-            ans.User.Address.ApartmentNumber = customer.User.Address.ApartmentNumber;
-            ans.User.Address.description = customer.User.Address.description;
+            //ans.User.Address.StreetName = customer.User.Address.StreetName;
+            //ans.User.Address.ApartmentNumber = customer.User.Address.ApartmentNumber;
+            //ans.User.Address.description = customer.User.Address.description;
             
 
 			context.Customers.Update(ans);

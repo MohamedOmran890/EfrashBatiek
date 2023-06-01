@@ -1,5 +1,6 @@
 using EfrashBatek.Models;
 using EfrashBatek.ViewModel;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
@@ -69,14 +70,14 @@ namespace EfrashBatek.Controllers
         }
 
         [HttpGet]
-        public IActionResult Login(string returnUrl ="~/Home/Index")
+        public IActionResult Login(string returnUrl = "~/Home/TrendingProducts")
         {
             ViewData["ReturnUrl"] = returnUrl;
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = "~/Home/Index")
+        public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = "~/Home/TrendingProducts")
         {
             ViewData["ReturnUrl"] = returnUrl;
 
@@ -89,6 +90,7 @@ namespace EfrashBatek.Controllers
 
                     if (result.Succeeded)
                     {
+                        HttpContext.Session.SetString("Id",user.Id);
                         return RedirectToLocal (returnUrl);
                     }
                 else
@@ -103,11 +105,10 @@ namespace EfrashBatek.Controllers
             return View(model);
         }
 
-        [HttpPost]
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login", "Account");
         }
 
         private IActionResult RedirectToLocal(string returnUrl)
@@ -118,7 +119,7 @@ namespace EfrashBatek.Controllers
             }
             else
             {
-                return RedirectToAction(nameof(HomeController.Index), "Home");
+                return RedirectToAction(nameof(HomeController.TrendingProducts), "Home");
             }
         }
     }
