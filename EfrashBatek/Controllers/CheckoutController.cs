@@ -3,8 +3,7 @@ using EfrashBatek.Models;
 using EfrashBatek.service;
 using Microsoft.AspNetCore.Mvc;
 
-namespace EfrashBatek.Controllers
-{
+
     public class CheckoutController : Controller
     {
         IAddressRepository addressRepository;
@@ -38,4 +37,3 @@ namespace EfrashBatek.Controllers
         }
 
     }
-}
