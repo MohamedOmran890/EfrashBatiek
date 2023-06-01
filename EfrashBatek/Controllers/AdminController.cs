@@ -63,7 +63,7 @@ namespace EfrashBatek.Controllers
         var staff = new Staff
             {
                 UserId = user.Id,
-                ShopID = model.TaxCardNumber
+               // ShopID = model.TaxCardNumber
             };
 
             var result = await _userManager.CreateAsync(user, model.Password);//Created Cookies
