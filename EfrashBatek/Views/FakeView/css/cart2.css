@@ -272,7 +272,7 @@ li.subtotal:before {
 }
 
 .quantity-field {
-  background-color: #ccc;
+  /*background-color: #ccc;*/
   border: 1px solid #aaa;
   border-radius: 4px;
   font-size: 0.625rem;
@@ -287,7 +287,7 @@ aside {
 }
 
 .summary {
-    margin-top: 30%;
+    margin-top: 75%;
   background-color: #eee;
   border: 1px solid #aaa;
   padding: 1rem;
@@ -296,6 +296,7 @@ aside {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+  border-radius: 10%;
 }
 
 .summary-total-items {

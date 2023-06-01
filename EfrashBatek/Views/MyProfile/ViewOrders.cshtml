@@ -1,42 +1,298 @@
-﻿@{
-	Layout = "LayoutProfile";
-}
-<div class="tab-pane fade show active" id="ordere" role="tabpanel" aria-labelledby="profile-tab">
-	<div class="tab-content p-4 p-md-5" id="v-pills-tabContent">
+﻿<!DOCTYPE html>
+<html lang="en">
 
-		<h3 class="mb-4">Orders Settings</h3>
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" type="image/favicon.ico" href="/image/favicon.png">
+	<!-- CSS-link -->
 
-		<center>
-			<br>
-			<br>
-			<br>
-			<br>
-			<table>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600;700&display=swap"
+		  rel="stylesheet">
 
-				<tr>
-					<td>Order Code : </td>
-					<td>#131321</td>
-				</tr>
-				<tr>
-					<td>Total : </td>
-					<td>1200 EGP</td>
-				</tr>
-				<tr>
-					<td>Date : </td>
-					<td>2023/05/27</td>
-				</tr>
-				<tr>
-					<td>Status : </td>
-					<td>Active</td>
-				</tr>
-				
-				<tr>
-					<td colspan="2" style="text-align:center;"> <a href="orderinfo.html"><button class="button123">View Order Details</button></a> </td>
-				</tr>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+		  integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+		  crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-			</table>
-		</center>
-	</div>
+	<link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+	<link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
-</div>
-	
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+
+
+	<link rel="stylesheet" href="css/profile.css">
+	<link rel="stylesheet" href="css/profile2.css">
+	<title>Efresh Beitak</title>
+</head>
+
+<body>
+	<!--header section-->
+
+	<header>
+		<a href="main.html" class="logo"><img src="image/logo.png" alt=""></a>
+
+		<ul class="navmenu">
+			<li><a href="product page.html">Products</a></li>
+			<li><a href="trend.html">Trends</a></li>
+			<li><a href="Empty.html">Custom order</a></li>
+			<li><a href="Empty.html">Designs</a></li>
+		</ul>
+
+
+		<div class="nav-icon">
+			<a href="main.html"><i class='bx bx-search'></i></a>
+			<a href="log.html"><i class='bx bx-user'></i></a>
+			<a href="cart.html"><i class='bx bx-cart'></i></a>
+			<a href="wishlist.html"><i class='bx bx-heart' undefined></i></a>
+			<div class="bx bx-menu" id="menu-icon"></div>
+		</div>
+
+
+	</header>
+
+	<section class="py-5 my-5">
+		<div class="container">
+			<h1 class="mb-5">My Profile</h1>
+			<div class="bg-white shadow rounded-lg d-block d-sm-flex">
+				<div class="profile-tab-nav border-right">
+					<div class="p-4">
+						<div class="img-circle text-center mb-3">
+							<img src="image/client.png" alt="Image" class="shadow">
+						</div>
+						<h4 class="text-center">Hazem Abdelsattar</h4>
+					</div>
+					<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+
+						<a class="nav-link">
+							Hello,Hazem Abdelsattar
+						</a>
+						<a class="nav-link">
+							0 Orders of this month
+						</a>
+						<a href="profile.html" class="nav-link" role="tab" id="profile">
+							<i class="fa fa-user text-center mr-1"></i>
+							Profile
+						</a>
+						<a href="profileadd.html" class="nav-link" role="tab" id="address">
+							<i class="fa fa-home text-center mr-1"></i>
+							Address
+						</a>
+						<a href="profileord.html" class="nav-link active" role="tab" id="ordere">
+							<i class="fa fa-user text-center mr-1"></i>
+							My Orders
+						</a>
+						<a href="profilegua.html" class="nav-link" role="tab" aria-controls="guarantee" id="guarante">
+							<i class="fa fa-tv text-center mr-1"></i>
+							Guarantee
+						</a>
+						<a href="profilepass.html" class="nav-link" role="tab" aria-controls="password" id="password">
+							<i class="fa fa-key text-center mr-1"></i>
+							Password
+						</a>
+						<a href="log.html" class="nav-link" role="tab">
+							Log Out
+						</a>
+					</div>
+				</div>
+				<div class="tab-pane fade show active" id="ordere" role="tabpanel" aria-labelledby="profile-tab">
+					<div class="tab-content p-4 p-md-5" id="v-pills-tabContent">
+
+						<h3 class="mb-4">Orders Settings</h3>
+
+						<center>
+							<br>
+							<br>
+							<br>
+							<br>
+							<table id="example" class="order-table" style="margin-left: auto; margin-right: auto; width : 100%;">
+								<thead>
+									<tr>
+										<th>Order Code</th>
+										<th>Order Date</th>
+										<th>Order Link</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>#123456</td>
+										<td>2023/04/05</td>
+										<td><a href="orderinfo.html">Click Here !</a></td>
+									</tr>
+									<tr>
+										<td>#133456</td>
+										<td>2023/04/08</td>
+										<td><a href="orderinfo.html">Click Here !</a></td>
+									</tr>
+									<tr>
+										<td>#125456</td>
+										<td>2023/04/02</td>
+										<td><a href="orderinfo.html">Click Here !</a></td>
+									</tr>
+								</tbody>
+							</table>
+						</center>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="py-5 my-5">
+		<div class="container">
+			<h1 class="mb-5">My Profile</h1>
+			<div class="bg-white shadow rounded-lg d-block d-sm-flex">
+				<div class="profile-tab-nav border-right">
+					<div class="p-4">
+						<div class="img-circle text-center mb-3">
+							<img src="image/client.png" alt="Image" class="shadow">
+						</div>
+						<h4 class="text-center">Hazem Abdelsattar</h4>
+					</div>
+					<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+
+						<a class="nav-link">
+							Hello,Hazem Abdelsattar
+						</a>
+						<a class="nav-link">
+							0 Orders of this month
+						</a>
+						<a href="profile.html" class="nav-link" role="tab" id="profile">
+							<i class="fa fa-user text-center mr-1"></i>
+							Profile
+						</a>
+						<a href="profileadd.html" class="nav-link" role="tab" id="address">
+							<i class="fa fa-home text-center mr-1"></i>
+							Address
+						</a>
+						<a href="profileord.html" class="nav-link active" role="tab" id="ordere">
+							<i class="fa fa-user text-center mr-1"></i>
+							My Orders
+						</a>
+						<a href="profilegua.html" class="nav-link" role="tab" aria-controls="guarantee" id="guarante">
+							<i class="fa fa-tv text-center mr-1"></i>
+							Guarantee
+						</a>
+						<a href="profilepass.html" class="nav-link" role="tab" aria-controls="password" id="password">
+							<i class="fa fa-key text-center mr-1"></i>
+							Password
+						</a>
+						<a href="log.html" class="nav-link" role="tab">
+							Log Out
+						</a>
+					</div>
+				</div>
+				<div class="tab-pane fade show active" id="ordere" role="tabpanel" aria-labelledby="profile-tab">
+					<div class="tab-content p-4 p-md-5" id="v-pills-tabContent">
+
+						<h3 class="mb-4">Orders Settings</h3>
+
+						<center>
+							<br>
+							<br>
+							<br>
+							<br>
+							<table id="example" class="order-table" style="margin-left: auto; margin-right: auto; width : 100%;">
+								<thead>
+									<tr>
+										<th>Order Code</th>
+										<th>Order Date</th>
+										<th>Order Link</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>#123456</td>
+										<td>2023/04/05</td>
+										<td><a href="orderinfo.html">Click Here !</a></td>
+									</tr>
+									<tr>
+										<td>#133456</td>
+										<td>2023/04/08</td>
+										<td><a href="orderinfo.html">Click Here !</a></td>
+									</tr>
+									<tr>
+										<td>#125456</td>
+										<td>2023/04/02</td>
+										<td><a href="orderinfo.html">Click Here !</a></td>
+									</tr>
+								</tbody>
+							</table>
+						</center>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<footer>
+
+		<!-- contact-section -->
+		<section class="contact">
+			<div class="contact-info">
+				<div class="first-info">
+					<img src="image/logo.png" alt="">
+					<p>+201004443226</p>
+					<p>efresh.beitak@gmail.com</p>
+
+				</div>
+
+				<div class="second-info">
+					<h4>Support</h4>
+					<a href="contact us.html">
+						<p>Contact us</p>
+					</a>
+					<a href="about us.html">
+						<p>About page</p>
+					</a>
+					<p>Shopping & Resturns</p>
+					<p>Privacy</p>
+				</div>
+
+				<div class="third-info">
+					<h4>Shop</h4>
+					<p>electronic</p>
+					<p>home</p>
+					<p>Furniture</p>
+					<p>kitchen</p>
+				</div>
+
+				<div class="five">
+					<h4>JOIN OUR EMAIL NEWSLETTER</h4>
+					<form>
+						<div class="form-group">
+							<input type="text" class="Input" placeholder="Enter Your Email." /><br><br>
+							<button type="submit" class="btn btn-default submit">
+								Submit
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</section>
+	</footer>
+	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap5.min.js"></script>
+
+
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+
+	<script>
+		$(document).ready(function () {
+			$('#example').DataTable();
+		});
+	</script>
+
+</body>
+
+</html>

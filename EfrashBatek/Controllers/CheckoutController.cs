@@ -18,7 +18,7 @@ namespace EfrashBatek.Controllers
         }
         public IActionResult Address()
         {
-           // var ans=addressRepository.GetById();
+            // var ans=addressRepository.GetById();
             return View(/*ans*/);
         }
         public IActionResult SaveAddress(Address obj)
@@ -36,6 +36,6 @@ namespace EfrashBatek.Controllers
 
             return View();
         }
-    
+
     }
 }

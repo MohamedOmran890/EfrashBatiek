@@ -1,43 +1,117 @@
 ﻿@model List<Product>
 @{
     Layout = "CustomerLayout";
- }
-    <section>
-        <div class="products">
-            @foreach (var prod in Model)
-            {
-                <div class="row">
-                    <h2>@prod.ProductName</h2>
-                @if (prod.Items != null)
+
+}
+
+<!--main home section-->
+<section class="main-home">
+    <div class="main-text">
+        <h1>we bring <span>solution</span><br> to make life easier<br> for our customer</h1>
+        <a href="Empty.html" class="main-btn">customize order<i class='bx bx-right-arrow-alt'></i></a>
+    </div>
+
+    <div class="down-arrow">
+        <a href="#trending" class="down"><i class='bx bx-down-arrow-alt'></i></a>
+    </div>
+</section>
+
+<!-- trending-products-section -->
+<section class="trending-product" id="trending">
+    <div class="center-text">
+        <h2>Our Trending <span>products</span></h2>
+    </div>
+
+    <div class="product-box">
+
+        <!--- PRODUCT Trending -->
+
+        <div class="product-main">
+
+            <h2 class="title">New Products</h2>
+
+            <div class="product-grid">
+
+
+
+                @foreach (var prod in Model)
                 {
-                    @foreach (var item in prod.Items)
+
+                    @if (prod.Items != null)
                     {
-                        <img src="~/Image/@item.Image" alt="" />
-                        <h5>@item?.Name</h5>
-                        <div class="product-text">
-                            <h5>Sale</h5>
-                        </div>
+                        @foreach (var item in prod.Items)
+                        {
+                            <div class="showcase">
+
+                                <div class="showcase-banner">
+
+                                    <!--image-->
+                                    <img src="~/Image/products/@item.Image" alt="Mens Winter Leathers Jackets"
+                                         width="300" class="product-img hover">
+                                    <!--image-->
+                                    <img src="~/Image/products/@item.Image2" alt="MEN Yarn Fleece Full-Zip Jacket"
+                                         class="product-img default" width="300">
+                                    <!--discount-->
+                                    <p class="showcase-badge">@item.discount</p>
+
+                                    <div class="showcase-actions">
+
+                                        <button class="btn-action">
+                                            <ion-icon name="heart-outline"></ion-icon>
+                                        </button>
+
+                                        <button class="btn-action">
+                                            <ion-icon name="bag-add-outline"></ion-icon>
+                                        </button>
+
+                                    </div>
+
+                                    <div class="showcase-content">
+                                        <!--item category  -->
+                                        <a href="product details.html" class="showcase-category">@prod.ProductName</a>
+
+                                        <a href="product details.html">
+                                            <!--item product  -->
+                                            <h3 class="showcase-title">@item.Name</h3>
+                                        </a>
+                                        <!---starts=-->
+                                        <div class="showcase-rating">
+                                            <ion-icon name="star"></ion-icon>
+                                            <ion-icon name="star"></ion-icon>
+                                            <ion-icon name="star"></ion-icon>
+                                            <ion-icon name="star-outline"></ion-icon>
+                                            <ion-icon name="star-outline"></ion-icon>
+                                        </div>
+                                        <!--prices-->
+                                        <div class="price-box">
+                                            <p class="price">@item.Price$</p>
+                                            <del>@item.PriceAfterSale$</del>
+                                        </div>
+                                    </div>
                         <div class="heart-icon">
                             <i class='bx bx-heart'></i>
-                        </div>
+                                </div>
                         <div class="ratting">
                             <i class='bx bxs-star'></i>
                             <i class='bx bxs-star'></i>
                             <i class='bx bxs-star'></i>
                             <i class='bx bx-star'></i>
                             <i class='bx bx-star'></i>
-                        </div>
+                            </div>
 
-                        <div class="price">
-                            <h4>comfortable armchair</h4>
-                            <h4>@item.Price</h4>
-                            <p style="text-decoration: line-through">$129</p>
-                        </div>
-                        <a asp-action="AddToCart" asp-controller="Cart" asp-route-id="@item.ID">Add To Cart</a>
+                        }
+
+                        //<a asp-action="Index" asp-controller="Cart">Add To Cart</a>
                     }
 
-                }    
+                }
+
+
+
+
             </div>
-            }
         </div>
-    </section>
+            }
+    </div>
+
+</section>

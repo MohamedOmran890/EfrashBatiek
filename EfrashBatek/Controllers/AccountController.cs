@@ -1,4 +1,4 @@
-﻿using EfrashBatek.Models;
+using EfrashBatek.Models;
 using EfrashBatek.ViewModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
