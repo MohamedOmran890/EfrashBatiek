@@ -182,9 +182,6 @@ namespace EfrashBatek.Controllers
             {
                 return View();
             }
-
-
-
         }
         public IActionResult OrderDetails()
         {

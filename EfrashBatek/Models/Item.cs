@@ -11,10 +11,13 @@ namespace EfrashBatek.Models
         [Required]
         public string Code { get; set; }
         [Required]
+        [Display(Name="Product Name")]
         public string Name { get; set; }
         [Required]
+        [Display(Name = "Product Description")]
         public string Description { get; set; }
         [Required]
+        [Display(Name = "Unit Price")]
         public double Price { get; set; }
         [Required]
         public string Image { get; set; }
