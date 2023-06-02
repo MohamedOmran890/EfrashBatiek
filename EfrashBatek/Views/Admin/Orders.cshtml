@@ -1,0 +1,98 @@
+﻿@model IEnumerable<Order_Item>
+@{
+
+    Layout = "~/Views/_Shared/_Layout.cshtml";
+}
+<link href="~/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+
+<link href="~/assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body  pt-0">
+                <ul class="nav nav-tabs nav-tabs-custom mb-4">
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold p-3 active" href="#">All Orders</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link p-3 fw-bold" href="#">Active</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link p-3 fw-bold" href="#">Unpaid</a>
+                    </li>
+                </ul>
+                <div class="table-responsive">
+                    <table class="table table-centered datatable dt-responsive nowrap " style="border-collapse: collapse; border-spacing: 0; width: 100%;">
+                        <thead class="thead-light">
+                            <tr>
+                                <th style="width: 20px;">
+                                    <div class="form-checkbox">
+                                        <input type="checkbox" class="form-check-input" id="ordercheck">
+                                        <label class="form-check-label mb-0" for="ordercheck">&nbsp;</label>
+                                    </div>
+                                </th>
+                                <th>Order ID</th>
+                                <th>Date</th>
+                                <th>Customer Name</th>
+                                <th>Total</th>
+                                <th>Order Status</th>
+                                <th>Payment Method</th>
+                                <th>View</th>
+                                <th style="width: 120px;">Action</th>
+                            </tr>
+                        </thead>
+                        @foreach(var item in Model){
+                       
+                            <tbody>
+                            <tr>
+                                <td>
+                                    <div class="form-checkbox">
+                                        <input type="checkbox" class="form-check-input" id="ordercheck1">
+                                        <label class="form-check-label mb-0" for="ordercheck1">&nbsp;</label>
+                                    </div>
+                                </td>
+
+                                <td><a href="javascript: void(0);" class="text-dark fw-bold">@item.OrderID</a> </td>
+                                <td>
+                                   @item.Order.OrderDate
+                                </td>
+                                    <td>@item.Order.Customer.User.FirstName @item.Order.Customer.User.LastName </td>
+
+                                <td>
+                                   @@foreach(var x in item.item.Price){
+
+                                    }@@
+                                </td>
+                                <td>
+                                    <div class="badge badge-soft-success font-size-12">order</div>
+                                </td>
+                                <td>
+                                    <a href="javascript:void(0);" class="me-3 text-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><i class="mdi mdi-pencil font-size-18"></i></a>
+                                    <a href="javascript:void(0);" class="text-danger" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"><i class="mdi mdi-trash-can font-size-18"></i></a>
+                                </td>
+                            </tr>
+                
+                        </tbody>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/assets/libs/jquery/jquery.min.js"></script>
+<script src="~/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="~/assets/libs/metismenu/metisMenu.min.js"></script>
+<script src="~/assets/libs/simplebar/simplebar.min.js"></script>
+<script src="~/assets/libs/node-waves/waves.min.js"></script>
+<script src="~/assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
+<script src="~/assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
+
+<script src="~/assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
+<script src="~/assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
+
+<script src="~/assets/js/pages/ecommerce-datatables.init.js"></script>
+
+<script src="~/assets/js/app.js"></script>

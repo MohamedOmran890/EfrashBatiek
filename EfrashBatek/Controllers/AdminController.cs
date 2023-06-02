@@ -1,7 +1,9 @@
-﻿using EfrashBatek.Models;
+using EfrashBatek.Models;
 using EfrashBatek.service;
 using EfrashBatek.ViewModel;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace EfrashBatek.Controllers
 {
@@ -10,11 +12,18 @@ namespace EfrashBatek.Controllers
         ICustomerRepository customer;
         IOrderRepository order;
         IShopRepository shop;
-        public AdminController(ICustomerRepository customer, IOrderRepository order, IShopRepository shop)
+        IStaffRepository _staff;
+        private readonly UserManager<User> _userManager;
+        IOrder_ItemRepository _itemRepository;
+        public AdminController(UserManager<User>usermanager, ICustomerRepository customer,
+            IOrderRepository order, IShopRepository shop, IStaffRepository staff, IOrder_ItemRepository itemRepository)
         {
             this.customer = customer;
             this.order = order;
             this.shop = shop;
+            this._staff = staff;
+            _userManager = usermanager;
+            _itemRepository = itemRepository;
         }
         public IActionResult Dashboard()
         {
@@ -30,18 +39,60 @@ namespace EfrashBatek.Controllers
         {
             return View();
         }
-        public IActionResult SaveStaff(Shop obj)
+        [HttpPost]
+        public async Task<IActionResult> SaveStaff(RegisterViewModelStaff model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                shop.Create(obj);
-                return RedirectToAction("Dashboard");
+                return View(model);
             }
-            else
-                return View("AddStaff");
 
+            var user = new User
+            {
+                UserName = model.Username,
+                Email = model.Email,
+                PhoneNumber = model.Phone,
+                age = model.Age,
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                BirthDate = model.Birthdate,
+                Gender = (Gender)model.Gender,
+
+            };
+
+        var staff = new Staff
+            {
+                UserId = user.Id,
+               // ShopID = model.TaxCardNumber
+            };
+
+            var result = await _userManager.CreateAsync(user, model.Password);//Created Cookies
+            var check = shop.GetById(model.ShopNumber);
+            if (result.Succeeded&&check!=null)
+            {
+                // Add user to default role
+                //  await _userManager.AddToRoleAsync(user, "User");
+
+                // Redirect the user to the login page
+                _staff.Create(staff);
+                return Content("Done");
+            }
+
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError("", error.Description);
+                if(check==null)
+                ModelState.AddModelError("","Not Found ShopNumber ");
+
+            }
+
+            return View("AddStaff",model);
         }
-        public IActionResult AddShop()
+
+
+          
+
+    public IActionResult AddShop()
         {
             return View();
 
@@ -85,6 +136,12 @@ namespace EfrashBatek.Controllers
                 return Content("Error Try Again");
 
         }
+        public IActionResult Orders()
+        {
+            var ans = order.GetByShop();
+            return View(ans);
+        }
+
 
 
 

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Address</title>
+	<link rel="icon" type="image/favicon.ico" href="/image/favicon.png">
+	<!-- CSS-link -->
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600;700&display=swap"
+		rel="stylesheet">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+		integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+		crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+	<link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+	<link rel="stylesheet" type="text/css"
+		href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/Checkout address.css ">
+</head>
+
+<body>
+	<div class="x">
+		<ul class="icons">
+			<ul>
+				<li class="hover" style="padding: 15px; margin-left: 8px;">
+					<i class='bx bxs-location-plus' style=" font-size: 38px;"></i>
+				</li>
+				<li>
+					<h2 style="margin: 0 0 15px 15px; font-size: medium;">Shipping</h2>
+				</li>
+			</ul>
+			<ul>
+				<li class="hover" style="padding: 10px 10px 10px 15px;">
+					<i class='bx bx-credit-card' style=" font-size: 38px;"></i>
+				</li>
+				<li>
+					<h2 style=" font-size: medium;">Payment</h2>
+				</li>
+			</ul>
+			<ul>
+				<li class="hover" style="padding: 15px; margin-right: 8px;">
+					<i class='bx bx-badge-check' style=" font-size: 38px;"></i>
+				</li>
+				<li>
+					<h2 style="margin: 0 15px 15px 0; font-size: medium;">Confirmation</h2>
+				</li>
+			</ul>
+		</ul>
+	</div>
+
+	<div class="row">
+		<div class="col-9">
+			<div id="address" role="tabpanel" aria-labelledby="address-tab">
+				<h3 class="mb-4">Address Settings</h3>
+				<div class="row">
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>First Name</label>
+							<input type="text" class="form-control" value="First Name">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Last Name</label>
+							<input type="text" class="form-control" value="Last Name">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Street Name</label>
+							<input type="text" class="form-control" value="St.">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Building Number</label>
+							<input type="text" class="form-control" value="Building Number">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Appartment Number</label>
+							<input type="text" class="form-control" value="Apartment Number">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Postal Code</label>
+							<input type="text" class="form-control" value="Postal Code">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>Phone Number</label>
+							<input type="text" class="form-control" value="Phone Number">
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="form-group">
+							<label>City</label>
+							<select id="citySelect" class="form-control">
+								<option value="null">Select</option>
+								<option value="57">
+									Qena
+								</option>
+								<option value="57">
+									Cairo
+								</option>
+							</select>
+						</div>
+					</div>
+					<input type="submit" class="btnRegister" value="Continue" />
+				</div>
+			</div>
+		</div>
+		<div class="col-3">
+			<aside>
+				<div class="summary">
+					<div class="summary-total-items"><span class="total-items"></span> Order Summary
+					</div>
+					<div class="summary-subtotal">
+						<div class="subtotal-title">Subtotal</div>
+						<div class="subtotal-value final-value" id="basket-subtotal">130.00</div>
+						<div class="summary-promo hide">
+							<div class="promo-title">Promotion</div>
+							<div class="promo-value final-value" id="basket-promo"></div>
+						</div>
+					</div>
+					<div class="summary-delivery"> </div>
+					<div class="summary-total">
+						<div class="total-title">Total</div>
+						<div class="total-value final-value" id="basket-total">130.00</div>
+					</div>
+					<div class="summary-checkout">
+						<a href="orderinfo.html"><button class="checkout-cta">Go to Secure Checkout</button></a>
+					</div>
+				</div>  
+			</aside>
+		</div>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
