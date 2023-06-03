@@ -105,6 +105,9 @@ ul.icons {
   fill: currentColor;
   inline-size: 1em;
   vertical-align: middle;
+  color:#565656;
+  transition: background-color 0.4s ease;
+  cursor: pointer;
 }
 
 h1 {
@@ -139,7 +142,7 @@ i {
   border: none;
   border-radius: 1.5rem;
   padding: 2%;
-  background: #e6e1e1;
+  background: #e3d9d9;
   color: #fff;
   font-weight: 600;
   width: 25%;
