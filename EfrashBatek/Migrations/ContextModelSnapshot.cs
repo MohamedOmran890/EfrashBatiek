@@ -26,25 +26,11 @@ namespace EfrashBatek.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("AddressName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("ApartmentNumber")
-                        .HasColumnType("int");
-
-                    b.Property<int>("BuildingNumber")
-                        .HasColumnType("int");
-
-                    b.Property<string>("City")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("FloorName")
+                    b.Property<string>("FullAddress")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -147,6 +133,9 @@ namespace EfrashBatek.Migrations
 
                     b.Property<int>("ItemID")
                         .HasColumnType("int");
+
+                    b.Property<string>("ItemName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
@@ -325,12 +314,18 @@ namespace EfrashBatek.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Image2")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("Price")
                         .HasColumnType("float");
+
+                    b.Property<int>("PriceAfterSale")
+                        .HasColumnType("int");
 
                     b.Property<int>("ProductID")
                         .HasColumnType("int");
@@ -343,6 +338,9 @@ namespace EfrashBatek.Migrations
 
                     b.Property<int?>("WishListID")
                         .HasColumnType("int");
+
+                    b.Property<string>("discount")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
 
@@ -598,6 +596,9 @@ namespace EfrashBatek.Migrations
 
                     b.Property<int>("age")
                         .HasColumnType("int");
+
+                    b.Property<short>("zone")
+                        .HasColumnType("smallint");
 
                     b.HasKey("Id");
 

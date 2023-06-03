@@ -1,0 +1,50 @@
+﻿<h5 class="font-size-14">Payment method :</h5>
+
+<div class="row">
+
+    <div class="col-lg-4 col-sm-6">
+        <div>
+            <label class="form-label card-radio-label mb-3">
+                <input type="radio" name="pay-method" id="pay-methodoption1" class="card-radio-input">
+
+                <div class="card-radio">
+                    <i class="fab fa-cc-mastercard font-size-24 align-middle me-2"></i>
+                    <span>Credit / Debit Card</span>
+                </div>
+            </label>
+        </div>
+    </div>
+
+    <div class="col-lg-4 col-sm-6">
+        <div>
+            <label class="form-label card-radio-label mb-3">
+                <input type="radio" name="pay-method" id="pay-methodoption2" class="card-radio-input">
+
+                <div class="card-radio">
+                    <i class="fab fa-cc-paypal font-size-24 align-middle me-2"></i>
+                    <span>Paypal</span>
+                </div>
+            </label>
+        </div>
+    </div>
+
+    <div class="col-lg-4 col-sm-6">
+        <div>
+            <label class="form-label card-radio-label mb-3">
+                <input type="radio" name="pay-method" id="pay-methodoption3" class="card-radio-input" checked>
+
+                <div class="card-radio">
+                    <i class="far fa-money-bill-alt font-size-24 align-middle me-2"></i>
+                    <span>Cash on Delivery</span>
+                </div>
+            </label>
+        </div>
+    </div>
+
+</div>
+<div>
+    <ul class="pager wizard twitter-bs-wizard-pager-link">
+                        <li class="previous"><a asp-action="Address">Previous</a></li>
+    <li class="next"><a asp-action="Confirmation">Next</a></li>
+                 </ul>
+</div>
