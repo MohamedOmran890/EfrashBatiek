@@ -107,7 +107,7 @@ ul.icons {
   vertical-align: middle;
   color:#565656;
   transition: background-color 0.4s ease;
-  cursor: pointer;
+  cursor: poin;
 }
 
 h1 {
@@ -132,7 +132,7 @@ i {
   background: #fff;
   padding: 60px;
   border-radius: 30px;
-  box-shadow: 0 2px 3px #C8D0D8;
+  box-shadow: 0 0 1em rgba(0, 0, 0, 0.0625);
   display: inline-block;
   margin: 0 auto;
 }
