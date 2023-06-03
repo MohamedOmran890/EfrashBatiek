@@ -1,42 +1,45 @@
 ﻿@{
-	Layout = "LayoutProfile";
+
+    Layout = "LayoutProfile";
 }
+@model List<Order>
 <div class="tab-pane fade show active" id="ordere" role="tabpanel" aria-labelledby="profile-tab">
 	<div class="tab-content p-4 p-md-5" id="v-pills-tabContent">
 
-		<h3 class="mb-4">Orders Settings</h3>
 
-		<center>
-			<br>
-			<br>
-			<br>
-			<br>
-			<table>
+        <h3 class="mb-4">Orders Settings</h3>
 
-				<tr>
-					<td>Order Code : </td>
-					<td>#131321</td>
-				</tr>
-				<tr>
-					<td>Total : </td>
-					<td>1200 EGP</td>
-				</tr>
-				<tr>
-					<td>Date : </td>
-					<td>2023/05/27</td>
-				</tr>
-				<tr>
-					<td>Status : </td>
-					<td>Active</td>
-				</tr>
-				
-				<tr>
-					<td colspan="2" style="text-align:center;"> <a href="orderinfo.html"><button class="button123">View Order Details</button></a> </td>
-				</tr>
-
-			</table>
-		</center>
-	</div>
+        <center>
+            <br>
+            <br>
+            <br>
+            <br>
+            
+            <table id="example" class="order-table" style="margin-left: auto; margin-right: auto; width : 100%;">
+                <thead>
+                    <tr>
+                        <th>Order Code</th>
+                        <th>Order Date</th>
+                        <th>Total cost</th>
+                        <th>View Order Details </th>
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach(var order in Model)
+                {
+                        <tr>
+                            <td>@order.OrderCode</td>
+                            <td>@order.OrderDate.Year/@order.OrderDate.Month/@order.OrderDate.Year</td>
+                            
+                            <td>@order.TotalCost $</td>
+                            <td><a a asp-controller="MyProfile" asp-action="OrderDetails" asp-route-id="@order.ID">View Order Details!</a></td>
+                        </tr>
+                  
+                }
+                </tbody>
+              
+            </table>
+        </center>
+    </div>
 
 </div>
-	

@@ -598,7 +598,7 @@ input{
     left: 0;
     width: 100%;
     height: 100vh;
-    background: hsla(0, 0%, 0%, 0.5);
+   /* background: hsla(0, 0%, 0%, 0.5);*/
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1209,6 +1209,7 @@ input{
   }
 
   .sidebar-top {
+    margin-top: 25%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -1659,7 +1660,7 @@ input{
 
   .product-grid .showcase-badge.black { background: var(--eerie-black); }
 
-  .product-grid .showcase-badge.pink { background: var(--salmon-pink); }
+  .product-grid .showcase-badge.pink { background: #cbaab1; }
 
   .product-grid .showcase-actions {
     position: absolute;
@@ -1692,7 +1693,7 @@ input{
   .product-grid .showcase-content { padding: 15px 20px 0; }
 
   .product-grid .showcase-category {
-    color: var(--salmon-pink);
+    color: #cbaab1;
     font-size: var(--fs-9);
     font-weight: var(--weight-500);
     text-transform: uppercase;
@@ -1958,10 +1959,11 @@ input{
 
   /*-----------------------------------*\
     #FOOTER
+
   \*-----------------------------------*/
 
   footer {
-    background: var(--eerie-black);
+    background: #f3f4f6;
     padding: 30px 0;
   }
 

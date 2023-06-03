@@ -4,6 +4,7 @@
 }
 @model Customer 
 <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+	<div class="tab-content p-4 p-md-5" id="v-pills-tabContent">
 	<h3 class="mb-4">Account Settings</h3>
 	
 	<!--start form -->
@@ -36,7 +37,7 @@
 			<div class="col-md-6">
 				<div class="form-group">
 					<label>Zone</label>
-
+					<!--enum loop -->
 					<select id="citySelect" class="form-control">
 						
 						@*@foreach (var arg in Enum.GetValues(typeof(zone)))
@@ -57,5 +58,6 @@
 
 		</div>
 	</form>
+	</div>
 	
 </div>
