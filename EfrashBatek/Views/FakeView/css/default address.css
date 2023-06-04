@@ -1,0 +1,253 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+  font-family: 'Jost', sans-serif;
+  list-style: none;
+  text-decoration: none;
+}
+
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap");
+
+body {
+  background: #fbfbfb;
+  font-family: "Roboto", sans-serif;
+}
+
+/* ICONS*/
+.row {
+  margin: 2%;
+}
+
+.card {
+  height: auto;
+  width: 45%;
+}
+
+address {
+  margin: 1% 0 0 3%;
+}
+
+.x {
+  background-color: #fff;
+  block-size: 100px;
+  box-shadow: 0 0 1em rgba(0, 0, 0, 0.0625);
+  inline-size: 800px;
+  margin: 8% 2% 1% 5%;
+  width: 970px;
+  border-radius: px;
+}
+
+ul.icons {
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+}
+
+.icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  block-size: 1em;
+  display: inline-block;
+  fill: currentColor;
+  inline-size: 1em;
+  vertical-align: middle;
+}
+
+/* continue button*/
+.btnRegister {
+  float: left;
+  border: none;
+  border-radius: 1.5rem;
+  padding: 2%;
+  background: #b4b4b4;
+  color: #fff;
+  font-weight: 600;
+  width: 30%;
+  cursor: pointer;
+  transition: background-color 0.4s ease;
+}
+
+.btnRegister:hover {
+  background-color: #cbaab1;
+  /* Change the background color to red when the button is hovered over */
+}
+
+/*ADDRESS*/
+#address {
+  border: 2px solid #cbaab1;
+  padding: 50px;
+  margin: 20px 30px;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+input {
+  padding: 4px 28px;
+  border-radius: 10px;
+  margin: 5px auto;
+  border: 1px solid #918383;
+  background-color: #f3f4f6;
+  box-shadow: 1px 2px 1px 2px rgb(230, 229, 229);
+  color: #000000;
+  outline: none;
+  font-size: 16px;
+}
+
+/*SUMMARY*/
+aside {
+  position: relative;
+  width: 30%;
+}
+
+.summary {
+  margin: 21px 40px 0;
+  background-color: #eee;
+  border: 1px solid #aaa;
+  padding: 1rem;
+  flex: 1;
+  width: 269px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.summary-total-items {
+  color: #666;
+  font-size: 0.875rem;
+  text-align: center;
+}
+
+.summary-subtotal,
+.summary-total {
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+  clear: both;
+  margin: 1rem 0;
+  overflow: hidden;
+  padding: 0.5rem 0;
+}
+
+.subtotal-title,
+.subtotal-value,
+.total-title,
+.total-value,
+.promo-title,
+.promo-value {
+  color: #111;
+  float: left;
+  width: 50%;
+}
+
+.summary-promo {
+  -webkit-transition: all .3s ease;
+  -moz-transition: all .3s ease;
+  -o-transition: all .3s ease;
+  transition: all .3s ease;
+}
+
+.promo-title {
+  float: left;
+  width: 70%;
+}
+
+.promo-value {
+  color: #8B0000;
+  float: left;
+  text-align: right;
+  width: 30%;
+}
+
+.summary-delivery {
+  padding-bottom: 3rem;
+}
+
+.subtotal-value,
+.total-value {
+  text-align: right;
+}
+
+.total-title {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.summary-checkout {
+  display: block;
+}
+
+.checkout-cta {
+  display: block;
+  float: none;
+  font-size: 0.75rem;
+  text-align: center;
+  text-transform: uppercase;
+  padding: 0.625rem 0;
+  width: 100%;
+}
+
+.summary-delivery-selection {
+  background-color: #fff;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  display: block;
+  font-size: 0.625rem;
+  height: 34px;
+  width: 100%;
+}
+
+/* Responsive-css */
+@media(max-width:890px) {
+  header {
+    padding: 20px 3%;
+    transition: .4s;
+  }
+}
+
+@media(max-width:630px) {
+  .main-text h1 {
+    font-size: 50px;
+    transition: .4s;
+  }
+
+  .main-text p {
+    font-size: 18px;
+    transition: .4s;
+  }
+
+  .main-btn {
+    padding: 10px 20px;
+    transition: .4s;
+  }
+}
+
+@media(max-width:750px) {
+  .navmenu {
+    position: absolute;
+    top: 100%;
+    right: -100%;
+    width: 300px;
+    height: 130vh;
+    background: #d0d0d0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 120px 30px;
+    transition: all .42s;
+  }
+
+  .navmenu a {
+    display: block;
+    margin: 18px 0;
+  }
+
+  .navmenu.open {
+    right: 0;
+  }
+}
