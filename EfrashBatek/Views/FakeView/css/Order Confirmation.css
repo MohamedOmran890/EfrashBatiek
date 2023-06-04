@@ -291,14 +291,14 @@ background-color: #cbaab1;
  
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #cbaab1; 
+  background: #94777d; 
   border-radius: 10px;
   
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #94777d; 
+  background: #cbaab1; 
   transition: background-color 0.8s ease;
 }
 
