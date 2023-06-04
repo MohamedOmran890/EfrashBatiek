@@ -17,8 +17,10 @@
     <Content Remove="wwwroot\css\log.css" />
     <Content Remove="wwwroot\css\log2.css" />
     <Content Remove="wwwroot\css\main.css" />
+    <Content Remove="wwwroot\css\orderdetails.css" />
     <Content Remove="wwwroot\css\orderinfo.css" />
     <Content Remove="wwwroot\css\orders.css" />
+    <Content Remove="wwwroot\css\ordertable.css" />
     <Content Remove="wwwroot\css\product details.css" />
     <Content Remove="wwwroot\css\profile.css" />
     <Content Remove="wwwroot\css\profile2.css" />
@@ -153,6 +155,7 @@
     <None Include="wwwroot\css\main.css" />
     <None Include="wwwroot\css\orderinfo.css" />
     <None Include="wwwroot\css\orders.css" />
+    <None Include="wwwroot\css\orderdetails.css" />
     <None Include="wwwroot\css\product details.css" />
     <None Include="wwwroot\css\profile.css" />
     <None Include="wwwroot\css\profile2.css" />
@@ -160,6 +163,7 @@
     <None Include="wwwroot\css\style-prefix.css" />
     <None Include="wwwroot\css\style.css" />
     <None Include="wwwroot\css\trend.css" />
+    <None Include="wwwroot\css\ordertable.css" />
     <None Include="wwwroot\css\wishlist.css" />
     <None Include="wwwroot\Image\0.jpg" />
     <None Include="wwwroot\Image\00.webp" />
