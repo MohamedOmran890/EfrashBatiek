@@ -1,4 +1,5 @@
 ﻿using EfrashBatek.Models;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -14,6 +15,7 @@ namespace EfrashBatek.service
         public void Create(Item item)
         {
             context.Items.Add(item);
+            context.SaveChanges();
 
         }
         public int Update(int id, Item item)
@@ -34,19 +36,32 @@ namespace EfrashBatek.service
         }
         public int Delete(int Id)
         {
-            var ans = context.Items.FirstOrDefault(x => x.ID == Id);
-            context.Items.Remove(ans);
-            int num = context.SaveChanges();
-            return num;
+            var ans = context.Items
+                .Include(i => i.Brand)
+                .Include(i => i.Product)
+                .Include(i => i.Shop)
+                .FirstOrDefault(m => m.ID == Id); ;
+            if (ans != null)
+            {
+                context.Items.Remove(ans);
+                int num = context.SaveChanges();
+                return num;
+            }
+            else
+                return 0;
         }
         public Item GetById(int Id)
         {
-            var ans = context.Items.FirstOrDefault(x => x.ID == Id);
+            var ans = context.Items
+                .Include(i => i.Brand)
+                .Include(i => i.Product)
+                .Include(i => i.Shop)
+                .FirstOrDefault(x=>x.ID==Id);
             return ans;
         }
-        public List<Item> GetAll()
+        public IQueryable<Item> GetAll()
         {
-            var ans = context.Items.ToList();
+            var ans = context.Items.Include(i => i.Brand).Include(i => i.Product).Include(i => i.Shop);
             return ans;
         }
     }

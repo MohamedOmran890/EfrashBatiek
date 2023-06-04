@@ -28,7 +28,7 @@ namespace EfrashBatek
     public static void DataSeeding()
     {
         using var context = new Context();
-        context.Database.EnsureCreated();
+        //context.Database.EnsureCreated();
           
         var Product = context.Products.FirstOrDefault(x=>x.ID==1);
             var customer = context.Customers.FirstOrDefault(x => x.Id == 1);
@@ -54,9 +54,9 @@ namespace EfrashBatek
             var shop = context.Shops.FirstOrDefault(x => x.ID == 1);
             if(shop==null)
             {
-                context.Shops.Add(new Shop { ID = 1, Name = "Nssagon",ShopNumber=3443, ShopAddress = "Qena",PhoneNumber="01094248766"});
-                context.Shops.Add(new Shop { ID = 2, Name = "Furniture",  ShopNumber=438473,ShopAddress = "Cairo" ,PhoneNumber="01550632066"});
-                context.Shops.Add(new Shop { ID = 3, Name = "manarh", ShopNumber=54875,ShopAddress="Assiut",PhoneNumber="01205442521"});
+                context.Shops.Add(new Shop { ID = 1, Name = "Nssagon", ShopAddress = "Qena",PhoneNumber="01094248766"});
+                context.Shops.Add(new Shop { ID = 2, Name = "Furniture",ShopAddress = "Cairo" ,PhoneNumber="01550632066"});
+                context.Shops.Add(new Shop { ID = 3, Name = "manarh",ShopAddress="Assiut",PhoneNumber="01205442521"});
             }
 
          var item = context.Items.FirstOrDefault(x => x.ID == 1);
