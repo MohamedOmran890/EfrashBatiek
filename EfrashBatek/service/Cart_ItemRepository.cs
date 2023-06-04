@@ -7,14 +7,14 @@ namespace EfrashBatek.service
     public class Cart_ItemRepository : ICart_ItemRepository
     {
         Context context;
+        
         public Cart_ItemRepository(Context context)
         {
             this.context = context;
         }
-        public void Create(Cart_Item cart_item)
+        public void Create(Cart_Item item)
         {
-            context.Cart_Items.Add(cart_item);
-
+            context.Cart_Items.Add(item);
         }
         /* I Dont Know 
          * public int Update(int id, Cart_Item Cart_Item)

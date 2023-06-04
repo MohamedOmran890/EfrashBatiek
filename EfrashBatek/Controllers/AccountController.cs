@@ -1,8 +1,10 @@
-﻿using EfrashBatek.Models;
+using EfrashBatek.Models;
 using EfrashBatek.ViewModel;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using SignInResult = Microsoft.AspNetCore.Identity.SignInResult;
 
 namespace EfrashBatek.Controllers
 {
@@ -39,21 +41,21 @@ namespace EfrashBatek.Controllers
             {
                 UserName = model.Username,
                 Email = model.Email,
-                PhoneNumber=model.Phone,
-                age=model.Age,
-                FirstName=model.FirstName,
-                LastName=model.LastName,
-                BirthDate=model.Birthdate,
-                Gender= (Gender)model.Gender,
-                
+                PhoneNumber = model.Phone,
+                age = model.Age,
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                BirthDate = model.Birthdate,
+                Gender = (Gender)model.Gender,
+
             };
 
-            var result = await _userManager.CreateAsync(user, model.Password);
+            var result = await _userManager.CreateAsync(user, model.Password);//Created Cookies
 
             if (result.Succeeded)
             {
                 // Add user to default role
-                await _userManager.AddToRoleAsync(user, "User");
+              //  await _userManager.AddToRoleAsync(user, "User");
 
                 // Redirect the user to the login page
                 return RedirectToAction("Login");
@@ -68,38 +70,45 @@ namespace EfrashBatek.Controllers
         }
 
         [HttpGet]
-        public IActionResult Login(string returnUrl = null)
+        public IActionResult Login(string returnUrl = "~/Home/TrendingProducts")
         {
             ViewData["ReturnUrl"] = returnUrl;
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null)
+        public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = "~/Home/TrendingProducts")
         {
             ViewData["ReturnUrl"] = returnUrl;
 
             if (ModelState.IsValid)
             {
-                var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
-
-                if (result.Succeeded)
+            User user=await _userManager.FindByNameAsync(model.UserName);
+                if (user != null)
                 {
-                    return RedirectToLocal(returnUrl);
-                }
+                    SignInResult result = await _signInManager.PasswordSignInAsync(user,model.Password,model.isPersistent,false);
 
-                ModelState.AddModelError("", "Invalid Email Or Password.");
+                    if (result.Succeeded)
+                    {
+                        HttpContext.Session.SetString("Id",user.Id);
+                        return RedirectToLocal (returnUrl);
+                    }
+                else
+                    ModelState.AddModelError("", "Invalid Email Or Password.");
+    
+                }
+                else
+                    ModelState.AddModelError("", "Invalid Email Or Password.");
                 return View(model);
             }
 
             return View(model);
         }
 
-        [HttpPost]
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login", "Account");
         }
 
         private IActionResult RedirectToLocal(string returnUrl)

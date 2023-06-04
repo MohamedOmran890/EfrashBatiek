@@ -1,0 +1,83 @@
+﻿@model EfrashBatek.ViewModel.RegisterViewModel
+
+@{
+    ViewData["Title"] = "Add Staff";
+}
+@{
+    Layout = "AdminLayout";
+}
+
+
+<!--ADD SELLER FORM-->
+  <section class="home-section">
+      <form asp-action="SaveStaff" asp-controller="Admin">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <div class="form">
+            <div class="title">Add Seller </div>
+            <div class="input-container ic1">
+
+                <input asp-for = "FirstName"  id="FirstName" class="input" type="text" placeholder=" " />
+                <label asp-for = "FirstName"  for="FirstName" class="placeholder">First name</label>
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+
+            </div>
+            <div class="input-container ic2">
+
+                <input  asp-for = "LastName"  id="lastname" class="input" type="text" placeholder=" " />
+                <label asp-for ="LastName"    for="LastName" class="placeholder">Last name</label>
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+
+            </div>
+            <div class="input-container ic2">
+                <input asp-for="Age" id="Age" class="input" type="text" placeholder=" " />
+                <label asp-for="Age" for="Age" class="placeholder">Age</label>
+                <span asp-validation-for="Age" class="text-danger"></span>
+            </div>
+
+            <div class="input-container ic2">
+                <!---gender -->
+                <input asp-for="Gender" id="Gender" type="text" class="input" placeholder=" " />
+                <label asp-for="Gender" for="Gender" class="placeholder">Gender</label>
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>
+
+
+            <div class="input-container ic2">
+                <input asp-for="Email" id="Email" class="input" type="text" placeholder=" " />
+                <label asp-for ="Email" for="Email" class="placeholder">Email</label>
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="input-container ic2">
+                <input asp-for="Username" id="Age" class="input" type="text" placeholder=" " />
+                <label  asp-for="Username" for="Username" class="placeholder">Username</label>
+                <span asp-validation-for="Username" class="text-danger"></span>
+            </div>
+            <div class="input-container ic2">
+                <input asp-for="Password" id="Password" class="input" type="text" placeholder=" " />
+                <label asp-for="Password" for="Password" class="placeholder">Password</label>
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="input-container ic2">
+                <input asp-for="ConfirmPassword" id="ConfirmPassword" class="input" type="text" placeholder=" " />
+                <label asp-for="ConfirmPassword" for="ConfirmPassword" class="placeholder">Confirm Password</label>
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+
+            <div class="input-container ic2">
+                <input asp-for="Phone" id="Phone" class="input" type="text" placeholder=" " />
+                <label asp-for="Phone" for="Phone" class="placeholder">Phone number</label>
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+           <!--
+            <div class="input-container ic2">
+                <input asp-for="TaxCardNumber" id="TaxCardNumber" class="input" type="text" placeholder=" " />
+                <label asp-for="TaxCardNumber" for="TaxCardNumber" class="placeholder">Tax Card Number</label>
+                <span asp-validation-for="TaxCardNumber" class="text-danger"></span>
+            </div>
+             -->
+            <input type="submit" value="Add Shop" class="submit" />
+        </div>
+
+      </form>
+   
+  </section>

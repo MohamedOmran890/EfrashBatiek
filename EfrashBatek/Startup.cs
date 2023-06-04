@@ -28,7 +28,7 @@ namespace EfrashBatek
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            services.AddControllersWithViews();//For used Controller and Views
             services.AddDbContext<Context>(options => options.
            UseSqlServer(Configuration.GetConnectionString("DATA")));
             services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<Context>().AddDefaultTokenProviders();
@@ -54,7 +54,13 @@ namespace EfrashBatek
             services.AddScoped<IVideoRepository, VideoRepository>();
             services.AddScoped<IWishListRepository, WishListRepository>();
             services.AddScoped<IContact_UsRepository, Contact_UsRepository>();
-
+            /*Session*/
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(15);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -71,18 +77,19 @@ namespace EfrashBatek
                 app.UseHsts();
             }
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
+            app.UseStaticFiles();//static file
 
             app.UseRouting();
             app.UseAuthentication();
 
             app.UseAuthorization();
+            app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Home}/{action=TrendingProducts}/{id?}");//When Open Web Open Bydefault Home 
             });
         }
     }
