@@ -70,7 +70,7 @@ ul.icons {
 
 /* continue button*/
 .btnRegister {
-  float: left;
+  float: right;
   border: none;
   border-radius: 1.5rem;
   padding: 2%;
