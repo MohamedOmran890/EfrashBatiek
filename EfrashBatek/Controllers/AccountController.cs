@@ -3,6 +3,7 @@ using EfrashBatek.ViewModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System.Threading.Tasks;
 using SignInResult = Microsoft.AspNetCore.Identity.SignInResult;
 
@@ -85,8 +86,8 @@ namespace EfrashBatek.Controllers
             {
             User user=await _userManager.FindByNameAsync(model.UserName);
                 if (user != null)
-                {
-                    SignInResult result = await _signInManager.PasswordSignInAsync(user,model.Password,model.isPersistent,false);
+                {//ispersistanc to detct user is session or cookies
+                    SignInResult result = await _signInManager.PasswordSignInAsync(user.UserName,model.Password,isPersistent:model.isPersistent,false);
 
                     if (result.Succeeded)
                     {
@@ -110,6 +111,38 @@ namespace EfrashBatek.Controllers
             await _signInManager.SignOutAsync();
             return RedirectToAction("Login", "Account");
         }
+        [HttpGet]
+        public IActionResult ChangePassword()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> ChangePassword(ChangePasswordVM model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.GetUserAsync(User);
+                if (user == null)
+                {
+                    return RedirectToAction("Login", "Account");
+                }
+                var result = await _userManager.ChangePasswordAsync(user, model.CurrentPassword, model.ConfirmPassword);
+                if (result.Succeeded)
+                {
+                    await _signInManager.RefreshSignInAsync(user);
+                    return RedirectToAction("Login", "Account");
+
+                }
+                foreach (var er in result.Errors)
+                {
+                    ModelState.AddModelError("", er.Description);
+                }
+
+            }
+                return View(model);
+
+        }
+
 
         private IActionResult RedirectToLocal(string returnUrl)
         {
