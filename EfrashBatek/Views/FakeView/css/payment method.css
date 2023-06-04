@@ -1,11 +1,21 @@
-:root {
+/*:root {
   --color-background: #fbfbfb;
   --color-primary: #cbaab1;
   --font-family-base: Poppin, sans-serif;
-}
+}*/
 
 * {
   box-sizing: inherit;
+}
+body {
+  background-color: #fbfbfb;
+  display: grid;
+  font-family: var(--font-family-base);
+  line-height: 1.5;
+  margin: 0;
+  min-block-size: 100vh;
+  padding: 5vmin;
+  place-items: center;
 }
 
 html {
@@ -51,17 +61,6 @@ ul.icons {
 .word:hover{
   color: #cbaab1;
   transform: scale(1.1);
-}
-
-body {
-  background-color: var(--color-background);
-  display: grid;
-  font-family: var(--font-family-base);
-  line-height: 1.5;
-  margin: 0;
-  min-block-size: 100vh;
-  padding: 5vmin;
-  place-items: center;
 }
 
 li {
