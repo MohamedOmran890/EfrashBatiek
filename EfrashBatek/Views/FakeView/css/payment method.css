@@ -1,11 +1,22 @@
-:root {
+/*:root {
   --color-background: #fbfbfb;
   --color-primary: #cbaab1;
   --font-family-base: Poppin, sans-serif;
-}
+}*/
 
 * {
   box-sizing: inherit;
+}
+body {
+  background-color: #fbfbfb;
+  display: grid;
+  font-family: var(--font-family-base);
+  line-height: 1.5;
+  margin: 0;
+  min-block-size: 100vh;
+  padding: 5vmin;
+  place-items: center;
+  text-decoration: none;
 }
 
 html {
@@ -20,8 +31,10 @@ a{
   block-size: 100px;
   box-shadow: 0 0 1em rgba(0, 0, 0, 0.0625);
   inline-size: 800px;
-  margin: 8% 1% 1%;
-  width: 800px;
+  margin-top: 8% ;
+  margin-right: 28%;
+  margin-bottom: 1%;
+  width: 805px;
   border-radius: 2em;
 }
 
@@ -51,17 +64,6 @@ ul.icons {
 .word:hover{
   color: #cbaab1;
   transform: scale(1.1);
-}
-
-body {
-  background-color: var(--color-background);
-  display: grid;
-  font-family: var(--font-family-base);
-  line-height: 1.5;
-  margin: 0;
-  min-block-size: 100vh;
-  padding: 5vmin;
-  place-items: center;
 }
 
 li {
@@ -191,22 +193,24 @@ tfoot {
   gap: 1em;
 }
 
-/*----------------------------------------------------------------SUMMARY-------------------------------------------------------------------------*/
+/*SUMMARY*/
 aside {
   position: relative;
   width: 30%;
 }
-
 .summary {
   margin: 21px 40px 0;
   background-color: #eee;
   border: 1px solid #aaa;
   padding: 1rem;
   flex: 1;
-  width: 269px;
+  width: 290px;
+  border-radius: 30px;
+  box-shadow: 0 0 1em rgba(0, 0, 0, 0.0625);
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+  height: auto;
 }
 
 .summary-total-items {
@@ -273,7 +277,7 @@ aside {
   display: block;
 }
 
-.checkout-cta {
+.summary.checkout-cta {
   display: block;
   float: none;
   font-size: 0.75rem;
@@ -281,6 +285,7 @@ aside {
   text-transform: uppercase;
   padding: 0.625rem 0;
   width: 100%;
+  border: #111;
 }
 
 .summary-delivery-selection {
@@ -340,4 +345,29 @@ aside {
   .navmenu.open {
     right: 0;
   }
+}
+/*******************************************************************************scroll***************************************************/
+/* width */
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+  
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #cbaab1; 
+  border-radius: 10px;
+  
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #94777d; 
+  transition: background-color 0.8s ease;
 }
