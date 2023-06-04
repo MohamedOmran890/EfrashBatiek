@@ -50,6 +50,7 @@ ul.icons {
 }
 .word:hover{
   color: #cbaab1;
+  transform: scale(1.1);
 }
 
 body {
