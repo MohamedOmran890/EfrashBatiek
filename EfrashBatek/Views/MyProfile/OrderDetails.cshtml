@@ -7,6 +7,8 @@
     var address = ViewData["Address"] as Address;
 }
 
+<link rel="stylesheet" href="~/css/orderdetails.css">
+
 <br>
 <br>
 <br>
@@ -51,7 +53,7 @@
                                             <div class="d-flex mb-2">
                                                 <!---image-->
                                                 <div class="flex-shrink-0">
-                                                    <img src="~/Image/@itemOrder.item.Image" alt="" width="35" class="img-fluid">
+                                                    <img src="~/Image/@itemOrder.item.Image" alt="" width="35" class="img-size">
                                                 </div>
                                                 <!--color & name -->
                                                 <div class="flex-lg-grow-1 ms-3">
@@ -68,6 +70,12 @@
                                         <td>
                                             <span class="badge bg-success rounded-pill">@itemOrder.OrderState</span>
                                         </td>
+                                    </tr>
+                                <tr>
+                                    <td></td>
+                                    <td><span class="aleite">Cancel Item !</span></td>
+                                    <td></td>
+                                    <td></td>
                                     </tr>
                                 }
 

@@ -18,10 +18,13 @@ namespace EfrashBatek.Controllers
         IShopRepository shopRepository;
         IProductRepository productRepository; 
 
-        public ItemShopController(Context context,IItemRepository itemRepo)
+        public ItemShopController(Context context,IItemRepository itemRepo, IBrandRepository brandRepository, IShopRepository shopRepository, IProductRepository productRepository)
         {
             _context = context;
             this.itemRepo = itemRepo;
+            this.brandRepository = brandRepository;
+            this.shopRepository = shopRepository;
+            this.productRepository = productRepository;
         }
 
         [HttpGet]
@@ -48,6 +51,7 @@ namespace EfrashBatek.Controllers
         }
 
         [HttpGet]
+        //1
         public IActionResult Create()
         {
             ViewData["BrandName"] = new SelectList(brandRepository.GetAll(), "ID", "Name");
@@ -58,10 +62,12 @@ namespace EfrashBatek.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        //2
         public IActionResult Create([Bind("Code,Name,Description,Price,Image,Image2,Brand_ID,QuantityInStore,ShopID,ProductID")] Item item)
         {
             if (ModelState.IsValid)
             {
+
                 itemRepo.Create(item);
                 return RedirectToAction("Index");
             }
@@ -88,9 +94,7 @@ namespace EfrashBatek.Controllers
             return View(item);
         }
 
-        // POST: Item2/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+      
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(int id, [Bind("Code,Name,Description,Price,Image,Image2,discount,PriceAfterSale,Brand_ID,QuantityInStore,ShopID,ProductID")] Item item)
