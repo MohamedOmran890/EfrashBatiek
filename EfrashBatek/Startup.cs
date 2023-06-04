@@ -31,7 +31,17 @@ namespace EfrashBatek
             services.AddControllersWithViews();//For used Controller and Views
             services.AddDbContext<Context>(options => options.
            UseSqlServer(Configuration.GetConnectionString("DATA")));
-            services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<Context>().AddDefaultTokenProviders();
+            services.AddIdentity<User, IdentityRole> (options =>
+        {
+                options.Password.RequireDigit = true;
+                options.Password.RequireLowercase = true;
+                options.Password.RequireUppercase = true;
+                options.Password.RequireNonAlphanumeric = true;
+                options.Password.RequiredLength = 8;
+
+                options.Lockout.MaxFailedAccessAttempts = 5;
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(15);
+            }).AddEntityFrameworkStores<Context>().AddDefaultTokenProviders();
             services.AddScoped<UserManager<User>>();
             services.AddScoped<IAddressRepository, AddressRepository>();
             services.AddScoped<IAdminRepository, AdminRepository>();
