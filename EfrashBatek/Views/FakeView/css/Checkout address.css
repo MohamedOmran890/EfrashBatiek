@@ -17,6 +17,9 @@ body {
   font-family: "Roboto", sans-serif;
   overflow-x: hidden;
 }
+a{
+  text-decoration: none;
+}
 /* ICONS*/
 .row{
 height: 400px;
@@ -50,7 +53,14 @@ ul.icons {
   inline-size: 1em;
   vertical-align: middle;
 }
-
+.word{
+  color:#8a8b8b;
+  transition: all .42s ease;
+}
+.word:hover{
+  color: #cbaab1;
+  transform: scale(1.1);
+}
 /* continue button*/
 .btnRegister {
   border: none;
@@ -108,12 +118,13 @@ aside {
   border: 1px solid #aaa;
   padding: 1rem;
   flex: 1;
-  width: 269px;
+  width: 290px;
   border-radius: 30px;
   box-shadow: 0 0 1em rgba(0, 0, 0, 0.0625);
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+  height: auto;
 }
 
 .summary-total-items {
