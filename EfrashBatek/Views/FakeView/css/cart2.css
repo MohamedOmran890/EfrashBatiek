@@ -364,6 +364,7 @@ aside {
 }
 
 .checkout-cta {
+  transition: background-color 0.4s ease;
   display: block;
   float: none;
   font-size: 0.75rem;
