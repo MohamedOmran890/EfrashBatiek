@@ -107,7 +107,15 @@ ul.icons {
   vertical-align: middle;
   color:#565656;
   transition: background-color 0.4s ease;
-  cursor: poin;
+  cursor: pointer;
+}
+.word{
+  color:#8a8b8b;
+  transition: all .42s ease;
+}
+.word:hover{
+  color: #cbaab1;
+  transform: scale(1.1);
 }
 
 h1 {
@@ -119,8 +127,7 @@ h1 {
 }
 
 
-
-i {
+.true i {
   color: #cbaab1;
   font-size: 100px;
   line-height: 200px;
@@ -269,3 +276,29 @@ input{
 {
 background-color: #cbaab1;
 }
+/*******************************************************************************scroll***************************************************/
+/* width */
+::-webkit-scrollbar {
+  width: 15px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+  
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #94777d; 
+  border-radius: 10px;
+  
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #cbaab1; 
+  transition: background-color 0.8s ease;
+}
+
