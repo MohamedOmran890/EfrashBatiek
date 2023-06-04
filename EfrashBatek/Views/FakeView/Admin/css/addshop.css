@@ -1,6 +1,8 @@
-
+body{
+  background-color: #fbfbfb;
+}
 .form {
-    background-color: #ffffff;
+    background-color: #fbfbfb;
     margin: 0 100 0 100;
  /* background-image: linear-gradient(to bottom, #fbf6f7, #fff);*/
     /*border-radius: 20px;*/
@@ -118,11 +120,12 @@
     /*outline: 0;*/
     text-align: center;
     width: 100%;
+    transition: background-color 0.4s ease;
   }
 
 
-submit:hover {
-	background-color:#b18791;
+.submit:hover {
+	background-color:#e3d9d9;
 }
 
   .submit:active {
