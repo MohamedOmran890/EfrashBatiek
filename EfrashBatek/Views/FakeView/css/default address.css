@@ -36,7 +36,9 @@ address {
   inline-size: 800px;
   margin: 8% 2% 1% 5%;
   width: 970px;
-  border-radius: px;
+  border-radius: 30px;
+  color:#565656;
+  transition: background-color 0.4s ease;
 }
 
 ul.icons {
@@ -56,6 +58,14 @@ ul.icons {
   fill: currentColor;
   inline-size: 1em;
   vertical-align: middle;
+}
+.word{
+  color:#8a8b8b;
+  transition: all .42s ease;
+}
+.word:hover{
+  color: #cbaab1;
+  transform: scale(1.1);
 }
 
 /* continue button*/
@@ -79,9 +89,12 @@ ul.icons {
 
 /*ADDRESS*/
 #address {
-  border: 2px solid #cbaab1;
   padding: 50px;
   margin: 20px 30px;
+  border-radius: 30px;
+  height: auto;
+  background-color: #fff;
+  box-shadow: 0 0 1em rgba(0, 0, 0, 0.0625);
 }
 
 .form-group {
@@ -99,7 +112,12 @@ input {
   outline: none;
   font-size: 16px;
 }
-
+.bx-plus-circle{
+color: #cbaab1;
+}
+.new{
+  color:#cbaab1;
+}
 /*SUMMARY*/
 aside {
   position: relative;
@@ -116,6 +134,7 @@ aside {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+  border-radius: 30px;
 }
 
 .summary-total-items {
