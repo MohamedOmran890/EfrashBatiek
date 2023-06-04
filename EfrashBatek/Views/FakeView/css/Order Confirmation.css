@@ -117,10 +117,16 @@ h1 {
   font-size: 40px;
   margin-bottom: 10px;
 }
+.word{
+  color:#8a8b8b;
+  transition: all .42s ease;
+}
+.word:hover{
+  color: #cbaab1;
+  transform: scale(1.1);
+}
 
-
-
-i {
+.true i{
   color: #cbaab1;
   font-size: 100px;
   line-height: 200px;
