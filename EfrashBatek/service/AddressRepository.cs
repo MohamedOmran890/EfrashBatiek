@@ -21,7 +21,7 @@ namespace EfrashBatek.service
         {
             var obj = context.Addresses.FirstOrDefault(x => x.ID == id);
             obj.UserId = address.UserId;
-            obj.OrderId = address.OrderId;
+         
             obj.Zone = address.Zone;
             obj.SetDefault = address.SetDefault;
             obj.PostalCode = address.PostalCode;

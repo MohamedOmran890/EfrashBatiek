@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace EfrashBatek.Migrations
 {
-    public partial class First : Migration
+    public partial class NewAlyaa : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -32,6 +32,7 @@ namespace EfrashBatek.Migrations
                     BirthDate = table.Column<DateTime>(type: "Date", nullable: false),
                     Gender = table.Column<short>(type: "smallint", nullable: false),
                     UserType = table.Column<short>(type: "smallint", nullable: false),
+                    zone = table.Column<short>(type: "smallint", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -68,6 +69,23 @@ namespace EfrashBatek.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Contact_Us",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Message = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Contact_Us", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Products",
                 columns: table => new
                 {
@@ -90,8 +108,9 @@ namespace EfrashBatek.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ShopAddress = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TaxCardImage = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ShopNumber = table.Column<int>(type: "int", nullable: false)
+                    TaxCardNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ShopHolder = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PhoneNumber = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -116,7 +135,7 @@ namespace EfrashBatek.Migrations
                         column: x => x.RoleId,
                         principalTable: "AspNetRoles",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Restrict );
                 });
 
             migrationBuilder.CreateTable(
@@ -156,7 +175,7 @@ namespace EfrashBatek.Migrations
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Restrict );
                 });
 
             migrationBuilder.CreateTable(
@@ -176,7 +195,7 @@ namespace EfrashBatek.Migrations
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Restrict );
                 });
 
             migrationBuilder.CreateTable(
@@ -194,13 +213,13 @@ namespace EfrashBatek.Migrations
                         column: x => x.RoleId,
                         principalTable: "AspNetRoles",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Restrict );
                     table.ForeignKey(
                         name: "FK_AspNetUserRoles_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Restrict );
                 });
 
             migrationBuilder.CreateTable(
@@ -220,7 +239,7 @@ namespace EfrashBatek.Migrations
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Restrict );
                 });
 
             migrationBuilder.CreateTable(
@@ -264,45 +283,6 @@ namespace EfrashBatek.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Items",
-                columns: table => new
-                {
-                    ID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Code = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Price = table.Column<double>(type: "float", nullable: false),
-                    Image = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Brand_ID = table.Column<int>(type: "int", nullable: false),
-                    QuantityInStore = table.Column<int>(type: "int", nullable: false),
-                    ShopID = table.Column<int>(type: "int", nullable: false),
-                    ProductID = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Items", x => x.ID);
-                    table.ForeignKey(
-                        name: "FK_Items_Brands_Brand_ID",
-                        column: x => x.Brand_ID,
-                        principalTable: "Brands",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Items_Products_ProductID",
-                        column: x => x.ProductID,
-                        principalTable: "Products",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Items_Shops_ShopID",
-                        column: x => x.ShopID,
-                        principalTable: "Shops",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "The_Staff",
                 columns: table => new
                 {
@@ -325,7 +305,7 @@ namespace EfrashBatek.Migrations
                         column: x => x.ShopID,
                         principalTable: "Shops",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Restrict );
                 });
 
             migrationBuilder.CreateTable(
@@ -345,7 +325,7 @@ namespace EfrashBatek.Migrations
                         column: x => x.CustomerID,
                         principalTable: "Customers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Restrict );
                 });
 
             migrationBuilder.CreateTable(
@@ -366,7 +346,26 @@ namespace EfrashBatek.Migrations
                         column: x => x.CustomerID,
                         principalTable: "Customers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Restrict );
+                });
+
+            migrationBuilder.CreateTable(
+                name: "WishLists",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CustomerID = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_WishLists", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_WishLists_Customers_CustomerID",
+                        column: x => x.CustomerID,
+                        principalTable: "Customers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict );
                 });
 
             migrationBuilder.CreateTable(
@@ -386,7 +385,102 @@ namespace EfrashBatek.Migrations
                         column: x => x.DesignerID,
                         principalTable: "designers",
                         principalColumn: "ID",
+                        onDelete: ReferentialAction.Restrict );
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Items",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Code = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Price = table.Column<double>(type: "float", nullable: false),
+                    Image = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Image2 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    discount = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PriceAfterSale = table.Column<int>(type: "int", nullable: false),
+                    Brand_ID = table.Column<int>(type: "int", nullable: false),
+                    QuantityInStore = table.Column<int>(type: "int", nullable: false),
+                    ShopID = table.Column<int>(type: "int", nullable: false),
+                    ProductID = table.Column<int>(type: "int", nullable: false),
+                    WishListID = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Items", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_Items_Brands_Brand_ID",
+                        column: x => x.Brand_ID,
+                        principalTable: "Brands",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Restrict );
+                    table.ForeignKey(
+                        name: "FK_Items_Products_ProductID",
+                        column: x => x.ProductID,
+                        principalTable: "Products",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Restrict );
+                    table.ForeignKey(
+                        name: "FK_Items_Shops_ShopID",
+                        column: x => x.ShopID,
+                        principalTable: "Shops",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Restrict );
+                    table.ForeignKey(
+                        name: "FK_Items_WishLists_WishListID",
+                        column: x => x.WishListID,
+                        principalTable: "WishLists",
+                        principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Photos",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Image = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DesignID = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Photos", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_Photos_Designs_DesignID",
+                        column: x => x.DesignID,
+                        principalTable: "Designs",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Restrict );
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Cart_Items",
+                columns: table => new
+                {
+                    CartID = table.Column<int>(type: "int", nullable: false),
+                    ItemID = table.Column<int>(type: "int", nullable: false),
+                    Quantity = table.Column<int>(type: "int", nullable: false),
+                    ItemName = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Cart_Items", x => new { x.CartID, x.ItemID });
+                    table.ForeignKey(
+                        name: "FK_Cart_Items_Carts_CartID",
+                        column: x => x.CartID,
+                        principalTable: "Carts",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Restrict );
+                    table.ForeignKey(
+                        name: "FK_Cart_Items_Items_ItemID",
+                        column: x => x.ItemID,
+                        principalTable: "Items",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Restrict );
                 });
 
             migrationBuilder.CreateTable(
@@ -415,78 +509,7 @@ namespace EfrashBatek.Migrations
                         column: x => x.ItemID,
                         principalTable: "Items",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "WishLists",
-                columns: table => new
-                {
-                    ID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ItemID = table.Column<int>(type: "int", nullable: false),
-                    CustomerID = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_WishLists", x => x.ID);
-                    table.ForeignKey(
-                        name: "FK_WishLists_Customers_CustomerID",
-                        column: x => x.CustomerID,
-                        principalTable: "Customers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_WishLists_Items_ItemID",
-                        column: x => x.ItemID,
-                        principalTable: "Items",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Cart_Items",
-                columns: table => new
-                {
-                    CartID = table.Column<int>(type: "int", nullable: false),
-                    ItemID = table.Column<int>(type: "int", nullable: false),
-                    Quantity = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Cart_Items", x => new { x.CartID, x.ItemID });
-                    table.ForeignKey(
-                        name: "FK_Cart_Items_Carts_CartID",
-                        column: x => x.CartID,
-                        principalTable: "Carts",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Cart_Items_Items_ItemID",
-                        column: x => x.ItemID,
-                        principalTable: "Items",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Photos",
-                columns: table => new
-                {
-                    ID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Image = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DesignID = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Photos", x => x.ID);
-                    table.ForeignKey(
-                        name: "FK_Photos_Designs_DesignID",
-                        column: x => x.DesignID,
-                        principalTable: "Designs",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Restrict );
                 });
 
             migrationBuilder.CreateTable(
@@ -495,7 +518,7 @@ namespace EfrashBatek.Migrations
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    OrderCode = table.Column<int>(type: "int", nullable: false),
+                    OrderCode = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     TotalCost = table.Column<double>(type: "float", nullable: false),
                     OrderDate = table.Column<DateTime>(type: "Date", nullable: false),
                     PaymentMethod = table.Column<int>(type: "int", nullable: false),
@@ -510,7 +533,7 @@ namespace EfrashBatek.Migrations
                         column: x => x.CustomerID,
                         principalTable: "Customers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Restrict );
                 });
 
             migrationBuilder.CreateTable(
@@ -519,11 +542,6 @@ namespace EfrashBatek.Migrations
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    City = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    AddressName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    BuildingNumber = table.Column<int>(type: "int", nullable: false),
-                    FloorName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ApartmentNumber = table.Column<int>(type: "int", nullable: false),
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     phone = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -531,7 +549,9 @@ namespace EfrashBatek.Migrations
                     SetDefault = table.Column<bool>(type: "bit", nullable: false),
                     Zone = table.Column<short>(type: "smallint", nullable: false),
                     OrderId = table.Column<int>(type: "int", nullable: false),
-                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    FullAddress = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    description = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -547,7 +567,7 @@ namespace EfrashBatek.Migrations
                         column: x => x.OrderId,
                         principalTable: "Orders",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Restrict );
                 });
 
             migrationBuilder.CreateTable(
@@ -568,7 +588,7 @@ namespace EfrashBatek.Migrations
                         column: x => x.OrderItemID,
                         principalTable: "Customers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Restrict );
                 });
 
             migrationBuilder.CreateTable(
@@ -593,19 +613,19 @@ namespace EfrashBatek.Migrations
                         column: x => x.ItemID,
                         principalTable: "Items",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Restrict );
                     table.ForeignKey(
                         name: "FK_Order_Items_Orders_OrderID",
                         column: x => x.OrderID,
                         principalTable: "Orders",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Restrict );
                     table.ForeignKey(
                         name: "FK_Order_Items_Shops_ShopID",
                         column: x => x.ShopID,
                         principalTable: "Shops",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Restrict );
                 });
 
             migrationBuilder.CreateTable(
@@ -626,7 +646,7 @@ namespace EfrashBatek.Migrations
                         column: x => x.Order_ItemID,
                         principalTable: "Order_Items",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Restrict );
                 });
 
             migrationBuilder.CreateIndex(
@@ -637,7 +657,9 @@ namespace EfrashBatek.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Addresses_UserId",
                 table: "Addresses",
-                column: "UserId");
+                column: "UserId",
+                unique: true,
+                filter: "[UserId] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Admin_UserId",
@@ -739,6 +761,11 @@ namespace EfrashBatek.Migrations
                 column: "ShopID");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Items_WishListID",
+                table: "Items",
+                column: "WishListID");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Order_Items_ItemID",
                 table: "Order_Items",
                 column: "ItemID");
@@ -804,18 +831,13 @@ namespace EfrashBatek.Migrations
                 column: "CustomerID",
                 unique: true);
 
-            migrationBuilder.CreateIndex(
-                name: "IX_WishLists_ItemID",
-                table: "WishLists",
-                column: "ItemID");
-
             migrationBuilder.AddForeignKey(
                 name: "FK_Orders_Addresses_AddressID",
                 table: "Orders",
                 column: "AddressID",
                 principalTable: "Addresses",
                 principalColumn: "ID",
-                onDelete: ReferentialAction.Restrict);
+                onDelete: ReferentialAction.Restrict );
 
             migrationBuilder.AddForeignKey(
                 name: "FK_feedbacks_Order_Items_Order_ItemID",
@@ -831,7 +853,7 @@ namespace EfrashBatek.Migrations
                 column: "Warrantly_RequestID",
                 principalTable: "Warrantl_Requests",
                 principalColumn: "ID",
-                onDelete: ReferentialAction.Restrict);
+                onDelete: ReferentialAction.Restrict );
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -882,6 +904,9 @@ namespace EfrashBatek.Migrations
                 name: "Cart_Items");
 
             migrationBuilder.DropTable(
+                name: "Contact_Us");
+
+            migrationBuilder.DropTable(
                 name: "Customs");
 
             migrationBuilder.DropTable(
@@ -895,9 +920,6 @@ namespace EfrashBatek.Migrations
 
             migrationBuilder.DropTable(
                 name: "Videos");
-
-            migrationBuilder.DropTable(
-                name: "WishLists");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
@@ -921,9 +943,6 @@ namespace EfrashBatek.Migrations
                 name: "Addresses");
 
             migrationBuilder.DropTable(
-                name: "Customers");
-
-            migrationBuilder.DropTable(
                 name: "Items");
 
             migrationBuilder.DropTable(
@@ -931,6 +950,12 @@ namespace EfrashBatek.Migrations
 
             migrationBuilder.DropTable(
                 name: "Products");
+
+            migrationBuilder.DropTable(
+                name: "WishLists");
+
+            migrationBuilder.DropTable(
+                name: "Customers");
 
             migrationBuilder.DropTable(
                 name: "Order_Items");

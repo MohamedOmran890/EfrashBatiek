@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using System.Threading;
 using System.Threading.Tasks;
 using SignInResult = Microsoft.AspNetCore.Identity.SignInResult;
 
@@ -25,13 +26,13 @@ namespace EfrashBatek.Controllers
         }
 
         [HttpGet]
-        public IActionResult Register()
+        public IActionResult SignUp()
         {
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Register(RegisterViewModel model)
+        public async Task<IActionResult> SignUp(RegisterViewModel model)
         {
             if (!ModelState.IsValid)
             {
@@ -56,7 +57,7 @@ namespace EfrashBatek.Controllers
             if (result.Succeeded)
             {
                 // Add user to default role
-              //  await _userManager.AddToRoleAsync(user, "User");
+                //  await _userManager.AddToRoleAsync(user, "User");
 
                 // Redirect the user to the login page
                 return RedirectToAction("Login");
@@ -82,28 +83,27 @@ namespace EfrashBatek.Controllers
         public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = "~/Home/TrendingProducts")
         {
             ViewData["ReturnUrl"] = returnUrl;
-
+           
             if (ModelState.IsValid)
             {
-            User user=await _userManager.FindByNameAsync(model.UserName);
+                User user = await _userManager.FindByNameAsync(model.UserName);
                 if (user != null)
                 {//ispersistanc to detct user is session or cookies
-                    SignInResult result = await _signInManager.PasswordSignInAsync(user.UserName,model.Password,isPersistent:model.isPersistent,false);
+                    SignInResult result = await _signInManager.PasswordSignInAsync(user.UserName, model.Password, isPersistent: model.isPersistent, false);
 
                     if (result.Succeeded)
                     {
-                        HttpContext.Session.SetString("Id",user.Id);
-                        return RedirectToLocal (returnUrl);
+                        HttpContext.Session.SetString("Id", user.Id);
+                        return RedirectToLocal(returnUrl);
                     }
-                else
-                    ModelState.AddModelError("", "Invalid Email Or Password.");
-    
-                }
+                    else
+						ModelState.AddModelError("", "Invalid Email Or Password.");
+				}
                 else
                     ModelState.AddModelError("", "Invalid Email Or Password.");
                 return View(model);
             }
-
+       
             return View(model);
         }
 
@@ -140,7 +140,7 @@ namespace EfrashBatek.Controllers
                 }
 
             }
-                return View(model);
+            return View(model);
 
         }
 

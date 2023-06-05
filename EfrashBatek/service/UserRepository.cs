@@ -19,17 +19,12 @@ namespace EfrashBatek.service
         public int Update(string id, User user)
         {
             var ans = context.Users.FirstOrDefault(x => x.Id == id);
+
             ans.FirstName = user.FirstName;
             ans.LastName = user.LastName;
-            ans.Email = user.Email;
-            ans.BirthDate = user.BirthDate;
+            ans.Email = user.Email; 
             ans.PhoneNumber = user.PhoneNumber;
-            ans.Address = user.Address;
-            ans.age = user.age;
-            ans.Gender = user.Gender;
-            ans.UserName = user.UserName;
-            ans.Videos = user.Videos;
-            ans.UserType = user.UserType;
+            
             context.Users.Update(ans);
             int num = context.SaveChanges();
             return num;
