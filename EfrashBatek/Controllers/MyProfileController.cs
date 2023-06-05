@@ -6,44 +6,87 @@ using System;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using System.Collections.Generic;
+using EfrashBatek.ViewModel;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Builder;
+using System.Security.Claims;
 
 namespace EfrashBatek.Controllers
 {
     public class MyProfileController : Controller
     {
         private readonly Context _context;
-        ICustomerRepository User;
-        public MyProfileController(Context context, ICustomerRepository User)
+        IUserRepository User;
+        private readonly IHttpContextAccessor contextAccessor;
+
+        public UserManager<User> UserManager { get; }
+
+        public MyProfileController(Context context, IUserRepository User , UserManager<User>_userManager , IHttpContextAccessor contextAccessor)
         {
             _context = context;
             this.User = User;
-
+            UserManager = _userManager;
+            this.contextAccessor = contextAccessor;
         }
 
 
         [HttpGet]
-        public IActionResult UpdateProfile(int CustomerID)
+        public IActionResult UpdateProfile()
         {
-            //Customer obj = User.GetById(id);
-            User user = new User { Id = "11111", FirstName = "alyaa", LastName = "elhawary", Email = "alyaamamoon@gmail.com", PhoneNumber = "01111111" };
-            Customer customer = new Customer { Id = 1, User = user };
-            return View(customer);
+            var HaveSession = HttpContext.Session.GetString("Id");
+            //     _httpContextAccessor.HttpContext?.User.FindFirstValue(ClaimTypes.Name));
+            //  var userEmail =  User.FindFirstValue(ClaimTypes.Email)
+
+            var userID =   contextAccessor.HttpContext.User?.FindFirstValue(ClaimTypes.NameIdentifier);
+            var username = contextAccessor.HttpContext.User?.FindFirstValue(ClaimTypes.Name);
+            var user =  UserManager.FindByNameAsync(username).Result;
+
+            UserCustomerModel userCustomerModel = new UserCustomerModel();
+            if (user != null)
+            {
+                userCustomerModel.PhoneNumber = user.PhoneNumber;
+                userCustomerModel.LastName = user.LastName;
+                userCustomerModel.FirstName = user.FirstName;
+                userCustomerModel.Email = user.Email;
+                userCustomerModel.id = userID;
+            }
+           
+
+			if (HaveSession == null) {
+                return RedirectToAction("Login", "Account");
+                
+            }
+            else
+            {
+                return View(userCustomerModel) ;
+
+            }
+
+
+
         }
 
         [HttpPost]
 
-        public IActionResult SaveChangesProfile([FromRoute] int id, Customer obj)
+        public IActionResult SaveChangesProfile( UserCustomerModel New)
         {
+            User CustomerUser =  new User();    
+            CustomerUser.FirstName = New.FirstName;    
+            CustomerUser.LastName = New.LastName;
+            CustomerUser.Email = New.Email;   
+            CustomerUser.PhoneNumber = New.PhoneNumber;    
+          
+
 
             if (ModelState.IsValid)
             {
 
 
-                User.Edit(obj, id);
+                User.Update(New.id, CustomerUser);
 
 
             }
-            return RedirectToAction("UpdateProfile", id); // redirect to action or view ?? 
+            return RedirectToAction("UpdateProfile"); // redirect to action or view ?? 
         }
         public IActionResult UpdateAddress(int id)
         {
@@ -57,19 +100,19 @@ namespace EfrashBatek.Controllers
 
             return View(customer);
         }
-        public IActionResult SaveChangesAddress([FromRoute] int id, Customer obj)
-        {
-            // update service customer doesn't found and access 
+        //public IActionResult SaveChangesAddress([FromRoute] int id, Customer obj)
+        //{
+        //    // update service customer doesn't found and access 
 
-            if (ModelState.IsValid)
-            {
+        //    if (ModelState.IsValid)
+        //    {
 
-                User.Edit(obj, id);
+        //        User.U(obj, id);
 
 
-            }
-            return RedirectToAction("UpdateAddress", id); // redirect to action or view 
-        }
+        //    }
+        //    return RedirectToAction("UpdateAddress", id); // redirect to action or view 
+        //}
         public IActionResult ViewOrders(int id)
         {
             //ICollection<Order> orders = User.GetOrders(id); // expection error 

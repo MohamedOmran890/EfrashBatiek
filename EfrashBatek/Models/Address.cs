@@ -28,11 +28,11 @@ namespace EfrashBatek.Models
         public bool SetDefault { get; set; }
         [Required]
         public Zone Zone { get; set; }
-        [ForeignKey("Order")]
-        public int OrderId { get; set; }
+    
+
         [Required]
         public string FullAddress { get; set; }
-        public virtual Order Order { get; set; }
+       
         [ForeignKey("User")]
         public string UserId {get;set;}
         public virtual User User { get; set; }

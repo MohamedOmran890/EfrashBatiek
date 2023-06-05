@@ -24,7 +24,7 @@ namespace EfrashBatek.service
             ans.ShopID = order_item.ShopID;
             ans.OrderID = order_item.OrderID;
             ans.OrderState = order_item.OrderState;
-            ans.Warrantly_RequestID = order_item.Warrantly_RequestID;
+        
             context.Order_Items.Update(ans);
             int num = context.SaveChanges();
             return num;
