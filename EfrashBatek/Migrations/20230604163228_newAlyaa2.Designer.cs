@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EfrashBatek.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20230525022705_Finish22")]
-    partial class Finish22
+    [Migration("20230604163228_newAlyaa2")]
+    partial class newAlyaa2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -28,34 +28,17 @@ namespace EfrashBatek.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("AddressName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("ApartmentNumber")
-                        .HasColumnType("int");
-
-                    b.Property<int>("BuildingNumber")
-                        .HasColumnType("int");
-
-                    b.Property<string>("City")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("FloorName")
+                    b.Property<string>("FullAddress")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("OrderId")
-                        .HasColumnType("int");
 
                     b.Property<int>("PostalCode")
                         .HasColumnType("int");
@@ -69,15 +52,18 @@ namespace EfrashBatek.Migrations
                     b.Property<short>("Zone")
                         .HasColumnType("smallint");
 
+                    b.Property<string>("description")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("phone")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
 
-                    b.HasIndex("OrderId");
-
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserId")
+                        .IsUnique()
+                        .HasFilter("[UserId] IS NOT NULL");
 
                     b.ToTable("Addresses");
                 });
@@ -149,6 +135,9 @@ namespace EfrashBatek.Migrations
 
                     b.Property<int>("ItemID")
                         .HasColumnType("int");
+
+                    b.Property<string>("ItemName")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
@@ -327,12 +316,18 @@ namespace EfrashBatek.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Image2")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("Price")
                         .HasColumnType("float");
+
+                    b.Property<int>("PriceAfterSale")
+                        .HasColumnType("int");
 
                     b.Property<int>("ProductID")
                         .HasColumnType("int");
@@ -345,6 +340,9 @@ namespace EfrashBatek.Migrations
 
                     b.Property<int?>("WishListID")
                         .HasColumnType("int");
+
+                    b.Property<string>("discount")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
 
@@ -372,8 +370,8 @@ namespace EfrashBatek.Migrations
                     b.Property<int>("CustomerID")
                         .HasColumnType("int");
 
-                    b.Property<int>("OrderCode")
-                        .HasColumnType("int");
+                    b.Property<string>("OrderCode")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("Date");
@@ -418,9 +416,6 @@ namespace EfrashBatek.Migrations
                     b.Property<int>("ShopID")
                         .HasColumnType("int");
 
-                    b.Property<int>("Warrantly_RequestID")
-                        .HasColumnType("int");
-
                     b.HasKey("ID");
 
                     b.HasIndex("ItemID");
@@ -428,8 +423,6 @@ namespace EfrashBatek.Migrations
                     b.HasIndex("OrderID");
 
                     b.HasIndex("ShopID");
-
-                    b.HasIndex("Warrantly_RequestID");
 
                     b.ToTable("Order_Items");
                 });
@@ -488,14 +481,17 @@ namespace EfrashBatek.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ShopAddress")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ShopNumber")
-                        .HasColumnType("int");
+                    b.Property<string>("ShopHolder")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("TaxCardImage")
+                    b.Property<string>("TaxCardNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -597,6 +593,9 @@ namespace EfrashBatek.Migrations
 
                     b.Property<int>("age")
                         .HasColumnType("int");
+
+                    b.Property<short>("zone")
+                        .HasColumnType("smallint");
 
                     b.HasKey("Id");
 
@@ -820,17 +819,9 @@ namespace EfrashBatek.Migrations
 
             modelBuilder.Entity("EfrashBatek.Models.Address", b =>
                 {
-                    b.HasOne("EfrashBatek.Models.Order", "Order")
-                        .WithMany()
-                        .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("EfrashBatek.Models.User", "User")
-                        .WithMany("Address")
-                        .HasForeignKey("UserId");
-
-                    b.Navigation("Order");
+                        .WithOne("Address")
+                        .HasForeignKey("EfrashBatek.Models.Address", "UserId");
 
                     b.Navigation("User");
                 });
@@ -1001,19 +992,11 @@ namespace EfrashBatek.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("EfrashBatek.Models.Warrantly_Request", "Warrantly_Request")
-                        .WithMany()
-                        .HasForeignKey("Warrantly_RequestID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("item");
 
                     b.Navigation("Order");
 
                     b.Navigation("Shop");
-
-                    b.Navigation("Warrantly_Request");
                 });
 
             modelBuilder.Entity("EfrashBatek.Models.Photo", b =>

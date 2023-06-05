@@ -3,6 +3,7 @@ using EfrashBatek.Models;
 using EfrashBatek.service;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -44,7 +45,8 @@ namespace EfrashBatek
             }).AddEntityFrameworkStores<Context>().AddDefaultTokenProviders();
             services.AddScoped<UserManager<User>>();
             services.AddScoped<IAddressRepository, AddressRepository>();
-            services.AddScoped<IAdminRepository, AdminRepository>();
+			services.AddScoped<IUserRepository, UserRepository>();
+			services.AddScoped<IAdminRepository, AdminRepository>();
             services.AddScoped<IBrandRepository,BrandRepository>();
             services.AddScoped<ICartRepository, CartRepository>();
             services.AddScoped<ICart_ItemRepository, Cart_ItemRepository>();
@@ -64,6 +66,8 @@ namespace EfrashBatek
             services.AddScoped<IVideoRepository, VideoRepository>();
             services.AddScoped<IWishListRepository, WishListRepository>();
             services.AddScoped<IContact_UsRepository, Contact_UsRepository>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
             /*Session*/
             services.AddSession(options =>
             {
@@ -99,7 +103,7 @@ namespace EfrashBatek
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=TrendingProducts}/{id?}");//When Open Web Open Bydefault Home 
+                    pattern: "{controller=Home}/{action=Trending}/{id?}");//When Open Web Open Bydefault Home 
             });
         }
     }

@@ -1,4 +1,4 @@
-﻿using EfrashBatek.Migrations;
+﻿
 using EfrashBatek.Models;
 using EfrashBatek.service;
 using Microsoft.AspNetCore.Mvc;
