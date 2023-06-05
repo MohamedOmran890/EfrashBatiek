@@ -46,15 +46,8 @@
             <li><a asp-controller="Home" asp-action="TrendingProducts">Trends</a></li>
             <li><a asp-controller="" asp-action="">Custom order</a></li>
             <li><a asp-controller="" asp-action="">Designs</a></li>
-            @if(!User.Identity.IsAuthenticated)
-            {
-                <li><a asp-controller="Account" asp-action="Register">Register</a></li>
-                <li><a asp-controller="Account" asp-action="Login">Sign In</a></li>
-            }
-            else
-            {
-                <li><a asp-controller="Account" asp-action="Logout">Log out</a></li>
-            }
+          
+          
 
         </ul>
 

@@ -1,0 +1,14 @@
+.row img {
+    width: 75px;
+    height: 85px;
+}
+
+.aleite {
+    color: white;
+    font-weight: 1000;
+    background-color: red;
+    border-radius: 20px;
+    width: 150px;
+    height: 25px;
+    text-align: center;
+}

@@ -27,9 +27,7 @@ namespace EfrashBatek.Models
         [ForeignKey("Shop")]
         public int ShopID { get; set; }
         public virtual  Shop Shop { get; set; }
-        [ForeignKey("Warrantly_Request")]
-        public int Warrantly_RequestID { get; set; }
-        public virtual Warrantly_Request Warrantly_Request { get; set; }
+      
         [ForeignKey("item")]
         public int ItemID { get; set; }
         public virtual Item item { get; set; }
