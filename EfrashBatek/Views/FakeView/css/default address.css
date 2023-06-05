@@ -20,11 +20,6 @@ body {
   margin: 2%;
 }
 
-.card {
-  height: auto;
-  width: 45%;
-}
-
 address {
   margin: 1% 0 0 3%;
 }
@@ -67,10 +62,31 @@ ul.icons {
   color: #cbaab1;
   transform: scale(1.1);
 }
+/**/
+.addresses {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
 
+.address-row {
+  width: 100%;
+  margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.addresss {
+  width: 48%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 1%;
+}
 /* continue button*/
 .btnRegister {
-  float: left;
+  float: right;
   border: none;
   border-radius: 1.5rem;
   padding: 2%;
