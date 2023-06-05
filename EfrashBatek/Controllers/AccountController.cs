@@ -1,8 +1,12 @@
+using Castle.MicroKernel.Registration;
 using EfrashBatek.Models;
 using EfrashBatek.ViewModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using System.Diagnostics;
+using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using SignInResult = Microsoft.AspNetCore.Identity.SignInResult;
 
@@ -110,6 +114,98 @@ namespace EfrashBatek.Controllers
             await _signInManager.SignOutAsync();
             return RedirectToAction("Login", "Account");
         }
+        [HttpGet]
+        public IActionResult ChangePassword()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> ChangePassword(ChangePasswordVM model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.GetUserAsync(User);
+                if (user == null)
+                {
+                    return RedirectToAction("Login", "Account");
+                }
+                var result = await _userManager.ChangePasswordAsync(user, model.CurrentPassword, model.ConfirmPassword);
+                if (result.Succeeded)
+                {
+                    await _signInManager.RefreshSignInAsync(user);
+                    return RedirectToAction("Login", "Account");
+
+                }
+                foreach (var er in result.Errors)
+                {
+                    ModelState.AddModelError("", er.Description);
+                }
+
+            }
+                return View(model);
+
+        }
+        public IActionResult ForgetPassword()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> ForgetPassword(ForgetPasswordVM model)
+        {
+            if(ModelState.IsValid)
+            {
+                var user=await _userManager.FindByEmailAsync(model.Email);
+                var conf=await _userManager.IsEmailConfirmedAsync(user);
+                if(user == null||!conf)
+                {
+                    ModelState.AddModelError("", "The Email Not Found");
+                    return View();
+                }
+                var Token=await _userManager.GeneratePasswordResetTokenAsync(user);
+                //var callback = Url.ResetPasswordCallbackLink(user.Id, code, Request.Scheme);
+                //await _emailSender.SendEmailAsync(model.Email, "Reset Password",
+                //    $"Please reset your password by clicking here: <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>link</a>");
+                ////model.Result = "A password reset link has been sent to your email.";
+                //var callbackUrl = Url.ResetPasswordCallbackLink(user.Id, code, Request.Scheme);
+                //await _emailSender.SendEmailAsync(model.Email, "Reset Password",
+                //         $"Please reset your password by clicking here: <a href='{callbackUrl}'>link</a>");
+                return RedirectToAction("ResetPassword",model.Email,Token);
+            }
+            return View(model);
+        }
+        public IActionResult ResetPassword(string Email,string token)
+        {
+            ResetPasswordVM model = new ResetPasswordVM();
+            model.Email = Email;
+            model.Token = token;
+            return View(model);
+        }
+        [HttpPost]
+        public async Task<IActionResult> ResetPassword(ResetPasswordVM model)
+        {
+            if(ModelState.IsValid)
+            {
+                var user = await _userManager.FindByEmailAsync(model.Email);
+                if(user==null)
+                {
+                    ModelState.AddModelError("", "Email Not Found ^^");
+                    return View(model);
+                }
+                var result = await _userManager.ResetPasswordAsync(user, model.Token,model.NewPassword);
+              if(result.Succeeded)
+                {
+                    return RedirectToAction("TrendingProducts", "Home");
+                }
+              else
+                    foreach(var error in result.Errors)
+                    {
+                        ModelState.AddModelError("", error.Description);
+                    }
+                return View(model);
+            }
+            return View(model);
+        }
+
 
         private IActionResult RedirectToLocal(string returnUrl)
         {
