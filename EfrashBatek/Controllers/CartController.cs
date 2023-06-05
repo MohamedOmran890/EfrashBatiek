@@ -35,12 +35,15 @@ namespace EfrashBatek.Controllers
             else
             { 
             Item item = _itemRepository.GetById(Id);
+                if(item==null)
+                {
+                    return Content("The Product Not Found");
+                }
                 Cart_Item itm = new Cart_Item
                 {
                     ItemID = item.ID,
                     Quantity = 1,
                     ItemName= item.Name,
-
                 };
                 items.Add(itm);
                 HttpContext.Session.Set("cart", items); 
