@@ -31,13 +31,13 @@ namespace EfrashBatek
         //context.Database.EnsureCreated();
           
         var Product = context.Products.FirstOrDefault(x=>x.ID==1);
-            var customer = context.Customers.FirstOrDefault(x => x.Id == 1);
-            if(customer == null)
-            {
+            //var customer = context.Customers.FirstOrDefault(x => x.Id);
+            //if(customer == null)
+            //{
 
-                User user = new User { Id = "11111", FirstName = "alyaa", LastName = "elhawary", Email = "alyaamamoon@gmail.com", PhoneNumber = "01111111" };
-                context.Customers.Add(new Customer { Id = 1, User = user});
-            }
+            //    User user = new User { Id = "11111", FirstName = "alyaa", LastName = "elhawary", Email = "alyaamamoon@gmail.com", PhoneNumber = "01111111" };
+            //    context.Customers.Add(new Customer { Id = 1, User = user});
+            //}
         if(Product==null)
         {
            // context.Products.Add(new Product { ID=1,ProductName= (ProductName)1, Description="Ikea is Very good " });
