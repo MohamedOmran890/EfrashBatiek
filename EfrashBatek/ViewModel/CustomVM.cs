@@ -1,10 +1,11 @@
-﻿using Microsoft.AspNetCore.Http;
-using System.ComponentModel.DataAnnotations;
+﻿using EfrashBatek.Models;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Http;
 
-namespace EfrashBatek.Models
+namespace EfrashBatek.ViewModel
 {
-    public class Custom
+    public class CustomVM
     {
         public int ID { get; set; }
         [Required]
@@ -14,11 +15,11 @@ namespace EfrashBatek.Models
         public string Description { get; set; }
         [Required]
         public Zone Zone { get; set; }
-        [Required]
-        public string Image { get; set; }
+  
         [ForeignKey("Customer")]
         public int CustomerID { get; set; }
         public virtual Customer Customer { get; set; }
-        //public IFormFile FileName { get; set; }
+        [Required]
+        public IFormFile Image { get; set; }
     }
 }
