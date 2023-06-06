@@ -64,13 +64,19 @@ ul.icons {
 }
 /**/
 .addresses {
-  display: flex;
+ /* display: flex;*/
   flex-wrap: wrap;
   justify-content: space-between;
+  background-color: blue;
 }
 
+.addresses p{
+    margin-top: -4%;
+    margin-left: 10%; 
+}
 .address-row {
   width: 100%;
+  /* background-color: #8B0000; */
   margin-bottom: 20px;
   display: flex;
   flex-wrap: wrap;
@@ -78,11 +84,49 @@ ul.icons {
 }
 
 .addresss {
+  background-color: #fbfbfb ;
   width: 48%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
   margin: 1%;
+}
+.radio-pair {
+  background-color: #8B0000;
+  display: inline-block;
+   
+}
+
+/* .radio-pair input[type="radio"] {
+  margin-left: 10px;
+  background-color: #cbaab1;
+  
+} */
+
+/* my work is here-------------------------------------------- */
+.bxs-edit{
+  display: flex;
+  justify-content: space-between;
+  /* align-items: flex-start; */
+  margin-bottom: 5px;
+  margin-left: 380px;
+  background-color: aquamarine;
+  display: inline-block;
+
+}
+/* This is my default address*/
+.payment-default-address {
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  font-size: 13px;
+}
+.align-items-center {
+  -ms-flex-align: center!important;
+  align-items: center!important;
+}
+.d-flex {
+  display: -ms-flexbox!important;
+  display: flex!important;
 }
 /* continue button*/
 .btnRegister {
@@ -90,7 +134,7 @@ ul.icons {
   border: none;
   border-radius: 1.5rem;
   padding: 2%;
-  background: #b4b4b4;
+  background: #e2dfdf;
   color: #fff;
   font-weight: 600;
   width: 30%;
@@ -110,6 +154,7 @@ ul.icons {
   border-radius: 30px;
   height: auto;
   background-color: #fff;
+
   box-shadow: 0 0 1em rgba(0, 0, 0, 0.0625);
 }
 
@@ -117,7 +162,7 @@ ul.icons {
   margin-bottom: 1.5rem;
 }
 
-input {
+.address input {
   padding: 4px 28px;
   border-radius: 10px;
   margin: 5px auto;
@@ -285,4 +330,20 @@ aside {
   .navmenu.open {
     right: 0;
   }
+}
+
+.tsts{
+    margin: 0px;
+    padding: -2px;
+
+}
+.run{
+text-align: left;
+}
+.mod{
+  padding: 0px;
+  margin: 0px;
+  margin-left: 20px;
+  margin-bottom: 10px;
+  /* background-color: #8B0000; */
 }
