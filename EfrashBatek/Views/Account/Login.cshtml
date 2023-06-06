@@ -1,41 +1,46 @@
-﻿@model EfrashBatek.ViewModel.LoginViewModel
+﻿
 
 @{
+    Layout = "~/Views/Account/LayoutAccount.cshtml";
+ }
+@model EfrashBatek.ViewModel.LoginViewModel
+
+@{
+
     ViewData["Title"] = "Login";
 }
+<div class="login form">
+    <header>Login</header>
+    <form asp-action="Login" asp-controller="Account">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <input asp-for="UserName" type="text" placeholder="Enter your username">
+       
+        <span asp-validation-for="UserName" ></span>
 
-<h1>Login</h1>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Login" asp-controller="Account">
-            <div asp-validation-summary="All" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="UserName" class="control-label"></label>
-                <input asp-for="UserName" class="form-control" />
-                <span asp-validation-for="UserName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="isPersistent" /> Remember Me
-                </label>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="SignIn" class="btn btn-primary" />
-            </div>
-        </form>
+
+
+        <input asp-for="Password" type="password" placeholder="Enter your password">
+        <span asp-validation-for="Password" ></span>
+
+        <div class="form-group form-check">
+            <label class="form-check-label">
+                <input asp-for="isPersistent" /> Remember Me
+            </label>
+        </div>
+        <a asp-action="ForgetPassword" >Forgot password?</a>
+        <input type="submit" value="Login" class="button" />
+    </form>
+    <div class="signup">
+        <span class="signup">
+            Don't have an account?
+
+            <a class="nav-link text-dark" asp-controller="Account" asp-action="SignUp">
+                <label >SignUp</label>
+            </a>
+
+             
+        </span>
     </div>
 </div>
 
-<div>
-    <a asp-action="Register">Register</a>
-</div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+ 

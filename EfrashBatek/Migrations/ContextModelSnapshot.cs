@@ -38,9 +38,6 @@ namespace EfrashBatek.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("OrderId")
-                        .HasColumnType("int");
-
                     b.Property<int>("PostalCode")
                         .HasColumnType("int");
 
@@ -61,8 +58,6 @@ namespace EfrashBatek.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
-
-                    b.HasIndex("OrderId");
 
                     b.HasIndex("UserId")
                         .IsUnique()
@@ -419,9 +414,6 @@ namespace EfrashBatek.Migrations
                     b.Property<int>("ShopID")
                         .HasColumnType("int");
 
-                    b.Property<int>("Warrantly_RequestID")
-                        .HasColumnType("int");
-
                     b.HasKey("ID");
 
                     b.HasIndex("ItemID");
@@ -429,8 +421,6 @@ namespace EfrashBatek.Migrations
                     b.HasIndex("OrderID");
 
                     b.HasIndex("ShopID");
-
-                    b.HasIndex("Warrantly_RequestID");
 
                     b.ToTable("Order_Items");
                 });
@@ -827,17 +817,9 @@ namespace EfrashBatek.Migrations
 
             modelBuilder.Entity("EfrashBatek.Models.Address", b =>
                 {
-                    b.HasOne("EfrashBatek.Models.Order", "Order")
-                        .WithMany()
-                        .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("EfrashBatek.Models.User", "User")
                         .WithOne("Address")
                         .HasForeignKey("EfrashBatek.Models.Address", "UserId");
-
-                    b.Navigation("Order");
 
                     b.Navigation("User");
                 });
@@ -1008,19 +990,11 @@ namespace EfrashBatek.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("EfrashBatek.Models.Warrantly_Request", "Warrantly_Request")
-                        .WithMany()
-                        .HasForeignKey("Warrantly_RequestID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("item");
 
                     b.Navigation("Order");
 
                     b.Navigation("Shop");
-
-                    b.Navigation("Warrantly_Request");
                 });
 
             modelBuilder.Entity("EfrashBatek.Models.Photo", b =>

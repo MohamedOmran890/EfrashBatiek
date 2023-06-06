@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using System.Threading;
 using System.Threading.Tasks;
 using SignInResult = Microsoft.AspNetCore.Identity.SignInResult;
 
@@ -25,13 +26,13 @@ namespace EfrashBatek.Controllers
         }
 
         [HttpGet]
-        public IActionResult Register()
+        public IActionResult SignUp()
         {
             return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Register(RegisterViewModel model)
+        public async Task<IActionResult> SignUp(RegisterViewModel model)
         {
             if (!ModelState.IsValid)
             {
@@ -56,7 +57,7 @@ namespace EfrashBatek.Controllers
             if (result.Succeeded)
             {
                 // Add user to default role
-              //  await _userManager.AddToRoleAsync(user, "User");
+                //  await _userManager.AddToRoleAsync(user, "User");
 
                 // Redirect the user to the login page
                 return RedirectToAction("Login");
@@ -82,28 +83,27 @@ namespace EfrashBatek.Controllers
         public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = "~/Home/TrendingProducts")
         {
             ViewData["ReturnUrl"] = returnUrl;
-
+           
             if (ModelState.IsValid)
             {
-            User user=await _userManager.FindByNameAsync(model.UserName);
+                User user = await _userManager.FindByNameAsync(model.UserName);
                 if (user != null)
                 {//ispersistanc to detct user is session or cookies
-                    SignInResult result = await _signInManager.PasswordSignInAsync(user.UserName,model.Password,isPersistent:model.isPersistent,false);
+                    SignInResult result = await _signInManager.PasswordSignInAsync(user.UserName, model.Password, isPersistent: model.isPersistent, false);
 
                     if (result.Succeeded)
                     {
-                        HttpContext.Session.SetString("Id",user.Id);
-                        return RedirectToLocal (returnUrl);
+                        HttpContext.Session.SetString("Id", user.Id);
+                        return RedirectToLocal(returnUrl);
                     }
-                else
-                    ModelState.AddModelError("", "Invalid Email Or Password.");
-    
-                }
+                    else
+						ModelState.AddModelError("", "Invalid Email Or Password.");
+				}
                 else
                     ModelState.AddModelError("", "Invalid Email Or Password.");
                 return View(model);
             }
-
+       
             return View(model);
         }
 
@@ -140,9 +140,70 @@ namespace EfrashBatek.Controllers
                 }
 
             }
-                return View(model);
+            return View(model);
 
         }
+        public IActionResult ForgetPassword()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> ForgetPassword(ForgetPasswordVM model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.FindByEmailAsync(model.Email);
+                var conf = await _userManager.IsEmailConfirmedAsync(user);
+                if (user == null || !conf)
+                {
+                    ModelState.AddModelError("", "The Email Not Found");
+                    return View();
+                }
+                var Token = await _userManager.GeneratePasswordResetTokenAsync(user);
+                //var callback = Url.ResetPasswordCallbackLink(user.Id, code, Request.Scheme);
+                //await _emailSender.SendEmailAsync(model.Email, "Reset Password",
+                //    $"Please reset your password by clicking here: <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>link</a>");
+                ////model.Result = "A password reset link has been sent to your email.";
+                //var callbackUrl = Url.ResetPasswordCallbackLink(user.Id, code, Request.Scheme);
+                //await _emailSender.SendEmailAsync(model.Email, "Reset Password",
+                //         $"Please reset your password by clicking here: <a href='{callbackUrl}'>link</a>");
+                return RedirectToAction("ResetPassword", model.Email, Token);
+            }
+            return View(model);
+        }
+        public IActionResult ResetPassword(string Email, string token)
+        {
+            ResetPasswordVM model = new ResetPasswordVM();
+            model.Email = Email;
+            model.Token = token;
+            return View(model);
+        }
+        [HttpPost]
+        public async Task<IActionResult> ResetPassword(ResetPasswordVM model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await _userManager.FindByEmailAsync(model.Email);
+                if (user == null)
+                {
+                    ModelState.AddModelError("", "Email Not Found ^^");
+                    return View(model);
+                }
+                var result = await _userManager.ResetPasswordAsync(user, model.Token, model.NewPassword);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("TrendingProducts", "Home");
+                }
+                else
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError("", error.Description);
+                    }
+                return View(model);
+            }
+            return View(model);
+        }
+
 
 
         private IActionResult RedirectToLocal(string returnUrl)
