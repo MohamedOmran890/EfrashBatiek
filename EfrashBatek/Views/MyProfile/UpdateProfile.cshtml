@@ -8,12 +8,13 @@
 	<h3 class="mb-4">Account Settings</h3>
 	
 	<!--start form -->
-		<form asp-action="SaveChangesProfile" asp-controller="MyProfile">
+		<form method = "post"  asp-action="UpdateProfile" asp-controller="MyProfile" asp-route-id ="@Model.Id" >
+			<input type="hidden" name="test" value="44" />
 		<div class="row">
 			<div class="col-md-6">
 				<div class="form-group">
 					<label asp-for="FirstName"> First Name</label>                     
-					<input asp-for="FirstName" type="text" class="form-control" value=@Model.FirstName>
+					<input name="FirstName" type="text" class="form-control" value="@Model.FirstName">
 				</div>
 			</div>
 			<div class="col-md-6">
@@ -35,19 +36,7 @@
 				</div>
 			</div>
 			<div class="col-md-6">
-				<div class="form-group">
-					<label>Zone</label>
-					<!--enum loop -->
-					<select id="citySelect" class="form-control">
-						
-						@*@foreach (var arg in Enum.GetValues(typeof(zone)))
-						{
-						     Console.WriteLine(arg);
-						}
-						<option value="null">Qena</option>*@
-
-					</select>
-				</div>
+		
 			</div>
 		</div>
 		<div>
