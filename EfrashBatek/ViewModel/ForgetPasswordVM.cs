@@ -4,9 +4,10 @@ namespace EfrashBatek.ViewModel
 {
     public class ForgetPasswordVM
     {
-        public int Id { get; set; }
-        [EmailAddress]
+        [Key]
+        public int ID { get; set; }
         [Required]
+        [EmailAddress]
         public string Email { get; set; }
 
     }
