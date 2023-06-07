@@ -17,9 +17,9 @@ namespace EfrashBatek.service
             context.Addresses.Add(address);
 
         }
-        public int Update(int id, Address address)
+        public int Update(string id, Address address)
         {
-            var obj = context.Addresses.FirstOrDefault(x => x.ID == id);
+            var obj = context.Addresses.FirstOrDefault(x => x.UserId == id);
             obj.UserId = address.UserId;
          
             obj.Zone = address.Zone;
@@ -32,16 +32,16 @@ namespace EfrashBatek.service
             int num = context.SaveChanges();
             return num;
         }
-        public int Delete(int Id)
+        public int Delete(string Id)
         {
-            var ans = context.Addresses.FirstOrDefault(x => x.ID == Id);
+            var ans = context.Addresses.FirstOrDefault(x => x.UserId == Id);
             context.Addresses.Remove(ans);
             int num = context.SaveChanges();
             return num;
         }
-        public Address GetById(int Id)
+        public List<Address> GetAllById(string Id)
         {
-            var ans = context.Addresses.FirstOrDefault(x => x.ID == Id);
+            var ans = context.Addresses.Where(x => x.UserId == Id).ToList();
             return ans;
         }
         public List<Address> GetAll()

@@ -1,98 +1,52 @@
-﻿@model IEnumerable<Address>
+﻿@model Address
 @{
     ViewBag.Title = "Checkout";
     Layout = "CustomerLayout";
 }
 
 <link rel="stylesheet" href="~/assets/libs/twitter-bootstrap-wizard/prettify.css">
-
-<div class="row">
-    <div class="col-lg-8">
-        <div class="card">
-            <div class="card-body">
-                <div id="checkout-nav-pills-wizard" class="twitter-bs-wizard">
-                    <ul class="twitter-bs-wizard-nav">
-                        <li class="nav-item">
-                            <a asp-action="Address" class="nav-link" data-bs-toggle="tab">
-                                <span class="step-number">01</span>
-                                <span class="step-title">Shipping Info</span>
-                            </a>
-                        </li>
-
-                        <li class="nav-item">
-                            <a asp-action="PaymentMethod" class="nav-link" data-bs-toggle="tab">
-                                <span class="step-number">02</span>
-                                <span class="step-title">Payment Info</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a asp-action="Confirmation" class="nav-link" data-bs-toggle="tab">
-                                <span class="step-number">03</span>
-                                <span class="step-title">Confirmation</span>
-                            </a>
-                        </li>
-                    </ul>
-
-
-                    @foreach(var x in Model)
-                    {
-                        <h1>@x.FirstName @x.LastName</h1>
-                        <h1>@x.Zone</h1>
-                        <h1>@x.FullAddress</h1>
-                        <h1>@x.PostalCode</h1>
-                        <h1>@x.phone</h1>
-
-                    }
-                    <form asp-action="SaveAddress">
-
+<form asp-action="SaveAddress">
                                     <div>
 
                                         <div class="row">
                                             <div class="col-lg-4">
                                                 <div class="mb-4">
                                                     <label class="form-label" for="billing-name">First Name</label>
-                                                    <input type="text" class="form-control" id="billing-name" placeholder="Enter First Name">
+                                                    <input asp-for="FirstName" placeholder="Enter First Name">
                                                 </div>
                                             </div>
                                     <div class="row">
                                         <div class="col-lg-4">
                                             <div class="mb-4">
                                                 <label class="form-label" for="billing-name">st Name</label>
-                                                <input type="text" class="form-control" id="billing-name" placeholder="Enter Last Name">
+                                                <input asp-for="LastName" placeholder="Enter Last Name">
                                             </div>
                                         </div>
                                             <div class="col-lg-4">
                                                 <div class="mb-4">
                                                     <label class="form-label" for="billing-phone">Phone</label>
-                                                    <input type="text" class="form-control" id="billing-phone" placeholder="Enter Phone no.">
+                                                    <input asp-for="phone" placeholder="Enter Phone no.">
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div class="mb-4">
                                             <label class="form-label" for="billing-address">Address</label>
-                                            <textarea class="form-control" id="billing-address" rows="3" placeholder="Enter full address"></textarea>
+                                            <textarea asp-for="FullAddress" placeholder="Enter full address"></textarea>
                                         </div>
 
                                         <div class="row">
                                             <div class="col-lg-4">
-                                                <div class="mb-4 mb-lg-0">
-                                                    <label class="form-label">City</label>
-                                                    <select class="form-select" title="City">
-                                                        <option value="0">Select City</option>
-                                                        <option value="QE">Qena</option>
-                                                        <option value="As">Assiut</option>
-                                                       <option value="So">Sohag</option>
-                                                       <option value="Lu">Luxor</option>
-                                                    <option value="As">Aswan</option>
-                                                    </select>
-                                                </div>
+                                        <div class="form-group">
+                                            <label asp-for="Zone" class="control-label"></label>
+                                            <select asp-for="Zone" class="form-control" asp-items="ViewBag.Zone"></select>
+                                        </div>
                                             </div>
 
                                             <div class="col-lg-4">
                                                 <div class="mb-0">
-                                                    <label class="form-label" for="zip-code">Zip / Postal code</label>
-                                                    <input type="text" class="form-control" id="zip-code" placeholder="Enter Postal code">
+                                                    <label class="form-label" for="zip-code">Postal code</label>
+                                                    <input asp-for="PostalCode" placeholder="Enter Postal code">
                                                 </div>
                                             </div>
                                           <div class="form-group">
