@@ -17,7 +17,5 @@ namespace EfrashBatek.ViewModel
         public string ConfirmPassword { get; set; }
 
         public string ConfiremPassword { get; set; }
-        public string Email { get; set; }
-        public string Token { get; set; }
     }
 }
