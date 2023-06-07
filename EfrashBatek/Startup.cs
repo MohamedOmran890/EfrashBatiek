@@ -67,6 +67,7 @@ namespace EfrashBatek
             services.AddScoped<IWishListRepository, WishListRepository>();
             services.AddScoped<IContact_UsRepository, Contact_UsRepository>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped<IIdentityRepository ,IdentityRepository>(); 
 
             /*Session*/
             services.AddSession(options =>
