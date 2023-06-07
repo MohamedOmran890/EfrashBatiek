@@ -38,6 +38,12 @@ namespace EfrashBatek.service
             var ans = context.Customs.FirstOrDefault(x => x.ID == Id);
             return ans;
         }
+
+        public List<Custom> GetByCustomer(string Id)
+        {
+            var ans = context.Customs.Where(x => x.Customer.UserId == Id).ToList();
+            return ans;
+        }
         public List<Custom> GetAll()
         {
             var ans = context.Customs.ToList();
