@@ -20,31 +20,24 @@ namespace EfrashBatek.service
             context.Users.Add(user);
 
         }
-        public User  getbyidentity(string identity) {
+       
+      public User GetbyID(string id)
+        {
 
-            User user =  userManager.FindByIdAsync(identity).Result;
-            return user;    
-        }
-        public int  edit (User user , string id ) {
 
-            // alyaa 
-            var user2 = getbyidentity(id);
-
-            user2.FirstName = user.FirstName;
-            user2.LastName = user.LastName;
-            user2.Email = user.Email;
-            user2.PhoneNumber = user.PhoneNumber;
-
-            context.Users.Update(user2);
-            int num = context.SaveChanges();
-            return num;
-
-        }
-        public int Update(string id, User user)
+			User user = userManager.FindByIdAsync(id ).Result;
+			return user;
+		}
+        public int Update( User user)
         {
             // omran 
-            var ans = context.Users.FirstOrDefault(x => x.Id == id);
-           
+            var ans = GetbyID(user.Id);
+            ans.FirstName = user.FirstName; 
+            ans.LastName = user.LastName;   
+            ans.Address = user.Address;
+            ans.Email = user.Email; 
+            ans.PhoneNumber = user.PhoneNumber; 
+
           
             if(ans != null )
             context.Users.Update(ans);
@@ -58,11 +51,7 @@ namespace EfrashBatek.service
             int num = context.SaveChanges();
             return num;
         }
-        public User GetById(string Id)
-        {
-            var ans = context.Users.FirstOrDefault(x => x.Id == Id);
-            return ans;
-        }
+       
         public List<User> GetAll()
         {
             var ans = context.Users.ToList();
