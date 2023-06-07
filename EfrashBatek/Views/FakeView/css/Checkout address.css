@@ -17,8 +17,9 @@ body {
   font-family: "Roboto", sans-serif;
   overflow-x: hidden;
 }
-a{
+a, a:hover, a:focus, a:active {
   text-decoration: none;
+  color: inherit;
 }
 /* ICONS*/
 .row{

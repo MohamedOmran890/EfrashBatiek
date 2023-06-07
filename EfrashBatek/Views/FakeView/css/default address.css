@@ -20,22 +20,10 @@ body {
   margin: 2%;
 }
 
-a:link {
-  /* set the color of unvisited links */
+a, a:hover, a:focus, a:active {
   text-decoration: none;
-  /* remove the underline */
+  color: inherit;
 }
-
-a:visited {
-  color: #cbaab1;
-  /* set the color of visited links */
-}
-
-a:focus {
-  outline: none;
-  /* remove the outline when the link is clicked */
-}
-
 /*-------------------------------------------------------------------------------- ICOONS------------------------------------------------------------------------------------------------------------------- */
 .x {
   background: #fff;
