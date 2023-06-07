@@ -20,21 +20,28 @@ namespace EfrashBatek.Controllers
         private readonly UserManager<User> _userManager;
         public readonly ICustomRepository _customRepository;
         private readonly IWebHostEnvironment Ih;
+        IIdentityRepository _identityRepository;
         public CustomsController(Context context,UserManager<User> userManager,
-            ICustomRepository customRepository,IWebHostEnvironment webHostEnvironment)
+            ICustomRepository customRepository, IWebHostEnvironment webHostEnvironment, IIdentityRepository identityRepository)
         {
             _context = context;
             _userManager = userManager;
             _customRepository = customRepository;
             Ih = webHostEnvironment;
+            _identityRepository = identityRepository;
         }
 
         // GET: Customs
         public async Task<IActionResult> Index()
         {
-       
-            var context = _context.Customs.Include(c => c.Customer);
-            return View(await context.ToListAsync());
+
+            var userid = _identityRepository.GetUserID();
+            if(userid == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            var data = _customRepository.GetByCustomer(userid);
+            return View(data);
         }
 
         // GET: Customs/Details/5
@@ -59,11 +66,11 @@ namespace EfrashBatek.Controllers
         // GET: Customs/Create
         public async Task<IActionResult> Create()
         {
-            var user = await _userManager.GetUserAsync(User);
-            if (user == null)
-            {
-                return RedirectToAction("Login","Account");
-            }
+            //var user = await _userManager.GetUserAsync(User);
+            //if (user == null)
+            //{
+            //    return RedirectToAction("Login","Account");
+            //}
             var zone= new SelectList(Enum.GetValues(typeof(Zone)));
             ViewData["Zone"] = zone;
             return View();
