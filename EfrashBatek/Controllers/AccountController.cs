@@ -1,8 +1,12 @@
+using Castle.MicroKernel.Registration;
 using EfrashBatek.Models;
 using EfrashBatek.ViewModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using System.Diagnostics;
+using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using System.Net;
 using System.Net.Mail;
@@ -183,7 +187,7 @@ namespace EfrashBatek.Controllers
                 }
 
             }
-            return View(model);
+                return View(model);
 
         }
         public IActionResult ForgetPassword()
@@ -193,16 +197,16 @@ namespace EfrashBatek.Controllers
         [HttpPost]
         public async Task<IActionResult> ForgetPassword(ForgetPasswordVM model)
         {
-            if (ModelState.IsValid)
+            if(ModelState.IsValid)
             {
-                var user = await _userManager.FindByEmailAsync(model.Email);
-                var conf = await _userManager.IsEmailConfirmedAsync(user);
-                if (user == null || !conf)
+                var user=await _userManager.FindByEmailAsync(model.Email);
+                var conf=await _userManager.IsEmailConfirmedAsync(user);
+                if(user == null||!conf)
                 {
                     ModelState.AddModelError("", "The Email Not Found");
                     return View();
                 }
-                var Token = await _userManager.GeneratePasswordResetTokenAsync(user);
+                var Token=await _userManager.GeneratePasswordResetTokenAsync(user);
                 //var callback = Url.ResetPasswordCallbackLink(user.Id, code, Request.Scheme);
                 //await _emailSender.SendEmailAsync(model.Email, "Reset Password",
                 //    $"Please reset your password by clicking here: <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>link</a>");
@@ -210,11 +214,11 @@ namespace EfrashBatek.Controllers
                 //var callbackUrl = Url.ResetPasswordCallbackLink(user.Id, code, Request.Scheme);
                 //await _emailSender.SendEmailAsync(model.Email, "Reset Password",
                 //         $"Please reset your password by clicking here: <a href='{callbackUrl}'>link</a>");
-                return RedirectToAction("ResetPassword", model.Email, Token);
+                return RedirectToAction("ResetPassword",model.Email,Token);
             }
             return View(model);
         }
-        public IActionResult ResetPassword(string Email, string token)
+        public IActionResult ResetPassword(string Email,string token)
         {
             ResetPasswordVM model = new ResetPasswordVM();
             model.Email = Email;
@@ -224,21 +228,21 @@ namespace EfrashBatek.Controllers
         [HttpPost]
         public async Task<IActionResult> ResetPassword(ResetPasswordVM model)
         {
-            if (ModelState.IsValid)
+            if(ModelState.IsValid)
             {
                 var user = await _userManager.FindByEmailAsync(model.Email);
-                if (user == null)
+                if(user==null)
                 {
                     ModelState.AddModelError("", "Email Not Found ^^");
                     return View(model);
                 }
-                var result = await _userManager.ResetPasswordAsync(user, model.Token, model.NewPassword);
-                if (result.Succeeded)
+                var result = await _userManager.ResetPasswordAsync(user, model.Token,model.NewPassword);
+              if(result.Succeeded)
                 {
                     return RedirectToAction("TrendingProducts", "Home");
                 }
-                else
-                    foreach (var error in result.Errors)
+              else
+                    foreach(var error in result.Errors)
                     {
                         ModelState.AddModelError("", error.Description);
                     }
@@ -246,7 +250,6 @@ namespace EfrashBatek.Controllers
             }
             return View(model);
         }
-
 
 
         private IActionResult RedirectToLocal(string returnUrl)
