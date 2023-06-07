@@ -2,7 +2,7 @@
 @{
 	Layout = "LayoutProfile";
 }
-@model Customer
+@model User
 <div class="tab-pane fade show active" id="address" role="tabpanel" aria-labelledby="profile-tab">
 	<div class="tab-content p-4 p-md-5" id="v-pills-tabContent">
 		
@@ -12,41 +12,41 @@
 				<div class="row">
 					<div class="col-md-6">
 						<div class="form-group">
-							<label asp-for="User.Address.FirstName">First Name</label>
-							<input asp-for= "User.Address.FirstName"type="text" class="form-control" value="@Model.User.Address.FirstName">
+							<label asp-for="Address.FirstName">First Name</label>
+							<input asp-for= "Address.FirstName"type="text" class="form-control" value="@Model.Address.FirstName">
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="form-group">
-							<label asp-for="User.Address.LastName">Last Name</label>
-							<input asp-for="User.Address.LastName"type="text" class="form-control" value="@Model.User.Address.LastName">
+							<label asp-for="Address.LastName">Last Name</label>
+							<input asp-for="Address.LastName"type="text" class="form-control" value="@Model.Address.LastName">
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="form-group">
-							<label asp-for="User.Address.phone">Phone</label>
-							<input asp-for="User.Address.phone" type="text" class="form-control" value="@Model.User.Address.phone">
+							<label asp-for="Address.phone">Phone</label>
+							<input asp-for="Address.phone" type="text" class="form-control" value="@Model.Address.phone">
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="form-group">
-							<label asp-for="User.Address.PostalCode">Postal Code</label>
-							<input asp-for ="User.Address.PostalCode" type="text" class="form-control" value="@Model.User.Address.PostalCode">
+							<label asp-for="Address.PostalCode">Postal Code</label>
+							<input asp-for ="Address.PostalCode" type="text" class="form-control" value="@Model.Address.PostalCode">
 						</div>
 					</div>
 					<div class="col-md-6">
 						<div class="form-group">
-							<label asp-for="User.Address.FullAddress">Full Address </label>
-							<input asp-for="User.Address.FullAddress" type="text" class="form-control" value="@Model.User.Address.FullAddress">
+							<label asp-for="Address.FullAddress">Full Address </label>
+							<input asp-for="Address.FullAddress" type="text" class="form-control" value="@Model.Address.FullAddress">
 						</div>
 					</div>
 					<div lass="col-md-6">
-						<label asp-for="User.Address.Zone" class="control-label"></label>
-						<select asp-for="User.Address.Zone" class="form-control" asp-items="ViewBag.Zone"></select>
+						<label asp-for="Address.Zone" class="control-label"></label>
+						<select asp-for="Address.Zone" class="form-control" asp-items="ViewBag.Zone"></select>
 					</div>
 				</div>
-				<label asp-for="User.Address.description">Detailed Address</label>
-				<textarea asp-for="User.Address.description" class="form-control" rows="4">@Model.User.Address.description</textarea>
+				<label asp-for="Address.description">Detailed Address</label>
+				<textarea asp-for="Address.description" class="form-control" rows="4">@Model.Address.description</textarea>
 				<div>
 					<input class="btn btn-primary" value="Save Changes" type="submit" style="
 
