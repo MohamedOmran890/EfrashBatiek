@@ -60,34 +60,36 @@ namespace EfrashBatek.Controllers
            
 
             var result = await _userManager.CreateAsync(user, model.Password);//Created Cookies
+            
 
             if (result.Succeeded)
             {
+                await _userManager.AddToRoleAsync(user, "Customer");
 
                 string token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                var fromAddress = new MailAddress("omran942487@gmail.com", "Mohamed");
-                var toAddress = new MailAddress(user.Email, user.UserName);
-                const string subject = "Confirm your account";
-                string body = $"Please confirm your account by clicking this link: <a href='{Url.Action("ConfirmEmail", "Account", new { userId = user.Id, token }, Request.Scheme)}'>link</a>";
+                //var fromAddress = new MailAddress("omran942487@gmail.com", "Mohamed");
+                //var toAddress = new MailAddress(user.Email, user.UserName);
+                //const string subject = "Confirm your account";
+                //string body = $"Please confirm your account by clicking this link: <a href='{Url.Action("ConfirmEmail", "Account", new { userId = user.Id, token }, Request.Scheme)}'>link</a>";
 
-                var smtpClient = new SmtpClient
-                {
-                    Host = "smtp.gmail.com",
-                    Port = 587,
-                    EnableSsl = true,
-                    Credentials = new NetworkCredential("omran942487@gmail.com", "Mohamed890@#")
-                };
-                //To send Message
-                using (var messages = new MailMessage(fromAddress, toAddress)
-                {
-                    Subject = subject,
-                    Body = body,
-                    IsBodyHtml = true
-                })
-                {
-                    await smtpClient.SendMailAsync(messages);
-                }
-                return View("EmailConfirmation");
+                //var smtpClient = new SmtpClient
+                //{
+                //    Host = "smtp.gmail.com",
+                //    Port = 587,
+                //    EnableSsl = true,
+                //    Credentials = new NetworkCredential("omran942487@gmail.com", "Mohamed890@#")
+                //};
+                ////To send Message
+                //using (var messages = new MailMessage(fromAddress, toAddress)
+                //{
+                //    Subject = subject,
+                //    Body = body,
+                //    IsBodyHtml = true
+                //})
+                //{
+                //    await smtpClient.SendMailAsync(messages);
+                //}
+                //return View("EmailConfirmation");
             }
 
                 foreach (var error in result.Errors)
@@ -98,26 +100,26 @@ namespace EfrashBatek.Controllers
             return View(model);
             /***********/
         }
-        public async Task<IActionResult> ConfirmEmail(string userId, string token)
-        {
-            var user = await _userManager.FindByIdAsync(userId);
+        //public async Task<IActionResult> ConfirmEmail(string userId, string token)
+        //{
+        //    var user = await _userManager.FindByIdAsync(userId);
 
-            if (user == null)
-            {
-                return NotFound();
-            }
+        //    if (user == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            var result = await _userManager.ConfirmEmailAsync(user, token);
+        //    var result = await _userManager.ConfirmEmailAsync(user, token);
 
-            if (result.Succeeded)
-            {
-                return RedirectToAction("Login", "Account");
-            }
-            else
-            {
-                return View("Error");
-            }
-        }
+        //    if (result.Succeeded)
+        //    {
+        //        return RedirectToAction("Login", "Account");
+        //    }
+        //    else
+        //    {
+        //        return View("Error");
+        //    }
+        //}
 
         [HttpGet]
         public IActionResult Login(string returnUrl = "~/Home/TrendingProducts")
