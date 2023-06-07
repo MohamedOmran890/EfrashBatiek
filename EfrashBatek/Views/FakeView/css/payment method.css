@@ -23,18 +23,10 @@ body {
 html {
   box-sizing: border-box;
 }
-a:link {
-  /* set the color of unvisited links */
-   text-decoration: none; /* remove the underline */
- }
- 
- a:visited {
-   color: #cbaab1; /* set the color of visited links */
- }
- 
- a:focus {
-   outline: none; /* remove the outline when the link is clicked */
- }
+a, a:hover, a:focus, a:active {
+  text-decoration: none;
+  color: inherit;
+}
 /*-------------------------------------------------------------------------------- ICOONS------------------------------------------------------------------------------------------------------------------- */
 .x {
   background: #fff;
