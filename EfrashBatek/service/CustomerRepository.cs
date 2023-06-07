@@ -54,6 +54,7 @@ namespace EfrashBatek.service
             var ans = context.Customers.FirstOrDefault(x => x.Id == Id);
             return ans;
         }
+        
         public List<Customer> GetAll()
         {
             var ans = context.Customers.ToList();

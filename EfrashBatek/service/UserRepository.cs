@@ -1,4 +1,5 @@
 ﻿using EfrashBatek.Models;
+using Microsoft.AspNetCore.Identity;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -7,29 +8,38 @@ namespace EfrashBatek.service
     public class UserRepository : IUserRepository
     {
         Context context;
-        public UserRepository(Context context)
+        private readonly UserManager<User> userManager;
+
+        public UserRepository(Context context , UserManager<User> _userManager)
         {
             this.context = context;
+            userManager = _userManager;
         }
         public void Create(User user)
         {
             context.Users.Add(user);
 
         }
-        public int Update(string id, User user)
+       
+      public User GetbyID(string id)
         {
-            var ans = context.Users.FirstOrDefault(x => x.Id == id);
-            ans.FirstName = user.FirstName;
-            ans.LastName = user.LastName;
-            ans.Email = user.Email;
-            ans.BirthDate = user.BirthDate;
-            ans.PhoneNumber = user.PhoneNumber;
+
+
+			User user = userManager.FindByIdAsync(id ).Result;
+			return user;
+		}
+        public int Update( User user)
+        {
+            // omran 
+            var ans = GetbyID(user.Id);
+            ans.FirstName = user.FirstName; 
+            ans.LastName = user.LastName;   
             ans.Address = user.Address;
-            ans.age = user.age;
-            ans.Gender = user.Gender;
-            ans.UserName = user.UserName;
-            ans.Videos = user.Videos;
-            ans.UserType = user.UserType;
+            ans.Email = user.Email; 
+            ans.PhoneNumber = user.PhoneNumber; 
+
+          
+            if(ans != null )
             context.Users.Update(ans);
             int num = context.SaveChanges();
             return num;
@@ -41,11 +51,7 @@ namespace EfrashBatek.service
             int num = context.SaveChanges();
             return num;
         }
-        public User GetById(string Id)
-        {
-            var ans = context.Users.FirstOrDefault(x => x.Id == Id);
-            return ans;
-        }
+       
         public List<User> GetAll()
         {
             var ans = context.Users.ToList();

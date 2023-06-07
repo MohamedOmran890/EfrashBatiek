@@ -46,8 +46,8 @@
                                 <div class="showcase-banner">
 
                                     <!--image-->
-                                    <img src="~/Image/products/@item.Image" alt="Mens Winter Leathers Jackets"
-                                         width="300" class="product-img hover">
+                                    <a asp-action="Index" asp-controller="Item"><img  src="~/Image/products/@item.Image" alt="Mens Winter Leathers Jackets"
+                                  width="300" class="product-img hover"></a>
                                     <!--image-->
                                     <img src="~/Image/products/@item.Image2" alt="MEN Yarn Fleece Full-Zip Jacket"
                                          class="product-img default" width="300">
@@ -91,9 +91,9 @@
                                 </div>
                             </div>
 
+                            <a asp-action="AddToCart" asp-controller="Cart" asp-route-id=@item.ID><i class='bx bx-cart'></i></a>
                         }
 
-                        //<a asp-action="Index" asp-controller="Cart">Add To Cart</a>
                     }
 
                 }

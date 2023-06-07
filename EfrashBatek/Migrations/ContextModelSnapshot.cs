@@ -38,9 +38,6 @@ namespace EfrashBatek.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("OrderId")
-                        .HasColumnType("int");
-
                     b.Property<int>("PostalCode")
                         .HasColumnType("int");
 
@@ -61,8 +58,6 @@ namespace EfrashBatek.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
-
-                    b.HasIndex("OrderId");
 
                     b.HasIndex("UserId")
                         .IsUnique()
@@ -201,6 +196,16 @@ namespace EfrashBatek.Migrations
                     b.Property<string>("Image")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<short>("Zone")
+                        .HasColumnType("smallint");
 
                     b.HasKey("ID");
 
@@ -419,9 +424,6 @@ namespace EfrashBatek.Migrations
                     b.Property<int>("ShopID")
                         .HasColumnType("int");
 
-                    b.Property<int>("Warrantly_RequestID")
-                        .HasColumnType("int");
-
                     b.HasKey("ID");
 
                     b.HasIndex("ItemID");
@@ -429,8 +431,6 @@ namespace EfrashBatek.Migrations
                     b.HasIndex("OrderID");
 
                     b.HasIndex("ShopID");
-
-                    b.HasIndex("Warrantly_RequestID");
 
                     b.ToTable("Order_Items");
                 });
@@ -694,6 +694,48 @@ namespace EfrashBatek.Migrations
                     b.ToTable("WishLists");
                 });
 
+            modelBuilder.Entity("EfrashBatek.ViewModel.ForgetPasswordVM", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ForgetPasswordVM");
+                });
+
+            modelBuilder.Entity("EfrashBatek.ViewModel.ResetPasswordVM", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ConfiremPassword")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("NewPassword")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Token")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("ResetPasswordVM");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -827,17 +869,9 @@ namespace EfrashBatek.Migrations
 
             modelBuilder.Entity("EfrashBatek.Models.Address", b =>
                 {
-                    b.HasOne("EfrashBatek.Models.Order", "Order")
-                        .WithMany()
-                        .HasForeignKey("OrderId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("EfrashBatek.Models.User", "User")
                         .WithOne("Address")
                         .HasForeignKey("EfrashBatek.Models.Address", "UserId");
-
-                    b.Navigation("Order");
 
                     b.Navigation("User");
                 });
@@ -1008,19 +1042,11 @@ namespace EfrashBatek.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("EfrashBatek.Models.Warrantly_Request", "Warrantly_Request")
-                        .WithMany()
-                        .HasForeignKey("Warrantly_RequestID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("item");
 
                     b.Navigation("Order");
 
                     b.Navigation("Shop");
-
-                    b.Navigation("Warrantly_Request");
                 });
 
             modelBuilder.Entity("EfrashBatek.Models.Photo", b =>

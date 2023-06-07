@@ -7,6 +7,7 @@
 * {
   box-sizing: inherit;
 }
+
 body {
   background-color: #fbfbfb;
   display: grid;
@@ -22,26 +23,29 @@ body {
 html {
   box-sizing: border-box;
 }
-a{
+a, a:hover, a:focus, a:active {
   text-decoration: none;
+  color: inherit;
 }
-
+/*-------------------------------------------------------------------------------- ICOONS------------------------------------------------------------------------------------------------------------------- */
 .x {
   background: #fff;
   block-size: 100px;
   box-shadow: 0 0 1em rgba(0, 0, 0, 0.0625);
   inline-size: 800px;
-  margin-top: 8% ;
-  margin-right: 28%;
+  margin-top: 8%;
+  margin-right: 22%;
   margin-bottom: 1%;
-  width: 805px;
+  width: 56%;
   border-radius: 2em;
+  
 }
 
 ul.icons {
+  margin-inline-end: 2%;
+    margin-top: 3%;
   display: flex;
   justify-content: space-between;
-  margin: auto;
 }
 
 .icon {
@@ -55,17 +59,26 @@ ul.icons {
   fill: currentColor;
   inline-size: 1em;
   vertical-align: middle;
-  
+
 }
-.word{
-  color:#8a8b8b;
+
+.word {
+  color: #8a8b8b;
   transition: all .42s ease;
 }
-.word:hover{
+
+.word h2
+{
+  margin-left: -16%;
+  font-size: medium;
+}
+
+.word:hover i,
+.word:hover h2{
   color: #cbaab1;
   transform: scale(1.1);
 }
-
+/*  */
 li {
   list-style: none;
 }
@@ -80,6 +93,7 @@ button {
   cursor: pointer;
   font: inherit;
 }
+
 .button:hover {
   background-color: #cbaab1;
   /* Change the background color to red when the button is hovered over */
@@ -148,6 +162,7 @@ tfoot {
 .button--full {
   inline-size: 100%;
 }
+
 /*****************************************************payment form**************************************************/
 .paymentform {
   background-color: #fff;
@@ -193,18 +208,19 @@ tfoot {
   gap: 1em;
 }
 
-/*SUMMARY*/
+/*----------------------------------------------------------------------------------------------------SUMMARY---------------------------------------------------------------------------------------------------------------*/
 aside {
   position: relative;
-  width: 30%;
+  width: 100%;
 }
+
 .summary {
   margin: 21px 40px 0;
   background-color: #eee;
   border: 1px solid #aaa;
   padding: 1rem;
   flex: 1;
-  width: 290px;
+  /*width: 290px;*/
   border-radius: 30px;
   box-shadow: 0 0 1em rgba(0, 0, 0, 0.0625);
   -webkit-box-sizing: border-box;
@@ -297,32 +313,48 @@ aside {
   height: 34px;
   width: 100%;
 }
-/*****************************************************************************************RESPONSIVE*********************************************************************************************************/
-@media(max-width:890px) {
-  header {
-    padding: 20px 3%;
-    transition: .4s;
-  }
+
+/*******************************************************************************scroll***************************************************/
+/* width */
+::-webkit-scrollbar {
+  width: 15px;
 }
 
-@media(max-width:630px) {
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #cbaab1;
+  border-radius: 10px;
+
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #94777d;
+  transition: background-color 0.8s ease;
+}
+
+/*****************************************************************************************RESPONSIVE*********************************************************************************************************/
+
+@media screen and (max-width:400px) {
+  body {
+    background-color: #fbfbfb;
+
+  }
+}
+@media screen and (min-width:401) and (max-width:630px) {
   .main-text h1 {
     font-size: 50px;
     transition: .4s;
   }
-
-  .main-text p {
-    font-size: 18px;
-    transition: .4s;
-  }
-
-  .main-btn {
-    padding: 10px 20px;
-    transition: .4s;
-  }
 }
-
-@media(max-width:750px) {
+@media screen and (min-width:631) and (max-width:750px) {
   .navmenu {
     position: absolute;
     top: 100%;
@@ -346,28 +378,23 @@ aside {
     right: 0;
   }
 }
-/*******************************************************************************scroll***************************************************/
-/* width */
-::-webkit-scrollbar {
-  width: 15px;
+
+.main-text p {
+  font-size: 18px;
+  transition: .4s;
 }
 
-/* Track */
-::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px grey; 
-  border-radius: 10px;
-  
-}
- 
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #cbaab1; 
-  border-radius: 10px;
-  
+.main-btn {
+  padding: 10px 20px;
+  transition: .4s;
 }
 
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #94777d; 
-  transition: background-color 0.8s ease;
+
+
+@media  screen and (min-width:751) and (max-width:890px) {
+  header {
+    padding: 20px 3%;
+    transition: .4s;
+  }
 }
+

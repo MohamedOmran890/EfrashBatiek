@@ -16,9 +16,10 @@ body {
   text-align: center;
   padding: 40px 0;
 }
-
-
-
+a, a:hover, a:focus, a:active {
+  text-decoration: none;
+  color: inherit;
+}
 header{
   position: fixed;
   width: 100%;
@@ -49,7 +50,7 @@ header{
   transition: all .42s ease;
 }
 .navmenu a:hover{
-  color: #EE1C47;
+  color: #cbaab1;
 }
 .nav-icon{
   display: flex;
@@ -64,7 +65,7 @@ header{
 }
 .nav-icon i:hover{
   transform: scale(1.1);
-  color: #EE1C47;
+  color: #cbaab1;
 }
 #menu-icon{
   font-size: 35px;
@@ -78,20 +79,26 @@ header{
   height: 400px;
 }
 
+/*-------------------------------------------------------------------------------- ICOONS------------------------------------------------------------------------------------------------------------------- */
 .x {
-  border-radius: 30px;
-  background-color: #fff;
-  block-size: 100px;
-  box-shadow: 0 0 1em rgba(0, 0, 0, 0.0625);
-  inline-size: 800px;
-  margin: 8% 15% 1%;
-  width: 1033px;
+  margin-left: 14.7%;
+    background: #fff;
+    block-size: 100px;
+    box-shadow: 0 0 1em rgba(0, 0, 0, 0.0625);
+    inline-size: 800px;
+    margin-top: 8%;
+    margin-right: 22%;
+    margin-bottom: 1%;
+    width: 70.5%;
+    border-radius: 2em;
+  
 }
 
 ul.icons {
+  margin-inline-end: 2%;
+    margin-top: 3%;
   display: flex;
   justify-content: space-between;
-  margin: auto;
 }
 
 .icon {
@@ -105,19 +112,25 @@ ul.icons {
   fill: currentColor;
   inline-size: 1em;
   vertical-align: middle;
-  color:#565656;
-  transition: background-color 0.4s ease;
-  cursor: pointer;
+
 }
-.word{
-  color:#8a8b8b;
+
+.word {
+  color: #8a8b8b;
   transition: all .42s ease;
 }
-.word:hover{
+
+.word h2
+{
+  margin-left: -16%;
+  font-size: medium;
+}
+
+.word:hover i,
+.word:hover h2{
   color: #cbaab1;
   transform: scale(1.1);
 }
-
 h1 {
   color: #cbaab1;
   font-family: "Nunito Sans", "Helvetica Neue", sans-serif;
@@ -228,54 +241,6 @@ input{
   background-color:#cbaab1;
   color: rgb(246, 244, 248);
  }
- /* Responsive-css */
-@media(max-width:890px){
-  header{
-      padding: 20px 3%;
-      transition: .4s;
-  }
-}
-@media(max-width:630px){
-  .main-text h1{
-      font-size: 50px;
-      transition: .4s;
-  }
-  .main-text p{
-      font-size: 18px;
-      transition: .4s;
-  }
-  .main-btn{
-      padding: 10px 20px;
-      transition: .4s;
-  }
-}
-
-@media(max-width:750px){
-  .navmenu{
-      position: absolute;
-      top: 100%;
-      right:-100%;
-      width: 300px;
-      height: 130vh;
-      background: #d0d0d0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 120px 30px;
-      transition: all .42s;
-  }
-  .navmenu a{
-      display: block;
-      margin: 18px 0;
-  }
-  .navmenu.open{
-      right: 0;
-  }
-}
-.nav-pills .nav-link.active, .nav-pills .show>.nav-link
-{
-background-color: #cbaab1;
-}
 /*******************************************************************************scroll***************************************************/
 /* width */
 ::-webkit-scrollbar {
@@ -302,3 +267,52 @@ background-color: #cbaab1;
   transition: background-color 0.8s ease;
 }
 
+/*****************************************************************************************RESPONSIVE*********************************************************************************************************/
+@media(max-width:890px) {
+  header {
+    padding: 20px 3%;
+    transition: .4s;
+  }
+}
+
+@media(max-width:630px) {
+  .main-text h1 {
+    font-size: 50px;
+    transition: .4s;
+  }
+
+  .main-text p {
+    font-size: 18px;
+    transition: .4s;
+  }
+
+  .main-btn {
+    padding: 10px 20px;
+    transition: .4s;
+  }
+}
+
+@media(max-width:750px) {
+  .navmenu {
+    position: absolute;
+    top: 100%;
+    right: -100%;
+    width: 300px;
+    height: 130vh;
+    background: #d0d0d0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 120px 30px;
+    transition: all .42s;
+  }
+
+  .navmenu a {
+    display: block;
+    margin: 18px 0;
+  }
+
+  .navmenu.open {
+    right: 0;
+  }
+}

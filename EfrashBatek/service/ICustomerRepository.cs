@@ -13,6 +13,7 @@ namespace EfrashBatek.service
         ICollection<Order> GetOrders(int id);
          int TotalCustomers();
         Order getOrder(int customerID, int OrderID);
+        
 
     }
 }
