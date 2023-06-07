@@ -10,9 +10,11 @@ namespace EfrashBatek.Controllers
     public class CartController : Controller
     {
         IItemRepository _itemRepository;
-        public CartController(IItemRepository repository)
+        IIdentityRepository _identityRepository;
+        public CartController(IItemRepository repository, IIdentityRepository identityRepository)
         {
             _itemRepository = repository;
+            _identityRepository = identityRepository;
         }
         public IActionResult AddToCart(int Id)
         {
