@@ -2,6 +2,8 @@
 using EfrashBatek.Models;
 using EfrashBatek.service;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 
 
     public class CheckoutController : Controller
@@ -11,14 +13,16 @@ using Microsoft.AspNetCore.Mvc;
         {
             addressRepository = Address;
         }
-        public IActionResult Index()
+        public IActionResult Index(string UserId)
         {
-            return View();
+        var add = addressRepository.GetAllById(UserId);
+            return View(add);
         }
         public IActionResult Address()
         {
-            // var ans=addressRepository.GetById();
-            return View(/*ans*/);
+        var zone = new SelectList(Enum.GetValues(typeof(Zone)));
+        ViewData["Zone"] = zone;
+        return View();
         }
         public IActionResult SaveAddress(Address obj)
         {

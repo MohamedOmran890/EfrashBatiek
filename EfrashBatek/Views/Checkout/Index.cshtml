@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Address>
+
+    @{
+        ViewBag.Title = "Checkout";
+        Layout = "CustomerLayout";
+    }
+    <link rel="stylesheet" href="~/assets/libs/twitter-bootstrap-wizard/prettify.css">
+
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-body">
+                    <div id="checkout-nav-pills-wizard" class="twitter-bs-wizard">
+                        <ul class="twitter-bs-wizard-nav">
+                            <li class="nav-item">
+                                <a asp-action="Address" class="nav-link" data-bs-toggle="tab">
+                                    <span class="step-number">01</span>
+                                    <span class="step-title">Shipping Info</span>
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a asp-action="PaymentMethod" class="nav-link" data-bs-toggle="tab">
+                                    <span class="step-number">02</span>
+                                    <span class="step-title">Payment Info</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a asp-action="Confirmation" class="nav-link" data-bs-toggle="tab">
+                                    <span class="step-number">03</span>
+                                    <span class="step-title">Confirmation</span>
+                                </a>
+                            </li>
+                        </ul>
+
+
+                        @foreach (var x in Model)
+                        {
+                            <h1>@x.FirstName @x.LastName</h1>
+                            <h1>@x.Zone</h1>
+                            <h1>@x.FullAddress</h1>
+                            <h1>@x.PostalCode</h1>
+                            <h1>@x.phone</h1>
+
+                        }
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
