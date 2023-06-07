@@ -45,5 +45,7 @@ namespace EfrashBatek.Models
         public DbSet<WishList> WishLists { get; set; }
         public DbSet<Admin> Admin { get; set; }
        public  DbSet<Contact_Us> Contact_Us { get; set; }
+       public DbSet<EfrashBatek.ViewModel.ForgetPasswordVM> ForgetPasswordVM { get; set; }
+       public DbSet<EfrashBatek.ViewModel.ResetPasswordVM> ResetPasswordVM { get; set; }
     }
 }

@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EfrashBatek.Models
 {
-    public enum Zone:short
+    public enum Zone : short
     {
         Qena=1,
         Cairo,
