@@ -70,7 +70,8 @@ namespace EfrashBatek
             services.AddScoped<IWishListRepository, WishListRepository>();
             services.AddScoped<IContact_UsRepository, Contact_UsRepository>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddScoped<IIdentityRepository ,IdentityRepository>(); 
+            services.AddScoped<IIdentityRepository ,IdentityRepository>();
+            services.AddScoped<EmailService>();
 
             /*Session*/
             services.AddSession(options =>

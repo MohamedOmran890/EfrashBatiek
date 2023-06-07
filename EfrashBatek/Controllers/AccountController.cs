@@ -12,7 +12,7 @@ using System.Net;
 using System.Net.Mail;
 using SignInResult = Microsoft.AspNetCore.Identity.SignInResult;
 using System;
-
+using EfrashBatek.service;
 
 namespace EfrashBatek.Controllers
 {
@@ -20,11 +20,13 @@ namespace EfrashBatek.Controllers
     {
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
+        private readonly EmailService _emailService;
 
-        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager)
+        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager, EmailService emailService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _emailService = emailService;
         }
         public IActionResult Index()
         {
@@ -44,80 +46,61 @@ namespace EfrashBatek.Controllers
             {
                 return View(model);
             }
-
-            var user = new User
-            {
-                UserName = model.Username,
-                Email = model.Email,
-                PhoneNumber = model.Phone,
-                age = model.Age,
-                FirstName = model.FirstName,
-                LastName = model.LastName,
-                BirthDate = model.Birthdate,
-                Gender = (Gender)model.Gender,
-
-            };
-           
-
-            var result = await _userManager.CreateAsync(user, model.Password);//Created Cookies
-
-            if (result.Succeeded)
-            {
-
-                string token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                var fromAddress = new MailAddress("omran942487@gmail.com", "Mohamed");
-                var toAddress = new MailAddress(user.Email, user.UserName);
-                const string subject = "Confirm your account";
-                string body = $"Please confirm your account by clicking this link: <a href='{Url.Action("ConfirmEmail", "Account", new { userId = user.Id, token }, Request.Scheme)}'>link</a>";
-
-                var smtpClient = new SmtpClient
+                var user = new User
                 {
-                    Host = "smtp.gmail.com",
-                    Port = 587,
-                    EnableSsl = true,
-                    Credentials = new NetworkCredential("omran942487@gmail.com", "Mohamed890@#")
+                    UserName = model.Username,
+                    Email = model.Email,
+                    PhoneNumber = model.Phone,
+                    age = model.Age,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    BirthDate = model.Birthdate,
+                    Gender = (Gender)model.Gender,
+
                 };
-                //To send Message
-                using (var messages = new MailMessage(fromAddress, toAddress)
+                var result = await _userManager.CreateAsync(user, model.Password);//Created Cookies
+
+                if (result.Succeeded)
                 {
-                    Subject = subject,
-                    Body = body,
-                    IsBodyHtml = true
-                })
-                {
-                    await smtpClient.SendMailAsync(messages);
-                }
-                return View("EmailConfirmation");
+                var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                var confirmationLink = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, token = token }, Request.Scheme);
+                  _emailService.SendConfirmationEmail(model.Email, confirmationLink);
+              
+                // return View("ConfirmEmail");
             }
 
+          
                 foreach (var error in result.Errors)
                 {
                     ModelState.AddModelError(string.Empty, error.Description);
                 }
-
             return View(model);
-            /***********/
-        }
-        public async Task<IActionResult> ConfirmEmail(string userId, string token)
-        {
-            var user = await _userManager.FindByIdAsync(userId);
+               }
+        
+        //public async Task<IActionResult> ConfirmEmail(string userId)
+        //{
 
-            if (user == null)
-            {
-                return NotFound();
-            }
+        //    if (userId == null)
+        //    {
+        //        return RedirectToAction("Login", "Account");
+        //    }
 
-            var result = await _userManager.ConfirmEmailAsync(user, token);
+        //    var user = await _userManager.FindByIdAsync(userId);
+        //    if (user == null)
+        //    {
+        //        throw new ApplicationException($"Unable to load user with ID '{userId}'.");
+        //    }
 
-            if (result.Succeeded)
-            {
-                return RedirectToAction("Login", "Account");
-            }
-            else
-            {
-                return View("Error");
-            }
-        }
+        //    var result = await _userManager.ConfirmEmailAsync(user, token);
+        //    if (result.Succeeded)
+        //    {
+        //        return View("EmailConfirmed");
+        //    }
+        //    else
+        //    {
+        //        return View("Error");
+        //    }
+        //}
 
         [HttpGet]
         public IActionResult Login(string returnUrl = "~/Home/TrendingProducts")
