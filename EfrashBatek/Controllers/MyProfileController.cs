@@ -36,7 +36,13 @@ namespace EfrashBatek.Controllers
             var HaveSession = HttpContext.Session.GetString("Id");
             //     _httpContextAccessor.HttpContext?.User.FindFirstValue(ClaimTypes.Name));
             //  var userEmail =  User.FindFirstValue(ClaimTypes.Email)
+            if (HaveSession == null)
+            {
+                return RedirectToAction("Login", "Account");
 
+            }
+           
+            
             var userID =   contextAccessor.HttpContext.User?.FindFirstValue(ClaimTypes.NameIdentifier);
             var username = contextAccessor.HttpContext.User?.FindFirstValue(ClaimTypes.Name);
             var user =  UserManager.FindByNameAsync(username).Result;
@@ -50,17 +56,11 @@ namespace EfrashBatek.Controllers
                 userCustomerModel.Email = user.Email;
                 userCustomerModel.id = userID;
             }
+             return View(userCustomerModel);
            
 
-			if (HaveSession == null) {
-                return RedirectToAction("Login", "Account");
-                
-            }
-            else
-            {
-                return View(userCustomerModel) ;
-
-            }
+			
+           
 
 
 
