@@ -17,20 +17,20 @@ namespace EfrashBatek.Models
     public class Address
     {
         public int ID { get; set; }
-        [Required]
+        
         public string FirstName { get; set; }
-        [Required]
+       
         public string LastName { get; set; }
-        [Required]
+      
         public string phone { get; set; }
-        [Required]
+     
         public int PostalCode { get; set; }
         public bool SetDefault { get; set; }
-        [Required]
+      
         public Zone Zone { get; set; }
     
 
-        [Required]
+      
         public string FullAddress { get; set; }
        
         [ForeignKey("User")]

@@ -3,15 +3,15 @@ using System.Collections.Generic;
 
 namespace EfrashBatek.service
 {
-    public interface IUserRepository
-    {
-        void Create(User user);
-        int Delete(string Id);
-        List<User> GetAll();
-        User GetById(string Id);
-        int Update(string id, User user);
-        User getbyidentity(string identity);
-        public int edit(User user, string id);
+	public interface IUserRepository
+	{
+		void Create(User user);
+		int Delete(string Id);
+		List<User> GetAll();
+		User GetbyID(string id);
+		int Update(User user);
 
-    }
+
+
+	}
 }
