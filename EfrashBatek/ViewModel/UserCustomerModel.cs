@@ -6,11 +6,11 @@ namespace EfrashBatek.ViewModel
 {
     public class UserCustomerModel 
     {
-        public string FirstName;
-        public string LastName;
-        public string Email;    
-        public string PhoneNumber;
-        public string  id;
-        public Zone zone;
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Email { get; set; }
+        public string  Id { get; set; } 
+        public string PhoneNumber { get; set; }
+        public Zone zone { get; set; }
     }
 }

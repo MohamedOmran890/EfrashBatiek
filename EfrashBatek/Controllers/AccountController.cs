@@ -1,12 +1,18 @@
+using Castle.MicroKernel.Registration;
 using EfrashBatek.Models;
 using EfrashBatek.ViewModel;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
-using System.Threading;
+using System.Diagnostics;
+using System.Text.Encodings.Web;
 using System.Threading.Tasks;
+using System.Net;
+using System.Net.Mail;
 using SignInResult = Microsoft.AspNetCore.Identity.SignInResult;
+using System;
+
 
 namespace EfrashBatek.Controllers
 {
@@ -51,25 +57,66 @@ namespace EfrashBatek.Controllers
                 Gender = (Gender)model.Gender,
 
             };
+           
 
             var result = await _userManager.CreateAsync(user, model.Password);//Created Cookies
 
             if (result.Succeeded)
             {
-                // Add user to default role
-                //  await _userManager.AddToRoleAsync(user, "User");
 
-                // Redirect the user to the login page
-                return RedirectToAction("Login");
+                string token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                var fromAddress = new MailAddress("omran942487@gmail.com", "Mohamed");
+                var toAddress = new MailAddress(user.Email, user.UserName);
+                const string subject = "Confirm your account";
+                string body = $"Please confirm your account by clicking this link: <a href='{Url.Action("ConfirmEmail", "Account", new { userId = user.Id, token }, Request.Scheme)}'>link</a>";
+
+                var smtpClient = new SmtpClient
+                {
+                    Host = "smtp.gmail.com",
+                    Port = 587,
+                    EnableSsl = true,
+                    Credentials = new NetworkCredential("omran942487@gmail.com", "Mohamed890@#")
+                };
+                //To send Message
+                using (var messages = new MailMessage(fromAddress, toAddress)
+                {
+                    Subject = subject,
+                    Body = body,
+                    IsBodyHtml = true
+                })
+                {
+                    await smtpClient.SendMailAsync(messages);
+                }
+                return View("EmailConfirmation");
             }
 
-            foreach (var error in result.Errors)
-            {
-                ModelState.AddModelError("", error.Description);
-            }
+                foreach (var error in result.Errors)
+                {
+                    ModelState.AddModelError(string.Empty, error.Description);
+                }
 
             return View(model);
             /***********/
+        }
+        public async Task<IActionResult> ConfirmEmail(string userId, string token)
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+
+            if (user == null)
+            {
+                return NotFound();
+            }
+
+            var result = await _userManager.ConfirmEmailAsync(user, token);
+
+            if (result.Succeeded)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            else
+            {
+                return View("Error");
+            }
         }
 
         [HttpGet]
@@ -140,7 +187,7 @@ namespace EfrashBatek.Controllers
                 }
 
             }
-            return View(model);
+                return View(model);
 
         }
         public IActionResult ForgetPassword()
@@ -150,16 +197,16 @@ namespace EfrashBatek.Controllers
         [HttpPost]
         public async Task<IActionResult> ForgetPassword(ForgetPasswordVM model)
         {
-            if (ModelState.IsValid)
+            if(ModelState.IsValid)
             {
-                var user = await _userManager.FindByEmailAsync(model.Email);
-                var conf = await _userManager.IsEmailConfirmedAsync(user);
-                if (user == null || !conf)
+                var user=await _userManager.FindByEmailAsync(model.Email);
+                var conf=await _userManager.IsEmailConfirmedAsync(user);
+                if(user == null||!conf)
                 {
                     ModelState.AddModelError("", "The Email Not Found");
                     return View();
                 }
-                var Token = await _userManager.GeneratePasswordResetTokenAsync(user);
+                var Token=await _userManager.GeneratePasswordResetTokenAsync(user);
                 //var callback = Url.ResetPasswordCallbackLink(user.Id, code, Request.Scheme);
                 //await _emailSender.SendEmailAsync(model.Email, "Reset Password",
                 //    $"Please reset your password by clicking here: <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>link</a>");
@@ -167,11 +214,11 @@ namespace EfrashBatek.Controllers
                 //var callbackUrl = Url.ResetPasswordCallbackLink(user.Id, code, Request.Scheme);
                 //await _emailSender.SendEmailAsync(model.Email, "Reset Password",
                 //         $"Please reset your password by clicking here: <a href='{callbackUrl}'>link</a>");
-                return RedirectToAction("ResetPassword", model.Email, Token);
+                return RedirectToAction("ResetPassword",model.Email,Token);
             }
             return View(model);
         }
-        public IActionResult ResetPassword(string Email, string token)
+        public IActionResult ResetPassword(string Email,string token)
         {
             ResetPasswordVM model = new ResetPasswordVM();
             model.Email = Email;
@@ -181,21 +228,21 @@ namespace EfrashBatek.Controllers
         [HttpPost]
         public async Task<IActionResult> ResetPassword(ResetPasswordVM model)
         {
-            if (ModelState.IsValid)
+            if(ModelState.IsValid)
             {
                 var user = await _userManager.FindByEmailAsync(model.Email);
-                if (user == null)
+                if(user==null)
                 {
                     ModelState.AddModelError("", "Email Not Found ^^");
                     return View(model);
                 }
-                var result = await _userManager.ResetPasswordAsync(user, model.Token, model.NewPassword);
-                if (result.Succeeded)
+                var result = await _userManager.ResetPasswordAsync(user, model.Token,model.NewPassword);
+              if(result.Succeeded)
                 {
                     return RedirectToAction("TrendingProducts", "Home");
                 }
-                else
-                    foreach (var error in result.Errors)
+              else
+                    foreach(var error in result.Errors)
                     {
                         ModelState.AddModelError("", error.Description);
                     }
@@ -203,7 +250,6 @@ namespace EfrashBatek.Controllers
             }
             return View(model);
         }
-
 
 
         private IActionResult RedirectToLocal(string returnUrl)
