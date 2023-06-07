@@ -15,9 +15,10 @@ namespace EfrashBatek.Models
     }
     public enum UserType : short
     {
-        Customer,
+        Customer=1,
+        Admin,
         Staff,
-        admin,
+        shop,
         Designer,
     }
     public class User:IdentityUser

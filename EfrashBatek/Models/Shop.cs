@@ -14,7 +14,7 @@ namespace EfrashBatek.Models
         [Required]
         public string  TaxCardNumber { get; set; }
         public string ShopHolder { get; set; }
-       
+
          public string PhoneNumber { get; set; }
         public virtual  ICollection<Order_Item> Order_Item { get; set; }
         public virtual  ICollection<Item> Item { get; set; }

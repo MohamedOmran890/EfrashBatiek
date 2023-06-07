@@ -44,7 +44,7 @@ namespace EfrashBatek.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return View(model);
+                return View("AddStaff", model);
             }
 
             var user = new User
@@ -63,7 +63,7 @@ namespace EfrashBatek.Controllers
         var staff = new Staff
             {
                 UserId = user.Id,
-                ShopID = model.TaxCardNumber
+               // ShopID = model.TaxCardNumber
             };
 
             var result = await _userManager.CreateAsync(user, model.Password);//Created Cookies
@@ -78,11 +78,11 @@ namespace EfrashBatek.Controllers
                 return Content("Done");
             }
 
+                if(check==null)
+                ModelState.AddModelError("","Not Found ShopNumber ");
             foreach (var error in result.Errors)
             {
                 ModelState.AddModelError("", error.Description);
-                if(check==null)
-                ModelState.AddModelError("","Not Found ShopNumber ");
 
             }
 

@@ -1,10 +1,11 @@
-﻿using EfrashBatek.Migrations;
+﻿
 using EfrashBatek.Models;
 using EfrashBatek.service;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 
-namespace EfrashBatek.Controllers
-{
+
     public class CheckoutController : Controller
     {
         IAddressRepository addressRepository;
@@ -12,14 +13,16 @@ namespace EfrashBatek.Controllers
         {
             addressRepository = Address;
         }
-        public IActionResult Index()
+        public IActionResult Index(string UserId)
         {
-            return View();
+        var add = addressRepository.GetAllById(UserId);
+            return View(add);
         }
         public IActionResult Address()
         {
-            // var ans=addressRepository.GetById();
-            return View(/*ans*/);
+        var zone = new SelectList(Enum.GetValues(typeof(Zone)));
+        ViewData["Zone"] = zone;
+        return View();
         }
         public IActionResult SaveAddress(Address obj)
         {
@@ -38,4 +41,3 @@ namespace EfrashBatek.Controllers
         }
 
     }
-}

@@ -4,7 +4,7 @@ namespace EfrashBatek.ViewModel
 {
     public class ResetPasswordVM
     {
-        public int ID { get; set; }
+      public int ID { get; set; }
         [EmailAddress]
         public string Email { get; set; }
         public string Token { get; set; }
@@ -15,6 +15,9 @@ namespace EfrashBatek.ViewModel
         [Required]
         [DataType(DataType.Password)]
         public string ConfirmPassword { get; set; }
-    
+
+        public string ConfiremPassword { get; set; }
+        public string Email { get; set; }
+        public string Token { get; set; }
     }
 }

@@ -6,9 +6,9 @@ namespace EfrashBatek.service
     public interface IAddressRepository
     {
         void Create(Address address);
-        int Delete(int Id);
+        int Delete(string Id);
         List<Address> GetAll();
-        Address GetById(int Id);
-        int Update(int id, Address address);
+        List<Address> GetAllById(string Id);
+        int Update(string id, Address address);
     }
 }

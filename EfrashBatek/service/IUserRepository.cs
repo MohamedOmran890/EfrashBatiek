@@ -10,5 +10,8 @@ namespace EfrashBatek.service
         List<User> GetAll();
         User GetById(string Id);
         int Update(string id, User user);
+        User getbyidentity(string identity);
+        public int edit(User user, string id);
+
     }
 }

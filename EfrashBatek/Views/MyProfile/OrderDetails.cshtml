@@ -1,11 +1,13 @@
-﻿@{
+﻿﻿@{
     Layout = "CustomerLayout";
 }
-@model Order 
+@model Order
 @{
     // Since Address isn't a string, it requires a cast.
     var address = ViewData["Address"] as Address;
 }
+
+<link rel="stylesheet" href="~/css/orderdetails.css">
 
 <br>
 <br>
@@ -36,22 +38,22 @@
                                     <button class="btn btn-link p-0 text-muted" type="button" data-bs-toggle="dropdown">
                                         <i class="bi bi-three-dots-vertical"></i>
                                     </button>
-                                    
+
                                 </div>
                             </div>
                         </div>
                         <table class="table table-borderless">
                             <tbody>
-                                
-                                    @foreach(var itemOrder in Model.Order_Item)
-                                    {
+
+                                @foreach (var itemOrder in Model.Order_Item)
+                                {
                                     <tr>
                                         <!--img & color & name -->
                                         <td>
                                             <div class="d-flex mb-2">
                                                 <!---image-->
                                                 <div class="flex-shrink-0">
-                                                    <img src="~/Image/@itemOrder.item.Image" alt="" width="35" class="img-fluid">
+                                                    <img src="~/Image/@itemOrder.item.Image" alt="" width="35" class="img-size">
                                                 </div>
                                                 <!--color & name -->
                                                 <div class="flex-lg-grow-1 ms-3">
@@ -69,9 +71,15 @@
                                             <span class="badge bg-success rounded-pill">@itemOrder.OrderState</span>
                                         </td>
                                     </tr>
-                                    }
-                                 
-                           
+                                <tr>
+                                    <td></td>
+                                    <td><span class="aleite">Cancel Item !</span></td>
+                                    <td></td>
+                                    <td></td>
+                                    </tr>
+                                }
+
+
                             </tbody>
                             <tfoot>
                                 <tr>
@@ -94,10 +102,10 @@
                         </table>
                     </div>
                 </div>
-              
+
             </div>
             <div class="col-lg-4">
-            
+
                 <!-- Payment -->
                 <div class="card mb-4">
                     <div class="card-body">
@@ -106,7 +114,7 @@
                                 <h3 class="h6">Payment Method</h3>
                                 <p>
                                     Cash on Delivery   <br>
-                                    Total: 2,089 EGP 
+                                    Total: 2,089 EGP
                                 </p>
                             </div>
                             <div class="col-lg-6">
@@ -121,21 +129,21 @@
                         </div>
                     </div>
                 </div>
-              @*  <div class="card mb-4">
-                    <!-- Shipping information -->
-                    <div class="card-body">
-                        <h3 class="h6">Shipping Information</h3>
-                        <strong>FedEx</strong>
-                        <span><a href="main.html" class="text-decoration-underline">FF1234567890</a> <i class="bi bi-box-arrow-up-right"></i> </span>
-                        <hr>
-                        <h3 class="h6">Address</h3>
-                        <address>
-                            <strong>Hazem Abdelsattar</strong><br>
-                            1,1,New Qena , Qena City<br>
-                            Dreams Land , Dreams Schools<br>
-                            <abbr title="Phone">P:</abbr> (+20)1004443226
-                        </address>
-                    </div>
+                @*  <div class="card mb-4">
+                <!-- Shipping information -->
+                <div class="card-body">
+                <h3 class="h6">Shipping Information</h3>
+                <strong>FedEx</strong>
+                <span><a href="main.html" class="text-decoration-underline">FF1234567890</a> <i class="bi bi-box-arrow-up-right"></i> </span>
+                <hr>
+                <h3 class="h6">Address</h3>
+                <address>
+                <strong>Hazem Abdelsattar</strong><br>
+                1,1,New Qena , Qena City<br>
+                Dreams Land , Dreams Schools<br>
+                <abbr title="Phone">P:</abbr> (+20)1004443226
+                </address>
+                </div>
                 </div>*@
             </div>
         </div>

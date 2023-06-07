@@ -1,105 +1,4 @@
-﻿//using EfrashBatek.Models;
-//using EfrashBatek.service;
-//using Microsoft.AspNetCore.Mvc;
-//using EfrashBatek.service;
-//using System.Linq;
-//using System;
-//using Microsoft.AspNetCore.Identity;
-
-//namespace EfrashBatek.Controllers
-//{
-//	public class MyProfileController : Controller
-//	{
-//		private readonly Context _context;
-//		ICustomerRepository User;
-//		public MyProfileController(Context context)
-//		{
-//			_context = context;
-//			User = new CustomerRepository(_context);
-//		}
-
-
-//		// integer or string??  { id of user or customer or identity) ???
-//		// error beacause data not founded ..
-//		// there is not id with 1 ..
-//		/*[HttpGet]
-//		public IActionResult UpdateProfile(string  id )
-//		{
-//			Customer customer =   User.GetById(id);	
-
-
-//			return View(customer);
-//		}*/
-
-//		[HttpPost]
-//		// id  --> from URL ..
-//		// obj --> from post method 
-//		public IActionResult SaveChangesProfile([FromRoute] int id, Customer obj)
-//		{
-
-//			// update service customer doesn't found  and access
-//			if(ModelState.IsValid) {
-
-
-
-//			}
-
-//			return RedirectToAction("UpdateProfile"); // redirect to action or view ?? 
-//		}
-//		public IActionResult UpdateAddress(int id )
-//		{
-//			Customer obj = User.GetById(id);
-//			return View(obj );
-//		}
-//		public IActionResult SaveChangesAddress([FromRoute] int id, Customer obj)
-//		{
-//			// update service customer doesn't found and access 
-
-//			return View();
-//		}
-//		public IActionResult ViewOrders(int id )
-//		{
-
-
-//			if (id == 1)
-//			{
-
-//				return View("GoShopping");
-//			}
-//			else
-//			{
-//				return View();
-//			}
-
-
-
-//		}
-//		public IActionResult OrderDetails()
-//		{
-
-//			return View();
-//		}
-//		public IActionResult ViewGuaraneet()
-//		{
-//			return View();
-//		}
-
-//		public IActionResult PasswordSetting()
-//		{
-//			return View();
-
-//		}
-//		public IActionResult Logout()
-//		{
-//			return View();
-//		}
-
-
-//	}
-//}
-/*Omran Last*/
-/*Alyaa*/
-using EfrashBatek.Models;
+﻿using EfrashBatek.Models;
 using EfrashBatek.service;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
@@ -107,107 +6,196 @@ using System;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
 using System.Collections.Generic;
+using EfrashBatek.ViewModel;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Builder;
+using System.Security.Claims;
+using System.Net.Sockets;
+using System.Security.Principal;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace EfrashBatek.Controllers
 {
     public class MyProfileController : Controller
     {
         private readonly Context _context;
-        ICustomerRepository User;
-        public MyProfileController(Context context, ICustomerRepository User)
+        IUserRepository User;
+     
+        private readonly IIdentityRepository identityRepository;    
+        public UserManager<User> UserManager { get; set; }
+
+        public MyProfileController(Context context, IUserRepository User , IIdentityRepository identityRepository)
         {
             _context = context;
             this.User = User;
-
+         
+            this.identityRepository = identityRepository;   
         }
 
 
         [HttpGet]
-        public IActionResult UpdateProfile(int id)
+
+        public async Task<ActionResult>  UpdateProfile()
         {
-            Customer obj = User.GetById(id);
-            User user = new User { Id = "11111", FirstName = "alyaa", LastName = "elhawary", Email = "alyaamamoon@gmail.com", PhoneNumber = "01111111" };
-            Customer customer = new Customer { Id = 1, User = user };
-            return View(customer);
+            var HaveSession = HttpContext.Session.GetString("Id");
+            //     _httpContextAccessor.HttpContext?.User.FindFirstValue(ClaimTypes.Name));
+            //  var userEmail =  User.FindFirstValue(ClaimTypes.Email)
+            if (HaveSession == null)
+            {
+                return RedirectToAction("Login", "Account");
+
+            }
+
+
+
+
+
+
+            User user = identityRepository.GetUser();
+
+
+            UserCustomerModel userCustomerModel = new UserCustomerModel();
+            if (user != null)
+            {
+                userCustomerModel.PhoneNumber = user.PhoneNumber;
+                userCustomerModel.LastName = user.LastName;
+                userCustomerModel.FirstName = user.FirstName;
+                userCustomerModel.Email = user.Email;
+                userCustomerModel.Id = identityRepository.GetUserID();
+            }
+             return View(userCustomerModel);
+          
+
         }
 
         [HttpPost]
 
-        //public IActionResult SaveChangesProfile([FromRoute] int id, Customer obj)
-        //{
+        public IActionResult UpdateProfile(int test ,  UserCustomerModel New)
 
-        //    if (ModelState.IsValid)
+		{
+            User CustomerUser =  new User();    
+            CustomerUser.FirstName = New.FirstName;    
+            CustomerUser.LastName = New.LastName;
+            CustomerUser.Email = New.Email;   
+            CustomerUser.PhoneNumber = New.PhoneNumber;   
+            User.edit(CustomerUser , New.Id);
+
+
+           
+            return RedirectToAction("UpdateProfile", CustomerUser); // redirect to action or view ?? 
+        }
+  //      public async Task<ActionResult>  UpdateAddress()
+  //      {
+  //         AddressVM Address = new AddressVM(); 
+
+		//	var username = contextAccessor.HttpContext.User?.FindFirstValue(ClaimTypes.Name);
+		//	User user = await UserManager.FindByNameAsync(username);
+
+  //          // get all zones in list .. 
+  //           List<string> zones = new List<string>(); 
+		//	foreach (string name in Enum.GetNames(typeof(Zone)))
+		//	{
+  //              zones.Add(name);
+				
+		//	}
+		//	ViewData["ProductName"] = new SelectList();
+
+
+
+		//}
+      
+        //public IActionResult ViewOrders(int id)
+        //{
+            
+        //    Order order = new Order();
+        //    order.OrderDate = new DateTime(2023, 5, 31);
+        //    order.OrderCode = "#125456";
+        //    order.TotalCost = 333;
+        //    order.ID = 3;
+        //    List<Order> orders = new List<Order>() { order, order, order, order };
+
+
+        //    if (id == 1)
         //    {
 
-
-        //        User.Edit(obj, id);
-
-
+        //        return View("GoShopping");
         //    }
-        //    return RedirectToAction("UpdateProfile", id); // redirect to action or view ?? 
-        //}
-        //public IActionResult UpdateAddress(int id)
-        //{
-        //    Customer obj = User.GetById(id);
-
-
-        //    Address address = new Address { FirstName = "efef", LastName = "fefe", City = "rfrfrf", phone = "rfrfrf" };
-        //    User user = new User { Address = address, Id = "11111", FirstName = "alyaa", LastName = "elhawary", Email = "alyaamamoon@gmail.com", PhoneNumber = "01111111" };
-
-        //    Customer customer = new Customer { Id = 1, User = user };
-
-        //    return View(customer);
-        //}
-        //public IActionResult SaveChangesAddress([FromRoute] int id, Customer obj)
-        //{
-        //    // update service customer doesn't found and access 
-
-        //    if (ModelState.IsValid)
+        //    else
         //    {
-
-        //        User.Edit(obj, id);
-
-
+        //        return View(orders);
         //    }
-        //    return RedirectToAction("UpdateAddress", id); // redirect to action or view 
+
+
+
         //}
-        public IActionResult ViewOrders(int id)
-        {
-            if (id == 1)
-            {
 
-                return View("GoShopping");
-            }
-            else
-            {
-                return View();
-            }
+        //public IActionResult OrderDetails([FromRoute] int id) // get from link 
+        //{
+        //    // --> send this order to view .. 
+        //    //Order order =  User.getOrder(id , id);
+
+        //    // Testing 
+        //    Order order = new Order();
+        //    order.OrderDate = new DateTime(2023, 5, 31);
+        //    order.OrderCode = " #131321";
+        //    order.PaymentMethod = PaymentMethod.CashOnDelivery; // doesn't work 
+        //    order.TotalCost = 7000;
+        //    // shipping cost total 
+        //    Item item = new Item();
+        //    item.Name = "Bedroom";
 
 
+        //    item.Image = "1.jpg";
+        //    item.Image2 = "1.jpg";
+        //    item.Price = 78;
+        //    item.discount = "%15";
 
-        }
-        public IActionResult OrderDetails()
-        {
+        //    item.PriceAfterSale = 48;
+        //    Order_Item item2 = new Order_Item();
+        //    item2.ID = 2322;
+        //    item2.OrderID = id;
+        //    item2.item = item;
+        //    item2.Quantity = 2;
 
-            return View();
-        }
-        public IActionResult Warrently()
-        {
-            return View();
-        }
+        //    item2.OrderState = OrderState.Delivering; // problem 
+        //    List<Order_Item> items = new List<Order_Item>();
+        //    items.Add(item2);
+        //    items.Add(item2);
+        //    order.Order_Item = items;
 
-        public IActionResult UpdatePassword(int id)
-        {
-            Customer customer = User.GetById(id);
+        //    // customer testing 
 
-            return View();
+        //    Address address = new Address();
+        //    address.description = "Dreams Land , Dreams Schools";
+        //    address.phone = "1004443226";
+        //    address.FirstName = "Hazem ";
+        //    address.LastName = "Abdelstatter";
+        //    ViewData["Address"] = address;
 
-        }
-        public IActionResult Logout()
-        {
-            return View();
-        }
+        //    return View(order);
+        //}
+        //public IActionResult Warrently()
+        //{
+        //    return View();
+        //}
+
+        //public IActionResult UpdatePassword(int id)
+        //{
+        //    //Customer customer = User.GetById(id);	
+
+        //    return View();
+
+        //}
+        //public IActionResult Logout()
+        //{
+        //    return View();
+        //}
 
 
     }
 }
+
+
+
+

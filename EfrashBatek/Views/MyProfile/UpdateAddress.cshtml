@@ -22,7 +22,7 @@
 							<input asp-for="User.Address.LastName"type="text" class="form-control" value="@Model.User.Address.LastName">
 						</div>
 					</div>
-					@*@<div class="col-md-6">
+					<div class="col-md-6">
 						<div class="form-group">
 							<label asp-for="User.Address.phone">Phone</label>
 							<input asp-for="User.Address.phone" type="text" class="form-control" value="@Model.User.Address.phone">
@@ -33,19 +33,16 @@
 							<label asp-for="User.Address.PostalCode">Postal Code</label>
 							<input asp-for ="User.Address.PostalCode" type="text" class="form-control" value="@Model.User.Address.PostalCode">
 						</div>
-					</div>*@
+					</div>
 					<div class="col-md-6">
 						<div class="form-group">
-							<label>City</label>
-							<!-- enum loop-->
-							<select id="citySelect" class="form-control">
-								<option value="null">Select</option>
-								<option value="100">
-									10th of Ramadan
-								</option>
-
-							</select>
+							<label asp-for="User.Address.FullAddress">Full Address </label>
+							<input asp-for="User.Address.FullAddress" type="text" class="form-control" value="@Model.User.Address.FullAddress">
 						</div>
+					</div>
+					<div lass="col-md-6">
+						<label asp-for="User.Address.Zone" class="control-label"></label>
+						<select asp-for="User.Address.Zone" class="form-control" asp-items="ViewBag.Zone"></select>
 					</div>
 				</div>
 				<label asp-for="User.Address.description">Detailed Address</label>
