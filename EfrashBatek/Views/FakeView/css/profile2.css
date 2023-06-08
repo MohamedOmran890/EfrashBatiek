@@ -35,6 +35,13 @@ header{
     justify-content: space-between;
     padding: 20px 10%;
 }
+.page-item.active .page-link {
+
+    background-color: #e3d9d9;
+}
+a {
+    color: #e3d9d9;
+}
 .logo img{
     max-width: 120px;
     height: auto;

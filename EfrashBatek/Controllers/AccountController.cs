@@ -21,12 +21,15 @@ namespace EfrashBatek.Controllers
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
         private readonly EmailService _emailService;
+        private readonly IIdentityRepository _identityRepository;
 
-        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager, EmailService emailService)
+        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager,
+            EmailService emailService, IIdentityRepository identityRepository)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailService = emailService;
+            _identityRepository = identityRepository;
         }
         public IActionResult Index()
         {
@@ -64,9 +67,9 @@ namespace EfrashBatek.Controllers
                 {
                 var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                 var confirmationLink = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, token = token }, Request.Scheme);
-                  _emailService.SendConfirmationEmail(model.Email, confirmationLink);
-              
-                // return View("ConfirmEmail");
+                  await _emailService.SendConfirmationEmail(model.Email, confirmationLink);
+                return View("ConfirmEmail");
+                //return RedirectToAction("ConfirmEmail");
             }
 
           
@@ -76,31 +79,29 @@ namespace EfrashBatek.Controllers
                 }
             return View(model);
                }
-        
-        //public async Task<IActionResult> ConfirmEmail(string userId)
-        //{
+        public async Task<IActionResult> ConfirmEmail(string userId, string token)
+        {
+            if (userId == null || token == null)
+            {
+                return RedirectToAction("TrendingProducts", "Home");
+            }
 
-        //    if (userId == null)
-        //    {
-        //        return RedirectToAction("Login", "Account");
-        //    }
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null)
+            {
+                throw new ApplicationException($"Unable to load user with ID '{userId}'.");
+            }
 
-        //    var user = await _userManager.FindByIdAsync(userId);
-        //    if (user == null)
-        //    {
-        //        throw new ApplicationException($"Unable to load user with ID '{userId}'.");
-        //    }
-
-        //    var result = await _userManager.ConfirmEmailAsync(user, token);
-        //    if (result.Succeeded)
-        //    {
-        //        return View("EmailConfirmed");
-        //    }
-        //    else
-        //    {
-        //        return View("Error");
-        //    }
-        //}
+            var result = await _userManager.ConfirmEmailAsync(user, token);
+            if (result.Succeeded)
+            {
+                return RedirectToAction("TrendingProducts","Home");
+            }
+            else
+            {
+                return View("Error");
+            }
+        }
 
         [HttpGet]
         public IActionResult Login(string returnUrl = "~/Home/TrendingProducts")
@@ -117,6 +118,13 @@ namespace EfrashBatek.Controllers
             if (ModelState.IsValid)
             {
                 User user = await _userManager.FindByNameAsync(model.UserName);
+                if(user!=null&&!user.EmailConfirmed)
+                {
+                    //return View("PleaseConfirmYouEmail");
+                    ModelState.AddModelError("", "Email Not Confirmed .");
+                    return View(model);
+                }
+                
                 if (user != null)
                 {//ispersistanc to detct user is session or cookies
                     SignInResult result = await _signInManager.PasswordSignInAsync(user.UserName, model.Password, isPersistent: model.isPersistent, false);
