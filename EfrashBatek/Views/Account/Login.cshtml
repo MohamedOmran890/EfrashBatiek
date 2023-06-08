@@ -1,6 +1,4 @@
-﻿
-
-@{
+﻿@{
     Layout = "~/Views/Account/LayoutAccount.cshtml";
  }
 @model EfrashBatek.ViewModel.LoginViewModel
@@ -23,9 +21,12 @@
         <span asp-validation-for="Password" ></span>
 
         <div class="form-group form-check">
-            <label class="form-check-label">
-                <input asp-for="isPersistent" /> Remember Me
-            </label>
+            <table>
+                <tr>
+                    <td><label>Remember Me : </label></td>
+                    <td style="width:12%"><input asp-for="isPersistent"></td>
+                </tr>
+            </table>
         </div>
         <a asp-action="ForgetPassword" >Forgot password?</a>
         <input type="submit" value="Login" class="button" />

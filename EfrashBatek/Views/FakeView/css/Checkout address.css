@@ -17,34 +17,28 @@ body {
   font-family: "Roboto", sans-serif;
   overflow-x: hidden;
 }
-a, a:hover, a:focus, a:active {
+a{
   text-decoration: none;
-  color: inherit;
 }
 /* ICONS*/
 .row{
 height: 400px;
 }
-/*-------------------------------------------------------------------------------- ICOONS------------------------------------------------------------------------------------------------------------------- */
 .x {
-  margin-left: 1.7%;
-  background: #fff;
+  background-color: #fff;  
   block-size: 100px;
   box-shadow: 0 0 1em rgba(0, 0, 0, 0.0625);
   inline-size: 800px;
-  margin-top: 8%;
-  margin-right: 22%;
-  margin-bottom: 1%;
-  width: 71%;
-  border-radius: 2em;
-  
+  margin: 8% 2% 1%;
+  width: 1155px;
+  border-radius: 30px;
+  box-shadow: 0 0 1em rgba(0, 0, 0, 0.0625);
 }
 
 ul.icons {
-  margin-inline-end: 2%;
-    margin-top: 3%;
   display: flex;
   justify-content: space-between;
+  margin: auto;
 }
 
 .icon {
@@ -58,22 +52,12 @@ ul.icons {
   fill: currentColor;
   inline-size: 1em;
   vertical-align: middle;
-
 }
-
-.word {
-  color: #8a8b8b;
+.word{
+  color:#8a8b8b;
   transition: all .42s ease;
 }
-
-.word h2
-{
-  margin-left: -16%;
-  font-size: medium;
-}
-
-.word:hover i,
-.word:hover h2{
+.word:hover{
   color: #cbaab1;
   transform: scale(1.1);
 }

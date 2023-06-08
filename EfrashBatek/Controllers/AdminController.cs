@@ -94,7 +94,8 @@ namespace EfrashBatek.Controllers
 
     public IActionResult AddShop()
         {
-            return View();
+            Shop shop=new Shop();
+            return View(shop);
 
         }
         [HttpPost]
