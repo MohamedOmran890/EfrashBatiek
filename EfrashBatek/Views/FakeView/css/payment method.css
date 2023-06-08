@@ -23,29 +23,27 @@ body {
 html {
   box-sizing: border-box;
 }
-a, a:hover, a:focus, a:active {
+
+a {
   text-decoration: none;
-  color: inherit;
 }
-/*-------------------------------------------------------------------------------- ICOONS------------------------------------------------------------------------------------------------------------------- */
+
 .x {
   background: #fff;
   block-size: 100px;
   box-shadow: 0 0 1em rgba(0, 0, 0, 0.0625);
   inline-size: 800px;
   margin-top: 8%;
-  margin-right: 22%;
+  margin-right: 28%;
   margin-bottom: 1%;
-  width: 56%;
+  width: 58%;
   border-radius: 2em;
-  
 }
 
 ul.icons {
-  margin-inline-end: 2%;
-    margin-top: 3%;
   display: flex;
   justify-content: space-between;
+  margin: auto;
 }
 
 .icon {
@@ -67,18 +65,11 @@ ul.icons {
   transition: all .42s ease;
 }
 
-.word h2
-{
-  margin-left: -16%;
-  font-size: medium;
-}
-
-.word:hover i,
-.word:hover h2{
+.word:hover {
   color: #cbaab1;
   transform: scale(1.1);
 }
-/*  */
+
 li {
   list-style: none;
 }
@@ -208,7 +199,7 @@ tfoot {
   gap: 1em;
 }
 
-/*----------------------------------------------------------------------------------------------------SUMMARY---------------------------------------------------------------------------------------------------------------*/
+/*SUMMARY*/
 aside {
   position: relative;
   width: 100%;
