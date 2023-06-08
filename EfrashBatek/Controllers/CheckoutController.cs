@@ -9,13 +9,22 @@ using System;
     public class CheckoutController : Controller
     {
         IAddressRepository addressRepository;
-        public CheckoutController(IAddressRepository Address)
+    IIdentityRepository _identityRepository;
+        public CheckoutController(IAddressRepository Address,IIdentityRepository identityRepository)
         {
             addressRepository = Address;
+          _identityRepository = identityRepository;
+             
         }
-        public IActionResult Index(string UserId)
+        public IActionResult Index()
         {
-        var add = addressRepository.GetAllById(UserId);
+          var userId =_identityRepository.GetUserID();
+        if(userId == null)
+        {
+            return RedirectToAction("Login", "Account");
+        }
+
+        var add = addressRepository.GetAllById(userId);
             return View(add);
         }
         public IActionResult Address()
@@ -26,6 +35,7 @@ using System;
         }
         public IActionResult SaveAddress(Address obj)
         {
+
             addressRepository.Create(obj);
             return RedirectToAction("PaymentMethod");
             /********/

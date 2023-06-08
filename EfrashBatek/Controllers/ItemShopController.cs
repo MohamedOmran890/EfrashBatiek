@@ -63,7 +63,7 @@ namespace EfrashBatek.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         //2
-        public IActionResult Create([Bind("Code,Name,Description,Price,Image,Image2,Brand_ID,QuantityInStore,ShopID,ProductID")] Item item)
+        public IActionResult Create(Item item)
         {
             if (ModelState.IsValid)
             {
@@ -71,9 +71,9 @@ namespace EfrashBatek.Controllers
                 itemRepo.Create(item);
                 return RedirectToAction("Index");
             }
-            //ViewData["BrandName"] = new SelectList(brandRepository.GetAll(), "ID", "Name", item.Brand_ID);
-            //ViewData["ProductName"] = new SelectList(productRepository.GetAll(), "ID", "ProductName", item.ProductID);
-            //ViewData["ShopName"] = new SelectList(shopRepository.GetAll(), "ID", "Name", item.ShopID);
+            ViewData["BrandName"] = new SelectList(brandRepository.GetAll(), "ID", "Name", item.Brand_ID);
+            ViewData["ProductName"] = new SelectList(productRepository.GetAll(), "ID", "ProductName", item.ProductID);
+            ViewData["ShopName"] = new SelectList(shopRepository.GetAll(), "ID", "Name", item.ShopID);
             return View(item);
         }
         public IActionResult Edit(int? id)
