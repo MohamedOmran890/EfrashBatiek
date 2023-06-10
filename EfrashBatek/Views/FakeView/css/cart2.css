@@ -1,7 +1,7 @@
 
 body {
   background-color: #fbfbfb;
-  color: #666;
+  color: #111;;
   font-family: 'Open Sans', sans-serif;
   font-size: 62.5%;
   margin: 0 auto;
@@ -86,14 +86,14 @@ button {
   outline: 0 none;
 }
 
-button {
+button.checkout-cta {
   background-color: #cbaab1;
   color: #fff;
 }
 
-button:hover,
-button:focus {
-  background-color: #e7c8cf;
+button.checkout-cta:hover,
+button.checkout-cta:focus {
+  background-color: #e3d9d9;
 }
 
 img,
@@ -290,7 +290,7 @@ aside {
     margin-top: 75%;
   background-color: #eee;
   border: 1px solid #aaa;
-  padding: 1rem;
+  padding: 12%;
   flex: 1;
   width: 269px;
   -webkit-box-sizing: border-box;
@@ -302,13 +302,13 @@ aside {
 .summary-total-items {
   color: #666;
   font-size: 0.875rem;
-  text-align: center;
+  /* text-align: center; */
 }
 
 .summary-subtotal,
 .summary-total {
   border-top: 1px solid #ccc;
-  border-bottom: 1px solid #ccc;
+  /* border-bottom: 1px solid #ccc; */
   clear: both;
   margin: 1rem 0;
   overflow: hidden;
@@ -325,7 +325,7 @@ aside {
   float: left;
   width: 50%;
 }
-
+/* 
 .summary-promo {
   -webkit-transition: all .3s ease;
   -moz-transition: all .3s ease;
@@ -347,7 +347,7 @@ aside {
 
 .summary-delivery {
   padding-bottom: 3rem;
-}
+} */
 
 .subtotal-value,
 .total-value {
