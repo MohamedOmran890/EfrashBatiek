@@ -17,28 +17,34 @@ body {
   font-family: "Roboto", sans-serif;
   overflow-x: hidden;
 }
-a{
+a, a:hover, a:focus, a:active {
   text-decoration: none;
+  color: inherit;
 }
 /* ICONS*/
 .row{
 height: 400px;
 }
+/*-------------------------------------------------------------------------------- ICOONS------------------------------------------------------------------------------------------------------------------- */
 .x {
-  background-color: #fff;  
+  margin-left: 1.7%;
+  background: #fff;
   block-size: 100px;
   box-shadow: 0 0 1em rgba(0, 0, 0, 0.0625);
   inline-size: 800px;
-  margin: 8% 2% 1%;
-  width: 1155px;
-  border-radius: 30px;
-  box-shadow: 0 0 1em rgba(0, 0, 0, 0.0625);
+  margin-top: 8%;
+  margin-right: 22%;
+  margin-bottom: 1%;
+  width: 71%;
+  border-radius: 2em;
+  
 }
 
 ul.icons {
+  margin-inline-end: 2%;
+    margin-top: 3%;
   display: flex;
   justify-content: space-between;
-  margin: auto;
 }
 
 .icon {
@@ -52,12 +58,22 @@ ul.icons {
   fill: currentColor;
   inline-size: 1em;
   vertical-align: middle;
+
 }
-.word{
-  color:#8a8b8b;
+
+.word {
+  color: #8a8b8b;
   transition: all .42s ease;
 }
-.word:hover{
+
+.word h2
+{
+  margin-left: -16%;
+  font-size: medium;
+}
+
+.word:hover i,
+.word:hover h2{
   color: #cbaab1;
   transform: scale(1.1);
 }
@@ -81,8 +97,8 @@ ul.icons {
   /* Change the background color to red when the button is hovered over */
 }
 
-/*ADDRESS*/
-#address  {
+/* /ADDRESS/ */
+#address {
   padding: 50px;
   margin: 20px 30px;
   border-radius: 30px;
@@ -107,7 +123,12 @@ input {
   font-size: 16px;
 }
 
-/*SUMMARY*/
+/* /SUMMARY/ */
+.summary-delivery {
+  max-height: 150px; /* Set the maximum height for the container */
+  overflow-y: auto;
+  overflow-x:hidden ; /* Enable vertical scrolling */
+}
 aside {
   position: relative;
   width: 30%;
@@ -211,10 +232,10 @@ aside {
   width: 100%;
 }
    
-/*******************************************************************************scroll***************************************************/
+  /******************************************************************************scroll**************************************************/
 /* width */
 ::-webkit-scrollbar {
-  width: 15px;
+  width: 8px;
 }
 
 /* Track */
@@ -236,7 +257,7 @@ aside {
   background: #94777d; 
   transition: background-color 0.8s ease;
 }
-/*****************************************************************************************RESPONSIVE*********************************************************************************************************/
+/****************************************************************************************RESPONSIVE********************************************************************************************************/
 @media(max-width:890px) {
   header {
     padding: 20px 3%;
