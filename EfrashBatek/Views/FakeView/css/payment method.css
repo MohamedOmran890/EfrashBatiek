@@ -7,7 +7,10 @@
 * {
   box-sizing: inherit;
 }
-
+a, a:hover, a:focus, a:active {
+  text-decoration: none;
+  color: inherit;
+}
 body {
   background-color: #fbfbfb;
   display: grid;
@@ -77,12 +80,13 @@ li {
 address {
   font-style: normal;
 }
-
+/* HERE */
 button {
   border: 0;
   color: inherit;
   cursor: pointer;
   font: inherit;
+  align-items: center;
 }
 
 .button:hover {
@@ -306,6 +310,11 @@ aside {
 }
 
 /*******************************************************************************scroll***************************************************/
+.summary-delivery {
+  max-height: 150px; /* Set the maximum height for the container */
+  overflow-y: auto;
+  overflow-x:hidden ; /* Enable vertical scrolling */
+}
 /* width */
 ::-webkit-scrollbar {
   width: 15px;
