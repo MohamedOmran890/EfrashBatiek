@@ -15,31 +15,34 @@ body {
   font-family: "Roboto", sans-serif;
 }
 
-/* ICONS*/
+
 .row {
   margin: 2%;
 }
 
-address {
-  margin: 1% 0 0 3%;
+a, a:hover, a:focus, a:active {
+  text-decoration: none;
+  color: inherit;
 }
-
+/*-------------------------------------------------------------------------------- ICOONS------------------------------------------------------------------------------------------------------------------- */
 .x {
-  background-color: #fff;
+  background: #fff;
   block-size: 100px;
   box-shadow: 0 0 1em rgba(0, 0, 0, 0.0625);
   inline-size: 800px;
-  margin: 8% 2% 1% 5%;
-  width: 970px;
-  border-radius: 30px;
-  color:#565656;
-  transition: background-color 0.4s ease;
+  margin-top: 8%;
+  margin-right: 22%;
+  margin-bottom: 1%;
+  width: 67%;
+  border-radius: 2em;
+  margin-left: 4.5%
 }
 
 ul.icons {
+  margin-inline-end: 2%;
+  margin-top: 3%;
   display: flex;
   justify-content: space-between;
-  margin: auto;
 }
 
 .icon {
@@ -53,108 +56,69 @@ ul.icons {
   fill: currentColor;
   inline-size: 1em;
   vertical-align: middle;
+
 }
-.word{
-  color:#8a8b8b;
+
+.word {
+  color: #8a8b8b;
   transition: all .42s ease;
 }
-.word:hover{
+
+.word h2 {
+  margin-left: -16%;
+  font-size: medium;
+}
+
+.word:hover i,
+.word:hover h2 {
   color: #cbaab1;
   transform: scale(1.1);
 }
-/**/
-.addresses {
- /* display: flex;*/
-  flex-wrap: wrap;
-  justify-content: space-between;
-  background-color: blue;
-}
 
-.addresses p{
-    margin-top: -4%;
-    margin-left: 10%; 
-}
-.address-row {
-  width: 100%;
-  /* background-color: #8B0000; */
-  margin-bottom: 20px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
+/*------------------------------------------------- ICONS-------------------------------------------*/
 
-.addresss {
-  background-color: #fbfbfb ;
-  width: 48%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin: 1%;
-}
-.radio-pair {
-  background-color: #8B0000;
-  display: inline-block;
-   
-}
 
-/* .radio-pair input[type="radio"] {
-  margin-left: 10px;
-  background-color: #cbaab1;
-  
-} */
-
-/* my work is here-------------------------------------------- */
-.bxs-edit{
+/* ----------------------------------------EDIT ICON-------------------------------- */
+.bxs-edit {
   display: flex;
   justify-content: space-between;
   /* align-items: flex-start; */
   margin-bottom: 5px;
   margin-left: 380px;
-  background-color: aquamarine;
   display: inline-block;
+  padding: -2px;
+}
 
-}
-/* This is my default address*/
-.payment-default-address {
-  -ms-flex-pack: end;
-  justify-content: flex-end;
-  font-size: 13px;
-}
-.align-items-center {
-  -ms-flex-align: center!important;
-  align-items: center!important;
-}
-.d-flex {
-  display: -ms-flexbox!important;
-  display: flex!important;
-}
-/* continue button*/
+/* ----------------------------------------EDIT ICON-------------------------------- */
+
+/* ---------------------------------------Next button---------------------------*/
 .btnRegister {
+  margin: -2% 1% 2%;
   float: right;
   border: none;
   border-radius: 1.5rem;
-  padding: 2%;
+  padding: 1.5%;
   background: #e2dfdf;
   color: #fff;
   font-weight: 600;
-  width: 30%;
+  width: 25%;
   cursor: pointer;
   transition: background-color 0.4s ease;
 }
 
 .btnRegister:hover {
   background-color: #cbaab1;
-  /* Change the background color to red when the button is hovered over */
 }
 
-/*ADDRESS*/
+/* ----------------------------------------Next button---------------------------*/
+
+/*--------------------------------------------------ADDRESS----------------------------------*/
 #address {
   padding: 50px;
   margin: 20px 30px;
   border-radius: 30px;
   height: auto;
   background-color: #fff;
-
   box-shadow: 0 0 1em rgba(0, 0, 0, 0.0625);
 }
 
@@ -173,25 +137,84 @@ ul.icons {
   outline: none;
   font-size: 16px;
 }
-.bx-plus-circle{
-color: #cbaab1;
+
+.bx-plus-circle {
+  color: #cbaab1;
 }
-.new{
-  color:#cbaab1;
+
+.new {
+  color: #cbaab1;
 }
-/*SUMMARY*/
+
+.addressFORM {
+  /* display: flex;*/
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background-color: #fff;
+}
+
+.address-row {
+  width: 100%;
+  /* background-color: #8B0000; */
+  margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.addressBOX {
+  background-color: #fbfbfb;
+  width: 48%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 1%;
+  border: none;
+  box-shadow: 0 0 1em rgba(0, 0, 0, 0.12);
+}
+
+.radio-pair {
+  background-color: #8B0000;
+  display: inline-block;
+
+}
+
+/*--------------------------------------------------ADDRESS----------------------------------*/
+
+
+
+/* -------------------------------------------------ADDRESS DETAAILS -----------------------------  */
+.ADDRESSDETAILS {
+  padding: 0px;
+  margin: -12% 0% 5% 6%;
+  /* background-color: #8B0000; */
+}
+
+/* -------------------------------------------------ADDRESS DETAAILS -----------------------------  */
+
+
+
+/* -------------------------------------------------RADIO BUTTON----------------------------- */
+.radio {
+  text-align: left;
+}
+
+/* -------------------------------------------------RADIO BUTTON----------------------------- */
+
+
+/*-------------------------------------------SUMMARY-----------------------------------------*/
 aside {
   position: relative;
-  width: 30%;
+  /*width: 30%;*/
 }
 
 .summary {
-  margin: 21px 40px 0;
+  margin: 7% 5% 0;
   background-color: #eee;
   border: 1px solid #aaa;
   padding: 1rem;
   flex: 1;
-  width: 269px;
+  /*width: 269px;*/
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -244,10 +267,14 @@ aside {
   width: 30%;
 }
 
-.summary-delivery {
+/* .summary-delivery {
   padding-bottom: 3rem;
+} */
+.summary-delivery {
+  max-height: 150px; /* Set the maximum height for the container */
+  overflow-y: auto;
+  overflow-x:hidden ; /* Enable vertical scrolling */
 }
-
 .subtotal-value,
 .total-value {
   text-align: right;
@@ -281,69 +308,46 @@ aside {
   height: 34px;
   width: 100%;
 }
-
-/* Responsive-css */
-@media(max-width:890px) {
-  header {
-    padding: 20px 3%;
-    transition: .4s;
-  }
+/******************************************************************************scroll**************************************************/
+/* width */
+::-webkit-scrollbar {
+  width: 8px;
 }
 
-@media(max-width:630px) {
-  .main-text h1 {
-    font-size: 50px;
-    transition: .4s;
-  }
-
-  .main-text p {
-    font-size: 18px;
-    transition: .4s;
-  }
-
-  .main-btn {
-    padding: 10px 20px;
-    transition: .4s;
-  }
+/* Track */
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+  
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #cbaab1; 
+  border-radius: 10px;
+  
 }
 
-@media(max-width:750px) {
-  .navmenu {
-    position: absolute;
-    top: 100%;
-    right: -100%;
-    width: 300px;
-    height: 130vh;
-    background: #d0d0d0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 120px 30px;
-    transition: all .42s;
-  }
-
-  .navmenu a {
-    display: block;
-    margin: 18px 0;
-  }
-
-  .navmenu.open {
-    right: 0;
-  }
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #94777d; 
+  transition: background-color 0.8s ease;
 }
+/*-------------------------------- SUMMARRY-------------------------------- */
+.x{
+  width:88%;
+  margin-left: 6%;
+ }
 
-.tsts{
-    margin: 0px;
-    padding: -2px;
+/*-------------------------------- Responsive-css-------------------------- */
+@media screen and (min-width:769) and (max-width:990){
+
 
 }
-.run{
-text-align: left;
-}
-.mod{
-  padding: 0px;
-  margin: 0px;
-  margin-left: 20px;
-  margin-bottom: 10px;
-  /* background-color: #8B0000; */
+/* TABLET */
+@media(max-width:768px) {
+ .x{
+  width:85%;
+  margin-left: 7.5%;
+ }
 }
