@@ -23,15 +23,22 @@ namespace EfrashBatek.Controllers
 		IUserRepository User;
 
 		private readonly IIdentityRepository identityRepository;
-		public UserManager<User> UserManager { get; set; }
+        private readonly IAddressRepository address;
+        private readonly IOrderRepository order;
+        private readonly SignInManager<User> signInManager;
 
-		public MyProfileController(Context context, IUserRepository User, IIdentityRepository identityRepository)
+        public UserManager<User> UserManager { get; set; }
+        
+		public MyProfileController(Context context, IUserRepository User, IIdentityRepository identityRepository , IAddressRepository address , IOrderRepository order , SignInManager<User> signInManager)
 		{
 			_context = context;
 			this.User = User;
 
 			this.identityRepository = identityRepository;
-		}
+            this.address = address;
+            this.order = order;
+            this.signInManager = signInManager;
+        }
 
 
 		[HttpGet]
@@ -64,98 +71,110 @@ namespace EfrashBatek.Controllers
 
 			return RedirectToAction("UpdateProfile", New);
 		}
-		[HttpGet]
-		public async Task<ActionResult> UpdateAddress()
-		{
-			var HaveSession = HttpContext.Session.GetString("Id");
+		public IActionResult ViewAddress() {
 
-			if (HaveSession == null)
-			{
-				return RedirectToAction("Login", "Account");
+            return View(address.View());
 
-			}
+        }
 
-			User user = identityRepository.GetUser();
+        public IActionResult CreateAddress()
+        {
+            return View();
 
-			return View(user);
-		}
+        }
+        [HttpPost]
 
+        // save changes 
+        public IActionResult CreateAddress(Address New)
+        {
 
-		[HttpPost]
-		public async Task<ActionResult> UpdateAddress(User New)
-		{
+            address.Create(New);
 
-			User.Update(New);
-			return RedirectToAction("UpdateProfile", New);
-
-		}
+            return RedirectToAction("ViewAddress", "MyProfile");
 
 
+        }
 
-		//public IActionResult OrderDetails([FromRoute] int id) // get from link 
-		//{
-		//    // --> send this order to view .. 
-		//    //Order order =  User.getOrder(id , id);
+        [HttpPost]
+        public IActionResult ViewAddressDetails (int id )
+        {
+            var Address = address.GetbyID(id);
+           
+            return View("EditAddress" , Address );
 
-		//    // Testing 
-		//    Order order = new Order();
-		//    order.OrderDate = new DateTime(2023, 5, 31);
-		//    order.OrderCode = " #131321";
-		//    order.PaymentMethod = PaymentMethod.CashOnDelivery; // doesn't work 
-		//    order.TotalCost = 7000;
-		//    // shipping cost total 
-		//    Item item = new Item();
-		//    item.Name = "Bedroom";
+        }
+        [HttpPost]
 
+        public IActionResult EditAddress(Address New)
+        {
+            address.Edit(New);
 
-		//    item.Image = "1.jpg";
-		//    item.Image2 = "1.jpg";
-		//    item.Price = 78;
-		//    item.discount = "%15";
+            return RedirectToAction("ViewAddress", "MyProfile");
 
-		//    item.PriceAfterSale = 48;
-		//    Order_Item item2 = new Order_Item();
-		//    item2.ID = 2322;
-		//    item2.OrderID = id;
-		//    item2.item = item;
-		//    item2.Quantity = 2;
+        }
+        [HttpPost]
+        public IActionResult DeleteAddress(int id )
+        {
+            address.Delete(id);
 
-		//    item2.OrderState = OrderState.Delivering; // problem 
-		//    List<Order_Item> items = new List<Order_Item>();
-		//    items.Add(item2);
-		//    items.Add(item2);
-		//    order.Order_Item = items;
+            return RedirectToAction("ViewAddress", "MyProfile");
 
-		//    // customer testing 
+        }
 
-		//    Address address = new Address();
-		//    address.description = "Dreams Land , Dreams Schools";
-		//    address.phone = "1004443226";
-		//    address.FirstName = "Hazem ";
-		//    address.LastName = "Abdelstatter";
-		//    ViewData["Address"] = address;
+        public IActionResult ViewOrders()
+        {
+            User user = identityRepository.GetUser();
 
-		//    return View(order);
-		//}
-		//public IActionResult Warrently()
-		//{
-		//    return View();
-		//}
+            List<Order> orders = new List<Order>();
+            orders = order.GetOrders();
+            if (orders.Count == 0) { 
+                return View("GoShopping");
+            }
+            else
+            {
+                return View(order);
 
-		//public IActionResult UpdatePassword(int id)
-		//{
-		//    //Customer customer = User.GetById(id);	
-
-		//    return View();
-
-		//}
-		//public IActionResult Logout()
-		//{
-		//    return View();
-		//}
+            }
+            
+        }
 
 
-	}
+        public IActionResult UpdatePassword()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> UpdatePassword(ChangePasswordVM model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = identityRepository.GetUser();
+                if (user == null)
+                {
+                    return RedirectToAction("Login", "Account");
+                }
+                var result = await UserManager.ChangePasswordAsync(user, model.CurrentPassword, model.ConfirmPassword);
+                if (result.Succeeded)
+                {
+                    await signInManager.RefreshSignInAsync(user);
+                    return RedirectToAction("Login", "Account");
+
+                }
+                foreach (var er in result.Errors)
+                {
+                    ModelState.AddModelError("", er.Description);
+                }
+
+            }
+            return View(model);
+
+        }
+
+
+
+
+
+    }
 }
 
 
