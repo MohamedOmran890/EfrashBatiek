@@ -22,6 +22,9 @@ namespace EfrashBatek.Models
         [Required]
         public string Image { get; set; }
         public string Image2 { get; set; }
+        public string Image3 { get; set; }
+        public string Image4 { get; set; }
+        public string Image5 { get; set; }
         public string discount { get; set; }
         public int PriceAfterSale { get; set; }
         [ForeignKey("Brand")]
