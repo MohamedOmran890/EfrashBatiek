@@ -6,36 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="wwwroot\css\about us.css" />
-    <Content Remove="wwwroot\css\addre2.css" />
-    <Content Remove="wwwroot\css\addseller.css" />
-    <Content Remove="wwwroot\css\addshop.css" />
-    <Content Remove="wwwroot\css\admin.css" />
-    <Content Remove="wwwroot\css\cart.css" />
-    <Content Remove="wwwroot\css\cart2.css" />
-    <Content Remove="wwwroot\css\Checkout address.css" />
-    <Content Remove="wwwroot\css\contact us.css" />
-    <Content Remove="wwwroot\css\custom.css" />
-    <Content Remove="wwwroot\css\default address.css" />
-    <Content Remove="wwwroot\css\default.css" />
-    <Content Remove="wwwroot\css\Empty.css" />
-    <Content Remove="wwwroot\css\log.css" />
-    <Content Remove="wwwroot\css\log2.css" />
-    <Content Remove="wwwroot\css\main.css" />
-    <Content Remove="wwwroot\css\Order Confirmation.css" />
-    <Content Remove="wwwroot\css\orderdetails.css" />
-    <Content Remove="wwwroot\css\orderinfo.css" />
-    <Content Remove="wwwroot\css\orders.css" />
-    <Content Remove="wwwroot\css\ordertable.css" />
-    <Content Remove="wwwroot\css\payment method.css" />
-    <Content Remove="wwwroot\css\product details.css" />
-    <Content Remove="wwwroot\css\profile.css" />
-    <Content Remove="wwwroot\css\profile2.css" />
-    <Content Remove="wwwroot\css\seller details.css" />
-    <Content Remove="wwwroot\css\style-prefix.css" />
-    <Content Remove="wwwroot\css\style.css" />
-    <Content Remove="wwwroot\css\trend.css" />
-    <Content Remove="wwwroot\css\wishlist.css" />
     <Content Remove="wwwroot\Image\0.jpg" />
     <Content Remove="wwwroot\Image\00.webp" />
     <Content Remove="wwwroot\Image\1.jpg" />
