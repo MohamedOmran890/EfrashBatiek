@@ -18,6 +18,7 @@ namespace EfrashBatek.service
             context.SaveChanges();
 
         }
+       
         public int Update(int id, Product product)
         {
             var ans = context.Products.FirstOrDefault(x => x.ID == id);
@@ -43,9 +44,11 @@ namespace EfrashBatek.service
         public List<Product> GetAll()
         {
             var ans = context.Products.ToList();
+           
             return ans;
         }
-        public List<Product> GetBy()
+	
+		public List<Product> GetBy()
         {
             var ans = context.Products.ToList();
             return ans;
