@@ -16,6 +16,11 @@ namespace EfrashBatek.Controllers
             _itemRepository = repository;
             _identityRepository = identityRepository;
         }
+
+        public IActionResult Index() { 
+        
+         return View(); 
+        }
         public IActionResult AddToCart(int Id)
         {
             var HaveSession = HttpContext.Session.GetString("Id");
