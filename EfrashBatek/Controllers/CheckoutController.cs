@@ -40,7 +40,11 @@ using System;
             return RedirectToAction("PaymentMethod");
             /********/
         }
-        public IActionResult PaymentMethod()
+    public IActionResult Index1()
+    {
+        return View();
+    }
+    public IActionResult PaymentMethod()
         {
             return View();
         }

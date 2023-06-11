@@ -17,7 +17,7 @@ body{
   min-height: 100vh;
   width: 100%;
   background: #d5d5d5;
-  background: url(0.jpg) no-repeat center center/cover;
+  background: url(../Image/0.jpg) no-repeat center center/cover;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -213,19 +213,19 @@ ul.breadcrumb li a:hover {
   margin-top: 12px;
 }
 .right-side .button input[type="button"]{
-  color: #bc969e;
+  color: #fff;
   font-size: 18px;
   outline: none;
   border: none;
   padding: 8px 16px;
   border-radius: 6px;
-  background: #fff;
+  background: #cbaab1;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 .button input[type="button"]:hover{
-  background: #cbaab1;
-  color: #fff;
+  background: #fff;
+  color: #bc969e;
 }
 
 

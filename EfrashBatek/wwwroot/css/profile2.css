@@ -12,6 +12,9 @@ td, th {
   padding: 8px;
 }
 
+tr:nth-child(even) {
+  background-color: #cbaab1;
+}
  *{
     margin: 0;
     padding: 0;
@@ -31,6 +34,13 @@ header{
     align-items: center;
     justify-content: space-between;
     padding: 20px 10%;
+}
+.page-item.active .page-link {
+
+    background-color: #e3d9d9;
+}
+a {
+    color: #e3d9d9;
 }
 .logo img{
     max-width: 120px;

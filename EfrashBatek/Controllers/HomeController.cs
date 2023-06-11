@@ -29,17 +29,23 @@ namespace EfrashBatek.Controllers
         public IActionResult TrendingProducts()
         {
 
-            //// Get top 3 most popular items by quanting how many number that orderitem was ..  
-            //var row = (from x in context.Order_Items
-            //           group x by new { x.ItemID } into val
-            //           select new
-            //           {
-            //               val.Key.ItemID,
-            //               QuantitySum = val.Count()
+            var list = context.Items // include product inside  to void null expection 
+                         .SelectMany(i => context.Order_Items.Where(oi => oi.ItemID == i.ID), (i, oi) => new { Item = i, Order_Item = oi  , productItem =  i.Product })
+                         .ToList()
+                         .GroupBy(ti => ti.Item, ti => ti.Order_Item)
+                         .Select(g => new { product = g.Key, numberOfOrders = g.Count() , productItem = g.Key.Product })
+                         .OrderByDescending(x => x.numberOfOrders)
+                         .Take(3)
+                         .ToList();
 
-            //           }.OrderByDescending(i => i.QuantitySum).Take(3);
-
-			return View();    
+            List<Item> items = new List<Item>();
+           foreach (var item in list)
+            {
+                items.Add(item.product);
+                
+            }
+            
+            return View(items);    
 
 
 			

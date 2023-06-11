@@ -1,166 +1,86 @@
 /* Import Google font - Poppins */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
 }
 
-.container {
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    max-width: 500px;
-    width: 100%;
-    background: #fff;
-    border-radius: 7px;
-    box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+.container{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  max-width: 500px;
+  width: 100%;
+  background: #fff;
+  border-radius: 7px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.3);
 }
-
-    .container .registration {
-        display: none;
-    }
-
-#check:checked ~ .registration {
-    display: block;
+.container .registration{
+  display: none;
 }
-
-#check:checked ~ .login {
-    display: none;
+#check:checked ~ .registration{
+  display: block;
 }
-
-#check {
-    display: none;
+#check:checked ~ .login{
+  display: none;
 }
-
-.container .form {
-    padding: 2rem;
+#check{
+  display: none;
 }
-
-.form header {
-    font-size: 2rem;
-    font-weight: 500;
-    text-align: center;
-    margin-bottom: 1.5rem;
+.container .form{
+  padding: 2rem;
 }
-
-.form input {
-    height: 60px;
-    width: 100%;
-    padding: 0 15px;
-    font-size: 17px;
-    margin-bottom: 1.3rem;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    outline: none;
+.form header{
+  font-size: 2rem;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 1.5rem;
 }
-
-    .form input:focus {
-        box-shadow: 0 1px 0 rgba(0,0,0,0.2);
-    }
-
-.form a {
-    font-size: 16px;
-    color: #cbaab1;
-    text-decoration: none;
+ .form input{
+   height: 60px;
+   width: 100%;
+   padding: 0 15px;
+   font-size: 17px;
+   margin-bottom: 1.3rem;
+   border: 1px solid #ddd;
+   border-radius: 6px;
+   outline: none;
+ }
+ .form input:focus{
+   box-shadow: 0 1px 0 rgba(0,0,0,0.2);
+ }
+.form a{
+  font-size: 16px;
+  color: #cbaab1;
+  text-decoration: none;
 }
-
-    .form a:hover {
-        text-decoration: underline;
-    }
-
-.form input.button {
-    color: #fff;
-    background: #cbaab1;
-    font-size: 1.2rem;
-    font-weight: 500;
-    letter-spacing: 1px;
-    margin-top: 1.7rem;
-    cursor: pointer;
-    transition: 0.4s;
+.form a:hover{
+  text-decoration: underline;
 }
-
-    .form input.button:hover {
-        background: #af979d;
-    }
-
-.signup {
-    font-size: 17px;
-    text-align: center;
+.form input.button{
+  color: #fff;
+  background: #cbaab1;
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin-top: 1.7rem;
+  cursor: pointer;
+  transition: 0.4s;
 }
-
-    .signup label {
-        color: #cbaab1;
-        cursor: pointer;
-    }
-
-        .signup label:hover {
-            text-decoration: underline;
-        }
-.container {
-    top: auto;
+.form input.button:hover{
+  background: #af979d;
 }
-.containerr {
-    display: block;
-    position: relative;
-    padding-left: 35px;
-    margin-bottom: 12px;
-    cursor: pointer;
-    font-size: 22px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+.signup{
+  font-size: 17px;
+  text-align: center;
 }
-
-    /* Hide the browser's default radio button */
-    .containerr input {
-        position: absolute;
-        opacity: 0;
-        cursor: pointer;
-    }
-
-/* Create a custom radio button */
-.checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 25px;
-    width: 25px;
-    background-color: #eee;
-    border-radius: 50%;
+.signup label{
+  color: #cbaab1;
+  cursor: pointer;
 }
-
-/* On mouse-over, add a grey background color */
-.containerr:hover input ~ .checkmark {
-    background-color: #ccc;
-}
-
-/* When the radio button is checked, add a blue background */
-.containerr input:checked ~ .checkmark {
-    background-color: #2196F3;
-}
-
-/* Create the indicator (the dot/circle - hidden when not checked) */
-.checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
-}
-
-/* Show the indicator (dot/circle) when checked */
-.containerr input:checked ~ .checkmark:after {
-    display: block;
-}
-
-/* Style the indicator (dot/circle) */
-.containerr .checkmark:after {
-    top: 9px;
-    left: 9px;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: white;
+.signup label:hover{
+  text-decoration: underline;
 }

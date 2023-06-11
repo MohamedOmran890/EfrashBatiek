@@ -14,10 +14,13 @@ namespace EfrashBatek.Models
         public User User { get; set; }
         public string Image { get; set; }
 
-        [ForeignKey("WishListId")]
         public int WishListId { get; set; }
+
+        [ForeignKey("WishListId")]
         public virtual WishList WishList { get; set; }
-        public virtual ICollection<Cart> Carts { get; set; }
+        public int CartId { get; set; }
+        [ForeignKey("CartId")]
+        public Cart Cart { get; set; }  
         public virtual ICollection<Order> Orders { get; set; }
         public virtual ICollection<Custom> Customs { get; set; }
 
