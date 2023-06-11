@@ -16,17 +16,17 @@ using System;
           _identityRepository = identityRepository;
              
         }
-        public IActionResult Index()
-        {
-          var userId =_identityRepository.GetUserID();
-        if(userId == null)
-        {
-            return RedirectToAction("Login", "Account");
-        }
+        //public IActionResult Index()
+        //{
+        //  var userId =_identityRepository.GetUserID();
+        //if(userId == null)
+        //{
+        //    return RedirectToAction("Login", "Account");
+        //}
 
-        var add = addressRepository.GetAllById(userId);
-            return View(add);
-        }
+        //var add = addressRepository.GetAllById(userId);
+        //    return View(add);
+        //}
         public IActionResult Address()
         {
         var zone = new SelectList(Enum.GetValues(typeof(Zone)));
@@ -40,7 +40,11 @@ using System;
             return RedirectToAction("PaymentMethod");
             /********/
         }
-        public IActionResult PaymentMethod()
+    public IActionResult Index1()
+    {
+        return View();
+    }
+    public IActionResult PaymentMethod()
         {
             return View();
         }

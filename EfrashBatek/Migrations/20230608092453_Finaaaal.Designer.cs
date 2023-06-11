@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EfrashBatek.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20230606144017_customm")]
-    partial class customm
+    [Migration("20230608092453_Finaaaal")]
+    partial class Finaaaal
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -29,15 +29,12 @@ namespace EfrashBatek.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("FirstName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FullAddress")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastName")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("PostalCode")
@@ -56,14 +53,11 @@ namespace EfrashBatek.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("phone")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
 
-                    b.HasIndex("UserId")
-                        .IsUnique()
-                        .HasFilter("[UserId] IS NOT NULL");
+                    b.HasIndex("UserId");
 
                     b.ToTable("Addresses");
                 });
@@ -201,6 +195,9 @@ namespace EfrashBatek.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Phone")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<short>("Zone")
@@ -695,7 +692,7 @@ namespace EfrashBatek.Migrations
 
             modelBuilder.Entity("EfrashBatek.ViewModel.ForgetPasswordVM", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -704,7 +701,7 @@ namespace EfrashBatek.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.HasKey("ID");
 
                     b.ToTable("ForgetPasswordVM");
                 });
@@ -717,6 +714,9 @@ namespace EfrashBatek.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("ConfiremPassword")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ConfirmPassword")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -869,8 +869,8 @@ namespace EfrashBatek.Migrations
             modelBuilder.Entity("EfrashBatek.Models.Address", b =>
                 {
                     b.HasOne("EfrashBatek.Models.User", "User")
-                        .WithOne("Address")
-                        .HasForeignKey("EfrashBatek.Models.Address", "UserId");
+                        .WithMany("AddressList")
+                        .HasForeignKey("UserId");
 
                     b.Navigation("User");
                 });
@@ -1225,7 +1225,7 @@ namespace EfrashBatek.Migrations
 
             modelBuilder.Entity("EfrashBatek.Models.User", b =>
                 {
-                    b.Navigation("Address");
+                    b.Navigation("AddressList");
 
                     b.Navigation("Videos");
                 });

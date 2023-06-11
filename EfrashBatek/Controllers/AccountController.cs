@@ -151,36 +151,7 @@ namespace EfrashBatek.Controllers
             return RedirectToAction("Login", "Account");
         }
         [HttpGet]
-        public IActionResult ChangePassword()
-        {
-            return View();
-        }
-        [HttpPost]
-        public async Task<IActionResult> ChangePassword(ChangePasswordVM model)
-        {
-            if (ModelState.IsValid)
-            {
-                var user = await _userManager.GetUserAsync(User);
-                if (user == null)
-                {
-                    return RedirectToAction("Login", "Account");
-                }
-                var result = await _userManager.ChangePasswordAsync(user, model.CurrentPassword, model.ConfirmPassword);
-                if (result.Succeeded)
-                {
-                    await _signInManager.RefreshSignInAsync(user);
-                    return RedirectToAction("Login", "Account");
-
-                }
-                foreach (var er in result.Errors)
-                {
-                    ModelState.AddModelError("", er.Description);
-                }
-
-            }
-                return View(model);
-
-        }
+        
         public IActionResult ForgetPassword()
         {
             return View();

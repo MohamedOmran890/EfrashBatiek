@@ -7,20 +7,27 @@
 
   <ItemGroup>
     <Content Remove="wwwroot\css\about us.css" />
+    <Content Remove="wwwroot\css\addre2.css" />
     <Content Remove="wwwroot\css\addseller.css" />
     <Content Remove="wwwroot\css\addshop.css" />
     <Content Remove="wwwroot\css\admin.css" />
     <Content Remove="wwwroot\css\cart.css" />
     <Content Remove="wwwroot\css\cart2.css" />
+    <Content Remove="wwwroot\css\Checkout address.css" />
     <Content Remove="wwwroot\css\contact us.css" />
+    <Content Remove="wwwroot\css\custom.css" />
+    <Content Remove="wwwroot\css\default address.css" />
+    <Content Remove="wwwroot\css\default.css" />
     <Content Remove="wwwroot\css\Empty.css" />
     <Content Remove="wwwroot\css\log.css" />
     <Content Remove="wwwroot\css\log2.css" />
     <Content Remove="wwwroot\css\main.css" />
+    <Content Remove="wwwroot\css\Order Confirmation.css" />
     <Content Remove="wwwroot\css\orderdetails.css" />
     <Content Remove="wwwroot\css\orderinfo.css" />
     <Content Remove="wwwroot\css\orders.css" />
     <Content Remove="wwwroot\css\ordertable.css" />
+    <Content Remove="wwwroot\css\payment method.css" />
     <Content Remove="wwwroot\css\product details.css" />
     <Content Remove="wwwroot\css\profile.css" />
     <Content Remove="wwwroot\css\profile2.css" />
@@ -143,19 +150,26 @@
 
   <ItemGroup>
     <None Include="wwwroot\css\about us.css" />
+    <None Include="wwwroot\css\addre2.css" />
     <None Include="wwwroot\css\addseller.css" />
     <None Include="wwwroot\css\addshop.css" />
     <None Include="wwwroot\css\admin.css" />
     <None Include="wwwroot\css\cart.css" />
     <None Include="wwwroot\css\cart2.css" />
+    <None Include="wwwroot\css\Checkout address.css" />
     <None Include="wwwroot\css\contact us.css" />
+    <None Include="wwwroot\css\custom.css" />
+    <None Include="wwwroot\css\default address.css" />
+    <None Include="wwwroot\css\default.css" />
     <None Include="wwwroot\css\Empty.css" />
     <None Include="wwwroot\css\log.css" />
     <None Include="wwwroot\css\log2.css" />
     <None Include="wwwroot\css\main.css" />
+    <None Include="wwwroot\css\Order Confirmation.css" />
     <None Include="wwwroot\css\orderinfo.css" />
     <None Include="wwwroot\css\orders.css" />
     <None Include="wwwroot\css\orderdetails.css" />
+    <None Include="wwwroot\css\payment method.css" />
     <None Include="wwwroot\css\product details.css" />
     <None Include="wwwroot\css\profile.css" />
     <None Include="wwwroot\css\profile2.css" />

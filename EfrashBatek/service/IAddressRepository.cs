@@ -5,10 +5,10 @@ namespace EfrashBatek.service
 {
     public interface IAddressRepository
     {
-        void Create(Address address);
-        int Delete(string Id);
-        List<Address> GetAll();
-        List<Address> GetAllById(string Id);
-        int Update(string id, Address address);
+       int Edit(Address address);
+        List<Address> View();
+        int  Create(Address address);
+        public Address GetbyID(int id);
+        public int  Delete (int id );
     }
 }
