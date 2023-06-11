@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- CSS-link -->
     <link rel="stylesheet" href="~/css/cart.css">
-    <link rel="stylesheet" href="~/css/main.css">
+  
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600;700&display=swap"
@@ -39,9 +39,9 @@
     <!-- Code by Angela Delise
     https://codepen.io/angeladelise/pen/yLJdgYx -->
 
-    <link rel="stylesheet" href="css/cart.css">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="shortcut icon" href="image/favicon.ico" type="image/x-icon">
+    @*<link rel="stylesheet" href="css/cart.css">*@
+    <link rel="stylesheet" href="~/css/main.css">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600;700&display=swap"
@@ -140,11 +140,13 @@
         </div>
     </section>
     </footer>
+    @*<script src="~/js/cart.js"></script>*@
     <script src="~/js/main.js"></script>
     <!--Omran Craete them cause  Clint side-->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+
     @section Scripts {
         @{
             await Html.RenderPartialAsync("_ValidationScriptsPartial");
@@ -176,7 +178,7 @@
         })
 
     </script>
-    <script src="~/js/cart.js"></script>
+   
     <!---BOOTSTRAP TABEL-->
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>

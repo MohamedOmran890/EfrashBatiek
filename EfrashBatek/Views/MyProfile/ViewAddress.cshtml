@@ -1,0 +1,67 @@
+﻿@{
+
+    Layout = "LayoutProfile";
+}
+@model List<Address>
+<div class="tab-pane fade show active" id="address" role="tabpanel" aria-labelledby="profile-tab">
+    <div class="tab-content p-4 p-md-5" id="v-pills-tabContent">
+
+        <div class="tab-pane fade show active">
+            <h3 class="mb-4">Address Settings</h3>
+        <a href="#">
+            <p class="new" style="float: right;">
+                <a asp-action="CreateAddress" asp-controller="MyProfile">
+                    <i class='bx bx-plus-circle'></i> add new address
+                </a>
+            </p>
+        </a>
+        <center>
+            <br>
+            <br>
+            <br>
+            <br>
+
+            <table id="example" class="order-table" style="margin-left: auto; margin-right: auto; width : 100%;">
+                <thead>
+                    <tr>
+                        <th>Number phone</th>
+                        <th></th>
+                        <th>Total cost</th>
+                        <th>View Address Details </th>
+                        <th>Delete Address </th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @if (Model != null)
+                    {
+                        @foreach (var address in Model)
+                        {
+                            <tr>
+                                <td>@address.phone</td>
+                                <td>@address.PostalCode</td>
+
+                                <td>@address.FullAddress</td>
+                                 		<form asp-action="ViewAddressDetails" asp-controller="MyProfile" asp-route-id ="@address.ID" >
+                                    <td>
+                                        <input type="submit" value="Edit" class="btn btn-success" />
+                                    </td>
+                                    </form>
+                                    <form asp-action="DeleteAddress" asp-controller="MyProfile" asp-route-id="@address.ID">
+                                    <td>
+                                        <input type="submit" value="Delete" class="btn btn-success" />
+                                    </td>
+                                    </form>
+                            </tr>
+
+                        }
+                    }
+                   
+                </tbody>
+
+            </table>
+        </center>
+    </div>
+
+</div>
+</div>  

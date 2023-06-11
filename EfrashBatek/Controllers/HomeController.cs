@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Security.Cryptography.Xml;
 using System.Threading.Tasks;
 
 namespace EfrashBatek.Controllers
@@ -15,57 +16,33 @@ namespace EfrashBatek.Controllers
         private readonly ILogger<HomeController> _logger;
         private IProductRepository _Product;
         IItemRepository _Item;
+		private readonly Context context;
 
-        public HomeController(ILogger<HomeController> logger, IProductRepository product, IItemRepository item)
+		public HomeController(ILogger<HomeController> logger, IProductRepository product, IItemRepository item , Context context)
         {
             _logger = logger;
             _Product = product;
             _Item = item;
-        }
+			this.context = context;
+		}
 
         public IActionResult TrendingProducts()
         {
-            //var ans = _Product.GetAll();
-            Item item = new Item();
-            item.Name = "utrt65u";
-           // item.ID = 2;
 
-            item.Image = "Brown right L shaped sofa.jpg";
-            item.Code = "hgtg56";
-            item.Description = "gfkgfjng";
-            item.Image2 = "LF-L000301.jpg";
-            item.Price = 78;
-            item.discount = "%15";
-            item.PriceAfterSale = 48;
-            item.ShopID = 1;
-            item.Brand_ID = 1;
-            item.QuantityInStore = 1;
-            item.ProductID = 1;
-            //_Item.Create(item);
+            //// Get top 3 most popular items by quanting how many number that orderitem was ..  
+            //var row = (from x in context.Order_Items
+            //           group x by new { x.ItemID } into val
+            //           select new
+            //           {
+            //               val.Key.ItemID,
+            //               QuantitySum = val.Count()
+
+            //           }.OrderByDescending(i => i.QuantitySum).Take(3);
+
+			return View();    
 
 
-            Item item2 = new Item();
-            item2.Name = "Bedroom";
-
-            item2.Image = "Brown right L shaped sofa.jpg";
-            item2.Image2 = "LF-L000301.jpg";
-            item2.Price = 78;
-            item2.discount = "%15";
-            item2.PriceAfterSale = 48;
-
-            List<Item> list = new List<Item>();
-            list.Add(item);
-            list.Add(item2);
-
-
-
-
-            Product product = new Product() { Items = list };
-            Product product2 = new Product() { Items = list };
-            List<Product> products = new List<Product>()
-            { product , product2 };
-            return View(products);
-            /*************************/
+			
         }
 
         public IActionResult Privacy()
