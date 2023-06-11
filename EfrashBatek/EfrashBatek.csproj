@@ -292,6 +292,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\Image\custom\" />
+    <Folder Include="wwwroot\Image\Items\" />
   </ItemGroup>
 
 </Project>
