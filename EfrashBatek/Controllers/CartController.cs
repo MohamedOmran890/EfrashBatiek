@@ -11,10 +11,22 @@ namespace EfrashBatek.Controllers
     {
         IItemRepository _itemRepository;
         IIdentityRepository _identityRepository;
-        public CartController(IItemRepository repository, IIdentityRepository identityRepository)
+        public CartController(IItemRepository repository, IIdentityRepository identityRepository )
         {
             _itemRepository = repository;
             _identityRepository = identityRepository;
+        }
+
+        public IActionResult Index() {
+            List<Cart_Item> items = HttpContext.Session.Get<List<Cart_Item>>("cart");
+            if (items == null)
+            {
+                // Initialize the list if it is null
+                items = new List<Cart_Item>();
+            }
+            return View(items);
+
+            return View(); 
         }
         public IActionResult AddToCart(int Id)
         {

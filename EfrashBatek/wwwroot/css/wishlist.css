@@ -59,7 +59,7 @@ header{
     z-index: 10001;
     cursor: pointer;
 }
-.main-home{
+.main-home1{
     height: 60vh;
     display: grid;
     grid-template-columns: repeat(1, 1fr);
