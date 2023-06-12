@@ -11,7 +11,9 @@ namespace EfrashBatek.service
         Order GetById(int Id);
         int Update(int id, Order order);
         int TotalOrders();
-        public List<Order_Item> GetByShop();
+        List<Order> GetOrders();
+        List<Order_Item> GetByShop();
+
 
     }
 }

@@ -1,4 +1,4 @@
-﻿@model List<Product>
+﻿@model List<Item>
 @{
     Layout = "CustomerLayout";
 
@@ -33,72 +33,73 @@
             <div class="product-grid">
 
 
-
-                @foreach (var prod in Model)
+                @if (Model !=null)
                 {
+                    
+                            @foreach (var item in Model)
+                            {
+                                <div class="showcase">
 
-                    @if (prod.Items != null)
-                    {
-                        @foreach (var item in prod.Items)
-                        {
-                            <div class="showcase">
+                                    <div class="showcase-banner">
 
-                                <div class="showcase-banner">
-
-                                    <!--image-->
-                                    <a asp-action="Index" asp-controller="Item"><img  src="~/Image/products/@item.Image" alt="Mens Winter Leathers Jackets"
-                                  width="300" class="product-img hover"></a>
-                                    <!--image-->
-                                    <img src="~/Image/products/@item.Image2" alt="MEN Yarn Fleece Full-Zip Jacket"
-                                         class="product-img default" width="300">
-                                    <!--discount-->
-                                    <p class="showcase-badge">@item.discount</p>
-
-                                    <div class="showcase-actions">
-
-                                        <button class="btn-action">
-                                            <ion-icon name="heart-outline"></ion-icon>
-                                        </button>
-
-                                        <button class="btn-action">
-                                            <ion-icon name="bag-add-outline"></ion-icon>
-                                        </button>
-
-                                    </div>
-
-                                    <div class="showcase-content">
-                                        <!--item category  -->
-                                        <a href="product details.html" class="showcase-category">@prod.ProductName</a>
-
-                                        <a href="product details.html">
-                                            <!--item product  -->
-                                            <h3 class="showcase-title">@item.Name</h3>
+                                        <!--image-->
+                                        <a asp-action="Index" asp-controller="Item">
+                                            <img src="~/Image/products/@item.Image" alt="Mens Winter Leathers Jackets"
+                                                 width="300" class="product-img hover">
                                         </a>
-                                        <!---starts=-->
-                                        <div class="showcase-rating">
-                                            <ion-icon name="star"></ion-icon>
-                                            <ion-icon name="star"></ion-icon>
-                                            <ion-icon name="star"></ion-icon>
-                                            <ion-icon name="star-outline"></ion-icon>
-                                            <ion-icon name="star-outline"></ion-icon>
+                                        <!--image-->
+                                        <img src="~/Image/products/@item.Image2" alt="MEN Yarn Fleece Full-Zip Jacket"
+                                             class="product-img default" width="300">
+                                        <!--discount-->
+                                        <p class="showcase-badge">@item.discount</p>
+
+                                        <div class="showcase-actions">
+
+                                            <button class="btn-action">
+                                                <ion-icon name="heart-outline"></ion-icon>
+                                            </button>
+
+                                            <button class="btn-action">
+                                                <ion-icon name="bag-add-outline"></ion-icon>
+                                            </button>
+
                                         </div>
-                                        <!--prices-->
-                                        <div class="price-box">
-                                            <p class="price">@item.Price$</p>
-                                            <del>@item.PriceAfterSale$</del>
+
+                                        <div class="showcase-content">
+                                            <!--item category  -->
+                                            <a href="product details.html" class="showcase-category">@item.Product.ProductName</a>
+
+                                            <a href="product details.html">
+                                                <!--item product  -->
+                                                <h3 class="showcase-title">@item.Name</h3>
+                                            </a>
+                                            <!---starts=-->
+                                            <div class="showcase-rating">
+                                                <ion-icon name="star"></ion-icon>
+                                                <ion-icon name="star"></ion-icon>
+                                                <ion-icon name="star"></ion-icon>
+                                                <ion-icon name="star-outline"></ion-icon>
+                                                <ion-icon name="star-outline"></ion-icon>
+                                            </div>
+                                            <!--prices-->
+                                            <div class="price-box">
+                                        <p class="price">
+                                            @String.Format("{0:0.00}", item.Price) EPG
+                                            
+                                        </p>
+                                                <del>@item.PriceAfterSale$</del>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
 
-                            <a asp-action="AddToCart" asp-controller="Cart" asp-route-id=@item.ID><i class='bx bx-cart'></i></a>
-                        }
+                                <a asp-action="AddToCart" asp-controller="Cart" asp-route-id=@item.ID><i class='bx bx-cart'></i></a>
+                            }
 
-                    }
+
 
                 }
-
-
+              
 
 
             </div>

@@ -17,15 +17,15 @@ body {
   min-block-size: 100vh;
   padding: 5vmin;
   place-items: center;
-  text-decoration: none;
+}
+h2:hover {
+  text-decoration-line: none;
 }
 
 html {
+  
+  text-decoration-line: none;
   box-sizing: border-box;
-}
-
-a {
-  text-decoration: none;
 }
 
 .x {
@@ -34,9 +34,9 @@ a {
   box-shadow: 0 0 1em rgba(0, 0, 0, 0.0625);
   inline-size: 800px;
   margin-top: 8%;
-  margin-right: 28%;
-  margin-bottom: 1%;
-  width: 58%;
+  margin-right: 22.5%;
+  margin-bottom: 2%;
+  width: 56.5%;
   border-radius: 2em;
 }
 
@@ -61,6 +61,8 @@ ul.icons {
 }
 
 .word {
+  margin-left: -20%;
+  font-size: larger;
   color: #8a8b8b;
   transition: all .42s ease;
 }
@@ -70,6 +72,12 @@ ul.icons {
   transform: scale(1.1);
 }
 
+.ic {
+  color: rgb(133, 136, 135);
+  font-size: 34px;
+}
+
+
 li {
   list-style: none;
 }
@@ -78,11 +86,13 @@ address {
   font-style: normal;
 }
 
+/* HERE */
 button {
   border: 0;
   color: inherit;
   cursor: pointer;
   font: inherit;
+  align-items: center;
 }
 
 .button:hover {
@@ -306,9 +316,17 @@ aside {
 }
 
 /*******************************************************************************scroll***************************************************/
+.summary-delivery {
+  max-height: 150px;
+  /* Set the maximum height for the container */
+  overflow-y: auto;
+  overflow-x: hidden;
+  /* Enable vertical scrolling */
+}
+
 /* width */
 ::-webkit-scrollbar {
-  width: 15px;
+  width: 8px;
 }
 
 /* Track */
@@ -339,12 +357,14 @@ aside {
 
   }
 }
+
 @media screen and (min-width:401) and (max-width:630px) {
   .main-text h1 {
     font-size: 50px;
     transition: .4s;
   }
 }
+
 @media screen and (min-width:631) and (max-width:750px) {
   .navmenu {
     position: absolute;
@@ -382,10 +402,9 @@ aside {
 
 
 
-@media  screen and (min-width:751) and (max-width:890px) {
+@media screen and (min-width:751) and (max-width:890px) {
   header {
     padding: 20px 3%;
     transition: .4s;
   }
 }
-

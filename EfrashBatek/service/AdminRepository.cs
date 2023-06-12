@@ -26,7 +26,7 @@ namespace EfrashBatek.service
             ans.User.Email = admin.User.Email;
             ans.User.Gender = admin.User.Gender;
             ans.User.PhoneNumber = admin.User.PhoneNumber;
-            ans.User.Address = admin.User.Address;
+          
             context.Admin.Update(ans);
             int num = context.SaveChanges();
             return num;

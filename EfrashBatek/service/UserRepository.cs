@@ -34,7 +34,7 @@ namespace EfrashBatek.service
             var ans = GetbyID(user.Id);
             ans.FirstName = user.FirstName; 
             ans.LastName = user.LastName;   
-            ans.Address = user.Address;
+           
             ans.Email = user.Email; 
             ans.PhoneNumber = user.PhoneNumber; 
 
