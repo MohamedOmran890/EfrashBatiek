@@ -115,7 +115,8 @@ namespace EfrashBatek.Migrations
 
                     b.HasKey("ID");
 
-                    b.HasIndex("CustomerID");
+                    b.HasIndex("CustomerID")
+                        .IsUnique();
 
                     b.ToTable("Carts");
                 });
@@ -221,9 +222,6 @@ namespace EfrashBatek.Migrations
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("WishListId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("UserId");
@@ -312,6 +310,9 @@ namespace EfrashBatek.Migrations
                     b.Property<string>("Code")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DateTime")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -897,8 +898,8 @@ namespace EfrashBatek.Migrations
             modelBuilder.Entity("EfrashBatek.Models.Cart", b =>
                 {
                     b.HasOne("EfrashBatek.Models.Customer", "Customer")
-                        .WithMany("Carts")
-                        .HasForeignKey("CustomerID")
+                        .WithOne("Cart")
+                        .HasForeignKey("EfrashBatek.Models.Cart", "CustomerID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1183,7 +1184,7 @@ namespace EfrashBatek.Migrations
 
             modelBuilder.Entity("EfrashBatek.Models.Customer", b =>
                 {
-                    b.Navigation("Carts");
+                    b.Navigation("Cart");
 
                     b.Navigation("Customs");
 
