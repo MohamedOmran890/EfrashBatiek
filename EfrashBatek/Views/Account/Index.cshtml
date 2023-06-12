@@ -1,0 +1,102 @@
+﻿@{
+    Layout = "~/Views/Account/LayoutAccount.cshtml";
+}
+
+
+@{
+
+    ViewData["Title"] = "SignUp";
+}
+<div class="login form">
+    <header>Sign up</header>
+    <table>
+        <form >
+            <div  class="text-danger"></div>
+
+        <tr>
+            <td>
+                <input  type="text" placeholder="Enter your first name ">
+                <span ></span>
+            </td>
+
+            <td>
+                <input  placeholder="Enter your last name">
+                <span ></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input  placeholder="Enter your Username ">
+                <span ></span>
+            </td>
+            <td>
+                <input placeholder="Enter your phone ">
+                <span ></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input  placeholder="Enter your Age">
+                <span ></span>
+            </td>
+            <td>
+                <input  class="form-control" />
+                <span  class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input placeholder="Enter your email">
+                <span></span>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <input  placeholder="Enter your password">
+                <span ></span>
+            </td>
+            <td>
+                <input  placeholder="Confirm your Password">
+                <span ></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label  class="containerr">Male :</label>
+            </td>
+            <td>
+                <input type="radio"  value="male" checked="checked" name="radio" style="width:12%">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label  class="containerr">Famale :</label>
+            </td>
+            <td>
+                <input type="radio" value="famale" name="radio" style="width:12%">
+            </td>
+            <span ></span>
+        </tr>
+
+
+        </form>
+    </table>
+    <div class="signup">
+        <input type="submit" class="button" value="SignUp">
+        <span class="signup">
+            Already have an account?
+
+            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">
+                <label>Login</label>
+            </a>
+
+
+        </span>
+    </div>
+</div>
+<style>
+    .container {
+        top: 52%;
+    }
+</style>
