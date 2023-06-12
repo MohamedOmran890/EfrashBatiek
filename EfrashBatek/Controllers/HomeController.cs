@@ -28,28 +28,20 @@ namespace EfrashBatek.Controllers
 
         public IActionResult TrendingProducts()
         {
+           
 
-            var list = context.Items // include product inside  to void null expection 
-                         .SelectMany(i => context.Order_Items.Where(oi => oi.ItemID == i.ID), (i, oi) => new { Item = i, Order_Item = oi  , productItem =  i.Product })
-                         .ToList()
-                         .GroupBy(ti => ti.Item, ti => ti.Order_Item)
-                         .Select(g => new { product = g.Key, numberOfOrders = g.Count() , productItem = g.Key.Product })
-                         .OrderByDescending(x => x.numberOfOrders)
-                         .Take(3)
-                         .ToList();
 
-            List<Item> items = new List<Item>();
-           foreach (var item in list)
-            {
-                items.Add(item.product);
-                
-            }
-            
-            return View(items);    
+            var pair = new KeyValuePair<List<Item>,List<Item>> (_Item.NewArrivals(), _Item.Trending());
+             
+                 
+             return View(pair);    
 
 
 			
         }
+
+        
+      
 
         public IActionResult Privacy()
         {
