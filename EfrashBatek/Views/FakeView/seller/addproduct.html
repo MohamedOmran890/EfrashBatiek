@@ -59,10 +59,10 @@
 
   <!--ADD Product FORM-->
   <div class="form">
-    <input type="text" id="product-name" placeholder="product name">
-    <input type="text" id="product-code" placeholder="product code">
-    <input type="text" id="Brand-name" placeholder="Brand Name">
-    <input type="number" id="Quantity in store" placeholder="Quantity in store">
+    <input type="text" id="pro" placeholder="product name">
+    <input type="text" id="pro" placeholder="product code">
+    <input type="text" id="pro" placeholder="Brand Name">
+    <input type="number" id="pro" placeholder="Quantity in store">
     <textarea id="des" placeholder="Product description"></textarea>
 
     <!-- product image -->
@@ -87,11 +87,20 @@
     </div>
 
     <div class="product-price">
-        <input type="number" id="actual-price" placeholder="actual price">
-        <input type="number" id="discount" placeholder="discount percentage">
-        <input type="number" id="sell-price" placeholder="selling price">
+      <select id="pro1" class="form-control">
+								<option value="null">Select</option>
+								<option value="57">
+									Qena
+								</option>
+								<option value="57">
+									Cairo
+								</option>
+				</select>
+        <input type="number" id="pro1" placeholder="actual price">
+        <input type="number" id="pro1" placeholder="discount percentage">
+        <input type="number" id="pro1" placeholder="selling price">
     </div>
-    <textarea id="tags" placeholder="Enter categories here"></textarea>
+    <textarea id="des" placeholder="Enter categories here"></textarea>
 
     <input type="checkbox" class="checkbox" id="tac" checked>
     <label for="tac">clothing take 30% from your total sell</label>
