@@ -1,0 +1,116 @@
+<html lang="en" dir="ltr">
+
+<head>
+  <meta charset="UTF-8">
+  <title> Add Product </title>
+  <link rel="stylesheet" href="css/seller.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Boxicons CDN Link -->
+  <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+  <!-- BOOTSTRAB -->
+  <link rel="stylesheet" type="text/css"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/add product.css">
+</head>
+
+<body>
+  <!-- SIDEBAR -->
+  <section id="sidebar">
+    <a href="#" class="brand">
+      <i class='bx bxs-smile'></i>
+      <span class="text">Efresh Beitak</span>
+    </a>
+    <ul class="side-menu top">
+      <li>
+        <a href="seller.html">
+          <i class='bx bxs-dashboard'></i>
+          <span class="text">Dashboard</span>
+        </a>
+      </li>
+      <li>
+        <a href="orders1.html">
+          <i class='bx bx-list-ul'></i>
+          <span class="text">Order List </span>
+        </a>
+      </li>
+      <li class="active">
+        <a href="addproduct.html">
+          <i class='bx bx-list-plus'></i>
+          <span class="text">Add Product</span>
+        </a>
+      </li>
+      <li>
+        <a href="addshop.html">
+          <i class='bx bx-list-plus'></i>
+          <span class="text">Products</span>
+        </a>
+      </li>
+    </ul>
+  </section>
+  <!-- SIDEBAR -->
+  <!-- NAVBAR -->
+  <section id="content">
+    <nav>
+      <i class='bx bx-menu'></i>
+    </nav>
+  </section>
+  <!-- NAVBAR -->
+
+  <!--ADD Product FORM-->
+  <div class="form">
+    <input type="text" id="pro" placeholder="product name">
+    <input type="text" id="pro" placeholder="product code">
+    <input type="text" id="pro" placeholder="Brand Name">
+    <input type="number" id="pro" placeholder="Quantity in store">
+    <textarea id="des" placeholder="Product description"></textarea>
+
+    <!-- product image -->
+    <div class="product-info">
+        <div class="product-image"><p class="text">product image</p></div>
+        <div class="upload-image-sec">
+            <!-- upload inputs -->
+            <!-- <p class="text"><img src="img/camera.png" alt="">upload image</p> -->
+            <div class="upload-catalouge">
+                <input type="file" class="fileupload" id="first-file-upload-btn" hidden>
+                <label for="first-file-upload-btn" class="upload-image"></label>
+                <input type="file" class="fileupload" id="second-file-upload-btn" hidden>
+                <label for="second-file-upload-btn" class="upload-image"></label>
+                <input type="file" class="fileupload" id="third-file-upload-btn" hidden>
+                <label for="third-file-upload-btn" class="upload-image"></label>
+                <input type="file" class="fileupload" id="fourth-file-upload-btn" hidden>
+                <label for="fourth-file-upload-btn" class="upload-image"></label>
+                <input type="file" class="fileupload" id="fifth-file-upload-btn" hidden>
+                <label for="fifth-file-upload-btn" class="upload-image"></label>
+            </div>
+        </div>
+    </div>
+
+    <div class="product-price">
+      <select id="pro1" class="form-control">
+								<option value="null">Select</option>
+								<option value="57">
+									Qena
+								</option>
+								<option value="57">
+									Cairo
+								</option>
+				</select>
+        <input type="number" id="pro1" placeholder="actual price">
+        <input type="number" id="pro1" placeholder="discount percentage">
+        <input type="number" id="pro1" placeholder="selling price">
+    </div>
+    <textarea id="des" placeholder="Enter categories here"></textarea>
+
+    <input type="checkbox" class="checkbox" id="tac" checked>
+    <label for="tac">clothing take 30% from your total sell</label>
+
+    <div class="buttons">
+        <button class="btn" id="add-btn">add product</button>
+        <button class="btn" id="save-btn">save draft</button>
+    </div>
+</div>
+  <!-- SCRIPT -->
+  <script src="js/script.js"></script>
+</body>
+</html>
