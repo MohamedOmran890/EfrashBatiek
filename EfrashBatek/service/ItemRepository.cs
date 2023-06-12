@@ -26,6 +26,10 @@ namespace EfrashBatek.service
             ans.Code = item.Code;
             ans.Price = item.Price;
             ans.Image = item.Image;
+            ans.Image2 = item.Image2;
+            ans.Image3 = item.Image3;
+            ans.Image4 = item.Image4;
+            ans.Image5 = item.Image5;
             ans.QuantityInStore = item.QuantityInStore;
             ans.Brand_ID = item.Brand_ID;
             ans.ShopID = item.ShopID;
