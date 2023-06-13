@@ -110,7 +110,7 @@ namespace EfrashBatek
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=TrendingProducts}/{id?}");//When Open Web Open Bydefault Home 
+                    pattern: "{controller=Account}/{action=Index}/{id?}");//When Open Web Open Bydefault Home 
             });
         }
     }

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace EfrashBatek.Migrations
 {
-    public partial class Finaaaal : Migration
+    public partial class Alyaa126 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -306,7 +306,7 @@ namespace EfrashBatek.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
-                    WishListId = table.Column<int>(type: "int", nullable: false)
+                    Image = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -490,12 +490,16 @@ namespace EfrashBatek.Migrations
                     Price = table.Column<double>(type: "float", nullable: false),
                     Image = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Image2 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Image3 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Image4 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Image5 = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     discount = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PriceAfterSale = table.Column<int>(type: "int", nullable: false),
                     Brand_ID = table.Column<int>(type: "int", nullable: false),
                     QuantityInStore = table.Column<int>(type: "int", nullable: false),
                     ShopID = table.Column<int>(type: "int", nullable: false),
                     ProductID = table.Column<int>(type: "int", nullable: false),
+                    DateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                     WishListID = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
@@ -743,7 +747,8 @@ namespace EfrashBatek.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Carts_CustomerID",
                 table: "Carts",
-                column: "CustomerID");
+                column: "CustomerID",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Customers_UserId",

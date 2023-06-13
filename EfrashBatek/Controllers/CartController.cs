@@ -26,8 +26,8 @@ namespace EfrashBatek.Controllers
             }
             return View(items);
 
-            return View(); 
         }
+        [HttpPost]
         public IActionResult AddToCart(int Id)
         {
             var HaveSession = HttpContext.Session.GetString("Id");
@@ -62,7 +62,7 @@ namespace EfrashBatek.Controllers
                 items.Add(itm);
                 HttpContext.Session.Set("cart", items); 
             }
-            return RedirectToAction("TrendingProducts","Home");
+            return RedirectToAction("Index","Cart");
         }
         public IActionResult Cart()
         {
