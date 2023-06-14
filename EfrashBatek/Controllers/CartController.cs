@@ -53,14 +53,26 @@ namespace EfrashBatek.Controllers
                 {
                     return Content("The Product Not Found");
                 }
+                // alyaa changes to avoid  ReferenceLoopHandling cycle  error 
+                var itemdata = new itemData();
+
+                itemdata.price = (int)item.Price;
+                itemdata.image = item.Image;    
+                itemdata.Name = item.Name;
+                // id of item with itemdata 
+                itemdata.itemid = item.ID;
+
                 Cart_Item itm = new Cart_Item
                 {
                     ItemID = item.ID,
-                    Quantity = 1,
+                    Quantity = 10,
+                    itemData = itemdata,
                     ItemName= item.Name,
                 };
+               
+              
                 items.Add(itm);
-                HttpContext.Session.Set("cart", items); 
+                 HttpContext.Session.Set("cart", items); 
             }
             return RedirectToAction("Index","Cart");
         }
@@ -86,8 +98,27 @@ namespace EfrashBatek.Controllers
             if (itm != null)
                 items.Remove(itm);
             HttpContext.Session.Set("cart", items);
-            return RedirectToAction("Cart");
+            return RedirectToAction("Index" , "Cart");
 
+        }
+
+        [HttpPost]
+        public ActionResult UpdateQuantity(int itemId, int newQuantity)
+        {
+            List<Cart_Item> items = HttpContext.Session.Get<List<Cart_Item>>("cart");
+            Cart_Item x = items.FirstOrDefault(i => i.ItemID == itemId);
+          
+
+            if (x != null)
+            {
+                x.Quantity = newQuantity;
+                
+                return Json(new { success = true });
+            }
+            else
+            {
+                return Json(new { success = false, error = "Item not found" });
+            }
         }
     }
 }

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace EfrashBatek.Migrations
 {
-    public partial class Alyaa126 : Migration
+    public partial class Alyaa6122023 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -96,6 +96,23 @@ namespace EfrashBatek.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ForgetPasswordVM", x => x.ID);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "itemData",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    image = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    price = table.Column<int>(type: "int", nullable: false),
+                    description = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    itemid = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_itemData", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -558,6 +575,7 @@ namespace EfrashBatek.Migrations
                     CartID = table.Column<int>(type: "int", nullable: false),
                     ItemID = table.Column<int>(type: "int", nullable: false),
                     Quantity = table.Column<int>(type: "int", nullable: false),
+                    itemDataId = table.Column<int>(type: "int", nullable: true),
                     ItemName = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -568,6 +586,12 @@ namespace EfrashBatek.Migrations
                         column: x => x.CartID,
                         principalTable: "Carts",
                         principalColumn: "ID",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Cart_Items_itemData_itemDataId",
+                        column: x => x.itemDataId,
+                        principalTable: "itemData",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_Cart_Items_Items_ItemID",
@@ -738,6 +762,11 @@ namespace EfrashBatek.Migrations
                 column: "NormalizedUserName",
                 unique: true,
                 filter: "[NormalizedUserName] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Cart_Items_itemDataId",
+                table: "Cart_Items",
+                column: "itemDataId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Cart_Items_ItemID",
@@ -917,6 +946,9 @@ namespace EfrashBatek.Migrations
 
             migrationBuilder.DropTable(
                 name: "Carts");
+
+            migrationBuilder.DropTable(
+                name: "itemData");
 
             migrationBuilder.DropTable(
                 name: "Designs");
