@@ -18,6 +18,36 @@ namespace EfrashBatek.service
             context.SaveChanges();
 
         }
+        public List<Item> NewArrivals() {
+
+
+            // NewArrivals 
+            var newarrivals = context.Items.OrderByDescending(item => item.DateTime).Take(4).ToList();
+
+            return newarrivals;
+        }
+        public List<Item> Trending()
+        {
+            // trending products 
+            var list = context.Items // include product inside  to void null expection 
+                         .SelectMany(i => context.Order_Items.Where(oi => oi.ItemID == i.ID), (i, oi) => new { Item = i, Order_Item = oi, productItem = i.Product })
+                         .ToList()
+                         .GroupBy(ti => ti.Item, ti => ti.Order_Item)
+                         .Select(g => new { product = g.Key, numberOfOrders = g.Count(), productItem = g.Key.Product })
+                         .OrderByDescending(x => x.numberOfOrders)
+                         .Take(4)
+                         .ToList();
+
+            List<Item> items = new List<Item>();
+            foreach (var item in list)
+            {
+                items.Add(item.product);
+
+            }
+
+
+            return items;
+        }
         public int Update(int id, Item item)
         {
             var ans = context.Items.FirstOrDefault(x => x.ID == id);
@@ -26,6 +56,10 @@ namespace EfrashBatek.service
             ans.Code = item.Code;
             ans.Price = item.Price;
             ans.Image = item.Image;
+            ans.Image2 = item.Image2;
+            ans.Image3 = item.Image3;
+            ans.Image4 = item.Image4;
+            ans.Image5 = item.Image5;
             ans.QuantityInStore = item.QuantityInStore;
             ans.Brand_ID = item.Brand_ID;
             ans.ShopID = item.ShopID;

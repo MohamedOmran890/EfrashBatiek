@@ -70,7 +70,8 @@ namespace EfrashBatek
             services.AddScoped<IWishListRepository, WishListRepository>();
             services.AddScoped<IContact_UsRepository, Contact_UsRepository>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddScoped<IIdentityRepository ,IdentityRepository>(); 
+            services.AddScoped<IIdentityRepository ,IdentityRepository>();
+            services.AddScoped<EmailService>();
 
             /*Session*/
             services.AddSession(options =>
@@ -109,7 +110,7 @@ namespace EfrashBatek
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=TrendingProducts}/{id?}");//When Open Web Open Bydefault Home 
+                    pattern: "{controller=Account}/{action=Index}/{id?}");//When Open Web Open Bydefault Home 
             });
         }
     }

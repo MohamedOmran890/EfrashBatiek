@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- CSS-link -->
     <link rel="stylesheet" href="~/css/cart.css">
-    <link rel="stylesheet" href="~/css/main.css">
+  
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600;700&display=swap"
@@ -20,7 +20,8 @@
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
-
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
     <!--css profile-->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -39,9 +40,12 @@
     <!-- Code by Angela Delise
     https://codepen.io/angeladelise/pen/yLJdgYx -->
 
-    <link rel="stylesheet" href="css/cart.css">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="shortcut icon" href="image/favicon.ico" type="image/x-icon">
+    @*<link rel="stylesheet" href="css/cart.css">*@
+    <link rel="stylesheet" href="~/css/main.css">
+  
+
+
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600;700&display=swap"
@@ -54,6 +58,17 @@
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
+
+
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+          integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+   
+
     <title>Efresh Beitak</title>
 </head>
 
@@ -65,10 +80,10 @@
         <a href="Home" class="logo"><img src="~/Image/logo.png" alt=""></a>
 
         <ul class="navmenu">
-            <li><a asp-controller="" asp-action="" >Products</a></li>
+            <li><a asp-controller="Item" asp-action="Index" >Products</a></li>
             <li><a asp-controller="Home" asp-action="TrendingProducts">Trends</a></li>
             <li><a asp-controller="Customs" asp-action="Create">Custom order</a></li>
-            <li><a asp-controller="" asp-action="">Designs</a></li>
+            <li><a asp-controller="Designs" asp-action="Index">Designs</a></li>
           
           
 
@@ -87,10 +102,10 @@
     </header>
 
    
-   @RenderBody();
+   @RenderBody()
     <footer>
 
-       
+   
      
 
     <!-- contact-section -->
@@ -140,11 +155,13 @@
         </div>
     </section>
     </footer>
+    @*<script src="~/js/cart.js"></script>*@
     <script src="~/js/main.js"></script>
     <!--Omran Craete them cause  Clint side-->
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+
     @section Scripts {
         @{
             await Html.RenderPartialAsync("_ValidationScriptsPartial");
@@ -176,7 +193,7 @@
         })
 
     </script>
-    <script src="~/js/cart.js"></script>
+   
     <!---BOOTSTRAP TABEL-->
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>

@@ -27,7 +27,7 @@
 
 <body>
     <!------------------------------------------------ Icons ------------------------------->
-    <div class="x">
+    <div class="x row justify-content-start ">
         <ul class="icons">
             <ul>
                 <li class="word">
@@ -36,7 +36,7 @@
                         <h2 class="word">Shipping</h2>
                     </a>
                 </li>
-    
+
             </ul>
             <ul>
                 <li class="word">
@@ -56,22 +56,20 @@
             </ul>
         </ul>
     </div>
-  <!------------------------------------------------ Icons ------------------------------->
+    <!------------------------------------------------ Icons ------------------------------->
 
 
-            <!----------------------------------- ADDRESS BOXXX ----------------------------------->
+    <!----------------------------------- ADDRESS BOXXX ----------------------------------->
     <div class="row">
-        <div class="col-9">
+        <div class="col-sm-12 col-md-12 col-lg-9 col-xl-9">
             <div id="address" role="tabpanel" aria-labelledby="address-tab">
                 <h3 class="mb-3">Shipping</h3>
                 <h5 class="mb-3">Home Delivery</h5>
                 <h7 class="mb-3">Choose your default address</h7>
-                <a href="#">
-                    <p class="new" style="float: right;">
-                        <a href="Checkout Address.html">
+                <p class="new" style="float: right;">
+                    <a href="Checkout Address.html">
                         <i class='bx bx-plus-circle'></i> add new address
-                    </a>
-                    </p>
+                </p>
                 </a>
                 <div class="addressFORM">
                     <div class="address-row">
@@ -122,8 +120,8 @@
                                 <span>St.</span>
                             </div>
                         </div>
-                         <!-- address4 -->
-                         <div class="addressBOX">
+                        <!-- address4 -->
+                        <div class="addressBOX">
                             <i class='bx bxs-edit' id="tst"></i>
                             <input type="radio" name="address" value="address1" class="run">
                             <!-- data set here -->
@@ -138,15 +136,15 @@
                                 <span>St.</span>
                             </div>
                         </div>
-                   
+
                     </div>
                 </div>
                 <form action="payment method.html">
-                <input type="submit" class="btnRegister" value="Next" />
-            </form>
+                    <input type="submit" class="btnRegister" value="Next" />
+                </form>
             </div>
         </div>
-        <div class="col-3">
+        <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3">
             <aside>
                 <div class="summary">
                     <div class="summary-total-items"><span class="total-items"></span> Order Summary
@@ -159,7 +157,55 @@
                             <div class="promo-value final-value" id="basket-promo"></div>
                         </div>
                     </div>
-                    <div class="summary-delivery"> </div>
+                    <div class="summary-delivery">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <div class="d-flex mb-2">
+                                        <div class="flex-shrink-0">
+                                            <img src="image/1.jpg" alt="" width="35" class="img-fluid">
+                                        </div>
+                                        <div class="flex-lg-grow-1 ms-3">
+                                            <h6 class="small mb-0"><a href="#" class="text-reset">Chair</a></h6>
+                                            <span class="small">Color: Black</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>1</td>
+                                <td class="text-end">79.99 EGP</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="d-flex mb-2">
+                                        <div class="flex-shrink-0">
+                                            <img src="image/1.jpg" alt="" width="35" class="img-fluid">
+                                        </div>
+                                        <div class="flex-lg-grow-1 ms-3">
+                                            <h6 class="small mb-0"><a href="#" class="text-reset">Chair</a></h6>
+                                            <span class="small">Color: Black</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>1</td>
+                                <td class="text-end">79.99 EGP</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="d-flex mb-2">
+                                        <div class="flex-shrink-0">
+                                            <img src="image/1.jpg" alt="" width="35" class="img-fluid">
+                                        </div>
+                                        <div class="flex-lg-grow-1 ms-3">
+                                            <h6 class="small mb-0"><a href="#" class="text-reset">Chair</a></h6>
+                                            <span class="small">Color: Black</span>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>1</td>
+                                <td class="text-end">79.99 EGP</td>
+                            </tr>
+                        </tbody>
+                    </div>
                     <div class="summary-total">
                         <div class="total-title">Total</div>
                         <div class="total-value final-value" id="basket-total">130.00</div>
@@ -171,7 +217,7 @@
             </aside>
         </div>
     </div>
-  
+
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>

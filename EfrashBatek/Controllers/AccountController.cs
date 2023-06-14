@@ -12,7 +12,7 @@ using System.Net;
 using System.Net.Mail;
 using SignInResult = Microsoft.AspNetCore.Identity.SignInResult;
 using System;
-
+using EfrashBatek.service;
 
 namespace EfrashBatek.Controllers
 {
@@ -20,11 +20,16 @@ namespace EfrashBatek.Controllers
     {
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
+        private readonly EmailService _emailService;
+        private readonly IIdentityRepository _identityRepository;
 
-        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager)
+        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager,
+            EmailService emailService, IIdentityRepository identityRepository)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _emailService = emailService;
+            _identityRepository = identityRepository;
         }
         public IActionResult Index()
         {
@@ -44,74 +49,53 @@ namespace EfrashBatek.Controllers
             {
                 return View(model);
             }
-
-            var user = new User
-            {
-                UserName = model.Username,
-                Email = model.Email,
-                PhoneNumber = model.Phone,
-                age = model.Age,
-                FirstName = model.FirstName,
-                LastName = model.LastName,
-                BirthDate = model.Birthdate,
-                Gender = (Gender)model.Gender,
-
-            };
-           
-
-            var result = await _userManager.CreateAsync(user, model.Password);//Created Cookies
-
-            if (result.Succeeded)
-            {
-
-                string token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                var fromAddress = new MailAddress("omran942487@gmail.com", "Mohamed");
-                var toAddress = new MailAddress(user.Email, user.UserName);
-                const string subject = "Confirm your account";
-                string body = $"Please confirm your account by clicking this link: <a href='{Url.Action("ConfirmEmail", "Account", new { userId = user.Id, token }, Request.Scheme)}'>link</a>";
-
-                var smtpClient = new SmtpClient
+                var user = new User
                 {
-                    Host = "smtp.gmail.com",
-                    Port = 587,
-                    EnableSsl = true,
-                    Credentials = new NetworkCredential("omran942487@gmail.com", "Mohamed890@#")
+                    UserName = model.Username,
+                    Email = model.Email,
+                    PhoneNumber = model.Phone,
+                    age = model.Age,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    BirthDate = model.Birthdate,
+                    Gender = (Gender)model.Gender,
+
                 };
-                //To send Message
-                using (var messages = new MailMessage(fromAddress, toAddress)
+                var result = await _userManager.CreateAsync(user, model.Password);//Created Cookies
+
+                if (result.Succeeded)
                 {
-                    Subject = subject,
-                    Body = body,
-                    IsBodyHtml = true
-                })
-                {
-                    await smtpClient.SendMailAsync(messages);
-                }
-                return View("EmailConfirmation");
+                var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                var confirmationLink = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, token = token }, Request.Scheme);
+                  await _emailService.SendConfirmationEmail(model.Email, confirmationLink);
+                return View("ConfirmEmail");
+                //return RedirectToAction("ConfirmEmail");
             }
 
+          
                 foreach (var error in result.Errors)
                 {
                     ModelState.AddModelError(string.Empty, error.Description);
                 }
-
             return View(model);
-            /***********/
-        }
+               }
         public async Task<IActionResult> ConfirmEmail(string userId, string token)
         {
-            var user = await _userManager.FindByIdAsync(userId);
+            if (userId == null || token == null)
+            {
+                return RedirectToAction("TrendingProducts", "Home");
+            }
 
+            var user = await _userManager.FindByIdAsync(userId);
             if (user == null)
             {
-                return NotFound();
+                throw new ApplicationException($"Unable to load user with ID '{userId}'.");
             }
 
             var result = await _userManager.ConfirmEmailAsync(user, token);
-
             if (result.Succeeded)
             {
-                return RedirectToAction("Login", "Account");
+                return RedirectToAction("TrendingProducts","Home");
             }
             else
             {
@@ -134,6 +118,13 @@ namespace EfrashBatek.Controllers
             if (ModelState.IsValid)
             {
                 User user = await _userManager.FindByNameAsync(model.UserName);
+                if(user!=null&&!user.EmailConfirmed)
+                {
+                    //return View("PleaseConfirmYouEmail");
+                    ModelState.AddModelError("", "Email Not Confirmed .");
+                    return View(model);
+                }
+                
                 if (user != null)
                 {//ispersistanc to detct user is session or cookies
                     SignInResult result = await _signInManager.PasswordSignInAsync(user.UserName, model.Password, isPersistent: model.isPersistent, false);
@@ -160,36 +151,7 @@ namespace EfrashBatek.Controllers
             return RedirectToAction("Login", "Account");
         }
         [HttpGet]
-        public IActionResult ChangePassword()
-        {
-            return View();
-        }
-        [HttpPost]
-        public async Task<IActionResult> ChangePassword(ChangePasswordVM model)
-        {
-            if (ModelState.IsValid)
-            {
-                var user = await _userManager.GetUserAsync(User);
-                if (user == null)
-                {
-                    return RedirectToAction("Login", "Account");
-                }
-                var result = await _userManager.ChangePasswordAsync(user, model.CurrentPassword, model.ConfirmPassword);
-                if (result.Succeeded)
-                {
-                    await _signInManager.RefreshSignInAsync(user);
-                    return RedirectToAction("Login", "Account");
-
-                }
-                foreach (var er in result.Errors)
-                {
-                    ModelState.AddModelError("", er.Description);
-                }
-
-            }
-                return View(model);
-
-        }
+        
         public IActionResult ForgetPassword()
         {
             return View();

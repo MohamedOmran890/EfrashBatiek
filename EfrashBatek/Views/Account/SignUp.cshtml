@@ -9,63 +9,101 @@
 }
 <div class="login form">
     <header>Sign up</header>
-    <form asp-action="SignUp" asp-controller="Account">
-        <div asp-validation-summary="All" class="text-danger"></div>
+    <table>
+        <form asp-action="SignUp" asp-controller="Account">
+            <div asp-validation-summary="All" class="text-danger"></div>
 
+        <tr>
+            <td>
+                <input asp-for="FirstName" type="text" placeholder="Enter your first name ">
+                <span asp-validation-for="FirstName"></span>
+            </td>
 
-        <input asp-for="FirstName" type="text" placeholder="Enter your first name ">
-        <span asp-validation-for="FirstName"></span>
+            <td>
+                <input asp-for="LastName" type="LastName" placeholder="Enter your last name">
+                <span asp-validation-for="LastName"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input asp-for="Username" type="Username" placeholder="Enter your Username ">
+                <span asp-validation-for="Username"></span>
+            </td>
+            <td>
+                <input asp-for="Phone" type="Phone" placeholder="Enter your phone ">
+                <span asp-validation-for="Phone"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input asp-for="Age" type="Age" placeholder="Enter your Age">
+                <span asp-validation-for="Age"></span>
+            </td>
+            <td>
+                <input asp-for="Birthdate" class="form-control" />
+                <span asp-validation-for="Birthdate" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <input asp-for="Email" type="Email" placeholder="Enter your email">
+                <span asp-validation-for="Email"></span>
+            </td>
+        </tr>
 
-
-
-        <input asp-for="LastName" type="LastName" placeholder="Enter your last name">
-        <span asp-validation-for="LastName"></span>
+        <tr>
+            <td>
+                <input asp-for="Password" type="password" placeholder="Enter your password">
+                <span asp-validation-for="Password"></span>
+            </td>
+            <td>
+                <input asp-for="ConfirmPassword" type="ConfirmPassword" placeholder="Confirm your Password">
+                <span asp-validation-for="ConfirmPassword"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label asp-for="Gender" class="containerr">Male :</label>
+            </td>
+            <td>
+                <input type="radio" asp-for="Gender" value="male" checked="checked" name="radio" style="width:12%">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label asp-for="Gender" class="containerr">Famale :</label>
+            </td>
+            <td>
+                <input type="radio" asp-for="Gender" value="famale" name="radio" style="width:12%">
+            </td>
+            <span asp-validation-for="Gender"></span>
+        </tr>
 
         
-        <input asp-for="Username" type="Username" placeholder="Enter your Username ">
-        <span asp-validation-for="Username"></span>
+
+       </form>
+       </table>
+
+        <form asp-action="SignUp" asp-controller="Account">
+        <div class="signup">
+            <input type="submit" class="button" value="SignUp">
+            <span class="signup">
+                Already have an account?
+
+                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">
+                    <label>Login</label>
+                </a>
 
 
-        <input asp-for="Phone" type="Phone" placeholder="Enter your phone ">
-        <span asp-validation-for="Phone"></span>
-
-
-        <input asp-for="Age" type="Age" placeholder="Enter your Age">
-        <span asp-validation-for="Age"></span>
-
-        <input asp-for="Birthdate" class="form-control"  />
-        <span asp-validation-for="Birthdate" class="text-danger"></span>
-
-
-        <input asp-for="Email" type="Email" placeholder="Enter your email">
-        <span asp-validation-for="Email"></span>
-
-
-        <input asp-for="Password" type="password" placeholder="Enter your password">
-        <span asp-validation-for="Password"></span>
-
-        <input asp-for="ConfirmPassword" type="ConfirmPassword" placeholder="Confirm your Password">
-        <span asp-validation-for="ConfirmPassword"></span>
-
-
-    
-            <label asp-for="Gender" ></label>
-            <br>
-            <input type="radio" asp-for="Gender" value="male" checked />Male
-            <input type="radio" asp-for="Gender" value="famale" />Famale
-            <span asp-validation-for="Gender" ></span>
-      
-       <input type="submit" class="button" value="SignUp">
-    </form>
-    <div class="signup">
-        <span class="signup">
-            Don't have an account?
-
-            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">
-                <label>Login</label>
-            </a>
-
-
-        </span>
-    </div>
+            </span>
+        </div>
+        </form>
 </div>
+<style>
+    .container {
+        top: 65%;
+    }
+    table {
+        border-spacing: 10px 0;
+    }
+</style>

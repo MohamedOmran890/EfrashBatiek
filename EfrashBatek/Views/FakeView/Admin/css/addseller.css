@@ -1,5 +1,8 @@
-.form {
+body{
   background-color: #fbfbfb;
+}
+.form {
+  background-color:#fbfbfb;
   margin: 0 100 0 100;
   /* background-image: linear-gradient(to bottom, #fbf6f7, #fff);*/
   /*border-radius: 20px;*/
@@ -7,6 +10,10 @@
   height: auto;
   padding: 20px 200px;
   /* width: 800px;*/
+}
+a, a:hover, a:focus, a:active {
+  text-decoration: none;
+  color: inherit;
 }
 
 .title {
@@ -26,108 +33,51 @@
   font-weight: 600;
   margin-top: 10px;
 }
-
-.input-container {
-  height: 50px;
-  position: relative;
-  width: 100%;
-  border-radius: 50px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-}
-
-.ic1 {
-  margin-top: 40px;
-}
-
-.ic2 {
-  margin-top: 30px;
-}
-
-.input {
-  background-color: #fff;
-  border-radius: 12px;
-  border: 0;
-  box-sizing: border-box;
-  color: black;
-  font-size: 18px;
-  height: 100%;
-  outline: 0;
-  padding: 4px 20px 0;
-  width: 100%;
-}
-
-/*.cut {
-  background-color:;
-    border-radius: 10px;
-    height: 20px;
-    left: 20px;
-    position: absolute;
-    top: -20px;
-    transform: translateY(0);
-    transition: transform 200ms;
-    width: 76px;
-  }
-
-  .cut-short {
-    width: 50px;
-  }
-  .cut-long{
-    width:95px;
-  }
-
-  .input:focus ~ .cut,
-  .input:not(:placeholder-shown) ~ .cut {
-    transform: translateY(8px);
-  }
-  */
-.placeholder {
-  color: #65657b;
-  font-family: sans-serif;
-  left: 20px;
-  line-height: 14px;
-  pointer-events: none;
-  position: absolute;
-  transform-origin: 0 50%;
-  transition: transform 200ms, color 200ms;
-  top: 20px;
-}
-
-.input:focus~.placeholder,
-.input:not(:placeholder-shown)~.placeholder {
-  transform: translateY(-30px) translateX(10px) scale(0.75);
-}
-
-.input:not(:placeholder-shown)~.placeholder {
-  color: #808097;
-}
-
-.input:focus~.placeholder {
-  color: #e1e1e2;
-}
-
-.submit {
-  background-color: #cbaab1;
-  border-radius: 12px;
-  border: 0;
-  box-sizing: border-box;
-  color: #eee;
+/* continue button*/
+.btnRegister {
+  border: none;
+  border-radius: 1.5rem;
+  padding: 2%;
+  background: #e3d9d9;
+  color: #fff;
+  font-weight: 600;
+  width: 25%;
   cursor: pointer;
-  font-size: 18px;
-  height: 50px;
-  margin-top: 38px;
-  /*outline: 0;*/
-  text-align: center;
-  width: 100%;
   transition: background-color 0.4s ease;
+  align-content: center;
+  margin-left: 70%;
 }
 
-
-.submit:hover {
-  background-color: #e3d9d9;
-}
-
-.submit:active {
+.btnRegister:hover {
   background-color: #cbaab1;
+  /* Change the background color to red when the button is hovered over */
+}
+
+/* /ADDRESS/ */
+#address {
+  width: 100%;
+  margin-left: 30%;
+  padding: 5%;
+  border-radius: 30px;
+  box-shadow: 0 0 1em rgba(0, 0, 0, 0.0625);
+  background-color: #fff;
+  height: auto;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+input {
+  padding: 4px 28px;
+  border-radius: 10px;
+  margin: 5px auto;
+  border: 1px solid #918383;
+  background-color: #fff;
+  box-shadow: 1px 2px 1px 2px rgb(230, 229, 229);
+  color: #000000;
+  outline: none;
+  font-size: 16px;
 }
 
 .search-box {
@@ -155,7 +105,7 @@
   height: 40px;
   width: 40px;
   background: #cbaab1;
-  right: 5px;
+  right: 10%;
   top: 50%;
   transform: translateY(-50%);
   border-radius: 4px;
@@ -165,3 +115,30 @@
   font-size: 22px;
   transition: all 0.4 ease;
 }
+.placeholder {
+  margin-block-start: 6%;
+  margin-inline-start: 87%;
+  color: #65657b;
+  font-family: sans-serif;
+  left: 20px;
+  line-height: 10px;
+  pointer-events: none;
+  position: absolute;
+  transform-origin: 0 50%;
+  transition: transform 200ms, color 200ms;
+  top: 20px;
+}
+
+.input:focus~.placeholder,
+.input:not(:placeholder-shown)~.placeholder {
+  transform: translateY(-30px) translateX(10px) scale(0.75);
+}
+
+.input:not(:placeholder-shown)~.placeholder {
+  color: #808097;
+}
+
+.input:focus~.placeholder {
+  color: #e1e1e2;
+}
+

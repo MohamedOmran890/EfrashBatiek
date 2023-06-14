@@ -60,12 +60,12 @@ namespace EfrashBatek
             }
 
          var item = context.Items.FirstOrDefault(x => x.ID == 1);
-           if (item == null)
-            {
-                context.Items.Add(new Item { ID = 1, Name = "serar", Brand_ID = 1, Code = "6548", Price = 5000, ShopID = 2, ProductID = 2, Image = "0.jpg",Description="yotuu",QuantityInStore=3 });
-                context.Items.Add(new Item { ID = 2, Name ="chair", Brand_ID =2,Code="87865",Price=5000,ShopID=2,ProductID=2,Image="1.jpg", Description = "yotuu", QuantityInStore = 3 });
-                context.Items.Add(new Item { ID = 3, Name = "trtr", Brand_ID =2, Code = "7969", Price = 5000, ShopID = 2, ProductID = 2, Image = "2.jpg", Description = "yotuu", QuantityInStore = 3 });
-            }
+           //if (item == null)
+           // {
+           //     context.Items.Add(new Item { ID = 1, Name = "serar", Brand_ID = 1, Code = "6548", Price = 5000, ShopID = 2, ProductID = 2, Image = "0.jpg",Description="yotuu",QuantityInStore=3 });
+           //     context.Items.Add(new Item { ID = 2, Name ="chair", Brand_ID =2,Code="87865",Price=5000,ShopID=2,ProductID=2,Image="1.jpg", Description = "yotuu", QuantityInStore = 3 });
+           //     context.Items.Add(new Item { ID = 3, Name = "trtr", Brand_ID =2, Code = "7969", Price = 5000, ShopID = 2, ProductID = 2, Image = "2.jpg", Description = "yotuu", QuantityInStore = 3 });
+           // }
 
 
             context.SaveChanges();

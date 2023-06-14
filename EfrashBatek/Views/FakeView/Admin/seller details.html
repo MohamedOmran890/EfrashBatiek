@@ -1,106 +1,181 @@
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="UTF-8">
- 
-    <title> Admin Dashboard </title>
-    <link rel="stylesheet" href="css/admin.css">
-    <!-- Boxicons CDN Link -->
-    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link rel="stylesheet" href="css/seller details.css">
-<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-   </head>
-<body>
-  <!--DashBoard Sidebar-->
-  <div class="sidebar">
-    <div class="logo-details">
-      <i class='bx bxl-c-plus-plus'></i>
-      <span class="logo_name">Efresh Baitak</span>
-    </div>
-      <ul class="nav-links">
-        <li>
-          <a href="dash.html">
-            <i class='bx bx-grid-alt' ></i>
-            <span class="links_name">Dashboard</span>
-          </a>
-        <li>
-          <a href="orders.html">
-            <i class='bx bx-list-ul' ></i>
-            <span class="links_name">Order list</span>
-          </a>
-        </li>
-        <li>
-          <a href="addseller.html">
-            <i class='bx bx-coin-stack' ></i>
-            <span class="links_name">Add Seller</span>
-          </a>
-        </li>
-        <li>
-          <a href="addshop.html">
-            <i class='bx bx-coin-stack' ></i>
-            <span class="links_name">Add Shop</span>
-          </a>
-        </li>
-        <li>
-          <a href="seller details.html" class="active">
-            <i class='bx bx-book-alt' ></i>
-            <span class="links_name">Seller Details</span>
-          </a>
-        </li>
-      </ul>
-  </div>
-  <!-------------------------------------------------------------------------SEARCH-------------------------------------------------------------------------------------------------------->
-  <section class="home-section">
-    <h2>Seller Information</h2>
-    <div class="search-box">
-        <input type="text" placeholder="Search...">
-        <i class='bx bx-search' ></i>
-    </div>
-     <!--Seller Details-->
-    <table>
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Password</th>
-            <th>Contact Info</th>
-            <th>Action</th>
-        </tr>
-        <tr>
-            <td>1</td>
-            <td>John Doe</td>
-            <td>johndoe@example.com</td>
-            <td>********</td>
-            <td>123-456-7890</td>
-            <td>
-                <button>Edit</button>
-                <button>Delete</button>
-            </td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>Jane Smith</td>
-            <td>janesmith@example.com</td>
-            <td>********</td>
-            <td>555-555-5555</td>
-            <td>
-                <button>Edit</button>
-                <button>Delete</button>
-            </td>
-        </tr>
-    </table>
-  </section>
+<!DOCTYPE html>
+<html lang="en">
 
-  <script>
-    let sidebar = document.querySelector(".sidebar");
-    let sidebarBtn = document.querySelector(".sidebarBtn");
-    sidebarBtn.onclick = function () {
-      sidebar.classList.toggle("active");
-      if (sidebar.classList.contains("active")) {
-        sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
-      } else
-        sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
-    }
-  </script>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seller Details</title>
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/seller details.css">
+    <!-- SCRIPT -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+
+</head>
+
+<body>
+    <!-- SIDEBAR -->
+    <section id="sidebar">
+        <a href="#" class="brand">
+            <i class='bx bxs-smile'></i>
+            <span class="text">Efresh Beitak</span>
+        </a>
+        <ul class="side-menu top">
+            <li>
+                <a href="admin.html">
+                    <i class='bx bxs-dashboard'></i>
+                    <span class="text">Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="orders1.html">
+                    <i class='bx bx-list-ul'></i>
+                    <span class="text">Order List </span>
+                </a>
+            </li>
+            <li>
+                <a href="addseller.html">
+                    <i class='bx bx-list-plus'></i>
+                    <span class="text">Add Seller</span>
+                </a>
+            </li>
+            <li>
+                <a href="addshop.html">
+                    <i class='bx bx-list-plus'></i>
+                    <span class="text">Add Shop</span>
+                </a>
+            </li>
+            <li class="active">
+                <a href="seller details.html">
+                    <i class='bx bxs-group'></i>
+                    <span class="text">Seller Details</span>
+                </a>
+            </li>
+        </ul>
+    </section>
+    <!-- SIDEBAR -->
+
+    <!-- NAVBAR -->
+  <section id="content">
+    <nav>
+        <i class='bx bx-menu' ></i>
+        <a href="#" class="nav-link">Categories</a>
+        <form action="#">
+            <div class="form-input">
+                <input type="search" placeholder="Search...">
+                <button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
+            </div>
+        </form>
+        <input type="checkbox" id="switch-mode" hidden>
+        <a href="#" class="notification">
+            <i class='bx bxs-bell' ></i>
+            <span class="num">8</span>
+        </a>
+    </nav>
+</section>
+<!-- NAVBAR -->
+
+    <!-- ORDER DETAILS -->
+    <div class="details">
+        <div class="recentOrders">
+            <div class="cardHeader">
+                <h2>Seller Details</h2>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <td>ID</td>
+                        <td>Name</td>
+                        <td>Email</td>
+                        <td>Age</td>
+                        <td>Shop Name</td>
+                        <td>Action</td>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>#666666</td>
+                        <td>jameela</td>
+                        <td>gggggggggggggg@hhhhhhhh</td>
+                        <td>40</td>
+                        <td>Disney land</td>
+                        <td>
+                            <a class="edit" title="Edit" data-toggle="tooltip"><i
+                                    class="material-icons">&#xE254;</i></a>
+                            <a class="delete" title="Delete" data-toggle="tooltip"><i
+                                    class="material-icons">&#xE872;</i></a>
+                            <!--<script>
+                                // Edit row on edit button click
+                                $(document).on("click", ".edit", function () {
+                                    $(this).parents("tr").find("td:not(:last-child)").each(function () {
+                                        $(this).html('<input type="text" class="form-control" value="' + $(this).text() + '">');
+                                    });
+                                    $(this).parents("tr").find(".add, .edit").toggle();
+                                    $(".add-new").attr("disabled", "disabled");
+                                });
+                                // Delete row on delete button click
+                                $(document).on("click", ".delete", function () {
+                                    $(this).parents("tr").remove();
+                                    $(".add-new").removeAttr("disabled");
+                                });
+                            </script>-->
+                        </td>
+                    </tr>
+                    <!-- ORDER 2 -->
+                    <tr>
+                        <td>#666666</td>
+                        <td>jameela</td>
+                        <td>gggggggggggggg@hhhhhhhh</td>
+                        <td>40</td>
+                        <td>Disney land</td>
+                        <td>
+                            <a class="edit" title="Edit" data-toggle="tooltip"><i
+                                    class="material-icons">&#xE254;</i></a>
+                            <a class="delete" title="Delete" data-toggle="tooltip"><i
+                                    class="material-icons">&#xE872;</i></a>
+                        </td>
+                    </tr>
+                    <!-- ORDER 3 -->
+                    <tr>
+                        <td>#666666</td>
+                        <td>jameela</td>
+                        <td>gggggggggggggg@hhhhhhhh</td>
+                        <td>40</td>
+                        <td>Disney land</td>
+                        <td>
+                            <a class="edit" title="Edit" data-toggle="tooltip"><i
+                                    class="material-icons">&#xE254;</i></a>
+                            <a class="delete" title="Delete" data-toggle="tooltip"><i
+                                    class="material-icons">&#xE872;</i></a>
+                        </td>
+                    </tr>
+                    <!-- Order 4 -->
+                    <tr>
+                        <td>#666666</td>
+                        <td>jameela</td>
+                        <td>gggggggggggggg@hhhhhhhh</td>
+                        <td>40</td>
+                        <td>Disney land</td>
+                        <td>
+                            <a class="edit" title="Edit" data-toggle="tooltip"><i
+                                    class="material-icons">&#xE254;</i></a>
+                            <a class="delete" title="Delete" data-toggle="tooltip"><i
+                                    class="material-icons">&#xE872;</i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- SCRIPT -->
+  <script src="js/script.js"></script>
 </body>
+
 </html>

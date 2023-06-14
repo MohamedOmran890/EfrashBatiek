@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -22,6 +23,9 @@ namespace EfrashBatek.Models
         [Required]
         public string Image { get; set; }
         public string Image2 { get; set; }
+        public string Image3 { get; set; }
+        public string Image4 { get; set; }
+        public string Image5 { get; set; }
         public string discount { get; set; }
         public int PriceAfterSale { get; set; }
         [ForeignKey("Brand")]
@@ -35,6 +39,7 @@ namespace EfrashBatek.Models
         [ForeignKey("Product")]
         public int ProductID { get; set; }
         public Product Product { get; set; }
+        public DateTime DateTime { get; set; }  
         public virtual ICollection<Cart_Item> Cart_Items { get; set; }
         public virtual ICollection<Order_Item> Order_Items { get; set; }
         //public virtual ICollection<Video> Videos { get; set; }
