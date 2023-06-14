@@ -1,0 +1,113 @@
+/* ----------------------------------------EDIT ICON-------------------------------- */
+.bxs-edit{
+  display: flex;
+  justify-content: space-between;
+  /* align-items: flex-start; */
+  margin-bottom: 5px;
+  margin-left: 380px;
+  display: inline-block;
+  padding: -2px;
+}
+/* ----------------------------------------EDIT ICON-------------------------------- */
+
+/* ---------------------------------------Next button---------------------------*/
+.btnRegister {
+  margin: -2% 1% 2%;
+  float: right;
+  border: none;
+  border-radius: 1.5rem;
+  padding: 1.5%;
+  background: #e2dfdf;
+  color: #fff;
+  font-weight: 600;
+  width: 25%;
+  cursor: pointer;
+  transition: background-color 0.4s ease;
+}
+
+.btnRegister:hover {
+  background-color: #cbaab1;
+}
+/* ----------------------------------------Next button---------------------------*/
+
+/--------------------------------------------------ADDRESS----------------------------------/
+#address {
+  padding: 50px;
+  margin: 20px 30px;
+  border-radius: 30px;
+  height: auto;
+  background-color: #fff;
+
+  box-shadow: 0 0 1em rgba(0, 0, 0, 0.0625);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.address input {
+  padding: 4px 28px;
+  border-radius: 10px;
+  margin: 5px auto;
+  border: 1px solid #918383;
+  background-color: #f3f4f6;
+  box-shadow: 1px 2px 1px 2px rgb(230, 229, 229);
+  color: #000000;
+  outline: none;
+  font-size: 16px;
+}
+.bx-plus-circle{
+color: #cbaab1;
+}
+.new{
+  color:#cbaab1;
+}
+
+.addressFORM {
+  /* display: flex;*/
+   flex-wrap: wrap;
+   justify-content: space-between;
+   background-color: #fff;
+ }
+
+ .address-row {
+   width: 100%;
+   /* background-color: #8B0000; */
+   margin-bottom: 20px;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-between;
+ }
+
+ .addressBOX {
+   background-color: #fbfbfb ;
+   width: 48%;
+   padding: 10px;
+   border: 1px solid #ccc;
+   border-radius: 5px;
+   margin: 1%;
+ }
+ .radio-pair {
+   background-color: #8B0000;
+   display: inline-block;
+
+ }
+
+/--------------------------------------------------ADDRESS----------------------------------/
+
+
+
+/* -------------------------------------------------ADDRESS DETAAILS -----------------------------  */
+.ADDRESSDETAILS{
+  padding: 0px;
+  margin: -12% 0% 5% 6%;
+  /* background-color: #8B0000; */
+}
+/* -------------------------------------------------ADDRESS DETAAILS -----------------------------  */
+
+
+
+/* -------------------------------------------------RADIO BUTTON----------------------------- */
+.radio{
+  text-align: left;
+  }

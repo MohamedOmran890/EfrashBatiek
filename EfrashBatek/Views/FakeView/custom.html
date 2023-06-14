@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- CSS-link -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+  <!-- Code by Angela Delise
+ https://codepen.io/angeladelise/pen/yLJdgYx -->
+ <link rel="stylesheet" href="css/custom.css">
+  <link rel="stylesheet" href="css/cart.css">
+  <link rel="stylesheet" href="css/default.css">
+  <link rel="shortcut icon" href="image/favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+  <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+  <title>Efresh Beitak</title>
+</head>
+
+<body>
+  <!--header section-->
+
+  <header>
+    <a href="main.html" class="logo"><img src="image/logo.png" alt=""></a>
+
+    <ul class="navmenu">
+      <li><a href="product page.html">Products</a></li>
+      <!-- <li><a href="trend.html">Trends</a></li>-->
+      <li><a href="custom.html">Custom order</a></li>
+      <li><a href="designers.html">Designers</a></li>
+    </ul>
+
+
+    <div class="nav-icon">
+      <!-- my work is here -->
+      <a href="main.html"><i class='bx bx-search'></i></a>
+      <a href="log.html"><i class='bx bx-user'></i></a>
+      <a href="cart.html"><i class='bx bx-cart'></i></a>
+      <a href="wishlist.html"><i class='bx bx-heart' undefined></i></a>
+      <div class="bx bx-menu" id="menu-icon"></div>
+    </div>
+  </header>
+
+  <!--main home section-->
+  <section class="main-home">
+    <div class="container">
+      <br>
+      <br>
+  <h2>Customization Your Order</h2>
+  <br>
+  <form action="/action_page.php">
+    <label for="fname">Name</label>
+    <input type="text" id="fname" name="firstname" placeholder="Your name..">
+
+    <label for="num">Phone Number</label>
+    <input type="text" id="pnum" name="pnumber" placeholder="Your phone number..">
+
+    <label for="country">Address</label>
+    <select id="country" name="country">
+      <option value="Qena">Qena</option>
+      <option value="New Qena">New Qena</option>
+    </select>
+
+    <label for="subject">Detailed Description</label>
+    <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+
+    <label for="subject">Photo : </label>
+      <input type="file" id="myFile" name="filename">
+    </form>
+    <br>
+
+    <a href="custominfo.html"><input type="submit" value="Submit"></a>
+  </form>
+</div>
+  </section>
+  <!--
+    - FOOTER
+    -->
+
+  <footer>
+
+    <!-- contact-section -->
+    <section class="contact">
+      <div class="contact-info">
+        <div class="first-info">
+          <img src="image/logo.png" alt="">
+          <p>+201004443226</p>
+          <p>efresh.beitak@gmail.com</p>
+
+        </div>
+
+        <div class="second-info">
+          <h4>Support</h4>
+          <a href="contact us.html">
+            <p>Contact us</p>
+          </a>
+          <a href="about us.html">
+            <p>About page</p>
+          </a>
+          <p>Shopping & Resturns</p>
+          <p>Privacy</p>
+        </div>
+
+        <div class="third-info">
+          <h4>category</h4>
+          <p>Home Appliances</p>
+          <p>Kitchen utensils</p>
+          <p>Furniture</p>
+          <p>kitchen</p>
+        </div>
+
+        <div class="five">
+          <h4>JOIN OUR EMAIL NEWSLETTER</h4>
+          <form>
+            <div class="form-group">
+              <input type="text" class="Input" placeholder="Enter Your Email." /><br><br>
+              <button type="submit" class="btn btn-default submit">
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </footer>
+<!--
+  <div class="search">
+    <svg class="search__icon" viewBox="0 0 512 512" width="95" title="search">
+      <path d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z" />
+    </svg>
+    <input type="text" class="search__input" autofocus placeholder=" ">
+    <svg class="search__close" viewBox="0 0 352 512" width="100" title="times">
+      <path d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z" />
+    </svg>
+    <svg class="search__delete" viewBox="0 0 640 512" width="100" title="backspace">
+      <path d="M576 64H205.26A63.97 63.97 0 0 0 160 82.75L9.37 233.37c-12.5 12.5-12.5 32.76 0 45.25L160 429.25c12 12 28.28 18.75 45.25 18.75H576c35.35 0 64-28.65 64-64V128c0-35.35-28.65-64-64-64zm-84.69 254.06c6.25 6.25 6.25 16.38 0 22.63l-22.62 22.62c-6.25 6.25-16.38 6.25-22.63 0L384 301.25l-62.06 62.06c-6.25 6.25-16.38 6.25-22.63 0l-22.62-22.62c-6.25-6.25-6.25-16.38 0-22.63L338.75 256l-62.06-62.06c-6.25-6.25-6.25-16.38 0-22.63l22.62-22.62c6.25-6.25 16.38-6.25 22.63 0L384 210.75l62.06-62.06c6.25-6.25 16.38-6.25 22.63 0l22.62 22.62c6.25 6.25 6.25 16.38 0 22.63L429.25 256l62.06 62.06z" />
+    </svg>
+  </div> -->
+
+  <script>
+    $(document).ready(function () {
+      $("#cart").click(function () {
+        $(".cartcard").css("position", "fixed");
+        $(".cartcard").css("right", "0px")
+        $("#close").css("right", "0");
+        $(".cartcard").css("z-index", "99999999");
+        $(".brand").css("height", "100vh");
+        $(".down").hide()
+        $(".main-text").css("opacity", "0.5")
+        $("header").addClass("sticky");
+
+
+      })
+    })
+    $(document).ready(function () {
+      $("#close").click(function () {
+        $("header").show()
+        $(".main-text").css("opacity", "1")
+        $(".down").fadeIn()
+      })
+    })
+
+  </script>
+  <script src="js/cart.js"></script>
+  <script src="https://unpkg.com/ionicons@latest/dist/ionicons.js"></script>
+
+</body>
+
+</html>
