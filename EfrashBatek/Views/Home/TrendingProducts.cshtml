@@ -147,10 +147,14 @@
 
                                 <div class="showcase-actions">
 
-                                    <button class="btn-action" onclick="handleButtonClick()">
-                                        <ion-icon name="heart-outline"></ion-icon>
-                                    </button>
-
+                                    @using (Html.BeginForm("AddToCart", "Cart", FormMethod.Post))
+                                    {
+                                        @Html.Hidden("id", item.ID)
+                                        // Replace "Id" with the actual name of the ID property in your model
+                                        <button type="submit" class="btn-action">
+                                            <i class="ion-icon" data-name="heart-outline"></i>
+                                        </button>
+                                    }
                                     <button class="btn-action">
                                         <ion-icon name="bag-add-outline"></ion-icon>
                                     </button>

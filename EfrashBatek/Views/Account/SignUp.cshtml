@@ -79,24 +79,28 @@
             <span asp-validation-for="Gender"></span>
         </tr>
 
+        
 
+       </form>
+       </table>
+
+        <form asp-action="SignUp" asp-controller="Account">
+        <div class="signup">
+            <input type="submit" class="button" value="SignUp">
+            <span class="signup">
+                Already have an account?
+
+                <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">
+                    <label>Login</label>
+                </a>
+
+
+            </span>
+        </div>
         </form>
-    </table>
-    <div class="signup">
-        <input type="submit" class="button" value="SignUp">
-        <span class="signup">
-            Already have an account?
-
-            <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">
-                <label>Login</label>
-            </a>
-
-
-        </span>
-    </div>
 </div>
 <style>
     .container {
-        top: 52%;
+        top: 65%;
     }
 </style>
