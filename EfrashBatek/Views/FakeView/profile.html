@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="icon" type="image/favicon.ico" href="/image/favicon.png">
+	<!-- CSS-link -->
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600;700&display=swap"
+		  rel="stylesheet">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+		  integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+		  crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+	<link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+	<link rel="stylesheet" type="text/css"
+		  href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/profile2.css">
+	<link rel="stylesheet" href="css/profile.css">
+	<title>Efresh Beitak</title>
+	</head>
+
+	<body>
+	    <!--header section-->
+
+	    <header>
+	        <a href="main.html" class="logo"><img src="image/logo.png" alt=""></a>
+
+	        <ul class="navmenu">
+	            <li><a href="product page.html">Products</a></li>
+	           <!--<li><a href="trend.html">Trends</a></li>--> 
+	            <li><a href="Empty.html">Custom order</a></li>
+	            <li><a href="Empty.html">Designs</a></li>
+	        </ul>
+
+
+	        <div class="nav-icon">
+	            <a href="main.html"><i class='bx bx-search'></i></a>
+	            <a href="log.html"><i class='bx bx-user'></i></a>
+	            <a href="cart.html"><i class='bx bx-cart'></i></a>
+	            <a href="wishlist.html"><i class='bx bx-heart' undefined></i></a>
+	            <div class="bx bx-menu" id="menu-icon"></div>
+	        </div>
+
+
+	    </header>
+	<section class="py-5 my-5">
+		<div class="container">
+			<h1 class="mb-5">My Profile</h1>
+			<div class="bg-white shadow rounded-lg d-block d-sm-flex">
+				<div class="profile-tab-nav border-right">
+					<div class="p-4">
+						<div class="img-circle text-center mb-3">
+							<img src="image/client.png" alt="Image" class="shadow">
+						</div>
+						<h4 class="text-center">Hazem Abdelsattar</h4>
+					</div>
+					<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+
+						<a class="nav-link">
+							Hello,Hazem Abdelsattar
+						</a>
+						<a class="nav-link">
+							0 Orders of this month
+						</a>
+						<a href="profile.html"class="nav-link active" role="tab" id="profile" >
+							<i class="fa fa-user text-center mr-1"></i>
+							Profile
+						</a>
+						<a href="profileadd.html"class="nav-link" role="tab" id="address">
+							<i class="fa fa-home text-center mr-1"></i>
+							Address
+						</a>
+						<a href="profileord.html"class="nav-link" role="tab" id="ordere">
+							<i class="fa fa-user text-center mr-1"></i>
+							My Orders
+						</a>
+						<a href="profilegua.html"class="nav-link"  role="tab" aria-controls="guarantee" id="guarante">
+							<i class="fa fa-tv text-center mr-1"></i>
+							Guarantee
+						</a>
+						<a href="profilepass.html"class="nav-link"  role="tab" aria-controls="password" id="password">
+							<i class="fa fa-key text-center mr-1"></i>
+							Password
+						</a>
+						<a href="log.html"class="nav-link" role="tab" >
+							Log Out
+						</a>
+					</div>
+				</div>
+
+				<div class="tab-content p-4 p-md-5" id="v-pills-tabContent">
+
+					<div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+						<h3 class="mb-4">Account Settings</h3>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>First Name</label>
+									<input type="text" class="form-control" value="Hazem">
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Last Name</label>
+									<input type="text" class="form-control" value="Abdelsattar">
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Email</label>
+									<input type="text" class="form-control" value="zomaabdo2002@gmail.com">
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Phone number</label>
+									<input type="text" class="form-control" value="01004443226">
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label>Zone</label>
+									<select id="citySelect" class="form-control">
+										<option value="null">Qena</option>
+										<option value="100">
+											10th of Ramadan
+										</option>
+										<option value="78">
+											15th of May
+										</option>
+										<option value="38">
+											6th of Oct
+										</option>
+										<option value="90">
+											Abbaseya
+										</option>
+										<option value="68">
+											Abdeen
+										</option>
+										<option value="29">
+											Abou Rawash
+										</option>
+										<option value="21">
+											Abu an Numros
+										</option>
+										<option value="30">
+											Agouza
+										</option>
+										<option value="58">
+											Ain Shams
+										</option>
+										<option value="81">
+											Al Abageyah
+										</option>
+										<option value="80">
+											Al Amiriyyah
+										</option>
+										<option value="86">
+											Al Ayat
+										</option>
+										<option value="84">
+											Al Badrashin
+										</option>
+										<option value="14">
+											Al Baragel
+										</option>
+										<option value="93">
+											Al Khusus
+										</option>
+										<option value="23">
+											Al Manawat
+										</option>
+										<option value="15">
+											Al Moatamadeyah
+										</option>
+										<option value="19">
+											Al Monib
+										</option>
+										<option value="59">
+											Al Salam
+										</option>
+										<option value="91">
+											Al Sharabiya
+										</option>
+										<option value="5">
+											Alexandria
+										</option>
+										<option value="13">
+											Ard El Lewa
+										</option>
+										<option value="1">
+											Aswan
+										</option>
+										<option value="113">
+											aswann
+										</option>
+										<option value="2">
+											Asyut
+										</option>
+										<option value="95">
+											Awal Shubra Al Kheimah
+										</option>
+										<option value="69">
+											Bab El-Shaeria
+										</option>
+										<option value="74">
+											Badr City
+										</option>
+										<option value="75">
+											Basateen
+										</option>
+										<option value="12">
+											Beheira
+										</option>
+										<option value="108">
+											Beni Suef
+										</option>
+										<option value="71">
+											Boulak
+										</option>
+										<option value="32">
+											Boulak Eldakrour
+										</option>
+										<option value="103">
+											CFC
+										</option>
+										<option value="43">
+											Dakahlia
+										</option>
+										<option value="111">
+											Damietta
+										</option>
+										<option value="31">
+											Dokki
+										</option>
+										<option value="65">
+											El Azbakia
+										</option>
+										<option value="70">
+											El Gamalia
+										</option>
+										<option value="18">
+											El Giza
+										</option>
+										<option value="85">
+											El Hadba EL wosta
+										</option>
+										<option value="83">
+											El Hawamdeyya
+										</option>
+										<option value="60">
+											El Marg
+										</option>
+										<option value="66">
+											El Mosky
+										</option>
+										<option value="99">
+											El Obour City
+										</option>
+										<option value="9">
+											El Qoseir
+										</option>
+										<option value="87">
+											El Saf
+										</option>
+										<option value="55">
+											El Shorouk
+										</option>
+										<option value="26">
+											El Talbia
+										</option>
+										<option value="107">
+											El Wadi el Gedid
+										</option>
+										<option value="67">
+											El Waily
+										</option>
+										<option value="89">
+											El Zaher
+										</option>
+										<option value="94">
+											El Zawya El Hamra
+										</option>
+										<option value="73">
+											ELdarb Elahmar
+										</option>
+										<option value="101">
+											Elsayeda Aisha
+										</option>
+										<option value="76">
+											Elsayeda Zeinab
+										</option>
+										<option value="49">
+											Eltebeen
+										</option>
+										<option value="48">
+											Fayoum
+										</option>
+										<option value="97">
+											Future City
+										</option>
+										<option value="88">
+											Ghamra
+										</option>
+										<option value="47">
+											Gharbia
+										</option>
+										<option value="33">
+											Hadayek Al Ahram
+										</option>
+										<option value="77">
+											Hadayek El Qobah
+										</option>
+										<option value="34">
+											Haram
+										</option>
+										<option value="61">
+											Heliopolis
+										</option>
+										<option value="79">
+											Helwan
+										</option>
+										<option value="6">
+											Hurghada
+										</option>
+										<option value="35">
+											Imbaba
+										</option>
+										<option value="3">
+											Ismailia
+										</option>
+										<option value="102">
+											Izbat an Nakhl
+										</option>
+										<option value="115">
+											Kafr El Sheikh
+										</option>
+										<option value="16">
+											Kafr Hakim
+										</option>
+										<option value="28">
+											Kafr Nassar
+										</option>
+										<option value="27">
+											Kafr Tuhurmis
+										</option>
+										<option value="4">
+											Luxor
+										</option>
+										<option value="50">
+											Maadi
+										</option>
+										<option value="51">
+											Madinaty
+										</option>
+										<option value="52">
+											Manial
+										</option>
+										<option value="7">
+											Marsa Alam
+										</option>
+										<option value="53">
+											Masr El Qadeema
+										</option>
+										<option value="116">
+											Matruh
+										</option>
+										<option value="106">
+											Minya
+										</option>
+										<option value="36">
+											Mohandseen
+										</option>
+										<option value="117">
+											Mokattam
+										</option>
+										<option value="105">
+											Monufia
+										</option>
+										<option value="37">
+											Nahia
+										</option>
+										<option value="63">
+											Nasr City
+										</option>
+										<option value="25">
+											Nazlet Al Batran
+										</option>
+										<option value="24">
+											Nazlet El Semman
+										</option>
+										<option value="54">
+											New Cairo
+										</option>
+										<option value="98">
+											New Heliopolis City
+										</option>
+										<option value="44">
+											North Coast
+										</option>
+										<option value="62">
+											Nozha
+										</option>
+										<option value="40">
+											Omraneya
+										</option>
+										<option value="17">
+											Ossim
+										</option>
+										<option value="109">
+											Port Said
+										</option>
+										<option value="104">
+											Qalyubia
+										</option>
+										<option value="72">
+											Qasr elneil
+										</option>
+										<option value="114">
+											Qena
+										</option>
+										<option value="8">
+											Ras Ghareb
+										</option>
+										<option value="11">
+											Red Sea
+										</option>
+										<option value="92">
+											Rod El Farag
+										</option>
+										<option value="10">
+											Safaga
+										</option>
+										<option value="41">
+											Saft El Laban
+										</option>
+										<option value="20">
+											Saqiyet Mekki
+										</option>
+										<option value="46">
+											Sharqia
+										</option>
+										<option value="39">
+											Sheikh Zayed
+										</option>
+										<option value="118">
+											Sheikh Zayed\6th of Oct
+										</option>
+										<option value="56">
+											Shoubra
+										</option>
+										<option value="96">
+											Shubra El Kheima 2
+										</option>
+										<option value="22">
+											Shubra Ment
+										</option>
+										<option value="112">
+											Sohag
+										</option>
+										<option value="110">
+											South Sinai
+										</option>
+										<option value="45">
+											Suez
+										</option>
+										<option value="82">
+											Tura
+										</option>
+										<option value="42">
+											Warraq
+										</option>
+										<option value="64">
+											Zamalek
+										</option>
+										<option value="57">
+											Zeitoun
+										</option>
+									</select>
+								</div>
+							</div>
+						</div>
+						<div>
+							<button class="btn btn-primary" style="
+							background-color: #cbaab1;
+							border-color: #cbaab1;">
+								Update
+							</button>
+							<button class="btn btn-light">Cancel</button>
+						</div>
+					</div>
+
+
+
+
+				</div>
+			</div>
+		</div>
+	</section>
+	<footer>
+
+		<!-- contact-section -->
+		<section class="contact">
+			<div class="contact-info">
+				<div class="first-info">
+					<img src="image/logo.png" alt="">
+					<p>+201004443226</p>
+					<p>efresh.beitak@gmail.com</p>
+
+				</div>
+
+				<div class="second-info">
+					<h4>Support</h4>
+					<a href="contact us.html">
+						<p>Contact us</p>
+					</a>
+					<a href="about us.html">
+						<p>About page</p>
+					</a>
+					<p>Shopping & Resturns</p>
+					<p>Privacy</p>
+				</div>
+
+				<div class="third-info">
+					<h4>category</h4>
+					<p>Home Appliances</p>
+					<p>Kitchen utensils</p>
+					<p>Furniture</p>
+					<p>kitchen</p>
+				  </div>
+
+				  <div class="five">
+					<h4>JOIN OUR EMAIL NEWSLETTER</h4>
+					<form>
+					  <div class="form-group">
+						<input type="text" class="Input" placeholder="Enter Your Email." /><br><br>
+						<button type="submit" class="btn btn-default submit">
+						  Submit
+						</button>
+					  </div>
+					</form>
+				</div>
+			</div>
+		</section>
+	</footer>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+
+</body>
+
+</html>
