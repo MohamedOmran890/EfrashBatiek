@@ -25,35 +25,21 @@
             <div class="basket-product">
                 <div class="item">
                     <div class="product-image">
-                            <img src="~/Image/products/@item.itemData.image" alt="Mens Winter Leathers Jackets"
-                                 width="300" class="product-img hover">
+                        <img src="~/image/@item.Item.Image" alt="Placholder Image 2" class="product-frame">
                     </div>
                     <div class="product-details">
-                        <h1><strong><span class="item-quantity"></span> @item.itemData.Name</strong></h1>
+                        <h1><strong><span class="item-quantity"></span> @item.Item.Name</strong></h1>
 
                     </div>
                 </div>
-                <div class="price">@item.itemData.price</div>
+                <div class="price">@item.Item.Price</div>
                 <div class="quantity">
-
-
-                        <input type="number" value=@item.Quantity min="1" class="quantity-field" style="background-color: #ffff; text-align: center;">
-
+                    <input type="number" value="1" min="1" class="quantity-field" style="background-color: #ffff; text-align: center;">
                 </div>
-                
-                <div class="subtotal"></div>
-  
-
-                    @using (Html.BeginForm("RemoveFromCart", "Cart", FormMethod.Post))
-                    {
-                        @Html.Hidden("id", item.ItemID)
-                        // Replace "Id" with the actual name of the ID property in your model
-                        <div class="remove">
-                            <button>Remove</button>
-                        </div>
-                    }
-
-                   
+                <div class="subtotal">5000L.E</div>
+                <div class="remove">
+                    <button>Remove</button>
+                </div>
             </div>
             }
 
@@ -106,27 +92,3 @@
 
 </main>
 
-
-       <script>
-
-
-    $(document).ready(function () {
-        $('.quantity-field').change(function () {
-            var itemId = $(this).data('item-id');
-            var newQuantity = $(this).val();
-
-            //Send request to update quantity in database
-            $.ajax({
-                url: '/Item/UpdateQuantity',
-                method: 'POST',
-                data: { itemId: itemId, newQuantity: newQuantity },
-                success: function (result) {
-                    //Handle success response
-                },
-                error: function (error) {
-                    //Handle error response
-                }
-            });
-        });
-    });
-       </script>

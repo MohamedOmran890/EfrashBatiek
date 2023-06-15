@@ -135,14 +135,9 @@ namespace EfrashBatek.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
-                    b.Property<int?>("itemDataId")
-                        .HasColumnType("int");
-
                     b.HasKey("CartID", "ItemID");
 
                     b.HasIndex("ItemID");
-
-                    b.HasIndex("itemDataId");
 
                     b.ToTable("Cart_Items");
                 });
@@ -706,33 +701,6 @@ namespace EfrashBatek.Migrations
                     b.ToTable("WishLists");
                 });
 
-            modelBuilder.Entity("EfrashBatek.Models.itemData", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("image")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("itemid")
-                        .HasColumnType("int");
-
-                    b.Property<int>("price")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("itemData");
-                });
-
             modelBuilder.Entity("EfrashBatek.ViewModel.ForgetPasswordVM", b =>
                 {
                     b.Property<int>("ID")
@@ -952,15 +920,9 @@ namespace EfrashBatek.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("EfrashBatek.Models.itemData", "itemData")
-                        .WithMany()
-                        .HasForeignKey("itemDataId");
-
                     b.Navigation("Cart");
 
                     b.Navigation("Item");
-
-                    b.Navigation("itemData");
                 });
 
             modelBuilder.Entity("EfrashBatek.Models.Custom", b =>

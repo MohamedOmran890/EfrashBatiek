@@ -40,7 +40,8 @@ namespace EfrashBatek.Controllers
 			
         }
 
-       
+        
+      
 
         public IActionResult Privacy()
         {
