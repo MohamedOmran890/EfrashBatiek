@@ -9,6 +9,9 @@
     text-decoration: none;
     
 }
+.item2 span{
+    color: #cbaab1;
+}
 
 .breadcrumb{
     color: black;
