@@ -107,8 +107,8 @@
     <Content Remove="wwwroot\Image\products\sports-6.jpg" />
     <Content Remove="wwwroot\Image\products\watch-1.jpg" />
     <Content Remove="wwwroot\Image\products\watch-2.jpg" />
-    <Content Remove="wwwroot\Image\products\watch-3.jpg" />
     <Content Remove="wwwroot\Image\products\watch-4.jpg" />
+    <Content Remove="wwwroot\Image\products\x.jpg" />
     <Content Remove="wwwroot\Image\testimonial-1.jpg" />
     <Content Remove="wwwroot\Image\trash.png" />
     <Content Remove="wwwroot\Image\womens-banner.jpg" />
@@ -250,7 +250,7 @@
     <None Include="wwwroot\Image\products\sports-6.jpg" />
     <None Include="wwwroot\Image\products\watch-1.jpg" />
     <None Include="wwwroot\Image\products\watch-2.jpg" />
-    <None Include="wwwroot\Image\products\watch-3.jpg" />
+    <None Include="wwwroot\Image\products\x.jpg" />
     <None Include="wwwroot\Image\products\watch-4.jpg" />
     <None Include="wwwroot\Image\testimonial-1.jpg" />
     <None Include="wwwroot\Image\trash.png" />
@@ -278,6 +278,13 @@
     <Folder Include="Migrations\" />
     <Folder Include="wwwroot\Image\custom\" />
     <Folder Include="wwwroot\Image\Items\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Views\Designs\Design.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

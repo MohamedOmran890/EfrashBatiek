@@ -72,6 +72,7 @@ namespace EfrashBatek
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped<IIdentityRepository ,IdentityRepository>();
             services.AddScoped<EmailService>();
+            services.AddScoped < EmailStaffService>();
 
             /*Session*/
             services.AddSession(options =>
@@ -110,7 +111,7 @@ namespace EfrashBatek
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=TrendingProducts}/{id?}");//When Open Web Open Bydefault Home 
+                    pattern: "{controller=Account}/{action=SignUp}/{id?}");//When Open Web Open Bydefault Home 
             });
         }
     }

@@ -9,47 +9,36 @@
 }
 <div class="login form">
     <header>Sign up</header>
-    <table>
-        <form asp-action="SignUp" asp-controller="Account">
-            <div asp-validation-summary="All" class="text-danger"></div>
+    <form asp-action="SignUp" asp-controller="Account">
+        <div asp-validation-summary="All" class="text-danger"></div>
 
-        <tr>
-            <td>
-                <input asp-for="FirstName" type="text" placeholder="Enter your first name ">
-                <span asp-validation-for="FirstName"></span>
-            </td>
 
-            <td>
-                <input asp-for="LastName" type="LastName" placeholder="Enter your last name">
-                <span asp-validation-for="LastName"></span>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <input asp-for="Username" type="Username" placeholder="Enter your Username ">
-                <span asp-validation-for="Username"></span>
-            </td>
-            <td>
-                <input asp-for="Phone" type="Phone" placeholder="Enter your phone ">
-                <span asp-validation-for="Phone"></span>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <input asp-for="Age" type="Age" placeholder="Enter your Age">
-                <span asp-validation-for="Age"></span>
-            </td>
-            <td>
-                <input asp-for="Birthdate" class="form-control" />
-                <span asp-validation-for="Birthdate" class="text-danger"></span>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <input asp-for="Email" type="Email" placeholder="Enter your email">
-                <span asp-validation-for="Email"></span>
-            </td>
-        </tr>
+        <input asp-for="FirstName" type="text" placeholder="Enter your first name ">
+        <span asp-validation-for="FirstName"></span>
+
+
+
+        <input asp-for="LastName" type="LastName" placeholder="Enter your last name">
+        <span asp-validation-for="LastName"></span>
+
+
+        <input asp-for="Username" type="Username" placeholder="Enter your Username ">
+        <span asp-validation-for="Username"></span>
+
+
+        <input asp-for="Phone" type="Phone" placeholder="Enter your phone ">
+        <span asp-validation-for="Phone"></span>
+
+
+        <input asp-for="Age" type="Age" placeholder="Enter your Age">
+        <span asp-validation-for="Age"></span>
+
+        <input asp-for="Birthdate" class="form-control" />
+        <span asp-validation-for="Birthdate" class="text-danger"></span>
+
+
+        <input asp-for="Email" type="Email" placeholder="Enter your email">
+        <span asp-validation-for="Email"></span>
 
         <tr>
             <td>
@@ -83,8 +72,8 @@
         <input type="submit" value="SignUp" class="submit" />
         </div>
 
-        </form>
-    </table>
+        <input type="submit" class="button" value="SignUp">
+    </form>
     <div class="signup">
    @*     <input type="submit" class="button" value="SignUp">
         <span class="signup">
@@ -98,8 +87,3 @@
         </span>
     </div>
 </div>
-<style>
-    .container {
-        top: 52%;
-    }
-</style>

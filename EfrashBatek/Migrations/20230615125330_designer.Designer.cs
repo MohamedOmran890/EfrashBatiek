@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EfrashBatek.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20230614152301_aaa")]
-    partial class aaa
+    [Migration("20230615125330_designer")]
+    partial class designer
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -242,8 +242,8 @@ namespace EfrashBatek.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("DesignerID")
-                        .HasColumnType("int");
+                    b.Property<string>("DesignerID")
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("ID");
 
@@ -254,10 +254,8 @@ namespace EfrashBatek.Migrations
 
             modelBuilder.Entity("EfrashBatek.Models.Designer", b =>
                 {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("ID")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("NationalCardImage")
                         .IsRequired()
@@ -951,9 +949,7 @@ namespace EfrashBatek.Migrations
                 {
                     b.HasOne("EfrashBatek.Models.Designer", "Designer")
                         .WithMany("Design")
-                        .HasForeignKey("DesignerID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("DesignerID");
 
                     b.Navigation("Designer");
                 });

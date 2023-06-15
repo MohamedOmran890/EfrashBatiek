@@ -44,7 +44,7 @@ namespace EfrashBatek.ViewModel
         public DateTime Birthdate { get; set; }
         [Required]
         public Gender Gender { get; set; }
-
-        public int ShopNumber { get; set; }
+        [Required]
+        public string ShopNumber { get; set; }
     }
 }
