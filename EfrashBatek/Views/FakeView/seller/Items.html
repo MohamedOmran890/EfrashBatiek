@@ -25,6 +25,26 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
   <title>Efresh Beitak</title>
+
+   
+  <style>
+    .overlay {
+      position: absolute;
+      top: 0;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(0, 0, 0, 0.6);
+      height: 100%;
+      width: 100%;
+      display: none;
+    }
+  
+    .dialog-container {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+    }
+  </style>
 </head>
 
 <body>
@@ -65,10 +85,10 @@
 
 
   <!-- trending-products-section -->
+  <div class="center-text">
+    <h2>Our Trending <span>products</span></h2>
+  </div>
   <section class="trending-product" id="trending">
-    <div class="center-text">
-      <h2>Our Trending <span>products</span></h2>
-    </div>
     <div class="product-box">
       <div class="product-main">
         <div class="product-grid">
@@ -81,36 +101,13 @@
                 <button class="btn-action">
                   <i class='bx bxs-edit'></i>
                 </button>
-                <button class="btn-action" id="delete-action">
-                  <div id="item-to-delete">Item</div>
-                  <button id="delete-button">Delete</button>
-                  
-                  <div class="overlay" id="confirmation-dialog">
-                    <div class="dialog-container">
-                      <h2>Confirm deleteing</h2>
-                      <button id="confirm-no">Cancel</button>
-                      <button id="confirm-yes">Confirm</button>
-                    </div>
-                  </div>
-                  <style>
-                    .overlay {
-                      position: absolute;
-                      top: 0;
-                      justify-content: center;
-                      align-items: center;
-                      background-color: rgba(0, 0, 0, 0.6);
-                      height: 100%;
-                      width: 100%;
-                      display: none;
-                    }
-                  
-                    .dialog-container {
-                      background-color: white;
-                      padding: 20px;
-                      border-radius: 8px;
-                    }
-                  </style>
+            
+                  <button id="delete-button" onclick="deleteProduct()" class="btn-action" >
+                    <ion-icon id="delete-button" name="trash-outline"></ion-icon>
+                  </button>
+           
                   <script>
+                    
                     const deleteButton = document.getElementById("delete-button");
 
                     const confirmationDialog = document.getElementById("confirmation-dialog");
@@ -118,11 +115,22 @@
                     const confirmYesButton = document.getElementById("confirm-yes");
 
                     const confirmNoButton = document.getElementById("confirm-no");
+                    const trendingProduct = document.querySelector(".trending-product");
+                    function deleteProduct(){
+                      trendingProduct.style.position = "absolute";
+                      trendingProduct.style.justifyContent = "center";
+                      trendingProduct.style.alignItems = "center";
+                      trendingProduct.style.backgroundColor = "#0009";
+                      trendingProduct.style.width = "100%";
+                      trendingProduct.style.height = "100%";
+                      confirm("Do Your Want to Deleted this product")
 
+                    }
                     deleteButton.addEventListener("click", function () {
-                      // Show confirmation dialog
-                      confirmationDialog.style.display = "flex";
 
+                  
+                      // Show confirmation dialog
+                      
                       // Listen for "Yes" button click
                       confirmYesButton.addEventListener("click", function () {
                         // Perform deletion
@@ -166,6 +174,17 @@
     </div>
     </div>
   </section>
+
+
+
+
+  <div class="overlay" id="confirmation-dialog">
+    <div class="dialog-container">
+      <h2>Confirm deleteing</h2>
+      <button id="confirm-no">Cancel</button>
+      <button id="confirm-yes">Confirm</button>
+    </div>
+  </div>
   <script>
     $(document).ready(function () {
       $("#cart").click(function () {
