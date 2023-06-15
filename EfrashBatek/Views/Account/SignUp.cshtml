@@ -40,26 +40,44 @@
         <input asp-for="Email" type="Email" placeholder="Enter your email">
         <span asp-validation-for="Email"></span>
 
+        <tr>
+            <td>
+                <input asp-for="Password" type="password" placeholder="Enter your password">
+                <span asp-validation-for="Password"></span>
+            </td>
+            <td>
+                <input asp-for="ConfirmPassword" type="ConfirmPassword" placeholder="Confirm your Password">
+                <span asp-validation-for="ConfirmPassword"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label asp-for="Gender" class="containerr">Male :</label>
+            </td>
+            <td>
+                <input type="radio" asp-for="Gender" value="male" checked="checked" name="radio" style="width:12%">
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <label asp-for="Gender" class="containerr">Famale :</label>
+            </td>
+            <td>
+                <input type="radio" asp-for="Gender" value="famale" name="radio" style="width:12%">
+            </td>
+            <span asp-validation-for="Gender"></span>
+        </tr>
+        <div class="signup">
 
-        <input asp-for="Password" type="password" placeholder="Enter your password">
-        <span asp-validation-for="Password"></span>
-
-        <input asp-for="ConfirmPassword" type="ConfirmPassword" placeholder="Confirm your Password">
-        <span asp-validation-for="ConfirmPassword"></span>
-
-
-
-        <label asp-for="Gender"></label>
-        <br>
-        <input type="radio" asp-for="Gender" value="male" checked />Male
-        <input type="radio" asp-for="Gender" value="famale" />Famale
-        <span asp-validation-for="Gender"></span>
+        <input type="submit" value="SignUp" class="submit" />
+        </div>
 
         <input type="submit" class="button" value="SignUp">
     </form>
     <div class="signup">
+   @*     <input type="submit" class="button" value="SignUp">
         <span class="signup">
-            Don't have an account?
+   *@         Already have an account?
 
             <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">
                 <label>Login</label>

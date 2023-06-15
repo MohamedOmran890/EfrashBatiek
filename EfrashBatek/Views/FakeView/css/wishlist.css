@@ -9,8 +9,6 @@
     text-decoration: none;
 }
 .main-home1{
-    margin-left: 15%;
-    margin-top: 10%;
     background: #f9f9f9;
 }
 header{
@@ -40,24 +38,7 @@ header{
     font-weight: 400;
     transition: all .42s ease;
 }
-.navmenu a:hover{
-    color: #EE1C47;
-}
-.nav-icon{
-    display: flex;
-    align-items: center;
-}
-.nav-icon i{
-    margin-right: 20px;
-    color: #2c2c2c;
-    font-size: 25px;
-    font-weight: 400;
-    transition: all .42s ease;
-}
-.nav-icon i:hover{
-    transform: scale(1.1);
-    color: #EE1C47;
-}
+
 #menu-icon{
     font-size: 35px;
     color: #2c2c2c;
@@ -99,13 +80,13 @@ label{
 .select {
    width: 100%;
     background-color: #cbaab1;
-    color: #f9f9f9;
+    color: #fff;
     transition: all .5s;
   }
   .select:hover {
     color: #cbaab1;
-    background-color:#e3d9d9;
-    border-color: #e3d9d9 ;
+    background-color:#fff;
+    border: none;
   }
   .shopping-cart .wishlist-item{
     background-color: #fff;

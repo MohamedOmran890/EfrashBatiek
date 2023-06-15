@@ -1,42 +1,54 @@
-<html lang="en" dir="ltr">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
-  <title> Add Shop</title>
-  <link rel="stylesheet" href="css/seller.css">
-  <!-- Boxicons CDN Link -->
-  <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- CSS-link -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+  <!-- Code by Angela Delise  
+ https://codepen.io/angeladelise/pen/yLJdgYx -->
+  <link rel="stylesheet" href="css/seller.css">
   <link rel="stylesheet" href="css/Items.css">
-  <link rel="stylesheet" href="FakeView/css/main.css">
-  <link rel="stylesheet" type="text/css"
-    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-  <!-- ///// -->
-  <!--
-    - favicon
-  -->
   <link rel="shortcut icon" href="image/favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-
-
-  <!--
-    - custom css link
-  
-  <link rel="stylesheet" href=" css/style-prefix.css">
-  -->
-
-  <!--
-    - google font link
-  -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+  <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
+  <title>Efresh Beitak</title>
+
+   
+  <style>
+    .overlay {
+      position: absolute;
+      top: 0;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(0, 0, 0, 0.6);
+      height: 100%;
+      width: 100%;
+      display: none;
+    }
+  
+    .dialog-container {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+    }
+  </style>
 </head>
-<body>
 
-  <!-- SIDEBAR -->
+<body>
+  <!-- 
   <section id="sidebar">
     <a href="#" class="brand">
       <i class='bx bxs-smile'></i>
@@ -69,825 +81,132 @@
       </li>
     </ul>
   </section>
-
-  <!-- SIDEBAR -->
-
-<!-- NAVBAR -->
-  <section id="content">
-		<nav>
-			<i class='bx bx-menu' ></i>
-		</nav>
-  </section>
-<!-- NAVBAR -->
-<!--ADD SHOP FORM-->
-<!--
-      - PRODUCT
-    -->
-
-    <div class="product-container">
-
-      <div class="container">
+ -->
 
 
-        <!--
-          - SIDEBAR
-        -->
+  <!-- trending-products-section -->
+  <div class="center-text">
+    <h2>Our Trending <span>products</span></h2>
+  </div>
+  <section class="trending-product" id="trending">
+    <div class="product-box">
+      <div class="product-main">
+        <div class="product-grid">
+          <div class="showcase">
+            <div class="showcase-banner">
+              <img src="image/products/Brown right L shaped sofa.jpg" width="300" class="product-img hover">
+              <img src="image/products/LF-L000301.jpg" class="product-img default" width="300">
+              <p class="showcase-badge">15%</p>
+              <div class="showcase-actions">
+                <button class="btn-action">
+                  <i class='bx bxs-edit'></i>
+                </button>
+            
+                  <button id="delete-button" onclick="deleteProduct()" class="btn-action" >
+                    <ion-icon id="delete-button" name="trash-outline"></ion-icon>
+                  </button>
+           
+                  <script>
+                    
+                    const deleteButton = document.getElementById("delete-button");
 
-        <div class="sidebar  has-scrollbar" data-mobile-menu>
+                    const confirmationDialog = document.getElementById("confirmation-dialog");
 
-          <div class="sidebar-category">
+                    const confirmYesButton = document.getElementById("confirm-yes");
 
-            <div class="sidebar-top">
-              <h2 class="sidebar-title">Category</h2>
+                    const confirmNoButton = document.getElementById("confirm-no");
+                    const trendingProduct = document.querySelector(".trending-product");
+                    function deleteProduct(){
+                      trendingProduct.style.position = "absolute";
+                      trendingProduct.style.justifyContent = "center";
+                      trendingProduct.style.alignItems = "center";
+                      trendingProduct.style.backgroundColor = "#0009";
+                      trendingProduct.style.width = "100%";
+                      trendingProduct.style.height = "100%";
+                      confirm("Do Your Want to Deleted this product")
 
-              <button class="sidebar-close-btn" data-mobile-menu-close-btn>
-                <ion-icon name="close-outline"></ion-icon>
-              </button>
+                    }
+                    deleteButton.addEventListener("click", function () {
+
+                  
+                      // Show confirmation dialog
+                      
+                      // Listen for "Yes" button click
+                      confirmYesButton.addEventListener("click", function () {
+                        // Perform deletion
+                        const itemToDelete = document.getElementById("item-to-delete");
+                        itemToDelete.remove();
+                        alert("Item deleted successfully");
+
+                        // Hide confirmation dialog
+                        confirmationDialog.style.display = "none";
+                      });
+
+                      // Listen for "No" button click
+                      confirmNoButton.addEventListener("click", function () {
+                        // Hide confirmation dialog
+                        confirmationDialog.style.display = "none";
+                      });
+                    });
+                  </script>
+              </div>
             </div>
-
-            <ul class="sidebar-menu-category-list">
-
-              <li class="sidebar-menu-category">
-
-                <button class="sidebar-accordion-menu" data-accordion-btn>
-
-                  <div class="menu-title-flex">
-                    <img src="  image/icons/sofa.png" alt="furniture" width="20" height="20"
-                      class="menu-title-img">
-
-                    <p class="menu-title">furniture</p>
-                  </div>
-
-                  <div>
-                    <ion-icon name="add-outline" class="add-icon"></ion-icon>
-                    <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
-                  </div>
-
-                </button>
-
-                <ul class="sidebar-submenu-category-list" data-accordion>
-
-                  <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">living room</p>
-                      <data value="300" class="stock" title="Available Stock">300</data>
-                    </a>
-                  </li>
-
-                  <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">Youth & Kids Bed rooms</p>
-                      <data value="60" class="stock" title="Available Stock">60</data>
-                    </a>
-                  </li>
-                  <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">dining room</p>
-                      <data value="87" class="stock" title="Available Stock">87</data>
-                    </a>
-                  </li>
-
-                </ul>
-
-              </li>
-
-              <li class="sidebar-menu-category">
-
-                <button class="sidebar-accordion-menu" data-accordion-btn>
-
-                  <div class="menu-title-flex">
-                    <img src="  image/icons/appliances.png" alt="footwear" class="menu-title-img" width="20"
-                      height="20">
-
-                    <p class="menu-title">Home Appliances</p>
-                  </div>
-
-                  <div>
-                    <ion-icon name="add-outline" class="add-icon"></ion-icon>
-                    <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
-                  </div>
-
-                </button>
-
-                <ul class="sidebar-submenu-category-list" data-accordion>
-
-                  <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">large Appliances</p>
-                      <data value="45" class="stock" title="Available Stock">45</data>
-                    </a>
-                  </li>
-
-                  <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">kitchen Appliances</p>
-                      <data value="75" class="stock" title="Available Stock">75</data>
-                    </a>
-                  </li>
-
-                  <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">Home Appliances</p>
-                      <data value="35" class="stock" title="Available Stock">35</data>
-                    </a>
-                  </li>
-                </ul>
-
-              </li>
-
-
-              <li class="sidebar-menu-category">
-
-                <button class="sidebar-accordion-menu" data-accordion-btn>
-
-                  <div class="menu-title-flex">
-                    <img src="  image/icons/pot.png" alt="perfume" class="menu-title-img" width="20"
-                      height="20">
-
-                    <p class="menu-title">Kitchen utensils</p>
-                  </div>
-
-                  <div>
-                    <ion-icon name="add-outline" class="add-icon"></ion-icon>
-                    <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
-                  </div>
-
-                </button>
-
-                <ul class="sidebar-submenu-category-list" data-accordion>
-
-                  <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">Cookware</p>
-                      <data value="12" class="stock" title="Available Stock">90 pcs</data>
-                    </a>
-                  </li>
-
-                  <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">Drinkware</p>
-                      <data value="60" class="stock" title="Available Stock">60 pcs</data>
-                    </a>
-                  </li>
-
-
-                  <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">Dinnerware</p>
-                      <data value="60" class="stock" title="Available Stock">60 pcs</data>
-                    </a>
-                  </li>
-
-
-                </ul>
-
-              </li>
-
-              <li class="sidebar-menu-category">
-
-                <button class="sidebar-accordion-menu" data-accordion-btn>
-
-                  <div class="menu-title-flex">
-                    <img src="  image/icons/kitchen.png" alt="cosmetics" class="menu-title-img" width="20"
-                      height="20">
-
-                    <p class="menu-title">Kitchen</p>
-                  </div>
-
-                  <div>
-                    <ion-icon name="add-outline" class="add-icon"></ion-icon>
-                    <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
-                  </div>
-
-                </button>
-
-                <ul class="sidebar-submenu-category-list" data-accordion>
-
-                  <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">alometal</p>
-                      <data value="68" class="stock" title="Available Stock">68</data>
-                    </a>
-                  </li>
-
-                  <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">wood</p>
-                      <data value="46" class="stock" title="Available Stock">46</data>
-                    </a>
-                  </li>
-
-                  <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">acrylic</p>
-                      <data value="79" class="stock" title="Available Stock">79</data>
-                    </a>
-                  </li>
-
-                  <li class="sidebar-submenu-category">
-                    <a href="#" class="sidebar-submenu-title">
-                      <p class="product-name">Pvc</p>
-                      <data value="23" class="stock" title="Available Stock">23</data>
-                    </a>
-                  </li>
-
-                </ul>
-
-              </li>
-
-
-            </ul>
-
+            <div class="showcase-content">
+              <a href="product details.html" class="showcase-category">Bed Room</a>
+              <a href="product details.html">
+                <h3 class="showcase-title">Bed Room</h3>
+              </a>
+              <div class="showcase-rating">
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star-outline"></ion-icon>
+                <ion-icon name="star-outline"></ion-icon>
+              </div>
+              <div class="price-box">
+                <p class="price">$48.00</p>
+                <del>$75.00</del>
+              </div>
+            </div>
           </div>
         </div>
-
-
-
-        <div class="product-box">
-
-          <!--
-            - PRODUCT GRID
-          -->
-          <br>
-          <br>
-          <div class="product-main">
-
-            <h2 class="title">New Products</h2>
-
-            <div class="product-grid">
-
-              <div class="showcase">
-
-                <div class="showcase-banner">
-
-                  <img src="  image/products/Brown right L shaped sofa.jpg" alt="Mens Winter Leathers Jackets"
-                    width="300" class="product-img hover">
-                  <img src="  image/products/LF-L000301.jpg" alt="MEN Yarn Fleece Full-Zip Jacket"
-                    class="product-img default" width="300">
-
-                  <p class="showcase-badge">15%</p>
-
-                  <div class="showcase-actions">
-
-                    <button class="btn-action">
-                      <ion-icon name="heart-outline"></ion-icon>
-                    </button>
-
-                    <button class="btn-action">
-                      <ion-icon name="bag-add-outline"></ion-icon>
-                    </button>
-
-                  </div>
-
-                </div>
-
-                <div class="showcase-content">
-
-                  <a href="product details.html" class="showcase-category">Bed Room</a>
-
-                  <a href="product details.html"><h3 class="showcase-title">Bed Room</h3>
-                  </a>
-
-                  <div class="showcase-rating">
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star-outline"></ion-icon>
-                    <ion-icon name="star-outline"></ion-icon>
-                  </div>
-
-                  <div class="price-box">
-                    <p class="price">$48.00</p>
-                    <del>$75.00</del>
-                  </div>
-
-                </div>
-
-              </div>
-
-              <div class="showcase">
-
-                <div class="showcase-banner">
-                  <img src="  image/products/Brown right L shaped sofa.jpg" alt="Mens Winter Leathers Jackets"
-                    width="300" class="product-img hover">
-                  <img src="  image/products/LF-L000301.jpg" alt="MEN Yarn Fleece Full-Zip Jacket"
-                    class="product-img default" width="300">
-
-                  <p class="showcase-badge angle black">sale</p>
-
-                  <div class="showcase-actions">
-
-                    <button class="btn-action">
-                      <ion-icon name="heart-outline"></ion-icon>
-                    </button>
-
-                    <button class="btn-action">
-                      <ion-icon name="bag-add-outline"></ion-icon>
-                    </button>
-
-                  </div>
-                </div>
-
-                <div class="showcase-content">
-                  <a href="#" class="showcase-category">.....</a>
-
-                  <h3>
-                    <a href="#" class="showcase-title">.......</a>
-                  </h3>
-
-                  <div class="showcase-rating">
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star-outline"></ion-icon>
-                    <ion-icon name="star-outline"></ion-icon>
-                  </div>
-
-                  <div class="price-box">
-                    <p class="price">$45.00</p>
-                    <del>$56.00</del>
-                  </div>
-
-                </div>
-
-              </div>
-
-              <div class="showcase">
-
-                <div class="showcase-banner">
-                  <img src="  image/products/Brown right L shaped sofa.jpg" alt="Mens Winter Leathers Jackets"
-                    width="300" class="product-img hover">
-                  <img src="  image/products/LF-L000301.jpg" alt="MEN Yarn Fleece Full-Zip Jacket"
-                    class="product-img default" width="300">
-                    <div class="showcase-actions">
-
-                      <button class="btn-action">
-                        <ion-icon name="heart-outline"></ion-icon>
-                      </button>
-
-                      <button class="btn-action">
-                        <ion-icon name="bag-add-outline"></ion-icon>
-                      </button>
-
-                    </div>
-                  </div>
-
-                <div class="showcase-content">
-                  <a href="#" class="showcase-category">.....</a>
-
-                  <h3>
-                    <a href="#" class="showcase-title">.........</a>
-                  </h3>
-
-                  <div class="showcase-rating">
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star-outline"></ion-icon>
-                    <ion-icon name="star-outline"></ion-icon>
-                  </div>
-
-                  <div class="price-box">
-                    <p class="price">$58.00</p>
-                    <del>$65.00</del>
-                  </div>
-
-                </div>
-
-              </div>
-
-              <div class="showcase">
-
-                <div class="showcase-banner">
-                  <img src="  image/products/Brown right L shaped sofa.jpg" alt="Mens Winter Leathers Jackets"
-                    width="300" class="product-img hover">
-                  <img src="  image/products/LF-L000301.jpg" alt="MEN Yarn Fleece Full-Zip Jacket"
-                    class="product-img default" width="300">
-
-
-                  <p class="showcase-badge angle pink">new</p>
-
-                  <div class="showcase-actions">
-                    <button class="btn-action">
-                      <ion-icon name="heart-outline"></ion-icon>
-                    </button>
-
-                    
-
-                    <button class="btn-action">
-                      <ion-icon name="bag-add-outline"></ion-icon>
-                    </button>
-                  </div>
-                </div>
-
-                <div class="showcase-content">
-                  <a href="#" class="showcase-category">skirt</a>
-
-                  <h3>
-                    <a href="#" class="showcase-title">Black Floral Wrap Midi Skirt</a>
-                  </h3>
-
-                  <div class="showcase-rating">
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                  </div>
-
-                  <div class="price-box">
-                    <p class="price">$25.00</p>
-                    <del>$35.00</del>
-                  </div>
-
-                </div>
-
-              </div>
-
-              <div class="showcase">
-
-                <div class="showcase-banner">
-                  <img src="  image/products/Brown right L shaped sofa.jpg" alt="Mens Winter Leathers Jackets"
-                    width="300" class="product-img hover">
-                  <img src="  image/products/LF-L000301.jpg" alt="MEN Yarn Fleece Full-Zip Jacket"
-                    class="product-img default" width="300">
-
-                  <div class="showcase-actions">
-                    <button class="btn-action">
-                      <ion-icon name="heart-outline"></ion-icon>
-                    </button>
-
-                   
-
-                    <button class="btn-action">
-                      <ion-icon name="bag-add-outline"></ion-icon>
-                    </button>
-                  </div>
-                </div>
-
-                <div class="showcase-content">
-                  <a href="#" class="showcase-category">casual</a>
-
-                  <h3>
-                    <a href="#" class="showcase-title">Casual Men's Brown shoes</a>
-                  </h3>
-
-                  <div class="showcase-rating">
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                  </div>
-
-                  <div class="price-box">
-                    <p class="price">$99.00</p>
-                    <del>$105.00</del>
-                  </div>
-
-                </div>
-
-              </div>
-
-              <div class="showcase">
-
-                <div class="showcase-banner">
-                  <img src="  image/products/Brown right L shaped sofa.jpg" alt="Mens Winter Leathers Jackets"
-                    width="300" class="product-img hover">
-                  <img src="  image/products/LF-L000301.jpg" alt="MEN Yarn Fleece Full-Zip Jacket"
-                    class="product-img default" width="300">
-
-                  <p class="showcase-badge angle black">sale</p>
-
-                  <div class="showcase-actions">
-                    <button class="btn-action">
-                      <ion-icon name="heart-outline"></ion-icon>
-                    </button>
-
-                    
-
-                    <button class="btn-action">
-                      <ion-icon name="bag-add-outline"></ion-icon>
-                    </button>
-                  </div>
-                </div>
-
-                <div class="showcase-content">
-                  <a href="#" class="showcase-category">watches</a>
-
-                  <h3>
-                    <a href="#" class="showcase-title">Pocket Watch Leather Pouch</a>
-                  </h3>
-
-                  <div class="showcase-rating">
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star-outline"></ion-icon>
-                    <ion-icon name="star-outline"></ion-icon>
-                  </div>
-
-                  <div class="price-box">
-                    <p class="price">$150.00</p>
-                    <del>$170.00</del>
-                  </div>
-
-                </div>
-
-              </div>
-
-              <div class="showcase">
-
-                <div class="showcase-banner">
-                  <img src="  image/products/Brown right L shaped sofa.jpg" alt="Mens Winter Leathers Jackets"
-                    width="300" class="product-img hover">
-                  <img src="  image/products/LF-L000301.jpg" alt="MEN Yarn Fleece Full-Zip Jacket"
-                    class="product-img default" width="300">
-
-
-                  <div class="showcase-actions">
-                    <button class="btn-action">
-                      <ion-icon name="heart-outline"></ion-icon>
-                    </button>
-
-                    
-
-                    <button class="btn-action">
-                      <ion-icon name="bag-add-outline"></ion-icon>
-                    </button>
-                  </div>
-                </div>
-
-                <div class="showcase-content">
-                  <a href="#" class="showcase-category">watches</a>
-
-                  <h3>
-                    <a href="#" class="showcase-title">Smart watche Vital Plus</a>
-                  </h3>
-
-                  <div class="showcase-rating">
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star-outline"></ion-icon>
-                  </div>
-
-                  <div class="price-box">
-                    <p class="price">$100.00</p>
-                    <del>$120.00</del>
-                  </div>
-
-                </div>
-
-              </div>
-
-              <div class="showcase">
-
-                <div class="showcase-banner">
-                  <img src="  image/products/Brown right L shaped sofa.jpg" alt="Mens Winter Leathers Jackets"
-                    width="300" class="product-img hover">
-                  <img src="  image/products/LF-L000301.jpg" alt="MEN Yarn Fleece Full-Zip Jacket"
-                    class="product-img default" width="300">
-
-
-                  <p class="showcase-badge angle black">sale</p>
-
-                  <div class="showcase-actions">
-                    <button class="btn-action">
-                      <ion-icon name="heart-outline"></ion-icon>
-                    </button>
-
-                   
-
-                    <button class="btn-action">
-                      <ion-icon name="bag-add-outline"></ion-icon>
-                    </button>
-                  </div>
-                </div>
-
-                <div class="showcase-content">
-                  <a href="#" class="showcase-category">party wear</a>
-
-                  <h3>
-                    <a href="#" class="showcase-title">Womens Party Wear Shoes</a>
-                  </h3>
-
-                  <div class="showcase-rating">
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star-outline"></ion-icon>
-                    <ion-icon name="star-outline"></ion-icon>
-                  </div>
-
-                  <div class="price-box">
-                    <p class="price">$25.00</p>
-                    <del>$30.00</del>
-                  </div>
-
-                </div>
-
-              </div>
-
-              <div class="showcase">
-
-                <div class="showcase-banner">
-                  <img src="  image/products/Brown right L shaped sofa.jpg" alt="Mens Winter Leathers Jackets"
-                    width="300" class="product-img hover">
-                  <img src="  image/products/LF-L000301.jpg" alt="MEN Yarn Fleece Full-Zip Jacket"
-                    class="product-img default" width="300">
-
-                  <div class="showcase-actions">
-                    <button class="btn-action">
-                      <ion-icon name="heart-outline"></ion-icon>
-                    </button>
-
-                   
-
-                    <button class="btn-action">
-                      <ion-icon name="bag-add-outline"></ion-icon>
-                    </button>
-                  </div>
-                </div>
-
-                <div class="showcase-content">
-                  <a href="#" class="showcase-category">jacket</a>
-
-                  <h3>
-                    <a href="#" class="showcase-title">Mens Winter Leathers Jackets</a>
-                  </h3>
-
-                  <div class="showcase-rating">
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star-outline"></ion-icon>
-                  </div>
-
-                  <div class="price-box">
-                    <p class="price">$32.00</p>
-                    <del>$45.00</del>
-                  </div>
-
-                </div>
-
-              </div>
-
-              <div class="showcase">
-
-                <div class="showcase-banner">
-                  <img src="  image/products/Brown right L shaped sofa.jpg" alt="Mens Winter Leathers Jackets"
-                    width="300" class="product-img hover">
-                  <img src="  image/products/LF-L000301.jpg" alt="MEN Yarn Fleece Full-Zip Jacket"
-                    class="product-img default" width="300">
-
-                  <p class="showcase-badge angle black">sale</p>
-
-                  <div class="showcase-actions">
-                    <button class="btn-action">
-                      <ion-icon name="heart-outline"></ion-icon>
-                    </button>
-
-                    
-
-                    <button class="btn-action">
-                      <ion-icon name="bag-add-outline"></ion-icon>
-                    </button>
-                  </div>
-                </div>
-
-                <div class="showcase-content">
-                  <a href="#" class="showcase-category">sports</a>
-
-                  <h3>
-                    <a href="#" class="showcase-title">Trekking & Running Shoes - black</a>
-                  </h3>
-
-                  <div class="showcase-rating">
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star-outline"></ion-icon>
-                    <ion-icon name="star-outline"></ion-icon>
-                  </div>
-
-                  <div class="price-box">
-                    <p class="price">$58.00</p>
-                    <del>$64.00</del>
-                  </div>
-
-                </div>
-
-              </div>
-
-              <div class="showcase">
-
-                <div class="showcase-banner">
-                  <img src="  image/products/Brown right L shaped sofa.jpg" alt="Mens Winter Leathers Jackets"
-                    width="300" class="product-img hover">
-                  <img src="  image/products/LF-L000301.jpg" alt="MEN Yarn Fleece Full-Zip Jacket"
-                    class="product-img default" width="300">
-
-
-                  <div class="showcase-actions">
-                    <button class="btn-action">
-                      <ion-icon name="heart-outline"></ion-icon>
-                    </button>
-
-                   
-
-                    <button class="btn-action">
-                      <ion-icon name="bag-add-outline"></ion-icon>
-                    </button>
-                  </div>
-                </div>
-
-                <div class="showcase-content">
-                  <a href="#" class="showcase-category">formal</a>
-
-                  <h3>
-                    <a href="#" class="showcase-title">Men's Leather Formal Wear shoes</a>
-                  </h3>
-
-                  <div class="showcase-rating">
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star-outline"></ion-icon>
-                  </div>
-
-                  <div class="price-box">
-                    <p class="price">$50.00</p>
-                    <del>$65.00</del>
-                  </div>
-
-                </div>
-
-              </div>
-
-              <div class="showcase">
-
-                <div class="showcase-banner">
-                  <img src="  image/products/Brown right L shaped sofa.jpg" alt="Mens Winter Leathers Jackets"
-                    width="300" class="product-img hover">
-                  <img src="  image/products/LF-L000301.jpg" alt="MEN Yarn Fleece Full-Zip Jacket"
-                    class="product-img default" width="300">
-
-                  <p class="showcase-badge angle black">sale</p>
-
-                  <div class="showcase-actions">
-                    <button class="btn-action">
-                      <ion-icon name="heart-outline"></ion-icon>
-                    </button>
-
-                   
-
-                    <button class="btn-action">
-                      <ion-icon name="bag-add-outline"></ion-icon>
-                    </button>
-                  </div>
-                </div>
-
-                <div class="showcase-content">
-                  <a href="#" class="showcase-category">shorts</a>
-
-                  <h3>
-                    <a href="#" class="showcase-title">Better Basics French Terry Sweatshorts</a>
-                  </h3>
-
-                  <div class="showcase-rating">
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star-outline"></ion-icon>
-                    <ion-icon name="star-outline"></ion-icon>
-                  </div>
-
-                  <div class="price-box">
-                    <p class="price">$78.00</p>
-                    <del>$85.00</del>
-                  </div>
-
-                </div>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
-
       </div>
-
     </div>
+    </div>
+  </section>
 
 
-<!-- SCRIPT -->
-<script src="js/script.js"></script>
+
+
+  <div class="overlay" id="confirmation-dialog">
+    <div class="dialog-container">
+      <h2>Confirm deleteing</h2>
+      <button id="confirm-no">Cancel</button>
+      <button id="confirm-yes">Confirm</button>
+    </div>
+  </div>
+  <script>
+    $(document).ready(function () {
+      $("#cart").click(function () {
+        $(".cartcard").css("position", "fixed");
+        $(".cartcard").css("right", "0px")
+        $("#close").css("right", "0");
+        $(".cartcard").css("z-index", "99999999");
+        $(".brand").css("height", "100vh");
+        $(".down").hide()
+        $(".main-text").css("opacity", "0.5")
+        $("header").addClass("sticky");
+      })
+    })
+    $(document).ready(function () {
+      $("#close").click(function () {
+        $("header").show()
+        $(".main-text").css("opacity", "1")
+        $(".down").fadeIn()
+      })
+    })
+  </script>
+  <script src="js/cart.js"></script>
+  <script src="https://unpkg.com/ionicons@latest/dist/ionicons.js"></script>
 </body>
-
 </html>
