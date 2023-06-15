@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using EfrashBatek.Models;
 using EfrashBatek.service;
+using Microsoft.AspNetCore.Hosting;
+using EfrashBatek.ViewModel;
+using System.IO;
 
 namespace EfrashBatek.Controllers
 {
@@ -16,15 +19,17 @@ namespace EfrashBatek.Controllers
         IItemRepository itemRepo;
         IBrandRepository brandRepository;
         IShopRepository shopRepository;
-        IProductRepository productRepository; 
+        IProductRepository productRepository;
+        IWebHostEnvironment Ih;
 
-        public ItemShopController(Context context,IItemRepository itemRepo, IBrandRepository brandRepository, IShopRepository shopRepository, IProductRepository productRepository)
+        public ItemShopController(Context context, IWebHostEnvironment Ih,IItemRepository itemRepo, IBrandRepository brandRepository, IShopRepository shopRepository, IProductRepository productRepository)
         {
             _context = context;
             this.itemRepo = itemRepo;
             this.brandRepository = brandRepository;
             this.shopRepository = shopRepository;
             this.productRepository = productRepository;
+            this.Ih = Ih;
         }
 
         [HttpGet]
@@ -63,12 +68,51 @@ namespace EfrashBatek.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         //2
-        public IActionResult Create(Item item)
+        public IActionResult Create(ItemVM item)
         {
             if (ModelState.IsValid)
             {
+                //Item itm = new Item();
+                //itm.Name = item.Name;
+                //itm.Code = item.Code;
+                //itm.Price = item.Price;
+                //itm.Description = item.Description;
+                //itm.QuantityInStore = item.QuantityInStore;
+                ////itm.Brand.Name = item.Brand.Name;
+                ////itm.Product.ProductName = item.Product.ProductName;
+                ////itm.Shop.Name = item.Shop.Name;
+                //itm.discount = item.discount;
 
-                itemRepo.Create(item);
+                //string Filename = Guid.NewGuid().ToString() + item.Image.FileName;
+                //string Filename2 = Guid.NewGuid().ToString() + item.Image2.FileName;
+                //string Filename3 = Guid.NewGuid().ToString() + item.Image3.FileName;
+                //string Filename4 = Guid.NewGuid().ToString() + item.Image4.FileName;
+                //string Filename5 = Guid.NewGuid().ToString() + item.Image5.FileName;
+                //var fs = new FileStream(Path.Combine(Ih.WebRootPath, "Image/Items", Filename), FileMode.Create);
+                //item.Image.CopyTo(fs);
+                //itm.Image = Filename;
+
+                //var fs2 = new FileStream(Path.Combine(Ih.WebRootPath, "Image/Items", Filename2), FileMode.Create);
+                //item.Image2.CopyTo(fs2);
+                //itm.Image2 = Filename2;
+
+                //var fs3 = new FileStream(Path.Combine(Ih.WebRootPath, "Image/Items", Filename3), FileMode.Create);
+                //item.Image2.CopyTo(fs3);
+                //itm.Image3 = Filename3;
+
+                //var fs4 = new FileStream(Path.Combine(Ih.WebRootPath, "Image/Items", Filename4), FileMode.Create);
+                //item.Image4.CopyTo(fs4);
+                //itm.Image4 = Filename4;
+
+                //var fs5 = new FileStream(Path.Combine(Ih.WebRootPath, "Image/Items", Filename5), FileMode.Create);
+                //item.Image5.CopyTo(fs5);
+                //itm.Image5 = Filename5;
+
+
+                //int check = itemRepo.Update((int)id, itm);
+                //return RedirectToAction("Index");
+
+                //itemRepo.Create(itm);
                 return RedirectToAction("Index");
             }
             ViewData["BrandName"] = new SelectList(brandRepository.GetAll(), "ID", "Name", item.Brand_ID);
