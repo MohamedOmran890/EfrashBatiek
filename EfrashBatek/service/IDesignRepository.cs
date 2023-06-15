@@ -8,7 +8,8 @@ namespace EfrashBatek.service
         void Create(Design design);
         int Delete(int Id);
         List<Design> GetAll();
-        Design GetById(int Id);
+        List<Design> GetById(string Id);
         int Update(int id, Design design);
+        Design GetDesignById(int Id);
     }
 }

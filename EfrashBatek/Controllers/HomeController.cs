@@ -31,7 +31,7 @@ namespace EfrashBatek.Controllers
            
 
 
-            var pair = new KeyValuePair<List<Item>,List<Item>> (_Item.NewArrivals(), _Item.Trending());
+           var pair = new KeyValuePair<List<Item>,List<Item>> (_Item.NewArrivals(), _Item.Trending());
              
                  
              return View(pair);    

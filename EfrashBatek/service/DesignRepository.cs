@@ -30,9 +30,14 @@ namespace EfrashBatek.service
             int num = context.SaveChanges();
             return num;
         }
-        public Design GetById(int Id)
+        public List<Design> GetById(string Id)
         {
-            var ans = context.Designs.FirstOrDefault(x => x.ID == Id);
+            var ans = context.Designs.Where(x => x.Designer.UserId == Id);
+            return (List<Design>)ans;
+        }
+        public Design GetDesignById(int Id)
+        {
+            var ans=context.Designs.FirstOrDefault(x => x.ID ==Id);
             return ans;
         }
         public List<Design> GetAll()
