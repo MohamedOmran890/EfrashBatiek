@@ -3,7 +3,7 @@ body{
 }
 .form {
   background-color:#fff;
-  margin: 0 100 0 100;
+  margin: 0px 100px 0px 100px;
   /* background-image: linear-gradient(to bottom, #fbf6f7, #fff);*/
   /*border-radius: 20px;*/
   box-sizing: border-box;
@@ -127,7 +127,7 @@ input {
   text-align: center;
   color: #fff;
   font-size: 22px;
-  transition: all 0.4 ease;
+  transition: all .5s;
 }
 .placeholder {
   margin-block-start: 6%;
