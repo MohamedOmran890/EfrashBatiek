@@ -15,7 +15,17 @@ a, a:hover, a:focus, a:active {
   text-decoration: none;
   color: inherit;
 }
+/* remove both the arrows and the spinner functionality */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+/* remove both the arrows and the spinner functionality */
 .title {
   text-align: center;
   color: #cbaab1;
