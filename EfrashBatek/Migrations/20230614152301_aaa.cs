@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace EfrashBatek.Migrations
 {
-    public partial class Alyaa126 : Migration
+    public partial class aaa : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

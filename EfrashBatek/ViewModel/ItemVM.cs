@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using EfrashBatek.Models;
+using Microsoft.AspNetCore.Http;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EfrashBatek.ViewModel
 {
@@ -17,6 +19,17 @@ namespace EfrashBatek.ViewModel
         public int PriceAfterSale { get; set; }
         public int QuantityInStore { get; set; }
 
+        [ForeignKey("Shop")]
+        public int ShopID { get; set; }
+        public virtual Shop Shop { get; set; }
+        [ForeignKey("Product")]
+        public int ProductID { get; set; }
+        public Product Product { get; set; }
+
+        [ForeignKey("Brand")]
+        public int Brand_ID { get; set; }
+        public virtual Brand Brand { get; set; }
+         
 
     }
 }

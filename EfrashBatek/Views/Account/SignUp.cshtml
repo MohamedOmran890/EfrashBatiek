@@ -78,14 +78,17 @@
             </td>
             <span asp-validation-for="Gender"></span>
         </tr>
+        <div class="signup">
 
+        <input type="submit" value="SignUp" class="submit" />
+        </div>
 
         </form>
     </table>
     <div class="signup">
-        <input type="submit" class="button" value="SignUp">
+   @*     <input type="submit" class="button" value="SignUp">
         <span class="signup">
-            Already have an account?
+   *@         Already have an account?
 
             <a class="nav-link text-dark" asp-area="" asp-controller="Account" asp-action="Login">
                 <label>Login</label>

@@ -8,7 +8,7 @@ namespace EfrashBatek.service
        int Edit(Address address);
         List<Address> View();
         int  Create(Address address);
-        public Address GetbyID(int id);
+        public Address GetbyID(string id);
         public int  Delete (int id );
     }
 }
