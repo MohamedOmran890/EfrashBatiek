@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- CSS-link -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+  <!-- Code by Angela Delise  
+ https://codepen.io/angeladelise/pen/yLJdgYx -->
+  <link rel="stylesheet" href="css/seller.css">
+  <link rel="stylesheet" href="css/Items.css">
+  <link rel="shortcut icon" href="image/favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+  <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+  <title>Efresh Beitak</title>
+</head>
+
+<body>
+  <!-- 
+  <section id="sidebar">
+    <a href="#" class="brand">
+      <i class='bx bxs-smile'></i>
+      <span class="text">Efresh Beitak</span>
+    </a>
+    <ul class="side-menu top">
+      <li>
+        <a href="seller.html">
+          <i class='bx bxs-dashboard'></i>
+          <span class="text">Dashboard</span>
+        </a>
+      </li>
+      <li>
+        <a href="orders.html">
+          <i class='bx bx-list-ul'></i>
+          <span class="text">Order List </span>
+        </a>
+      </li>
+      <li>
+        <a href="additem.html">
+          <i class='bx bx-list-plus'></i>
+          <span class="text">Add Item</span>
+        </a>
+      </li>
+      <li class="active">
+        <a href="Items.html">
+          <i class='bx bx-list-plus'></i>
+          <span class="text">Items</span>
+        </a>
+      </li>
+    </ul>
+  </section>
+ -->
+
+
+  <!-- trending-products-section -->
+  <section class="trending-product" id="trending">
+    <div class="center-text">
+      <h2>Our Trending <span>products</span></h2>
+    </div>
+    <div class="product-box">
+      <div class="product-main">
+        <div class="product-grid">
+          <div class="showcase">
+            <div class="showcase-banner">
+              <img src="image/products/Brown right L shaped sofa.jpg" width="300" class="product-img hover">
+              <img src="image/products/LF-L000301.jpg" class="product-img default" width="300">
+              <p class="showcase-badge">15%</p>
+              <div class="showcase-actions">
+                <button class="btn-action">
+                  <i class='bx bxs-edit'></i>
+                </button>
+                <button class="btn-action" id="delete-action">
+                  <div id="item-to-delete">Item</div>
+                  <button id="delete-button">Delete</button>
+                  
+                  <div class="overlay" id="confirmation-dialog">
+                    <div class="dialog-container">
+                      <h2>Confirm deleteing</h2>
+                      <button id="confirm-no">Cancel</button>
+                      <button id="confirm-yes">Confirm</button>
+                    </div>
+                  </div>
+                  <style>
+                    .overlay {
+                      position: absolute;
+                      top: 0;
+                      justify-content: center;
+                      align-items: center;
+                      background-color: rgba(0, 0, 0, 0.6);
+                      height: 100%;
+                      width: 100%;
+                      display: none;
+                    }
+                  
+                    .dialog-container {
+                      background-color: white;
+                      padding: 20px;
+                      border-radius: 8px;
+                    }
+                  </style>
+                  <script>
+                    const deleteButton = document.getElementById("delete-button");
+
+                    const confirmationDialog = document.getElementById("confirmation-dialog");
+
+                    const confirmYesButton = document.getElementById("confirm-yes");
+
+                    const confirmNoButton = document.getElementById("confirm-no");
+
+                    deleteButton.addEventListener("click", function () {
+                      // Show confirmation dialog
+                      confirmationDialog.style.display = "flex";
+
+                      // Listen for "Yes" button click
+                      confirmYesButton.addEventListener("click", function () {
+                        // Perform deletion
+                        const itemToDelete = document.getElementById("item-to-delete");
+                        itemToDelete.remove();
+                        alert("Item deleted successfully");
+
+                        // Hide confirmation dialog
+                        confirmationDialog.style.display = "none";
+                      });
+
+                      // Listen for "No" button click
+                      confirmNoButton.addEventListener("click", function () {
+                        // Hide confirmation dialog
+                        confirmationDialog.style.display = "none";
+                      });
+                    });
+                  </script>
+              </div>
+            </div>
+            <div class="showcase-content">
+              <a href="product details.html" class="showcase-category">Bed Room</a>
+              <a href="product details.html">
+                <h3 class="showcase-title">Bed Room</h3>
+              </a>
+              <div class="showcase-rating">
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star"></ion-icon>
+                <ion-icon name="star-outline"></ion-icon>
+                <ion-icon name="star-outline"></ion-icon>
+              </div>
+              <div class="price-box">
+                <p class="price">$48.00</p>
+                <del>$75.00</del>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+  <script>
+    $(document).ready(function () {
+      $("#cart").click(function () {
+        $(".cartcard").css("position", "fixed");
+        $(".cartcard").css("right", "0px")
+        $("#close").css("right", "0");
+        $(".cartcard").css("z-index", "99999999");
+        $(".brand").css("height", "100vh");
+        $(".down").hide()
+        $(".main-text").css("opacity", "0.5")
+        $("header").addClass("sticky");
+      })
+    })
+    $(document).ready(function () {
+      $("#close").click(function () {
+        $("header").show()
+        $(".main-text").css("opacity", "1")
+        $(".down").fadeIn()
+      })
+    })
+  </script>
+  <script src="js/cart.js"></script>
+  <script src="https://unpkg.com/ionicons@latest/dist/ionicons.js"></script>
+</body>
+</html>
