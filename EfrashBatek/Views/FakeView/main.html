@@ -43,12 +43,17 @@
 
     <div class="nav-icon">
       <!-- my work is here -->
-      <a href="main.html"><i class='bx bx-search'></i></a>
+      <div class="search-bar">
+        <input type="text" name="" id="" class="search-bar-homepage d-none">
+      </div>
+      <a><i class='bx bx-search'></i></a>
       <a href="log.html"><i class='bx bx-user'></i></a>
       <a href="cart.html"><i class='bx bx-cart'></i></a>
       <a href="wishlist.html"><i class='bx bx-heart' undefined></i></a>
       <div class="bx bx-menu" id="menu-icon"></div>
+    
     </div>
+
   </header>
   
   <!--main home section-->
@@ -706,6 +711,9 @@
       })
     })
     $(document).ready(function () {
+      $(".bx-search").click(function(){
+       $(".search-bar-homepage").toggleClass("d-none")
+      })
       $("#close").click(function () {
         $("header").show()
         $(".main-text").css("opacity", "1")
