@@ -19,16 +19,39 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
         integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+        <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
     <title>Efresh Beitak</title>
-</head>
+    </head>
 
-<body>
+    <body>
+        <!--header section-->
 
+        <header>
+            <a href="main.html" class="logo"><img src="image/logo.png" alt=""></a>
+
+            <ul class="navmenu">
+                <li><a href="product page.html">Products</a></li>
+                <li><a href="trend.html">Trends</a></li>
+                <li><a href="Empty.html">Custom order</a></li>
+                <li><a href="Empty.html">Designs</a></li>
+            </ul>
+
+
+            <div class="nav-icon">
+                <a href="main.html"><i class='bx bx-search'></i></a>
+                <a href="log.html"><i class='bx bx-user'></i></a>
+                <a href="cart.html"><i class='bx bx-cart'></i></a>
+                <a href="wishlist.html"><i class='bx bx-heart' undefined></i></a>
+                <div class="bx bx-menu" id="menu-icon"></div>
+            </div>
+
+
+        </header>
+    <!--cart card-->
     <div class="cartcard">
         <i class="uil uil-multiply" id="close"></i>
 
@@ -59,9 +82,9 @@
         </div>
 
         <div class="item2">
-            <center>
-                <h2>product details</h2>
-            </center>
+          <center>
+              <h2>product details</h2>
+          </center>
             <div class="flex-box">
                 <div class="left">
                     <div class="big-img">
@@ -98,44 +121,143 @@
                         <input type="number" min="1" max="6" value="1">
                     </div>
                     <div class="btn-box">
-                        <a href="cart.html" class="cart-btn"><button class="cart-btn">Add to Cart</button></a>
+                        <a href="cart.html" class="cart-btn" ><button class="cart-btn">Add to Cart</button></a>
                     </div>
                 </div>
             </div>
         </div>
         <br>
+        <!-- contact-section -->
+        <section class="contact">
+            <div class="contact-info">
+                <div class="first-info">
+                    <img src="image/logo.png" alt="">
 
-        <script>
-            let bigImg = document.querySelector('.big-img img');
-            function showImg(pic) {
-                bigImg.src = pic;
-            }
-        </script>
-        <script>
-            $(document).ready(function () {
-                $("#cart").click(function () {
-                    $(".cartcard").css("position", "fixed");
-                    $(".cartcard").css("right", "0px")
-                    $("#close").css("right", "0");
-                    $(".cartcard").css("z-index", "99999999");
-                    $(".brand").css("height", "100vh");
-                    $(".down").hide()
-                    $(".main-text").css("opacity", "0.5")
-                    $("header").addClass("sticky");
+                    <p>01601348732</p>
+                    <p>efresh.beitak@gmail.com</p>
+
+                    <div class="social-icon">
+                        <a href="#"><i class='bx bxl-facebook'></i></a>
+                        <a href="#"><i class='bx bxl-twitter'></i></a>
+                        <a href="#"><i class='bx bxl-instagram'></i></a>
+                        <a href="#"><i class='bx bxl-youtube'></i></a>
+                        <a href="#"><i class='bx bxl-linkedin'></i></a>
+                    </div>
+                </div>
+
+                <div class="second-info">
+                    <h4>Support</h4>
+                    <a href="contact us.html">
+                        <p>Contact us</p>
+                    </a>
+                    <a href="about us.html">
+                        <p>About page</p>
+                    </a>
+                    <p>Shopping & Resturns</p>
+                    <p>Privacy</p>
+                </div>
+
+                <div class="third-info">
+                    <h4>Shop</h4>
+                    <p>electronic</p>
+                    <p>home</p>
+                    <p>Furniture</p>
+                    <p>kitchen</p>
+                </div>
+
+                <div class="five">
+                    <h4>JOIN OUR EMAIL NEWSLETTER</h4>
+                    <form>
+                        <div class="form-group">
+                            <input type="text" class="Input" placeholder="Enter Your Email." /><br><br>
+                            <button type="submit" class="btn btn-default submit">
+                                Submit
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+
+      <!-- contact-section -->
+      <section class="contact">
+        <div class="contact-info">
+          <div class="first-info">
+            <img src="image/logo.png" alt="">
+            <p>+201004443226</p>
+            <p>efresh.beitak@gmail.com</p>
+
+          </div>
+
+          <div class="second-info">
+            <h4>Support</h4>
+            <a href="contact us.html">
+              <p>Contact us</p>
+            </a>
+            <a href="about us.html">
+              <p>About page</p>
+            </a>
+            <p>Shopping & Resturns</p>
+            <p>Privacy</p>
+          </div>
+
+          <div class="third-info">
+            <h4>Shop</h4>
+            <p>electronic</p>
+            <p>home</p>
+            <p>Furniture</p>
+            <p>kitchen</p>
+          </div>
+
+          <div class="five">
+            <h4>JOIN OUR EMAIL NEWSLETTER</h4>
+            <form>
+              <div class="form-group">
+                <input type="text" class="Input" placeholder="Enter Your Email." /><br><br>
+                <button type="submit" class="btn btn-default submit">
+                  Submit
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </footer>
+    <script>
+        let bigImg = document.querySelector('.big-img img');
+        function showImg(pic) {
+            bigImg.src = pic;
+        }
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#cart").click(function () {
+                $(".cartcard").css("position", "fixed");
+                $(".cartcard").css("right", "0px")
+                $("#close").css("right", "0");
+                $(".cartcard").css("z-index", "99999999");
+                $(".brand").css("height", "100vh");
+                $(".down").hide()
+                $(".main-text").css("opacity", "0.5")
+                $("header").addClass("sticky");
 
 
-                })
             })
-            $(document).ready(function () {
-                $("#close").click(function () {
-                    $("header").show()
-                    $(".main-text").css("opacity", "1")
-                    $(".down").fadeIn()
-                })
+        })
+        $(document).ready(function () {
+            $("#close").click(function () {
+                $("header").show()
+                $(".main-text").css("opacity", "1")
+                $(".down").fadeIn()
             })
+        })
 
-        </script>
-        <script src="js/cart.js"></script>
+    </script>
+<script src="js/cart.js"></script>
 
 </body>
 
