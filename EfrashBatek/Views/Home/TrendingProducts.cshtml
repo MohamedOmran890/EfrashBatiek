@@ -3,6 +3,32 @@
     Layout = "CustomerLayout";
 
 }
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS-link -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <!-- Code by Angela Delise
+    https://codepen.io/angeladelise/pen/yLJdgYx -->
+
+    <link rel="stylesheet" href="css/cart.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="shortcut icon" href="image/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600;700&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+          integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <title>Efresh Beitak</title>
+</head>
 
 <!--main home section-->
 <section class="main-home">
@@ -59,6 +85,7 @@
                                     {
                                         @Html.Hidden("id", item.ID)
                                         // Replace "Id" with the actual name of the ID property in your model
+
                                         <button type="submit" class="btn-action">
                                             <i class="ion-icon" data-name="heart-outline"></i>
                                         </button>
@@ -147,10 +174,14 @@
 
                                 <div class="showcase-actions">
 
-                                    <button class="btn-action" onclick="handleButtonClick()">
-                                        <ion-icon name="heart-outline"></ion-icon>
-                                    </button>
-
+                                    @using (Html.BeginForm("AddToCart", "Cart", FormMethod.Post))
+                                    {
+                                        @Html.Hidden("id", item.ID)
+                                        // Replace "Id" with the actual name of the ID property in your model
+                                        <button type="submit" class="btn-action">
+                                            <i class="ion-icon" data-name="heart-outline"></i>
+                                        </button>
+                                    }
                                     <button class="btn-action">
                                         <ion-icon name="bag-add-outline"></ion-icon>
                                     </button>
