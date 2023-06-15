@@ -84,7 +84,6 @@ ul.icons {
   justify-content: space-between;
   /* align-items: flex-start; */
   margin-bottom: 5px;
-  margin-left: 380px;
   display: inline-block;
   padding: -2px;
 }
@@ -333,21 +332,49 @@ aside {
   background: #94777d; 
   transition: background-color 0.8s ease;
 }
+
 /*-------------------------------- SUMMARRY-------------------------------- */
 .x{
   width:88%;
   margin-left: 6%;
  }
+ .steps{
+  padding: 25px 20px !important;
+  margin: 0px !important;
+ }
+ @media(max-width:1300px) {    
+  .steps{
+  width: 69%;
+  margin-left: 37px !important;
+
+ }
+}
 
 /*-------------------------------- Responsive-css-------------------------- */
-@media screen and (min-width:769) and (max-width:990){
-
+@media screen and (min-width:769px) and (max-width:990px){
+  .steps{
+    width: 91% ;
+  }
 
 }
 /* TABLET */
 @media(max-width:768px) {
- .x{
-  width:85%;
-  margin-left: 7.5%;
- }
+  .steps{
+    width: 91% ;
+  }
+  
+  .x{
+    width:85%;
+    margin-left: 7.5%;
+  }
+  .addressBOX{
+    width: 100%;
+  }
+}
+@media(max-width:575px) {
+  .steps{
+    width: 90% !important;
+    max-height: 80px;
+    align-items: center;
+  }
 }

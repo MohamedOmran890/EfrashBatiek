@@ -3,6 +3,7 @@ using EfrashBatek.service;
 using EfrashBatek.ViewModel;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace EfrashBatek.Controllers
@@ -15,8 +16,12 @@ namespace EfrashBatek.Controllers
         IStaffRepository _staff;
         private readonly UserManager<User> _userManager;
         IOrder_ItemRepository _itemRepository;
+        Context _context;
+        EmailStaffService EmailStaffService;
         public AdminController(UserManager<User>usermanager, ICustomerRepository customer,
-            IOrderRepository order, IShopRepository shop, IStaffRepository staff, IOrder_ItemRepository itemRepository)
+            IOrderRepository order, IShopRepository shop, 
+            IStaffRepository staff, IOrder_ItemRepository itemRepository,Context context
+            ,EmailStaffService emailStaffService)
         {
             this.customer = customer;
             this.order = order;
@@ -24,6 +29,8 @@ namespace EfrashBatek.Controllers
             this._staff = staff;
             _userManager = usermanager;
             _itemRepository = itemRepository;
+            _context = context;
+            EmailStaffService = emailStaffService;
         }
         public IActionResult Dashboard()
         {
@@ -39,11 +46,20 @@ namespace EfrashBatek.Controllers
         {
             return View();
         }
+        //Fake
+        public IActionResult AddStaff2()
+        {
+            return View();
+        }
+
         [HttpPost]
         public async Task<IActionResult> SaveStaff(RegisterViewModelStaff model)
         {
-            if (!ModelState.IsValid)
+            var ans = _context.Shops.FirstOrDefault(x => x.TaxCardNumber == model.ShopNumber);
+            if (!ModelState.IsValid||ans==null)
             {
+                if(ans==null)
+                    ModelState.AddModelError("", "ShopNumber Not Found ");
                 return View("AddStaff", model);
             }
 
@@ -60,21 +76,26 @@ namespace EfrashBatek.Controllers
 
             };
 
-        var staff = new Staff
+            var staff = new Staff
             {
                 UserId = user.Id,
-               // ShopID = model.TaxCardNumber
+                  ShopID = ans.ID
             };
+            var check = shop.GetById(ans.ID);
+            if(check==null)
+            {
+                return View("AddStaff", model);
 
-            var result = await _userManager.CreateAsync(user, model.Password);//Created Cookies
-            var check = shop.GetById(model.ShopNumber);
-            if (result.Succeeded&&check!=null)
+            }
+            var result = await _userManager.CreateAsync(user, model.Password);
+            if (result.Succeeded)
             {
                 // Add user to default role
                 //  await _userManager.AddToRoleAsync(user, "User");
 
                 // Redirect the user to the login page
                 _staff.Create(staff);
+                await EmailStaffService.SendEmail(model.Email, model.Username, model.Password, model.FirstName);
                 return Content("Done");
             }
 

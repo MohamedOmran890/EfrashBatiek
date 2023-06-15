@@ -6,8 +6,8 @@ namespace EfrashBatek.service
     public interface IDesignerRepository
     {
         void Create(Designer designer);
-        int Delete(int Id);
+        int Delete(string Id);
         List<Designer> GetAll();
-        Designer GetById(int Id);
+        Designer GetById(string Id);
     }
 }
