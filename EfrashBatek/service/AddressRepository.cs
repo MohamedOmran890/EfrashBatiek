@@ -25,17 +25,15 @@ namespace EfrashBatek.service
             var ans = context.Addresses.Where(x => x.UserId == user.Id).ToList();   
 			return ans;
 		}
-        public Address GetbyID(int id) {
+        public Address GetbyID(string id) {
 
-            var ans = context.Addresses.FirstOrDefault(x => x.ID == id);
+            var ans = context.Addresses.FirstOrDefault(x => x.User.Id == id);
             return ans; 
         }
-		public int   Create (Address address)
+		public int Create (Address address)
         {
-			User user = identityRepository.GetUser();
-            address.UserId = user.Id;
-
-
+            var user = identityRepository.GetUserID();
+            address.UserId = user;
 			context.Addresses.Add(address);
 			int num = context.SaveChanges();
 			return num;

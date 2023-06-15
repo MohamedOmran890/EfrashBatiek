@@ -117,6 +117,9 @@ section{
     font-weight: 600;
     margin: 6px 0 10px;
 }
+.product-main span{
+  color:#cbaab1;
+}
 .main-text span{
     color:#cbaab1;
 }
@@ -1215,7 +1218,7 @@ input{
   \*-----------------------------------*/
 
   .sidebar {
-    background: var(--white);
+   
     position: fixed;
     top: 0;
     left: -100%;
@@ -1242,7 +1245,7 @@ input{
   }
 
   .sidebar-top {
-    margin-top: 25%;
+    margin-top: 5%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -2805,7 +2808,7 @@ input{
       --fs-5: 0.941rem;
 
       position: sticky;
-      top: 30px;
+      top: 140px;
       left: 0;
       padding: 0;
       min-width: calc(25% - 15px);

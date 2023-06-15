@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace EfrashBatek.Migrations
 {
-    public partial class Alyaa126 : Migration
+    public partial class designer : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -323,8 +323,7 @@ namespace EfrashBatek.Migrations
                 name: "designers",
                 columns: table => new
                 {
-                    ID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ID = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     UserId = table.Column<string>(type: "nvarchar(450)", nullable: true),
                     NationalCardImage = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
@@ -465,7 +464,7 @@ namespace EfrashBatek.Migrations
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DesignerID = table.Column<int>(type: "int", nullable: false)
+                    DesignerID = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
                 {
