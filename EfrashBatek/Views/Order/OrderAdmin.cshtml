@@ -23,6 +23,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.Address.Zone)
             </th>
+            <th>Action</th>
           
             <th></th>
         </tr>
@@ -46,7 +47,7 @@
                 @Html.DisplayFor(modelItem => item.Address.Zone)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-action="Edit" asp-route-id="@item.ID"></a> |
                 <a asp-action="Details" asp-route-id="@item.ID">View</a> |
                 <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
             </td>
