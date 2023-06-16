@@ -17,15 +17,15 @@ body {
   min-block-size: 100vh;
   padding: 5vmin;
   place-items: center;
-  text-decoration: none;
+}
+h2:hover {
+  text-decoration-line: none;
 }
 
 html {
+  
+  text-decoration-line: none;
   box-sizing: border-box;
-}
-
-a {
-  text-decoration: none;
 }
 
 .x {
@@ -34,9 +34,9 @@ a {
   box-shadow: 0 0 1em rgba(0, 0, 0, 0.0625);
   inline-size: 800px;
   margin-top: 8%;
-  margin-right: 28%;
-  margin-bottom: 1%;
-  width: 58%;
+  margin-right: 22.5%;
+  margin-bottom: 2%;
+  width: 56.5%;
   border-radius: 2em;
 }
 
@@ -326,7 +326,7 @@ aside {
 
 /* width */
 ::-webkit-scrollbar {
-  width: 15px;
+  width: 8px;
 }
 
 /* Track */

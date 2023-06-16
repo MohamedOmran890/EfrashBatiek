@@ -27,25 +27,32 @@ using System;
         var add = addressRepository.GetbyID(userId);
         return View(add);
     }
-    public IActionResult Address()
-    {
-        var zone = new SelectList(Enum.GetValues(typeof(Zone)));
-        ViewData["Zone"] = zone;
-        return View();
-    }
-    public IActionResult Addresss()
+    //public IActionResult Address() //old1
+    //{
+    //    var zone = new SelectList(Enum.GetValues(typeof(Zone)));
+    //    ViewData["Zone"] = zone;
+    //    return View("Address1");
+    //}
+    public IActionResult Addresss()//done1
     {
         var zone = new SelectList(Enum.GetValues(typeof(Zone)));
         ViewData["Zone"] = zone;
         return View("Address1");
     }
-    public IActionResult SaveAddress(Address obj)
-        {
+    //public IActionResult SaveAddress(Address obj)
+    //    {
 
-            addressRepository.Create(obj);
-            return RedirectToAction("PaymentMethod");
-            /********/
-        }
+    //        addressRepository.Create(obj);
+    //        return RedirectToAction("PaymentMethod");
+    //        /********/
+    //    }
+    public IActionResult SaveAddress(Address obj)
+    {
+
+        addressRepository.Create(obj);
+        return RedirectToAction("PaymentMethod");
+        
+    }
     public IActionResult Index1()
     {
         return View();
