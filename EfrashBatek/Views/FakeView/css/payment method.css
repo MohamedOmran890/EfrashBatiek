@@ -18,6 +18,7 @@ body {
   padding: 5vmin;
   place-items: center;
 }
+
 h2:hover {
   text-decoration-line: none;
 }
@@ -30,12 +31,9 @@ html {
 
 .x {
   background: #fff;
-  block-size: 120px;
   box-shadow: 0 0 1em rgba(0, 0, 0, 0.0625);
-  inline-size: 800px;
   margin-top: 8%;
-  margin-right: 22.5%;
-  width: 56.5%;
+  margin-bottom: 8%;
   border-radius: 2em;
 }
 
@@ -60,7 +58,7 @@ ul.icons {
 }
 
 .word {
-  margin-left: -20%;
+
   font-size: larger;
   color: #8a8b8b;
   transition: all .42s ease;
@@ -167,9 +165,7 @@ tfoot {
 .paymentform {
   background-color: #fff;
   border-radius: 2em;
-  block-size: 812px;
   box-shadow: 0 0 1em rgba(0, 0, 0, 0.0625);
-  inline-size: 800px;
   overflow: auto;
   padding: 2em;
   height: auto;
@@ -407,6 +403,7 @@ aside {
     transition: .4s;
   }
 }
-.row{
-    width: 80%;
-  }
+
+.row {
+  width: 80%;
+}
