@@ -15,12 +15,12 @@ namespace EfrashBatek.Controllers
         IShopRepository shop;
         IStaffRepository _staff;
         private readonly UserManager<User> _userManager;
-        IOrder_ItemRepository _itemRepository;
+        IOrder_ItemRepository order_item;
         Context _context;
         EmailStaffService EmailStaffService;
         public AdminController(UserManager<User>usermanager, ICustomerRepository customer,
             IOrderRepository order, IShopRepository shop, 
-            IStaffRepository staff, IOrder_ItemRepository itemRepository,Context context
+            IStaffRepository staff, IOrder_ItemRepository order_item, Context context
             ,EmailStaffService emailStaffService)
         {
             this.customer = customer;
@@ -28,7 +28,7 @@ namespace EfrashBatek.Controllers
             this.shop = shop;
             this._staff = staff;
             _userManager = usermanager;
-            _itemRepository = itemRepository;
+            this.order_item = order_item;
             _context = context;
             EmailStaffService = emailStaffService;
         }
@@ -81,12 +81,12 @@ namespace EfrashBatek.Controllers
                 UserId = user.Id,
                   ShopID = ans.ID
             };
-            var check = shop.GetById(ans.ID);
-            if(check==null)
-            {
-                return View("AddStaff", model);
+            //var check = shop.GetById(ans.ID);
+            //if(check==null)
+            //{
+            //    return View("AddStaff", model);
 
-            }
+            //}
             var result = await _userManager.CreateAsync(user, model.Password);
             if (result.Succeeded)
             {
@@ -95,12 +95,12 @@ namespace EfrashBatek.Controllers
 
                 // Redirect the user to the login page
                 _staff.Create(staff);
-                await EmailStaffService.SendEmail(model.Email, model.Username, model.Password, model.FirstName);
+              //  await EmailStaffService.SendEmail(model.Email, model.Username, model.Password, model.FirstName);
                 return Content("Done");
             }
 
-                if(check==null)
-                ModelState.AddModelError("","Not Found ShopNumber ");
+                //if(check==null)
+                //ModelState.AddModelError("","Not Found ShopNumber ");
             foreach (var error in result.Errors)
             {
                 ModelState.AddModelError("", error.Description);
@@ -116,6 +116,12 @@ namespace EfrashBatek.Controllers
     public IActionResult AddShop()
         {
             Shop shop=new Shop();
+            return View(shop);
+
+        }
+        public IActionResult AddShop2()
+        {
+            Shop shop = new Shop();
             return View(shop);
 
         }
@@ -160,10 +166,9 @@ namespace EfrashBatek.Controllers
         }
         public IActionResult Orders()
         {
-            var ans = order.GetByShop();
+            var ans = order.GetAll();
             return View(ans);
         }
-
 
 
 
