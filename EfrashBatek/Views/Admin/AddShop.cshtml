@@ -1,51 +1,51 @@
-﻿@{
+﻿@model EfrashBatek.Models.Shop
+@{
     Layout = "AdminLayout";
 }
+<link rel="stylesheet" href="~/css/addshop.css">
+<title> Add Shop</title>
 
-
-@model EfrashBatek.Models.Shop
-@{
-    ViewData["Title"] = "AddShop";
-}
-<!--ADD SHOP FORM-->
-<section class="home-section">
-
-    <form asp-action="SaveShop">
-        <div asp-validation-summary="All"></div>
-        <div class="form">
-
-            <div class="title">Add Shop </div>
-            <div class="input-container ic1">
-                <input asp-for="Name" class="input" type="text" placeholder=" " />
-                <label asp-for="Name" for="Name" class="placeholder">Shop Name</label>
-                <span asp-validation-for="Name" class="text-danger"></span>
+<div class="col-sm-12 col-md-12 col-lg-9 col-xl-9">
+    <div id="address" role="tabpanel" aria-labelledby="address-tab">
+        <h3 class="mb-4">Add Shop</h3>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Name">Shop Name</label>
+                    <input asp-for="Name" type="text" class="form-control" placeholder="Shop Name">
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
             </div>
-            <div class="input-container ic2">
-                <input asp-for="TaxCardNumber" id="TaxCardNumber" class="input" type="text" placeholder=" " />
-                <label asp-for="TaxCardNumber" for="TaxCardNumber" class="placeholder">Tax Card Number</label>
-                <span asp-validation-for="TaxCardNumber" class="text-danger"></span>
-
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="TaxCardNumber">Tax Card</label>
+                    <input asp-for="TaxCardNumber" type="text" class="form-control" placeholder="Tax Card">
+                    <span asp-validation-for="TaxCardNumber" class="text-danger"></span>
+                </div>
             </div>
-            <div class="input-container ic2">
-                <input asp-for="ShopHolder" id="ShopHolder" class="input" type="text" placeholder=" " />
-                <label asp-for="ShopHolder" for="ShopHolder" class="placeholder">Shop Holder</label>
-                <span asp-validation-for="ShopHolder" class="text-danger"></span>
-
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="ShopHolder">Shop Holder</label>
+                    <input asp-for="ShopHolder" type="text" class="form-control" placeholder="Shop Holder">
+                    <span asp-validation-for="ShopHolder" class="text-danger"></span>
+                </div>
             </div>
-
-            <div class="input-container ic2">
-                <input asp-for="ShopAddress" id="ShopAddress" class="input" type="text" placeholder=" " />
-                <label asp-for="ShopAddress" for="ShopAddress" class="placeholder">Address</label>
-                <span asp-validation-for="ShopAddress" class="text-danger"></span>
-
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="ShopAddress">Address</label>
+                    <input asp-for="ShopAddress" type="text" class="form-control" placeholder="Address">
+                    <span asp-validation-for="ShopAddress" class="text-danger"></span>
+                </div>
             </div>
-            <div class="input-container ic2">
-                <input asp-for="PhoneNumber" id="email" class="input" type="text" placeholder=" " />
-                <label asp-for="PhoneNumber" for="PhoneNumber" class="placeholder">Phone number</label>
-                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="PhoneNumber">Phone Number</label>
+                    <input asp-for="PhoneNumber" type="number" class="form-control" placeholder="Phone Number">
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
             </div>
-            <input type="submit" value="Add Shop" class="submit" />
+            <input type="submit" class="btnRegister" value="Register" href="default address.html">
         </div>
-    </form>
-
-</section>
+    </div>
+</div>
+<!-- SCRIPT -->

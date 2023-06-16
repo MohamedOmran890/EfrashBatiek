@@ -1,4 +1,58 @@
+#pro1 {
+  color: black;
+  background-color: white;
+  border: none;
+  }
+  
+  #pro1.clicked-delivered {
+    padding: 2px 4px;
+    color: #1cbb8c;
+    background-color: rgba(28, 187, 140, .18);
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  
+  #pro1.clicked-return {
+    padding: 2px 4px;
+    color: #ff3d60;
+    background-color: rgba(255,61,96,.18);
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  
+  #pro1.clicked-inProgress {
+    padding: 2px 4px;
+    background: #1795ce;
+    background-color: rgba(61, 96, 255, 0.18);
+    color: var(--white);
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  
+  #pro1.clicked-pending {
+      padding: 2px 4px;
+      color: #fcb92c;
+      background-color: rgba(252,185,44,.18);
+      border-radius: 4px;
+      font-size: 14px;
+      font-weight: 500;
+  }
 
+  table.table td a.edit {
+    color: #454545;
+}
+
+table.table td a.delete {
+    color: #E34724;
+}
+
+.btn {
+  background-color: #cbaab1;
+  color: #fff;
+}
 /* =============== Navigation ================ */
 .navigation {
   position: fixed;

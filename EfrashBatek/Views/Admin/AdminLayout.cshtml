@@ -1,56 +1,67 @@
 ﻿<html lang="en" dir="ltr">
-<head>
+    <head>
     <meta charset="UTF-8">
-    <title> Admin Dashboard </title>
+    <title> Add Shop</title>
     <link rel="stylesheet" href="~/css/admin.css">
-    <link rel="stylesheet" href="~/css/addseller.css">
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-</head>
+    <link rel="stylesheet" type="text/css"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    </head>
 <body>
-    <!--DASHBOARD SIDEBAR-->
-    <div class="sidebar">
-        <div class="logo-details">
-            <i class='bx bxl-c-plus-plus'></i>
-            <span class="logo_name">Efresh Baitak</span>
-        </div>
-        <ul class="nav-links">
+    <!-- NAVBAR -->
+    <!--ADD SELLER FORM-->
+    <!--Layout -->
+    <section id="sidebar">
+        <a asp-action="TrendingProducts" asp-controller="Home" class="brand">
+            <i class='bx bxs-smile'></i>
+            <span class="text">Efresh Beitak</span>
+        </a>
+        <ul class="side-menu top">
             <li>
-                <a href="dash.html">
-                    <i class='bx bx-grid-alt'></i>
-                    <span class="links_name">Dashboard</span>
+                <a asp-action="Dashboard">
+                    <i class='bx bxs-dashboard'></i>
+                    <span class="text">Dashboard</span>
                 </a>
+            </li>
             <li>
-                <a href="orders.html">
+                <a asp-action="Orders">
                     <i class='bx bx-list-ul'></i>
-                    <span class="links_name">Order list</span>
+                    <span class="text">Order List </span>
+                </a>
+            </li>
+            <li class="active">
+                <a asp-action="AddStaff">
+                    <i class='bx bx-list-plus'></i>
+                    <span class="text">Add Seller</span>
                 </a>
             </li>
             <li>
-                <a href="addseller.html" class="active">
-                    <i class='bx bx-coin-stack'></i>
-                    <span class="links_name">Add Seller</span>
+                <a asp-action="AddShop">
+                    <i class='bx bx-list-plus'></i>
+                    <span class="text">Add Shop</span>
                 </a>
             </li>
+            <!--Why Seller Details-->
             <li>
-                <a href="addshop.html">
-                    <i class='bx bx-coin-stack'></i>
-                    <span class="links_name">Add Shop</span>
-                </a>
-            </li>
-            <li>
-                <a href="seller details.html">
-                    <i class='bx bx-book-alt'></i>
-                    <span class="links_name">Seller Details</span>
+                <a>
+                    <i class='bx bxs-group'></i>
+                    <span class="text">Seller Details</span>
                 </a>
             </li>
         </ul>
-    </div>
+    </section>
+    <!-- SIDEBAR -->
+    <!-- NAVBAR -->
+    <section id="content">
+        <nav>
+            <i class='bx bx-menu'></i>
+        </nav>
+    </section>
    @RenderBody();
-
-    <script>
+    @*<script>
         let sidebar = document.querySelector(".sidebar");
         let sidebarBtn = document.querySelector(".sidebarBtn");
         sidebarBtn.onclick = function () {
@@ -60,9 +71,11 @@
           } else
             sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
         }
-    </script>
-
+    </script>*@
+    
+<script src="~/js/script.js"></script>
 </body>
+<!-- SCRIPT -->
 </html>
 @section Scripts {
     @{

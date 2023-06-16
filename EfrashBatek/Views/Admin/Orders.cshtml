@@ -1,98 +1,82 @@
-﻿@model IEnumerable<Order_Item>
+﻿@model IEnumerable<Order>
 @{
-
-    Layout = "~/Views/_Shared/_Layout.cshtml";
+    Layout = "AdminLayout";
 }
-<link href="~/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders</title>
+ @*<link rel="stylesheet" href="~/css/admin.css">*@
+ <link rel="stylesheet" href="~/css/orders1.css">
+    <!-- ====== ionicons ======= -->
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
-<link href="~/assets/libs/datatables.net-responsive-bs4/css/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
-
-<div class="row">
-    <div class="col-lg-12">
-        <div class="card">
-            <div class="card-body  pt-0">
-                <ul class="nav nav-tabs nav-tabs-custom mb-4">
-                    <li class="nav-item">
-                        <a class="nav-link fw-bold p-3 active" href="#">All Orders</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link p-3 fw-bold" href="#">Active</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link p-3 fw-bold" href="#">Unpaid</a>
-                    </li>
-                </ul>
-                <div class="table-responsive">
-                    <table class="table table-centered datatable dt-responsive nowrap " style="border-collapse: collapse; border-spacing: 0; width: 100%;">
-                        <thead class="thead-light">
-                            <tr>
-                                <th style="width: 20px;">
-                                    <div class="form-checkbox">
-                                        <input type="checkbox" class="form-check-input" id="ordercheck">
-                                        <label class="form-check-label mb-0" for="ordercheck">&nbsp;</label>
-                                    </div>
-                                </th>
-                                <th>Order ID</th>
-                                <th>Date</th>
-                                <th>Customer Name</th>
-                                <th>Total</th>
-                                <th>Order Status</th>
-                                <th>Payment Method</th>
-                                <th>View</th>
-                                <th style="width: 120px;">Action</th>
-                            </tr>
-                        </thead>
-                        @foreach(var item in Model){
-                       
-                            <tbody>
-                            <tr>
-                                <td>
-                                    <div class="form-checkbox">
-                                        <input type="checkbox" class="form-check-input" id="ordercheck1">
-                                        <label class="form-check-label mb-0" for="ordercheck1">&nbsp;</label>
-                                    </div>
-                                </td>
-
-                                <td><a href="javascript: void(0);" class="text-dark fw-bold">@item.OrderID</a> </td>
-                                <td>
-                                   @item.Order.OrderDate
-                                </td>
-                                    <td>@item.Order.Customer.User.FirstName @item.Order.Customer.User.LastName </td>
-
-                                <td>
-                                   @@foreach(var x in item.item.Price){
-
-                                    }@@
-                                </td>
-                                <td>
-                                    <div class="badge badge-soft-success font-size-12">order</div>
-                                </td>
-                                <td>
-                                    <a href="javascript:void(0);" class="me-3 text-primary" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><i class="mdi mdi-pencil font-size-18"></i></a>
-                                    <a href="javascript:void(0);" class="text-danger" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"><i class="mdi mdi-trash-can font-size-18"></i></a>
-                                </td>
-                            </tr>
-                
-                        </tbody>
-                        }
-                    </table>
+    <!-- NAVBAR -->
+    <section id="content">
+        <nav>
+            <form action="#">
+                <div class="form-input">
+                    <input type="search" placeholder="Search...">
+                    <button type="submit" class="search-btn"><i class='bx bx-search'></i></button>
                 </div>
+            </form>
+        </nav>
+    </section>
+    <!-- ORDER DETAILS -->
+    <div class="details">
+        <div class="recentOrders">
+            <div class="cardHeader">
+                <h2>Order Details</h2>
             </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <td>Order ID </td>
+                        <td>Order Date</td>
+                        <td>Customer Name</td>
+                        <td>Total</td>
+                        <td>Payment Method</td>
+                        <td>View</td>
+                        <td>Action</td>
+                    </tr>
+                </thead>
+                @foreach (var order in Model)
+               {     
+   
+                <tbody>
+                    <tr>
+                        <td>@order.OrderCode</td>
+                        <td>@order.OrderDate</td>
+                        <td>@order.Customer.User.FirstName+" "+@order.Customer.User.LastName</td>
+                        <td>@order.TotalCost</td>
+                        <td><span class="status delivered">@order.PaymentMethod</span></td>
+                        <td>
+                            <button class="btn btn-rounded" asp-action="ViewOrders" asp-controller="MyProfile">View <i class="mdi mdi-download ms-2"></i></button>
+
+                        </td>
+                        <td>
+                        <td>
+                            <a class="edit" title="Edit" data-toggle="tooltip">
+                                <i class="material-icons">&#xE254;</i>
+                            </a>
+                            <a class="delete" title="Delete" data-toggle="tooltip">
+                                <i class="material-icons">&#xE872;</i>
+                            </a>
+                            </td>
+                        </td>
+                    </tr>
+                </tbody>
+              
+               }
+            </table>
         </div>
-    </div>
-</div>
+        </div>
+        <script src="js/script.js"></script>
 
-<script src="~/assets/libs/jquery/jquery.min.js"></script>
-<script src="~/assets/libs/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="~/assets/libs/metismenu/metisMenu.min.js"></script>
-<script src="~/assets/libs/simplebar/simplebar.min.js"></script>
-<script src="~/assets/libs/node-waves/waves.min.js"></script>
-<script src="~/assets/libs/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="~/assets/libs/datatables.net-bs4/js/dataTables.bootstrap4.min.js"></script>
 
-<script src="~/assets/libs/datatables.net-responsive/js/dataTables.responsive.min.js"></script>
-<script src="~/assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js"></script>
-
-<script src="~/assets/js/pages/ecommerce-datatables.init.js"></script>
-
-<script src="~/assets/js/app.js"></script>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

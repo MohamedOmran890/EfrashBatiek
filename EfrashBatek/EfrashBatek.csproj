@@ -6,6 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\css\addseller.css" />
+    <Content Remove="wwwroot\css\addshop.css" />
+    <Content Remove="wwwroot\css\admin.css" />
+    <Content Remove="wwwroot\css\confim.css" />
+    <Content Remove="wwwroot\css\orders1.css" />
+    <Content Remove="wwwroot\css\orders1.html" />
+    <Content Remove="wwwroot\css\seller details.html" />
     <Content Remove="wwwroot\Image\0.jpg" />
     <Content Remove="wwwroot\Image\00.webp" />
     <Content Remove="wwwroot\Image\1.jpg" />
@@ -131,6 +138,7 @@
     <None Include="wwwroot\css\custom.css" />
     <None Include="wwwroot\css\default address.css" />
     <None Include="wwwroot\css\default.css" />
+    <None Include="wwwroot\css\confim.css" />
     <None Include="wwwroot\css\Empty.css" />
     <None Include="wwwroot\css\log.css" />
     <None Include="wwwroot\css\log2.css" />
@@ -139,11 +147,14 @@
     <None Include="wwwroot\css\orderinfo.css" />
     <None Include="wwwroot\css\orders.css" />
     <None Include="wwwroot\css\orderdetails.css" />
+    <None Include="wwwroot\css\orders1.css" />
+    <None Include="wwwroot\css\orders1.html" />
     <None Include="wwwroot\css\payment method.css" />
     <None Include="wwwroot\css\product details.css" />
     <None Include="wwwroot\css\profile.css" />
     <None Include="wwwroot\css\profile2.css" />
     <None Include="wwwroot\css\seller details.css" />
+    <None Include="wwwroot\css\seller details.html" />
     <None Include="wwwroot\css\style-prefix.css" />
     <None Include="wwwroot\css\style.css" />
     <None Include="wwwroot\css\trend.css" />

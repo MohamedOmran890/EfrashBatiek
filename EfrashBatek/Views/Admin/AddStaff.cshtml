@@ -1,85 +1,179 @@
 ﻿@model EfrashBatek.ViewModel.RegisterViewModelStaff
-
 @{
-    ViewData["Title"] = "Add Staff";
+    Layout = "";
 }
-@{
-    Layout = "AdminLayout";
-}
+<html lang="en" dir="ltr">
 
+<head>
+    <meta charset="UTF-8">
+    <title> Add Seller </title>
+    <link rel="stylesheet" href="~/css/admin.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <!-- BOOTSTRAB -->
+    <link rel="stylesheet" type="text/css"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="~/css/addseller.css">
+   @* <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('input[required]').on('keyup', function () {
+                var empty = false;
+                $('input[required]').each(function () {
+                    if ($(this).val() === '') {
+                        empty = true;
+                    }
+                });
+                if (empty) {
+                    $('#register').attr('disabled', 'disabled');
+                } else {
+                    $('#register').removeAttr('disabled');
+                }
+            });
+            // Disable the Register button on page load if any required field is empty
+            $('input[required]').trigger('keyup');
+        });
+    </script>*@
+</head>
 
-<!--ADD SELLER FORM-->
-<section class="home-section">
-    <form asp-action="SaveStaff" asp-controller="Admin">
-        <div asp-validation-summary="All" class="text-danger"></div>
-        <div class="form">
-            <div class="title">Add Seller </div>
-            <div class="input-container ic1">
+<body>
+    <!-- NAVBAR -->
+    <!--ADD SELLER FORM-->
+    <!--Layout -->
+    <section id="sidebar">
+        <a asp-action="TrendingProducts" asp-controller="Home" class="brand">
+            <i class='bx bxs-smile'></i>
+            <span class="text">Efresh Beitak</span>
+        </a>
+        <ul class="side-menu top">
+            <li>
+                <a asp-action="Dashboard">
+                    <i class='bx bxs-dashboard'></i>
+                    <span class="text">Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a asp-action="Orders">
+                    <i class='bx bx-list-ul'></i>
+                    <span class="text">Order List </span>
+                </a>
+            </li>
+            <li class="active">
+                <a asp-action="AddStaff">
+                    <i class='bx bx-list-plus'></i>
+                    <span class="text">Add Seller</span>
+                </a>
+            </li>
+            <li>
+                <a asp-action="AddShop">
+                    <i class='bx bx-list-plus'></i>
+                    <span class="text">Add Shop</span>
+                </a>
+            </li>
+            <!--Why Seller Details-->
+            <li>
+                <a>
+                    <i class='bx bxs-group'></i>
+                    <span class="text">Seller Details</span>
+                </a>
+            </li>
+        </ul>
+    </section>
+    <!-- SIDEBAR -->
+    <!-- NAVBAR -->
+    <section id="content">
+        <nav>
+            <i class='bx bx-menu'></i>
+        </nav>
+    </section>
+    <section>
+        <form asp-action="SaveStaff" asp-controller="Admin" method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="col-sm-12 col-md-12 col-lg-9 col-xl-9">
+                <div id="address" role="tabpanel" aria-labelledby="address-tab">
+                    <h3 class="mb-4">Add Seller</h3>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="FirstName"></label>
+                                <input asp-for="FirstName" class="form-control" placeholder="First Name">
+                                <span asp-validation-for="FirstName" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="LastName"></label>
+                                <input asp-for="LastName" class="form-control" placeholder="Last Name">
+                                <span asp-validation-for="LastName" class="text-danger"></span>
 
-                <input asp-for="FirstName" id="FirstName" class="input" type="text" placeholder=" " />
-                <label asp-for="FirstName" for="FirstName" class="placeholder">First name</label>
-                <span asp-validation-for="FirstName" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Email"></label>
+                                <input asp-for="Email" class="form-control" placeholder="Email">
+                                <span asp-validation-for="Email" class="text-danger"></span>
 
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Age"></label>
+                                <input asp-for="Age" type="text" class="form-control" placeholder="Age">
+                                <span asp-validation-for="Age" class="text-danger"></span>
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Username"></label>
+                                <input asp-for="Username" type="text" class="form-control" placeholder="Username">
+                                <span asp-validation-for="Username" class="text-danger"></span>
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Password"></label>
+                                <input asp-for="Password" type="password" class="form-control" placeholder="Password">
+                                <span asp-validation-for="Password" class="text-danger"></span>
+
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="ConfirmPassword"></label>
+                                <input asp-for="ConfirmPassword" type="password" class="form-control" placeholder="ConfirmPassword">
+                                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Phone"></label>
+                                <input asp-for="Phone" class="form-control" placeholder="Phone Number">
+                                <span asp-validation-for="Phone" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="ShopNumber"></label>
+                                <input asp-for="ShopNumber" type="text" class="form-control" placeholder="Shop Number">
+                                 <span asp-validation-for="ShopNumber" class="text-danger"></span>
+
+                            </div>
+                        </div>
+                        <input type="submit" class="btnRegister" value="Register">
+                    </div>
+                </div>
             </div>
-            <div class="input-container ic2">
-
-                <input asp-for="LastName" id="lastname" class="input" type="text" placeholder=" " />
-                <label asp-for="LastName" for="LastName" class="placeholder">Last name</label>
-                <span asp-validation-for="FirstName" class="text-danger"></span>
-
-            </div>
-            <div class="input-container ic2">
-                <input asp-for="Age" id="Age" class="input" type="text" placeholder=" " />
-                <label asp-for="Age" for="Age" class="placeholder">Age</label>
-                <span asp-validation-for="Age" class="text-danger"></span>
-            </div>
-
-            <div class="input-container ic2">
-                <!---gender -->
-                <input asp-for="Gender" id="Gender" type="text" class="input" placeholder=" " />
-                <label asp-for="Gender" for="Gender" class="placeholder">Gender</label>
-                <span asp-validation-for="Gender" class="text-danger"></span>
-            </div>
-
-
-            <div class="input-container ic2">
-                <input asp-for="Email" id="Email" class="input" type="text" placeholder=" " />
-                <label asp-for="Email" for="Email" class="placeholder">Email</label>
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="input-container ic2">
-                <input asp-for="Username"  class="input" type="text" placeholder=" " />
-                <label asp-for="Username"  class="placeholder">Username</label>
-                <span asp-validation-for="Username" class="text-danger"></span>
-            </div>
-            <div class="input-container ic2">
-                <input asp-for="Password" id="Password" class="input" type="text" placeholder=" " />
-                <label asp-for="Password" for="Password" class="placeholder">Password</label>
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-            <div class="input-container ic2">
-                <input asp-for="ConfirmPassword" id="ConfirmPassword" class="input" type="text" placeholder=" " />
-                <label asp-for="ConfirmPassword" for="ConfirmPassword" class="placeholder">Confirm Password</label>
-                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
-            </div>
-
-            <div class="input-container ic2">
-                <input asp-for="Phone" id="Phone" class="input" type="text" placeholder=" " />
-                <label asp-for="Phone" for="Phone" class="placeholder">Phone number</label>
-                <span asp-validation-for="Phone" class="text-danger"></span>
-            </div>
-
-            <div class="input-container ic2">
-                <input asp-for="ShopNumber" class="input" type="text" placeholder=" " />
-                <label asp-for="ShopNumber" class="placeholder">Shop Number</label>
-                <span asp-validation-for="ShopNumber" class="text-danger"></span>
-            </div>
-             
-            <input type="submit" value="Add Seller" class="submit" />
-        </div>
-
-    </form>
-
-</section>
-
-
+        </form>
+    </section>
+    
+    <!-- SCRIPT -->
+    <script src="~/js/script.js"></script>
+</body>
+</html>
