@@ -23,19 +23,18 @@ h2:hover {
 }
 
 html {
-  
+
   text-decoration-line: none;
   box-sizing: border-box;
 }
 
 .x {
   background: #fff;
-  block-size: 100px;
+  block-size: 120px;
   box-shadow: 0 0 1em rgba(0, 0, 0, 0.0625);
   inline-size: 800px;
   margin-top: 8%;
   margin-right: 22.5%;
-  margin-bottom: 2%;
   width: 56.5%;
   border-radius: 2em;
 }
@@ -408,3 +407,6 @@ aside {
     transition: .4s;
   }
 }
+.row{
+    width: 80%;
+  }
