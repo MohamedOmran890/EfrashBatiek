@@ -10,6 +10,7 @@
     <Content Remove="wwwroot\css\addshop.css" />
     <Content Remove="wwwroot\css\admin.css" />
     <Content Remove="wwwroot\css\confim.css" />
+    <Content Remove="wwwroot\css\footer&amp;header.css" />
     <Content Remove="wwwroot\css\orders1.css" />
     <Content Remove="wwwroot\css\orders1.html" />
     <Content Remove="wwwroot\css\payment method.css" />
@@ -141,6 +142,7 @@
     <None Include="wwwroot\css\default.css" />
     <None Include="wwwroot\css\confim.css" />
     <None Include="wwwroot\css\Empty.css" />
+    <None Include="wwwroot\css\footer&amp;header.css" />
     <None Include="wwwroot\css\log.css" />
     <None Include="wwwroot\css\log2.css" />
     <None Include="wwwroot\css\main.css" />
