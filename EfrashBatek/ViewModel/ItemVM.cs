@@ -23,11 +23,11 @@ namespace EfrashBatek.ViewModel
         [Display(Name = "Unit Price")]
         public double Price { get; set; }
         [Required]
-        public string Image { get; set; }
-        public string Image2 { get; set; }
-        public string Image3 { get; set; }
-        public string Image4 { get; set; }
-        public string Image5 { get; set; }
+        public IFormFile Image { get; set; }
+        public IFormFile Image2 { get; set; }
+        public IFormFile Image3 { get; set; }
+        public IFormFile Image4 { get; set; }
+        public IFormFile Image5 { get; set; }
         public string discount { get; set; }
         public int PriceAfterSale { get; set; }
         [ForeignKey("Brand")]
