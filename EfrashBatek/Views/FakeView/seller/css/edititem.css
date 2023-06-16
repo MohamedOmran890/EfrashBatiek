@@ -1,18 +1,16 @@
-body {
+body{
     display: block;
     padding: 0 10vw;
     background-color: #fbfbfb;
 }
 
-.logo {
+.logo{
     margin: 20px auto 50px;
 }
 
-input,
-textarea {
+input, textarea{
     font-weight: 500;
 }
-
 .form {
     width: 94%;
     margin-left: 16%;
@@ -21,38 +19,34 @@ textarea {
     box-shadow: 0 0 1em rgba(0, 0, 0, 0.0625);
     background-color: #fff;
     /* height: auto; */
-}
+  }
 
-input:not(input[type="checkbox"]) {
+input:not(input[type="checkbox"]){
     width: 100%;
 }
-
-#pro {
+#pro{
     box-shadow: 0 0 1em rgba(0, 0, 0, 0.07);
-    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
-
-#pro1 {
+#pro1{
     box-shadow: 0 0 1em rgba(0, 0, 0, 0.07);
-    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
     flex-wrap: wrap;
 }
-
-#des {
+#des{
     box-shadow: 0 0 1em rgba(0, 0, 0, 0.07);
-    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
-
-textarea {
+textarea{
     width: 100%;
     height: 270px;
     resize: none;
     padding: 10px 20px;
     margin-top: 1%;
-
+    
 }
 
-.product-info {
+.product-info{
     width: 100%;
     height: 65%;
     display: grid;
@@ -62,7 +56,7 @@ textarea {
     margin-bottom: 20px;
 }
 
-.product-image {
+.product-image{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -79,19 +73,18 @@ textarea {
     font-weight: 500;
 } */
 
-.upload-image-sec,
-.select-sizes {
+.upload-image-sec, .select-sizes{
     background: #fff;
     border-radius: 10px;
     padding: 20px;
 }
 
-.text img {
+.text img{
     height: 20px;
     margin-right: 10px;
 }
 
-.upload-catalouge {
+.upload-catalouge{
     width: 100%;
     margin: 20px 0;
     display: grid;
@@ -99,7 +92,7 @@ textarea {
     grid-gap: 10px;
 }
 
-.upload-image {
+.upload-image{
     width: 100%;
     height: 100px;
     background: #f5f5f5;
@@ -107,17 +100,17 @@ textarea {
     background-size: cover;
 }
 
-.upload-image:hover {
+.upload-image:hover{
     background: rgba(0, 0, 0, 0.2);
     background-size: cover;
 }
 
 
-.sizes {
+.sizes{
     margin-top: 30px;
 }
 
-.size-checkbox {
+.size-checkbox{
     -webkit-appearance: none;
     width: 100px;
     height: 40px;
@@ -130,7 +123,7 @@ textarea {
     color: black;
 }
 
-.size-checkbox::after {
+.size-checkbox::after{
     content: attr(value);
     position: absolute;
     top: 50%;
@@ -140,32 +133,32 @@ textarea {
     text-transform: uppercase;
 }
 
-.size-checkbox:checked {
+.size-checkbox:checked{
     background: #dfd5d7;
     color: #fff;
 }
 
 input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
+input::-webkit-inner-spin-button{
     -webkit-appearance: none;
     margin: 0;
 }
 
-.product-price {
+.product-price{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-gap: 20px;
 }
 
-.product-price input {
+.product-price input{
     margin: 0;
 }
 
-.buttons {
+.buttons{
     margin: 20px 0 50px;
 }
 
-.btn {
+.btn{
     padding: 10px 30px;
     text-transform: capitalize;
     color: #fff;
@@ -177,24 +170,21 @@ input::-webkit-inner-spin-button {
     cursor: pointer;
 }
 
-#save-btn {
+#save-btn{
     background: #a9a9a9;
 }
-
 /*You maybe notice one new CSS selector input::-webkit-outer-spin-button. If so, then this is simply select inputs arrow buttons, 
 in this case, we want to hide our number input's arrows. That's why I used this.*/
 input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
+input::-webkit-inner-spin-button{
     -webkit-appearance: none;
     margin: 0;
 }
-
 input[type="text"],
 input[type="password"],
 input[type="email"],
-input[type="number"],
-/*add this new*/
-line textarea {
+input[type="number"], /*add this new*/ line
+textarea{
     display: block;
     padding: .375rem .75rem;
     font-size: 1rem;
@@ -205,119 +195,11 @@ line textarea {
     background-clip: padding-box;
     border: 1px solid #ced4da;
     border-radius: .25rem;
-    margin: 1%;
+    margin:1%;
 }
 
 input:not(input[type="checkbox"]),
-textarea {
+textarea{
     /*properties*/
 }
-
 /* NAV AND SIDEBAR */
-
-
-
-/* Start Responsive Query  */
-
-#content {
-    position: relative;
-    width: calc(100% - 280px);
-    left: 90px;
-    transition: .3s ease;
-}
-
-@media (max-width:991px) {
-
-    ul.side-menu.top span,
-    #sidebar .brand span {
-
-        display: none;
-    }
-
-
-
-    #sidebar {
-        width: 100px;
-    }
-
-    #address {
-        margin-left: 13%;
-    }
-
-    #content {
-        left: 20px;
-    }
-
-    .form {
-        margin-left: 5%;
-    }
-}
-
-@media(max-width:786px) {
-    #address {
-        margin-left: 22%;
-    }
-
-    .product-info,
-    .upload-catalouge {
-        display: flex;
-        min-height: 100%;
-        flex-direction: column;
-    }
-
-    .form {
-        margin-left: 10%;
-    }
-}
-
-@media (max-width: 576px) {
-    #sidebar {
-        display: none;
-    }
-
-    .form {
-        margin-left: 0%;
-        width: 100%;
-    }
-
-    #address {
-        margin-left: 0%;
-    }
-
-    #content {
-        left: 27px;
-    }
-
-    #sidebar.hide {
-        width: 150px;
-        z-index: 1;
-    }
-
-    ul.side-menu.top span,
-    #sidebar .brand span {
-        display: block;
-    }
-}
-
-.d-none {
-    display: none;
-}
-
-.d-block {
-    display: block;
-}
-
-
-.ml-17 {
-    margin-left: 17% !important;
-}
-
-.ml-12 {
-    margin-left: 12% !important;
-}
-
-.ml-5 {
-    margin-left: 5% !important;
-}
-
-/* End Responsive Query  */
