@@ -1,0 +1,79 @@
+.empty-cart {
+   
+    width: 50vw;
+    margin: 0 auto;
+    text-align: center;
+    font-family: 'Maison Neue';
+    font-weight: 300;
+  }
+  
+  svg {
+    max-width: 60%;
+    padding: 5rem 3rem;
+  
+    #oval, #plus, #diamond, #bubble-rounded {
+      animation: plopp 4s ease-out infinite;
+  
+      @for $i from 1 through 16 {
+        &:nth-child(#{$i}) {
+          animation-delay: -240ms * $i;
+        }
+      }
+    }
+  
+    #bg-line {
+      &:nth-child(2) {
+        fill-opacity: .3;
+      }
+      &:nth-child(3) {
+        fill-opacity: .4;
+      }
+    }
+  }
+  
+  @keyframes plopp {
+    0% {
+      transform: translate(0, 0);
+      opacity: 1;
+    }
+    100% {
+      transform: translate(0, -10px);
+      opacity: 0;
+    }
+  }
+  
+  h3 {
+    font-size: 2rem;
+    line-height: 2rem;
+    margin: 0;
+    padding: 0;
+    font-weight: 600;
+  }
+  
+  p {
+    color: rgba(0, 0, 0, 0.5);
+    font-size: 18px;
+    line-height: 24px;
+    max-width: 80%;
+    margin: 1.25rem auto 0 auto;
+  }
+  
+  body {
+    background: #f2f2f2;
+  }
+  .cartcard .brand input{
+    margin-left: 6px;
+    padding: 1rem 30px;
+    background: #cbaab1;
+    border: none;
+    color: white;
+    outline: none;
+    font-size: 15px;
+    cursor: pointer;
+    cursor: progress;
+    border-radius: 15px;
+}
+.cartcard .brand input:hover{
+    background:#fff;
+    color: #cbaab1;
+}

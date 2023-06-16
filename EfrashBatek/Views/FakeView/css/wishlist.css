@@ -116,7 +116,13 @@ label{
 
 }
 @media(max-width:630px){
-
+    .main-home1{
+        background: #f9f9f9;
+    }
+    .mw-500{
+        min-width: auto;
+        width: 400px;
+    }
     .main-text h1{
         font-size: 50px;
         transition: .4s;
@@ -165,6 +171,16 @@ label{
     .navmenu.open{
         right: 0;
     }
+}
+@media(max-width:450px){
+    .main-home1{
+        background: #f9f9f9;
+    }
+    .mw-500{
+        min-width: auto;
+        width: 275px;
+    }
+
 }
 
 
