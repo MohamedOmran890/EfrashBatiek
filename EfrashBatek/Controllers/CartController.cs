@@ -10,84 +10,71 @@ namespace EfrashBatek.Controllers
     public class CartController : Controller
     {
         IItemRepository _itemRepository;
-        IIdentityRepository _identityRepository;
-        public CartController(IItemRepository repository, IIdentityRepository identityRepository )
+        private readonly ICartRepository cartRepository;
+        private readonly Context context;
+        private readonly IIdentityRepository _identityRepository;
+
+        public CartController(IItemRepository repository, ICartRepository cartRepository, Context context)
         {
             _itemRepository = repository;
-            _identityRepository = identityRepository;
+            this.cartRepository = cartRepository;
+            this.context = context;
         }
-
-        public IActionResult Index() {
-            List<Cart_Item> items = HttpContext.Session.Get<List<Cart_Item>>("cart");
-            if (items == null)
-            {
-                // Initialize the list if it is null
-                items = new List<Cart_Item>();
-            }
-            return View(items);
-
-        }
-        [HttpPost]
-        public IActionResult AddToCart(int Id)
+        public IActionResult Index()
         {
+
             var HaveSession = HttpContext.Session.GetString("Id");
-            List<Cart_Item> items = HttpContext.Session.Get<List<Cart_Item>>("cart");
             if (HaveSession == null)
             {
                 return RedirectToAction("Login", "Account");
             }
-            if (items == null)
+            var items = cartRepository.LoadFromCookie();
+
+            int totalPrice = 0;
+            foreach (var item in items)
             {
-                // Initialize the list if it is null
-                items = new List<Cart_Item>();
-            }
-            Cart_Item x = items.FirstOrDefault(i => i.ItemID == Id);
-            if(x!=null)
-            {
-                x.Quantity += 1;//Increment 1 if Exists in cart
-            }
-            else
-            { 
-            Item item = _itemRepository.GetById(Id);
-                if(item==null)
-                {
-                    return Content("The Product Not Found");
+                item.Item = context.Items.FirstOrDefault(i => i.ID == item.ItemID);
+                if(item.Item != null) {
+                    totalPrice += item.Quantity * (int)item.Item.Price;
                 }
-                Cart_Item itm = new Cart_Item
-                {
-                    ItemID = item.ID,
-                    Quantity = 1,
-                    ItemName= item.Name,
-                };
-                items.Add(itm);
-                HttpContext.Session.Set("cart", items); 
+              
             }
-            return RedirectToAction("Index","Cart");
-        }
-        public IActionResult Cart()
-        {
-            List<Cart_Item> items = HttpContext.Session.Get<List<Cart_Item>>("cart");
-            if (items == null)
-            {
-                // Initialize the list if it is null
-                items = new List<Cart_Item>();
-            }
+            ViewBag.TotalPrice = totalPrice;
+            var test = items;
             return View(items);
         }
-        public IActionResult RemoveFromCart(int Id)
+        [HttpPost]
+        public IActionResult AddToCart(int itemID)
         {
-            List<Cart_Item> items = HttpContext.Session.Get<List<Cart_Item>>("cart");
-            if (items == null)
+            var HaveSession = HttpContext.Session.GetString("Id");
+            if (HaveSession == null)
             {
-                // Initialize the list if it is null
-                items = new List<Cart_Item>();
+                return RedirectToAction("Login", "Account");
             }
-            Cart_Item itm = items.FirstOrDefault(i => i.ItemID == Id);
-            if (itm != null)
-                items.Remove(itm);
-            HttpContext.Session.Set("cart", items);
-            return RedirectToAction("Cart");
+
+            cartRepository.AddToCart(itemID);
+            return RedirectToAction("Index");
+
 
         }
+
+        public IActionResult Remove(int itemID)
+        {
+            cartRepository.RemoveItem(itemID);
+
+
+            return RedirectToAction("Index");
+
+        }
+        [HttpPost]
+        public IActionResult updateQuantity(int itemID, int newQuantity)
+        {
+
+            cartRepository.UpdateItemQuantity(itemID, newQuantity);
+
+            return RedirectToAction("Index");
+
+        }
+
     }
 }
