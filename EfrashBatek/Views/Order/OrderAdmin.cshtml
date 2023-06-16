@@ -107,7 +107,9 @@
                             <td>@Html.DisplayNameFor(model => model.TotalCost) EGP</td>
                             <td><span class="status delivered">@Html.DisplayNameFor(model => model.PaymentMethod)</span></td>
                             <td>
-                                <button class="btn btn-rounded">View<i class="mdi mdi-download ms-2"></i></button>
+                                <a asp-action="Details" asp-route-id="@item.ID">
+                                <button class="btn btn-rounded"><i class="mdi mdi-download ms-2"></i>View</button>
+                                </a>
                             </td>
                             <td>
                                 <a asp-action="Edit" asp-route-id="@item.ID" class="edit" title="Edit" data-toggle="tooltip">
