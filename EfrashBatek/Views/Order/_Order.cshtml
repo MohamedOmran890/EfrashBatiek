@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/admin.css">
+    <!-- ====== ionicons ======= -->
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</head>
+
+<body>
+    <!-- SIDEBAR -->
+    <!-- NAVBAR -->
+    <section id="content">
+        <nav>
+            <i class='bx bx-menu'></i>
+            <form action="#">
+                <div class="form-input">
+                    <input type="search" placeholder="Search...">
+                    <button type="submit" class="search-btn"><i class='bx bx-search'></i></button>
+                </div>
+            </form>
+        </nav>
+    </section>
+    <!-- ORDER DETAILS -->
+    <div class="details">
+        <div class="recentOrders">
+            <div class="cardHeader">
+                <h2>Order Details</h2>
+            </div>
+
+            @RenderBody();
+        </div>
+        </div>
+        
+        <script src="~/js/script.js"></script>
+</body>
+
+</html>
