@@ -41,6 +41,11 @@ namespace EfrashBatek.Controllers
         {
             return View();
         }
+        public IActionResult Register3()
+        {
+            return View();
+        }
+
 
         [HttpPost]
         public async Task<IActionResult> SignUp(RegisterViewModel model)
@@ -168,15 +173,8 @@ namespace EfrashBatek.Controllers
                     ModelState.AddModelError("", "The Email Not Found");
                     return View();
                 }
-                var Token=await _userManager.GeneratePasswordResetTokenAsync(user);
-                //var callback = Url.ResetPasswordCallbackLink(user.Id, code, Request.Scheme);
-                //await _emailSender.SendEmailAsync(model.Email, "Reset Password",
-                //    $"Please reset your password by clicking here: <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>link</a>");
-                ////model.Result = "A password reset link has been sent to your email.";
-                //var callbackUrl = Url.ResetPasswordCallbackLink(user.Id, code, Request.Scheme);
-                //await _emailSender.SendEmailAsync(model.Email, "Reset Password",
-                //         $"Please reset your password by clicking here: <a href='{callbackUrl}'>link</a>");
-                return RedirectToAction("ResetPassword",model.Email,Token);
+              
+                return RedirectToAction("ResetPassword",model.Email);
             }
             return View(model);
         }
