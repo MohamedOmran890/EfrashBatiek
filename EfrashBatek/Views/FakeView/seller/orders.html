@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Orders</title>
     <link rel="stylesheet" href="css/seller.css">
     <link rel="stylesheet" href="css/orders.css">
     <!-- ====== ionicons ======= -->
@@ -36,15 +36,15 @@
                 </a>
             </li>
             <li>
-                <a href="additem.html">
-                    <i class='bx bx-list-plus'></i>
-                    <span class="text">Add Item</span>
-                </a>
-            </li>
-            <li>
                 <a href="Items.html">
                     <i class='bx bx-list-plus'></i>
                     <span class="text">Items</span>
+                </a>
+            </li>
+            <li>
+                <a href="additem.html">
+                    <i class='bx bx-list-plus'></i>
+                    <span class="text">Add Item</span>
                 </a>
             </li>
         </ul>
@@ -62,15 +62,12 @@
                     <button type="submit" class="search-btn"><i class='bx bx-search'></i></button>
                 </div>
             </form>
-            <input type="checkbox" id="switch-mode" hidden>
-            <a href="#" class="notification">
-                <i class='bx bxs-bell'></i>
-                <span class="num">8</span>
-            </a>
         </nav>
     </section>
     <!-- NAVBAR -->
+    <style>
 
+    </style>
     <!-- ORDER DETAILS -->
     <div class="details">
         <div class="recentOrders">
@@ -87,11 +84,11 @@
                         <td>Total</td>
                         <td>Order Status</td>
                         <td>Payment Method</td>
+                        <td>Shop Name</td>
                         <td>View</td>
                         <td>Action</td>
                     </tr>
                 </thead>
-
                 <tbody>
                     <tr>
                         <td>#666666</td>
@@ -100,18 +97,12 @@
                         <td>1000$</td>
                         <td><span class="status delivered">Delivered</span></td>
                         <td><span class="status delivered">Cash</span></td>
+                        <td>efresh beitak</td>
                         <td>
                             <button class="btn btn-rounded">View <i class="mdi mdi-download ms-2"></i></button>
-                            <style>
-                                .btn {
-                                    background-color: #cbaab1;
-                                    color: #fff;
-                                }
-                            </style>
+
                         </td>
                         <td>
-                            <a class="edit" title="Edit" data-toggle="tooltip"><i
-                                    class="material-icons">&#xE254;</i></a>
                             <a class="delete" title="Delete" data-toggle="tooltip"><i
                                     class="material-icons">&#xE872;</i></a>
                             <!--<script>
@@ -137,46 +128,41 @@
                         <td>28/6/23</td>
                         <td>jameela</td>
                         <td>1000$</td>
-                        <td><span class="status pending">Pending</span></td>
+                        <!------------------------------------------------------- pr01 -->
+                        <td>
+                            <select id="pro1">
+                                <option value="null">Status</option>
+                                <option class="status delivered" value="delivered">
+                                    Delivered
+                                </option>
+                                <option class="status return" value="return">
+                                    return
+                                </option>
+                                <option class="status inProgress" value="inProgress">
+                                    In Progress
+                                </option>
+                                <option class="status pending" value="pending">
+                                    pending
+                                </option>
+                            </select>
+                            <script>
+                                const selectElement = document.querySelector('#pro1');
+                                selectElement.addEventListener('change', function () {
+                                    selectElement.classList.remove('clicked-delivered', 'clicked-return', 'clicked-return', 'clicked-inProgress', 'clicked-pending');
+                                    selectElement.classList.add('clicked-' + selectElement.value);
+                                });
+                            </script>
+                        </td>
                         <td><span class="status delivered">Cash</span></td>
+                        <td>efresh beitak</td>
                         <td>
                             <button class="btn btn-rounded">View <i class="mdi mdi-download ms-2"></i></button>
-                            <style>
-                                .btn {
-                                    background-color: #cbaab1;
-                                    color: #fff;
-                                }
-                            </style>
+
                         </td>
                         <td>
-                            <a class="edit" title="Edit" data-toggle="tooltip"><i
-                                    class="material-icons">&#xE254;</i></a>
                             <a class="delete" title="Delete" data-toggle="tooltip"><i
                                     class="material-icons">&#xE872;</i></a>
-                            <style>
-                                table.table td a.edit {
-                                    color: #454545;
-                                }
 
-                                table.table td a.delete {
-                                    color: #E34724;
-                                }
-                            </style>
-                            <!--<script>
-                                // Edit row on edit button click
-                                $(document).on("click", ".edit", function () {
-                                    $(this).parents("tr").find("td:not(:last-child)").each(function () {
-                                        $(this).html('<input type="text" class="form-control" value="' + $(this).text() + '">');
-                                    });
-                                    $(this).parents("tr").find(".add, .edit").toggle();
-                                    $(".add-new").attr("disabled", "disabled");
-                                });
-                                // Delete row on delete button click
-                                $(document).on("click", ".delete", function () {
-                                    $(this).parents("tr").remove();
-                                    $(".add-new").removeAttr("disabled");
-                                });
-                            </script>-->
                         </td>
                     </tr>
                     <!-- ORDER 3 -->
@@ -185,46 +171,29 @@
                         <td>28/6/23</td>
                         <td>jameela</td>
                         <td>1000$</td>
-                        <td><span class="status return">Return</span></td>
+                        <!------------------------------------------------------- pr01 -->
+                        <td><select id="pro1" class="status return" style="border: none;">
+                                <option value="null">Status</option>
+                                <option value="57">
+                                    pending
+                                </option>
+                                <option value="57">
+                                    In Progress
+                                </option>
+                                <option value="57">
+                                    Arrived
+                                </option>
+                            </select></td>
                         <td><span class="status delivered">Cash</span></td>
+                        <td>efresh beitak</td>
                         <td>
                             <button class="btn btn-rounded">View <i class="mdi mdi-download ms-2"></i></button>
-                            <style>
-                                .btn {
-                                    background-color: #cbaab1;
-                                    color: #fff;
-                                }
-                            </style>
+
                         </td>
                         <td>
-                            <a class="edit" title="Edit" data-toggle="tooltip"><i
-                                    class="material-icons">&#xE254;</i></a>
                             <a class="delete" title="Delete" data-toggle="tooltip"><i
                                     class="material-icons">&#xE872;</i></a>
-                            <style>
-                                table.table td a.edit {
-                                    color: #454545;
-                                }
 
-                                table.table td a.delete {
-                                    color: #E34724;
-                                }
-                            </style>
-                            <!--<script>
-                                // Edit row on edit button click
-                                $(document).on("click", ".edit", function () {
-                                    $(this).parents("tr").find("td:not(:last-child)").each(function () {
-                                        $(this).html('<input type="text" class="form-control" value="' + $(this).text() + '">');
-                                    });
-                                    $(this).parents("tr").find(".add, .edit").toggle();
-                                    $(".add-new").attr("disabled", "disabled");
-                                });
-                                // Delete row on delete button click
-                                $(document).on("click", ".delete", function () {
-                                    $(this).parents("tr").remove();
-                                    $(".add-new").removeAttr("disabled");
-                                });
-                            </script>-->
                         </td>
                         <!-- Order 4 -->
                     <tr>
@@ -232,53 +201,30 @@
                         <td>28/6/23</td>
                         <td>jameela</td>
                         <td>1000$</td>
-                        <td><span class="status inProgress">In Progress</span></td>
+                        <td>
+                            <select id="pro1">
+                                <option value="null">Status</option>
+                                <option value="delivered">pending</option>
+                                <option value="return">return</option>
+                                <option value="inProgress">Delivered</option>
+                            </select>
+                        </td>
                         <td><span class="status delivered">Cash</span></td>
+                        <td>efresh beitak</td>
                         <td>
                             <button class="btn btn-rounded">View <i class="mdi mdi-download ms-2"></i></button>
-                            <style>
-                                .btn {
-                                    background-color: #cbaab1;
-                                    color: #fff;
-                                }
-                            </style>
+
                         </td>
                         <td>
-                            <a class="edit" title="Edit" data-toggle="tooltip"><i
-                                    class="material-icons">&#xE254;</i></a>
                             <a class="delete" title="Delete" data-toggle="tooltip"><i
                                     class="material-icons">&#xE872;</i></a>
-                            <style>
-                                table.table td a.edit {
-                                    color: #454545;
-                                }
 
-                                table.table td a.delete {
-                                    color: #E34724;
-                                }
-                            </style>
-                            <!--<script>
-                                    // Edit row on edit button click
-                                    $(document).on("click", ".edit", function () {
-                                        $(this).parents("tr").find("td:not(:last-child)").each(function () {
-                                            $(this).html('<input type="text" class="form-control" value="' + $(this).text() + '">');
-                                        });
-                                        $(this).parents("tr").find(".add, .edit").toggle();
-                                        $(".add-new").attr("disabled", "disabled");
-                                    });
-                                    // Delete row on delete button click
-                                    $(document).on("click", ".delete", function () {
-                                        $(this).parents("tr").remove();
-                                        $(".add-new").removeAttr("disabled");
-                                    });
-                                </script>-->
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
         <script src="js/script.js"></script>
-        
 </body>
 
 </html>

@@ -6,6 +6,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\css\addseller.css" />
+    <Content Remove="wwwroot\css\addshop.css" />
+    <Content Remove="wwwroot\css\admin.css" />
+    <Content Remove="wwwroot\css\orders1.css" />
+    <Content Remove="wwwroot\css\seller details.html" />
     <Content Remove="wwwroot\Image\0.jpg" />
     <Content Remove="wwwroot\Image\00.webp" />
     <Content Remove="wwwroot\Image\1.jpg" />
@@ -107,8 +112,8 @@
     <Content Remove="wwwroot\Image\products\sports-6.jpg" />
     <Content Remove="wwwroot\Image\products\watch-1.jpg" />
     <Content Remove="wwwroot\Image\products\watch-2.jpg" />
-    <Content Remove="wwwroot\Image\products\watch-3.jpg" />
     <Content Remove="wwwroot\Image\products\watch-4.jpg" />
+    <Content Remove="wwwroot\Image\products\x.jpg" />
     <Content Remove="wwwroot\Image\testimonial-1.jpg" />
     <Content Remove="wwwroot\Image\trash.png" />
     <Content Remove="wwwroot\Image\womens-banner.jpg" />
@@ -139,11 +144,13 @@
     <None Include="wwwroot\css\orderinfo.css" />
     <None Include="wwwroot\css\orders.css" />
     <None Include="wwwroot\css\orderdetails.css" />
+    <None Include="wwwroot\css\orders1.css" />
     <None Include="wwwroot\css\payment method.css" />
     <None Include="wwwroot\css\product details.css" />
     <None Include="wwwroot\css\profile.css" />
     <None Include="wwwroot\css\profile2.css" />
     <None Include="wwwroot\css\seller details.css" />
+    <None Include="wwwroot\css\seller details.html" />
     <None Include="wwwroot\css\style-prefix.css" />
     <None Include="wwwroot\css\style.css" />
     <None Include="wwwroot\css\trend.css" />
@@ -250,7 +257,7 @@
     <None Include="wwwroot\Image\products\sports-6.jpg" />
     <None Include="wwwroot\Image\products\watch-1.jpg" />
     <None Include="wwwroot\Image\products\watch-2.jpg" />
-    <None Include="wwwroot\Image\products\watch-3.jpg" />
+    <None Include="wwwroot\Image\products\x.jpg" />
     <None Include="wwwroot\Image\products\watch-4.jpg" />
     <None Include="wwwroot\Image\testimonial-1.jpg" />
     <None Include="wwwroot\Image\trash.png" />
@@ -275,8 +282,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Migrations\" />
     <Folder Include="wwwroot\Image\custom\" />
     <Folder Include="wwwroot\Image\Items\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Views\Designs\Design.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

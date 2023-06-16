@@ -96,7 +96,7 @@ namespace EfrashBatek.Controllers
         }
 
         [HttpPost]
-        public IActionResult ViewAddressDetails (int id )
+        public IActionResult ViewAddressDetails (String id )//AYA
         {
             var Address = address.GetbyID(id);
            

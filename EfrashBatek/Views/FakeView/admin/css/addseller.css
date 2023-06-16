@@ -2,8 +2,8 @@ body{
   background-color: #fbfbfb;
 }
 .form {
-  background-color:#fbfbfb;
-  margin: 0 100 0 100;
+  background-color:#fff;
+  margin: 0px 100px 0px 100px;
   /* background-image: linear-gradient(to bottom, #fbf6f7, #fff);*/
   /*border-radius: 20px;*/
   box-sizing: border-box;
@@ -15,6 +15,20 @@ a, a:hover, a:focus, a:active {
   text-decoration: none;
   color: inherit;
 }
+
+
+/* remove both the arrows and the spinner functionality */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+/* remove both the arrows and the spinner functionality */
+
 
 .title {
   text-align: center;
@@ -113,7 +127,7 @@ input {
   text-align: center;
   color: #fff;
   font-size: 22px;
-  transition: all 0.4 ease;
+  transition: all .5s;
 }
 .placeholder {
   margin-block-start: 6%;

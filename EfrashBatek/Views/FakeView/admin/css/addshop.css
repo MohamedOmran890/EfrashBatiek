@@ -1,10 +1,24 @@
 body{
-  background-color: #fbfbfb;
+  background-color: #a86262;
 }
 a, a:hover, a:focus, a:active {
   text-decoration: none;
   color: inherit;
 }
+
+
+/* remove both the arrows and the spinner functionality */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+/* remove both the arrows and the spinner functionality */
+
 
 .form {
     background-color: #fbfbfb;
@@ -39,9 +53,10 @@ a, a:hover, a:focus, a:active {
   border: none;
   border-radius: 1.5rem;
   padding: 2%;
-  background: #e3d9d9;
+  background-color: #cbaab1;
   color: #fff;
-  font-weight: 600;
+  font-weight: 700;
+  font-size: large;
   width: 25%;
   cursor: pointer;
   transition: background-color 0.4s ease;
@@ -50,7 +65,8 @@ a, a:hover, a:focus, a:active {
 }
 
 .btnRegister:hover {
-  background-color: #cbaab1;
+  background: rgb(233, 233, 233);
+  color:#cbaab1;
   /* Change the background color to red when the button is hovered over */
 }
 
