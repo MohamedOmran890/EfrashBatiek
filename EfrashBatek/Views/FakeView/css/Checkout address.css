@@ -7,9 +7,11 @@
   list-style: none;
   text-decoration: none;
 }
-html{
+
+html {
   scroll-behavior: smooth;
 }
+
 @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap");
 
 body {
@@ -17,7 +19,11 @@ body {
   font-family: "Roboto", sans-serif;
   overflow-x: hidden;
 }
-a, a:hover, a:focus, a:active {
+
+a,
+a:hover,
+a:focus,
+a:active {
   text-decoration: none;
   color: inherit;
 }
@@ -32,15 +38,21 @@ input[type="number"]::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
+
 /* remove both the arrows and the spinner functionality */
 
-
-/* ICONS*/
-.row{
-height: 400px;
+.aaaa{
+  margin-block-end: 25%;
 }
+/* ICONS*/
+.row {
+  height: 400px;
+}
+
 /*-------------------------------------------------------------------------------- ICOONS------------------------------------------------------------------------------------------------------------------- */
 .x {
+  margin-inline-start: 6%;
+  margin-block-start: 6%;
   margin-left: 1.7%;
   background: #fff;
   block-size: 100px;
@@ -51,12 +63,13 @@ height: 400px;
   margin-bottom: 1%;
   width: 71%;
   border-radius: 2em;
-  
+
 }
 
 ul.icons {
+  margin-inline-start: 2%;
   margin-inline-end: 2%;
-    margin-top: 3%;
+  margin-top: 3%;
   display: flex;
   justify-content: space-between;
 }
@@ -80,17 +93,17 @@ ul.icons {
   transition: all .42s ease;
 }
 
-.word h2
-{
+.word h2 {
   margin-left: -16%;
   font-size: medium;
 }
 
 .word:hover i,
-.word:hover h2{
+.word:hover h2 {
   color: #cbaab1;
   transform: scale(1.1);
 }
+
 /* continue button*/
 .btnRegister {
   border: none;
@@ -118,7 +131,7 @@ ul.icons {
   border-radius: 30px;
   box-shadow: 0 0 1em rgba(0, 0, 0, 0.0625);
   background-color: #fff;
-  height: auto ;
+  height: auto;
 }
 
 .form-group {
@@ -139,16 +152,20 @@ input {
 
 /* /SUMMARY/ */
 .summary-delivery {
-  max-height: 150px; /* Set the maximum height for the container */
+  max-height: 150px;
+  /* Set the maximum height for the container */
   overflow-y: auto;
-  overflow-x:hidden ; /* Enable vertical scrolling */
+  overflow-x: hidden;
+  /* Enable vertical scrolling */
 }
+
 aside {
   position: relative;
   width: 30%;
 }
+
 .summary {
-  margin: 21px 40px 0;
+  margin: 21px 0px 0 0;
   background-color: #eee;
   border: 1px solid #aaa;
   padding: 1rem;
@@ -245,8 +262,8 @@ aside {
   height: 34px;
   width: 100%;
 }
-   
-  /******************************************************************************scroll**************************************************/
+
+/******************************************************************************scroll**************************************************/
 /* width */
 ::-webkit-scrollbar {
   width: 8px;
@@ -254,23 +271,24 @@ aside {
 
 /* Track */
 ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px grey; 
+  box-shadow: inset 0 0 5px grey;
   border-radius: 10px;
-  
+
 }
- 
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #cbaab1; 
+  background: #cbaab1;
   border-radius: 10px;
-  
+
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #94777d; 
+  background: #94777d;
   transition: background-color 0.8s ease;
 }
+
 /****************************************************************************************RESPONSIVE********************************************************************************************************/
 @media(max-width:890px) {
   header {
@@ -295,6 +313,85 @@ aside {
     transition: .4s;
   }
 }
+
+
+/* contact-section */
+.contact {
+  box-shadow: 0 0 1em rgba(0, 0, 0, 0.040);
+  background-color: #f9f9f9;
+}
+
+.contact-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, auto));
+  gap: 3rem;
+}
+
+.first-info img {
+  width: 140px;
+  height: auto;
+}
+
+.contact-info h4 {
+  color: #212529;
+  font-size: 14px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.contact-info p {
+  color: #565656;
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: capitalize;
+  line-height: 1.5;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: all .42s;
+}
+
+.contact-info p:hover {
+  color: #cbaab1;
+}
+
+.social-icon i {
+  color: #565656;
+  margin-right: 10px;
+  font-size: 20px;
+  transition: all .42s;
+}
+
+.social-icon i:hover {
+  transform: scale(1.3);
+}
+
+input {
+  padding: 4px 28px;
+  border-radius: 10px;
+  margin: 5px auto;
+  border: 1px solid #918383;
+  background-color: #f3f4f6;
+  box-shadow: 1px 2px 1px 2px rgb(230, 229, 229);
+  color: #000000;
+  outline: none;
+  font-size: 16px;
+}
+
+.submit {
+
+  padding: 6px 13px;
+  border-radius: 8px;
+  box-shadow: 2px 2px 2px 1px rgb(81, 81, 85);
+  border: 1px solid rgb(129, 123, 123);
+  font-size: 14px;
+}
+
+.submit:hover {
+  background-color: #cbaab1;
+  color: rgb(246, 244, 248);
+}
+
+
 
 @media(max-width:750px) {
   .navmenu {

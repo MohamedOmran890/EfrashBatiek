@@ -4,54 +4,129 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.OrderCode)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TotalCost)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OrderDate)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PaymentMethod)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Address.Zone)
-            </th>
-            <th>Action</th>
-          
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.OrderCode)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TotalCost)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OrderDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PaymentMethod)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Address.Zone)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ID"></a> |
-                <a asp-action="Details" asp-route-id="@item.ID">View</a> |
-                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders</title>
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/orders1.css">
+    <!-- ====== ionicons ======= -->
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</head>
+
+<body>
+    <!-- SIDEBAR -->
+    <section id="sidebar">
+        <a href="#" class="brand">
+            <i class='bx bxs-smile'></i>
+            <span class="text">Efresh Beitak</span>
+        </a>
+        <ul class="side-menu top">
+            <li>
+                <a href="admin.html">
+                    <i class='bx bxs-dashboard'></i>
+                    <span class="text">Dashboard</span>
+                </a>
+            </li>
+            <li class="active">
+                <a href="orders1.html">
+                    <i class='bx bx-list-ul'></i>
+                    <span class="text">Order List </span>
+                </a>
+            </li>
+            <li>
+                <a href="addseller.html">
+                    <i class='bx bx-list-plus'></i>
+                    <span class="text">Add Seller</span>
+                </a>
+            </li>
+            <li>
+                <a href="addshop.html">
+                    <i class='bx bx-list-plus'></i>
+                    <span class="text">Add Shop</span>
+                </a>
+            </li>
+            <li>
+                <a href="seller details.html">
+                    <i class='bx bxs-group'></i>
+                    <span class="text">Seller Details</span>
+                </a>
+            </li>
+        </ul>
+
+    </section>
+
+    <!-- NAVBAR -->
+    <section id="content">
+        <nav>
+            <i class='bx bx-menu'></i>
+            <a href="#" class="nav-link">Categories</a>
+            <form action="#">
+                <div class="form-input">
+                    <input type="search" placeholder="Search...">
+                    <button type="submit" class="search-btn"><i class='bx bx-search'></i></button>
+                </div>
+            </form>
+        </nav>
+    </section>
+    <!-- NAVBAR -->
+    <style>
+    </style>
+    <!-- ORDER DETAILS -->
+    <div class="details">
+        <div class="recentOrders">
+            <div class="cardHeader">
+                <h2>Order Details</h2>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <td>Order ID </td>
+                        <td>Order Date</td>
+                        <td>Customer Name</td>
+                        <td>Total</td>
+                        <td>Payment Method</td>
+                        <td>View</td>
+                        <td>Action</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.OrderCode)</td>
+                            <td>@Html.DisplayFor(modelItem => item.OrderDate)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Customer.User.FirstName) @Html.DisplayFor(modelItem => item.Customer.User.LastName)</td>
+                            <td>@Html.DisplayNameFor(model => model.TotalCost) EGP</td>
+                            <td><span class="status delivered">@Html.DisplayNameFor(model => model.PaymentMethod)</span></td>
+                            <td>
+                                <a asp-action="Details" asp-route-id="@item.ID">
+                                <button class="btn btn-rounded"><i class="mdi mdi-download ms-2"></i>View</button>
+                                </a>
+                            </td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.ID" class="edit" title="Edit" data-toggle="tooltip">
+                                    <i class="material-icons">&#xE254;</i>
+                                </a>
+                                <a asp-action="Delete" asp-route-id="@item.ID" class="delete" title="Delete" data-toggle="tooltip">
+                                    <i class="material-icons">&#xE872;</i>
+                                </a>
+                                
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <script src="js/script.js"></script>
+</body>
+
+</html>
+
