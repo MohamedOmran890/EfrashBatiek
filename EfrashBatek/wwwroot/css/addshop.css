@@ -1,6 +1,27 @@
+body{
+  background-color: #a86262;
+}
+a, a:hover, a:focus, a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+/* remove both the arrows and the spinner functionality */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+/* remove both the arrows and the spinner functionality */
+
 
 .form {
-    background-color: #ffffff;
+    background-color: #fbfbfb;
     margin: 0 100 0 100;
  /* background-image: linear-gradient(to bottom, #fbf6f7, #fff);*/
     /*border-radius: 20px;*/
@@ -27,108 +48,54 @@
     margin-top: 10px;
   }
 
-  .input-container {
-    height: 50px;
-    position: relative;
-    width: 100%;
-    border-radius: 50px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  }
-
-  .ic1 {
-    margin-top: 40px;
-  }
-
-  .ic2 {
-    margin-top: 30px;
-  }
-
-  .input {
-    background-color: #fff;
-    border-radius: 12px;
-    border: 0;
-    box-sizing: border-box;
-    color: black;
-    font-size: 18px;
-    height: 100%;
-    outline: 0;
-    padding: 4px 20px 0;
-    width: 100%;
-  }
-
-  /*.cut {
-  background-color:;
-    border-radius: 10px;
-    height: 20px;
-    left: 20px;
-    position: absolute;
-    top: -20px;
-    transform: translateY(0);
-    transition: transform 200ms;
-    width: 76px;
-  }
-
-  .cut-short {
-    width: 50px;
-  }
-  .cut-long{
-    width:95px;
-  }
-
-  .input:focus ~ .cut,
-  .input:not(:placeholder-shown) ~ .cut {
-    transform: translateY(8px);
-  }
-  */
-  .placeholder {
-    color: #65657b;
-    font-family: sans-serif;
-    left: 20px;
-    line-height: 14px;
-    pointer-events: none;
-    position: absolute;
-    transform-origin: 0 50%;
-    transition: transform 200ms, color 200ms;
-    top: 20px;
-  }
-
-  .input:focus ~ .placeholder,
-  .input:not(:placeholder-shown) ~ .placeholder {
-    transform: translateY(-30px) translateX(10px) scale(0.75);
-  }
-
-  .input:not(:placeholder-shown) ~ .placeholder {
-    color: #808097;
-  }
-
-  .input:focus ~ .placeholder {
-    color: #e1e1e2;
-  }
-
-  .submit {
-    background-color: #cbaab1;
-    border-radius: 12px;
-    border: 0;
-    box-sizing: border-box;
-    color: #eee;
-    cursor: pointer;
-    font-size: 18px;
-    height: 50px;
-    margin-top: 38px;
-    /*outline: 0;*/
-    text-align: center;
-    width: 100%;
-  }
-
-
-submit:hover {
-	background-color:#b18791;
+/* continue button*/
+.btnRegister {
+  border: none;
+  border-radius: 1.5rem;
+  padding: 2%;
+  background-color: #cbaab1;
+  color: #fff;
+  font-weight: 700;
+  font-size: large;
+  width: 25%;
+  cursor: pointer;
+  transition: background-color 0.4s ease;
+  align-content: center;
+  margin-left: 70%;
 }
 
-  .submit:active {
-    background-color: #cbaab1;
-  }
+.btnRegister:hover {
+  background: rgb(233, 233, 233);
+  color:#cbaab1;
+  /* Change the background color to red when the button is hovered over */
+}
 
+/* /ADDRESS/ */
+#address {
+  width: 100%;
+  margin-left: 30%;
+  padding: 5%;
+  border-radius: 30px;
+  box-shadow: 0 0 1em rgba(0, 0, 0, 0.0625);
+  background-color: #fff;
+  height: auto;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+input {
+  padding: 4px 28px;
+  border-radius: 10px;
+  margin: 5px auto;
+  border: 1px solid #918383;
+  background-color: #fff;
+  box-shadow: 1px 2px 1px 2px rgb(230, 229, 229);
+  color: #000000;
+  outline: none;
+  font-size: 16px;
+}
   .search-box {
     align-content: center;
     position: relative;
@@ -164,6 +131,8 @@ submit:hover {
     font-size: 22px;
     transition: all 0.4 ease;
   }
+
+  
 /* Responsive-css */
 @media(max-width:890px){
   header{

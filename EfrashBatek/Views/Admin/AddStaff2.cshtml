@@ -1,5 +1,7 @@
 ﻿@model EfrashBatek.ViewModel.RegisterViewModelStaff
-
+@{
+    Layout = "";
+}
 <html lang="en" dir="ltr">
 
 <head>
@@ -10,62 +12,65 @@
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <!-- BOOTSTRAB -->
-    <link rel="stylesheet" type="~/text/css"
+    <link rel="stylesheet" type="text/css"
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <!-- CSS -->
     <link rel="stylesheet" href="~/css/addseller.css">
 </head>
 
 <body>
-    <!-- SIDEBAR -->
-    <section id="sidebar">
-        <a href="#" class="brand">
-            <i class='bx bxs-smile'></i>
-            <span class="text">Efresh Beitak</span>
-        </a>
-        <ul class="side-menu top">
-            <li>
-                <a href="admin.html">
-                    <i class='bx bxs-dashboard'></i>
-                    <span class="text">Dashboard</span>
-                </a>
-            </li>
-            <li>
-                <a href="orders1.html">
-                    <i class='bx bx-list-ul'></i>
-                    <span class="text">Order List </span>
-                </a>
-            </li>
-            <li class="active">
-                <a href="addseller.html">
-                    <i class='bx bx-list-plus'></i>
-                    <span class="text">Add Seller</span>
-                </a>
-            </li>
-            <li>
-                <a href="addshop.html">
-                    <i class='bx bx-list-plus'></i>
-                    <span class="text">Add Shop</span>
-                </a>
-            </li>
-            <li>
-                <a href="seller details.html">
-                    <i class='bx bxs-group'></i>
-                    <span class="text">Seller Details</span>
-                </a>
-            </li>
-        </ul>
-    </section>
-    <!-- SIDEBAR -->
-    <!-- NAVBAR -->
-    <section id="content">
-        <nav>
-            <i class='bx bx-menu'></i>
-        </nav>
-    </section>
     <!-- NAVBAR -->
     <!--ADD SELLER FORM-->
+    <!--Layout -->
+<section id="sidebar">
+    <a asp-action="TrendingProducts" asp-controller="Home" class="brand">
+        <i class='bx bxs-smile'></i>
+        <span class="text">Efresh Beitak</span>
+    </a>
+    <ul class="side-menu top">
+        <li>
+            <a asp-action="Dashboard">
+                <i class='bx bxs-dashboard'></i>
+                <span class="text">Dashboard</span>
+            </a>
+        </li>
+        <li>
+            <a asp-action="Orders">
+                <i class='bx bx-list-ul'></i>
+                <span class="text">Order List </span>
+            </a>
+        </li>
+        <li class="active">
+            <a asp-action="AddStaff">
+                <i class='bx bx-list-plus'></i>
+                <span class="text">Add Seller</span>
+            </a>
+        </li>
+        <li>
+            <a asp-action="AddShop">
+                <i class='bx bx-list-plus'></i>
+                <span class="text">Add Shop</span>
+            </a>
+        </li>
+        <!--Why Seller Details-->
+        <li>
+            <a>
+                <i class='bx bxs-group'></i>
+                <span class="text">Seller Details</span>
+            </a>
+        </li>
+    </ul>
+</section>
+<!-- SIDEBAR -->
+<!-- NAVBAR -->
+<section id="content">
+    <nav>
+        <i class='bx bx-menu'></i>
+    </nav>
+</section>
       <section>
+   <form asp-action="SaveStaff" asp-controller="Admin">
+    <div asp-validation-summary="All" class="text-danger"></div>
     <div class="col-sm-12 col-md-12 col-lg-9 col-xl-9">
         <div id="address" role="tabpanel" aria-labelledby="address-tab">
             <h3 class="mb-4">Add Seller</h3>
@@ -129,8 +134,9 @@
             </div>
         </div>
     </div>
+    </form>
     </section>
     <!-- SCRIPT -->
-    <script src="js/script.js"></script>
-</body>
-</html>
+    <script src="~/js/script.js"></script>
+    </body>
+    </html>
