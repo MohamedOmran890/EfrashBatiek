@@ -81,12 +81,12 @@ namespace EfrashBatek.Controllers
                 UserId = user.Id,
                   ShopID = ans.ID
             };
-            var check = shop.GetById(ans.ID);
-            if(check==null)
-            {
-                return View("AddStaff", model);
+            //var check = shop.GetById(ans.ID);
+            //if(check==null)
+            //{
+            //    return View("AddStaff", model);
 
-            }
+            //}
             var result = await _userManager.CreateAsync(user, model.Password);
             if (result.Succeeded)
             {
@@ -95,12 +95,12 @@ namespace EfrashBatek.Controllers
 
                 // Redirect the user to the login page
                 _staff.Create(staff);
-                await EmailStaffService.SendEmail(model.Email, model.Username, model.Password, model.FirstName);
+              //  await EmailStaffService.SendEmail(model.Email, model.Username, model.Password, model.FirstName);
                 return Content("Done");
             }
 
-                if(check==null)
-                ModelState.AddModelError("","Not Found ShopNumber ");
+                //if(check==null)
+                //ModelState.AddModelError("","Not Found ShopNumber ");
             foreach (var error in result.Errors)
             {
                 ModelState.AddModelError("", error.Description);
