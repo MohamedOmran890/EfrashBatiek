@@ -26,29 +26,10 @@
 
   <title>Efresh Beitak</title>
 
-   
-  <style>
-    .overlay {
-      position: absolute;
-      top: 0;
-      justify-content: center;
-      align-items: center;
-      background-color: rgba(0, 0, 0, 0.6);
-      height: 100%;
-      width: 100%;
-      display: none;
-    }
-  
-    .dialog-container {
-      background-color: white;
-      padding: 20px;
-      border-radius: 8px;
-    }
-  </style>
 </head>
 
 <body>
-  <!-- 
+
   <section id="sidebar">
     <a href="#" class="brand">
       <i class='bx bxs-smile'></i>
@@ -81,103 +62,290 @@
       </li>
     </ul>
   </section>
- -->
+  <!-- NAVBAR -->
+  <!-- NAVBAR -->
+  <section id="content">
 
-
-  <!-- trending-products-section -->
-  <div class="center-text">
-    <h2>Our Trending <span>products</span></h2>
-  </div>
-  <section class="trending-product" id="trending">
-    <div class="product-box">
-      <div class="product-main">
-        <div class="product-grid">
-          
-            <div class="showcase-banner">
-              <img src="image/products/Brown right L shaped sofa.jpg" width="300" class="product-img hover">
-              <img src="image/products/LF-L000301.jpg" class="product-img default" width="300">
-              <p class="showcase-badge">15%</p>
-              <div class="showcase-actions">
-                <button class="btn-action">
-                  <a href="edititem.html">
-                  <i class='bx bxs-edit'></i> </a>
-                </button>
-                <div class="overlay" id="confirmation-dialog">
-                  <div class="dialog-container">
-                    <h2>Confirm deleteing</h2>
-                    <button id="confirm-no">Cancel</button>
-                    <button id="confirm-yes">Confirm</button>
-                  </div>
-                </div>
-                  <button class="btn-action" id="delete-button" >
-                    <ion-icon id="delete-button" name="trash-outline"></ion-icon>
-                  </button>
-                  
-              </div>
-            </div>
-            <div class="showcase-content">
-              <a href="product details.html" class="showcase-category">Bed Room</a>
-              <a href="product details.html">
-                <h3 class="showcase-title">Bed Room</h3>
-              </a>
-              <div class="showcase-rating">
-                <ion-icon name="star"></ion-icon>
-                <ion-icon name="star"></ion-icon>
-                <ion-icon name="star"></ion-icon>
-                <ion-icon name="star-outline"></ion-icon>
-                <ion-icon name="star-outline"></ion-icon>
-              </div>
-              <div class="price-box">
-                <p class="price">$48.00</p>
-                <del>$75.00</del>
-              </div>
-
-              <div class="showcase-banner">
-                <img src="image/products/Brown right L shaped sofa.jpg" width="300" class="product-img hover">
-                <img src="image/products/LF-L000301.jpg" class="product-img default" width="300">
-                <p class="showcase-badge">15%</p>
-                <div class="showcase-actions">
-                  <button class="btn-action">
-                    <a href="edititem.html">
-                    <i class='bx bxs-edit'></i> </a>
-                  </button>
-                  <div class="overlay" id="confirmation-dialog">
-                    <div class="dialog-container">
-                      <h2>Confirm deleteing</h2>
-                      <button id="confirm-no">Cancel</button>
-                      <button id="confirm-yes">Confirm</button>
-                    </div>
-                  </div>
-                    <button class="btn-action" id="delete-button" >
-                      <ion-icon id="delete-button" name="trash-outline"></ion-icon>
-                    </button>
-                    
-                </div>
-              </div>
-              <di class="showcase-content">
-                <a href="product details.html" class="showcase-category">Bed Room</a>
-                <a href="product details.html">
-                  <h3 class="showcase-title">Bed Room</h3>
-                </a>
-                <div class="showcase-rating">
-                  <ion-icon name="star"></ion-icon>
-                  <ion-icon name="star"></ion-icon>
-                  <ion-icon name="star"></ion-icon>
-                  <ion-icon name="star-outline"></ion-icon>
-                  <ion-icon name="star-outline"></ion-icon>
-                </div>
-                <div class="price-box">
-                  <p class="price">$48.00</p>
-                  <del>$75.00</del>
-                </div>
-              
-    
-            
-    </div>
-    </div>
+    <!-- NAVBAR -->
+    <nav>
+      <i class='bx bx-menu'></i>
+      <a href="#" class="nav-link">Categories</a>
+      <form action="#">
+        <div class="form-input">
+          <input type="search" placeholder="Search...">
+          <button type="submit" class="search-btn"><i class='bx bx-search'></i></button>
+        </div>
+      </form>
+    </nav>
   </section>
-  
-<!-- //// -->
+
+  <!-- NAVBAR -->
+  <div class="product-box">
+
+    <!--
+    - PRODUCT GRID
+  -->
+    <br>
+    <br>
+    <div class="product-main">
+      <div class="product-grid">
+
+        <div class="showcase">
+
+          <div class="showcase-banner">
+
+            <img src="  image/products/Brown right L shaped sofa.jpg" alt="Mens Winter Leathers Jackets" width="300"
+              class="product-img hover">
+            <img src="  image/products/LF-L000301.jpg" alt="MEN Yarn Fleece Full-Zip Jacket" class="product-img default"
+              width="300">
+
+            <p class="showcase-badge">15%</p>
+
+            <div class="showcase-actions">
+
+              <button class="btn-action">
+                <i class='bx bxs-edit'></i>
+              </button>
+
+              <button class="btn-action">
+                <i class='bx bxs-trash-alt'></i>
+              </button>
+
+            </div>
+
+          </div>
+
+          <div class="showcase-content">
+
+            <a href="product details.html" class="showcase-category">Bed Room</a>
+
+            <a href="product details.html">
+              <h3 class="showcase-title">Bed Room</h3>
+            </a>
+
+            <div class="showcase-rating">
+              <ion-icon name="star"></ion-icon>
+              <ion-icon name="star"></ion-icon>
+              <ion-icon name="star"></ion-icon>
+              <ion-icon name="star-outline"></ion-icon>
+              <ion-icon name="star-outline"></ion-icon>
+            </div>
+
+            <div class="price-box">
+              <p class="price">$48.00</p>
+              <del>$75.00</del>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="showcase">
+
+          <div class="showcase-banner">
+
+            <img src="  image/products/Brown right L shaped sofa.jpg" alt="Mens Winter Leathers Jackets" width="300"
+              class="product-img hover">
+            <img src="  image/products/LF-L000301.jpg" alt="MEN Yarn Fleece Full-Zip Jacket" class="product-img default"
+              width="300">
+
+            <p class="showcase-badge">15%</p>
+
+            <div class="showcase-actions">
+
+              <button class="btn-action">
+                <i class='bx bxs-edit'></i>
+              </button>
+
+              <button class="btn-action">
+                <i class='bx bxs-trash-alt'></i>
+              </button>
+
+            </div>
+
+          </div>
+
+          <div class="showcase-content">
+
+            <a href="product details.html" class="showcase-category">Bed Room</a>
+
+            <a href="product details.html">
+              <h3 class="showcase-title">Bed Room</h3>
+            </a>
+
+            <div class="showcase-rating">
+              <ion-icon name="star"></ion-icon>
+              <ion-icon name="star"></ion-icon>
+              <ion-icon name="star"></ion-icon>
+              <ion-icon name="star-outline"></ion-icon>
+              <ion-icon name="star-outline"></ion-icon>
+            </div>
+
+            <div class="price-box">
+              <p class="price">$48.00</p>
+              <del>$75.00</del>
+            </div>
+
+          </div>
+
+        </div>
+        <div class="showcase">
+
+          <div class="showcase-banner">
+
+            <img src="  image/products/Brown right L shaped sofa.jpg" alt="Mens Winter Leathers Jackets" width="300"
+              class="product-img hover">
+            <img src="  image/products/LF-L000301.jpg" alt="MEN Yarn Fleece Full-Zip Jacket" class="product-img default"
+              width="300">
+
+            <p class="showcase-badge">15%</p>
+
+            <div class="showcase-actions">
+
+              <button class="btn-action">
+                <i class='bx bxs-edit'></i>
+              </button>
+
+              <button class="btn-action">
+                <i class='bx bxs-trash-alt'></i>
+              </button>
+
+            </div>
+
+          </div>
+
+          <div class="showcase-content">
+
+            <a href="product details.html" class="showcase-category">Bed Room</a>
+
+            <a href="product details.html">
+              <h3 class="showcase-title">Bed Room</h3>
+            </a>
+
+            <div class="showcase-rating">
+              <ion-icon name="star"></ion-icon>
+              <ion-icon name="star"></ion-icon>
+              <ion-icon name="star"></ion-icon>
+              <ion-icon name="star-outline"></ion-icon>
+              <ion-icon name="star-outline"></ion-icon>
+            </div>
+
+            <div class="price-box">
+              <p class="price">$48.00</p>
+              <del>$75.00</del>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="showcase">
+
+          <div class="showcase-banner">
+
+            <img src="  image/products/Brown right L shaped sofa.jpg" alt="Mens Winter Leathers Jackets" width="300"
+              class="product-img hover">
+            <img src="  image/products/LF-L000301.jpg" alt="MEN Yarn Fleece Full-Zip Jacket" class="product-img default"
+              width="300">
+
+            <p class="showcase-badge">15%</p>
+
+            <div class="showcase-actions">
+
+              <button class="btn-action">
+                <i class='bx bxs-edit'></i>
+              </button>
+
+              <button class="btn-action">
+                <i class='bx bxs-trash-alt'></i>
+              </button>
+
+            </div>
+
+          </div>
+
+          <div class="showcase-content">
+
+            <a href="product details.html" class="showcase-category">Bed Room</a>
+
+            <a href="product details.html">
+              <h3 class="showcase-title">Bed Room</h3>
+            </a>
+
+            <div class="showcase-rating">
+              <ion-icon name="star"></ion-icon>
+              <ion-icon name="star"></ion-icon>
+              <ion-icon name="star"></ion-icon>
+              <ion-icon name="star-outline"></ion-icon>
+              <ion-icon name="star-outline"></ion-icon>
+            </div>
+
+            <div class="price-box">
+              <p class="price">$48.00</p>
+              <del>$75.00</del>
+            </div>
+
+          </div>
+
+        </div>
+        <div class="showcase">
+
+          <div class="showcase-banner">
+
+            <img src="  image/products/Brown right L shaped sofa.jpg" alt="Mens Winter Leathers Jackets" width="300"
+              class="product-img hover">
+            <img src="  image/products/LF-L000301.jpg" alt="MEN Yarn Fleece Full-Zip Jacket" class="product-img default"
+              width="300">
+
+            <p class="showcase-badge">15%</p>
+
+            <div class="showcase-actions">
+
+              <button class="btn-action">
+                <i class='bx bxs-edit'></i>
+              </button>
+
+              <button class="btn-action">
+                <i class='bx bxs-trash-alt'></i>
+              </button>
+
+            </div>
+
+          </div>
+
+          <div class="showcase-content">
+
+            <a href="product details.html" class="showcase-category">Bed Room</a>
+
+            <a href="product details.html">
+              <h3 class="showcase-title">Bed Room</h3>
+            </a>
+
+            <div class="showcase-rating">
+              <ion-icon name="star"></ion-icon>
+              <ion-icon name="star"></ion-icon>
+              <ion-icon name="star"></ion-icon>
+              <ion-icon name="star-outline"></ion-icon>
+              <ion-icon name="star-outline"></ion-icon>
+            </div>
+
+            <div class="price-box">
+              <p class="price">$48.00</p>
+              <del>$75.00</del>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- //// -->
   <div class="overlay" id="confirmation-dialog">
     <div class="dialog-container">
       <h2>Confirm deleteing</h2>
@@ -185,28 +353,9 @@
       <button id="confirm-yes">Confirm</button>
     </div>
   </div>
-  <script>
-    $(document).ready(function () {
-      $("#cart").click(function () {
-        $(".cartcard").css("position", "fixed");
-        $(".cartcard").css("right", "0px")
-        $("#close").css("right", "0");
-        $(".cartcard").css("z-index", "99999999");
-        $(".brand").css("height", "100vh");
-        $(".down").hide()
-        $(".main-text").css("opacity", "0.5")
-        $("header").addClass("sticky");
-      })
-    })
-    $(document).ready(function () {
-      $("#close").click(function () {
-        $("header").show()
-        $(".main-text").css("opacity", "1")
-        $(".down").fadeIn()
-      })
-    })
-  </script>
+  <script src="js/script.js"></script>
   <script src="js/cart.js"></script>
   <script src="https://unpkg.com/ionicons@latest/dist/ionicons.js"></script>
 </body>
+
 </html>

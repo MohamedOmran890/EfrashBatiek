@@ -1,14 +1,27 @@
 ﻿using EfrashBatek.Models;
+using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 
 namespace EfrashBatek.service
 {
     public interface ICartRepository
     {
-        void Create(Cart brand);
-        int Delete(int Id);
-        List<Cart> GetAll();
-        Cart GetById(int Id);
-        int Update(int id, Cart cart);
+        ICollection<Cart_Item> LoadFromCookie();
+
+        void AddToCart(int itemID);
+
+        void SaveToCookie();
+
+        void RemoveItem(int itemId);
+
+        void Clear();
+
+        double GetTotal();
+        //Cart getCartUser();
+
+        void UpdateItemQuantity(int itemId, int newQuantity);
+
     }
 }

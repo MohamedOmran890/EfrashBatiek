@@ -21,25 +21,25 @@
         </a>
         <ul class="side-menu top">
             <li>
-                <a asp-action="Dashboard">
+                <a asp-action="Dashboard" asp-controller="Admin">
                     <i class='bx bxs-dashboard'></i>
                     <span class="text">Dashboard</span>
                 </a>
             </li>
             <li>
-                <a asp-action="Orders">
+                <a asp-action="OrderAdmin" asp-controller="Order">
                     <i class='bx bx-list-ul'></i>
                     <span class="text">Order List </span>
                 </a>
             </li>
             <li class="active">
-                <a asp-action="AddStaff">
+                <a asp-action="AddStaff" asp-controller="Admin">
                     <i class='bx bx-list-plus'></i>
                     <span class="text">Add Seller</span>
                 </a>
             </li>
             <li>
-                <a asp-action="AddShop">
+                <a asp-action="AddShop" >
                     <i class='bx bx-list-plus'></i>
                     <span class="text">Add Shop</span>
                 </a>
