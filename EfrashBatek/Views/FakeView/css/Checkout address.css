@@ -41,7 +41,9 @@ input[type="number"] {
 
 /* remove both the arrows and the spinner functionality */
 
-
+.aaaa{
+  margin-block-end: 25%;
+}
 /* ICONS*/
 .row {
   height: 400px;
