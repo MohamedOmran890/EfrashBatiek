@@ -44,14 +44,12 @@ namespace EfrashBatek.service
                 .FirstOrDefault(w => w.ID == id);
         }
 
-        public WishList GetWishlistByCustomer(int customerId)
+        public Customer GetCustomerWithUser(string user)
         {
-            return context.WishLists
-                .Include(w => w.Items)
-                .Include(w => w.Customer)
-                // Use FirstOrDefault to get the first element or null if none exists
-                .FirstOrDefault(w => w.CustomerID == customerId);
+            var chechk = context.Customers.FirstOrDefault(x => x.UserId == user);
+            return chechk;
         }
+
 
 
 
