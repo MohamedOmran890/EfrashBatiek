@@ -1,4 +1,4 @@
-﻿@model EfrashBatek.Models.Item
+﻿@model EfrashBatek.ViewModel.ItemVM
 
 @{
     ViewData["Title"] = "Delete";
@@ -39,31 +39,31 @@
             @Html.DisplayNameFor(model => model.Image)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Image)
+            <img src="~/Image/Items/@Model.Image" />
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Image2)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Image2)
+            <img src="~/Image/Items/@Model.Image2" />
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Image3)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Image3)
+            <img src="~/Image/Items/@Model.Image3" />
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Image4)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Image4)
+            <img src="~/Image/Items/@Model.Image4" />
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Image5)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Image5)
+            <img src="~/Image/Items/@Model.Image5" />
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.discount)

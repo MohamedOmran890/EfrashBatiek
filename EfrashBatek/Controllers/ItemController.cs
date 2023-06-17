@@ -4,7 +4,7 @@ namespace EfrashBatek.Controllers
 {
     public class ItemController : Controller
     {
-        public IActionResult Index()
+        public IActionResult ProductaDetails()
         {
             return View();
         }

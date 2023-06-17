@@ -285,6 +285,7 @@
   <ItemGroup>
     <Folder Include="wwwroot\Image\custom\" />
     <Folder Include="wwwroot\Image\Items\" />
+    <Folder Include="wwwroot\Image\Items\" />
   </ItemGroup>
 
   <ItemGroup>
