@@ -12,7 +12,7 @@ namespace EfrashBatek.Models
 
         [JsonProperty]
         public int Quantity { get; set; }
-
+        [JsonProperty]
         public int CartID { get; set; }
 
         public virtual Cart Cart { get; set; }

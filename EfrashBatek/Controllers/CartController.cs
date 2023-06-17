@@ -37,10 +37,17 @@ namespace EfrashBatek.Controllers
                 if(item.Item != null) {
                     totalPrice += item.Quantity * (int)item.Item.Price;
                 }
-              
+                ViewBag.cartID = item.CartID;
+
             }
             ViewBag.TotalPrice = totalPrice;
-            var test = items;
+
+           
+          
+            if(items.Count == 0)
+            {
+                return View("empty");
+            }
             return View(items);
         }
         [HttpPost]
