@@ -1,10 +1,10 @@
 const allSideMenu = document.querySelectorAll('#sidebar .side-menu.top li a');
 
-allSideMenu.forEach(item=> {
+allSideMenu.forEach(item => {
 	const li = item.parentElement;
 
 	item.addEventListener('click', function () {
-		allSideMenu.forEach(i=> {
+		allSideMenu.forEach(i => {
 			i.parentElement.classList.remove('active');
 		})
 		li.classList.add('active');
@@ -17,12 +17,28 @@ allSideMenu.forEach(item=> {
 // TOGGLE SIDEBAR
 const menuBar = document.querySelector('#content nav .bx.bx-menu');
 const sidebar = document.getElementById('sidebar');
-
+const address = document.getElementById("address");
+const deaitlsData = document.querySelector(".details");
+const form = document.querySelector(".form");
 menuBar.addEventListener('click', function () {
 	sidebar.classList.toggle('hide');
+	sidebar.classList.toggle('d-block');
+
+	if (document.body.contains(form)) {
+		form.classList.toggle("ml-5");
+
+	}
+
+
+	if (document.body.contains(address)) {
+		address.classList.toggle("ml-12");
+	} else {
+
+		deaitlsData.classList.toggle("ml-5");
+	}
+
 })
-
-
+// End Code Js
 
 
 
@@ -33,10 +49,10 @@ const searchButtonIcon = document.querySelector('#content nav form .form-input b
 const searchForm = document.querySelector('#content nav form');
 
 searchButton.addEventListener('click', function (e) {
-	if(window.innerWidth < 576) {
+	if (window.innerWidth < 576) {
 		e.preventDefault();
 		searchForm.classList.toggle('show');
-		if(searchForm.classList.contains('show')) {
+		if (searchForm.classList.contains('show')) {
 			searchButtonIcon.classList.replace('bx-search', 'bx-x');
 		} else {
 			searchButtonIcon.classList.replace('bx-x', 'bx-search');
@@ -48,16 +64,16 @@ searchButton.addEventListener('click', function (e) {
 
 
 
-if(window.innerWidth < 768) {
+if (window.innerWidth < 768) {
 	sidebar.classList.add('hide');
-} else if(window.innerWidth > 576) {
+} else if (window.innerWidth > 576) {
 	searchButtonIcon.classList.replace('bx-x', 'bx-search');
 	searchForm.classList.remove('show');
 }
 
 
 window.addEventListener('resize', function () {
-	if(this.innerWidth > 576) {
+	if (this.innerWidth > 576) {
 		searchButtonIcon.classList.replace('bx-x', 'bx-search');
 		searchForm.classList.remove('show');
 	}
@@ -68,7 +84,7 @@ window.addEventListener('resize', function () {
 const switchMode = document.getElementById('switch-mode');
 
 switchMode.addEventListener('change', function () {
-	if(this.checked) {
+	if (this.checked) {
 		document.body.classList.add('dark');
 	} else {
 		document.body.classList.remove('dark');

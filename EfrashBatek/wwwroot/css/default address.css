@@ -1,182 +1,181 @@
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  scroll-behavior: smooth;
-  font-family: 'Jost', sans-serif;
-  list-style: none;
-  text-decoration: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-family: 'Jost', sans-serif;
+    list-style: none;
+    text-decoration: none;
 }
 
 @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap");
 
 body {
-  background: #fbfbfb;
-  font-family: "Roboto", sans-serif;
+    background: #fbfbfb;
+    font-family: "Roboto", sans-serif;
 }
 
 
 .row {
-  margin: 2%;
+    margin: 2%;
 }
 
 a, a:hover, a:focus, a:active {
-  text-decoration: none;
-  color: inherit;
+    text-decoration: none;
+    color: inherit;
 }
 /*-------------------------------------------------------------------------------- ICOONS------------------------------------------------------------------------------------------------------------------- */
 .x {
-  background: #fff;
-  block-size: 100px;
-  box-shadow: 0 0 1em rgba(0, 0, 0, 0.0625);
-  inline-size: 800px;
-  margin-top: 8%;
-  margin-right: 22%;
-  margin-bottom: 1%;
-  width: 67%;
-  border-radius: 2em;
-  margin-left: 4.5%
+    background: #fff;
+    block-size: 100px;
+    box-shadow: 0 0 1em rgba(0, 0, 0, 0.0625);
+    inline-size: 800px;
+    margin-top: 8%;
+    margin-right: 22%;
+    margin-bottom: 1%;
+    width: 67%;
+    border-radius: 2em;
+    margin-left: 4.5%
 }
 
 ul.icons {
-  margin-inline-end: 2%;
-  margin-top: 3%;
-  display: flex;
-  justify-content: space-between;
+    margin-inline-end: 2%;
+    margin-top: 3%;
+    display: flex;
+    justify-content: space-between;
 }
 
 .icon {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100px;
-  block-size: 1em;
-  display: inline-block;
-  fill: currentColor;
-  inline-size: 1em;
-  vertical-align: middle;
-
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+    block-size: 1em;
+    display: inline-block;
+    fill: currentColor;
+    inline-size: 1em;
+    vertical-align: middle;
 }
 
 .word {
-  color: #8a8b8b;
-  transition: all .42s ease;
+    color: #8a8b8b;
+    transition: all .42s ease;
 }
 
-.word h2 {
-  margin-left: -16%;
-  font-size: medium;
-}
+    .word h2 {
+        margin-left: -16%;
+        font-size: medium;
+    }
 
-.word:hover i,
-.word:hover h2 {
-  color: #cbaab1;
-  transform: scale(1.1);
-}
+    .word:hover i,
+    .word:hover h2 {
+        color: #cbaab1;
+        transform: scale(1.1);
+    }
 
 /*------------------------------------------------- ICONS-------------------------------------------*/
 
 
 /* ----------------------------------------EDIT ICON-------------------------------- */
 .bxs-edit {
-  display: flex;
-  justify-content: space-between;
-  /* align-items: flex-start; */
-  margin-bottom: 5px;
-  margin-left: 380px;
-  display: inline-block;
-  padding: -2px;
+    display: flex;
+    justify-content: space-between;
+    /* align-items: flex-start; */
+    margin-bottom: 5px;
+    display: inline-block;
+    padding: -2px;
 }
 
 /* ----------------------------------------EDIT ICON-------------------------------- */
 
 /* ---------------------------------------Next button---------------------------*/
 .btnRegister {
-  margin: -2% 1% 2%;
-  float: right;
-  border: none;
-  border-radius: 1.5rem;
-  padding: 1.5%;
-  background: #e2dfdf;
-  color: #fff;
-  font-weight: 600;
-  width: 25%;
-  cursor: pointer;
-  transition: background-color 0.4s ease;
+    margin: -2% 1% 2%;
+    float: right;
+    border: none;
+    border-radius: 1.5rem;
+    padding: 1.5%;
+    background: #cbaab1;
+    color: #fff;
+    font-weight: 600;
+    width: 25%;
+    cursor: pointer;
+    transition: background-color 0.4s ease;
+    box-shadow: 0 0 1em rgba(0, 0, 0, 0.0625);
 }
 
-.btnRegister:hover {
-  background-color: #cbaab1;
-}
+    .btnRegister:hover {
+        background-color: #f4f4f4;
+        color: #cbaab1;
+    }
 
 /* ----------------------------------------Next button---------------------------*/
 
 /*--------------------------------------------------ADDRESS----------------------------------*/
 #address {
-  padding: 50px;
-  margin: 20px 30px;
-  border-radius: 30px;
-  height: auto;
-  background-color: #fff;
-  box-shadow: 0 0 1em rgba(0, 0, 0, 0.0625);
+    padding: 50px;
+    margin: 20px 30px;
+    border-radius: 30px;
+    height: auto;
+    background-color: #fff;
+    box-shadow: 0 0 1em rgba(0, 0, 0, 0.0625);
 }
 
 .form-group {
-  margin-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
 }
 
 .address input {
-  padding: 4px 28px;
-  border-radius: 10px;
-  margin: 5px auto;
-  border: 1px solid #918383;
-  background-color: #f3f4f6;
-  box-shadow: 1px 2px 1px 2px rgb(230, 229, 229);
-  color: #000000;
-  outline: none;
-  font-size: 16px;
+    padding: 4px 28px;
+    border-radius: 10px;
+    margin: 5px auto;
+    border: 1px solid #918383;
+    background-color: #f3f4f6;
+    box-shadow: 1px 2px 1px 2px rgb(230, 229, 229);
+    color: #000000;
+    outline: none;
+    font-size: 16px;
 }
 
 .bx-plus-circle {
-  color: #cbaab1;
+    color: #cbaab1;
 }
 
 .new {
-  color: #cbaab1;
+    color: #cbaab1;
 }
 
 .addressFORM {
-  /* display: flex;*/
-  flex-wrap: wrap;
-  justify-content: space-between;
-  background-color: #fff;
+    /* display: flex;*/
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: #fff;
 }
 
 .address-row {
-  width: 100%;
-  /* background-color: #8B0000; */
-  margin-bottom: 20px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+    width: 100%;
+    /* background-color: #8B0000; */
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
 
 .addressBOX {
-  background-color: #fbfbfb;
-  width: 48%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin: 1%;
-  border: none;
-  box-shadow: 0 0 1em rgba(0, 0, 0, 0.12);
+    background-color: #fbfbfb;
+    width: 48%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 1%;
+    border: none;
+    box-shadow: 0 0 1em rgba(0, 0, 0, 0.12);
 }
 
 .radio-pair {
-  background-color: #8B0000;
-  display: inline-block;
-
+    background-color: #8B0000;
+    display: inline-block;
 }
 
 /*--------------------------------------------------ADDRESS----------------------------------*/
@@ -185,9 +184,9 @@ ul.icons {
 
 /* -------------------------------------------------ADDRESS DETAAILS -----------------------------  */
 .ADDRESSDETAILS {
-  padding: 0px;
-  margin: -12% 0% 5% 6%;
-  /* background-color: #8B0000; */
+    padding: 0px;
+    margin: -12% 0% 5% 6%;
+    /* background-color: #8B0000; */
 }
 
 /* -------------------------------------------------ADDRESS DETAAILS -----------------------------  */
@@ -196,7 +195,7 @@ ul.icons {
 
 /* -------------------------------------------------RADIO BUTTON----------------------------- */
 .radio {
-  text-align: left;
+    text-align: left;
 }
 
 /* -------------------------------------------------RADIO BUTTON----------------------------- */
@@ -204,37 +203,37 @@ ul.icons {
 
 /*-------------------------------------------SUMMARY-----------------------------------------*/
 aside {
-  position: relative;
-  /*width: 30%;*/
+    position: relative;
+    /*width: 30%;*/
 }
 
 .summary {
-  margin: 7% 5% 0;
-  background-color: #eee;
-  border: 1px solid #aaa;
-  padding: 1rem;
-  flex: 1;
-  /*width: 269px;*/
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  border-radius: 30px;
+    margin: 7% 5% 0;
+    background-color: #eee;
+    border: 1px solid #aaa;
+    padding: 1rem;
+    flex: 1;
+    /*width: 269px;*/
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 30px;
 }
 
 .summary-total-items {
-  color: #666;
-  font-size: 0.875rem;
-  text-align: center;
+    color: #666;
+    font-size: 0.875rem;
+    text-align: center;
 }
 
 .summary-subtotal,
 .summary-total {
-  border-top: 1px solid #ccc;
-  border-bottom: 1px solid #ccc;
-  clear: both;
-  margin: 1rem 0;
-  overflow: hidden;
-  padding: 0.5rem 0;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    clear: both;
+    margin: 1rem 0;
+    overflow: hidden;
+    padding: 0.5rem 0;
 }
 
 .subtotal-title,
@@ -243,111 +242,140 @@ aside {
 .total-value,
 .promo-title,
 .promo-value {
-  color: #111;
-  float: left;
-  width: 50%;
+    color: #111;
+    float: left;
+    width: 50%;
 }
 
 .summary-promo {
-  -webkit-transition: all .3s ease;
-  -moz-transition: all .3s ease;
-  -o-transition: all .3s ease;
-  transition: all .3s ease;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
 }
 
 .promo-title {
-  float: left;
-  width: 70%;
+    float: left;
+    width: 70%;
 }
 
 .promo-value {
-  color: #8B0000;
-  float: left;
-  text-align: right;
-  width: 30%;
+    color: #8B0000;
+    float: left;
+    text-align: right;
+    width: 30%;
 }
 
 /* .summary-delivery {
   padding-bottom: 3rem;
 } */
 .summary-delivery {
-  max-height: 150px; /* Set the maximum height for the container */
-  overflow-y: auto;
-  overflow-x:hidden ; /* Enable vertical scrolling */
+    max-height: 150px; /* Set the maximum height for the container */
+    overflow-y: auto;
+    overflow-x: hidden; /* Enable vertical scrolling */
 }
+
 .subtotal-value,
 .total-value {
-  text-align: right;
+    text-align: right;
 }
 
 .total-title {
-  font-weight: bold;
-  text-transform: uppercase;
+    font-weight: bold;
+    text-transform: uppercase;
 }
 
 .summary-checkout {
-  display: block;
+    display: block;
 }
 
 .checkout-cta {
-  display: block;
-  float: none;
-  font-size: 0.75rem;
-  text-align: center;
-  text-transform: uppercase;
-  padding: 0.625rem 0;
-  width: 100%;
+    display: block;
+    float: none;
+    font-size: 0.75rem;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 0.625rem 0;
+    width: 100%;
 }
 
 .summary-delivery-selection {
-  background-color: #fff;
-  border: 1px solid #eee;
-  border-radius: 4px;
-  display: block;
-  font-size: 0.625rem;
-  height: 34px;
-  width: 100%;
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    display: block;
+    font-size: 0.625rem;
+    height: 34px;
+    width: 100%;
 }
 /******************************************************************************scroll**************************************************/
 /* width */
 ::-webkit-scrollbar {
-  width: 8px;
+    width: 8px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px grey; 
-  border-radius: 10px;
-  
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
 }
- 
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #cbaab1; 
-  border-radius: 10px;
-  
+    background: #cbaab1;
+    border-radius: 10px;
 }
 
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #94777d; 
-  transition: background-color 0.8s ease;
-}
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #94777d;
+        transition: background-color 0.8s ease;
+    }
+
 /*-------------------------------- SUMMARRY-------------------------------- */
-.x{
-  width:88%;
-  margin-left: 6%;
- }
+.x {
+    width: 88%;
+    margin-left: 6%;
+}
+
+.steps {
+    padding: 25px 20px !important;
+    margin: 0px !important;
+}
+
+@media(max-width:1300px) {
+    .steps {
+        width: 69%;
+        margin-left: 37px !important;
+    }
+}
 
 /*-------------------------------- Responsive-css-------------------------- */
-@media screen and (min-width:769) and (max-width:990){
-
-
+@media screen and (min-width:769px) and (max-width:990px) {
+    .steps {
+        width: 91%;
+    }
 }
 /* TABLET */
 @media(max-width:768px) {
- .x{
-  width:85%;
-  margin-left: 7.5%;
- }
+    .steps {
+        width: 91%;
+    }
+
+    .x {
+        width: 85%;
+        margin-left: 7.5%;
+    }
+
+    .addressBOX {
+        width: 100%;
+    }
+}
+
+@media(max-width:575px) {
+    .steps {
+        width: 90% !important;
+        max-height: 80px;
+        align-items: center;
+    }
 }

@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- CSS-link -->
     <link rel="stylesheet" href="~/css/cart.css">
-  
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600;700&display=swap"
@@ -39,37 +39,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
     <!-- Code by Angela Delise
     https://codepen.io/angeladelise/pen/yLJdgYx -->
-
     @*<link rel="stylesheet" href="css/cart.css">*@
     <link rel="stylesheet" href="~/css/main.css">
 
 
-    @*<!--Address css-->*@
-    
-    <link rel="stylesheet" href="~/css/Checkout address.css">
-    @*<!--default Address css-->*@
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600;700&display=swap"
-          rel="stylesheet">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-          integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-          crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="~/css/default address.css">
-  
 
 
-
-
-
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600;700&display=swap"
@@ -91,98 +66,98 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
           integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
           crossorigin="anonymous" referrerpolicy="no-referrer" />
-   
+
 
     <title>Efresh Beitak</title>
 </head>
 
 
 <body>
- 
+
     <header>
 
-        <a href="Home" class="logo"><img src="~/Image/logo.png" alt=""></a>
+        <a href="/Home/TrendingProducts" class="logo"><img src="~/Image/logo.png" alt=""></a>
 
         <ul class="navmenu">
-            <li><a asp-controller="Item" asp-action="Index" >Products</a></li>
+            <li><a asp-controller="Item" asp-action="Index">Products</a></li>
             <li><a asp-controller="Home" asp-action="TrendingProducts">Trends</a></li>
             <li><a asp-controller="Customs" asp-action="Create">Custom order</a></li>
             <li><a asp-controller="Designs" asp-action="Index">Designs</a></li>
-          
-          
+
+
 
         </ul>
 
 
         <div class="nav-icon">
-            <a  asp-controller="" asp-action=""><i class='bx bx-search'></i></a>
+            <a asp-controller="" asp-action=""><i class='bx bx-search'></i></a>
             <a asp-controller="MyProfile" asp-action="UpdateProfile"><i class='bx bx-user'></i></a>
-            <a asp-controller="Cart" asp-action="Cart"><i class='bx bx-cart'></i></a>
-            <a asp-controller="" asp-action=""><i class='bx bx-heart' undefined></i></a>
+            <a asp-controller="Cart" asp-action="Index"><i class='bx bx-cart'></i></a>
+            <a asp-controller="WishList" asp-action="Index"><i class='bx bx-heart' undefined></i></a>
             <div class="bx bx-menu" id="menu-icon"></div>
         </div>
 
 
     </header>
 
-   
-   @RenderBody()
+
+    @RenderBody()
     <footer>
 
-   
-     
 
-    <!-- contact-section -->
-    <section class="contact">
-        <div class="contact-info">
-            <div class="first-info">
-                <img src="~/Image/logo.png" alt="">
-                <p>+201004443226</p>
-                <p>efresh.beitak@gmail.com</p>
 
-            </div>
 
-            <div class="second-info">
-                <h4>Support</h4>
-                <a asp-action="ContactUs" asp-controller="Home">
-                    <p>Contact us</p>
-                </a>
-                <a asp-action="AboutUs" asp-controller="Home">
-                    <p>About page</p>
-                </a>
-                <p>Shopping & Resturns</p>
-                <a asp-action="Privacy" asp-controller="Home">
+        <!-- contact-section -->
+        <section class="contact">
+            <div class="contact-info">
+                <div class="first-info">
+                    <img src="~/Image/logo.png" alt="">
+                    <p>+201004443226</p>
+                    <p>efresh.beitak@gmail.com</p>
 
+                </div>
+
+
+                <div class="second-info">
+                    <h4>Support</h4>
+                    <a href="contact us.html">
+                        <p>Contact us</p>
+                    </a>
+                    <a href="about us.html">
+                        <p>About page</p>
+                    </a>
+                    <p>Shopping & Resturns</p>
                     <p>Privacy</p>
-                </a>
-               
-            </div>
+                </div>
 
-            <div class="third-info">
-                    <a asp-action="Index" asp-controller="Category" asp-route-Category="Category">Shop</a>
-                    <a asp-action="Index" asp-controller="Category" asp-route-Category="Category">Home</a>
-                    <a asp-action="Index" asp-controller="Category" asp-route-Category="Category">Furniture</a>
-                    <a asp-action="Index" asp-controller="Category" asp-route-Category="Category">kitchen</a>
-            </div>
+                <div class="third-info">
+                    <h4>category</h4>
+                    <p>Home Appliances</p>
+                    <p>Kitchen utensils</p>
+                    <p>Furniture</p>
+                    <p>kitchen</p>
+                </div>
 
-            <div class="five">
-                <h4>JOIN OUR EMAIL NEWSLETTER</h4>
-                <form>
-                    <div class="form-group">
-                        <input type="text" class="Input" placeholder="Enter Your Email." /><br><br>
-                        <button type="submit" class="btn btn-default submit">
-                            Submit
-                        </button>
-                    </div>
-                </form>
+
+
+                <div class="five">
+                    <h4>JOIN OUR EMAIL NEWSLETTER</h4>
+                    <form>
+                        <div class="form-group">
+                            <input type="text" class="Input" placeholder="Enter Your Email." /><br><br>
+                            <button type="submit" class="btn btn-default submit">
+                                Submit
+                            </button>
+                        </div>
+                    </form>
+                </div>
             </div>
-        </div>
-    </section>
+        </section>
     </footer>
     @*<script src="~/js/cart.js"></script>*@
     <script src="~/js/main.js"></script>
     <!--Omran Craete them cause  Clint side-->
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script srca="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
 
@@ -217,7 +192,7 @@
         })
 
     </script>
-   
+
     <!---BOOTSTRAP TABEL-->
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>

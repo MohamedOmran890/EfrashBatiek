@@ -41,9 +41,10 @@ input[type="number"] {
 
 /* remove both the arrows and the spinner functionality */
 
-.aaaa{
+.aaaa {
   margin-block-end: 25%;
 }
+
 /* ICONS*/
 .row {
   height: 400px;
@@ -161,7 +162,6 @@ input {
 
 aside {
   position: relative;
-  width: 30%;
 }
 
 .summary {
@@ -170,7 +170,6 @@ aside {
   border: 1px solid #aaa;
   padding: 1rem;
   flex: 1;
-  width: 290px;
   border-radius: 30px;
   box-shadow: 0 0 1em rgba(0, 0, 0, 0.0625);
   -webkit-box-sizing: border-box;
@@ -415,5 +414,20 @@ input {
 
   .navmenu.open {
     right: 0;
+  }
+}
+
+.checkout-address {
+  padding: 10px 0px !important;
+}
+
+.bg-gree {
+  background-color: #cbaab1 !important;
+}
+
+@media(max-width:991px) {
+  .tabpanel {
+    min-height: 780px;
+    margin-bottom: 20px;
   }
 }

@@ -7,8 +7,7 @@
 
 
 <main>
-    @if(Model != null)
-    {
+ 
 
         <div class="basket">
 
@@ -22,25 +21,66 @@
             </div>
             @foreach (var item in Model)
             {
-            <div class="basket-product">
-                <div class="item">
-                    <div class="product-image">
-                        <img src="~/image/@item.Item.Image" alt="Placholder Image 2" class="product-frame">
+                <div class="basket-product">
+                    <div class="item">
+                        <div class="product-image">
+                            <img src="~/Image/products/@item.Item?.Image" alt="Mens Winter Leathers Jackets"
+                                 width="300" class="product-img hover">
+                        </div>
+                        <div class="product-details">
+                        <h1><strong><span class="item-quantity"></span> @item.Item?.Name</strong></h1>
+
+                        </div>
                     </div>
-                    <div class="product-details">
-                        <h1><strong><span class="item-quantity"></span> @item.Item.Name</strong></h1>
+                    <div class="price">@String.Format("{0:0.0}", item.Item?.Price) EPG</div>
+                    <div class="quantity">
+
+                        <li class="quantity-field" style="background-color: #ffff; text-align: center;"> @item.Quantity</li>
+
+                        <script>
+
+
+                            $('#update-quantity-btn').click(function () {
+                                // Get the new quantity value from the input field
+                                var newQuantity = $('#quantity-input').val();
+
+                                // Get the item ID
+                                var itemId = '@item.ItemID';  // assuming that you're using Razor syntax to get the item ID
+
+                                // Call the "Update Quantity" action with the item ID and new quantity
+                                $.ajax({
+                                    url: '/Cart/updateQuantity',  // replace this with the actual URL of your action
+                                    method: 'POST',  // replace this with the HTTP method used by your action
+                                    data: { itemId: itemId, newQuantity: newQuantity },
+                                    success: function (data) {
+                                        // Handle success response here
+                                    },
+                                    error: function (xhr, status, error) {
+                                        // Handle error response here
+                                    }
+                                });
+                            });
+                        </script>
+
+
+
+
 
                     </div>
+
+                    <div class="subtotal">@String.Format("{0:0.0}", item.Quantity * item.Item?.Price) EPG</div>
+
+                    @using (Html.BeginForm("Remove", "Cart", FormMethod.Post))
+                    {
+                        @Html.Hidden("itemID", item.ItemID)
+                        // Replace "Id" with the actual name of the ID property in your model
+
+                        <div class="remove">
+                            <button>Remove</button>
+                        </div>
+                    }
+
                 </div>
-                <div class="price">@item.Item.Price</div>
-                <div class="quantity">
-                    <input type="number" value="1" min="1" class="quantity-field" style="background-color: #ffff; text-align: center;">
-                </div>
-                <div class="subtotal">5000L.E</div>
-                <div class="remove">
-                    <button>Remove</button>
-                </div>
-            </div>
             }
 
 
@@ -52,7 +92,7 @@
                 </div>
                 <div class="summary-subtotal">
                     <div class="subtotal-title">item prices</div>
-                    <div class="subtotal-value final-value" id="basket-subtotal">130.00</div>
+                    <div class="subtotal-value final-value" id="basket-subtotal">@ViewBag.TotalPrice</div>
                     <!-- <div class="summary-promo hide">
                       <div class="promo-title">Promotion</div>
                       <div class="promo-value final-value" id="basket-promo"></div>
@@ -63,32 +103,27 @@
                 </div> -->
                 <div class="summary-total">
                     <div class="total-title">Total</div>
-                    <div class="total-value final-value" id="basket-total">130.00</div>
+                    <div class="total-value final-value" id="basket-total">@ViewBag.TotalPrice</div>
                 </div>
                 <div class="summary-checkout">
-                    <a href="orderinfo.html"><button class="checkout-cta">Go to Secure Checkout</button></a>
+                @using (Html.BeginForm("defaultaddress", "Checkout", FormMethod.Post))
+                {
+
+                    int x = ViewBag.cartID;
+                    @Html.Hidden("cartID"  , x )
+                    // Replace "Id" with the actual name of the ID property in your model
+
+                    <button class="checkout-cta">Go to Secure Checkout</button>
+                }
+                    
                 </div>
             </div>
         </aside>
 
 
-    }
-    else
-    {
-
-        <center>
-            <br>
-            <br>
-            <br>
-            <br>
-            <img src="~/Image/img2.png">
-            <br>
-            <br>
-            <h4>You Cart is Empty ! </h4>
-            <br>
-            <a href="main.html"> <buttton>Go shopping </buttton>  </a>
-        </center>
-    }
+    
+   
 
 </main>
+
 

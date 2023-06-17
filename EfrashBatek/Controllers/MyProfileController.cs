@@ -95,15 +95,15 @@ namespace EfrashBatek.Controllers
 
         }
 
-        [HttpPost]
-        public IActionResult ViewAddressDetails (String id )//AYA
-        {
-            var Address = address.GetbyID(id);
-           
-            return View("EditAddress" , Address );
+		[HttpPost]
+		public IActionResult ViewAddressDetails(int id)
+		{
+			var Address = address.GetbyID(id);
 
-        }
-        [HttpPost]
+			return View("EditAddress", Address);
+
+		}
+		[HttpPost]
 
         public IActionResult EditAddress(Address New)
         {
