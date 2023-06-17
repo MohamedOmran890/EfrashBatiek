@@ -11,27 +11,28 @@ public class CheckoutController : Controller
     {
         IAddressRepository addressRepository;
     private readonly ICartRepository cart;
-    IIdentityRepository _identityRepository;
     private readonly Context context;
-
-    public CheckoutController(IAddressRepository Address,IIdentityRepository identityRepository , Context context ,IAddressRepository addressRepository ,ICartRepository cart)
+    IIdentityRepository _identityRepository;
+        public CheckoutController(IAddressRepository Address,IIdentityRepository identityRepository , IAddressRepository addressRepository ,ICartRepository cart , Context context)
         {
             addressRepository = Address;
           _identityRepository = identityRepository;
         this.context = context;
         this.addressRepository = addressRepository;
         this.cart = cart;
+        this.context = context;
     }
    
     public ActionResult defaultaddress(int cartID ) { 
 
         var items = cart.LoadFromCookie();
         var list = items.Where(i=>i.CartID == cartID).ToList();
-        foreach (var item in list)
-        {
+              foreach ( var item in list ) {
             item.Item = context.Items.FirstOrDefault(i => i.ID == item.ItemID);
+        
         }
-        ViewBag.list = list;    
+        ViewBag.list = list;   
+        ViewBag.cartID = cartID;    
                return View(addressRepository.View());   
     }
 	
@@ -52,21 +53,19 @@ public class CheckoutController : Controller
 		return RedirectToAction("defaulrtaddress");
 
 	}
-	public IActionResult PaymentMethod(int cartID )
+	public IActionResult PaymentMethod(int cartID)
 	{
-		return View();
+        ViewBag.cartID = cartID;
+
+        return View();
 	}
     public IActionResult Confirmation(int cartID )
     {
 
-        return View();
-    }
+		return RedirectToAction("ViewOrders", "MyProfile", new { @cartID=cartID});
+	}
 
-    public IActionResult ConfirmationDone (int cartid)
-    {
-        return RedirectToAction("TrendingProducts", "Home");
-
-    }
+  
 
     //public IActionResult Address() //old1
     //{
