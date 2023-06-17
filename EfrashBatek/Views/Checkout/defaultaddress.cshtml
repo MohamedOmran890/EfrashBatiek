@@ -97,10 +97,17 @@
 
 					</div>
 				</div>
-			<form asp-action="PaymentMethod" asp-controller="Checkout" >
-					<input type="submit" class="btnRegister" value="Next" />
-				</form>
-			</div>
+			@using (Html.BeginForm("PaymentMethod", "Checkout", FormMethod.Post))
+			{
+
+				int x = ViewBag.cartID;
+				@Html.Hidden("cartID"  , x )
+				// Replace "Id" with the actual name of the ID property in your model
+
+				<button class="checkout-cta">Go to Secure Checkout</button>
+			}
+
+		</div>
 		</div>
 		<div class="col-sm-12 col-md-12 col-lg-3 col-xl-3">
 			<aside>
