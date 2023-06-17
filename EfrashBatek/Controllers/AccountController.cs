@@ -176,7 +176,7 @@ namespace EfrashBatek.Controllers
                 }
                 var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                 var confirmationLink = Url.Action("ResetPassword", "Account", new { userId = user.Id, token = token }, Request.Scheme);
-                await _emailService.SendConfirmationEmail(model.Email, confirmationLink);
+                await _emailService.SendForgetPassword(model.Email, confirmationLink);
                 return RedirectToAction("ResetPassword", "Account", new { Email = model.Email, Token = token });
             }
             return View(model);
