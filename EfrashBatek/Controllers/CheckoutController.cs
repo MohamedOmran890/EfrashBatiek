@@ -17,7 +17,8 @@ public class CheckoutController : Controller
         {
             addressRepository = Address;
           _identityRepository = identityRepository;
-		this.addressRepository = addressRepository;
+        this.context = context;
+        this.addressRepository = addressRepository;
         this.cart = cart;
         this.context = context;
     }
@@ -32,7 +33,6 @@ public class CheckoutController : Controller
         }
         ViewBag.list = list;   
         ViewBag.cartID = cartID;    
-
                return View(addressRepository.View());   
     }
 	
