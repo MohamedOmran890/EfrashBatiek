@@ -97,16 +97,18 @@ ul.icons {
   border: none;
   border-radius: 1.5rem;
   padding: 1.5%;
-  background: #e2dfdf;
+  background: #cbaab1;
   color: #fff;
   font-weight: 600;
   width: 25%;
   cursor: pointer;
   transition: background-color 0.4s ease;
+  box-shadow: 0 0 1em rgba(0, 0, 0, 0.0625);
 }
 
 .btnRegister:hover {
-  background-color: #cbaab1;
+  background-color: #f4f4f4;
+  color: #cbaab1;
 }
 
 /* ----------------------------------------Next button---------------------------*/
