@@ -14,7 +14,7 @@ namespace EfrashBatek.Models
         public string Name { get; set; }
         [Required]
         public string logo { get; set; }
-        public Category Category { get; set; }
+        public virtual Category Category { get; set; }
 
     }
 }

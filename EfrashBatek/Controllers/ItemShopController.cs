@@ -59,7 +59,7 @@ namespace EfrashBatek.Controllers
         //1
         public IActionResult Create()
         {
-            ViewData["BrandName"] = new SelectList(brandRepository.GetAll(), "ID", "Name");
+            ViewData["BrandName"] = new SelectList(brandRepository.GetAll(), "ID", "Category");
             ViewData["ProductName"] = new SelectList(productRepository.GetAll(), "ID", "ProductName");
             ViewData["ShopName"] = new SelectList(shopRepository.GetAll(), "ID", "Name");
             return View();
@@ -85,11 +85,6 @@ namespace EfrashBatek.Controllers
                 itm.ShopID = item.ShopID;
                 itm.ProductID = item.ProductID;
                 itm.DateTime = item.DateTime;
-                itm.Brand = item.Brand;
-                itm.Product = item.Product;
-                itm.Shop = item.Shop;
-                itm.Product.ProductName = item.Product.ProductName;
-                itm.Shop.Name = item.Shop.Name;
                 if (item.Image != null && item.Image.Length > 0)
                 {
                     string Filename = Guid.NewGuid().ToString() + item.Image.FileName;
