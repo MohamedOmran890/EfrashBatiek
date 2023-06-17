@@ -74,14 +74,19 @@
                 <input type="file" asp-for="Image5" class="form-control" />
                 <span asp-validation-for="Image5" class="text-danger"></span>
             </div>
+             <div class="form-group">
+                <label asp-for="DateTime" class="control-label"></label>
+                <input asp-for="DateTime" class="form-control" />
+                <span asp-validation-for="DateTime" class="text-danger"></span>
+            </div>
             @*     <div class="form-group">
             <label asp-for="Brand_ID" class="control-label">Brand ID</label>
             <input  asp-for="Brand_ID" class="form-control" />
             <span asp-validation-for="Brand_ID" class="text-danger"></span>
             </div>*@
             <div class="form-group">
-                <label asp-for="Brand.Name" class="control-label">Brand Name</label>
-                <select asp-for="Brand.Name" class="form-control" asp-items="ViewBag.BrandName"></select>
+                <label asp-for="Brand_ID" class="control-label">Brand Name</label>
+                <select asp-for="Brand_ID" class="form-control" asp-items="ViewBag.BrandName"></select>
             </div>
             @*<div class="form-group">
             <label asp-for="ShopID" class="control-label">Shop ID</label>
@@ -89,8 +94,8 @@
             <span asp-validation-for="ShopID" class="text-danger"></span>
             </div>*@
             <div class="form-group">
-                <label asp-for="Shop.Name" class="control-label">Shop Name</label>
-                <select asp-for="Shop.Name" class="form-control" asp-items="ViewBag.ShopName"></select>
+                <label asp-for="ShopID" class="control-label">Shop Name</label>
+                <select asp-for="ShopID" class="form-control" asp-items="ViewBag.ShopName"></select>
             </div>
             @* <div class="form-group">
             <label asp-for="ProductID" class="control-label">Product ID</label>
@@ -98,8 +103,8 @@
             <span asp-validation-for="ProductID" class="text-danger"></span>
             </div>*@
             <div class="form-group">
-                <label asp-for="Product.ProductName" class="control-label">Product Name</label>
-                <select asp-for="Product.ProductName" class="form-control" asp-items="ViewBag.ProductName"></select>
+                <label asp-for="ProductID" class="control-label">Product Name</label>
+                <select asp-for="ProductID" class="form-control" asp-items="ViewBag.ProductName"></select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-success" />

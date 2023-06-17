@@ -10,7 +10,7 @@
 <div>
     <h4>Item</h4>
     <hr />
-    <dl class="row">
+   @* <dl class="row">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Code)
         </dt>
@@ -102,6 +102,7 @@
             @Html.DisplayFor(model => model.Product.Description)
         </dd class>
     </dl>
+    *@
     
     <form asp-action="Delete">
         <input type="hidden" asp-for="ID" />
