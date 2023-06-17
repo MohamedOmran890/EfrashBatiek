@@ -295,6 +295,7 @@
     <Folder Include="wwwroot\Image\Items\" />
     <Folder Include="wwwroot\Image\Items\" />
     <Folder Include="wwwroot\Image\Items\" />
+    <Folder Include="wwwroot\Image\Wish\" />
   </ItemGroup>
 
   <ItemGroup>

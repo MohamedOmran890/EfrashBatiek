@@ -15,7 +15,14 @@ body {
     padding: 10px;
     background: linear-gradient(135deg, #fff, #cbaab1);
 }
+.forget {
+    text-align: center;
+    margin-top: 20px;
+}
 
+.forget a {
+   color: #000;
+ }
 .container {
     max-width: 700px;
     width: 100%;

@@ -97,8 +97,8 @@
 			</div>
 
 		</form>
-		
-		<div class="col-sm-12 col-md-12 col-lg-3 col-xl-3">
+
+	@*	<div class="col-sm-12 col-md-12 col-lg-3 col-xl-3">
 			<aside>
 				<div class="summary">
 					<div class="summary-total-items">
@@ -114,51 +114,27 @@
 					</div>
 					<div class="summary-delivery">
 						<tbody>
-							<tr>
-								<td>
-									<div class="d-flex mb-2">
-										<div class="flex-shrink-0">
-											<img src="image/1.jpg" alt="" width="35" class="img-fluid">
+							@foreach (var item in ViewBag.list)
+							{
+								<tr>
+									<td>
+										<div class="d-flex mb-2">
+											<div class="flex-shrink-0">
+												<img src="~/Image/products/@item.Item?.Image" alt="" width="35" class="img-fluid">
+											</div>
+											<div class="flex-lg-grow-1 ms-3">
+												<h6 class="small mb-0"><a href="#" class="text-reset">@item.Item?.Name</a></h6>
+												<span class="small">Color: Black</span>
+											</div>
 										</div>
-										<div class="flex-lg-grow-1 ms-3">
-											<h6 class="small mb-0"><a href="#" class="text-reset">Chair</a></h6>
-											<span class="small">Color: Black</span>
-										</div>
-									</div>
-								</td>
-								<td>1</td>
-								<td class="text-end">79.99 EGP</td>
-							</tr>
-							<tr>
-								<td>
-									<div class="d-flex mb-2">
-										<div class="flex-shrink-0">
-											<img src="image/1.jpg" alt="" width="35" class="img-fluid">
-										</div>
-										<div class="flex-lg-grow-1 ms-3">
-											<h6 class="small mb-0"><a href="#" class="text-reset">Chair</a></h6>
-											<span class="small">Color: Black</span>
-										</div>
-									</div>
-								</td>
-								<td>1</td>
-								<td class="text-end">79.99 EGP</td>
-							</tr>
-							<tr>
-								<td>
-									<div class="d-flex mb-2">
-										<div class="flex-shrink-0">
-											<img src="image/1.jpg" alt="" width="35" class="img-fluid">
-										</div>
-										<div class="flex-lg-grow-1 ms-3">
-											<h6 class="small mb-0"><a href="#" class="text-reset">Chair</a></h6>
-											<span class="small">Color: Black</span>
-										</div>
-									</div>
-								</td>
-								<td>1</td>
-								<td class="text-end">79.99 EGP</td>
-							</tr>
+									</td>
+									<td>@item.Quantity</td>
+									<td class="text-end"> @item.Item?.Price</td>
+								</tr>
+
+							}
+
+
 						</tbody>
 					</div>
 					<div class="summary-total">
@@ -170,6 +146,6 @@
 					</div>
 				</div>
 			</aside>
-		</div>
+		</div>*@
 	</div>
 </div>

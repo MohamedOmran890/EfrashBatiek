@@ -19,26 +19,28 @@ namespace EfrashBatek.Controllers
 {
 	public class MyProfileController : Controller
 	{
-		private readonly Context _context;
+		private readonly Context context;
 		IUserRepository User;
 
 		private readonly IIdentityRepository identityRepository;
         private readonly IAddressRepository address;
         private readonly IOrderRepository order;
         private readonly SignInManager<User> signInManager;
+		private readonly ICartRepository cart;
 
-        public UserManager<User> UserManager { get; set; }
+		public UserManager<User> UserManager { get; set; }
         
-		public MyProfileController(Context context, IUserRepository User, IIdentityRepository identityRepository , IAddressRepository address , IOrderRepository order , SignInManager<User> signInManager)
+		public MyProfileController(Context context, IUserRepository User, IIdentityRepository identityRepository , IAddressRepository address , IOrderRepository order , SignInManager<User> signInManager , ICartRepository cart)
 		{
-			_context = context;
+			this.context = context;
 			this.User = User;
 
 			this.identityRepository = identityRepository;
             this.address = address;
             this.order = order;
             this.signInManager = signInManager;
-        }
+			this.cart = cart;
+		}
 
 
 		[HttpGet]
@@ -121,18 +123,40 @@ namespace EfrashBatek.Controllers
 
         }
 
-        public IActionResult ViewOrders()
-        {
-            User user = identityRepository.GetUser();
+        public IActionResult ViewOrders(int cartID)
+
+		{
+			var items = cart.LoadFromCookie();
+			var list = items.Where(i => i.CartID == cartID).ToList();
+            int totalcost = 0;
+            List<Order_Item> order_Items = new List<Order_Item>();  
+			foreach (var item in list)
+			{
+				item.Item = context.Items.FirstOrDefault(i => i.ID == item.ItemID);
+                totalcost = item.Quantity * (int)item.Item.Price;
+				Order_Item order_Item = new Order_Item();
+                order_Item.item = item.Item;
+                order_Items.Add(order_Item);    
+			}
+			User user = identityRepository.GetUser();
 
             List<Order> orders = new List<Order>();
-            orders = order.GetOrders();
+                Order order = new Order();
+            order.TotalCost =  totalcost;
+            order.OrderDate = DateTime.Now;
+            order.Order_Item  = order_Items;
+
+
+            
+           orders.Add(order);   
+
+            
             if (orders.Count == 0) { 
                 return View("GoShopping");
             }
             else
             {
-                return View(order);
+                return View(orders);
 
             }
             
