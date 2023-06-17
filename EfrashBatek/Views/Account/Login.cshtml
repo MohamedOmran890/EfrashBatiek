@@ -3,45 +3,6 @@
 
     Layout = "";
 }
-@*<div class="login form">
-    <header>Login</header>
-    <form asp-action="Login" asp-controller="Account">
-        <div asp-validation-summary="All" class="text-danger"></div>
-        <input asp-for="UserName" type="text" placeholder="Enter your username">
-       
-        <span asp-validation-for="UserName" ></span>
-
-
-
-        <input asp-for="Password" type="password" placeholder="Enter your password">
-        <span asp-validation-for="Password" ></span>
-
-        <div class="form-group form-check">
-            <table>
-                <tr>
-                    <td><label>Remember Me : </label></td>
-                    <td style="width:12%"><input asp-for="isPersistent"></td>
-                </tr>
-            </table>
-        </div>
-        <a asp-action="ForgetPassword" >Forgot password?</a>
-        <input type="submit" value="Login" class="button" />
-    </form>
-    <div class="signup">
-        <span class="signup">
-            Don't have an account?
-
-            <a class="nav-link text-dark" asp-controller="Account" asp-action="SignUp">
-                <label >SignUp</label>
-            </a>
-
-             
-        </span>
-    </div>
-</div>
-*@
-
-
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
@@ -81,6 +42,9 @@
                 <div class="forget">
                 <a asp-action="ForgetPassword" asp-controller="Account">Forget Password?</a>
                 </div>
+            <div class="forget">
+                <a asp-action="SignUp" asp-controller="Account">Register</a>
+            </div>
         </div>
     </div>
 
