@@ -94,7 +94,7 @@ namespace EfrashBatek.service
                     };
 
                     bool found = false;
-                    foreach (var Item in cart.Cart_Item)
+                    foreach (var Item in cart.items)
                     {
                         if (itemId == Item.ItemID)
                         {
@@ -110,7 +110,7 @@ namespace EfrashBatek.service
                         cartItem.ItemID = itemId;
                         cartItem.CartID = cart.ID;
                         cartItem.Quantity = 1;
-                        cart.Cart_Item.Add(cartItem);
+                        cart.items.Add(cartItem);
 
                     }
 
@@ -138,7 +138,7 @@ namespace EfrashBatek.service
                 foreach (Item item in wishlist.Items) // loop through each item in the wishlist's items collection
                 {
                     bool found = false;
-                    foreach (var Item in cart.Cart_Item)
+                    foreach (var Item in cart.items)
                     {
                         if (Item.ItemID == item.ID)
                         {
@@ -154,7 +154,7 @@ namespace EfrashBatek.service
                         cartItem.CartID = cart.ID;
                         cartItem.ItemID = item.ID;
                         cartItem.Quantity = 1;
-                        cart.Cart_Item.Add(cartItem);
+                        cart.items.Add(cartItem);
 
                     }
                 }

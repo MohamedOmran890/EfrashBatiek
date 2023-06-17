@@ -2,57 +2,58 @@
   color: black;
   background-color: white;
   border: none;
-  }
-  
-  #pro1.clicked-delivered {
-    padding: 2px 4px;
-    color: #1cbb8c;
-    background-color: rgba(28, 187, 140, .18);
-    border-radius: 4px;
-    font-size: 14px;
-    font-weight: 500;
-  }
-  
-  #pro1.clicked-return {
-    padding: 2px 4px;
-    color: #ff3d60;
-    background-color: rgba(255,61,96,.18);
-    border-radius: 4px;
-    font-size: 14px;
-    font-weight: 500;
-  }
-  
-  #pro1.clicked-inProgress {
-    padding: 2px 4px;
-    background: #1795ce;
-    background-color: rgba(61, 96, 255, 0.18);
-    color: var(--white);
-    border-radius: 4px;
-    font-size: 14px;
-    font-weight: 500;
-  }
-  
-  #pro1.clicked-pending {
-      padding: 2px 4px;
-      color: #fcb92c;
-      background-color: rgba(252,185,44,.18);
-      border-radius: 4px;
-      font-size: 14px;
-      font-weight: 500;
-  }
+}
 
-  table.table td a.edit {
-    color: #454545;
+#pro1.clicked-delivered {
+  padding: 2px 4px;
+  color: #1cbb8c;
+  background-color: rgba(28, 187, 140, .18);
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+#pro1.clicked-return {
+  padding: 2px 4px;
+  color: #ff3d60;
+  background-color: rgba(255, 61, 96, .18);
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+#pro1.clicked-inProgress {
+  padding: 2px 4px;
+  background: #1795ce;
+  background-color: rgba(61, 96, 255, 0.18);
+  color: var(--white);
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+#pro1.clicked-pending {
+  padding: 2px 4px;
+  color: #fcb92c;
+  background-color: rgba(252, 185, 44, .18);
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+table.table td a.edit {
+  color: #454545;
 }
 
 table.table td a.delete {
-    color: #E34724;
+  color: #E34724;
 }
 
 .btn {
   background-color: #cbaab1;
   color: #fff;
 }
+
 /* =============== Navigation ================ */
 .navigation {
   position: fixed;
@@ -63,6 +64,7 @@ table.table td a.delete {
   transition: 0.5s;
   overflow: hidden;
 }
+
 .navigation.active {
   width: 80px;
 }
@@ -100,6 +102,7 @@ table.table td a.delete {
   text-decoration: none;
   color: black;
 }
+
 .navigation ul li:hover a,
 .navigation ul li.hovered a {
   color: black;
@@ -113,6 +116,7 @@ table.table td a.delete {
   line-height: 75px;
   text-align: center;
 }
+
 .navigation ul li a .icon ion-icon {
   font-size: 1.75rem;
 }
@@ -141,6 +145,7 @@ table.table td a.delete {
   box-shadow: 35px 35px 0 10px var(--white);
   pointer-events: none;
 }
+
 .navigation ul li:hover a::after,
 .navigation ul li.hovered a::after {
   content: "";
@@ -164,6 +169,7 @@ table.table td a.delete {
   background: var(--white);
   transition: 0.5s;
 }
+
 .main.active {
   width: calc(100% - 80px);
   left: 80px;
@@ -235,135 +241,205 @@ table.table td a.delete {
   height: 100%;
   object-fit: cover;
 }
+
 /* ================== Order Details List ============== */
 .details {
-    position: relative;
-    width: 80%;
-    padding: 20px;
-    display: grid;
-    grid-template-columns: 10fr;
-    grid-gap: 30px;
-    /* margin-top: 10px; */
-    margin-left: 20%;
-    height: auto;
-  }
-  
-  .details .recentOrders {
-    position: relative;
-    display: grid;
-    min-height: 500px;
-    background: var(--white);
-    padding: 20px;
-    box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
-    border-radius: 20px;
-  }
-  
-  .details .cardHeader {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-  }
-  .cardHeader h2 {
-    font-weight: 600;
-    color: #cbaab1;
-  }
-  .cardHeader .btn {
-    position: relative;
-    padding: 5px 10px;
-    background: #cbaab1;
-    text-decoration: none;
-    color: var(--white);
-    border-radius: 6px;
-  }
-  
-  .details table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
-  }
-  .details table thead td {
-    font-weight: 600;
-  }
-  .details .recentOrders table tr {
-    color:#505d69;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  }
-  .details .recentOrders table tr:last-child {
-    border-bottom: none;
-  }
-  .details .recentOrders table tbody tr:hover {
-    color: var(--white);
-  }
-  .details .recentOrders table tr td {
-    padding: 10px;
-  }
-  .details .recentOrders table tr td:last-child {
-    text-align: end;
-  }
-  .details .recentOrders table tr td:nth-child(2) {
-    text-align: end;
-  }
-  .details .recentOrders table tr td:nth-child(3) {
-    text-align: center;
-  }
-  .status.delivered {
-    padding: 2px 4px;
-    color: #1cbb8c;
-    background-color: rgba(28, 187, 140, .18);
-    border-radius: 4px;
-    font-size: 14px;
-    font-weight: 500;
+  position: relative;
+  width: 80%;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 10fr;
+  grid-gap: 30px;
+  /* margin-top: 10px; */
+  margin-left: 20%;
+  height: auto;
 }
-  .status.pending {
-    padding: 2px 4px;
-    color: #fcb92c;
-    background-color: rgba(252,185,44,.18);
-    border-radius: 4px;
-    font-size: 14px;
-    font-weight: 500;
-  }
-  .status.return {
-    padding: 2px 4px;
-    color: #ff3d60;
-    background-color: rgba(255,61,96,.18);
-    border-radius: 4px;
-    font-size: 14px;
-    font-weight: 500;
-  }
-  .status.inProgress {
-    padding: 2px 4px;
-    background: #1795ce;
-    background-color: rgba(61, 96, 255, 0.18);
-    color: var(--white);
-    border-radius: 4px;
-    font-size: 14px;
-    font-weight: 500;
-  }
-  /* -----------------------------------
+
+.details .recentOrders {
+  position: relative;
+  display: grid;
+  min-height: 500px;
+  background: var(--white);
+  padding: 20px;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+}
+
+.details .cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.cardHeader h2 {
+  font-weight: 600;
+  color: #cbaab1;
+}
+
+.cardHeader .btn {
+  position: relative;
+  padding: 5px 10px;
+  background: #cbaab1;
+  text-decoration: none;
+  color: var(--white);
+  border-radius: 6px;
+}
+
+.details table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.details table thead td {
+  font-weight: 600;
+}
+
+.details .recentOrders table tr {
+  color: #505d69;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.details .recentOrders table tr:last-child {
+  border-bottom: none;
+}
+
+.details .recentOrders table tbody tr:hover {
+  color: var(--white);
+}
+
+.details .recentOrders table tr td {
+  padding: 10px;
+}
+
+.details .recentOrders table tr td:last-child {
+  text-align: end;
+}
+
+.details .recentOrders table tr td:nth-child(2) {
+  text-align: end;
+}
+
+.details .recentOrders table tr td:nth-child(3) {
+  text-align: center;
+}
+
+.status.delivered {
+  padding: 2px 4px;
+  color: #1cbb8c;
+  background-color: rgba(28, 187, 140, .18);
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.status.pending {
+  padding: 2px 4px;
+  color: #fcb92c;
+  background-color: rgba(252, 185, 44, .18);
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.status.return {
+  padding: 2px 4px;
+  color: #ff3d60;
+  background-color: rgba(255, 61, 96, .18);
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.status.inProgress {
+  padding: 2px 4px;
+  background: #1795ce;
+  background-color: rgba(61, 96, 255, 0.18);
+  color: var(--white);
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* -----------------------------------
    */
- 
- td a.edit {
-      color: #454545;
-      cursor: pointer;
+
+td a.edit {
+  color: #454545;
+  cursor: pointer;
+}
+
+a.delete {
+  color: #E34724;
+  cursor: pointer;
+}
+
+.btn {
+  background-color: #cbaab1;
+  color: #ffffff;
+  transition: 0.4s ease;
+  font-weight: 600;
+  border: none;
+  padding: 15%;
+  border-radius: 15px;
+  box-shadow: 0 0 1em rgba(0, 0, 0, 0.1);
+}
+
+.btn:hover {
+  background-color: #d2c7ca;
+}
+
+
+@media(max-width:786px) {
+
+  .details table thead td:first-child,
+  .details table tbody td:first-child,
+  .details table thead td:nth-child(2),
+  .details table tbody td:nth-child(2),
+  .details table thead td:nth-child(3),
+  .details table tbody td:nth-child(3) {
+    display: none;
   }
 
- a.delete {
-      color: #E34724;
-      cursor: pointer;
+  .details {
+    margin-left: 11%;
   }
-  .btn{
-    background-color: #cbaab1;
-    color:#ffffff;
-    transition: 0.4s ease;
-    font-weight: 600;
-    border:none;
-    padding:15%;
-    border-radius: 15px;
-    box-shadow: 0 0 1em rgba(0, 0, 0, 0.1);
-  }
-  .btn:hover{
-    background-color: #d2c7ca;
-  }
+}
+
+@media (max-width: 576px) {
 
 
-   
+  .details table thead td:nth-child(4),
+  .details table tbody td:nth-child(4) {
+    display: none;
+  }
+
+  .details {
+    margin-left: 0%;
+  }
+
+  #address {
+    margin-left: 0%;
+  }
+
+  #content {
+    left: 27px;
+  }
+
+  #sidebar.hide {
+    width: 150px;
+  }
+
+  ul.side-menu.top span,
+  #sidebar .brand span {
+    display: block;
+  }
+}
+
+.d-none {
+  display: none;
+}
+
+.d-block {
+  display: block;
+}
