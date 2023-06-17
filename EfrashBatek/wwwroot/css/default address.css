@@ -15,115 +15,123 @@ body {
     font-family: "Roboto", sans-serif;
 }
 
-
+/* ICONS*/
 .row {
-    margin: 2%;
+
+  margin-top: 2%;
+  margin-bottom: 2%;
 }
 
-a, a:hover, a:focus, a:active {
-    text-decoration: none;
-    color: inherit;
-}
-/*-------------------------------------------------------------------------------- ICOONS------------------------------------------------------------------------------------------------------------------- */
-.x {
-    background: #fff;
-    block-size: 100px;
-    box-shadow: 0 0 1em rgba(0, 0, 0, 0.0625);
-    inline-size: 800px;
-    margin-top: 8%;
-    margin-right: 22%;
-    margin-bottom: 1%;
-    width: 67%;
-    border-radius: 2em;
-    margin-left: 4.5%
+address {
+  margin: 1% 0 0 3%;
 }
 
-ul.icons {
-    margin-inline-end: 2%;
-    margin-top: 3%;
-    display: flex;
-    justify-content: space-between;
+
+/**/
+.addresses {
+ /* display: flex;*/
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background-color: #cbaab1;
 }
 
-.icon {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100px;
-    block-size: 1em;
-    display: inline-block;
-    fill: currentColor;
-    inline-size: 1em;
-    vertical-align: middle;
+.addresses p{
+    margin-top: -4%;
+    margin-left: 10%; 
 }
 
-.word {
-    color: #8a8b8b;
-    transition: all .42s ease;
+.addresss {
+  background-color: #fbfbfb ;
+  width: 48%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 1%;
+}
+.radio-pair {
+  background-color: #cbaab1;
+  display: inline-block;
+   
 }
 
-    .word h2 {
-        margin-left: -16%;
-        font-size: medium;
-    }
 
-    .word:hover i,
-    .word:hover h2 {
-        color: #cbaab1;
-        transform: scale(1.1);
-    }
-
-/*------------------------------------------------- ICONS-------------------------------------------*/
+/* .radio-pair input[type="radio"] {
+  margin-left: 10px;
+  background-color: #cbaab1;
+  
+} */
 
 
-/* ----------------------------------------EDIT ICON-------------------------------- */
-.bxs-edit {
-    display: flex;
-    justify-content: space-between;
-    /* align-items: flex-start; */
-    margin-bottom: 5px;
-    display: inline-block;
-    padding: -2px;
+/* my work is here-------------------------------------------- */
+.bxs-edit{
+  display: flex;
+  justify-content: space-between;
+  /* align-items: flex-start; */
+  background-color: none;
+  display: inline-block;
+
+
 }
-
-/* ----------------------------------------EDIT ICON-------------------------------- */
-
-/* ---------------------------------------Next button---------------------------*/
+/* This is my default address*/
+.payment-default-address {
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  font-size: 13px;
+}
+.align-items-center {
+  -ms-flex-align: center!important;
+  align-items: center!important;
+}
+.d-flex {
+  display: -ms-flexbox!important;
+  display: flex!important;
+}
+/* continue button*/
 .btnRegister {
-    margin: -2% 1% 2%;
-    float: right;
-    border: none;
-    border-radius: 1.5rem;
-    padding: 1.5%;
-    background: #cbaab1;
-    color: #fff;
-    font-weight: 600;
-    width: 25%;
-    cursor: pointer;
-    transition: background-color 0.4s ease;
-    box-shadow: 0 0 1em rgba(0, 0, 0, 0.0625);
+
+  border: none;
+  border-radius: 1.5rem;
+  padding: 2%;
+  background: #cbaab1;
+  color: #fff;
+  font-size: large;
+  font-weight: 600;
+  width: 30%;
+  cursor: pointer;
+  transition: background-color 0.4s ease;
 }
 
-    .btnRegister:hover {
-        background-color: #f4f4f4;
-        color: #cbaab1;
-    }
+.btnRegister:hover {
+  background-color: #c895a0;
+  /* Change the background color to red when the button is hovered over */
+}
 
-/* ----------------------------------------Next button---------------------------*/
 
-/*--------------------------------------------------ADDRESS----------------------------------*/
+/*ADDRESS*/
 #address {
-    padding: 50px;
-    margin: 20px 30px;
-    border-radius: 30px;
-    height: auto;
-    background-color: #fff;
-    box-shadow: 0 0 1em rgba(0, 0, 0, 0.0625);
+
+  padding: 50px;
+  border-radius: 30px;
+  background-color: #fff;
+
+  box-shadow: 0 0 1em rgba(0, 0, 0, 0.0625);
+
 }
 
 .form-group {
     margin-bottom: 1.5rem;
+}
+
+.addressBOX {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding: 16px;
+  border-radius: 5px;
+  margin: 20px 0px;
+}
+
+.addressBOX-actions {
+  display: flex;
+  justify-content: space-between;
 }
 
 .address input {
@@ -138,181 +146,34 @@ ul.icons {
     font-size: 16px;
 }
 
-.bx-plus-circle {
-    color: #cbaab1;
+.bx-plus-circle{
+color: #cbaab1;
+}
+.new{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #cbaab1;
 }
 
-.new {
-    color: #cbaab1;
+.new a {
+  
+  color: #cbaab1;
+  text-decoration: none;
 }
 
-.addressFORM {
-    /* display: flex;*/
-    flex-wrap: wrap;
-    justify-content: space-between;
-    background-color: #fff;
+.new a:hover {
+  text-decoration: underline;
 }
 
-.address-row {
-    width: 100%;
-    /* background-color: #8B0000; */
-    margin-bottom: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
 
-.addressBOX {
-    background-color: #fbfbfb;
-    width: 48%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin: 1%;
-    border: none;
-    box-shadow: 0 0 1em rgba(0, 0, 0, 0.12);
-}
+/*******************************************************************************scroll***************************************************/
 
-.radio-pair {
-    background-color: #8B0000;
-    display: inline-block;
-}
-
-/*--------------------------------------------------ADDRESS----------------------------------*/
-
-
-
-/* -------------------------------------------------ADDRESS DETAAILS -----------------------------  */
-.ADDRESSDETAILS {
-    padding: 0px;
-    margin: -12% 0% 5% 6%;
-    /* background-color: #8B0000; */
-}
-
-/* -------------------------------------------------ADDRESS DETAAILS -----------------------------  */
-
-
-
-/* -------------------------------------------------RADIO BUTTON----------------------------- */
-.radio {
-    text-align: left;
-}
-
-/* -------------------------------------------------RADIO BUTTON----------------------------- */
-
-
-/*-------------------------------------------SUMMARY-----------------------------------------*/
-aside {
-    position: relative;
-    /*width: 30%;*/
-}
-
-.summary {
-    margin: 7% 5% 0;
-    background-color: #eee;
-    border: 1px solid #aaa;
-    padding: 1rem;
-    flex: 1;
-    /*width: 269px;*/
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    border-radius: 30px;
-}
-
-.summary-total-items {
-    color: #666;
-    font-size: 0.875rem;
-    text-align: center;
-}
-
-.summary-subtotal,
-.summary-total {
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    clear: both;
-    margin: 1rem 0;
-    overflow: hidden;
-    padding: 0.5rem 0;
-}
-
-.subtotal-title,
-.subtotal-value,
-.total-title,
-.total-value,
-.promo-title,
-.promo-value {
-    color: #111;
-    float: left;
-    width: 50%;
-}
-
-.summary-promo {
-    -webkit-transition: all .3s ease;
-    -moz-transition: all .3s ease;
-    -o-transition: all .3s ease;
-    transition: all .3s ease;
-}
-
-.promo-title {
-    float: left;
-    width: 70%;
-}
-
-.promo-value {
-    color: #8B0000;
-    float: left;
-    text-align: right;
-    width: 30%;
-}
-
-/* .summary-delivery {
-  padding-bottom: 3rem;
-} */
-.summary-delivery {
-    max-height: 150px; /* Set the maximum height for the container */
-    overflow-y: auto;
-    overflow-x: hidden; /* Enable vertical scrolling */
-}
-
-.subtotal-value,
-.total-value {
-    text-align: right;
-}
-
-.total-title {
-    font-weight: bold;
-    text-transform: uppercase;
-}
-
-.summary-checkout {
-    display: block;
-}
-
-.checkout-cta {
-    display: block;
-    float: none;
-    font-size: 0.75rem;
-    text-align: center;
-    text-transform: uppercase;
-    padding: 0.625rem 0;
-    width: 100%;
-}
-
-.summary-delivery-selection {
-    background-color: #fff;
-    border: 1px solid #eee;
-    border-radius: 4px;
-    display: block;
-    font-size: 0.625rem;
-    height: 34px;
-    width: 100%;
-}
-/******************************************************************************scroll**************************************************/
 /* width */
 ::-webkit-scrollbar {
     width: 8px;
 }
+
 
 /* Track */
 ::-webkit-scrollbar-track {
@@ -326,22 +187,13 @@ aside {
     border-radius: 10px;
 }
 
-    /* Handle on hover */
-    ::-webkit-scrollbar-thumb:hover {
-        background: #94777d;
-        transition: background-color 0.8s ease;
-    }
 
-/*-------------------------------- SUMMARRY-------------------------------- */
-.x {
-    width: 88%;
-    margin-left: 6%;
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #94777d; 
+  transition: background-color 0.8s ease;
 }
 
-.steps {
-    padding: 25px 20px !important;
-    margin: 0px !important;
-}
 
 @media(max-width:1300px) {
     .steps {
@@ -350,32 +202,69 @@ aside {
     }
 }
 
-/*-------------------------------- Responsive-css-------------------------- */
-@media screen and (min-width:769px) and (max-width:990px) {
-    .steps {
-        width: 91%;
-    }
-}
-/* TABLET */
-@media(max-width:768px) {
-    .steps {
-        width: 91%;
-    }
-
-    .x {
-        width: 85%;
-        margin-left: 7.5%;
-    }
-
-    .addressBOX {
-        width: 100%;
-    }
+/* Responsive-css */
+@media(max-width:890px) {
+  header {
+    padding: 20px 3%;
+    transition: .4s;
+  }
 }
 
-@media(max-width:575px) {
-    .steps {
-        width: 90% !important;
-        max-height: 80px;
-        align-items: center;
-    }
+@media(max-width:630px) {
+  .main-text h1 {
+    font-size: 50px;
+    transition: .4s;
+  }
+
+  .main-text p {
+    font-size: 18px;
+    transition: .4s;
+  }
+
+  .main-btn {
+    padding: 10px 20px;
+    transition: .4s;
+  }
 }
+
+@media(max-width:750px) {
+  .navmenu {
+    position: absolute;
+    top: 100%;
+    right: -100%;
+    width: 300px;
+    height: 130vh;
+    background: #d0d0d0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 120px 30px;
+    transition: all .42s;
+  }
+
+  .navmenu a {
+    display: block;
+    margin: 18px 0;
+  }
+
+  .navmenu.open {
+    right: 0;
+  }
+}
+
+.tsts{
+    margin: 0px;
+    padding: -2px;
+
+}
+.run{
+text-align: left;
+}
+.mod{
+  padding: 0px;
+  margin: 0px;
+  margin-left: 20px;
+  margin-bottom: 10px;
+  /* background-color: #8B0000; */
+}
+
