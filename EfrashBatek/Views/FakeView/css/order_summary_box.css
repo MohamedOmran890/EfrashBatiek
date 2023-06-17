@@ -1,0 +1,122 @@
+/*SUMMARY*/
+aside {
+    position: relative;
+  }
+  
+  .summary {
+    background-color: #eee;
+    box-shadow: 0 0 1em rgba(0, 0, 0, 0.0625);
+    padding: 1rem;
+    flex: 1;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 30px;
+    border: 1px solid #aaa;
+  }
+  
+  .summary-total-items {
+    color: #000000;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .summary-subtotal,
+  .summary-total {
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    clear: both;
+    margin: 1rem 0;
+    overflow: hidden;
+    padding: 0.5rem 0;
+  }
+  
+  .subtotal-title,
+  .subtotal-value,
+  .total-title,
+  .total-value,
+  .promo-title,
+  .promo-value {
+    color: #111;
+    float: left;
+    width: 50%;
+  }
+  
+  .summary-promo {
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+  }
+  
+  .promo-title {
+    float: left;
+    width: 70%;
+  }
+  
+  .promo-value {
+    color: #8B0000;
+    float: left;
+    text-align: right;
+    width: 30%;
+  }
+  
+  /* .summary-delivery {
+    padding-bottom: 3rem;
+  } */
+  .summary-delivery {
+    max-height: 150px; /* Set the maximum height for the container */
+    overflow-y: auto;
+    overflow-x:none ; /* Enable vertical scrolling */
+  }
+  .subtotal-value,
+  .total-value {
+    text-align: right;
+  }
+  
+  .total-title {
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  .summary-checkout {
+    display: block;
+  }
+  
+  .summary-checkout a {
+    text-decoration: none;
+  }
+  
+  .checkout-cta {
+    display: block;
+    float: none;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 0.625rem 0;
+    width: 100%;
+    border: 0;
+    border-radius: 3%;
+    background-color: #cbaab1;
+    color: white;
+  }
+  
+  .checkout-cta:hover {
+    background-color: #c895a0;
+  }
+  
+  .text-reset {
+    text-decoration: none;
+  }
+  
+  .summary-delivery-selection {
+    background-color: #fff;
+    border: 1px solid #eee;
+    border-radius: 4px;
+    display: block;
+    font-size: 0.625rem;
+    height: 34px;
+    width: 100%;
+  }
