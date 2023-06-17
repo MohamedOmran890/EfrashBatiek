@@ -1,4 +1,4 @@
-﻿@model EfrashBatek.ViewModel.ItemVM
+﻿@model EfrashBatek.Models.Item
 
 @{
     ViewData["Title"] = "Delete";
@@ -10,7 +10,7 @@
 <div>
     <h4>Item</h4>
     <hr />
-   @* <dl class="row">
+   <dl class="row">
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Code)
         </dt>
@@ -39,31 +39,31 @@
             @Html.DisplayNameFor(model => model.Image)
         </dt>
         <dd class = "col-sm-10">
-            <img src="~/Image/Items/@Model.Image" />
+            <img src="~/Image/Items/@Model.Image" style="width:70px;height:70px" />
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Image2)
         </dt>
         <dd class = "col-sm-10">
-            <img src="~/Image/Items/@Model.Image2" />
+            <img src="~/Image/Items/@Model.Image2"  style="width:70px;height:70px" />
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Image3)
         </dt>
         <dd class = "col-sm-10">
-            <img src="~/Image/Items/@Model.Image3" />
+            <img src="~/Image/Items/@Model.Image3" style="width:70px;height:70px" />
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Image4)
         </dt>
         <dd class = "col-sm-10">
-            <img src="~/Image/Items/@Model.Image4" />
+            <img src="~/Image/Items/@Model.Image4" style="width:70px;height:70px"  />
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Image5)
         </dt>
         <dd class = "col-sm-10">
-            <img src="~/Image/Items/@Model.Image5" />
+            <img src="~/Image/Items/@Model.Image5" style="width:70px;height:70px"  />
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.discount)
@@ -102,7 +102,7 @@
             @Html.DisplayFor(model => model.Product.Description)
         </dd class>
     </dl>
-    *@
+    
     
     <form asp-action="Delete">
         <input type="hidden" asp-for="ID" />

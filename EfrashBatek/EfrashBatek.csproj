@@ -6,6 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\css\add item.css" />
+    <Content Remove="wwwroot\css\edititem.css" />
+    <Content Remove="wwwroot\css\Items.css" />
+    <Content Remove="wwwroot\css\seller.css" />
     <Content Remove="wwwroot\Image\0.jpg" />
     <Content Remove="wwwroot\Image\00.webp" />
     <Content Remove="wwwroot\Image\1.jpg" />
@@ -120,6 +124,7 @@
 
   <ItemGroup>
     <None Include="wwwroot\css\about us.css" />
+    <None Include="wwwroot\css\add item.css" />
     <None Include="wwwroot\css\addre2.css" />
     <None Include="wwwroot\css\addseller.css" />
     <None Include="wwwroot\css\addshop.css" />
@@ -133,8 +138,10 @@
     <None Include="wwwroot\css\default address.css" />
     <None Include="wwwroot\css\default.css" />
     <None Include="wwwroot\css\confim.css" />
+    <None Include="wwwroot\css\edititem.css" />
     <None Include="wwwroot\css\Empty.css" />
     <None Include="wwwroot\css\forgetpassword.css" />
+    <None Include="wwwroot\css\Items.css" />
     <None Include="wwwroot\css\log.css" />
     <None Include="wwwroot\css\log2.css" />
     <None Include="wwwroot\css\login.css" />
@@ -151,6 +158,7 @@
     <None Include="wwwroot\css\profile2.css" />
     <None Include="wwwroot\css\seller details.css" />
     <None Include="wwwroot\css\seller details.html" />
+    <None Include="wwwroot\css\seller.css" />
     <None Include="wwwroot\css\signup.css" />
     <None Include="wwwroot\css\style-prefix.css" />
     <None Include="wwwroot\css\style.css" />
