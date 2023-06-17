@@ -12,7 +12,12 @@ input,
 textarea {
     font-weight: 500;
 }
-
+.dele
+{
+    float: right;
+    margin-right: 3%;
+    margin-top: 3%;
+}
 .form {
     width: 94%;
     margin-left: 16%;
