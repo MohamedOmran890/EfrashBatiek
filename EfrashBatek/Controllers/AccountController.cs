@@ -13,6 +13,7 @@ using System.Net.Mail;
 using SignInResult = Microsoft.AspNetCore.Identity.SignInResult;
 using System;
 using EfrashBatek.service;
+using Microsoft.EntityFrameworkCore;
 
 namespace EfrashBatek.Controllers
 {
@@ -41,7 +42,7 @@ namespace EfrashBatek.Controllers
         {
             return View();
         }
-        public IActionResult Register3()
+        public IActionResult Register2()
         {
             return View();
         }
@@ -166,15 +167,17 @@ namespace EfrashBatek.Controllers
         {
             if(ModelState.IsValid)
             {
-                var user=await _userManager.FindByEmailAsync(model.Email);
-                var conf=await _userManager.IsEmailConfirmedAsync(user);
-                if(user == null||!conf)
+                var user = await _userManager.Users.FirstOrDefaultAsync(u => u.Email == model.Email);
+                //var conf=await _userManager.IsEmailConfirmedAsync(user);
+                if (user == null)
                 {
                     ModelState.AddModelError("", "The Email Not Found");
                     return View();
                 }
-              
-                return RedirectToAction("ResetPassword",model.Email);
+                var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                var confirmationLink = Url.Action("ResetPassword", "Account", new { userId = user.Id, token = token }, Request.Scheme);
+                await _emailService.SendConfirmationEmail(model.Email, confirmationLink);
+                return RedirectToAction("ResetPassword", "Account", new { Email = model.Email, Token = token });
             }
             return View(model);
         }
