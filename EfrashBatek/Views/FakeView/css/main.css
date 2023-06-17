@@ -18,13 +18,7 @@ header{
     justify-content: space-between;
     padding: 20px 10%;
 }
-/* .search-box{
-   position: relative;
-  height: 50px;
-  max-width: 550px;
-  width: 100%;
-  margin: 0 20px; 
-} */
+
  .search-box input{
   height: 100%;
   width: 100%;
@@ -269,15 +263,7 @@ header.sticky{
     margin-bottom: 2px;
 }
 
-/* update-section-css */
-.up-center-text h2{
-    text-align: center;
-    color: #111;
-    font-size: 25px;
-    text-transform: capitalize;
-    font-weight: 700;
-    margin-bottom: 30px;
-}
+
 .cart img{
     width: 380px;
     height: auto;
