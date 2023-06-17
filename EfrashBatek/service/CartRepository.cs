@@ -60,7 +60,9 @@ namespace EfrashBatek.service
             }
             else
             {
-                Cart_Item itemItem = new Cart_Item { Quantity = 1, ItemID = itemID };
+                
+                // assign id to cookie 
+                Cart_Item itemItem = new Cart_Item { Quantity = 1, ItemID = itemID , CartID=1 };
 
                 cart.Add(itemItem);
             }
