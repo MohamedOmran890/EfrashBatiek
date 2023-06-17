@@ -1,5 +1,6 @@
 ﻿using EfrashBatek.Models;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace EfrashBatek.service
 {
@@ -7,8 +8,10 @@ namespace EfrashBatek.service
     {
         void Create(Item item);
         int Delete(int Id);
-        List<Item> GetAll();
+        IQueryable<Item> GetAll();
         Item GetById(int Id);
         int Update(int id, Item item);
+        List<Item> NewArrivals();
+        List<Item> Trending();
     }
 }

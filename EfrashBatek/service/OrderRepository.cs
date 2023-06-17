@@ -7,9 +7,13 @@ namespace EfrashBatek.service
     public class OrderRepository : IOrderRepository
     {
         Context context;
-        public OrderRepository(Context context)
+        private readonly IIdentityRepository repository;
+        Order_Item item;
+        public OrderRepository(Context context , IIdentityRepository repository )
         {
             this.context = context;
+            this.repository = repository;
+           
         }
         public void Create(Order order)
         {
@@ -41,6 +45,7 @@ namespace EfrashBatek.service
             var ans = context.Orders.FirstOrDefault(x => x.ID == Id);
             return ans;
         }
+       
         public List<Order> GetAll()
         {
             var ans = context.Orders.ToList();
@@ -50,6 +55,33 @@ namespace EfrashBatek.service
         {
             var ans = context.Orders.Count();
             return ans;
+        }
+
+        // my profile 
+        public List<Order> GetOrders()
+        {
+            User user = repository.GetUser();
+            int cnt = 0;
+            List<Order> ans = new List<Order>();    
+            foreach(var item in context.Orders)
+            {
+                if(item.Customer !=null && item.Customer.UserId ==user.Id) {
+
+                    ans.Add(item);
+                
+                }
+            }
+            return ans;
+
+        }
+
+        // my profile 
+       
+        public List<Order_Item> GetByShop()
+        {
+            var ans = context.Order_Items.GroupBy(x => x.ShopID);
+            return (List<Order_Item>)ans;
+
         }
     }
 }

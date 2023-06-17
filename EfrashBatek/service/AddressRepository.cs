@@ -1,4 +1,6 @@
-﻿using EfrashBatek.Models;
+﻿using Castle.DynamicProxy.Generators.Emitters.SimpleAST;
+using EfrashBatek.Models;
+using Microsoft.AspNetCore.Identity;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,52 +10,83 @@ namespace EfrashBatek.service
     public class AddressRepository : IAddressRepository
     {
         Context context;
-        public AddressRepository(Context context)
+        private readonly UserManager<User> userManager;
+        private readonly IIdentityRepository identityRepository;    
+        public AddressRepository(Context context, UserManager<User> userManager , IIdentityRepository identityRepository)
         {
             this.context = context;
+            this.userManager = userManager;   
+            this.identityRepository = identityRepository;   
         }
-        public void Create(Address address)
-        {
-            context.Addresses.Add(address);
 
-        }
-        public int Update(int id, Address address)
+		public List<Address> GetAll()
+		{
+			User user = identityRepository.GetUser();
+            var ans = context.Addresses.Where(x => x.UserId == user.Id).ToList();   
+			return ans;
+		}
+		public Address GetbyID(int id)
+		{
+
+			var ans = context.Addresses.FirstOrDefault(x => x.ID == id);
+			return ans;
+		}
+		public int Create (Address address)
         {
-            var obj = context.Addresses.FirstOrDefault(x => x.ID == id);
-            obj.StreetName = address.StreetName;
-            obj.UserId = address.UserId;
-            obj.OrderId = address.OrderId;
-            obj.Zone = address.Zone;
-            obj.SetDefault = address.SetDefault;
-            obj.PostalCode = address.PostalCode;
-            obj.phone = address.phone;
-            obj.LastName = address.LastName;
-            obj.FirstName = address.FirstName;
-            obj.ApartmentNumber = address.ApartmentNumber;
-            obj.FloorName = address.FloorName;
-            obj.BuildingNumber = address.BuildingNumber;
-            obj.City = address.City;
-            context.Addresses.Update(obj);
-            int num = context.SaveChanges();
-            return num;
-        }
-        public int Delete(int Id)
-        {
-            var ans = context.Addresses.FirstOrDefault(x => x.ID == Id);
+            var user = identityRepository.GetUserID();
+            address.UserId = user;
+			context.Addresses.Add(address);
+			int num = context.SaveChanges();
+			return num;
+
+
+		}
+        public int  Delete(int id) {
+            var ans = context.Addresses.FirstOrDefault(x => x.ID == id);
             context.Addresses.Remove(ans);
             int num = context.SaveChanges();
             return num;
+
+
         }
-        public Address GetById(int Id)
+
+        public List<Address> View ()
         {
-            var ans = context.Addresses.FirstOrDefault(x => x.ID == Id);
-            return ans;
+
+
+           return GetAll(); 
+            
+
+
         }
-        public List<Address> GetAll()
-        {
-            var ans = context.Addresses.ToList();
-            return ans;
+
+        public int Edit (Address address) {
+
+            
+            foreach(var addressItem in GetAll()) { 
+            
+                if (addressItem.ID == address.ID)
+                {
+                    addressItem.FirstName = address.FirstName;  
+                    addressItem.LastName = address.LastName;
+                    addressItem.phone = address.phone;
+                    addressItem.Zone = address.Zone;    
+                    addressItem.FullAddress= addressItem.FullAddress;
+                    addressItem.PostalCode = addressItem.PostalCode;
+
+
+                    context.Addresses.Update(addressItem);
+                    int num = context.SaveChanges();
+                    return num;
+
+
+                }
+            }
+            return 0;
+        
         }
+
+
 
     }
 }

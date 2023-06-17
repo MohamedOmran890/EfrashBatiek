@@ -1,0 +1,82 @@
+﻿@model IEnumerable<Order>
+@{
+    Layout = "AdminLayout";
+}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders</title>
+ @*<link rel="stylesheet" href="~/css/admin.css">*@
+ <link rel="stylesheet" href="~/css/orders1.css">
+    <!-- ====== ionicons ======= -->
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    <!-- NAVBAR -->
+    <section id="content">
+        <nav>
+            <form action="#">
+                <div class="form-input">
+                    <input type="search" placeholder="Search...">
+                    <button type="submit" class="search-btn"><i class='bx bx-search'></i></button>
+                </div>
+            </form>
+        </nav>
+    </section>
+    <!-- ORDER DETAILS -->
+    <div class="details">
+        <div class="recentOrders">
+            <div class="cardHeader">
+                <h2>Order Details</h2>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <td>Order ID </td>
+                        <td>Order Date</td>
+                        <td>Customer Name</td>
+                        <td>Total</td>
+                        <td>Payment Method</td>
+                        <td>View</td>
+                        <td>Action</td>
+                    </tr>
+                </thead>
+                @foreach (var order in Model)
+               {     
+   
+                <tbody>
+                    <tr>
+                        <td>@order.OrderCode</td>
+                        <td>@order.OrderDate</td>
+                        <td>@order.Customer.User.FirstName+" "+@order.Customer.User.LastName</td>
+                        <td>@order.TotalCost</td>
+                        <td><span class="status delivered">@order.PaymentMethod</span></td>
+                        <td>
+                            <button class="btn btn-rounded" asp-action="ViewOrders" asp-controller="MyProfile">View <i class="mdi mdi-download ms-2"></i></button>
+
+                        </td>
+                        <td>
+                        <td>
+                            <a class="edit" title="Edit" data-toggle="tooltip">
+                                <i class="material-icons">&#xE254;</i>
+                            </a>
+                            <a class="delete" title="Delete" data-toggle="tooltip">
+                                <i class="material-icons">&#xE872;</i>
+                            </a>
+                            </td>
+                        </td>
+                    </tr>
+                </tbody>
+              
+               }
+            </table>
+        </div>
+        </div>
+        <script src="js/script.js"></script>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

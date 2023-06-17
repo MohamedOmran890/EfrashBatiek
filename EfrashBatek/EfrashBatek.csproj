@@ -6,22 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="wwwroot\css\about us.css" />
-    <Content Remove="wwwroot\css\cart.css" />
-    <Content Remove="wwwroot\css\cart2.css" />
-    <Content Remove="wwwroot\css\contact us.css" />
-    <Content Remove="wwwroot\css\Empty.css" />
-    <Content Remove="wwwroot\css\log.css" />
-    <Content Remove="wwwroot\css\log2.css" />
-    <Content Remove="wwwroot\css\main.css" />
-    <Content Remove="wwwroot\css\orderinfo.css" />
-    <Content Remove="wwwroot\css\product details.css" />
-    <Content Remove="wwwroot\css\profile.css" />
-    <Content Remove="wwwroot\css\profile2.css" />
-    <Content Remove="wwwroot\css\style-prefix.css" />
-    <Content Remove="wwwroot\css\style.css" />
-    <Content Remove="wwwroot\css\trend.css" />
-    <Content Remove="wwwroot\css\wishlist.css" />
+    <Content Remove="wwwroot\css\add item.css" />
+    <Content Remove="wwwroot\css\edititem.css" />
+    <Content Remove="wwwroot\css\Items.css" />
+    <Content Remove="wwwroot\css\seller.css" />
     <Content Remove="wwwroot\Image\0.jpg" />
     <Content Remove="wwwroot\Image\00.webp" />
     <Content Remove="wwwroot\Image\1.jpg" />
@@ -123,32 +111,59 @@
     <Content Remove="wwwroot\Image\products\sports-6.jpg" />
     <Content Remove="wwwroot\Image\products\watch-1.jpg" />
     <Content Remove="wwwroot\Image\products\watch-2.jpg" />
-    <Content Remove="wwwroot\Image\products\watch-3.jpg" />
     <Content Remove="wwwroot\Image\products\watch-4.jpg" />
+    <Content Remove="wwwroot\Image\products\x.jpg" />
     <Content Remove="wwwroot\Image\testimonial-1.jpg" />
     <Content Remove="wwwroot\Image\trash.png" />
     <Content Remove="wwwroot\Image\womens-banner.jpg" />
     <Content Remove="wwwroot\js\cart.js" />
     <Content Remove="wwwroot\js\main.js" />
     <Content Remove="wwwroot\js\script.js" />
+    <Content Remove="wwwroot\js\site.js" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="wwwroot\css\about us.css" />
+    <None Include="wwwroot\css\add item.css" />
+    <None Include="wwwroot\css\addre2.css" />
+    <None Include="wwwroot\css\addseller.css" />
+    <None Include="wwwroot\css\addshop.css" />
+    <None Include="wwwroot\css\admin.css" />
     <None Include="wwwroot\css\cart.css" />
     <None Include="wwwroot\css\cart2.css" />
+    <None Include="wwwroot\css\Checkout address.css" />
+    <None Include="wwwroot\css\confirmpassword.css" />
     <None Include="wwwroot\css\contact us.css" />
+    <None Include="wwwroot\css\custom.css" />
+    <None Include="wwwroot\css\default address.css" />
+    <None Include="wwwroot\css\default.css" />
+    <None Include="wwwroot\css\confim.css" />
+    <None Include="wwwroot\css\edititem.css" />
     <None Include="wwwroot\css\Empty.css" />
+    <None Include="wwwroot\css\forgetpassword.css" />
+    <None Include="wwwroot\css\Items.css" />
     <None Include="wwwroot\css\log.css" />
     <None Include="wwwroot\css\log2.css" />
+    <None Include="wwwroot\css\login.css" />
     <None Include="wwwroot\css\main.css" />
+    <None Include="wwwroot\css\Order Confirmation.css" />
     <None Include="wwwroot\css\orderinfo.css" />
+    <None Include="wwwroot\css\orders.css" />
+    <None Include="wwwroot\css\orderdetails.css" />
+    <None Include="wwwroot\css\orders1.css" />
+    <None Include="wwwroot\css\orders1.html" />
+    <None Include="wwwroot\css\payment method.css" />
     <None Include="wwwroot\css\product details.css" />
     <None Include="wwwroot\css\profile.css" />
     <None Include="wwwroot\css\profile2.css" />
+    <None Include="wwwroot\css\seller details.css" />
+    <None Include="wwwroot\css\seller details.html" />
+    <None Include="wwwroot\css\seller.css" />
+    <None Include="wwwroot\css\signup.css" />
     <None Include="wwwroot\css\style-prefix.css" />
     <None Include="wwwroot\css\style.css" />
     <None Include="wwwroot\css\trend.css" />
+    <None Include="wwwroot\css\ordertable.css" />
     <None Include="wwwroot\css\wishlist.css" />
     <None Include="wwwroot\Image\0.jpg" />
     <None Include="wwwroot\Image\00.webp" />
@@ -251,11 +266,12 @@
     <None Include="wwwroot\Image\products\sports-6.jpg" />
     <None Include="wwwroot\Image\products\watch-1.jpg" />
     <None Include="wwwroot\Image\products\watch-2.jpg" />
-    <None Include="wwwroot\Image\products\watch-3.jpg" />
+    <None Include="wwwroot\Image\products\x.jpg" />
     <None Include="wwwroot\Image\products\watch-4.jpg" />
     <None Include="wwwroot\Image\testimonial-1.jpg" />
     <None Include="wwwroot\Image\trash.png" />
     <None Include="wwwroot\Image\womens-banner.jpg" />
+    <None Include="wwwroot\js\site.js" />
     <None Include="wwwroot\js\cart.js" />
     <None Include="wwwroot\js\main.js" />
     <None Include="wwwroot\js\script.js" />
@@ -264,12 +280,29 @@
   <ItemGroup>
     <PackageReference Include="Castle.Windsor" Version="5.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.17" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="5.0.17" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.17" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.17">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="5.0.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\Image\custom\" />
+    <Folder Include="wwwroot\Image\Items\" />
+    <Folder Include="wwwroot\Image\Items\" />
+    <Folder Include="wwwroot\Image\Items\" />
+    <Folder Include="wwwroot\Image\Wish\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Views\Designs\Design.cshtml">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
   </ItemGroup>
 
 </Project>

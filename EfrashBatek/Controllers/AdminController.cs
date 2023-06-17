@@ -1,7 +1,10 @@
-﻿using EfrashBatek.Models;
+using EfrashBatek.Models;
 using EfrashBatek.service;
 using EfrashBatek.ViewModel;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace EfrashBatek.Controllers
 {
@@ -10,11 +13,24 @@ namespace EfrashBatek.Controllers
         ICustomerRepository customer;
         IOrderRepository order;
         IShopRepository shop;
-        public AdminController(ICustomerRepository customer, IOrderRepository order, IShopRepository shop)
+        IStaffRepository _staff;
+        private readonly UserManager<User> _userManager;
+        IOrder_ItemRepository order_item;
+        Context _context;
+        EmailStaffService EmailStaffService;
+        public AdminController(UserManager<User>usermanager, ICustomerRepository customer,
+            IOrderRepository order, IShopRepository shop, 
+            IStaffRepository staff, IOrder_ItemRepository order_item, Context context
+            ,EmailStaffService emailStaffService)
         {
             this.customer = customer;
             this.order = order;
             this.shop = shop;
+            this._staff = staff;
+            _userManager = usermanager;
+            this.order_item = order_item;
+            _context = context;
+            EmailStaffService = emailStaffService;
         }
         public IActionResult Dashboard()
         {
@@ -30,20 +46,83 @@ namespace EfrashBatek.Controllers
         {
             return View();
         }
-        public IActionResult SaveStaff(Shop obj)
-        {
-            if (ModelState.IsValid)
-            {
-                shop.Create(obj);
-                return RedirectToAction("Dashboard");
-            }
-            else
-                return View("AddStaff");
-
-        }
-        public IActionResult AddShop()
+        //Fake
+        public IActionResult AddStaff2()
         {
             return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SaveStaff(RegisterViewModelStaff model)
+        {
+            var ans = _context.Shops.FirstOrDefault(x => x.TaxCardNumber == model.ShopNumber);
+            if (!ModelState.IsValid||ans==null)
+            {
+                if(ans==null)
+                    ModelState.AddModelError("", "ShopNumber Not Found ");
+                return View("AddStaff", model);
+            }
+
+            var user = new User
+            {
+                UserName = model.Username,
+                Email = model.Email,
+                PhoneNumber = model.Phone,
+                age = model.Age,
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                BirthDate = model.Birthdate,
+                Gender = (Gender)model.Gender,
+
+            };
+
+            var staff = new Staff
+            {
+                UserId = user.Id,
+                  ShopID = ans.ID
+            };
+            //var check = shop.GetById(ans.ID);
+            //if(check==null)
+            //{
+            //    return View("AddStaff", model);
+
+            //}
+            var result = await _userManager.CreateAsync(user, model.Password);
+            if (result.Succeeded)
+            {
+                // Add user to default role
+                //  await _userManager.AddToRoleAsync(user, "User");
+
+                // Redirect the user to the login page
+                _staff.Create(staff);
+              //  await EmailStaffService.SendEmail(model.Email, model.Username, model.Password, model.FirstName);
+                return Content("Done");
+            }
+
+                //if(check==null)
+                //ModelState.AddModelError("","Not Found ShopNumber ");
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError("", error.Description);
+
+            }
+
+            return View("AddStaff",model);
+        }
+
+
+          
+
+    public IActionResult AddShop()
+        {
+            Shop shop=new Shop();
+            return View(shop);
+
+        }
+        public IActionResult AddShop2()
+        {
+            Shop shop = new Shop();
+            return View(shop);
 
         }
         [HttpPost]
@@ -84,6 +163,11 @@ namespace EfrashBatek.Controllers
             else
                 return Content("Error Try Again");
 
+        }
+        public IActionResult Orders()
+        {
+            var ans = order.GetAll();
+            return View(ans);
         }
 
 

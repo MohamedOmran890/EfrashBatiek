@@ -1,0 +1,43 @@
+﻿@{
+    Layout = "CustomerLayout";
+}
+@model List<Cart_Item>
+<h3>Cart</h3>
+@if(Model.Count()>0)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>ItemName</th>
+                <th>ItemID</th>
+                <th>Quantity</th>
+                <th>Remove</th>
+        </tr>
+        </thead>
+        <tbody>
+    
+        @foreach(var item in Model)
+        {
+            <tr>
+
+                <td>@item.ItemName</td>
+                  <td>@item.Quantity</td>
+                    <td>@item.ItemID</td>
+            </tr>
+            <a asp-action="RemoveFromCart" asp-controller="Cart" asp-route-id="@item.ItemID">Remove From Cart</a>
+        }
+       
+        </tbody>
+
+
+    </table>
+}
+else
+{
+    <h1>Cart Is Empty</h1>
+    <h1>Cart Is Empty</h1>
+
+
+
+}
+

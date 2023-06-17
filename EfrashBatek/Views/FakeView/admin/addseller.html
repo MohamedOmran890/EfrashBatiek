@@ -1,108 +1,124 @@
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="UTF-8">
-    <title> Admin Dashboard </title>
-    <link rel="stylesheet" href="css/admin.css">
-    <!-- Boxicons CDN Link -->
-    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/addseller.css">
-  </head>
+
+<head>
+  <meta charset="UTF-8">
+  <title> Add Seller </title>
+  <link rel="stylesheet" href="css/admin.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Boxicons CDN Link -->
+  <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+  <!-- BOOTSTRAB -->
+  <link rel="stylesheet" type="text/css"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/addseller.css">
+</head>
+
 <body>
-  <!--DASHBOARD SIDEBAR-->
-  <div class="sidebar">
-    <div class="logo-details">
-      <i class='bx bxl-c-plus-plus'></i>
-      <span class="logo_name">Efresh Baitak</span>
-    </div>
-    <ul class="nav-links">
+  <!-- SIDEBAR -->
+  <section id="sidebar">
+    <a href="#" class="brand">
+      <i class='bx bxs-smile'></i>
+      <span class="text">Efresh Beitak</span>
+    </a>
+    <ul class="side-menu top">
       <li>
-        <a href="dash.html">
-          <i class='bx bx-grid-alt' ></i>
-          <span class="links_name">Dashboard</span>
-        </a>
-      <li>
-        <a href="orders.html">
-          <i class='bx bx-list-ul' ></i>
-          <span class="links_name">Order list</span>
+        <a href="admin.html">
+          <i class='bx bxs-dashboard'></i>
+          <span class="text">Dashboard</span>
         </a>
       </li>
       <li>
-        <a href="addseller.html" class="active">
-          <i class='bx bx-coin-stack' ></i>
-          <span class="links_name">Add Seller</span>
+        <a href="orders1.html">
+          <i class='bx bx-list-ul'></i>
+          <span class="text">Order List </span>
+        </a>
+      </li>
+      <li class="active">
+        <a href="addseller.html">
+          <i class='bx bx-list-plus'></i>
+          <span class="text">Add Seller</span>
         </a>
       </li>
       <li>
         <a href="addshop.html">
-          <i class='bx bx-coin-stack' ></i>
-          <span class="links_name">Add Shop</span>
+          <i class='bx bx-list-plus'></i>
+          <span class="text">Add Shop</span>
         </a>
       </li>
       <li>
-        <a href="seller details.html" >
-          <i class='bx bx-book-alt' ></i>
-          <span class="links_name">Seller Details</span>
+        <a href="seller details.html">
+          <i class='bx bxs-group'></i>
+          <span class="text">Seller Details</span>
         </a>
       </li>
     </ul>
-  </div>
-  <!--ADD SELLER FORM-->
-  <section class="home-section">
-    <div class="form">
-        <div class="title">Add Seller </div>
-        <div class="input-container ic1">
-          <input id="firstname" class="input" type="text" placeholder=" " />
-          <!--<div class="cut"></div>-->
-          <label for="firstname" class="placeholder">First name</label>
-        </div>
-        <div class="input-container ic2">
-          <input id="lastname" class="input" type="text" placeholder=" " />
-          <!--<div class="cut"></div>-->
-          <label for="lastname" class="placeholder">Last name</label>
-        </div>
-        <div class="input-container ic2">
-          <input id="email" class="input" type="text" placeholder=" " />
-          <!--<div class="cut cut-short"></div>-->
-          <label for="email" class="placeholder">Email</>
-        </div>
-        <div class="input-container ic2">
-          <input id="Age" class="input" type="text" placeholder=" " />
-          <!--<div class="cut cut-short"></div>-->
-          <label for="email" class="placeholder">Age</>
-        </div>
-        <div class="input-container ic2">
-          <input id="email" class="input" type="text" placeholder=" " />
-          <!--<div class="cut cut-long"></div>-->
-          <label for="number" class="placeholder">Phone number</>
-        </div>
-
-        <div class="input-container ic2">
-          <input id="Identity" class="input" type="text" placeholder=" " />
-          <!--<div class="cut cut-short"></div>-->
-          <label for="number" class="placeholder">ID</>
-        </div>
-       <!---------------------------------------------------------------------------------------------------SEARCH-------------------------------------------------------------------------------------------->
-        <div class="input-container ic2">
-            <input id="Shop-Name" class="input" type="text" placeholder=" " />
-              <label for="number" class="placeholder">Shop Name...</>
-              <i class='bx bx-search' ></i>
-        </div>
-        <button type="text" class="submit">Add Seller</button>
-      </div>
   </section>
+  <!-- SIDEBAR -->
+  <!-- NAVBAR -->
+  <section id="content">
+    <nav>
+      <i class='bx bx-menu'></i>
+    </nav>
+  </section>
+  <!-- NAVBAR -->
 
-  <script>
-    let sidebar = document.querySelector(".sidebar");
-    let sidebarBtn = document.querySelector(".sidebarBtn");
-    sidebarBtn.onclick = function () {
-      sidebar.classList.toggle("active");
-      if (sidebar.classList.contains("active")) {
-        sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
-      } else
-        sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
-    }
-  </script>
-
+  <!--ADD SELLER FORM-->
+  <div class="col-sm-12 col-md-12 col-lg-9 col-xl-9">
+    <div id="address" role="tabpanel" aria-labelledby="address-tab">
+      <h3 class="mb-4">Add Seller</h3>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" class="form-control" placeholder="First Name">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" class="form-control" placeholder="Last Name">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" class="form-control" placeholder="Email">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Age</label>
+            <input type="number" class="form-control" placeholder="Age">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>ID</label>
+            <input type="number" class="form-control" placeholder="ID">
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Shop Name </label>
+            <input type="text" class="form-control" placeholder="Shop Name">
+            <label for="text" class="placeholder">
+              <i class='bx bx-search'></i>
+            </label>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="number" class="form-control" placeholder="Phone Number">
+          </div>
+        </div>
+        <input type="submit" class="btnRegister" value="Save" href="default address.html">
+      </div>
+    </div>
+  </div>
+  </section>
+  <!-- SCRIPT -->
+  <script src="js/script.js"></script>
 </body>
 </html>

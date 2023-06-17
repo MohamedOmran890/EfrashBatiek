@@ -1,0 +1,69 @@
+﻿@model Address
+@{
+    ViewBag.Title = "Checkout";
+    Layout = "CustomerLayout";
+
+}
+
+<link rel="stylesheet" href="~/assets/libs/twitter-bootstrap-wizard/prettify.css">
+<form asp-action="SaveAddress">
+                                   <div>
+
+                                        <div class="row">
+                                            <div class="col-lg-4">
+                                                <div class="mb-4">
+                                                    <label class="form-label" for="billing-name">First Name</label>
+                                                    <input asp-for="FirstName" placeholder="Enter First Name">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4">
+                                               <div class="mb-4">
+                                                  <label class="form-label" for="billing-name">st Name</label>
+                                                  <input asp-for="LastName" placeholder="Enter Last Name">
+                                                 </div>
+                                               </div>
+
+                                             </div>
+                                            <div class="row">
+                                                    <div class="col-lg-4">
+                                                        <div class="mb-4">
+                                                            <label class="form-label" for="billing-phone">Phone</label>
+                                                            <input asp-for="phone" placeholder="Enter Phone no.">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            
+                                        <div class="mb-4">
+                                            <label class="form-label" for="billing-address">Address</label>
+                                            <textarea asp-for="FullAddress" placeholder="Enter full address"></textarea>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-lg-4">
+                <div class="mb-4">
+
+                                              <div class="form-group">
+                                                 <label asp-for="Zone" class="control-label"></label>
+                                                  <select asp-for="Zone" class="form-control" asp-items="ViewBag.Zone"></select>
+                                                </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-lg-4">
+                                                <div class="mb-4">
+                                                <div class="form-group">
+                                                    <label class="form-label" for="zip-code">Postal code</label>
+                                                    <input asp-for="PostalCode" placeholder="Enter Postal code">
+                                                </div>
+                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <input type="submit" value="Create" class="btn btn-primary" />
+                                        </div>
+
+                                  
+                                  </div>
+                           </form>
+             

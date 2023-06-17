@@ -1,148 +1,151 @@
-﻿
+﻿﻿@{
+    Layout = "CustomerLayout";
+}
+@model Order
 @{
-	Layout = "CustomerLayout";
+    // Since Address isn't a string, it requires a cast.
+    var address = ViewData["Address"] as Address;
 }
 
-	<section class="main-home" >
-		<br>
-		<br>
-		<br>
-		<div class="container-fluid">
-			<div class="container">
-				<!-- Title -->
-				<div class="d-flex justify-content-between align-items-center py-3">
-					<h2 class="h5 mb-0"><a href="#" class="text-muted"></a> Order Code : #131321</h2>
-				</div>
+<link rel="stylesheet" href="~/css/orderdetails.css">
 
-				<!-- Main content -->
-				<div class="row">
-					<div class="col-lg-8">
-						<!-- Details -->
-						<div class="card mb-4">
-							<div class="card-body">
-								<div class="mb-3 d-flex justify-content-between">
-									<div>
-										<span class="me-3">22-11-2023</span>
-										<span class="me-3">#131321</span>
-										<span class="me-3">Visa -1234</span>
-										<span class="badge rounded-pill bg-info">SHIPPING</span>
-									</div>
-									<div class="d-flex">
-										<div class="dropdown">
-											<button class="btn btn-link p-0 text-muted" type="button" data-bs-toggle="dropdown">
-												<i class="bi bi-three-dots-vertical"></i>
-											</button>
-											<ul class="dropdown-menu dropdown-menu-end">
-												<li><a class="dropdown-item" href="#"><i class="bi bi-pencil"></i> Edit</a></li>
-												<li><a class="dropdown-item" href="#"><i class="bi bi-printer"></i> Print</a></li>
-											</ul>
-										</div>
-									</div>
-								</div>
-								<table class="table table-borderless">
-									<tbody>
-										<tr>
-											<td>
-												<div class="d-flex mb-2">
-													<div class="flex-shrink-0">
-														<img src="image/1.jpg" alt="" width="35" class="img-fluid">
-													</div>
-													<div class="flex-lg-grow-1 ms-3">
-														<h6 class="small mb-0"><a href="#" class="text-reset">Chair</a></h6>
-														<span class="small">Color: Black</span>
-													</div>
-												</div>
-											</td>
-											<td>1</td>
-											<td class="text-end">79.99 EGP</td>
-										</tr>
-										<tr>
-											<td>
-												<div class="d-flex mb-2">
-													<div class="flex-shrink-0">
-														<img src="image/2.png" alt="" width="35" class="img-fluid">
-													</div>
-													<div class="flex-lg-grow-1 ms-3">
-														<h6 class="small mb-0"><a href="#" class="text-reset">Bed</a></h6>
-														<span class="small">Color: White</span>
-													</div>
-												</div>
-											</td>
-											<td>1</td>
-											<td class="text-end">2,000 EGP</td>
-										</tr>
-									</tbody>
-									<tfoot>
-										<tr>
-											<td colspan="2">Subtotal</td>
-											<td class="text-end">2,079.99 EGP</td>
-										</tr>
-										<tr>
-											<td colspan="2">Shipping</td>
-											<td class="text-end">20.00 EGP</td>
-										</tr>
-										<tr>
-											<td colspan="2">Discount (Code: NEWYEAR)</td>
-											<td class="text-danger text-end">-10.00 EGP</td>
-										</tr>
-										<tr class="fw-bold">
-											<td colspan="2">TOTAL</td>
-											<td class="text-end">2,089 EGP</td>
-										</tr>
-									</tfoot>
-								</table>
-							</div>
-						</div>
-						<!-- Payment -->
-						<div class="card mb-4">
-							<div class="card-body">
-								<div class="row">
-									<div class="col-lg-6">
-										<h3 class="h6">Payment Method</h3>
-										<p>
-											Visa -1234 <br>
-											Total: 2,089 EGP <span class="badge bg-success rounded-pill">PAID</span>
-										</p>
-									</div>
-									<div class="col-lg-6">
-										<h3 class="h6">Billing address</h3>
-										<address>
-											<strong>Hazem Abdelsattar</strong><br>
-											<p>New Qena<p>
-											<p>Dreams Land<p>
-												<abbr title="Phone">P:</abbr> (+20)1004443226
-										</address>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-4">
-						<!-- Customer Notes -->
-						<div class="card mb-4">
-							<div class="card-body">
-								<h3 class="h6">Customer Notes</h3>
-								<p>Thanks !</p>
-							</div>
-						</div>
-						<div class="card mb-4">
-							<!-- Shipping information -->
-							<div class="card-body">
-								<h3 class="h6">Shipping Information</h3>
-								<strong>FedEx</strong>
-								<span><a href="main.html" class="text-decoration-underline">FF1234567890</a> <i class="bi bi-box-arrow-up-right"></i> </span>
-								<hr>
-								<h3 class="h6">Address</h3>
-								<address>
-									<strong>Hazem Abdelsattar</strong><br>
-									1,1,New Qena , Qena City<br>
-									Dreams Land , Dreams Schools<br>
-									<abbr title="Phone">P:</abbr> (+20)1004443226
-								</address>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
+<br>
+<br>
+<br>
+<br>
+
+<div class="container-fluid">
+    <div class="container">
+        <!-- Title -->
+        <div class="d-flex justify-content-between align-items-center py-3">
+            <h2 class="h5 mb-0"><a href="#" class="text-muted"></a> Order Code : #131321</h2>
+        </div>
+
+        <!-- Main content -->
+        <div class="row">
+            <div class="col-lg-8">
+                <!-- Details -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="mb-3 d-flex justify-content-between">
+                            <div>
+                                <span class="me-3">@Model.OrderDate</span>
+                                <span class="me-3">@Model.OrderCode</span>
+                                <span class="badge rounded-pill bg-info">@Model.PaymentMethod</span>
+                            </div>
+                            <div class="d-flex">
+                                <div class="dropdown">
+                                    <button class="btn btn-link p-0 text-muted" type="button" data-bs-toggle="dropdown">
+                                        <i class="bi bi-three-dots-vertical"></i>
+                                    </button>
+
+                                </div>
+                            </div>
+                        </div>
+                        <table class="table table-borderless">
+                            <tbody>
+
+                                @foreach (var itemOrder in Model.Order_Item)
+                                {
+                                    <tr>
+                                        <!--img & color & name -->
+                                        <td>
+                                            <div class="d-flex mb-2">
+                                                <!---image-->
+                                                <div class="flex-shrink-0">
+                                                    <img src="~/Image/@itemOrder.item.Image" alt="" width="35" class="img-size">
+                                                </div>
+                                                <!--color & name -->
+                                                <div class="flex-lg-grow-1 ms-3">
+                                                    <h6 class="small mb-0"><a href="#" class="text-reset">@itemOrder.item.Name </a></h6>
+                                                    <span class="small">Product: @itemOrder.item.Name</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <!-- number-->
+                                        <td>@itemOrder.Quantity</td>
+                                        <!--price-->
+                                        <td class="text-end">@itemOrder.item.Price EGP</td>
+                                        <!--state of order -->
+                                        <td>
+                                            <span class="badge bg-success rounded-pill">@itemOrder.OrderState</span>
+                                        </td>
+                                    </tr>
+                                <tr>
+                                    <td></td>
+                                    <td><span class="aleite">Cancel Item !</span></td>
+                                    <td></td>
+                                    <td></td>
+                                    </tr>
+                                }
+
+
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="2">Subtotal</td>
+                                    <td class="text-end"> @Model.TotalCost EGP</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">Shipping</td>
+                                    <td class="text-end">20.00 EGP</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">Discount (Code: NEWYEAR)</td>
+                                    <td class="text-danger text-end">-10.00 EGP</td>
+                                </tr>
+                                <tr class="fw-bold">
+                                    <td colspan="2">TOTAL</td>
+                                    <td class="text-end">2,089 EGP</td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-4">
+
+                <!-- Payment -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <h3 class="h6">Payment Method</h3>
+                                <p>
+                                    Cash on Delivery   <br>
+                                    Total: 2,089 EGP
+                                </p>
+                            </div>
+                            <div class="col-lg-6">
+                                <h3 class="h6">Billing address</h3>
+                                <address>
+                                    <strong> @address.FirstName @address.LastName </strong><br>
+                                    <p>@address.description<p>
+                                    <p>Qena<p>
+                                        <abbr title="Phone">Phone :</abbr> (+20)@address.phone;
+                                </address>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @*  <div class="card mb-4">
+                <!-- Shipping information -->
+                <div class="card-body">
+                <h3 class="h6">Shipping Information</h3>
+                <strong>FedEx</strong>
+                <span><a href="main.html" class="text-decoration-underline">FF1234567890</a> <i class="bi bi-box-arrow-up-right"></i> </span>
+                <hr>
+                <h3 class="h6">Address</h3>
+                <address>
+                <strong>Hazem Abdelsattar</strong><br>
+                1,1,New Qena , Qena City<br>
+                Dreams Land , Dreams Schools<br>
+                <abbr title="Phone">P:</abbr> (+20)1004443226
+                </address>
+                </div>
+                </div>*@
+            </div>
+        </div>
+    </div>
+</div>

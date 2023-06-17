@@ -15,9 +15,10 @@ namespace EfrashBatek.Models
     }
     public enum UserType : short
     {
-        Customer,
+        Customer=1,
+        Admin,
         Staff,
-        admin,
+        shop,
         Designer,
     }
     public class User:IdentityUser
@@ -33,7 +34,7 @@ namespace EfrashBatek.Models
         [Required]
         [Column(TypeName = "Date")]
         public DateTime BirthDate{ get; set; }
-        public virtual Address  Address { get; set; }   
+        public virtual List<Address> AddressList { get; set; }  
         public virtual ICollection<Video> Videos { get; set; }
         [Required]
         public  Gender Gender { get; set; }

@@ -1,0 +1,270 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-family: 'Jost', sans-serif;
+    list-style: none;
+    text-decoration: none;
+}
+
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap");
+
+body {
+    background: #fbfbfb;
+    font-family: "Roboto", sans-serif;
+}
+
+/* ICONS*/
+.row {
+
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
+address {
+  margin: 1% 0 0 3%;
+}
+
+
+/**/
+.addresses {
+ /* display: flex;*/
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background-color: #cbaab1;
+}
+
+.addresses p{
+    margin-top: -4%;
+    margin-left: 10%; 
+}
+
+.addresss {
+  background-color: #fbfbfb ;
+  width: 48%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 1%;
+}
+.radio-pair {
+  background-color: #cbaab1;
+  display: inline-block;
+   
+}
+
+
+/* .radio-pair input[type="radio"] {
+  margin-left: 10px;
+  background-color: #cbaab1;
+  
+} */
+
+
+/* my work is here-------------------------------------------- */
+.bxs-edit{
+  display: flex;
+  justify-content: space-between;
+  /* align-items: flex-start; */
+  background-color: none;
+  display: inline-block;
+
+
+}
+/* This is my default address*/
+.payment-default-address {
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  font-size: 13px;
+}
+.align-items-center {
+  -ms-flex-align: center!important;
+  align-items: center!important;
+}
+.d-flex {
+  display: -ms-flexbox!important;
+  display: flex!important;
+}
+/* continue button*/
+.btnRegister {
+
+  border: none;
+  border-radius: 1.5rem;
+  padding: 2%;
+  background: #cbaab1;
+  color: #fff;
+  font-size: large;
+  font-weight: 600;
+  width: 30%;
+  cursor: pointer;
+  transition: background-color 0.4s ease;
+}
+
+.btnRegister:hover {
+  background-color: #c895a0;
+  /* Change the background color to red when the button is hovered over */
+}
+
+
+/*ADDRESS*/
+#address {
+
+  padding: 50px;
+  border-radius: 30px;
+  background-color: #fff;
+
+  box-shadow: 0 0 1em rgba(0, 0, 0, 0.0625);
+
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.addressBOX {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  padding: 16px;
+  border-radius: 5px;
+  margin: 20px 0px;
+}
+
+.addressBOX-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.address input {
+    padding: 4px 28px;
+    border-radius: 10px;
+    margin: 5px auto;
+    border: 1px solid #918383;
+    background-color: #f3f4f6;
+    box-shadow: 1px 2px 1px 2px rgb(230, 229, 229);
+    color: #000000;
+    outline: none;
+    font-size: 16px;
+}
+
+.bx-plus-circle{
+color: #cbaab1;
+}
+.new{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #cbaab1;
+}
+
+.new a {
+  
+  color: #cbaab1;
+  text-decoration: none;
+}
+
+.new a:hover {
+  text-decoration: underline;
+}
+
+
+/*******************************************************************************scroll***************************************************/
+
+/* width */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+
+/* Track */
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #cbaab1;
+    border-radius: 10px;
+}
+
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #94777d; 
+  transition: background-color 0.8s ease;
+}
+
+
+@media(max-width:1300px) {
+    .steps {
+        width: 69%;
+        margin-left: 37px !important;
+    }
+}
+
+/* Responsive-css */
+@media(max-width:890px) {
+  header {
+    padding: 20px 3%;
+    transition: .4s;
+  }
+}
+
+@media(max-width:630px) {
+  .main-text h1 {
+    font-size: 50px;
+    transition: .4s;
+  }
+
+  .main-text p {
+    font-size: 18px;
+    transition: .4s;
+  }
+
+  .main-btn {
+    padding: 10px 20px;
+    transition: .4s;
+  }
+}
+
+@media(max-width:750px) {
+  .navmenu {
+    position: absolute;
+    top: 100%;
+    right: -100%;
+    width: 300px;
+    height: 130vh;
+    background: #d0d0d0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 120px 30px;
+    transition: all .42s;
+  }
+
+  .navmenu a {
+    display: block;
+    margin: 18px 0;
+  }
+
+  .navmenu.open {
+    right: 0;
+  }
+}
+
+.tsts{
+    margin: 0px;
+    padding: -2px;
+
+}
+.run{
+text-align: left;
+}
+.mod{
+  padding: 0px;
+  margin: 0px;
+  margin-left: 20px;
+  margin-bottom: 10px;
+  /* background-color: #8B0000; */
+}
+

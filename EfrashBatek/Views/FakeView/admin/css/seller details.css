@@ -1,128 +1,324 @@
-h2 {
-	text-align: center;
-	color:#cbaab1;
+/* =============== Navigation ================ */
+a,
+a:hover,
+a:focus,
+a:active {
+  text-decoration: none;
+  color: inherit;
 }
 
-body {
-	background-color: #ffffff;
+.navigation {
+  position: fixed;
+  width: 300px;
+  height: 100%;
+  background: #cbaab1;
+  border-left: 10px solid #cbaab1;
+  transition: 0.5s;
+  overflow: hidden;
 }
 
-table {
-	border-collapse: collapse;
-	width: 100%;
-	margin: 5 auto;
+.navigation.active {
+  width: 80px;
 }
 
-th, td {
-	text-align: left;
-	padding: 8px;
+.navigation ul {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
 }
 
-th {
-  background: #807f7f;
-	color: white;
+.navigation ul li {
+  position: relative;
+  width: 100%;
+  list-style: none;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
 }
 
-tr:nth-child(even) {
-	background-color: #f2f2f2;
-}
-
-button {
-	background-color: #cbaab1;
-	color: #fff;
-	padding: 5px 10px;
-	border: none;
-	cursor: pointer;
-	border-radius: 25%;
-}
-
-button:hover {
-  
-  background-color:#d1cece ;
-}
-
-.search-box {
-	align-content: center;
-	position: relative;
-	height: 50px;
-	max-width: 550px;
-	width: 100%;
-	margin: 20px auto;
-	border-radius: 10%;
-}
-
-.search-box input {
-	height: 100%;
-	width: 100%;
-	outline: none;
-	background: #F5F6FA;
-	border: 2px solid #EFEEF1;
-	border-radius: 6px;
-	font-size: 18px;
-	padding: 0 15px;
-	
-}
-
-.search-box .bx-search {
-	position: absolute;
-	height: 40px;
-	width: 40px;
-	background: #cbaab1;
-	right: 5px;
-	top: 50%;
-	transform: translateY(-50%);
-	border-radius: 4px;
-	line-height: 40px;
-	text-align: center;
-	color: #fff;
-	font-size: 22px;
-	transition: all 0.4 ease;
-}
-/* Responsive-css */
-@media(max-width:890px){
-    header{
-        padding: 20px 3%;
-        transition: .4s;
-    }
-}
-@media(max-width:630px){
-    .main-text h1{
-        font-size: 50px;
-        transition: .4s;
-    }
-    .main-text p{
-        font-size: 18px;
-        transition: .4s;
-    }
-    .main-btn{
-        padding: 10px 20px;
-        transition: .4s;
-    }
-}
-
-@media(max-width:750px){
-    .navmenu{
-        position: absolute;
-        top: 100%;
-        right:-100%;
-        width: 300px;
-        height: 130vh;
-        background: #d0d0d0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 120px 30px;
-        transition: all .42s;
-    }
-    .navmenu a{
-        display: block;
-        margin: 18px 0;
-    }
-    .navmenu.open{
-        right: 0;
-    }
-}
-.nav-pills .nav-link.active, .nav-pills .show>.nav-link
-{
+.navigation ul li:hover,
+.navigation ul li.hovered {
   background-color: #cbaab1;
+}
+
+.navigation ul li:nth-child(1) {
+  margin-bottom: 40px;
+  pointer-events: none;
+}
+
+.navigation ul li a {
+  position: relative;
+  display: block;
+  width: 100%;
+  display: flex;
+  text-decoration: none;
+  color: black;
+}
+
+.navigation ul li:hover a,
+.navigation ul li.hovered a {
+  color: black;
+}
+
+.navigation ul li a .icon {
+  position: relative;
+  display: block;
+  min-width: 60px;
+  height: 60px;
+  line-height: 75px;
+  text-align: center;
+}
+
+.navigation ul li a .icon ion-icon {
+  font-size: 1.75rem;
+}
+
+.navigation ul li a .title {
+  position: relative;
+  display: block;
+  padding: 0 10px;
+  height: 60px;
+  line-height: 60px;
+  text-align: start;
+  white-space: nowrap;
+}
+
+/* --------- curve outside ---------- */
+.navigation ul li:hover a::before,
+.navigation ul li.hovered a::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: -50px;
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  border-radius: 50%;
+  box-shadow: 35px 35px 0 10px var(--white);
+  pointer-events: none;
+}
+
+.navigation ul li:hover a::after,
+.navigation ul li.hovered a::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -50px;
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  border-radius: 50%;
+  box-shadow: 35px -35px 0 10px var(--white);
+  pointer-events: none;
+}
+
+/* ===================== Main ===================== */
+.main {
+  position: revert;
+  width: calc(100% - 300px);
+  left: 300px;
+  min-height: 100vh;
+  background: var(--white);
+  transition: 0.5s;
+}
+
+.main.active {
+  width: calc(100% - 80px);
+  left: 80px;
+}
+
+.topbar {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.toggle {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  cursor: pointer;
+}
+
+.search {
+  position: relative;
+  width: 400px;
+  margin: 0 10px;
+}
+
+.search label {
+  position: relative;
+  width: 100%;
+}
+
+.search label input {
+  width: 100%;
+  height: 40px;
+  border-radius: 40px;
+  padding: 5px 20px;
+  padding-left: 35px;
+  font-size: 18px;
+  outline: none;
+  border: 1px solid var(--black2);
+}
+
+.search label ion-icon {
+  position: absolute;
+  top: 0;
+  left: 10px;
+  font-size: 1.2rem;
+}
+
+.user {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.user img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ================== Order Details List ============== */
+.details {
+  position: relative;
+  width: 80%;
+  padding: 20px;
+  display: grid;
+  grid-template-columns: 10fr;
+  grid-gap: 30px;
+  /* margin-top: 10px; */
+  margin-left: 20%;
+}
+
+.details .recentOrders {
+  position: relative;
+  display: grid;
+  min-height: 500px;
+  background: var(--white);
+  padding: 20px;
+  box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
+  border-radius: 20px;
+}
+
+.details .cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.cardHeader h2 {
+  font-weight: 600;
+  color: #cbaab1;
+}
+
+.cardHeader .btn {
+  position: relative;
+  padding: 5px 10px;
+  background: #cbaab1;
+  text-decoration: none;
+  color: var(--white);
+  border-radius: 6px;
+}
+
+.details table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.details table thead td {
+  font-weight: 600;
+}
+
+.details .recentOrders table tr {
+  color: #505d69;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.details .recentOrders table tr:last-child {
+  border-bottom: none;
+}
+
+.details .recentOrders table tbody tr:hover {
+  color: var(--white);
+}
+
+.details .recentOrders table tr td {
+  padding: 10px;
+}
+
+.details .recentOrders table tr td:last-child {
+  text-align: end;
+}
+
+.details .recentOrders table tr td:nth-child(2) {
+  text-align: end;
+}
+
+.details .recentOrders table tr td:nth-child(3) {
+  text-align: center;
+}
+
+.status.delivered {
+  padding: 2px 4px;
+  background: rgba(141, 224, 44, 0);
+  color: var(--white);
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.status.pending {
+  padding: 2px 4px;
+  background: #e9b10a;
+  color: var(--white);
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.status.return {
+  padding: 2px 4px;
+  background: #f00;
+  color: var(--white);
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.status.inProgress {
+  padding: 2px 4px;
+
+  background: #1795ce;
+  background-color: rgba(0, 0, 0, 0.25);
+  color: var(--white);
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* -----------------------------------*/
+
+a.edit {
+  color: #454545;
+}
+
+a.delete {
+  color: #E34724;
 }

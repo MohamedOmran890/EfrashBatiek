@@ -1,0 +1,166 @@
+﻿
+@{
+	Layout = "CustomerLayout";
+}
+@model List<Address>
+<title>Default Address</title>
+
+<!-- CSS-link -->
+
+<link rel="stylesheet" href="~/css/default address.css">
+<br>
+<br>
+<br>
+
+
+
+	<!------------------------------------------------ Icons ------------------------------->
+	<div class="row justify-content-start">
+		<ul id="address" class=" hr steps icons col-sm-11 col-md-11 col-lg-9 col-xl-9 bg-white">
+
+			<li class="word">
+				<a href="default address.html">
+					<i class='bx bxs-location-plus' style=" font-size: 38px;"></i>
+					<h2 class="word">Shipping</h2>
+				</a>
+			</li>
+
+
+			<li class="word">
+				<a href="/Checkout/payment">
+					<i class='bx bx-credit-card' style=" font-size: 38px;"></i>
+					<h2 class="word">Payment</h2>
+				</a>
+			</li>
+
+			<li class="word">
+				<a href="Order Confirmation.html">
+					<i class='bx bx-badge-check' style=" font-size: 38px;"></i>
+					<h2 class="word">Confirmation</h2>
+				</a>
+			</li>
+		</ul>
+	</div>
+	<!------------------------------------------------ Icons ------------------------------->
+	<!----------------------------------- ADDRESS BOXXX ----------------------------------->
+	<div class="row">
+		<div class="col-sm-12 col-md-12 col-lg-9 col-xl-9">
+			<div id="address" role="tabpanel" aria-labelledby="address-tab">
+				<h3 class="mb-3">Shipping</h3>
+				<h5 class="mb-3">Home Delivery</h5>
+				<h7 class="mb-3">Choose your default address</h7>
+				<p class="new" style="float: right;">
+					<!-- add new address -->
+					<a href="Checkout Address.html">
+						<i class='bx bx-plus-circle'></i> add new address
+				</p>
+				</a>
+				<div class="addressFORM">
+					<div class="address-row">
+						@if(Model!= null)
+					{
+						@foreach (var address in Model)
+						{
+							<div class="addressBOX">
+								<div class="control d-flex justify-content-between">
+									<input type="radio" name="address" value="address1" class="run">
+
+									
+										<a asp-action="ViewAddressDetails" asp-controller="Checkout" asp-route-id="@address.ID">
+										<i class='bx bxs-edit' id="tst"> </i>
+											</a>  
+									
+									
+										
+									
+									
+									<!-- data set here -->
+
+								</div>
+
+								<div class="ADDRESSDETAILS">
+									<br>
+									<span>@address.FirstName </span>
+									<br>
+									<span>@address.PostalCode</span>
+									<br>
+									<span>@address.FullAddress</span>
+									<br>
+									<span>@address.phone</span>
+								</div>
+							</div>
+
+						}
+					}
+				
+				
+
+					</div>
+				</div>
+			@using (Html.BeginForm("PaymentMethod", "Checkout", FormMethod.Post))
+			{
+
+				int x = ViewBag.cartID;
+				@Html.Hidden("cartID"  , x )
+				// Replace "Id" with the actual name of the ID property in your model
+
+				<button class="checkout-cta">Go to Secure Checkout</button>
+			}
+
+		</div>
+		</div>
+		<div class="col-sm-12 col-md-12 col-lg-3 col-xl-3">
+			<aside>
+				<div class="summary">
+					<div class="summary-total-items">
+						<span class="total-items"></span> Order Summary
+					</div>
+					<div class="summary-subtotal">
+						<div class="subtotal-title">Subtotal</div>
+						<div class="subtotal-value final-value" id="basket-subtotal">130.00</div>
+						<div class="summary-promo hide">
+							<div class="promo-title">Promotion</div>
+							<div class="promo-value final-value" id="basket-promo"></div>
+						</div>
+					</div>
+					<div class="summary-delivery">
+						<tbody>
+							@foreach(var item in ViewBag.list)
+						{
+							<tr>
+								<td>
+									<div class="d-flex mb-2">
+										<div class="flex-shrink-0">
+											<img src= "~/Image/products/@item.Item?.Image" alt="" width="35" class="img-fluid">
+										</div>
+										<div class="flex-lg-grow-1 ms-3">
+											<h6 class="small mb-0"><a href="#" class="text-reset">@item.Item?.Name</a></h6>
+											<span class="small">Color: Black</span>
+										</div>
+									</div>
+								</td>
+								<td>@item.Quantity</td>
+								<td class="text-end"> @item.Item?.Price</td>
+							</tr>
+							
+						}
+						
+							
+						</tbody>
+					</div>
+					<div class="summary-total">
+						<div class="total-title">Total</div>
+						<div class="total-value final-value" id="basket-total">130.00</div>
+					</div>
+					<div class="summary-checkout">
+						<a href="orderinfo.html"><button class="checkout-cta">Go to Secure Checkout</button></a>
+					</div>
+				</div>
+			</aside>
+		</div>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders</title>
+    <link rel="stylesheet" href="css/seller.css">
+    <link rel="stylesheet" href="css/orders.css">
+    <!-- ====== ionicons ======= -->
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</head>
+
+<body>
+    <!-- SIDEBAR -->
+    <section id="sidebar">
+        <a href="#" class="brand">
+            <i class='bx bxs-smile'></i>
+            <span class="text">Efresh Beitak</span>
+        </a>
+        <ul class="side-menu top">
+            <li>
+                <a href="seller.html">
+                    <i class='bx bxs-dashboard'></i>
+                    <span class="text">Dashboard</span>
+                </a>
+            </li>
+            <li class="active">
+                <a href="orders.html">
+                    <i class='bx bx-list-ul'></i>
+                    <span class="text">Order List </span>
+                </a>
+            </li>
+            <li>
+                <a href="additem.html">
+                    <i class='bx bx-list-plus'></i>
+                    <span class="text">Add Item</span>
+                </a>
+            </li>
+            <li>
+                <a href="Items.html">
+                    <i class='bx bx-list-plus'></i>
+                    <span class="text">Items</span>
+                </a>
+            </li>
+        </ul>
+
+    </section>
+
+    <!-- NAVBAR -->
+    <section id="content">
+        <nav>
+            <i class='bx bx-menu'></i>
+            <a href="#" class="nav-link">Categories</a>
+            <form action="#">
+                <div class="form-input">
+                    <input type="search" placeholder="Search...">
+                    <button type="submit" class="search-btn"><i class='bx bx-search'></i></button>
+                </div>
+            </form>
+        </nav>
+    </section>
+    <!-- NAVBAR -->
+    <style>
+
+    </style>
+    <!-- ORDER DETAILS -->
+    <div class="details">
+        <div class="recentOrders">
+            <div class="cardHeader">
+                <h2>Order Details</h2>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <td>Order ID </td>
+                        <td>Order Date</td>
+                        <td>Customer Name</td>
+                        <td>Total</td>
+                        <td>Order Status</td>
+                        <td>Payment Method</td>
+                        <td>Shop Name</td>
+                        <td>View</td>
+                        <td>Action</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>#666666</td>
+                        <td>28/6/23</td>
+                        <td>jameela</td>
+                        <td>1000$</td>
+                        <td>
+                            <select id="pro1">
+                                <option value="null">Status</option>
+                                <option class="status delivered" value="delivered">
+                                    Delivered
+                                </option>
+                                <option class="status return" value="return">
+                                    return
+                                </option>
+                                <option class="status inProgress" value="inProgress">
+                                    In Progress
+                                </option>
+                                <option class="status pending" value="pending">
+                                    pending
+                                </option>
+                            </select>
+                            <script>
+                                const selectElement1 = document.querySelector('#pro1');
+                                selectElement1.addEventListener('change', function () {
+                                    selectElement1.classList.remove('clicked-delivered', 'clicked-return', 'clicked-return', 'clicked-inProgress', 'clicked-pending');
+                                    selectElement1.classList.add('clicked-' + selectElement1.value);
+                                });
+                            </script>
+                        </td>
+                        <td><span class="status delivered">Cash</span></td>
+                        <td>efresh beitak</td>
+                        <td>
+                            <button class="btn btn-rounded">View <i class="mdi mdi-download ms-2"></i></button>
+
+                        </td>
+                        <td>
+                            <a class="delete" title="Delete" data-toggle="tooltip"><i
+                                    class="material-icons">&#xE872;</i></a>
+                            <!--<script>
+                                // Edit row on edit button click
+                                $(document).on("click", ".edit", function () {
+                                    $(this).parents("tr").find("td:not(:last-child)").each(function () {
+                                        $(this).html('<input type="text" class="form-control" value="' + $(this).text() + '">');
+                                    });
+                                    $(this).parents("tr").find(".add, .edit").toggle();
+                                    $(".add-new").attr("disabled", "disabled");
+                                });
+                                // Delete row on delete button click
+                                $(document).on("click", ".delete", function () {
+                                    $(this).parents("tr").remove();
+                                    $(".add-new").removeAttr("disabled");
+                                });
+                            </script>-->
+                        </td>
+                    </tr>
+                    <!-- ORDER 2 -->
+                    <tr>
+                        <td>#666666</td>
+                        <td>28/6/23</td>
+                        <td>jameela</td>
+                        <td>1000$</td>
+                        <td>
+                           <!-- STATUS -->
+                        </td>
+                        <td><span class="status delivered">Cash</span></td>
+                        <td>efresh beitak</td>
+                        <td>
+                            <button class="btn btn-rounded">View <i class="mdi mdi-download ms-2"></i></button>
+
+                        </td>
+                        <td>
+                            <a class="delete" title="Delete" data-toggle="tooltip"><i
+                                    class="material-icons">&#xE872;</i></a>
+
+                        </td>
+                    </tr>
+                    <!-- ORDER 3 -->
+                    <tr>
+                        <td>#666666</td>
+                        <td>28/6/23</td>
+                        <td>jameela</td>
+                        <td>1000$</td>
+                        <td>
+                            <!-- STATUS -->
+                         </td>
+                         <td><span class="status delivered">Cash</span></td>
+                        <td>efresh beitak</td>
+                        <td>
+                            <button class="btn btn-rounded">View <i class="mdi mdi-download ms-2"></i></button>
+
+                        </td>
+                        <td>
+                            <a class="delete" title="Delete" data-toggle="tooltip"><i
+                                    class="material-icons">&#xE872;</i></a>
+
+                        </td>
+                    </tr>
+                    <!-- order 4 -->
+                    <tr>
+                        <td>#666666</td>
+                        <td>28/6/23</td>
+                        <td>jameela</td>
+                        <td>1000$</td>
+                        <td>
+                            <!-- STATUS -->
+                         </td>
+                         <td><span class="status delivered">Cash</span></td>
+                        <td>efresh beitak</td>
+                        <td>
+                            <button class="btn btn-rounded">View <i class="mdi mdi-download ms-2"></i></button>
+
+                        </td>
+                        <td>
+                            <a class="delete" title="Delete" data-toggle="tooltip"><i
+                                    class="material-icons">&#xE872;</i></a>
+
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <script src="js/script.js"></script>
+</body>
+
+</html>

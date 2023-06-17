@@ -28,16 +28,16 @@ namespace EfrashBatek
     public static void DataSeeding()
     {
         using var context = new Context();
-        context.Database.EnsureCreated();
+        //context.Database.EnsureCreated();
           
         var Product = context.Products.FirstOrDefault(x=>x.ID==1);
-            var customer = context.Customers.FirstOrDefault(x => x.Id == 1);
-            if(customer == null)
-            {
+            //var customer = context.Customers.FirstOrDefault(x => x.Id);
+            //if(customer == null)
+            //{
 
-                User user = new User { Id = "11111", FirstName = "alyaa", LastName = "elhawary", Email = "alyaamamoon@gmail.com", PhoneNumber = "01111111" };
-                context.Customers.Add(new Customer { Id = 1, User = user});
-            }
+            //    User user = new User { Id = "11111", FirstName = "alyaa", LastName = "elhawary", Email = "alyaamamoon@gmail.com", PhoneNumber = "01111111" };
+            //    context.Customers.Add(new Customer { Id = 1, User = user});
+            //}
         if(Product==null)
         {
            // context.Products.Add(new Product { ID=1,ProductName= (ProductName)1, Description="Ikea is Very good " });
@@ -54,9 +54,9 @@ namespace EfrashBatek
             var shop = context.Shops.FirstOrDefault(x => x.ID == 1);
             if(shop==null)
             {
-                context.Shops.Add(new Shop { ID = 1, Name = "Nssagon",ShopNumber=3443, ShopAddress = "Qena",PhoneNumber="01094248766"});
-                context.Shops.Add(new Shop { ID = 2, Name = "Furniture",  ShopNumber=438473,ShopAddress = "Cairo" ,PhoneNumber="01550632066"});
-                context.Shops.Add(new Shop { ID = 3, Name = "manarh", ShopNumber=54875,ShopAddress="Assiut",PhoneNumber="01205442521"});
+                context.Shops.Add(new Shop { ID = 1, Name = "Nssagon", ShopAddress = "Qena",PhoneNumber="01094248766"});
+                context.Shops.Add(new Shop { ID = 2, Name = "Furniture",ShopAddress = "Cairo" ,PhoneNumber="01550632066"});
+                context.Shops.Add(new Shop { ID = 3, Name = "manarh",ShopAddress="Assiut",PhoneNumber="01205442521"});
             }
 
          var item = context.Items.FirstOrDefault(x => x.ID == 1);
@@ -66,6 +66,7 @@ namespace EfrashBatek
                 context.Items.Add(new Item { ID = 2, Name ="chair", Brand_ID =2,Code="87865",Price=5000,ShopID=2,ProductID=2,Image="1.jpg", Description = "yotuu", QuantityInStore = 3 });
                 context.Items.Add(new Item { ID = 3, Name = "trtr", Brand_ID =2, Code = "7969", Price = 5000, ShopID = 2, ProductID = 2, Image = "2.jpg", Description = "yotuu", QuantityInStore = 3 });
             }
+
 
             context.SaveChanges();
     }

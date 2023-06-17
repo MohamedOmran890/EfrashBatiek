@@ -1,0 +1,64 @@
+@model IEnumerable<EfrashBatek.Models.Order>
+
+@{
+    Layout = "AdminLayout";
+}
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Orders</title>
+    <link rel="stylesheet" href="~/css/orders1.css">
+    <!-- ====== ionicons ======= -->
+    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    <!-- ORDER DETAILS -->
+    <div class="details">
+        <div class="recentOrders">
+            <div class="cardHeader">
+                <h2>Order Details</h2>
+            </div>
+
+            <table>
+                <thead>
+                    <tr>
+                        <td>Order ID </td>
+                        <td>Order Date</td>
+                        <td>Customer Name</td>
+                        <td>Total</td>
+                        <td>Payment Method</td>
+                        <td>View</td>
+                        <td>Action</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.OrderCode)</td>
+                            <td>@Html.DisplayFor(modelItem => item.OrderDate)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Customer.User.FirstName) @Html.DisplayFor(modelItem => item.Customer.User.LastName)</td>
+                            <td>@Html.DisplayNameFor(model => model.TotalCost) EGP</td>
+                            <td><span class="status delivered">@Html.DisplayNameFor(model => model.PaymentMethod)</span></td>
+                            <td>
+                                <a asp-action="Details" asp-route-id="@item.ID">
+                                    <button class="btn btn-rounded"><i class="mdi mdi-download ms-2"></i>View</button>
+                                </a>
+                            </td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.ID" class="edit" title="Edit" data-toggle="tooltip">
+                                    <i class="material-icons">&#xE254;</i>
+                                </a>
+                                <a asp-action="Delete" asp-route-id="@item.ID" class="delete" title="Delete" data-toggle="tooltip">
+                                    <i class="material-icons">&#xE872;</i>
+                                </a>
+
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <script src="~/js/script.js"></script>

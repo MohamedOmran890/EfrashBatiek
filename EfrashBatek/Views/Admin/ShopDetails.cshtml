@@ -24,8 +24,8 @@
                 <td>@shop.ShopAddress</td>
                 <td>@shop.PhoneNumber</td>
                 <td>
-                    <button asp-action="EditShop" asp-route-id="@shop.ID">Edit</button>
-                    <button asp-action="DeleteShop" asp-route-id="@shop.ID">Delete</button>
+                    <a asp-action="EditShop" asp-route-id="@shop.ID">Edit</a>
+                    <a asp-action="DeleteShop" asp-route-id="@shop.ID">Delete</a>
                 </td>
             </tr>
         }

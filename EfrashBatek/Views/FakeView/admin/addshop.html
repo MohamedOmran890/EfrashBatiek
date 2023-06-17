@@ -1,96 +1,51 @@
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="UTF-8">
-    <title> Admin Dashboard </title>
-    <link rel="stylesheet" href="css/admin.css">
-    <!-- Boxicons CDN Link -->
-    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link rel="stylesheet" href="css/addshop.css">
-<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-   </head>
-<body>
-  <!--DASHBOARD SIDEBAR-->
-  <div class="sidebar">
-    <div class="logo-details">
-      <i class='bx bxl-c-plus-plus'></i>
-      <span class="logo_name">Efresh Baitak</span>
-    </div>
-      <ul class="nav-links">
-        <li>
-          <a href="dash.html">
-            <i class='bx bx-grid-alt' ></i>
-            <span class="links_name">Dashboard</span>
-          </a>
-        <li>
-          <a href="orders.html">
-            <i class='bx bx-list-ul' ></i>
-            <span class="links_name">Order list</span>
-          </a>
-        </li>
-        <li>
-          <a href="addseller.html">
-            <i class='bx bx-coin-stack' ></i>
-            <span class="links_name">Add Seller</span>
-          </a>
-        </li>
-        <li>
-          <a href="addshop.html" class="active">
-            <i class='bx bx-coin-stack' ></i>
-            <span class="links_name">Add Shop</span>
-          </a>
-        </li>
-        <li>
-          <a href="seller details.html">
-            <i class='bx bx-book-alt' ></i>
-            <span class="links_name">Seller Details</span>
-          </a>
-        </li>
-      </ul>
-  </div>
-  <!--ADD SHOP FORM-->
-  <section class="home-section">
-    <div class="form">
-        <div class="title">Add Shop </div>
-        <div class="input-container ic1">
-          <input id="shopname" class="input" type="text" placeholder=" " />
-          <!--<div class="cut"></div>-->
-          <label for="shopname" class="placeholder">Shop Name</label>
-        </div>
-        <div class="input-container ic2">
-          <input id="Tax Card" class="input" type="text" placeholder=" " />
-          <!--<div class="cut"></div>-->
-          <label for="im" class="placeholder">Tax Card</label>
-        </div>
-        <div class="input-container ic2">
-          <input id="Shop Holder" class="input" type="text" placeholder=" " />
-          <!--<div class="cut cut-short"></div>-->
-          <label for="Shop Holder" class="placeholder">Shop Holder</>
-        </div>
-        <div class="input-container ic2">
-          <input id="Age" class="input" type="text" placeholder=" " />
-          <!--<div class="cut cut-short"></div>-->
-          <label for="Address" class="placeholder">Address</>
-        </div>
-        <div class="input-container ic2">
-          <input id="email" class="input" type="text" placeholder=" " />
-          <!--<div class="cut cut-long"></div>-->
-          <label for="number" class="placeholder">Phone number</>
-        </div>
-        <button type="text" class="submit">Add Seller</button>
-      </div>
-  </section>
+@model EfrashBatek.Models.Shop
+@{
+    Layout = "AdminLayout";
+}
+<link rel="stylesheet" href="~/css/addshop.css">
+<title> Add Shop</title>
 
-  <script>
-    let sidebar = document.querySelector(".sidebar");
-    let sidebarBtn = document.querySelector(".sidebarBtn");
-    sidebarBtn.onclick = function () {
-      sidebar.classList.toggle("active");
-      if (sidebar.classList.contains("active")) {
-        sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
-      } else
-        sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
-    }
-  </script>
-</body>
-</html>
+<div class="col-sm-12 col-md-12 col-lg-9 col-xl-9">
+    <div id="address" role="tabpanel" aria-labelledby="address-tab">
+        <h3 class="mb-4">Add Shop</h3>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="Name">Shop Name</label>
+                    <input asp-for="Name" type="text" class="form-control" placeholder="Shop Name">
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="TaxCardNumber">Tax Card</label>
+                    <input asp-for="TaxCardNumber" type="text" class="form-control" placeholder="Tax Card">
+                    <span asp-validation-for="TaxCardNumber" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="ShopHolder">Shop Holder</label>
+                    <input asp-for="ShopHolder" type="text" class="form-control" placeholder="Shop Holder">
+                    <span asp-validation-for="ShopHolder" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="ShopAddress">Address</label>
+                    <input asp-for="ShopAddress" type="text" class="form-control" placeholder="Address">
+                    <span asp-validation-for="ShopAddress" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label asp-for="PhoneNumber">Phone Number</label>
+                    <input asp-for="PhoneNumber" type="number" class="form-control" placeholder="Phone Number">
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+            </div>
+            <input type="submit" class="btnRegister" value="Register" href="default address.html">
+        </div>
+    </div>
+</div>
+<!-- SCRIPT -->

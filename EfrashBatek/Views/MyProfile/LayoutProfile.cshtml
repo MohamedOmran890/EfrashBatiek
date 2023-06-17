@@ -3,6 +3,13 @@
 	Layout = "CustomerLayout";
 }
 
+<link rel="stylesheet" href="~/css/profile2.css">
+<link rel="stylesheet" href="~/css/profile.css">
+<!---ordersinfo-->
+
+
+
+
 
 	<section class="py-5 my-5">
 		<div class="container">
@@ -11,7 +18,7 @@
 				<div class="profile-tab-nav border-right">
 					<div class="p-4">
 						<div class="img-circle text-center mb-3">
-							<img src="image/client.png" alt="Image" class="shadow">
+							<img src="~/Image/client.png" alt="Image" class="shadow">
 						</div>
 						<h4 class="text-center">Hazem Abdelsattar</h4>
 					</div>
@@ -25,11 +32,11 @@
 							0 Orders of this month
 						</a>
 						<!--action link-->
-						<a href="/MyProfile/UpdateProfile"class="nav-link active" role="tab" id="profile" >
+						<a href="/MyProfile/UpdateProfile"class="nav-link" role="tab" id="profile" >
 							<i class="fa fa-user text-center mr-1"></i>
 							Profile
 						</a>
-					<a href="/MyProfile/UpdateAddress" class="nav-link" role="tab" id="address">
+					<a href="/MyProfile/ViewAddress" class="nav-link" role="tab" id="address">
 							<i class="fa fa-home text-center mr-1"></i>
 							Address
 						</a>
@@ -51,21 +58,18 @@
 					</div>
 				</div>
 
-				<div class="tab-content p-4 p-md-5" id="v-pills-tabContent">
-
-					@RenderBody();
 
 
+					@RenderBody()
 
-				</div>
+
+
+			
 			</div>
 		</div>
 	</section>
 
 
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
 @{
 	await Html.RenderPartialAsync("_ValidationScriptsPartial");

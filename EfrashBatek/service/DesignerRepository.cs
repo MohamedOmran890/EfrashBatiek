@@ -24,14 +24,14 @@ namespace EfrashBatek.service
             int num = context.SaveChanges();
             return num;
         }*/
-        public int Delete(int Id)
+        public int Delete(string Id)
         {
             var ans = context.designers.FirstOrDefault(x => x.ID == Id);
             context.designers.Remove(ans);
             int num = context.SaveChanges();
             return num;
         }
-        public Designer GetById(int Id)
+        public Designer GetById(string Id)
         {
             var ans = context.designers.FirstOrDefault(x => x.ID == Id);
             return ans;

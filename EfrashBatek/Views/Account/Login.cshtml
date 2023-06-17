@@ -1,41 +1,52 @@
 ﻿@model EfrashBatek.ViewModel.LoginViewModel
-
 @{
-    ViewData["Title"] = "Login";
-}
 
-<h1>Login</h1>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Login">
-            <div asp-validation-summary="All" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
+    Layout = "";
+}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="~/css/login.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="container">
+        <div class="title">Login</div>
+        <div class="content">
+            <form asp-action="Login" asp-controller="Account">
+                <div class="user-details">
+                    <div class="input-box">
+                        <label asp-for="UserName" class="details">Username</label>
+                        <input asp-for="UserName" type="text" placeholder="Enter your username" required>
+                        <span asp-validation-for="UserName"></span>
+
+                    </div>
+                    <div class="input-box">
+                        <label asp-for="Password" class="details">Password</label>
+                        <input asp-for="Password"  type="password" placeholder="Enter your password" required>
+                        <span asp-validation-for="Password"></span>
+
+                    </div>
+                </div>
+                <div class="gender-details">
+                    <input type="radio" name="gender" id="dot-1">
+                    <input type="radio" name="gender" id="dot-2">
+                    <input type="radio" name="gender" id="dot-3">
+                </div>
+                <div class="button">
+                    <input type="submit" value="Login">
+                </div>
+            </form>
+                <div class="forget">
+                <a asp-action="ForgetPassword" asp-controller="Account">Forget Password?</a>
+                </div>
+            <div class="forget">
+                <a asp-action="SignUp" asp-controller="Account">Register</a>
             </div>
-            <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-            <div class="form-group form-check">
-                <label class="form-check-label">
-                    <input class="form-check-input" asp-for="RememberMe" /> @Html.DisplayNameFor(model => model.RememberMe)
-                </label>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+        </div>
     </div>
-</div>
 
-<div>
-    <a asp-action="Register">Register</a>
-</div>
-
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+</body>
+</html>

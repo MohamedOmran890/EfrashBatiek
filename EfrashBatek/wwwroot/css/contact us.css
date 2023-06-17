@@ -17,68 +17,18 @@ body{
   min-height: 100vh;
   width: 100%;
   background: #d5d5d5;
-  background: url(0.jpg) no-repeat center center/cover;
+  background: url(../Image/0.jpg) no-repeat center center/cover;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-header{
-  position: fixed;
-  width: 100%;
-  top: 0;
-  right: 0;
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 20px 10%;
-}
-.logo img{
-  max-width: 120px;
-  height: auto;
-}
-.navmenu{
-  display: flex;
-}
-.navmenu a{
-  text-decoration: blink;
-  color: #2c2c2c;
-  font-size: 16px;
-  text-transform: capitalize;
-  padding: 10px 20px;
-  font-weight: 400;
-  transition: all .42s ease;
-}
-.navmenu a:hover{
-  color: #EE1C47;
-}
-.nav-icon{
-  display: flex;
-  align-items: center;
-}
-.nav-icon i{
-  margin-right: 20px;
-  color: #2c2c2c;
-  font-size: 25px;
-  font-weight: 400;
-  transition: all .42s ease;
-}
-.nav-icon i:hover{
-  transform: scale(1.1);
-  color: #EE1C47;
-}
+
 .grid-container {
   display: grid;
   grid-template-columns: 1200px;
   gap: 0px;
   padding: 0px;
   width: auto;
-}
-#menu-icon{
-  font-size: 35px;
-  color: #2c2c2c;
-  z-index: 10001;
-  cursor: pointer;
 }
 .main-home{
   height: 60vh;
@@ -213,19 +163,19 @@ ul.breadcrumb li a:hover {
   margin-top: 12px;
 }
 .right-side .button input[type="button"]{
-  color: #bc969e;
+  color: #fff;
   font-size: 18px;
   outline: none;
   border: none;
   padding: 8px 16px;
   border-radius: 6px;
-  background: #fff;
+  background: #cbaab1;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 .button input[type="button"]:hover{
-  background: #cbaab1;
-  color: #fff;
+  background: #fff;
+  color: #bc969e;
 }
 
 
