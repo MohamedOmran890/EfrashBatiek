@@ -1,4 +1,4 @@
-﻿@model EfrashBatek.Models.Item
+﻿@model EfrashBatek.ViewModel.ItemVM
 
 @{
     ViewData["Title"] = "Create";
@@ -31,6 +31,24 @@
                 <input asp-for="Price" class="form-control" />
                 <span asp-validation-for="Price" class="text-danger"></span>
             </div>
+
+            @*new*@
+            <div class="form-group">
+                <label asp-for="discount" class="control-label"></label>
+                <input asp-for="discount" class="form-control" />
+                <span asp-validation-for="discount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PriceAfterSale" class="control-label"></label>
+                <input asp-for="PriceAfterSale" class="form-control" />
+                <span asp-validation-for="PriceAfterSale" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="QuantityInStore" class="control-label"></label>
+                <input asp-for="QuantityInStore" class="form-control" />
+                <span asp-validation-for="QuantityInStore" class="text-danger"></span>
+            </div>
+
             <div class="form-group">
                 <label asp-for="Image" class="control-label"></label>
                 <input type="file" asp-for="Image" class="form-control" />
@@ -38,12 +56,12 @@
             </div>
             <div class="form-group">
                 <label asp-for="Image2" class="control-label"></label>
-                <input  type="file" asp-for="Image2" class="form-control" />
+                <input type="file" asp-for="Image2" class="form-control" />
                 <span asp-validation-for="Image2" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Image3" class="control-label"></label>
-                <input  type="file" asp-for="Image3" class="form-control" />
+                <input type="file" asp-for="Image3" class="form-control" />
                 <span asp-validation-for="Image3" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -56,22 +74,37 @@
                 <input type="file" asp-for="Image5" class="form-control" />
                 <span asp-validation-for="Image5" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Brand.Name" class="control-label"></label>
-                <select asp-for="Brand.Name" class ="form-control" asp-items="ViewBag.BrandName"></select>
+             <div class="form-group">
+                <label asp-for="DateTime" class="control-label"></label>
+                <input asp-for="DateTime" class="form-control" />
+                <span asp-validation-for="DateTime" class="text-danger"></span>
             </div>
+            @*     <div class="form-group">
+            <label asp-for="Brand_ID" class="control-label">Brand ID</label>
+            <input  asp-for="Brand_ID" class="form-control" />
+            <span asp-validation-for="Brand_ID" class="text-danger"></span>
+            </div>*@
             <div class="form-group">
-                <label asp-for="QuantityInStore" class="control-label"></label>
-                <input asp-for="QuantityInStore" class="form-control" />
-                <span asp-validation-for="QuantityInStore" class="text-danger"></span>
+                <label asp-for="Brand_ID" class="control-label">Brand Name</label>
+                <select asp-for="Brand_ID" class="form-control" asp-items="ViewBag.BrandName"></select>
             </div>
+            @*<div class="form-group">
+            <label asp-for="ShopID" class="control-label">Shop ID</label>
+            <input asp-for="ShopID" class="form-control" />
+            <span asp-validation-for="ShopID" class="text-danger"></span>
+            </div>*@
             <div class="form-group">
-                <label asp-for="Shop.Name" class="control-label"></label>
-                <select asp-for="Shop.Name" class ="form-control" asp-items="ViewBag.ShopName"></select>
+                <label asp-for="ShopID" class="control-label">Shop Name</label>
+                <select asp-for="ShopID" class="form-control" asp-items="ViewBag.ShopName"></select>
             </div>
+            @* <div class="form-group">
+            <label asp-for="ProductID" class="control-label">Product ID</label>
+            <input  asp-for="ProductID" class="form-control" />
+            <span asp-validation-for="ProductID" class="text-danger"></span>
+            </div>*@
             <div class="form-group">
-                <label asp-for="Product.ProductName" class="control-label"></label>
-                <select asp-for="Product.ProductName" class="form-control" asp-items="ViewBag.ProductName"></select>
+                <label asp-for="ProductID" class="control-label">Product Name</label>
+                <select asp-for="ProductID" class="form-control" asp-items="ViewBag.ProductName"></select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-success" />
@@ -85,5 +118,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }

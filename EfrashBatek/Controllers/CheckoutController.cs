@@ -12,11 +12,14 @@ public class CheckoutController : Controller
         IAddressRepository addressRepository;
     private readonly ICartRepository cart;
     IIdentityRepository _identityRepository;
-        public CheckoutController(IAddressRepository Address,IIdentityRepository identityRepository , IAddressRepository addressRepository ,ICartRepository cart)
+    private readonly Context context;
+
+    public CheckoutController(IAddressRepository Address,IIdentityRepository identityRepository , Context context ,IAddressRepository addressRepository ,ICartRepository cart)
         {
             addressRepository = Address;
           _identityRepository = identityRepository;
-		this.addressRepository = addressRepository;
+        this.context = context;
+        this.addressRepository = addressRepository;
         this.cart = cart;
     }
    
@@ -24,8 +27,11 @@ public class CheckoutController : Controller
 
         var items = cart.LoadFromCookie();
         var list = items.Where(i=>i.CartID == cartID).ToList();
+        foreach (var item in list)
+        {
+            item.Item = context.Items.FirstOrDefault(i => i.ID == item.ItemID);
+        }
         ViewBag.list = list;    
-
                return View(addressRepository.View());   
     }
 	

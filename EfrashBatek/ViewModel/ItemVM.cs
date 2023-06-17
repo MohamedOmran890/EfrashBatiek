@@ -30,21 +30,12 @@ namespace EfrashBatek.ViewModel
         public IFormFile Image5 { get; set; }
         public string discount { get; set; }
         public int PriceAfterSale { get; set; }
-        [ForeignKey("Brand")]
         public int Brand_ID { get; set; }
-        public virtual Brand Brand { get; set; }
         [Required]
         public int QuantityInStore { get; set; }
-        [ForeignKey("Shop")]
         public int ShopID { get; set; }
-        public virtual Shop Shop { get; set; }
-        [ForeignKey("Product")]
         public int ProductID { get; set; }
-        public Product Product { get; set; }
         public DateTime DateTime { get; set; }
-        public virtual ICollection<Cart_Item> Cart_Items { get; set; }
-        public virtual ICollection<Order_Item> Order_Items { get; set; }
-
 
     }
 }
