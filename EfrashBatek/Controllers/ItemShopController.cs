@@ -22,7 +22,7 @@ namespace EfrashBatek.Controllers
         IProductRepository productRepository;
         IWebHostEnvironment Ih;
 
-        public ItemShopController(Context context, IWebHostEnvironment Ih,IItemRepository itemRepo, IBrandRepository brandRepository, IShopRepository shopRepository, IProductRepository productRepository)
+        public ItemShopController(Context context, IWebHostEnvironment Ih, IItemRepository itemRepo, IBrandRepository brandRepository, IShopRepository shopRepository, IProductRepository productRepository)
         {
             _context = context;
             this.itemRepo = itemRepo;
@@ -39,7 +39,7 @@ namespace EfrashBatek.Controllers
         }
 
         [HttpGet]
-        public  IActionResult Details(int? id)
+        public IActionResult Details(int? id)
         {
             if (id == null)
             {
@@ -68,58 +68,76 @@ namespace EfrashBatek.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         //2
-        //public IActionResult Create(ItemVM item)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        Item itm = new Item();
-        //        itm.Name = item.Name;
-        //        itm.Code = item.Code;
-        //        itm.Price = item.Price;
-        //        itm.Description = item.Description;
-        //        itm.QuantityInStore = item.QuantityInStore;
-        //        //itm.Brand.Name = item.Brand.Name;
-        //        //itm.Product.ProductName = item.Product.ProductName;
-        //        //itm.Shop.Name = item.Shop.Name;
-        //        itm.discount = item.discount;
+        public async Task<IActionResult> Create(ItemVM item)
+        {
+            if (ModelState.IsValid)
+            {
 
-        //        string Filename = Guid.NewGuid().ToString() + item.Image.FileName;
-        //        string Filename2 = Guid.NewGuid().ToString() + item.Image2.FileName;
-        //        string Filename3 = Guid.NewGuid().ToString() + item.Image3.FileName;
-        //        string Filename4 = Guid.NewGuid().ToString() + item.Image4.FileName;
-        //        string Filename5 = Guid.NewGuid().ToString() + item.Image5.FileName;
-        //        var fs = new FileStream(Path.Combine(Ih.WebRootPath, "Image/Items", Filename), FileMode.Create);
-        //        item.Image.CopyTo(fs);
-        //        itm.Image = Filename;
+                Item itm = new Item();
+                itm.Name = item.Name;
+                itm.Code = item.Code;
+                itm.Price = item.Price;
+                itm.Description = item.Description;
+                itm.QuantityInStore = item.QuantityInStore;
+                itm.discount = item.discount;
+                itm.PriceAfterSale = item.PriceAfterSale;
+                itm.Brand_ID = item.Brand_ID;
+                itm.ShopID = item.ShopID;
+                itm.ProductID = item.ProductID;
+                itm.DateTime = item.DateTime;
+                itm.Brand = item.Brand;
+                itm.Product = item.Product;
+                itm.Shop = item.Shop;
+                itm.Product.ProductName = item.Product.ProductName;
+                itm.Shop.Name = item.Shop.Name;
+                if (item.Image != null && item.Image.Length > 0)
+                {
+                    string Filename = Guid.NewGuid().ToString() + item.Image.FileName;
+                    var fs = new FileStream(Path.Combine(Ih.WebRootPath, "Image/Items", Filename), FileMode.Create);
+                    item.Image.CopyTo(fs);
+                    itm.Image = Filename;
+                }
+                if (item.Image2 != null && item.Image2.Length > 0)
+                {
+                    string Filename2 = Guid.NewGuid().ToString() + item.Image2.FileName;
+                    var fs2 = new FileStream(Path.Combine(Ih.WebRootPath, "Image/Items", Filename2), FileMode.Create);
+                    item.Image2.CopyTo(fs2);
+                    itm.Image2 = Filename2;
+                }
+                if (item.Image3 != null && item.Image3.Length > 0)
+                {
+                    string Filename3 = Guid.NewGuid().ToString() + item.Image3.FileName;
+                    var fs3 = new FileStream(Path.Combine(Ih.WebRootPath, "Image/Items", Filename3), FileMode.Create);
+                    item.Image2.CopyTo(fs3);
+                    itm.Image3 = Filename3;
+                }
 
-        //        var fs2 = new FileStream(Path.Combine(Ih.WebRootPath, "Image/Items", Filename2), FileMode.Create);
-        //        item.Image2.CopyTo(fs2);
-        //        itm.Image2 = Filename2;
+                if (item.Image4 != null && item.Image4.Length > 0)
+                {
+                    string Filename4 = Guid.NewGuid().ToString() + item.Image4.FileName;
+                    var fs4 = new FileStream(Path.Combine(Ih.WebRootPath, "Image/Items", Filename4), FileMode.Create);
+                    item.Image4.CopyTo(fs4);
+                    itm.Image4 = Filename4;
+                }
+                if (item.Image5 != null && item.Image5.Length > 0)
+                {
+                    string Filename5 = Guid.NewGuid().ToString() + item.Image5.FileName;
+                    var fs5 = new FileStream(Path.Combine(Ih.WebRootPath, "Image/Items", Filename5), FileMode.Create);
+                    item.Image5.CopyTo(fs5);
+                    itm.Image5 = Filename5;
+                }
 
-        //        var fs3 = new FileStream(Path.Combine(Ih.WebRootPath, "Image/Items", Filename3), FileMode.Create);
-        //        item.Image2.CopyTo(fs3);
-        //        itm.Image3 = Filename3;
-
-        //        var fs4 = new FileStream(Path.Combine(Ih.WebRootPath, "Image/Items", Filename4), FileMode.Create);
-        //        item.Image4.CopyTo(fs4);
-        //        itm.Image4 = Filename4;
-
-        //        var fs5 = new FileStream(Path.Combine(Ih.WebRootPath, "Image/Items", Filename5), FileMode.Create);
-        //        item.Image5.CopyTo(fs5);
-        //        itm.Image5 = Filename5;
 
 
-        //        //int check = itemRepo.Update((int)id, itm);
-        //        return RedirectToAction("Index");
-
-        //        itemRepo.Create(itm);
-        //        return RedirectToAction("Index");
-        //    }
-        //    //ViewData["BrandName"] = new SelectList(brandRepository.GetAll(), "ID", "Name", item.Brand_ID);
-        //    //ViewData["ProductName"] = new SelectList(productRepository.GetAll(), "ID", "ProductName", item.ProductID);
-        //    //ViewData["ShopName"] = new SelectList(shopRepository.GetAll(), "ID", "Name", item.ShopID);
-        //    //return View(item);
-        //}
+                itemRepo.Create(itm);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            ViewData["BrandName"] = new SelectList(brandRepository.GetAll(), "ID", "Name", item.Brand_ID);
+            ViewData["ProductName"] = new SelectList(productRepository.GetAll(), "ID", "ProductName", item.ProductID);
+            ViewData["ShopName"] = new SelectList(shopRepository.GetAll(), "ID", "Name", item.ShopID);
+            return View(item);
+        }
         public IActionResult Edit(int? id)
         {
             if (id == null)
@@ -138,10 +156,10 @@ namespace EfrashBatek.Controllers
             return View(item);
         }
 
-      
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, [Bind("Code,Name,Description,Price,Image,Image2,discount,PriceAfterSale,Brand_ID,QuantityInStore,ShopID,ProductID")] Item item)
+        public IActionResult Edit(int id, ItemVM item)
         {
             if (id != item.ID)
             {
@@ -150,8 +168,60 @@ namespace EfrashBatek.Controllers
 
             if (ModelState.IsValid)
             {
-                
-                   int check=itemRepo.Update((int)id,item);
+                Item itm = new Item();
+                itm.Name = item.Name;
+                itm.Code = item.Code;
+                itm.Price = item.Price;
+                itm.Description = item.Description;
+                itm.QuantityInStore = item.QuantityInStore;
+                //itm.Brand.Name = item.Brand.Name;
+                //itm.Product.ProductName = item.Product.ProductName;
+                //itm.Shop.Name = item.Shop.Name;
+                itm.discount = item.discount;
+                itm.PriceAfterSale = item.PriceAfterSale;
+                itm.Brand_ID = item.Brand_ID;
+                itm.ShopID = item.ShopID;
+                itm.ProductID = item.ProductID;
+
+
+                if (item.Image != null && item.Image.Length > 0)
+                {
+                    string Filename = Guid.NewGuid().ToString() + item.Image.FileName;
+                    var fs = new FileStream(Path.Combine(Ih.WebRootPath, "Image/Items", Filename), FileMode.Create);
+                    item.Image.CopyTo(fs);
+                    itm.Image = Filename;
+                }
+                if (item.Image2 != null && item.Image2.Length > 0)
+                {
+                    string Filename2 = Guid.NewGuid().ToString() + item.Image2.FileName;
+                    var fs2 = new FileStream(Path.Combine(Ih.WebRootPath, "Image/Items", Filename2), FileMode.Create);
+                    item.Image2.CopyTo(fs2);
+                    itm.Image2 = Filename2;
+                }
+                if (item.Image3 != null && item.Image3.Length > 0)
+                {
+                    string Filename3 = Guid.NewGuid().ToString() + item.Image3.FileName;
+                    var fs3 = new FileStream(Path.Combine(Ih.WebRootPath, "Image/Items", Filename3), FileMode.Create);
+                    item.Image2.CopyTo(fs3);
+                    itm.Image3 = Filename3;
+                }
+
+                if (item.Image4 != null && item.Image4.Length > 0)
+                {
+                    string Filename4 = Guid.NewGuid().ToString() + item.Image4.FileName;
+                    var fs4 = new FileStream(Path.Combine(Ih.WebRootPath, "Image/Items", Filename4), FileMode.Create);
+                    item.Image4.CopyTo(fs4);
+                    itm.Image4 = Filename4;
+                }
+                if (item.Image5 != null && item.Image5.Length > 0)
+                {
+                    string Filename5 = Guid.NewGuid().ToString() + item.Image5.FileName;
+                    var fs5 = new FileStream(Path.Combine(Ih.WebRootPath, "Image/Items", Filename5), FileMode.Create);
+                    item.Image5.CopyTo(fs5);
+                    itm.Image5 = Filename5;
+                }
+
+                int check = itemRepo.Update((int)id, itm);
                 return RedirectToAction("Index");
             }
             //ViewData["BrandName"] = new SelectList(brandRepository.GetAll(), "ID", "Name", item.Brand_ID);
@@ -179,9 +249,9 @@ namespace EfrashBatek.Controllers
 
         //[HttpPost, ActionName("Delete")]
         //[ValidateAntiForgeryToken]
-        //public  IActionResult DeleteConfirmed(int id)
+        //public async Task<IActionResult> DeleteConfirmedAsync(int id)
         //{
-        //    var item =  _context.Items.Find(id);
+        //    var item = _context.Items.Find(id);
         //    _context.Items.Remove(item);
         //    await _context.SaveChangesAsync();
         //    return RedirectToAction(nameof(Index));
