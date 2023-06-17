@@ -62,14 +62,10 @@ public class CheckoutController : Controller
     public IActionResult Confirmation(int cartID )
     {
 
-        return View();
-    }
+		return RedirectToAction("ViewOrders", "MyProfile", new { @cartID=cartID});
+	}
 
-    public IActionResult ConfirmationDone (int cartid)
-    {
-        return RedirectToAction("TrendingProducts", "Home");
-
-    }
+  
 
     //public IActionResult Address() //old1
     //{
