@@ -403,6 +403,13 @@ aside {
     transition: .4s;
   }
 }
+@media screen and (min-width:890) and (max-width:1500px) {
+  header {
+    padding: 20px 3%;
+    transition: .4s;
+  }
+}
+
 
 .row {
   width: 80%;

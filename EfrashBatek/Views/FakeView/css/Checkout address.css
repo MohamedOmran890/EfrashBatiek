@@ -110,7 +110,7 @@ ul.icons {
   border: none;
   border-radius: 1.5rem;
   padding: 2%;
-  background: #e3d9d9;
+  background: #cbaab1;
   color: #fff;
   font-weight: 600;
   width: 25%;
@@ -121,7 +121,8 @@ ul.icons {
 }
 
 .btnRegister:hover {
-  background-color: #cbaab1;
+  background-color: #fff;
+  color: #cbaab1;
   /* Change the background color to red when the button is hovered over */
 }
 
