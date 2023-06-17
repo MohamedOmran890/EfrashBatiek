@@ -1,4 +1,4 @@
-﻿@model EfrashBatek.Models.Item
+﻿@model EfrashBatek.ViewModel.ItemVM
 
 @{
     ViewData["Title"] = "Edit";
@@ -99,5 +99,7 @@
 </div>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
