@@ -93,6 +93,8 @@
     <link rel="stylesheet" href="~/css/signup.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
 
 </head>
 <body>
@@ -132,36 +134,39 @@
                     </div>
                     <div class="input-box">
                         <input asp-for="Age" type="Age" placeholder="Enter your Age">
-                        <span asp-validation-for="Age"></span>
+                        <span asp-validation-for="Age" class="text-danger"></span>
                     </div>
                     <div class="input-box">
                         <input asp-for="Birthdate" class="form-control" placeholder="Birthdate" />
                     <span asp-validation-for="Birthdate" class="text-danger"></span>
                     </div>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Gender" class="control-label"></label>
-                    <br>
-                    <label>
-                        <input type="radio" asp-for="Gender" value="Male" checked>
-                        <i class="fa fa-male"></i> Male
-                    </label>
-                    <label>
-                        <input type="radio" asp-for="Gender" value="Female">
-                        <i class="fa fa-female"></i> Female
-                    </label>
-                    <span asp-validation-for="Gender" class="text-danger"></span>
+                    <div class="input-box">
+                        @*<label asp-for="Gender">Gender</label>*@
+                        <select asp-for="Gender" class="form-control">
+                            <option value="null">Gender</option>
+                            <option>
+                                Male
+                            </option>
+                            <option>
+                                Female
+                            </option>
+                        <span asp-validation-for="Gender" class="text-danger"></span>
+                        </select>
+                    </div>
+
                 </div>
                 
                 <div class="button">
                         <input type="submit" value="Register">     
                  </div>
             </form>
+            <div class="forget">            
             Already have an account?
+            </div>
 
-            <a class="nav-link text-dark" asp-controller="Account" asp-action="Login">
-                Login
-            </a>
+            <div class="forget">
+                <a asp-action="Login" asp-controller="Account">Login</a>
+            </div>
         </div>
     </div>
 

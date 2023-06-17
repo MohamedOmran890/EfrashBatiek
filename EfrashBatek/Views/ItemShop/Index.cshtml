@@ -1,5 +1,7 @@
 ﻿@model IEnumerable<EfrashBatek.Models.Item>
 
+@*@model EfrashBatek.ViewModel.ItemVM
+*@
 @{
     ViewData["Title"] = "Index";
 }
@@ -49,47 +51,48 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Image)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Image2)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Image3)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Image4)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Image5)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Brand.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.QuantityInStore)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Shop.Name)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <img src="~/Image/Items/@item.Image " style="width:70px;height:70px" />
+                </td>
+                <td>
+                    <img src="~/Image/Items/@item.Image2 " style="width:70px;height:70px" />
+                </td>
+                <td>
+                    <img src="~/Image/Items/@item.Image3 " style="width:70px;height:70px" />
+                </td>
+                <td>
+                    <img src="~/Image/Items/@item.Image4 " style="width:70px;height:70px" />
+                </td>
+                <td>
+                    <img src="~/Image/Items/@item.Image5 " style="width:70px;height:70px" />
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Brand.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.QuantityInStore)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Shop.Name)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

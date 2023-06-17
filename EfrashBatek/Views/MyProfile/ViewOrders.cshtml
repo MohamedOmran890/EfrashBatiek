@@ -20,7 +20,7 @@
             <table id="example" class="order-table" style="margin-left: auto; margin-right: auto; width : 100%;">
                 <thead>
                     <tr>
-                        <th>Order Code</th>
+                    
                         <th>Order Date</th>
                         <th>Total cost</th>
                         <th>View Order Details </th>
@@ -30,7 +30,7 @@
                 @foreach(var order in Model)
                 {
                         <tr>
-                            <td>@order.OrderCode</td>
+                        
                             <td>@order.OrderDate.Year/@order.OrderDate.Month/@order.OrderDate.Year</td>
                             
                             <td>@order.TotalCost $</td>

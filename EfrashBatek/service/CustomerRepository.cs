@@ -36,7 +36,7 @@ namespace EfrashBatek.service
 
 
 		}
-        
+       
         public int Delete(int Id)
         {
             var ans = context.Customers.FirstOrDefault(x => x.Id == Id);

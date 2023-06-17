@@ -4,29 +4,69 @@ using EfrashBatek.service;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
-
-    public class CheckoutController : Controller
+public class CheckoutController : Controller
     {
         IAddressRepository addressRepository;
-        IIdentityRepository _identityRepository;
-        public CheckoutController(IAddressRepository Address,IIdentityRepository identityRepository)
+    private readonly ICartRepository cart;
+    private readonly Context context;
+    IIdentityRepository _identityRepository;
+        public CheckoutController(IAddressRepository Address,IIdentityRepository identityRepository , IAddressRepository addressRepository ,ICartRepository cart , Context context)
         {
             addressRepository = Address;
           _identityRepository = identityRepository;
-             
-        }
-    public IActionResult Index()
-    {
-        var userId = _identityRepository.GetUserID();
-        if (userId == null)
-        {
-            return RedirectToAction("Login", "Account");
-        }
-
-        var add = addressRepository.GetbyID(userId);
-        return View(add);
+        this.context = context;
+        this.addressRepository = addressRepository;
+        this.cart = cart;
+        this.context = context;
     }
+   
+    public ActionResult defaultaddress(int cartID ) { 
+
+        var items = cart.LoadFromCookie();
+        var list = items.Where(i=>i.CartID == cartID).ToList();
+              foreach ( var item in list ) {
+            item.Item = context.Items.FirstOrDefault(i => i.ID == item.ItemID);
+        
+        }
+        ViewBag.list = list;   
+        ViewBag.cartID = cartID;    
+               return View(addressRepository.View());   
+    }
+	
+	public IActionResult ViewAddressDetails(int id ) 
+	{
+        
+		var Address = addressRepository .GetbyID(id);
+
+		return View("EditAddress", Address);
+
+	}
+
+	[HttpPost]
+	public IActionResult EditAddress(Address New) 
+	{
+		addressRepository.Edit(New);
+
+		return RedirectToAction("defaulrtaddress");
+
+	}
+	public IActionResult PaymentMethod(int cartID)
+	{
+        ViewBag.cartID = cartID;
+
+        return View();
+	}
+    public IActionResult Confirmation(int cartID )
+    {
+
+		return RedirectToAction("ViewOrders", "MyProfile", new { @cartID=cartID});
+	}
+
+  
+
     //public IActionResult Address() //old1
     //{
     //    var zone = new SelectList(Enum.GetValues(typeof(Zone)));
@@ -57,14 +97,7 @@ using System;
     {
         return View();
     }
-    public IActionResult PaymentMethod()
-        {
-            return View();
-        }
-        public IActionResult Confirmation()
-        {
+    
+       
 
-            return View();
-        }
-
-    }
+}
