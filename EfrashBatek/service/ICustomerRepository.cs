@@ -12,9 +12,9 @@ namespace EfrashBatek.service
         Customer GetById(int Id);
 
         ICollection<Order> GetOrders(int id);
-         int TotalCustomers();
+        int TotalCustomers();
         Order getOrder(int customerID, int OrderID);
-        
+        Customer GetCustomerbyUserId();
 
     }
 }
