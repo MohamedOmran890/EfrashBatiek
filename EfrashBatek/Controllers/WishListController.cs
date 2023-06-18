@@ -14,9 +14,9 @@ namespace EfrashBatek.Controllers
     public class WishListController : Controller
     {
         private readonly IWishListRepository _wishlistRepository; // an object of type IWishListRepository that represents the dependency on the WishListRepository class
-        private readonly IdentityRepository _IdentityRepository;
+        private readonly IIdentityRepository _IdentityRepository;
         private readonly ICustomerRepository _customerRepository;
-        public WishListController(Context context, IWishListRepository wishlistRepository,IdentityRepository identityRepository,ICustomerRepository customerRepository)
+        public WishListController(Context context, IWishListRepository wishlistRepository,IIdentityRepository identityRepository,ICustomerRepository customerRepository)
         {
             _wishlistRepository = wishlistRepository;
             _IdentityRepository = identityRepository;
@@ -29,6 +29,11 @@ namespace EfrashBatek.Controllers
             // Get the current customer id from the session or authentication
             //var customerId = HttpContext.Session.GetInt32("CustomerId") ?? 0;
             var userId = _IdentityRepository.GetUserID();
+           // var customerId = _customerRepository.GetbyUserId(userId);
+            if(userId == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
             var ans = _wishlistRepository.GetCustomerWithUser(userId);
             if(ans == null)
             {
