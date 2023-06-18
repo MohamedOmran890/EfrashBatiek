@@ -49,7 +49,7 @@ namespace EfrashBatek.Controllers
         // contact us
         public IActionResult ContactUs()
         {
-            return View();
+            return View("ContactUs1");
         }
         [HttpPost]
         public IActionResult ContactUs(Contact_Us contact)
