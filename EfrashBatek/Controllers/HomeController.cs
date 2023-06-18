@@ -46,7 +46,7 @@ namespace EfrashBatek.Controllers
         // contact us
         public IActionResult ContactUs()
         {
-            return View();
+            return View("ContactUs1");
         }
         public IActionResult AboutUs()
         {

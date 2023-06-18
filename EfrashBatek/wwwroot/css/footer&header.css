@@ -154,7 +154,7 @@ footer{
     transform: scale(1.3);
 }
 
-input {
+/*input {
     padding: 4px 28px;
     border-radius: 10px;
     margin: 5px auto;
@@ -164,7 +164,7 @@ input {
     color: #000000;
     outline: none;
     font-size: 16px;
-}
+}*/
 
 .submit {
 
