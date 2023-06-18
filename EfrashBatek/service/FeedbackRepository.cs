@@ -18,7 +18,7 @@ namespace EfrashBatek.service
         }
         public int Update(int id, Feedback feedback)
         {
-            var ans = context.feedbacks.FirstOrDefault(x => x.ID == id);
+            var ans = context.feedbacks.FirstOrDefault(x => x.Id == id);
             ans.ComplaintMessage = feedback.ComplaintMessage;
             context.feedbacks.Update(ans);
             int num = context.SaveChanges();
@@ -26,14 +26,14 @@ namespace EfrashBatek.service
         }
         public int Delete(int Id)
         {
-            var ans = context.feedbacks.FirstOrDefault(x => x.ID == Id);
+            var ans = context.feedbacks.FirstOrDefault(x => x.Id == Id);
             context.feedbacks.Remove(ans);
             int num = context.SaveChanges();
             return num;
         }
         public Feedback GetById(int Id)
         {
-            var ans = context.feedbacks.FirstOrDefault(x => x.ID == Id);
+            var ans = context.feedbacks.FirstOrDefault(x => x.Id == Id);
             return ans;
         }
         public List<Feedback> GetAll()
