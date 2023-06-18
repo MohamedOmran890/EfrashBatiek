@@ -1,0 +1,58 @@
+﻿@model IEnumerable<EfrashBatek.Models.Item>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Product.ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+
+            <td>
+                 <img src="~/Image/@item.Image" alt="@item.Image" />
+            </td>
+    
+            <td>
+                    @Html.DisplayFor(model => item.Product.ProductName)
+            </td>
+            <td>
+                    @Html.DisplayFor(model => item.Name)
+            </td>
+            <td>
+                    @Html.DisplayFor(model => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Price)
+            </td>
+
+            <td>
+                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

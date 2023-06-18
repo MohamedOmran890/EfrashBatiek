@@ -17,31 +17,22 @@ body {
   min-block-size: 100vh;
   padding: 5vmin;
   place-items: center;
-}
-
-h2:hover {
-  text-decoration-line: none;
+  text-decoration: none;
 }
 
 html {
-
-  text-decoration-line: none;
   box-sizing: border-box;
 }
 
-.x {
-  background: #fff;
-  box-shadow: 0 0 1em rgba(0, 0, 0, 0.0625);
-  margin-top: 8%;
-  margin-bottom: 8%;
-  border-radius: 2em;
+a {
+  text-decoration: none;
 }
 
-ul.icons {
-  display: flex;
-  justify-content: space-between;
-  margin: auto;
+.row {
+  margin-top: 2%;
+  margin-bottom: 2%;
 }
+
 
 .icon {
   display: flex;
@@ -57,24 +48,6 @@ ul.icons {
 
 }
 
-.word {
-
-  font-size: larger;
-  color: #8a8b8b;
-  transition: all .42s ease;
-}
-
-.word:hover {
-  color: #cbaab1;
-  transform: scale(1.1);
-}
-
-.ic {
-  color: rgb(133, 136, 135);
-  font-size: 34px;
-}
-
-
 li {
   list-style: none;
 }
@@ -83,13 +56,11 @@ address {
   font-style: normal;
 }
 
-/* HERE */
 button {
   border: 0;
   color: inherit;
   cursor: pointer;
   font: inherit;
-  align-items: center;
 }
 
 .button:hover {
@@ -159,6 +130,11 @@ tfoot {
 
 .button--full {
   inline-size: 100%;
+  background-color: #cbaab1;
+}
+
+.button--full:hover {
+  background-color: #c895a0;
 }
 
 /*****************************************************payment form**************************************************/
@@ -204,124 +180,10 @@ tfoot {
   gap: 1em;
 }
 
-/*SUMMARY*/
-aside {
-  position: relative;
-  width: 100%;
-}
-
-.summary {
-  margin: 21px 40px 0;
-  background-color: #eee;
-  border: 1px solid #aaa;
-  padding: 1rem;
-  flex: 1;
-  /*width: 290px;*/
-  border-radius: 30px;
-  box-shadow: 0 0 1em rgba(0, 0, 0, 0.0625);
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  height: auto;
-}
-
-.summary-total-items {
-  color: #666;
-  font-size: 0.875rem;
-  text-align: center;
-}
-
-.summary-subtotal,
-.summary-total {
-  border-top: 1px solid #ccc;
-  border-bottom: 1px solid #ccc;
-  clear: both;
-  margin: 1rem 0;
-  overflow: hidden;
-  padding: 0.5rem 0;
-}
-
-.subtotal-title,
-.subtotal-value,
-.total-title,
-.total-value,
-.promo-title,
-.promo-value {
-  color: #111;
-  float: left;
-  width: 50%;
-}
-
-.summary-promo {
-  -webkit-transition: all .3s ease;
-  -moz-transition: all .3s ease;
-  -o-transition: all .3s ease;
-  transition: all .3s ease;
-}
-
-.promo-title {
-  float: left;
-  width: 70%;
-}
-
-.promo-value {
-  color: #8B0000;
-  float: left;
-  text-align: right;
-  width: 30%;
-}
-
-.summary-delivery {
-  padding-bottom: 3rem;
-}
-
-.subtotal-value,
-.total-value {
-  text-align: right;
-}
-
-.total-title {
-  font-weight: bold;
-  text-transform: uppercase;
-}
-
-.summary-checkout {
-  display: block;
-}
-
-.summary.checkout-cta {
-  display: block;
-  float: none;
-  font-size: 0.75rem;
-  text-align: center;
-  text-transform: uppercase;
-  padding: 0.625rem 0;
-  width: 100%;
-  border: #111;
-}
-
-.summary-delivery-selection {
-  background-color: #fff;
-  border: 1px solid #eee;
-  border-radius: 4px;
-  display: block;
-  font-size: 0.625rem;
-  height: 34px;
-  width: 100%;
-}
-
 /*******************************************************************************scroll***************************************************/
-.summary-delivery {
-  max-height: 150px;
-  /* Set the maximum height for the container */
-  overflow-y: auto;
-  overflow-x: hidden;
-  /* Enable vertical scrolling */
-}
-
 /* width */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 15px;
 }
 
 /* Track */
@@ -352,14 +214,12 @@ aside {
 
   }
 }
-
 @media screen and (min-width:401) and (max-width:630px) {
   .main-text h1 {
     font-size: 50px;
     transition: .4s;
   }
 }
-
 @media screen and (min-width:631) and (max-width:750px) {
   .navmenu {
     position: absolute;
@@ -397,20 +257,10 @@ aside {
 
 
 
-@media screen and (min-width:751) and (max-width:890px) {
-  header {
-    padding: 20px 3%;
-    transition: .4s;
-  }
-}
-@media screen and (min-width:890) and (max-width:1500px) {
+@media  screen and (min-width:751) and (max-width:890px) {
   header {
     padding: 20px 3%;
     transition: .4s;
   }
 }
 
-
-.row {
-  width: 80%;
-}
