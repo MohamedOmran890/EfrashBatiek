@@ -6,18 +6,18 @@ namespace EfrashBatek.Models
 {
     public enum ProductName
     {
-        Living_Room=1,
-        Youth_Kids_Bed_rooms,
-        dining_room,
-        large_Appliances,
-        kitchen_Appliances,
-        Home_Appliances,
+        LivingRoom,
+        YouthAndKidsBedRooms,
+        DiningRoom,
+        LargeAppliances,
+        KitchenAppliances,
+        HomeAppliances,
         Cookware,
         Drinkware,
         Dinnerware,
-        alometal,
-        wood,
-        acrylic
+        Alometal,
+        Wood,
+        Acrylic
 
     }
 
