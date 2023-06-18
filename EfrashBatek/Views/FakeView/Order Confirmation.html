@@ -7,52 +7,64 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
 	<link rel="stylesheet" href="css/Order Confirmation.css">
+	<link href="css/bootstrap.min.css" rel="stylesheet">
 	<!-- <link rel="stylesheet" href="css/main.css"> -->
 	<link href="https://fonts.googleapis.com/css?family=Nunito+Sans:400,400i,700,900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="css/checkout_steps_header.css" type="text/css">
 	<title>Order Confirmation</title>
 </head>
 
 <body>
+	<div class="container">
+		<!------------------------------------------------ Icons ------------------------------->
+		<div class="row justify-content-center">
+			<div class="col-sm-12 col-lg-9">
+				<div class="steps-header">
+					<ul class="icons">
+						<li class="step">
+							<a href="default address.html">
+								<i class='bx bxs-location-plus' style=" font-size: 38px;"></i>
+								<h2 class="word">Shipping</h2>
+							</a>
+						</li>
 
-	<!-- ICONS -->
-	<div class="x  hr steps checkout-address icons col-sm-11 col-md-11 col-lg-9 col-xl-9 bg-white">
-		<ul class="icons icons hr steps icons col-sm-11 col-md-11 col-lg-11 col-xl-11 bg-white">
-
-			<li class="word">
-				<a href="default address.html">
-					<i class='bx bxs-location-plus' style=" font-size: 38px;"></i>
-					<h2 class="word">Shipping</h2>
-				</a>
-			</li>
-
-
-
-			<li class="word">
-				<a href="payment method.html">
-					<i class='bx bx-credit-card' style=" font-size: 38px;"></i>
-					<h2 class="word">Payment</h2>
-				</a>
-			</li>
-
-
-			<li class="word">
-				<a href="Order Confirmation.html">
-					<i class='bx bx-badge-check' style=" font-size: 38px;"></i>
-					<h2 class="word">Confirmation</h2>
-				</a>
-			</li>
-		</ul>
-	</div>
-	<div class="card">
-		<div class="true" style="border-radius:200px; height:200px; width:200px; background: #fbfbfb; margin:0 auto;">
-			<i class="checkmark">✓</i>
+						<li class="step">
+							<a href="payment method.html">
+								<i class='bx bx-credit-card' style=" font-size: 38px;"></i>
+								<h2 class="word">Payment</h2>
+							</a>
+						</li>
+						<li class="step">
+							<a href="Order Confirmation.html" class="active">
+								<i class='bx bx-badge-check' style=" font-size: 38px;"></i>
+								<h2 class="word">Confirmation</h2>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
 		</div>
-		<h1>Success</h1>
-		<p>We received your purchase request;<br /> we'll be in touch shortly!</p>
-		<form action="main.html">
-			<input type="submit" class="btnRegister" value="Continue Shopping">
-		</form>
+		<!------------------------------------------------ Icons ------------------------------->
+
+		<div class="row justify-content-center">
+			<div class="col-sm-12 col-lg-9">
+				<div class="card">
+					<div class="true"
+						style="border-radius:200px; height:200px; width:200px; background: #fbfbfb; margin:0 auto;">
+						<i class="checkmark">✓</i>
+					</div>
+					<h1>Success</h1>
+					<p>We received your purchase request;<br /> we'll be in touch shortly!</p>
+					<!--111111111-->
+					<form action="main.html">
+						<input type="submit" class="btnRegister" value="Continue Shopping">
+					</form>
+					<!--111111111-->
+				</div>
+			</div>
+		</div>
 	</div>
+
 	<!--
     - FOOTER
     -->
