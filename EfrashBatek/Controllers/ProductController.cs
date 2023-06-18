@@ -14,29 +14,54 @@ namespace EfrashBatek.Controllers
     {
         private readonly Context _context;
         private readonly IItemRepository _itemRepository;
+        private readonly IProductRepository _productRepository;
 
-        public ProductController(Context context,IItemRepository itemRepository)
+        public ProductController(Context context,IItemRepository itemRepository,IProductRepository productRepository)
         {
             _context = context;
             _itemRepository = itemRepository;
+            _productRepository = productRepository;
         }
 
         public IActionResult Index()
         {
-           var all_item=_itemRepository.GetAll();
+            //List<ProductName> productName = new List<ProductName>
+            //{
+            //    ProductName.LivingRoom,
+            //    ProductName.YouthAndKidsBedRooms,
+            //    ProductName.DiningRoom,
+            //    ProductName.LargeAppliances,
+            //    ProductName.KitchenAppliances,
+            //    ProductName.HomeAppliances,
+            //    ProductName.Cookware,
+            //    ProductName.Drinkware,
+            //    ProductName.Dinnerware,
+            //    ProductName.Alometal,
+            //    ProductName.Wood,
+            //    ProductName.Acrylic
+            //};
+           // ViewBag.ProductName = productName;
+
+            List<Category> category = new List<Category>
+            { 
+            Category.furniture,
+            Category.Kitchen_utensils,
+            Category.Home_Appliances,
+            Category.Kitchen_utensils
+         
+            };
+            ViewBag.category=category;
+            var all_item=_itemRepository.GetAll();
             return View(all_item);
         }
 
         // GET: Product/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public IActionResult Details(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
-
-            //var product = await _context.Products
-            //    .FirstOrDefaultAsync(m => m.ID == id);
             var item = _itemRepository.GetById((int)id);
             if (item == null)
             {
@@ -45,112 +70,16 @@ namespace EfrashBatek.Controllers
 
             return View(item);
         }
-
-        // GET: Product/Create
-        public IActionResult Create()
+        public IActionResult ProductByName(ProductName productName)
         {
-            return View();
+            var selectByproduct =_productRepository.GetByProduct(productName);
+            return View(selectByproduct);
         }
-
-        // POST: Product/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Description,Category,ProductName")] Product product)
+        public IActionResult ItembyCategory(Category category)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(product);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(product);
+            var ans = _productRepository.GetByCategory(category);
+            return View(ans);
         }
-
-        // GET: Product/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var product = await _context.Products.FindAsync(id);
-            if (product == null)
-            {
-                return NotFound();
-            }
-            return View(product);
-        }
-
-        // POST: Product/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Description,Category,ProductName")] Product product)
-        {
-            if (id != product.ID)
-            {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    _context.Update(product);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ProductExists(product.ID))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(product);
-        }
-
-        // GET: Product/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var product = await _context.Products
-                .FirstOrDefaultAsync(m => m.ID == id);
-            if (product == null)
-            {
-                return NotFound();
-            }
-
-            return View(product);
-        }
-
-        // POST: Product/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var product = await _context.Products.FindAsync(id);
-            _context.Products.Remove(product);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool ProductExists(int id)
-        {
-            return _context.Products.Any(e => e.ID == id);
-        }
+      
     }
 }

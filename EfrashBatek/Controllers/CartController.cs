@@ -50,7 +50,7 @@ namespace EfrashBatek.Controllers
             }
             return View(items);
         }
-        [HttpPost]
+       // [HttpPost]
         public IActionResult AddToCart(int itemID)
         {
             var HaveSession = HttpContext.Session.GetString("Id");
