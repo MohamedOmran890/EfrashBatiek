@@ -13,8 +13,8 @@ namespace EfrashBatek.Models
         public string UserId { get; set; }
         public User User { get; set; }
         public string Image { get; set; }
-        [ForeignKey("WishList")]
-        public int WishListId { get; set; } 
+       // [ForeignKey("WishList")]
+       // public int WishListId { get; set; } 
         public virtual WishList WishList { get; set; }
       
        
