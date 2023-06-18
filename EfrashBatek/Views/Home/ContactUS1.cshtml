@@ -1,0 +1,177 @@
+﻿@model EfrashBatek.Models.Contact_Us
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<!-- Designined by CodingLab | www.youtube.com/codinglabyt -->
+<html lang="en" dir="ltr">
+
+<head> 
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/favicon.ico" href="~/Image/favicon.png">
+    <link rel="stylesheet" href="~/css/footer&header.css">
+    <link rel="stylesheet" href="~/css/contact us.css">
+    
+      
+    <!--ICONS LINK-->
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <!-- Fontawesome CDN Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Efresh Beitak</title>
+</head>
+ 
+<body>
+    <header>
+
+        <a href="/Home/TrendingProducts" class="logo"><img src="~/Image/logo.png" alt=""></a>
+
+        <ul class="navmenu">
+            <li><a asp-controller="Item" asp-action="Index">Products</a></li>
+            <li><a asp-controller="Home" asp-action="TrendingProducts">Trends</a></li>
+            <li><a asp-controller="Customs" asp-action="Create">Custom order</a></li>
+            <li><a asp-controller="Designs" asp-action="Index">Designs</a></li>
+
+
+
+        </ul>
+
+
+        <div class="nav-icon">
+            <a asp-controller="" asp-action=""><i class='bx bx-search'></i></a>
+            <a asp-controller="MyProfile" asp-action="UpdateProfile"><i class='bx bx-user'></i></a>
+            <a asp-controller="Cart" asp-action="Index"><i class='bx bx-cart'></i></a>
+            <a asp-controller="WishList" asp-action="Index"><i class='bx bx-heart' undefined></i></a>
+            <div class="bx bx-menu" id="menu-icon"></div>
+        </div>
+
+         
+    </header>
+
+    <section class="main-home">
+        <div class="grid-container">
+            <div class="item1">
+                <div class="breadcrumb">
+                    <ul class="breadcrumb">
+                        <li><a href="main.html"><i class='bx bx-home'></i></a></li>
+                        <li><a href="contact us.html">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="item2">
+                <div class="container">
+                    <div class="content">
+                        <div class="left-side">
+                            <div class="social details">
+                                <a href="#"> <i class='bx bxl-gmail bx-tada'></i> </a><br>
+                                <a href="#"><i class='bx bxl-facebook bx-tada'></i></a><br>
+                                <a href="#"><i class='bx bxl-instagram-alt bx-tada'></i></a><br>
+                                <a href="#"><i class='bx bxl-youtube bx-tada'></i></a><br>
+                                <a href="#"><i class='bx bxl-whatsapp-square bx-tada'></i></a>
+                            </div>
+                        </div>
+                        <div class="right-side" >
+                            <div class="topic-text">Send us a message</div>
+                            <br>
+                            <form  asp-action="SaveContact" asp-controller="Contact_Us">
+                                <div class="input-box">
+                                    <input type="text" asp-for="FirstName" class="form-control" placeholder="Enter your  name" />
+                                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                                </div> 
+                                <div class="input-box">
+                                    <input asp-for="LastName" class="form-control" type="text" placeholder="Enter your last name" />
+                                    <span asp-validation-for="LastName" class="text-danger"></span>
+                                    
+                                </div>
+                                <div class="input-box">
+                                    <input type="Email" asp-for="Email" class="form-control" type="email" placeholder="Enter your email" />
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                                <div class="input-box">
+                                    <input asp-for="PhoneNumber" class="form-control" type="text" placeholder="Phone" />
+                                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                                </div>
+                                <div class="input-box message-box">
+                                    <textarea asp-for="Message" class="form-control"  placeholder="Enter your message"></textarea>
+                                    <span asp-validation-for="Message" class="text-danger"></span>
+                                </div>
+                                <div class="submit">
+                                    <input type="submit" value="Send Now" />
+                                </div>
+                            </form>    
+                        </div> 
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+
+
+   @* <footer>
+
+
+    
+
+        <!-- contact-section -->
+        <section class="contact">
+            <div class="contact-info">
+                <div class="first-info">
+                    <img src="~/Image/logo.png" alt="">
+                    <p>+201004443226</p>
+                    <p>efresh.beitak@gmail.com</p>
+
+                </div>
+
+
+                <div class="second-info">
+                    <h4>Support</h4>
+                    <a asp-action="ContactUs" asp-controller="Home">
+                        <p>Contact us</p>
+                    </a>
+                    <a asp-action="AboutUs" asp-controller="Home">
+                        <p>About page</p>
+                    </a>
+                    <p>Shopping & Resturns</p>
+                    <a asp-action="Privacy" asp-controller="Home">
+                        <p>Privacy</p>
+                    </a>
+                </div>
+
+                <div class="third-info">
+                    <h4>category</h4>
+                    <p>Home Appliances</p>
+                    <p>Kitchen utensils</p>
+                    <p>Furniture</p>
+                    <p>kitchen</p>
+                </div>
+
+
+
+                <div class="five">
+                    <h4>JOIN OUR EMAIL NEWSLETTER</h4>
+                    <form>
+                        <div class="form-group">
+                            <input type="text" class="Input" placeholder="Enter Your Email." /><br><br>
+                            <button type="submit" class="btn btn-default submit">
+                                Submit
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </footer>*@
+
+    @section Scripts {
+        @{
+            await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        }
+    }
+
+</body>
+
+
+</html>
