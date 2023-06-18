@@ -24,7 +24,11 @@ a{
   margin-top: 2%;
   margin-bottom: 2%;
 }
-
+.x{
+  border-radius: 30px;
+  box-shadow: 0 0 1em rgba(0, 0, 0, 0.0625);
+  background-color: #fff;
+}
 /* continue button*/
 .btnRegister {
   border: none;
