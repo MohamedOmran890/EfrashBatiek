@@ -107,15 +107,15 @@ namespace EfrashBatek.Controllers
         }
 
 
-        [HttpPost]
-        public IActionResult AddAllToCart(int wishlistId)
-        {
-            var customerId = HttpContext.Session.GetInt32("CustomerId") ?? 0;
-            var cartId = context.Carts.FirstOrDefault(c => c.CustomerID == customerId).ID;
-            _wishlistRepository.AddAllToCart(wishlistId, cartId);
+        //[HttpPost]
+        //public IActionResult AddAllToCart(int wishlistId)
+        //{
+        //    var customerId = HttpContext.Session.GetInt32("CustomerId") ?? 0;
+        //    var cartId = _context.Carts.FirstOrDefault(c => c.CustomerID == customerId).ID;
+        //    _wishlistRepository.AddAllToCart(wishlistId, cartId);
 
-            return RedirectToAction(nameof(Index));
-        }
+        //    return RedirectToAction(nameof(Index));
+        //}
 
 
 

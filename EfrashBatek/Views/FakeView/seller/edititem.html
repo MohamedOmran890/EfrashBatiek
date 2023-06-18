@@ -2,7 +2,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title> Add Item </title>
+  <title> Edit Item </title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Boxicons CDN Link -->
   <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
@@ -60,57 +60,56 @@
 
   <!--ADD Product FORM-->
   <div class="form">
+    <div class="namee">
+      <h4>edit<span> Item</span></h4>
+    </div>
     <input type="text" id="pro" placeholder="product name">
     <input type="text" id="pro" placeholder="product code">
     <input type="text" id="pro" placeholder="Brand Name">
     <input type="number" id="pro" placeholder="Quantity in store">
     <textarea id="des" placeholder="Product description"></textarea>
-    <!-- product image -->
-    <div class="product-info">
-        <div class="product-image"><p class="text">product image</p></div>
-        <div class="upload-image-sec">
-            <!-- upload inputs -->
-            <!-- <p class="text"><img src="image/products/Brown right L shaped sofa.jpg" alt="">upload image</p> -->
-            <div class="upload-catalouge">
-                <input type="file" class="fileupload" id="first-file-upload-btn" hidden>
-                <label for="first-file-upload-btn" class="upload-image" ><i class='dele bx bx-x-circle' ></i></label>
-                
-                <input type="file" class="fileupload" id="second-file-upload-btn" hidden>
-                <label for="second-file-upload-btn" class="upload-image"></label>
-                <input type="file" class="fileupload" id="third-file-upload-btn" hidden>
-                <label for="third-file-upload-btn" class="upload-image"></label>
-                <input type="file" class="fileupload" id="fourth-file-upload-btn" hidden>
-                <label for="fourth-file-upload-btn" class="upload-image"></label>
-                <input type="file" class="fileupload" id="fifth-file-upload-btn" hidden>
-                <label for="fifth-file-upload-btn" class="upload-image"></label>
-            </div>
-        </div>
-    </div>
     <div class="product-price">
       <select id="pro1" class="form-control">
-								<option value="null">Select</option>
-								<option value="57">
-									Qena
-								</option>
-								<option value="57">
-									Cairo
-								</option>
-				</select>
-        <input type="number" id="pro1" placeholder="actual price">
-        <input type="number" id="pro1" placeholder="discount percentage">
-        <input type="number" id="pro1" placeholder="selling price">
+        <option value="null">Select</option>
+        <option value="57">
+          Qena
+        </option>
+        <option value="57">
+          Cairo
+        </option>
+      </select>
+      <input type="number" id="pro1" placeholder="actual price">
+      <input type="number" id="pro1" placeholder="discount percentage">
+      <input type="number" id="pro1" placeholder="selling price">
     </div>
-    <textarea id="des" placeholder="Enter categories here"></textarea>
-
-    <input type="checkbox" class="checkbox" id="tac" checked>
-    <label for="tac">clothing take 30% from your total sell</label>
-
+    <!-- product image -->
+    <div class="product-info">
+      <div class="product-image">
+        <p class="text">product image</p>
+      </div>
+      <div class="upload-image-sec">
+        <!-- upload inputs -->
+        <!-- <p class="text"><img src="image/products/Brown right L shaped sofa.jpg" alt="">upload image</p> -->
+        <div class="upload-catalouge">
+          <input type="file" class="fileupload" id="first-file-upload-btn" hidden>
+          <label for="first-file-upload-btn" class="upload-image"></label>
+          <input type="file" class="fileupload" id="second-file-upload-btn" hidden>
+          <label for="second-file-upload-btn" class="upload-image"></label>
+          <input type="file" class="fileupload" id="third-file-upload-btn" hidden>
+          <label for="third-file-upload-btn" class="upload-image"></label>
+          <input type="file" class="fileupload" id="fourth-file-upload-btn" hidden>
+          <label for="fourth-file-upload-btn" class="upload-image"></label>
+          <input type="file" class="fileupload" id="fifth-file-upload-btn" hidden>
+          <label for="fifth-file-upload-btn" class="upload-image"></label>
+        </div>
+      </div>
+    </div>
     <div class="buttons">
-        <button class="btn" id="add-btn">ٍSave</button>
-        <button class="btn" id="save-btn">save draft</button>
+      <button class="btn" id="add-btn">add product</button>
     </div>
-</div>
+  </div>
   <!-- SCRIPT -->
+   <!-- SCRIPT -->
   <script src="js/script.js"></script>
 </body>
 </html>

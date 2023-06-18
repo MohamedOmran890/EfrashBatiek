@@ -12,11 +12,16 @@ input,
 textarea {
     font-weight: 500;
 }
-
+.dele
+{
+    float: right;
+    margin-right: 3%;
+    margin-top: 3%;
+}
 .form {
     width: 94%;
     margin-left: 16%;
-    padding: 5%;
+    padding: 2%;
     border-radius: 30px;
     box-shadow: 0 0 1em rgba(0, 0, 0, 0.0625);
     background-color: #fff;
@@ -43,6 +48,14 @@ input:not(input[type="checkbox"]) {
     transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
 
+.namee{
+    text-transform: uppercase;
+    margin-inline-start: 1%;
+}
+.namee h4 span{
+    color: #cbaab1;
+}
+
 textarea {
     width: 100%;
     height: 270px;
@@ -54,12 +67,13 @@ textarea {
 
 .product-info {
     width: 100%;
-    height: 65%;
     display: grid;
+    justify-items: stretch;
     grid-template-columns: .75fr 1.25fr;
-    grid-template-rows: repeat(2, 1fr);
+    grid-template-rows: repeat(1, 1fr);
     grid-gap: 20px;
     margin-bottom: 20px;
+    height: fit-content;
 }
 
 .product-image {
@@ -154,6 +168,7 @@ input::-webkit-inner-spin-button {
 .product-price {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    margin-block-start: 5%;
     grid-gap: 20px;
 }
 
@@ -162,7 +177,7 @@ input::-webkit-inner-spin-button {
 }
 
 .buttons {
-    margin: 20px 0 50px;
+    margin: 10px 20px 60px;
 }
 
 .btn {
@@ -175,6 +190,7 @@ input::-webkit-inner-spin-button {
     outline: none;
     margin-right: 10px;
     cursor: pointer;
+    float: right;
 }
 
 #save-btn {
