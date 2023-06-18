@@ -35,7 +35,8 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="shopping-cart">
-                        @foreach (var item in Model.Items)
+                        @if(Model.Items!=null)
+                        @foreach (var item in Model.Items   )
                         {
                             <div class="shadow-sm p-3 mt-md-3 mb-5 bg-body-tertiary rounded" style="background-color: #f6f6f6">
                                 <div class="row mw-500 ">
@@ -62,9 +63,9 @@
                                     </div>
                                 </div>
                             </div>
+                    <a type="button" class="btn btn-default select mw-500" asp-controller="Cart" asp-action="AddToCart" asp-route-Id="@item.ID">Add To Cart</a>
                         }
                     </div>
-                    <button type="button" class="btn btn-default select mw-500" asp-controller="WishList" asp-action="AddAllToCart" asp-route-wishlistId="@Model.ID">Add All to cart</button>
                 </div>
             </div>
         </div>

@@ -134,8 +134,8 @@
                                 <div class="showcase-actions">
 
                                     <button class="btn-action">
-                                        <ion-icon name="heart-outline"></ion-icon>
-                                    </button>
+                                    <a asp-action="Index" asp-controller="WishList"><ion-icon name="heart-outline"></ion-icon></a>
+                                </button>
 
                                     <button class="btn-action">
                                     <a asp-action="AddToCart" asp-controller="Cart" asp-route-Id="@item.ID">ge <ion-icon name="bag-add-outline"></ion-icon></a>
