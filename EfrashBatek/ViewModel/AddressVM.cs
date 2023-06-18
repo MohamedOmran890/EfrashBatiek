@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 namespace EfrashBatek.ViewModel
 {
 	public class AddressVM
-	{
+	{ 
 
 		public int ID { get; set; }
 	
