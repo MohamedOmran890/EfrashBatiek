@@ -6,10 +6,19 @@ namespace EfrashBatek.Models
 {
     public enum ProductName
     {
-        IKEA=1,
-        Wayfair,
-        Room,
-        Pottery_Barn
+        Living_Room=1,
+        Youth_Kids_Bed_rooms,
+        dining_room,
+        large_Appliances,
+        kitchen_Appliances,
+        Home_Appliances,
+        Cookware,
+        Drinkware,
+        Dinnerware,
+        alometal,
+        wood,
+        acrylic
+
     }
 
     public class Product
