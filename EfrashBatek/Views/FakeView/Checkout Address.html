@@ -9,91 +9,109 @@
 	<link rel="icon" type="image/favicon.ico" href="/image/favicon.png">
 	<!-- CSS-link -->
 
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 	<link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600;700&display=swap"
 		rel="stylesheet">
 
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
 		integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
 		crossorigin="anonymous" referrerpolicy="no-referrer" />
-
+		
 	<link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-	<link rel="stylesheet" type="text/css"
-		href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="css/footer&header.css ">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/Checkout address.css ">
+	<link rel="stylesheet" href="css/checkout_steps_header.css">
+	<link rel="stylesheet" href="css/order_summary_box.css" type="text/css">
 </head>
 
 <body>
+	
+	<!-- <header>
+		<a href="main.html" class="logo"><img src="image/logo.png" alt=""></a>
 
-	<!--ICONS -->
-	<div class="x">
-        <ul class="icons">
-            <ul>
-                <li class="hover" style="padding: 10px;">
-                    <i class='bx bxs-location-plus' style=" font-size: 35px;"></i>
-                </li>
-                <li>
-                    <h2>Shipping</h2>
-                </li>
-            </ul>
-            <ul>
-                <li class="hover" style="padding: 10px 10px 10px 15px; padding: auto;">
-                    <i class='bx bx-credit-card' style=" font-size: 35px;"></i>
-                </li>
-                <li>
-                    <h2>Payment</h2>
-                </li>
-            </ul>
-            <ul>
-                <li class="hover" style="padding: 10px;">
-                    <i class='bx bx-badge-check' style=" font-size: 35px;"></i>
-                </li>
-                <li>
-                    <h2>Confirmation</h2>
-                </li>
-            </ul>
-        </ul>
-    </div>
-	<!--ADDRESS DETAILS-->
-	<div id="address" role="tabpanel" aria-labelledby="address-tab">
-		<h3 class="mb-4">Address Settings</h3>
+		<ul class="navmenu">
+			<li><a href="product page.html">Products</a></li>
+			 <li><a href="trend.html">Trends</a></li>
+			<li><a href="Empty.html">Custom order</a></li>
+			<li><a href="Empty.html">Designs</a></li>
+		</ul>
+
+
+		<div class="nav-icon">
+			<a href="main.html"><i class='bx bx-search'></i></a>
+			<a href="log.html"><i class='bx bx-user'></i></a>
+			<a href="cart.html"><i class='bx bx-cart'></i></a>
+			<a href="wishlist.html"><i class='bx bx-heart' undefined></i></a>
+			<div class="bx bx-menu" id="menu-icon"></div>
+		</div>
+	</header> -->
+
+
+	<div class="container">
+
+		<!------------------------------------------------ Icons ------------------------------->
+		<div class="row">
+			<div class="col-sm-12 col-lg-9">
+				<div class="x">
+					<ul class="icons">
+						<li class="step">
+							<a href="default address.html">
+								<i class='bx bxs-location-plus' style=" font-size: 38px;"></i>
+								<h2 class="word">Shipping</h2>
+							</a>
+						</li>
+
+						<li class="step">
+							<a href="payment method.html">
+								<i class='bx bx-credit-card' style=" font-size: 38px;"></i>
+								<h2 class="word">Payment</h2>
+							</a>
+						</li>
+						<li class="step">
+							<a href="Order Confirmation.html">
+								<i class='bx bx-badge-check' style=" font-size: 38px;"></i>
+								<h2 class="word">Confirmation</h2>
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!------------------------------------------------ Icons ------------------------------->
 
 		<div class="row">
 			<div class="col-sm-12 col-md-12 col-lg-9 col-xl-9">
-				<div id="address" class="tabpanel">
+				<div id="address" role="tabpanel" aria-labelledby="address-tab">
 					<h3 class="mb-4">Address Settings</h3>
 					<div class="row">
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>First Name</label>
-								<input type="text" class="form-control" placeholder="First Name">
+								<input type="text" class="form-control" value="First Name">
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>Last Name</label>
-								<input type="text" class="form-control" placeholder="Last Name">
+								<input type="text" class="form-control" value="Last Name">
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>Address</label>
-								<input type="text" class="form-control" placeholder="Address">
+								<input type="text" class="form-control" value="St.">
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>Postal Code</label>
-								<input type="number" class="form-control" placeholder="Postal Code">
+								<input type="text" class="form-control" value="Postal Code">
 							</div>
 						</div>
 						<div class="col-md-6">
 							<div class="form-group">
 								<label>Phone Number</label>
-								<input type="number" class="form-control" placeholder="Phone Number">
+								<input type="text" class="form-control" value="Phone Number">
 							</div>
 						</div>
 						<div class="col-md-6">
@@ -115,7 +133,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-sm-12 col-md-12 col-lg-3 col-xl-3">
+			<div class="col-sm-12 col-lg-3">
 				<aside>
 					<div class="summary">
 						<div class="summary-total-items"><span class="total-items"></span> Order Summary
@@ -136,14 +154,14 @@
 											<div class="flex-shrink-0">
 												<img src="image/1.jpg" alt="" width="35" class="img-fluid">
 											</div>
-											<div class="flex-lg-grow-1 ms-3">
-												<h6 class="small mb-0"><a href="#" class="text-reset">Chair</a></h6>
-												<span class="small">Color: Black</span>
+											<div
+												class="d-flex justify-content-between align-items-center p-3 flex-lg-grow-1 ms-2">
+												<span class="small mb-0"><a href="#" class="text-reset">Chair</a></span>
+												<span class="small">1</span>
+												<span class="small">1000</span>
 											</div>
 										</div>
 									</td>
-									<td>1</td>
-									<td class="text-end">79.99 EGP</td>
 								</tr>
 								<tr>
 									<td>
@@ -151,14 +169,14 @@
 											<div class="flex-shrink-0">
 												<img src="image/1.jpg" alt="" width="35" class="img-fluid">
 											</div>
-											<div class="flex-lg-grow-1 ms-3">
-												<h6 class="small mb-0"><a href="#" class="text-reset">Chair</a></h6>
-												<span class="small">Color: Black</span>
+											<div
+												class="d-flex justify-content-between align-items-center p-3 flex-lg-grow-1 ms-2">
+												<span class="small mb-0"><a href="#" class="text-reset">Chair</a></span>
+												<span class="small">1</span>
+												<span class="small">1000</span>
 											</div>
 										</div>
 									</td>
-									<td>1</td>
-									<td class="text-end">79.99 EGP</td>
 								</tr>
 								<tr>
 									<td>
@@ -166,14 +184,14 @@
 											<div class="flex-shrink-0">
 												<img src="image/1.jpg" alt="" width="35" class="img-fluid">
 											</div>
-											<div class="flex-lg-grow-1 ms-3">
-												<h6 class="small mb-0"><a href="#" class="text-reset">Chair</a></h6>
-												<span class="small">Color: Black</span>
+											<div
+												class="d-flex justify-content-between align-items-center p-3 flex-lg-grow-1 ms-2">
+												<span class="small mb-0"><a href="#" class="text-reset">Chair</a></span>
+												<span class="small">1</span>
+												<span class="small">1000</span>
 											</div>
 										</div>
 									</td>
-									<td>1</td>
-									<td class="text-end">79.99 EGP</td>
 								</tr>
 							</tbody>
 						</div>
@@ -220,27 +238,20 @@
 					<p>kitchen</p>
 				</div>
 
-			</div>
-			<input type="submit" class="btnRegister" value="Continue" />
-		</div>
-	</div>
-	<!--ORDER SUMMARY -->
-	<aside>
-		<div class="summary">
-			<div class="summary-total-items"><span class="total-items"></span> Order Summary
-			</div>
-			<div class="summary-subtotal">
-				<div class="subtotal-title">Subtotal</div>
-				<div class="subtotal-value final-value" id="basket-subtotal">130.00</div>
-				<div class="summary-promo hide">
-					<div class="promo-title">Promotion</div>
-					<div class="promo-value final-value" id="basket-promo"></div>
-
+				<div class="five">
+					<h4>JOIN OUR EMAIL NEWSLETTER</h4>
+					<form>
+						<div class="form-group">
+							<input type="text" class="Input" placeholder="Enter Your Email." /><br><br>
+							<button type="submit" class="btn btn-default submit">
+								Submit
+							</button>
+						</div>
+					</form>
 				</div>
 			</div>
 		</section>
-	</footer>
- -->
+	</footer> -->
 
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>

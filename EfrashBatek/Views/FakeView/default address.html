@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Default Address</title>
-   
+    <link rel="icon" type="image/favicon.ico" href="/image/favicon.png">
     <!-- CSS-link -->
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,38 +19,43 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.2/css/bootstrap.min.css" integrity="sha512-usVBAd66/NpVNfBge19gws2j6JZinnca12rAe2l+d+QkLU9fiG02O1X8Q6hepIpr/EYKZvKx/I9WsnujJuOmBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/default address.css">
+    <link rel="stylesheet" href="css/order_summary_box.css" type="text/css">
+    <link rel="stylesheet" href="css/checkout_steps_header.css" type="text/css">
 </head>
 
-<body>
-    <!------------------------------------------------ Icons ------------------------------->
-    <div class=" row justify-content-start ">
-        <ul id="address" class=" hr steps icons col-sm-11 col-md-11 col-lg-9 col-xl-9 bg-white">
-            
-                <li class="word">
-                    <a href="default address.html">
-                        <i class='bx bxs-location-plus' style=" font-size: 38px;"></i>
-                        <h2 class="word">Shipping</h2>
-                    </a>
-                </li>
+<body class="container">
 
-            
-                <li class="word">
-                    <a href="payment method.html">
-                        <i class='bx bx-credit-card' style=" font-size: 38px;"></i>
-                        <h2 class="word">Payment</h2>
-                    </a>
-                </li>
-            
-                <li class="word">
-                    <a href="Order Confirmation.html">
-                        <i class='bx bx-badge-check' style=" font-size: 38px;"></i>
-                        <h2 class="word">Confirmation</h2>
-                    </a>
-                </li>
-        </ul>
+
+    <!------------------------------------------------ Icons ------------------------------->
+    <div class="row">
+        <div class="col-sm-12 col-lg-9">
+            <div class="steps-header">
+                <ul class="icons">
+                    <li class="step">
+                        <a href="default address.html" class="active">
+                            <i class='bx bxs-location-plus' style=" font-size: 38px;"></i>
+                            <h2 class="word">Shipping</h2>
+                        </a>
+                    </li>
+
+                    <li class="step">
+                        <a href="payment method.html">
+                            <i class='bx bx-credit-card' style=" font-size: 38px;"></i>
+                            <h2 class="word">Payment</h2>
+                        </a>
+                    </li>
+                    <li class="step">
+                        <a href="Order Confirmation.html">
+                            <i class='bx bx-badge-check' style=" font-size: 38px;"></i>
+                            <h2 class="word">Confirmation</h2>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
     <!------------------------------------------------ Icons ------------------------------->
 
@@ -63,92 +68,45 @@
                 <h5 class="mb-3">Home Delivery</h5>
                 <h7 class="mb-3">Choose your default address</h7>
                 <p class="new" style="float: right;">
+                    <i class='bx bx-plus-circle'></i>
                     <a href="Checkout Address.html">
-                        <i class='bx bx-plus-circle'></i> add new address
+                        add new address
+                    </a>
                 </p>
-                </a>
                 <div class="addressFORM">
-                    <div class="address-row">
-                        <div class="addressBOX">
-                            <div class="control d-flex justify-content-between">
-                                <input type="radio" name="address" value="address1" class="run">
-                            <i class='bx bxs-edit' id="tst"></i>
-                            <!-- data set here -->
-                        </div>
-                            <div class="ADDRESSDETAILS">
-                                <br>
-                                <span>Qena </span>
-                                <br>
-                                <span>Jameela</span>
-                                <br>
-                                <span>01004245652</span>
-                                <br>
-                                <span>St.</span>
+                    <div class="row w-100">
+
+                        <div class="col-sm-12 col-lg-6">
+                            <div class="addressBOX">
+                                <div class="addressBOX-actions">
+                                    <input type="radio" name="address" value="address1" class="run">
+                                    <i class='bx bxs-edit' id="tst"></i>
+                                </div>
+                                <!-- data set here -->
+                                <div class="ADDRESSDETAILS">
+                                    <br>
+                                    <span>Qena </span>
+                                    <br>
+                                    <span>Jameela</span>
+                                    <br>
+                                    <span>01004245652</span>
+                                    <br>
+                                    <span>St.</span>
+                                </div>
                             </div>
                         </div>
-                        <!-- adress2 -->
-                        <div class="addressBOX">
-                            <div class="control d-flex justify-content-between">
-                                <input type="radio" name="address" value="address1" class="run">
-                            <i class='bx bxs-edit' id="tst"></i>
-                            <!-- data set here -->
-                        </div>
-                            <div class="ADDRESSDETAILS">
-                                <br>
-                                <span>Qena </span>
-                                <br>
-                                <span>Jameela</span>
-                                <br>
-                                <span>01004245652</span>
-                                <br>
-                                <span>St.</span>
-                            </div>
-                        </div>
-                        <!-- address3 -->
-                        <div class="addressBOX">
-                            <div class="control d-flex justify-content-between">
-                                <input type="radio" name="address" value="address1" class="run">
-                            <i class='bx bxs-edit' id="tst"></i>
-                            <!-- data set here -->
-                        </div>
-                            <div class="ADDRESSDETAILS">
-                                <br>
-                                <span>Qena </span>
-                                <br>
-                                <span>Jameela</span>
-                                <br>
-                                <span>01004245652</span>
-                                <br>
-                                <span>St.</span>
-                            </div>
-                        </div>
-                        <!-- address4 -->
-                        <div class="addressBOX">
-                            <div class="control d-flex justify-content-between">
-                                <input type="radio" name="address" value="address1" class="run">
-                            <i class='bx bxs-edit' id="tst"></i>
-                            <!-- data set here -->
-                        </div>
-                            <div class="ADDRESSDETAILS">
-                                <br>
-                                <span>Qena </span>
-                                <br>
-                                <span>Jameela</span>
-                                <br>
-                                <span>01004245652</span>
-                                <br>
-                                <span>St.</span>
-                            </div>
-                        </div>
+                        
 
                     </div>
                 </div>
-                <form action="payment method.html">
+                <!-------111111111-->
+                <form action="payment method.html" class="d-flex justify-content-end mt-3">
                     <input type="submit" class="btnRegister" value="Next" />
                 </form>
+                <!-------111111111-->
             </div>
         </div>
-        <div class="col-sm-12 col-md-12 col-lg-3 col-xl-3">
+        <div class="col-sm-12 col-lg-3">
             <aside>
                 <div class="summary">
                     <div class="summary-total-items"><span class="total-items"></span> Order Summary
@@ -169,45 +127,16 @@
                                         <div class="flex-shrink-0">
                                             <img src="image/1.jpg" alt="" width="35" class="img-fluid">
                                         </div>
-                                        <div class="flex-lg-grow-1 ms-3">
-                                            <h6 class="small mb-0"><a href="#" class="text-reset">Chair</a></h6>
-                                            <span class="small">Color: Black</span>
+                                        <div
+                                            class="d-flex justify-content-between align-items-center p-3 flex-lg-grow-1 ms-2">
+                                            <span class="small mb-0"><a href="#" class="text-reset">Chair</a></span>
+                                            <span class="small">1</span>
+                                            <span class="small">1000</span>
                                         </div>
                                     </div>
                                 </td>
-                                <td>1</td>
-                                <td class="text-end">79.99 EGP</td>
                             </tr>
-                            <tr>
-                                <td>
-                                    <div class="d-flex mb-2">
-                                        <div class="flex-shrink-0">
-                                            <img src="image/1.jpg" alt="" width="35" class="img-fluid">
-                                        </div>
-                                        <div class="flex-lg-grow-1 ms-3">
-                                            <h6 class="small mb-0"><a href="#" class="text-reset">Chair</a></h6>
-                                            <span class="small">Color: Black</span>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>1</td>
-                                <td class="text-end">79.99 EGP</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="d-flex mb-2">
-                                        <div class="flex-shrink-0">
-                                            <img src="image/1.jpg" alt="" width="35" class="img-fluid">
-                                        </div>
-                                        <div class="flex-lg-grow-1 ms-3">
-                                            <h6 class="small mb-0"><a href="#" class="text-reset">Chair</a></h6>
-                                            <span class="small">Color: Black</span>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>1</td>
-                                <td class="text-end">79.99 EGP</td>
-                            </tr>
+                            \
                         </tbody>
                     </div>
                     <div class="summary-total">
