@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EfrashBatek.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20230615125330_designer")]
-    partial class designer
+    [Migration("20230617112506_first")]
+    partial class first
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -909,7 +909,7 @@ namespace EfrashBatek.Migrations
             modelBuilder.Entity("EfrashBatek.Models.Cart_Item", b =>
                 {
                     b.HasOne("EfrashBatek.Models.Cart", "Cart")
-                        .WithMany("Cart_Item")
+                        .WithMany("items")
                         .HasForeignKey("CartID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -1177,7 +1177,7 @@ namespace EfrashBatek.Migrations
 
             modelBuilder.Entity("EfrashBatek.Models.Cart", b =>
                 {
-                    b.Navigation("Cart_Item");
+                    b.Navigation("items");
                 });
 
             modelBuilder.Entity("EfrashBatek.Models.Customer", b =>

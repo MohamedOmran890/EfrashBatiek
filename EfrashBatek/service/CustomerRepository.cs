@@ -9,14 +9,22 @@ namespace EfrashBatek.service
     public class CustomerRepository : ICustomerRepository
     {
         Context context;
-        public CustomerRepository(Context context)
+        private readonly IIdentityRepository identityRepository;
+
+        public CustomerRepository(Context context, IIdentityRepository identityRepository)
         {
             this.context = context;
+            this.identityRepository = identityRepository;
         }
-        public void Create(Customer customer)
+        public void Create(Customer customer )
         {
             context.Customers.Add(customer);
 
+        }
+        public Customer GetCustomerbyUserId () { 
+              var userID = identityRepository.GetUserID();
+            return context.Customers.FirstOrDefault(i=>i.UserId == userID);
+        
         }
         
         public int  Edit  (Customer customer , int id )

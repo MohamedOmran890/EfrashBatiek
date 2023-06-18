@@ -13,12 +13,14 @@ namespace EfrashBatek.Controllers
     [Authorize] // this attribute requires the user to be logged in to access the controller's methods
     public class WishListController : Controller
     {
-        private readonly IWishListRepository _wishlistRepository; // an object of type IWishListRepository that represents the dependency on the WishListRepository class
+		private readonly Context context;
+		private readonly IWishListRepository _wishlistRepository; // an object of type IWishListRepository that represents the dependency on the WishListRepository class
         private readonly IdentityRepository _IdentityRepository;
         private readonly ICustomerRepository _customerRepository;
         public WishListController(Context context, IWishListRepository wishlistRepository,IdentityRepository identityRepository,ICustomerRepository customerRepository)
         {
-            _wishlistRepository = wishlistRepository;
+			this.context = context;
+			_wishlistRepository = wishlistRepository;
             _IdentityRepository = identityRepository;
             _customerRepository = customerRepository;
         }
