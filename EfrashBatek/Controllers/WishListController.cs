@@ -44,20 +44,7 @@ namespace EfrashBatek.Controllers
             return View(wishlist);
         }
 
-        [HttpPost]
-        public IActionResult AddProductToWishlist(int Id)
-        {
-            var user = _IdentityRepository.GetUserID();
-            var wishlist= new WishList();
-            {
-                wishlist.ID= Id,
-                wishlist.Customer.UserId = user
-            };
-
-            _wishlistRepository.Create(wishlist);
-
-            return RedirectToAction("Index", "Home");
-        }
+       
 
 
 
