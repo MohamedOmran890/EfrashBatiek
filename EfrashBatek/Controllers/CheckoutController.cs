@@ -1,6 +1,7 @@
 ﻿
 using EfrashBatek.Models;
 using EfrashBatek.service;
+using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
@@ -13,7 +14,7 @@ public class CheckoutController : Controller
     private readonly ICartRepository cart;
     private readonly Context context;
     IIdentityRepository _identityRepository;
-        public CheckoutController(IAddressRepository Address,IIdentityRepository identityRepository , IAddressRepository addressRepository ,ICartRepository cart , Context context)
+        public CheckoutController(IAddressRepository Address,IIdentityRepository identityRepository , IAddressRepository addressRepository ,ICartRepository cart , Context context )
         {
             addressRepository = Address;
           _identityRepository = identityRepository;
@@ -44,7 +45,7 @@ public class CheckoutController : Controller
 		return View("EditAddress", Address);
 
 	}
-
+    
 	[HttpPost]
 	public IActionResult EditAddress(Address New) 
 	{
@@ -53,16 +54,19 @@ public class CheckoutController : Controller
 		return RedirectToAction("defaulrtaddress");
 
 	}
-	public IActionResult PaymentMethod(int cartID)
+    [HttpPost]
+	public IActionResult PaymentMethod(int cartID , int selectedAddressId)
 	{
         ViewBag.cartID = cartID;
-
+       
+        ViewBag.selectedAddressId = selectedAddressId;  
         return View();
 	}
-    public IActionResult Confirmation(int cartID )
+    public IActionResult Confirmation(int cartID , int selectedAddressId)
     {
-
-		return RedirectToAction("ViewOrders", "MyProfile", new { @cartID=cartID});
+        
+   
+		return RedirectToAction("ViewOrders", "MyProfile", new { @cartID=cartID , @selectedAddressId = selectedAddressId , @Isorder = true});
 	}
 
   

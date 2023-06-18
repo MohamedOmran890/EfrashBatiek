@@ -18,6 +18,8 @@ namespace EfrashBatek.service
         public void Create(Order order)
         {
             context.Orders.Add(order);
+             context.SaveChanges();
+           
 
         }
         public int Update(int id, Order order)
