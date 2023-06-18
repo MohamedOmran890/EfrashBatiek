@@ -17,13 +17,16 @@ namespace EfrashBatek.Controllers
         private IProductRepository _Product;
         IItemRepository _Item;
 		private readonly Context context;
+        private readonly IContact_UsRepository _ContactUs;
 
-		public HomeController(ILogger<HomeController> logger, IProductRepository product, IItemRepository item , Context context)
+		public HomeController(ILogger<HomeController> logger, IProductRepository product, 
+            IItemRepository item , Context context,IContact_UsRepository contact_Us)
         {
             _logger = logger;
             _Product = product;
             _Item = item;
 			this.context = context;
+            _ContactUs = contact_Us;
 		}
 
         public IActionResult TrendingProducts()
@@ -48,6 +51,18 @@ namespace EfrashBatek.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public IActionResult ContactUs(Contact_Us contact)
+        {
+            _ContactUs.Create(contact);
+            return RedirectToAction("Success");
+            
+        }
+        public IActionResult Success()
+        {
+            return View();
+        }
+
         public IActionResult AboutUs()
         {
             return View();
