@@ -4,8 +4,10 @@ namespace EfrashBatek.Models
 {
     public enum Category
     {
-        Clothes,
-        Electronic,
+        furniture,
+        Home_Appliances,
+        Kitchen_utensils,
+        Kitchen
     }
     public class Brand
     {
@@ -14,7 +16,7 @@ namespace EfrashBatek.Models
         public string Name { get; set; }
         [Required]
         public string logo { get; set; }
-        public Category Category { get; set; }
+        public virtual Category Category { get; set; }
 
     }
 }

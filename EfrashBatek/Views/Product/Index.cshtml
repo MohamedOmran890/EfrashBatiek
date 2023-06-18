@@ -1,0 +1,173 @@
+﻿@model IEnumerable<EfrashBatek.Models.Item>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "";
+}
+@*
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Product.ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+
+            <td>
+                 <img src="~/Image/@item.Image" alt="@item.Image" />
+            </td>
+    
+            <td>
+                    @Html.DisplayFor(model => item.Product.ProductName)
+            </td>
+            <td>
+                    @Html.DisplayFor(model => item.Name)
+            </td>
+            <td>
+                    @Html.DisplayFor(model => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Price)
+            </td>
+
+            <td>
+                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+*@
+<!-------------------------------------------------------------->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="~/Image/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="~/css/main.css>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
+    <title>Efresh Beitak</title>
+</head>
+<body>
+
+    <div class="modal" data-modal>
+
+        <div class="modal-close-overlay" data-modal-overlay></div>
+
+        <div class="modal-content">
+
+            <button class="modal-close-btn" data-modal-close>
+                <ion-icon name="close-outline"></ion-icon>
+            </button>
+
+        </div>
+
+    </div>
+
+    <div>
+
+        <button class="toast-close-btn" data-toast-close>
+            <ion-icon name="close-outline"></ion-icon>
+        </button>
+
+    </div>
+
+        <div class="sidebar-submenu-category-list" data-accordion>
+            @foreach (var cate in ViewBag.category)
+            {
+
+                    <a asp-action="ItembyCategory" asp-controller="Product" asp-route-productName="@cate" class="sidebar-submenu-title">
+                        <p class="product-name">@cate.ToString()</p>
+                    </a>
+            }
+        </div>
+            <div class="product-box">
+
+                <br>
+                <br>
+                <div class="product-main">
+                    <center>
+                        <h2 class="title">
+                            New
+                            <span>Products</span>
+                        </h2>
+                    </center>
+                    @foreach (var item in Model)
+                    {
+                    <div class="product-grid">
+
+                        <div class="showcase">
+
+                            <div class="showcase-banner">
+
+                                <img src="~/Image/00.webp" alt="Mens Winter Leathers Jackets"
+                                     width="300" class="product-img hover">
+                                    <img src="~/Image/1.jpg" alt="MEN Yarn Fleece Full-Zip Jacket"
+                                     class="product-img default" width="300">
+
+                                <p class="showcase-badge">@item.discount%</p>
+
+                                <div class="showcase-actions">
+
+                                    <button class="btn-action">
+                                    <a asp-action="Index" asp-controller="WishList"><ion-icon name="heart-outline"></ion-icon></a>
+                                </button>
+
+                                    <button class="btn-action">
+                                    <a asp-action="AddToCart" asp-controller="Cart" asp-route-Id="@item.ID">ge <ion-icon name="bag-add-outline"></ion-icon></a>
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                            <div class="showcase-content">
+
+                                    <a asp-action="Details" asp-route-id="@item.ID" class="showcase-category">@item.Product.ProductName</a>
+
+                                    <a asp-action="Details" asp-route-id="@item.ID">
+                                    <h3 class="showcase-title">@item.Name</h3>
+                                </a>
+
+                                <div class="price-box">
+                                    <p class="price">@item.Price</p>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    }
+
+                </div>
+            </div>
+            </body>
+            </html>
+    <script src="~/js/script.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+

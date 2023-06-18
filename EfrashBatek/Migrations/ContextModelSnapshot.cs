@@ -222,9 +222,14 @@ namespace EfrashBatek.Migrations
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<int>("WishListId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("UserId");
+
+                    b.HasIndex("WishListId");
 
                     b.ToTable("Customers");
                 });
@@ -271,7 +276,7 @@ namespace EfrashBatek.Migrations
 
             modelBuilder.Entity("EfrashBatek.Models.Feedback", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -286,7 +291,7 @@ namespace EfrashBatek.Migrations
                     b.Property<int?>("Order_ItemID")
                         .HasColumnType("int");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
                     b.HasIndex("OrderItemID");
 
@@ -693,8 +698,7 @@ namespace EfrashBatek.Migrations
 
                     b.HasKey("ID");
 
-                    b.HasIndex("CustomerID")
-                        .IsUnique();
+                    b.HasIndex("CustomerID");
 
                     b.ToTable("WishLists");
                 });
@@ -940,7 +944,15 @@ namespace EfrashBatek.Migrations
                         .WithMany()
                         .HasForeignKey("UserId");
 
+                    b.HasOne("EfrashBatek.Models.WishList", "WishList")
+                        .WithMany()
+                        .HasForeignKey("WishListId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("User");
+
+                    b.Navigation("WishList");
                 });
 
             modelBuilder.Entity("EfrashBatek.Models.Design", b =>
@@ -1114,8 +1126,8 @@ namespace EfrashBatek.Migrations
             modelBuilder.Entity("EfrashBatek.Models.WishList", b =>
                 {
                     b.HasOne("EfrashBatek.Models.Customer", "Customer")
-                        .WithOne("WishList")
-                        .HasForeignKey("EfrashBatek.Models.WishList", "CustomerID")
+                        .WithMany()
+                        .HasForeignKey("CustomerID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -1185,8 +1197,6 @@ namespace EfrashBatek.Migrations
                     b.Navigation("Customs");
 
                     b.Navigation("Orders");
-
-                    b.Navigation("WishList");
                 });
 
             modelBuilder.Entity("EfrashBatek.Models.Design", b =>

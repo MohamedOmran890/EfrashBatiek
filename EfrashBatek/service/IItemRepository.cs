@@ -9,6 +9,7 @@ namespace EfrashBatek.service
         void Create(Item item);
         int Delete(int Id);
         IQueryable<Item> GetAll();
+
         Item GetById(int Id);
         int Update(int id, Item item);
         List<Item> NewArrivals();

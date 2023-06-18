@@ -1,0 +1,37 @@
+.steps-header {
+    background-color: #fff;
+    box-shadow: 0 0 1em rgba(0, 0, 0, 0.0625);
+    border-radius: 30px;
+    color: #565656;
+    transition: background-color 0.4s ease;
+}
+
+.icons {
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    padding: 20px 20px;
+}
+.step a {
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: #8a8b8b;
+}
+
+.word {
+    transition: all .42s ease;
+    font-size: 1.5rem;
+}
+
+.word:hover {
+    color: #cbaab1;
+    transform: scale(1.1);
+}
+
+.active {
+    color: #cbaab1 !important
+}

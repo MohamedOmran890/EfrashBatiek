@@ -2,10 +2,7 @@
 @{
 	Layout = "CustomerLayout";
 }
-<link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-<link rel="stylesheet" type="text/css"
-	  href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <link rel="stylesheet" href="~/css/profile2.css">
 <link rel="stylesheet" href="~/css/profile.css">
 <!---ordersinfo-->
@@ -23,16 +20,16 @@
 						<div class="img-circle text-center mb-3">
 							<img src="~/Image/client.png" alt="Image" class="shadow">
 						</div>
-						<h4 class="text-center">Hazem Abdelsattar</h4>
+					<h4 class="text-center">@ViewBag.Model.FirstName  @ViewBag.Model.LastName</h4>
 					</div>
 					<!--links Dashboard ?? -->
 					<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 
 						<a class="nav-link">
-							Hello,Hazem Abdelsattar
+							
 						</a>
 						<a class="nav-link">
-							0 Orders of this month
+							@ViewBag.Orders Orders of this month
 						</a>
 						<!--action link-->
 						<a href="/MyProfile/UpdateProfile"class="nav-link" role="tab" id="profile" >

@@ -79,7 +79,7 @@
         <a href="/Home/TrendingProducts" class="logo"><img src="~/Image/logo.png" alt=""></a>
 
         <ul class="navmenu">
-            <li><a asp-controller="Item" asp-action="Index">Products</a></li>
+            <li><a asp-controller="Product" asp-action="Index">Products</a></li>
             <li><a asp-controller="Home" asp-action="TrendingProducts">Trends</a></li>
             <li><a asp-controller="Customs" asp-action="Create">Custom order</a></li>
             <li><a asp-controller="Designs" asp-action="Index">Designs</a></li>
@@ -120,14 +120,16 @@
 
                 <div class="second-info">
                     <h4>Support</h4>
-                    <a href="contact us.html">
+                    <a asp-action="ContactUs" asp-controller="Home">
                         <p>Contact us</p>
                     </a>
-                    <a href="about us.html">
+                    <a asp-action="AboutUs" asp-controller="Home">
                         <p>About page</p>
-                    </a>
+                    </a >
                     <p>Shopping & Resturns</p>
+                    <a asp-action="Privacy" asp-controller="Home">
                     <p>Privacy</p>
+                    </a>
                 </div>
 
                 <div class="third-info">
@@ -157,7 +159,7 @@
     @*<script src="~/js/cart.js"></script>*@
     <script src="~/js/main.js"></script>
     <!--Omran Craete them cause  Clint side-->
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script srca="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
 

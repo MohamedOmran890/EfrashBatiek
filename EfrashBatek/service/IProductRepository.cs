@@ -10,6 +10,8 @@ namespace EfrashBatek.service
         List<Product> GetAll();
         Product GetById(int Id);
         int Update(int id, Product product);
-        List<Product> GetByCategory(Category Category);
+        public List<Product> GetByCategory(Category Category);
+  
+        List<Item> GetByProduct(ProductName productName);
     }
 }
