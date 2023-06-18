@@ -907,7 +907,7 @@ namespace EfrashBatek.Migrations
             modelBuilder.Entity("EfrashBatek.Models.Cart_Item", b =>
                 {
                     b.HasOne("EfrashBatek.Models.Cart", "Cart")
-                        .WithMany("Cart_Item")
+                        .WithMany("items")
                         .HasForeignKey("CartID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -1175,7 +1175,7 @@ namespace EfrashBatek.Migrations
 
             modelBuilder.Entity("EfrashBatek.Models.Cart", b =>
                 {
-                    b.Navigation("Cart_Item");
+                    b.Navigation("items");
                 });
 
             modelBuilder.Entity("EfrashBatek.Models.Customer", b =>

@@ -14,20 +14,27 @@ namespace EfrashBatek.Controllers
     public class WishListController : Controller
     {
         private readonly IWishListRepository _wishlistRepository; // an object of type IWishListRepository that represents the dependency on the WishListRepository class
-        private readonly Context _context;
-        public WishListController(Context context, IWishListRepository wishlistRepository)
+        private readonly IdentityRepository _IdentityRepository;
+        private readonly ICustomerRepository _customerRepository;
+        public WishListController(Context context, IWishListRepository wishlistRepository,IdentityRepository identityRepository,ICustomerRepository customerRepository)
         {
-            _context = context;
             _wishlistRepository = wishlistRepository;
+            _IdentityRepository = identityRepository;
+            _customerRepository = customerRepository;
         }
 
         // Action that displays the wishlist of the current customer
         public IActionResult Index()
         {
             // Get the current customer id from the session or authentication
-            var customerId = HttpContext.Session.GetInt32("CustomerId") ?? 0;
-
-            var wishlist = _wishlistRepository.GetWishlistByCustomer(customerId);
+            //var customerId = HttpContext.Session.GetInt32("CustomerId") ?? 0;
+            var userId = _IdentityRepository.GetUserID();
+            var ans = _wishlistRepository.GetCustomerWithUser(userId);
+            if(ans == null)
+            {
+                return View(new WishList());
+            }
+            var wishlist = _wishlistRepository.GetById(ans.WishList.ID);
 
             return View(wishlist);
         }
@@ -98,15 +105,15 @@ namespace EfrashBatek.Controllers
         }
 
 
-        [HttpPost]
-        public IActionResult AddAllToCart(int wishlistId)
-        {
-            var customerId = HttpContext.Session.GetInt32("CustomerId") ?? 0;
-            var cartId = _context.Carts.FirstOrDefault(c => c.CustomerID == customerId).ID;
-            _wishlistRepository.AddAllToCart(wishlistId, cartId);
+        //[HttpPost]
+        //public IActionResult AddAllToCart(int wishlistId)
+        //{
+        //    var customerId = HttpContext.Session.GetInt32("CustomerId") ?? 0;
+        //    var cartId = _context.Carts.FirstOrDefault(c => c.CustomerID == customerId).ID;
+        //    _wishlistRepository.AddAllToCart(wishlistId, cartId);
 
-            return RedirectToAction(nameof(Index));
-        }
+        //    return RedirectToAction(nameof(Index));
+        //}
 
 
 
@@ -120,3 +127,4 @@ namespace EfrashBatek.Controllers
 
     }
 }
+                   

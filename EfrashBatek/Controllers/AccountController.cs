@@ -13,6 +13,7 @@ using System.Net.Mail;
 using SignInResult = Microsoft.AspNetCore.Identity.SignInResult;
 using System;
 using EfrashBatek.service;
+using Microsoft.EntityFrameworkCore;
 
 namespace EfrashBatek.Controllers
 {
@@ -41,6 +42,11 @@ namespace EfrashBatek.Controllers
         {
             return View();
         }
+        public IActionResult Register2()
+        {
+            return View();
+        }
+
 
         [HttpPost]
         public async Task<IActionResult> SignUp(RegisterViewModel model)
@@ -161,22 +167,17 @@ namespace EfrashBatek.Controllers
         {
             if(ModelState.IsValid)
             {
-                var user=await _userManager.FindByEmailAsync(model.Email);
-                var conf=await _userManager.IsEmailConfirmedAsync(user);
-                if(user == null||!conf)
+                var user = await _userManager.Users.FirstOrDefaultAsync(u => u.Email == model.Email);
+                //var conf=await _userManager.IsEmailConfirmedAsync(user);
+                if (user == null)
                 {
                     ModelState.AddModelError("", "The Email Not Found");
                     return View();
                 }
-                var Token=await _userManager.GeneratePasswordResetTokenAsync(user);
-                //var callback = Url.ResetPasswordCallbackLink(user.Id, code, Request.Scheme);
-                //await _emailSender.SendEmailAsync(model.Email, "Reset Password",
-                //    $"Please reset your password by clicking here: <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>link</a>");
-                ////model.Result = "A password reset link has been sent to your email.";
-                //var callbackUrl = Url.ResetPasswordCallbackLink(user.Id, code, Request.Scheme);
-                //await _emailSender.SendEmailAsync(model.Email, "Reset Password",
-                //         $"Please reset your password by clicking here: <a href='{callbackUrl}'>link</a>");
-                return RedirectToAction("ResetPassword",model.Email,Token);
+                var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                var confirmationLink = Url.Action("ResetPassword", "Account", new { userId = user.Id, token = token }, Request.Scheme);
+                await _emailService.SendForgetPassword(model.Email, confirmationLink);
+                return RedirectToAction("ResetPassword", "Account", new { Email = model.Email, Token = token });
             }
             return View(model);
         }
