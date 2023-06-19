@@ -45,7 +45,27 @@ namespace EfrashBatek.Controllers
 			this.cart = cart;
 		}
 
-        
+        public IActionResult ViewCustoms()
+        {
+            User user = identityRepository.GetUser();
+            Customer customer = _customer.GetCustomerbyUserId();
+            List<Order> orders = context.Orders.Where(i => i.CustomerID == customer.Id).ToList();
+            ViewBag.Orders = orders.Count();
+
+
+            //...populate other properties
+            ViewBag.Model = user;
+            var Customs = context.Customs.Where(i=>i.CustomerID ==  customer.Id).ToList();  
+
+            return View(Customs);  
+        }
+        [HttpPost]
+        public IActionResult ViewCustoms(int id )
+        {
+           var model =  context.Customs.FirstOrDefault(i=>i.ID == id);  
+
+            return View("CustomDetails" , model);
+        }
         [HttpGet]
 
 		public async Task<ActionResult> UpdateProfile()
@@ -311,6 +331,8 @@ namespace EfrashBatek.Controllers
             return View(model);
 
         }
+
+     
 
 
 

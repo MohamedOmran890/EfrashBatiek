@@ -7,8 +7,9 @@ namespace EfrashBatek.ViewModel
 {
     public class CustomVM
     {
-      
         [Required]
+        public int ID { get; set; }   
+    
         public string Name { get; set; }
         public string Phone { get; set; }
         [Required]
