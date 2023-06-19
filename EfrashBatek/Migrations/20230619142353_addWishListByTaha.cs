@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace EfrashBatek.Migrations
 {
-    public partial class designer : Migration
+    public partial class addWishListByTaha : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -339,6 +339,52 @@ namespace EfrashBatek.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Items",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Code = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Price = table.Column<double>(type: "float", nullable: false),
+                    Image = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Image2 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Image3 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Image4 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Image5 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    discount = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PriceAfterSale = table.Column<int>(type: "int", nullable: false),
+                    Brand_ID = table.Column<int>(type: "int", nullable: false),
+                    QuantityInStore = table.Column<int>(type: "int", nullable: false),
+                    ShopID = table.Column<int>(type: "int", nullable: false),
+                    ProductID = table.Column<int>(type: "int", nullable: false),
+                    DateTime = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Items", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_Items_Brands_Brand_ID",
+                        column: x => x.Brand_ID,
+                        principalTable: "Brands",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Items_Products_ProductID",
+                        column: x => x.ProductID,
+                        principalTable: "Products",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_Items_Shops_ShopID",
+                        column: x => x.ShopID,
+                        principalTable: "Shops",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "The_Staff",
                 columns: table => new
                 {
@@ -442,16 +488,16 @@ namespace EfrashBatek.Migrations
                 name: "WishLists",
                 columns: table => new
                 {
-                    ID = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CustomerID = table.Column<int>(type: "int", nullable: false)
+                    CustomerId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_WishLists", x => x.ID);
+                    table.PrimaryKey("PK_WishLists", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_WishLists_Customers_CustomerID",
-                        column: x => x.CustomerID,
+                        name: "FK_WishLists_Customers_CustomerId",
+                        column: x => x.CustomerId,
                         principalTable: "Customers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
@@ -478,74 +524,30 @@ namespace EfrashBatek.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Items",
+                name: "Videos",
                 columns: table => new
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Code = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    URL = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Price = table.Column<double>(type: "float", nullable: false),
-                    Image = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Image2 = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Image3 = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Image4 = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Image5 = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    discount = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    PriceAfterSale = table.Column<int>(type: "int", nullable: false),
-                    Brand_ID = table.Column<int>(type: "int", nullable: false),
-                    QuantityInStore = table.Column<int>(type: "int", nullable: false),
-                    ShopID = table.Column<int>(type: "int", nullable: false),
-                    ProductID = table.Column<int>(type: "int", nullable: false),
-                    DateTime = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    WishListID = table.Column<int>(type: "int", nullable: true)
+                    ItemID = table.Column<int>(type: "int", nullable: false),
+                    UserID = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Items", x => x.ID);
+                    table.PrimaryKey("PK_Videos", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_Items_Brands_Brand_ID",
-                        column: x => x.Brand_ID,
-                        principalTable: "Brands",
-                        principalColumn: "ID",
+                        name: "FK_Videos_AspNetUsers_UserID",
+                        column: x => x.UserID,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Items_Products_ProductID",
-                        column: x => x.ProductID,
-                        principalTable: "Products",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Items_Shops_ShopID",
-                        column: x => x.ShopID,
-                        principalTable: "Shops",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Items_WishLists_WishListID",
-                        column: x => x.WishListID,
-                        principalTable: "WishLists",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Photos",
-                columns: table => new
-                {
-                    ID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Image = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DesignID = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Photos", x => x.ID);
-                    table.ForeignKey(
-                        name: "FK_Photos_Designs_DesignID",
-                        column: x => x.DesignID,
-                        principalTable: "Designs",
+                        name: "FK_Videos_Items_ItemID",
+                        column: x => x.ItemID,
+                        principalTable: "Items",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -613,30 +615,47 @@ namespace EfrashBatek.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Videos",
+                name: "WishListItems",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    WishListId = table.Column<int>(type: "int", nullable: false),
+                    ItemId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_WishListItems", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_WishListItems_Items_ItemId",
+                        column: x => x.ItemId,
+                        principalTable: "Items",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_WishListItems_WishLists_WishListId",
+                        column: x => x.WishListId,
+                        principalTable: "WishLists",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Photos",
                 columns: table => new
                 {
                     ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    URL = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ItemID = table.Column<int>(type: "int", nullable: false),
-                    UserID = table.Column<string>(type: "nvarchar(450)", nullable: true)
+                    Image = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    DesignID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Videos", x => x.ID);
+                    table.PrimaryKey("PK_Photos", x => x.ID);
                     table.ForeignKey(
-                        name: "FK_Videos_AspNetUsers_UserID",
-                        column: x => x.UserID,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Videos_Items_ItemID",
-                        column: x => x.ItemID,
-                        principalTable: "Items",
+                        name: "FK_Photos_Designs_DesignID",
+                        column: x => x.DesignID,
+                        principalTable: "Designs",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
                 });
@@ -645,7 +664,7 @@ namespace EfrashBatek.Migrations
                 name: "feedbacks",
                 columns: table => new
                 {
-                    ID = table.Column<int>(type: "int", nullable: false)
+                    Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ComplaintMessage = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     OrderItemID = table.Column<int>(type: "int", nullable: false),
@@ -653,7 +672,7 @@ namespace EfrashBatek.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_feedbacks", x => x.ID);
+                    table.PrimaryKey("PK_feedbacks", x => x.Id);
                     table.ForeignKey(
                         name: "FK_feedbacks_Customers_OrderItemID",
                         column: x => x.OrderItemID,
@@ -795,11 +814,6 @@ namespace EfrashBatek.Migrations
                 column: "ShopID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Items_WishListID",
-                table: "Items",
-                column: "WishListID");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Order_Items_ItemID",
                 table: "Order_Items",
                 column: "ItemID");
@@ -855,9 +869,19 @@ namespace EfrashBatek.Migrations
                 column: "Order_ItemID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_WishLists_CustomerID",
+                name: "IX_WishListItems_ItemId",
+                table: "WishListItems",
+                column: "ItemId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_WishListItems_WishListId",
+                table: "WishListItems",
+                column: "WishListId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_WishLists_CustomerId",
                 table: "WishLists",
-                column: "CustomerID",
+                column: "CustomerId",
                 unique: true);
         }
 
@@ -912,6 +936,9 @@ namespace EfrashBatek.Migrations
                 name: "Warrantl_Requests");
 
             migrationBuilder.DropTable(
+                name: "WishListItems");
+
+            migrationBuilder.DropTable(
                 name: "AspNetRoles");
 
             migrationBuilder.DropTable(
@@ -922,6 +949,9 @@ namespace EfrashBatek.Migrations
 
             migrationBuilder.DropTable(
                 name: "Order_Items");
+
+            migrationBuilder.DropTable(
+                name: "WishLists");
 
             migrationBuilder.DropTable(
                 name: "designers");
@@ -940,9 +970,6 @@ namespace EfrashBatek.Migrations
 
             migrationBuilder.DropTable(
                 name: "Shops");
-
-            migrationBuilder.DropTable(
-                name: "WishLists");
 
             migrationBuilder.DropTable(
                 name: "Addresses");

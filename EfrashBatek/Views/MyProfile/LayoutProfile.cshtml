@@ -20,16 +20,16 @@
 						<div class="img-circle text-center mb-3">
 							<img src="~/Image/client.png" alt="Image" class="shadow">
 						</div>
-						<h4 class="text-center">Hazem Abdelsattar</h4>
+					<h4 class="text-center">@ViewBag.Model.FirstName  @ViewBag.Model.LastName</h4>
 					</div>
 					<!--links Dashboard ?? -->
 					<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
 
 						<a class="nav-link">
-							Hello,Hazem Abdelsattar
+							
 						</a>
 						<a class="nav-link">
-							0 Orders of this month
+							@ViewBag.Orders Orders of this month
 						</a>
 						<!--action link-->
 						<a href="/MyProfile/UpdateProfile"class="nav-link" role="tab" id="profile" >
@@ -44,9 +44,9 @@
 							<i class="fa fa-user text-center mr-1"></i>
 							My Orders
 						</a>
-				   	<a href="/MyProfile/Warrently" class="nav-link" role="tab" aria-controls="guarantee" id="guarante">
+				   	<a href="/MyProfile/ViewCustoms" class="nav-link" role="tab" aria-controls="guarantee" id="guarante">
 							<i class="fa fa-tv text-center mr-1"></i>
-							Guarantee
+								 View Customs
 						</a>
 						<a href="/MyProfile/UpdatePassword"class="nav-link"  role="tab" aria-controls="password" id="password">
 							<i class="fa fa-key text-center mr-1"></i>

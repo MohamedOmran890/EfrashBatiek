@@ -351,9 +351,6 @@ namespace EfrashBatek.Migrations
                     b.Property<int>("ShopID")
                         .HasColumnType("int");
 
-                    b.Property<int?>("WishListID")
-                        .HasColumnType("int");
-
                     b.Property<string>("discount")
                         .HasColumnType("nvarchar(max)");
 
@@ -364,8 +361,6 @@ namespace EfrashBatek.Migrations
                     b.HasIndex("ProductID");
 
                     b.HasIndex("ShopID");
-
-                    b.HasIndex("WishListID");
 
                     b.ToTable("Items");
                 });
@@ -683,20 +678,42 @@ namespace EfrashBatek.Migrations
 
             modelBuilder.Entity("EfrashBatek.Models.WishList", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CustomerID")
+                    b.Property<int>("CustomerId")
                         .HasColumnType("int");
 
-                    b.HasKey("ID");
+                    b.HasKey("Id");
 
-                    b.HasIndex("CustomerID")
+                    b.HasIndex("CustomerId")
                         .IsUnique();
 
                     b.ToTable("WishLists");
+                });
+
+            modelBuilder.Entity("EfrashBatek.Models.WishListItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ItemId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("WishListId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ItemId");
+
+                    b.HasIndex("WishListId");
+
+                    b.ToTable("WishListItems");
                 });
 
             modelBuilder.Entity("EfrashBatek.ViewModel.ForgetPasswordVM", b =>
@@ -998,10 +1015,6 @@ namespace EfrashBatek.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("EfrashBatek.Models.WishList", null)
-                        .WithMany("Items")
-                        .HasForeignKey("WishListID");
-
                     b.Navigation("Brand");
 
                     b.Navigation("Product");
@@ -1115,11 +1128,30 @@ namespace EfrashBatek.Migrations
                 {
                     b.HasOne("EfrashBatek.Models.Customer", "Customer")
                         .WithOne("WishList")
-                        .HasForeignKey("EfrashBatek.Models.WishList", "CustomerID")
+                        .HasForeignKey("EfrashBatek.Models.WishList", "CustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Customer");
+                });
+
+            modelBuilder.Entity("EfrashBatek.Models.WishListItem", b =>
+                {
+                    b.HasOne("EfrashBatek.Models.Item", "Item")
+                        .WithMany("WishListItems")
+                        .HasForeignKey("ItemId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("EfrashBatek.Models.WishList", "WishList")
+                        .WithMany("WishListItems")
+                        .HasForeignKey("WishListId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Item");
+
+                    b.Navigation("WishList");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -1204,6 +1236,8 @@ namespace EfrashBatek.Migrations
                     b.Navigation("Cart_Items");
 
                     b.Navigation("Order_Items");
+
+                    b.Navigation("WishListItems");
                 });
 
             modelBuilder.Entity("EfrashBatek.Models.Order", b =>
@@ -1239,7 +1273,7 @@ namespace EfrashBatek.Migrations
 
             modelBuilder.Entity("EfrashBatek.Models.WishList", b =>
                 {
-                    b.Navigation("Items");
+                    b.Navigation("WishListItems");
                 });
 #pragma warning restore 612, 618
         }

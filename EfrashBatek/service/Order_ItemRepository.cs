@@ -11,9 +11,11 @@ namespace EfrashBatek.service
         {
             this.context = context;
         }
-        public void Create(Item item)
+        public void Create(Order_Item orderitem )
         {
-            context.Items.Add(item);
+            context.Order_Items.Add(orderitem);
+            context.SaveChanges();
+
 
         }
         public int Update(int id, Order_Item order_item)
