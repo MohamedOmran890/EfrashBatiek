@@ -85,8 +85,10 @@
             <li><a asp-controller="Home" asp-action="TrendingProducts">Trends</a></li>
             <li><a asp-controller="Customs" asp-action="Create">Custom order</a></li>
             <li><a asp-controller="Designs" asp-action="Index">Designs</a></li>
-
-
+            @if(User.IsInRole("Admin"))
+            {
+                <button onclick="location.href='@Url.Action("Dashboard", "Admin")'">Admin></button>
+            }
 
         </ul>
 
