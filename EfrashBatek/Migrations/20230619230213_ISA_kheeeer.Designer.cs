@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EfrashBatek.Migrations
 {
     [DbContext(typeof(Context))]
-    [Migration("20230619142353_addWishListByTaha")]
-    partial class addWishListByTaha
+    [Migration("20230619230213_ISA_kheeeer")]
+    partial class ISA_kheeeer
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -716,6 +716,29 @@ namespace EfrashBatek.Migrations
                     b.HasIndex("WishListId");
 
                     b.ToTable("WishListItems");
+                });
+
+            modelBuilder.Entity("EfrashBatek.ViewModel.AdminVM", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("AdminVM");
                 });
 
             modelBuilder.Entity("EfrashBatek.ViewModel.ForgetPasswordVM", b =>
