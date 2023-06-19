@@ -30,7 +30,7 @@ namespace EfrashBatek.Controllers
         // Action that displays the wishlist of the current customer
         public IActionResult Index()
         {
-
+            ////
             var HaveSession = HttpContext.Session.GetString("Id");
             if (HaveSession == null)
             {
