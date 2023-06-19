@@ -11,6 +11,7 @@ using EfrashBatek.service;
 using System.IO;
 using Microsoft.AspNetCore.Hosting;
 using EfrashBatek.ViewModel;
+using Microsoft.AspNetCore.Http;
 
 namespace EfrashBatek.Controllers
 {
@@ -21,14 +22,17 @@ namespace EfrashBatek.Controllers
         public readonly ICustomRepository _customRepository;
         private readonly IWebHostEnvironment Ih;
         IIdentityRepository _identityRepository;
+        ICustomerRepository _customer;
+
         public CustomsController(Context context,UserManager<User> userManager,
-            ICustomRepository customRepository, IWebHostEnvironment webHostEnvironment, IIdentityRepository identityRepository)
+            ICustomRepository customRepository, IWebHostEnvironment webHostEnvironment, ICustomerRepository customer)
         {
             _context = context;
             _userManager = userManager;
             _customRepository = customRepository;
             Ih = webHostEnvironment;
-            _identityRepository = identityRepository;
+           
+            _customer = customer;
         }
 
         // GET: Customs
@@ -67,10 +71,11 @@ namespace EfrashBatek.Controllers
         public async Task<IActionResult> Create()
         {
             //var user = await _userManager.GetUserAsync(User);
-            //if (user == null)
-            //{
-            //    return RedirectToAction("Login","Account");
-            //}
+            var HaveSession = HttpContext.Session.GetString("Id");
+            if (HaveSession == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
             var zone= new SelectList(Enum.GetValues(typeof(Zone)));
             ViewData["Zone"] = zone;
             return View();
@@ -85,7 +90,7 @@ namespace EfrashBatek.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = await _userManager.GetUserAsync(User);
+               
                 string Filename = Guid.NewGuid().ToString() + custom.Image.FileName;
                 Custom cus = new Custom();
                 cus.Name = custom.Name;
@@ -95,12 +100,16 @@ namespace EfrashBatek.Controllers
                 var fs = new FileStream(Path.Combine(Ih.WebRootPath, "Image/custom", Filename), FileMode.Create);
                 custom.Image.CopyTo(fs);
                 cus.Image = Filename;
-                cus.Customer.UserId=user.Id;
-                _customRepository.Create(cus);
+                Customer customer = _customer.GetCustomerbyUserId();
+                cus.CustomerID = customer.Id;
+                cus.Customer = customer;
+                _customRepository.Create(cus);  
+             
                 return RedirectToAction(nameof(Index));
             }
-           //ViewData["CustomerID"] = new SelectList(_context.custom.Zone, "Id", "Id", custom.Zone);
-            return View(custom);
+            //ViewData["CustomerID"] = new SelectList(_context.custom.Zone, "Id", "Id", custom.Zone);
+            return RedirectToAction("UpdateProfile", "MyProfile");
+
         }
 
         // GET: Customs/Edit/5
