@@ -96,10 +96,12 @@ h1 {
   margin-left: -15px;
 }
 
-.card {
+.card-2 {
   background: #fff;
   padding: 60px;
-  box-shadow: 0 0 1em rgba(0, 0, 0, 0.0625);
+  border-radius: 30ox;
+  box-shadow: 0 0 1em rgba(0, 0, 0, 0.0640);
+  border-radius: 30px;
 }
 
 /* continue button*/
@@ -107,7 +109,7 @@ h1 {
   border: none;
   border-radius: 1.5rem;
   padding: 2%;
-  background: #e3d9d9;
+  background-color: #cbaab1;
   color: #fff;
   font-weight: 600;
   width: 25%;
@@ -118,7 +120,7 @@ h1 {
 }
 
 .btnRegister:hover {
-  background-color: #cbaab1;
+  background-color: #c895a0;
   /* Change the background color to red when the button is hovered over */
 }
 /*footer*/

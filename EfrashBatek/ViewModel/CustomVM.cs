@@ -7,8 +7,9 @@ namespace EfrashBatek.ViewModel
 {
     public class CustomVM
     {
-        public int ID { get; set; }
         [Required]
+        public int ID { get; set; }   
+    
         public string Name { get; set; }
         public string Phone { get; set; }
         [Required]
@@ -16,9 +17,6 @@ namespace EfrashBatek.ViewModel
         [Required]
         public Zone Zone { get; set; }
   
-        [ForeignKey("Customer")]
-        public int CustomerID { get; set; }
-        public virtual Customer Customer { get; set; }
         [Required]
         public IFormFile Image { get; set; }
     }

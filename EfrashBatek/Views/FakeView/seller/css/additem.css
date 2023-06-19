@@ -32,7 +32,7 @@ input:not(input[type="checkbox"]) {
     width: 100%;
 }
 
-#pro {
+.pro {
     box-shadow: 0 0 1em rgba(0, 0, 0, 0.07);
     transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
 }
@@ -231,6 +231,16 @@ textarea {
 
 /* NAV AND SIDEBAR */
 
+
+.input-control.error input {
+    border-color: #ff3860;
+}
+
+.input-control .error {
+    color: #ff3860;
+    font-size: 9px;
+    height: 13px;
+}
 
 
 /* Start Responsive Query  */

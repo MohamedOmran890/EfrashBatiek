@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using EfrashBatek.Models;
 using EfrashBatek.service;
+using System.Net;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.Text.RegularExpressions;
 
 namespace EfrashBatek.Controllers
 {
@@ -14,29 +17,93 @@ namespace EfrashBatek.Controllers
     {
         private readonly Context _context;
         private readonly IItemRepository _itemRepository;
+        private readonly IProductRepository _productRepository;
 
-        public ProductController(Context context,IItemRepository itemRepository)
+        public ProductController(Context context,IItemRepository itemRepository,IProductRepository productRepository)
         {
             _context = context;
             _itemRepository = itemRepository;
+            _productRepository = productRepository;
         }
 
         public IActionResult Index()
         {
-           var all_item=_itemRepository.GetAll();
+            //List<ProductName> productName = new List<ProductName>
+            //{
+            //    ProductName.LivingRoom,
+            //    ProductName.YouthAndKidsBedRooms,
+            //    ProductName.DiningRoom,
+            //    ProductName.LargeAppliances,
+            //    ProductName.KitchenAppliances,
+            //    ProductName.HomeAppliances,
+            //    ProductName.Cookware,
+            //    ProductName.Drinkware,
+            //    ProductName.Dinnerware,
+            //    ProductName.Alometal,
+            //    ProductName.Wood,
+            //    ProductName.Acrylic
+            //};
+           // ViewBag.ProductName = productName;
+
+            List<Category> category = new List<Category>
+            { 
+            Category.furniture,
+            Category.Kitchen_utensils,
+            Category.Home_Appliances,
+      
+         
+            };
+            ViewBag.category=category;
+            Dictionary<Category, List<Product>> categoryToProducts = new Dictionary<Category, List<Product>>();
+            foreach(var cate in category)
+            {
+                List<Product> products = _context.Products.Where(i => i.Category == cate).ToList();
+               categoryToProducts.Add(cate,products);  
+                 
+
+            }
+            var all_item=_itemRepository.GetAll();
+            return View(all_item);
+        }
+        public IActionResult Index1()
+        {
+
+            List<Category> category = new List<Category>
+            {
+            Category.furniture,
+            Category.Kitchen_utensils,
+            Category.Home_Appliances,
+               Category.All_Products
+
+
+            };
+           
+            Dictionary<Category, List<Product>> categoryToProducts = new Dictionary<Category, List<Product>>();
+            foreach (var cate in category)
+            {
+                List<Product> products = _context.Products.Where(i => i.Category == cate).ToList();
+                if (!categoryToProducts.ContainsKey(cate))
+                {
+
+                    categoryToProducts.Add(cate, products);
+
+                }
+
+
+            }
+            
+            ViewBag.categoryToProducts = categoryToProducts;
+            var all_item = _itemRepository.GetAll();
             return View(all_item);
         }
 
         // GET: Product/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public IActionResult Details(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
-
-            //var product = await _context.Products
-            //    .FirstOrDefaultAsync(m => m.ID == id);
             var item = _itemRepository.GetById((int)id);
             if (item == null)
             {
@@ -45,112 +112,63 @@ namespace EfrashBatek.Controllers
 
             return View(item);
         }
-
-        // GET: Product/Create
-        public IActionResult Create()
+        public IActionResult ProductByName(ProductName productName)
         {
-            return View();
+            var selectByproduct =_productRepository.GetByProduct(productName);
+            return View(selectByproduct);
         }
-
-        // POST: Product/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Description,Category,ProductName")] Product product)
+        public IActionResult ItembyCategory(Category productName)
         {
-            if (ModelState.IsValid)
+           
+            List<Category> categoryy = new List<Category>
             {
-                _context.Add(product);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(product);
-        }
+            Category.furniture,
+            Category.Kitchen_utensils,
+            Category.Home_Appliances,
+            Category.All_Products
+             
 
-        // GET: Product/Edit/5
-        public async Task<IActionResult> Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
 
-            var product = await _context.Products.FindAsync(id);
-            if (product == null)
-            {
-                return NotFound();
-            }
-            return View(product);
-        }
+            };
 
-        // POST: Product/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Description,Category,ProductName")] Product product)
-        {
-            if (id != product.ID)
+            Dictionary<Category, List<Product>> categoryToProducts = new Dictionary<Category, List<Product>>();
+            foreach (var cate in categoryy)
             {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
+                List<Product> productss = _context.Products.Where(i => i.Category == cate).ToList();
+                if (!categoryToProducts.ContainsKey(cate))
                 {
-                    _context.Update(product);
-                    await _context.SaveChangesAsync();
+
+                    categoryToProducts.Add(cate, productss);
+
                 }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ProductExists(product.ID))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
+
+
+            }
+           
+            ViewBag.categoryToProducts = categoryToProducts;
+            if (productName == Category.All_Products)
+            {
+                var all_item = _itemRepository.GetAll();
+
+                return View("Index1", all_item);
+
+            }
+            List<Product> products = _context.Products.Where(i => i.Category == productName).ToList();
+            List<Item> res = new List<Item>();  
+            foreach (var product in products) {
+                List<Item> ans =_context.Items.Where(i=>i.ProductID == product.ID).ToList();    
+                foreach (var item in ans) { 
+                    res.Add(item);  
+                
                 }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(product);
-        }
 
-        // GET: Product/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
+
+
             }
 
-            var product = await _context.Products
-                .FirstOrDefaultAsync(m => m.ID == id);
-            if (product == null)
-            {
-                return NotFound();
-            }
 
-            return View(product);
+            return View("Index1" ,res);
         }
-
-        // POST: Product/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var product = await _context.Products.FindAsync(id);
-            _context.Products.Remove(product);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool ProductExists(int id)
-        {
-            return _context.Products.Any(e => e.ID == id);
-        }
+      
     }
 }

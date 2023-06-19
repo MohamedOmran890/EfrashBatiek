@@ -5,7 +5,7 @@ namespace EfrashBatek.Models
 {
     public class Feedback
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         [Required]
         public string ComplaintMessage { get; set; }
         [ForeignKey("Customer")]

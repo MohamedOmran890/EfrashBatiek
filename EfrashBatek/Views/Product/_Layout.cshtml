@@ -1,0 +1,259 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" href="~/Image/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+
+    -->
+    <link rel="stylesheet" href="~/css/main.css>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
+    <title>Efresh Beitak</title>
+</head>
+<body>
+    <div class="modal" data-modal>
+
+        <div class="modal-close-overlay" data-modal-overlay></div>
+
+        <div class="modal-content">
+
+            <button class="modal-close-btn" data-modal-close>
+                <ion-icon name="close-outline"></ion-icon>
+            </button>
+
+        </div>
+
+    </div>
+
+    <div>
+
+        <button class="toast-close-btn" data-toast-close>
+            <ion-icon name="close-outline"></ion-icon>
+        </button>
+
+    </div>
+
+
+    <div class="product-container">
+
+        <div class="container">
+
+
+            <div class="sidebar  has-scrollbar" data-mobile-menu>
+
+                <div class="sidebar-category">
+
+                    <div class="sidebar-top">
+                        <h2 class="sidebar-title">Category</h2>
+
+                        <button class="sidebar-close-btn" data-mobile-menu-close-btn>
+                            <ion-icon name="close-outline"></ion-icon>
+                        </button>
+                    </div>
+
+                    <ul class="sidebar-menu-category-list">
+
+                        <li class="sidebar-menu-category">
+
+                            <button class="sidebar-accordion-menu" data-accordion-btn>
+
+                                <div class="menu-title-flex">
+                                    <img src="~/Image/icons/sofa.png" alt="furniture" width="20" height="20" class="menu-title-img">
+
+                                    <p class="menu-title">furniture</p>
+                                </div>
+
+                                <div>
+                                    <ion-icon name="add-outline" class="add-icon"></ion-icon>
+                                    <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
+                                </div>
+
+                            </button>
+
+                            <ul class="sidebar-submenu-category-list" data-accordion>
+
+                                <li class="sidebar-submenu-category">
+                                    <a asp-action="ProductName" asp-controller="Product" asp-route-id="" class="sidebar-submenu-title">
+                                        <p class="product-name">living room</p>
+                                    </a>
+                                </li>
+
+                                <li class="sidebar-submenu-category">
+                                    <a href="#" class="sidebar-submenu-title">
+                                        <p class="product-name">Youth & Kids Bed rooms</p>
+                                    </a>
+                                </li>
+                                <li class="sidebar-submenu-category">
+                                    <a href="#" class="sidebar-submenu-title">
+                                        <p class="product-name">dining room</p>
+                                        <data value="87" class="stock" title="Available Stock">87</data>
+                                    </a>
+                                </li>
+
+                            </ul>
+
+                        </li>
+
+                        <li class="sidebar-menu-category">
+
+                            <button class="sidebar-accordion-menu" data-accordion-btn>
+
+                                <div class="menu-title-flex">
+                                    <img src="~/image/icons/appliances.png" alt="footwear" class="menu-title-img" width="20"
+                                         height="20">
+
+                                    <p class="menu-title">Home Appliances</p>
+                                </div>
+
+                                <div>
+                                    <ion-icon name="add-outline" class="add-icon"></ion-icon>
+                                    <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
+                                </div>
+
+                            </button>
+
+                            <ul class="sidebar-submenu-category-list" data-accordion>
+
+                                <li class="sidebar-submenu-category">
+                                    <a href="#" class="sidebar-submenu-title">
+                                        <p class="product-name">large Appliances</p>
+                                        <data value="45" class="stock" title="Available Stock">45</data>
+                                    </a>
+                                </li>
+
+                                <li class="sidebar-submenu-category">
+                                    <a href="#" class="sidebar-submenu-title">
+                                        <p class="product-name">kitchen Appliances</p>
+                                        <data value="75" class="stock" title="Available Stock">75</data>
+                                    </a>
+                                </li>
+
+                                <li class="sidebar-submenu-category">
+                                    <a href="#" class="sidebar-submenu-title">
+                                        <p class="product-name">Home Appliances</p>
+                                        <data value="35" class="stock" title="Available Stock">35</data>
+                                    </a>
+                                </li>
+                            </ul>
+
+                        </li>
+
+
+                        <li class="sidebar-menu-category">
+
+                            <button class="sidebar-accordion-menu" data-accordion-btn>
+
+                                <div class="menu-title-flex">
+                                    <img src="~/image/icons/pot.png" alt="perfume" class="menu-title-img" width="20" height="20">
+
+                                    <p class="menu-title">Kitchen utensils</p>
+                                </div>
+
+                                <div>
+                                    <ion-icon name="add-outline" class="add-icon"></ion-icon>
+                                    <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
+                                </div>
+
+                            </button>
+
+                            <ul class="sidebar-submenu-category-list" data-accordion>
+
+                                <li class="sidebar-submenu-category">
+                                    <a href="#" class="sidebar-submenu-title">
+                                        <p class="product-name">Cookware</p>
+                                        <data value="12" class="stock" title="Available Stock">90 pcs</data>
+                                    </a>
+                                </li>
+
+                                <li class="sidebar-submenu-category">
+                                    <a href="#" class="sidebar-submenu-title">
+                                        <p class="product-name">Drinkware</p>
+                                        <data value="60" class="stock" title="Available Stock">60 pcs</data>
+                                    </a>
+                                </li>
+
+
+                                <li class="sidebar-submenu-category">
+                                    <a href="#" class="sidebar-submenu-title">
+                                        <p class="product-name">Dinnerware</p>
+                                        <data value="60" class="stock" title="Available Stock">60 pcs</data>
+                                    </a>
+                                </li>
+
+
+                            </ul>
+
+                        </li>
+
+                        <li class="sidebar-menu-category">
+
+                            <button class="sidebar-accordion-menu" data-accordion-btn>
+
+                                <div class="menu-title-flex">
+                                    <img src="~/image/icons/kitchen.png" alt="cosmetics" class="menu-title-img" width="20" height="20">
+
+                                    <p class="menu-title">Kitchen</p>
+                                </div>
+
+                                <div>
+                                    <ion-icon name="add-outline" class="add-icon"></ion-icon>
+                                    <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
+                                </div>
+
+                            </button>
+
+                            <ul class="sidebar-submenu-category-list" data-accordion>
+
+                                <li class="sidebar-submenu-category">
+                                    <a href="#" class="sidebar-submenu-title">
+                                        <p class="product-name">alometal</p>
+                                        <data value="68" class="stock" title="Available Stock">68</data>
+                                    </a>
+                                </li>
+
+                                <li class="sidebar-submenu-category">
+                                    <a href="#" class="sidebar-submenu-title">
+                                        <p class="product-name">wood</p>
+                                        <data value="46" class="stock" title="Available Stock">46</data>
+                                    </a>
+                                </li>
+
+                                <li class="sidebar-submenu-category">
+                                    <a href="#" class="sidebar-submenu-title">
+                                        <p class="product-name">acrylic</p>
+                                        <data value="79" class="stock" title="Available Stock">79</data>
+                                    </a>
+                                </li>
+                            </ul>
+
+                        </li>
+
+
+                    </ul>
+
+                </div>
+            </div>
+           
+
+
+    <div>
+        @RenderBody()
+    </div>
+        </div>
+    </div>
+
+            <script src="~/js/script.js"></script>
+            <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+            <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+</html>

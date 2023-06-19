@@ -37,6 +37,12 @@ namespace EfrashBatek.Controllers
         {
             return View(itemRepo.GetAll());
         }
+        //bymee
+        [HttpGet]
+        public IActionResult Seller()
+        {
+            return View();
+        }
 
         [HttpGet]
         public IActionResult Details(int? id)
@@ -256,5 +262,6 @@ namespace EfrashBatek.Controllers
         //{
         //    return _context.Items.Any(e => e.ID == id);
         //}
+     
     }
 }

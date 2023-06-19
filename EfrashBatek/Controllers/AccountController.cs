@@ -14,6 +14,8 @@ using SignInResult = Microsoft.AspNetCore.Identity.SignInResult;
 using System;
 using EfrashBatek.service;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace EfrashBatek.Controllers
 {
@@ -23,14 +25,18 @@ namespace EfrashBatek.Controllers
         private readonly SignInManager<User> _signInManager;
         private readonly EmailService _emailService;
         private readonly IIdentityRepository _identityRepository;
+       
+        private readonly Context context;
 
         public AccountController(UserManager<User> userManager, SignInManager<User> signInManager,
-            EmailService emailService, IIdentityRepository identityRepository)
+            EmailService emailService, IIdentityRepository identityRepository ,Context context)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _emailService = emailService;
             _identityRepository = identityRepository;
+   
+            this.context = context;
         }
         public IActionResult Index()
         {
@@ -67,10 +73,19 @@ namespace EfrashBatek.Controllers
                     Gender = (Gender)model.Gender,
 
                 };
-                var result = await _userManager.CreateAsync(user, model.Password);//Created Cookies
+            Customer customer = new Customer();
+            customer.UserId = user.Id;
+            
+       
+            context.Customers.Add(customer);
 
-                if (result.Succeeded)
+            var result = await _userManager.CreateAsync(user, model.Password);
+            if (result.Succeeded)
                 {
+                //
+
+                //
+
                 var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                 var confirmationLink = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, token = token }, Request.Scheme);
                   await _emailService.SendConfirmationEmail(model.Email, confirmationLink);
@@ -101,6 +116,7 @@ namespace EfrashBatek.Controllers
             var result = await _userManager.ConfirmEmailAsync(user, token);
             if (result.Succeeded)
             {
+                
                 return RedirectToAction("TrendingProducts","Home");
             }
             else

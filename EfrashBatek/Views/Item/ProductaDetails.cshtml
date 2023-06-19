@@ -1,4 +1,4 @@
-﻿@model ItemVM
+﻿@model Item
 @{
     Layout = "CustomerLayout";
 }
@@ -41,21 +41,17 @@
             </div>
 
             <div class="right">
-                <div class="pname">@Model.Name</div>
-                <div class="ratings">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star-half-alt"></i>
-                </div>
-                <div class="price">@Model.Price L.E</div>
-                <div class="quantity">
-                    <p>Quantity :</p>
-                    <input type="number" min="1" max="6" value="1">
-                </div>
+                <div class="pname">Name : @Model.Name</div>
+                <div class="pname">Product : @Model.Product.ProductName</div>
+                <div class="pname">Category: @Model.Product.Category</div>
+            
+           
+
+                
+                <div class="price">Price :  @String.Format("{0:0.00}", Model.Price) EPG </div>
+               
                 <div class="btn-box">
-                    <a asp-action="AddToCart" asp-controller="Cart"><button class="cart-btn">Add to Cart</button></a> @*لسسسسسسسسسه*@
+                    <a asp-action="AddToCart" asp-controller="Cart" asp-route-ID="@Model.ID"><button class="cart-btn">Add to Cart</button></a>
                 </div>
             </div>
         </div>

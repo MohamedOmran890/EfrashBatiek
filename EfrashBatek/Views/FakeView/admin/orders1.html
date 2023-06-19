@@ -101,7 +101,30 @@
                         <td>28/6/23</td>
                         <td>jameela</td>
                         <td>1000$</td>
-                        <td><span class="status delivered">Delivered</span></td>
+                        <td>
+                            <select id="pro1">
+                                <option value="null">Status</option>
+                                <option class="status delivered" value="delivered">
+                                    Delivered
+                                </option>
+                                <option class="status return" value="return">
+                                    return
+                                </option>
+                                <option class="status inProgress" value="inProgress">
+                                    In Progress
+                                </option>
+                                <option class="status pending" value="pending">
+                                    pending
+                                </option>
+                            </select>
+                            <script>
+                                const selectElement = document.querySelector('#pro1');
+                                selectElement.addEventListener('change', function () {
+                                    selectElement.classList.remove('clicked-delivered', 'clicked-return', 'clicked-return', 'clicked-inProgress', 'clicked-pending');
+                                    selectElement.classList.add('clicked-' + selectElement.value);
+                                });
+                            </script>
+                        </td>
                         <td><span class="status delivered">Cash</span></td>
                         <td>efresh beitak</td>
                         <td>
@@ -138,28 +161,7 @@
                         <td>1000$</td>
                         <!------------------------------------------------------- pr01 -->
                         <td>
-                            <select id="pro1">
-                                <option value="null">Status</option>
-                                <option class="status delivered" value="delivered">
-                                    Delivered
-                                </option>
-                                <option class="status return" value="return">
-                                    return
-                                </option>
-                                <option class="status inProgress" value="inProgress">
-                                    In Progress
-                                </option>
-                                <option class="status pending" value="pending">
-                                    pending
-                                </option>
-                            </select>
-                            <script>
-                                const selectElement = document.querySelector('#pro1');
-                                selectElement.addEventListener('change', function () {
-                                    selectElement.classList.remove('clicked-delivered', 'clicked-return', 'clicked-return', 'clicked-inProgress', 'clicked-pending');
-                                    selectElement.classList.add('clicked-' + selectElement.value);
-                                });
-                            </script>
+                           status
                         </td>
                         <td><span class="status delivered">Cash</span></td>
                         <td>efresh beitak</td>
@@ -182,18 +184,7 @@
                         <td>jameela</td>
                         <td>1000$</td>
                         <!------------------------------------------------------- pr01 -->
-                        <td><select id="pro1" class="status return" style="border: none;">
-                                <option value="null">Status</option>
-                                <option value="57">
-                                    pending
-                                </option>
-                                <option value="57">
-                                    In Progress
-                                </option>
-                                <option value="57">
-                                    Arrived
-                                </option>
-                            </select></td>
+                        <td> status</td>
                         <td><span class="status delivered">Cash</span></td>
                         <td>efresh beitak</td>
                         <td>
@@ -214,12 +205,7 @@
                         <td>jameela</td>
                         <td>1000$</td>
                         <td>
-                            <select id="pro1">
-                                <option value="null">Status</option>
-                                <option value="delivered">pending</option>
-                                <option value="return">return</option>
-                                <option value="inProgress">Delivered</option>
-                            </select>
+                          status
                         </td>
                         <td><span class="status delivered">Cash</span></td>
                         <td>efresh beitak</td>

@@ -16,28 +16,31 @@ namespace EfrashBatek.Controllers
         private readonly ILogger<HomeController> _logger;
         private IProductRepository _Product;
         IItemRepository _Item;
-		private readonly Context context;
+        private readonly Context context;
+        private readonly IContact_UsRepository _ContactUs;
 
-		public HomeController(ILogger<HomeController> logger, IProductRepository product, IItemRepository item , Context context)
+        public HomeController(ILogger<HomeController> logger, IProductRepository product,
+            IItemRepository item, Context context, IContact_UsRepository contact_Us)
         {
             _logger = logger;
             _Product = product;
             _Item = item;
-			this.context = context;
-		}
+            this.context = context;
+            _ContactUs = contact_Us;
+        }
 
         public IActionResult TrendingProducts()
         {
-           
 
 
-           var pair = new KeyValuePair<List<Item>,List<Item>> (_Item.NewArrivals(), _Item.Trending());
-             
-                 
-             return View(pair);    
+
+            var pair = new KeyValuePair<List<Item>, List<Item>>(_Item.NewArrivals(), _Item.Trending());
 
 
-			
+            return View(pair);
+
+
+
         }
         public IActionResult Privacy()
         {
@@ -46,9 +49,33 @@ namespace EfrashBatek.Controllers
         // contact us
         public IActionResult ContactUs()
         {
+            return View("ContactUs1");
+        }
+        [HttpPost]
+        public IActionResult ContactUs(Contact_Us contact)
+        {
+            if (contact != null && ModelState.IsValid)
+            {
+                _ContactUs.Create(contact);
+                return RedirectToAction("Success");
+            }
+            else
+            {
+                return View("failedpage");
+            }
+
+
+        }
+        public IActionResult Success()
+        {
             return View();
         }
+
         public IActionResult AboutUs()
+        {
+            return View();
+        }
+        public IActionResult Unauthorized()
         {
             return View();
         }

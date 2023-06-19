@@ -1,103 +1,134 @@
-﻿@model EfrashBatek.Models.Item
-
+﻿@model Item
 @{
-    ViewData["Title"] = "Details";
+    Layout = null;
+}
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <title> Edit Item </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <!-- BOOTSTRAB -->
+    <link rel="stylesheet" type="text/css"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="~/css/edititem.css">
+    <link rel="stylesheet" href="~/css/seller.css">
+    <link rel="stylesheet" href="~/css/product details.css">
+</head>
+
+<body>
+    <!-- SIDEBAR -->
+    <section id="sidebar">
+        <a href="#" class="brand">
+            <i class='bx bxs-smile'></i>
+            <span class="text">Efresh Beitak </span>
+        </a>
+        <ul class="side-menu top">
+            <li>
+                <a asp-action="Seller">
+                    <i class='bx bxs-dashboard'></i>
+                    <span class="text">Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="orders.html">
+                    <i class='bx bx-list-ul'></i>
+                    <span class="text">Order List </span>
+                </a>
+            </li>
+            <li class="active">
+                <a asp-action="Create">
+                    <i class='bx bx-list-plus'></i>
+                    <span class="text">Add Item</span>
+                </a>
+            </li>
+            <li>
+                <a href="Items.html">
+                    <i class='bx bx-list-plus'></i>
+                    <span class="text">Item</span>
+                </a>
+            </li>
+        </ul>
+    </section>
+    <!-- SIDEBAR -->
+    <!-- NAVBAR -->
+    <section id="content">
+        <nav>
+            <i class='bx bx-menu'></i>
+        </nav>
+    </section>
+    <!-- NAVBAR -->
+
+
+
+
+       
+
+     <div class="item2">
+            <center>
+                <h2>product <span>details</span></h2>
+            </center>
+            <div class="flex-box">
+                <div class="left">
+                    <div class="big-img">
+                        <img src="~/Image/Items/@Model.Image">
+                    </div>
+                    <div class="images">
+                        <div class="small-img">
+                            <img src="~/Image/Items/@Model.Image2" onclick="showImg(this.src)">
+                        </div>
+                        <div class="small-img">
+                            <img src="~/Image/Items/@Model.Image3" onclick="showImg(this.src)">
+                        </div>
+                        <div class="small-img">
+                            <img src="~/Image/Items/@Model.Image4" onclick="showImg(this.src)">
+                        </div>
+                        <div class="small-img">
+                            <img src="~/Image/Items/@Model.Image5" onclick="showImg(this.src)">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="right">
+                <div class="price">Name : @Model.Name</div>
+                <div class="price">Code : @Model.Code</div>
+                <div class="price">QuantityInStore : @Model.QuantityInStore</div>
+                <div class="price">Description: @Model.Description</div>
+                <div class="price">Brand Name : @Model.Brand.Name</div>
+                <div class="price">Product Name : @Model.Product.ProductName</div>
+                <div class="price">Shop Name: @Model.Shop.Name</div>
+                <div class="price">Price :  @String.Format("{0:0.00}", Model.Price) EPG </div>
+                <div class="price">Discount : @Model.discount</div>
+                <div class="price">PriceAfterSale : @String.Format("{0:0.00}", Model.PriceAfterSale) EPG</div>
+
+                    <div class="btn-box">
+                    <a asp-action="Edit" asp-route-id="@Model.ID"><button class="cart-btn">Edit</button></a>
+                    <a asp-action="Delete" asp-route-id="@Model.ID"><button class="cart-btn">Delete</button></a>
+
+                    </div>
+                </div>
+            </div>
+            
+            <script>
+                let bigImg = document.querySelector('.big-img img');
+                function showImg(pic) {
+                    bigImg.src = pic;
+                }
+            </script>
+     </div>
+
+
+
+</body>
+<!-- SCRIPT -->
+<script src="~/js/script.js"></script>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
 
-<div>
-    
-    <h4>Product Detail</h4>
-    <hr />
-    <dl class="row">
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Image)
-            @*<img src="~/Image/Item/@Model.Image" />*@
-        </dt>
-        <dd class="col-sm-10">
-            <img src="~/Image/Items/@Model.Image" style="width:70px;height:70px" />
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Image2)
-        </dt>
-        <dd class="col-sm-10">
-            <img src="~/Image/Items/@Model.Image2" style="width:70px;height:70px" />
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Image3)
-        </dt>
-        <dd class="col-sm-10">
-            <img src="~/Image/Items/@Model.Image3" style="width:70px;height:70px" />
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Image4)
-        </dt>
-        <dd class="col-sm-10">
-            <img src="~/Image/Items/@Model.Image4" style="width:70px;height:70px" />
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Image5)
-        </dt>
-        <dd class="col-sm-10">
-            <img src="~/Image/Items/@Model.Image5" style="width:70px;height:70px" />
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Code)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Code)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.discount)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.discount)
-        </dd>
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.PriceAfterSale)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.PriceAfterSale)
-        </dd>
-        @*<dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Brand)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Brand.Name)
-        </dd>*@
-        <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.QuantityInStore)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.QuantityInStore)
-        </dd>
-       @* <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.Shop)
-        </dt>
-        <dd class="col-sm-10">
-            @Html.DisplayFor(model => model.Shop.Name)
-        </dd>*@
-    </dl>
-</div>
-<div>
-    
-    <a asp-action="Edit" asp-route-id="@Model.ID">Edit</a> |
-    <a asp-action="Index">My Product</a>
-</div>
+</html>

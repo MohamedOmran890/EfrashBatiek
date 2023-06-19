@@ -2,10 +2,7 @@
     Layout = "CustomerLayout";
 }
 @model Order
-@{
-    // Since Address isn't a string, it requires a cast.
-    var address = ViewData["Address"] as Address;
-}
+
 
 <link rel="stylesheet" href="~/css/orderdetails.css">
 
@@ -29,8 +26,20 @@
                     <div class="card-body">
                         <div class="mb-3 d-flex justify-content-between">
                             <div>
-                                <span class="me-3">@Model.OrderDate</span>
-                                <span class="me-3">@Model.OrderCode</span>
+                                <span class="me-3">Date : @Model.OrderDate</span>
+                                &nbsp;
+                                &nbsp;
+                                &nbsp;
+
+                                <span class="me-3"> Code  : @Model.OrderCode</span>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+
+
+
+
+                                <span>Payment Mehtod : </span>
                                 <span class="badge rounded-pill bg-info">@Model.PaymentMethod</span>
                             </div>
                             <div class="d-flex">
@@ -53,7 +62,7 @@
                                             <div class="d-flex mb-2">
                                                 <!---image-->
                                                 <div class="flex-shrink-0">
-                                                    <img src="~/Image/@itemOrder.item.Image" alt="" width="35" class="img-size">
+                                                    <img src="~/Image/products/@itemOrder.item.Image" alt="" width="35" class="img-size">
                                                 </div>
                                                 <!--color & name -->
                                                 <div class="flex-lg-grow-1 ms-3">
@@ -65,17 +74,13 @@
                                         <!-- number-->
                                         <td>@itemOrder.Quantity</td>
                                         <!--price-->
-                                        <td class="text-end">@itemOrder.item.Price EGP</td>
-                                        <!--state of order -->
+                                        <td class="text-end">@String.Format("{0:0.00}", itemOrder.item.Price) EPG </td>                                            <!--state of order -->
                                         <td>
                                             <span class="badge bg-success rounded-pill">@itemOrder.OrderState</span>
                                         </td>
                                     </tr>
                                 <tr>
-                                    <td></td>
-                                    <td><span class="aleite">Cancel Item !</span></td>
-                                    <td></td>
-                                    <td></td>
+                                   
                                     </tr>
                                 }
 
@@ -88,15 +93,15 @@
                                 </tr>
                                 <tr>
                                     <td colspan="2">Shipping</td>
-                                    <td class="text-end">20.00 EGP</td>
+                                    <td class="text-end">0.00 EGP</td>
                                 </tr>
-                                <tr>
+                               @* <tr>
                                     <td colspan="2">Discount (Code: NEWYEAR)</td>
                                     <td class="text-danger text-end">-10.00 EGP</td>
-                                </tr>
+                                </tr>*@
                                 <tr class="fw-bold">
                                     <td colspan="2">TOTAL</td>
-                                    <td class="text-end">2,089 EGP</td>
+                                    <td class="text-end">@Model.TotalCost EGP</td>
                                 </tr>
                             </tfoot>
                         </table>
@@ -114,16 +119,16 @@
                                 <h3 class="h6">Payment Method</h3>
                                 <p>
                                     Cash on Delivery   <br>
-                                    Total: 2,089 EGP
+                                    Total: @Model.TotalCost 
                                 </p>
                             </div>
                             <div class="col-lg-6">
                                 <h3 class="h6">Billing address</h3>
                                 <address>
-                                    <strong> @address.FirstName @address.LastName </strong><br>
-                                    <p>@address.description<p>
+                                    <strong> @Model.Address.FirstName @Model.Address.LastName </strong><br>
+                                    <p>@Model.Address.description<p>
                                     <p>Qena<p>
-                                        <abbr title="Phone">Phone :</abbr> (+20)@address.phone;
+                                        <abbr title="Phone">Phone :</abbr> (+20)@Model.Address.phone;
                                 </address>
                             </div>
                         </div>

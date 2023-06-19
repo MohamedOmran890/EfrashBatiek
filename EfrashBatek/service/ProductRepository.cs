@@ -53,9 +53,14 @@ namespace EfrashBatek.service
             var ans = context.Products.ToList();
             return ans;
         }
-       public List<Product> GetByCategory(Category Category)
+        public List<Product> GetByCategory(Category Category)
         {
             var ans = context.Products.Where(x => x.Category == Category).ToList();
+            return ans;
+        }
+        public List<Item> GetByProduct(ProductName product)
+        {
+            var ans = context.Items.Where(x => x.Product.ProductName == product).ToList();
             return ans;
         }
     }

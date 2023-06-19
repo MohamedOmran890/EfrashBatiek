@@ -51,31 +51,24 @@
 				<h7 class="mb-3">Choose your default address</h7>
 				<p class="new" style="float: right;">
 					<!-- add new address -->
-					<a href="Checkout Address.html">
+					<a href="">
 						<i class='bx bx-plus-circle'></i> add new address
 				</p>
 				</a>
-				<div class="addressFORM">
-					<div class="address-row">
-						@if(Model!= null)
+			@using (Html.BeginForm("PaymentMethod", "Checkout", FormMethod.Post))
+			{
+			<div class="addressFORM">
+				<div class="address-row">
+					@if (Model != null)
 					{
-						@foreach (var address in Model)
+						foreach (var address in Model)
 						{
 							<div class="addressBOX">
 								<div class="control d-flex justify-content-between">
-									<input type="radio" name="address" value="address1" class="run">
-
-									
-										<a asp-action="ViewAddressDetails" asp-controller="Checkout" asp-route-id="@address.ID">
-										<i class='bx bxs-edit' id="tst"> </i>
-											</a>  
-									
-									
-										
-									
-									
-									<!-- data set here -->
-
+									<input type="radio" name="selectedAddressId" value="@address.ID" class="run">
+									<a asp-action="ViewAddressDetails" asp-controller="Checkout" asp-route-id="@address.ID">
+										<i class='bx bxs-edit' id="tst"></i>
+									</a>
 								</div>
 
 								<div class="ADDRESSDETAILS">
@@ -89,23 +82,21 @@
 									<span>@address.phone</span>
 								</div>
 							</div>
-
 						}
 					}
-				
-				
-
-					</div>
 				</div>
-			@using (Html.BeginForm("PaymentMethod", "Checkout", FormMethod.Post))
-			{
+			</div>
 
+			
 				int x = ViewBag.cartID;
-				@Html.Hidden("cartID"  , x )
-				// Replace "Id" with the actual name of the ID property in your model
+				@Html.Hidden("cartID", x)
 
-				<button class="checkout-cta">Go to Secure Checkout</button>
+				
+
+				<button type="submit" class="checkout-cta">Go to Secure Checkout</button>
 			}
+
+			
 
 		</div>
 		</div>
@@ -163,4 +154,5 @@
 	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
 
