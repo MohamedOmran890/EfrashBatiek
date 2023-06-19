@@ -4,48 +4,53 @@
 }
 <link rel="stylesheet" href="~/css/addshop.css">
 <title> Add Shop</title>
+<form asp-action="SaveShop" asp-controller="Admin" >
 
-<div class="col-sm-12 col-md-12 col-lg-9 col-xl-9">
-    <div id="address" role="tabpanel" aria-labelledby="address-tab">
-        <h3 class="mb-4">Add Shop</h3>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label asp-for="Name">Shop Name</label>
-                    <input asp-for="Name" type="text" class="form-control" placeholder="Shop Name">
-                    <span asp-validation-for="Name" class="text-danger"></span>
+
+    <div class="col-sm-12 col-md-12 col-lg-9 col-xl-9">
+        <div id="address" role="tabpanel" aria-labelledby="address-tab">
+            <h3 class="mb-4">Add Shop</h3>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Name">Shop Name</label>
+                        <input asp-for="Name" type="text" class="form-control" placeholder="Shop Name">
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label asp-for="TaxCardNumber">Tax Card</label>
-                    <input asp-for="TaxCardNumber" type="text" class="form-control" placeholder="Tax Card">
-                    <span asp-validation-for="TaxCardNumber" class="text-danger"></span>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="TaxCardNumber">Tax Card</label>
+                        <input asp-for="TaxCardNumber" type="text" class="form-control" placeholder="Tax Card">
+                        <span asp-validation-for="TaxCardNumber" class="text-danger"></span>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label asp-for="ShopHolder">Shop Holder</label>
-                    <input asp-for="ShopHolder" type="text" class="form-control" placeholder="Shop Holder">
-                    <span asp-validation-for="ShopHolder" class="text-danger"></span>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="ShopHolder">Shop Holder</label>
+                        <input asp-for="ShopHolder" type="text" class="form-control" placeholder="Shop Holder">
+                        <span asp-validation-for="ShopHolder" class="text-danger"></span>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label asp-for="ShopAddress">Address</label>
-                    <input asp-for="ShopAddress" type="text" class="form-control" placeholder="Address">
-                    <span asp-validation-for="ShopAddress" class="text-danger"></span>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="ShopAddress">Address</label>
+                        <input asp-for="ShopAddress" type="text" class="form-control" placeholder="Address">
+                        <span asp-validation-for="ShopAddress" class="text-danger"></span>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-6">
-                <div class="form-group">
-                    <label asp-for="PhoneNumber">Phone Number</label>
-                    <input asp-for="PhoneNumber" type="number" class="form-control" placeholder="Phone Number">
-                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="PhoneNumber">Phone Number</label>
+                        <input asp-for="PhoneNumber" type="number" class="form-control" placeholder="Phone Number">
+                        <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                    </div>
                 </div>
+                <input type="submit" class="btnRegister" value="Register" href="default address.html">
             </div>
-            <input type="submit" class="btnRegister" value="Register" href="default address.html">
         </div>
     </div>
-</div>
+
+</form>
+
 <!-- SCRIPT -->

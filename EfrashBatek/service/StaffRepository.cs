@@ -14,7 +14,7 @@ namespace EfrashBatek.service
         public void Create(Staff staff)
         {
             context.The_Staff.Add(staff);
-            context.SaveChanges();
+            context.SaveChanges();  
 
         }
         public int Update(int id, Staff staff)
