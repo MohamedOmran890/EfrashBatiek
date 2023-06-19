@@ -125,6 +125,8 @@
     <Content Remove="wwwroot\js\main.js" />
     <Content Remove="wwwroot\js\script.js" />
     <Content Remove="wwwroot\js\site.js" />
+    <Content Remove="wwwroot\lib\jquery\main.js" />
+    <Content Remove="wwwroot\lib\jquery\script.js" />
   </ItemGroup>
 
   <ItemGroup>
@@ -286,6 +288,8 @@
     <None Include="wwwroot\js\cart.js" />
     <None Include="wwwroot\js\main.js" />
     <None Include="wwwroot\js\script.js" />
+    <None Include="wwwroot\lib\jquery\main.js" />
+    <None Include="wwwroot\lib\jquery\script.js" />
   </ItemGroup>
 
   <ItemGroup>
