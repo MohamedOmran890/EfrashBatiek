@@ -1,75 +1,60 @@
-﻿@model CustomVM
+﻿﻿@model CustomVM
 
 @{
     Layout = "CustomerLayout";
 }
 
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- CSS-link -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
-    <!-- Code by Angela Delise
-    https://codepen.io/angeladelise/pen/yLJdgYx -->
-    <link rel="stylesheet" href="~/css/custom.css">
-    <link rel="stylesheet" href="~/css/cart.css">
-    <link rel="stylesheet" href="~/css/default.css">
-    <link rel="shortcut icon" href="image/favicon.ico" type="image/x-icon">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600;700&display=swap"
-          rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-          integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-          crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
-    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-
-    <title>Efresh Beitak</title>
-</head>
-
-<body>
-
-    <section class="main-home">
+    <!--main home section-->
+    <section >
+        
         <div class="container">
             <br>
             <br>
             <h2>Customization Your Order</h2>
             <br>
-            <form asp-action="Create" method="post">
+        <form method="post" asp-action="Create" asp-controller="Customs" enctype="multipart/form-data">
                 <div asp-validation-summary="All" class="text-danger"></div>
-                <label asp-for="Name" for="fname">Name</label>
-                <input asp-for="Name" type="text" id="fname" name="firstname" placeholder="Your name..">
-                <span asp-validation-for="Name" class="text-danger"></span>
 
+                <div class="form-group">
+                    <label asp-for="Name">Name</label>
+                    <input type="text" asp-for="Name" name="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
 
-                <label asp-for="Phone">Phone Number</label>
-                <input asp-for="Phone" type="text" placeholder="Your phone number..">
-                <span asp-validation-for="Phone" class="text-danger"></span>
+                <div class="form-group">
+                    <label asp-for="Phone">Phone Number</label>
+                    <input type="text" asp-for="Phone" name="Phone" class="form-control" />
+                    <span asp-validation-for="Phone" class="text-danger"></span>
+                </div>
 
+                <div class="form-group">
+                    <label asp-for="Zone">Address</label>
+                    <select asp-for="Zone" name="Zone" class="form-control" asp-items="ViewBag.Zone"></select>
+                </div>
 
-                <label asp-for="Zones" for="country">Address</label>
-                <select asp-for="Zones" id="country" name="country" asp-items="ViewBag.Zone">
-                    
-                </select>
+                <div class="form-group">
+                    <label asp-for="Description">Detailed Description</label>
+                    <textarea asp-for="Description" name="Description" rows="5" class="form-control"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
 
-                <label asp-for="Description">Detailed Description</label>
-                <textarea asp-for="Description"placeholder="Write something.."style="height:200px"></textarea>
-                <span asp-validation-for="Description" class="text-danger"></span>
+                    <div class="form-group">
+                        <label asp-for="Image" class="control-label"></label>
+                        <input type="file" asp-for="Image" class="form-control" />
+                        <span asp-validation-for="Image" class="text-danger"></span>
+                    </div>
 
-
-                <label asp-for="Image">Photo : </label>
-                <input type="file" asp-for="Image">
-                <span asp-validation-for="Image" class="text-danger"></span>
-
-                <input type="submit" value="Submit">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Create Custom</button>
+                </div>
             </form>
+
+
+
             <br>
 
+     
 
         </div>
     </section>
@@ -115,7 +100,6 @@
     <script src="js/cart.js"></script>
     <script src="https://unpkg.com/ionicons@latest/dist/ionicons.js"></script>
 
-</body>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
