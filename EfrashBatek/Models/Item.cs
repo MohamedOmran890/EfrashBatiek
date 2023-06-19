@@ -42,6 +42,7 @@ namespace EfrashBatek.Models
         public DateTime DateTime { get; set; }  
         public virtual ICollection<Cart_Item> Cart_Items { get; set; }
         public virtual ICollection<Order_Item> Order_Items { get; set; }
+        public virtual ICollection<WishListItem> WishListItems { get; set; }
         //public virtual ICollection<Video> Videos { get; set; }
 
 

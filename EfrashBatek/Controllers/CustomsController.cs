@@ -21,14 +21,17 @@ namespace EfrashBatek.Controllers
         public readonly ICustomRepository _customRepository;
         private readonly IWebHostEnvironment Ih;
         IIdentityRepository _identityRepository;
+        IWishListRepository _wishListRepository;
         public CustomsController(Context context,UserManager<User> userManager,
-            ICustomRepository customRepository, IWebHostEnvironment webHostEnvironment, IIdentityRepository identityRepository)
+            ICustomRepository customRepository, IWebHostEnvironment webHostEnvironment,
+            IIdentityRepository identityRepository,IWishListRepository wishListRepository)
         {
             _context = context;
             _userManager = userManager;
             _customRepository = customRepository;
             Ih = webHostEnvironment;
             _identityRepository = identityRepository;
+            _wishListRepository = wishListRepository;
         }
 
         // GET: Customs
@@ -63,43 +66,48 @@ namespace EfrashBatek.Controllers
             return View(custom);
         }
 
-        // GET: Customs/Create
-        public async Task<IActionResult> Create()
+        public IActionResult Create()
         {
             //var user = await _userManager.GetUserAsync(User);
             //if (user == null)
             //{
             //    return RedirectToAction("Login","Account");
             //}
-            var zone= new SelectList(Enum.GetValues(typeof(Zone)));
+            var zone= new SelectList(Enum.GetValues(typeof(Zones)));
+            ViewData["Zone"] = zone;
+            return View();
+        }
+        public IActionResult Create2()
+        {
+            var zone = new SelectList(Enum.GetValues(typeof(Zones)));
             ViewData["Zone"] = zone;
             return View();
         }
 
-        // POST: Customs/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+          [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(CustomVM custom)
+        public IActionResult Create(CustomVM custom)
         {
             if (ModelState.IsValid)
             {
-                var user = await _userManager.GetUserAsync(User);
+                var userId = _identityRepository.GetUserID();
+                var customer = _wishListRepository.GetCustomerWithUser(userId);
                 string Filename = Guid.NewGuid().ToString() + custom.Image.FileName;
                 Custom cus = new Custom();
                 cus.Name = custom.Name;
                 cus.Phone = custom.Phone;
                 cus.Description = custom.Description;
-                cus.Zone = custom.Zone;
-                var fs = new FileStream(Path.Combine(Ih.WebRootPath, "Image/custom", Filename), FileMode.Create);
+                cus.Zone = custom.Zones;//(Zone)custom.Zones;
+                var fs = new FileStream(Path.Combine(Ih.WebRootPath, "Image/img", Filename), FileMode.Create);
                 custom.Image.CopyTo(fs);
                 cus.Image = Filename;
-                cus.Customer.UserId=user.Id;
+                cus.CustomerID=customer.Id;
                 _customRepository.Create(cus);
                 return RedirectToAction(nameof(Index));
             }
-           //ViewData["CustomerID"] = new SelectList(_context.custom.Zone, "Id", "Id", custom.Zone);
+            
+            var zone = new SelectList(Enum.GetValues(typeof(Zones)));
+            ViewData["Zone"] = zone;
             return View(custom);
         }
 

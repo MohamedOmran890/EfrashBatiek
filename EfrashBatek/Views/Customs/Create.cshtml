@@ -1,4 +1,4 @@
-﻿@model EfrashBatek.Models.Custom
+﻿@model CustomVM
 
 @{
     Layout = "CustomerLayout";
@@ -34,44 +34,42 @@
 
 <body>
 
-    <!--main home section-->
     <section class="main-home">
         <div class="container">
             <br>
             <br>
             <h2>Customization Your Order</h2>
             <br>
-            <form asp-action="Create">
+            <form asp-action="Create" method="post">
                 <div asp-validation-summary="All" class="text-danger"></div>
                 <label asp-for="Name" for="fname">Name</label>
                 <input asp-for="Name" type="text" id="fname" name="firstname" placeholder="Your name..">
                 <span asp-validation-for="Name" class="text-danger"></span>
 
 
-                <label asp-for="Phone" for="num">Phone Number</label>
-                <input asp-for="Phone" type="text" id="pnum" name="pnumber" placeholder="Your phone number..">
+                <label asp-for="Phone">Phone Number</label>
+                <input asp-for="Phone" type="text" placeholder="Your phone number..">
                 <span asp-validation-for="Phone" class="text-danger"></span>
 
 
-                <label asp-for="Zone" for="country">Address</label>
-                <select asp-for="Zone" id="country" name="country" asp-items="ViewBag.Zone">
-                    <option value="Qena">Qena</option>
-                    <option value="New Qena">New Qena</option>
+                <label asp-for="Zones" for="country">Address</label>
+                <select asp-for="Zones" id="country" name="country" asp-items="ViewBag.Zone">
+                    
                 </select>
 
-                <label asp-for="Description" for="subject">Detailed Description</label>
-                <textarea asp-for="Description" id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+                <label asp-for="Description">Detailed Description</label>
+                <textarea asp-for="Description"placeholder="Write something.."style="height:200px"></textarea>
                 <span asp-validation-for="Description" class="text-danger"></span>
 
 
-                <label asp-for="Image" for="subject">Photo : </label>
-                <input type="file" asp-for="Image" id="myFile" name="filename">
+                <label asp-for="Image">Photo : </label>
+                <input type="file" asp-for="Image">
                 <span asp-validation-for="Image" class="text-danger"></span>
 
+                <input type="submit" value="Submit">
             </form>
             <br>
 
-            <a asp-action="Details"><input type="submit" value="Submit"></a>
 
         </div>
     </section>

@@ -1,41 +1,40 @@
-﻿@model EfrashBatek.Models.Design
-
+﻿@model IEnumerable<Design>
 @{
     ViewData["Title"] = "MyDesign";
 }
 
-<h1>MyDesign</h1>
+                    <div class="product-main">
+                        <br>
+                        <h1 class="title">Our Desingers</h1>
+                        @foreach(var design in Model){
 
-<h4>Design</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="MyDesign">
-            <div asp-validation-summary="All" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <div>
-                <tr>
-            @foreach(var img in Model.Photos)
-             {
-                    <td>><img src="~/Image/Design" alt="image error" /></td>
-             }
-                </tr>
-        </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
+                        <div class="product-grid">
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+                            <div class="showcase">
 
-@section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-}
+                                <div class="showcase-banner">
+
+
+                                    <img src="~/Image/@design.Photos." width="300">
+
+                                    <div class="showcase-actions">
+
+                                        <button class="btn-action">
+                                            <ion-icon name="heart-outline"></ion-icon>
+                                        </button>
+                                    </div>
+
+                                </div>
+
+                                <div class="showcase-content">
+
+                                    <a href="designerinfo.html" class="showcase-category">Name : </a>
+                                </div>
+
+                            </div>
+
+                    </div>
+                    }
+
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

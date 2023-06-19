@@ -1,10 +1,22 @@
 ﻿using EfrashBatek.Models;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
 using Microsoft.AspNetCore.Http;
-
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Xml.Linq;
 namespace EfrashBatek.ViewModel
 {
+    public enum Zones : short
+    {
+        Qena = 1,
+        Cairo,
+        Assiut,
+        Sohag,
+        Minya,
+        Aswan,
+        Luxor
+    }
     public class CustomVM
     {
         public int ID { get; set; }
@@ -14,11 +26,8 @@ namespace EfrashBatek.ViewModel
         [Required]
         public string Description { get; set; }
         [Required]
-        public Zone Zone { get; set; }
-  
-        [ForeignKey("Customer")]
-        public int CustomerID { get; set; }
-        public virtual Customer Customer { get; set; }
+        public Zones Zones { get; set; }
+         public int CustomerID { get; set; }
         [Required]
         public IFormFile Image { get; set; }
     }

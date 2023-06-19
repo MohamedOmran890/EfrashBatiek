@@ -5,17 +5,12 @@ namespace EfrashBatek.Models
 {
     public class WishList
     {
+        public int Id { get; set; }
 
-            public int ID { get; set; }
-
-            [ForeignKey("Item")]
-            public int ItemId { get; set; }
-            public Item Item { get; set; }
-
-            [ForeignKey("Customer")]
-            public int CustomerId { get; set; }
-            public Customer Customer { get; set; }
-        
+        [ForeignKey("Customer")]
+        public int CustomerId { get; set; }
+        public Customer Customer { get; set; }
+        public virtual ICollection<WishListItem> WishListItems { get; set; }
 
     }
 }
