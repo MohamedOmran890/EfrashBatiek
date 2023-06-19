@@ -139,6 +139,15 @@ form .button {
             /* transform: scale(0.99); */
             background: linear-gradient(-135deg, #fff, #cbaab1);
         }
+        .input-box.error input {
+            border-color: #ff3860;
+        }
+        
+        .input-box .error {
+            color: #ff3860;
+            font-size: 9px;
+            height: 13px;
+        }
 
 @media(max-width: 584px) {
     .container {

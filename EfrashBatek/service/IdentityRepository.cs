@@ -23,7 +23,7 @@ namespace EfrashBatek.service
 
 		public string GetUserID ()
 		{
-			return  contextAccessor.HttpContext.User?.FindFirstValue(ClaimTypes.NameIdentifier);
+			return contextAccessor.HttpContext.User?.FindFirstValue(ClaimTypes.NameIdentifier);
 		}
 
 		public string GetUserName()

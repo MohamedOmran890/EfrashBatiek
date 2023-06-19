@@ -1,6 +1,7 @@
 using EfrashBatek.Models;
 using EfrashBatek.service;
 using EfrashBatek.ViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections;
@@ -11,6 +12,7 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace EfrashBatek.Controllers
 {
+    [Authorize(Roles ="Admin")]
     public class AdminController : Controller
     {
         ICustomerRepository customer;
