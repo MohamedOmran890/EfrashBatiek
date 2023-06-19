@@ -1,6 +1,7 @@
 using EfrashBatek.Models;
 using EfrashBatek.service;
 using EfrashBatek.ViewModel;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Linq;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace EfrashBatek.Controllers
 {
+    [Authorize(Roles ="Admin")]
     public class AdminController : Controller
     {
         ICustomerRepository customer;
@@ -42,6 +44,34 @@ namespace EfrashBatek.Controllers
             };
             return View(Dash);
         }
+        [AllowAnonymous]
+        [HttpGet]
+        public IActionResult AddAdmin()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> AddAdmin(AdminVM model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = new User
+                {
+                    UserName = model.UserName,
+                    Email = model.Email
+                };
+                var result = await _userManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
+                {
+                    return RedirectToAction("Dashboard", "Admin");
+                }
+            }
+                   return View(model);
+
+        }
+
+
+        [AllowAnonymous]
         public IActionResult AddStaff()
         {
             return View();
