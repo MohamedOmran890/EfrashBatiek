@@ -16,25 +16,25 @@
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <!-- CSS -->
     <link rel="stylesheet" href="~/css/addseller.css">
-   @* <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    @* <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        $(document).ready(function () {
-            $('input[required]').on('keyup', function () {
-                var empty = false;
-                $('input[required]').each(function () {
-                    if ($(this).val() === '') {
-                        empty = true;
-                    }
-                });
-                if (empty) {
-                    $('#register').attr('disabled', 'disabled');
-                } else {
-                    $('#register').removeAttr('disabled');
-                }
-            });
-            // Disable the Register button on page load if any required field is empty
-            $('input[required]').trigger('keyup');
-        });
+    $(document).ready(function () {
+    $('input[required]').on('keyup', function () {
+    var empty = false;
+    $('input[required]').each(function () {
+    if ($(this).val() === '') {
+    empty = true;
+    }
+    });
+    if (empty) {
+    $('#register').attr('disabled', 'disabled');
+    } else {
+    $('#register').removeAttr('disabled');
+    }
+    });
+    // Disable the Register button on page load if any required field is empty
+    $('input[required]').trigger('keyup');
+    });
     </script>*@
 </head>
 
@@ -43,7 +43,7 @@
     <!--ADD SELLER FORM-->
     <!--Layout -->
     <section id="sidebar">
-        <a asp-action="TrendingProducts" asp-controller="Home" class="brand">
+        <a asp-action="Index" asp-controller="Admin" class="brand">
             <i class='bx bxs-smile'></i>
             <span class="text">Efresh Beitak</span>
         </a>
@@ -162,7 +162,7 @@
                             <div class="form-group">
                                 <label asp-for="ShopNumber"></label>
                                 <input asp-for="ShopNumber" type="text" class="form-control" placeholder="Shop Number">
-                                 <span asp-validation-for="ShopNumber" class="text-danger"></span>
+                                <span asp-validation-for="ShopNumber" class="text-danger"></span>
 
                             </div>
                         </div>
@@ -172,7 +172,7 @@
             </div>
         </form>
     </section>
-    
+
     <!-- SCRIPT -->
     <script src="~/js/script.js"></script>
 </body>

@@ -4,8 +4,11 @@ using EfrashBatek.ViewModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace EfrashBatek.Controllers
 {
@@ -20,10 +23,12 @@ namespace EfrashBatek.Controllers
         IOrder_ItemRepository order_item;
         Context _context;
         EmailStaffService EmailStaffService;
+        private readonly IUserRepository userRepository;
+
         public AdminController(UserManager<User>usermanager, ICustomerRepository customer,
             IOrderRepository order, IShopRepository shop, 
             IStaffRepository staff, IOrder_ItemRepository order_item, Context context
-            ,EmailStaffService emailStaffService)
+            ,EmailStaffService emailStaffService , IUserRepository userRepository)
         {
             this.customer = customer;
             this.order = order;
@@ -33,45 +38,59 @@ namespace EfrashBatek.Controllers
             this.order_item = order_item;
             _context = context;
             EmailStaffService = emailStaffService;
+            this.userRepository = userRepository;
         }
-        public IActionResult Dashboard()
+        // done - test 
+        public IActionResult Index()
         {
-            var Dash = new DashboardViewModel
+			List<Order> orderss = _context.Orders.Where(i => i.Customer.Id == 11).ToList();
+			foreach (Order order in orderss)
+			{
+				Customer customerr = _context.Customers.FirstOrDefault(i => i.Id == order.CustomerID);
+				User user = _context.Users.FirstOrDefault(i => i.Id == customerr.UserId);
+				order.Customer = customerr;
+			}
+			var Dash = new DashboardViewModel
             {
                  TotalCustomers = customer.TotalCustomers(),
                  TotalOrders = order.TotalOrders(),
-                 Totalshop=shop.TotalShop()
-            };
+                 Totalshop=shop.TotalShop() ,
+				orders = orderss ,
+
+			};
             return View(Dash);
         }
-        [AllowAnonymous]
-        [HttpGet]
-        public IActionResult AddAdmin()
-        {
-            return View();
-        }
-        [HttpPost]
-        public async Task<IActionResult> AddAdmin(AdminVM model)
-        {
-            if (ModelState.IsValid)
+
+        // done test 
+        public IActionResult Orders() {
+            List<Order> orderss = _context.Orders.Where(i => i.Customer.Id ==11).ToList();
+            foreach (Order order in orderss)
             {
-                var user = new User
-                {
-                    UserName = model.UserName,
-                    Email = model.Email
-                };
-                var result = await _userManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
-                {
-                    return RedirectToAction("Dashboard", "Admin");
-                }
+                Customer customerr = _context.Customers.FirstOrDefault(i => i.Id == order.CustomerID);
+                User user = _context.Users.FirstOrDefault(i => i.Id == customerr.UserId);
+                order.Customer =customerr;
             }
-                   return View(model);
-
+            var Dash = new DashboardViewModel
+            {
+                orders = orderss
+            };
+            return View(Dash);
+        
         }
+        // done - test 
+        public IActionResult DeleteOrder(int id)
+        {
+            var order = _context.Orders.FirstOrDefault(i => i.ID == id);
+            var orderitems = _context.Order_Items.Where(i=>i.OrderID==order.ID).ToList();   
+            foreach (var item in orderitems) { 
+               _context.Order_Items.Remove(item);   
+                _context.SaveChanges(); 
+            }
+            _context.Orders.Remove(order);  
+            _context.SaveChanges();
+			return RedirectToAction("Orders");
 
-
-        [AllowAnonymous]
+		}
         public IActionResult AddStaff()
         {
             return View();
@@ -86,9 +105,9 @@ namespace EfrashBatek.Controllers
         public async Task<IActionResult> SaveStaff(RegisterViewModelStaff model)
         {
             var ans = _context.Shops.FirstOrDefault(x => x.TaxCardNumber == model.ShopNumber);
-            if (!ModelState.IsValid||ans==null)
+            if (!ModelState.IsValid || ans == null)
             {
-                if(ans==null)
+                if (ans == null)
                     ModelState.AddModelError("", "ShopNumber Not Found ");
                 return View("AddStaff", model);
             }
@@ -109,7 +128,7 @@ namespace EfrashBatek.Controllers
             var staff = new Staff
             {
                 UserId = user.Id,
-                  ShopID = ans.ID
+                ShopID = ans.ID
             };
             //var check = shop.GetById(ans.ID);
             //if(check==null)
@@ -125,27 +144,27 @@ namespace EfrashBatek.Controllers
 
                 // Redirect the user to the login page
                 _staff.Create(staff);
-              //  await EmailStaffService.SendEmail(model.Email, model.Username, model.Password, model.FirstName);
+                //  await EmailStaffService.SendEmail(model.Email, model.Username, model.Password, model.FirstName);
                 return Content("Done");
             }
 
-                //if(check==null)
-                //ModelState.AddModelError("","Not Found ShopNumber ");
+            //if(check==null)
+            //ModelState.AddModelError("","Not Found ShopNumber ");
             foreach (var error in result.Errors)
             {
                 ModelState.AddModelError("", error.Description);
 
             }
 
-            return View("AddStaff",model);
+            return View("AddStaff", model);
         }
 
 
-          
 
-    public IActionResult AddShop()
+
+        public IActionResult AddShop()
         {
-            Shop shop=new Shop();
+            Shop shop = new Shop();
             return View(shop);
 
         }
@@ -161,10 +180,62 @@ namespace EfrashBatek.Controllers
             if (ModelState.IsValid)
             {
                 shop.Create(obj);
-            return View("Dashboard");
+                return View("Dashboard");
             }
             else
                 return View("AddShop");
+
+        }
+        public IActionResult SellerDetails()
+        {
+            List<Staff> staffs = _context.The_Staff.Where(i => true).ToList();
+            foreach(var staff in staffs)
+            {
+                User user = _context.Users.FirstOrDefault(i => i.Id == staff.UserId);
+                staff.User = user;
+                Shop shop = _context.Shops.FirstOrDefault(i => i.ID == staff.ShopID);
+                staff.Shop = shop;
+            }
+            return View(staffs);
+
+        }
+        public IActionResult DeleteSeller(int id) {
+
+            Staff staff = _context.The_Staff.FirstOrDefault(i => i.ID == id);
+            _context.The_Staff.Remove(staff);
+            _context.SaveChanges();
+
+            return RedirectToAction("SellerDetails");
+
+
+
+        }
+        [HttpPost]
+        public IActionResult EditSeller(string id)
+        {
+
+            User staff = _context.Users.FirstOrDefault(i => i.Id == id);
+
+            return View(staff);
+
+
+
+
+        }
+        [HttpPost]
+        public IActionResult EditSellerr (User user )
+        {
+
+
+
+            userRepository.Update(user);
+
+
+            return RedirectToAction("SellerDetails");
+
+
+
+
 
         }
         public IActionResult ShopDetails()
@@ -175,30 +246,26 @@ namespace EfrashBatek.Controllers
         }
         public IActionResult EditShop(int id)
         {
-            var ans=shop.GetById(id);
+            var ans = shop.GetById(id);
             return View(ans);
         }
         [HttpPost]
-        public IActionResult SaveEditShop(int id,Shop obj)
+        public IActionResult SaveEditShop(int id, Shop obj)
         {
-            var ans = shop.Update(id,obj);
+            var ans = shop.Update(id, obj);
             return RedirectToAction("ShopDetails");
         }
 
         public IActionResult DeleteShop(int id)
         {
-            int valid=shop.Delete(id);
+            int valid = shop.Delete(id);
             if (valid != 0)
                 return RedirectToAction("ShopDetails");
             else
                 return Content("Error Try Again");
 
         }
-        public IActionResult Orders()
-        {
-            var ans = order.GetAll();
-            return View(ans);
-        }
+       
 
 
 
