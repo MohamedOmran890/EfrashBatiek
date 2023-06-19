@@ -13,7 +13,7 @@
             <br>
             <h2>Customization Your Order</h2>
             <br>
-            <form method="post" asp-action="Create" asp-controller="Customs">
+        <form method="post" asp-action="Create" asp-controller="Customs" enctype="multipart/form-data">
                 <div asp-validation-summary="All" class="text-danger"></div>
 
                 <div class="form-group">
@@ -39,11 +39,11 @@
                     <span asp-validation-for="Description" class="text-danger"></span>
                 </div>
 
-                <div class="form-group">
-                    <label asp-for="Image">Photo</label>
-                    <input type="file" asp-for="Image" name="Image" class="form-control-file" />
-                    <span asp-validation-for="Image" class="text-danger"></span>
-                </div>
+                    <div class="form-group">
+                        <label asp-for="Image" class="control-label"></label>
+                        <input type="file" asp-for="Image" class="form-control" />
+                        <span asp-validation-for="Image" class="text-danger"></span>
+                    </div>
 
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary">Create Custom</button>
