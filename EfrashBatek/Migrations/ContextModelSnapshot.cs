@@ -678,7 +678,7 @@ namespace EfrashBatek.Migrations
 
             modelBuilder.Entity("EfrashBatek.Models.WishList", b =>
                 {
-                    b.Property<int>("ID")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -686,16 +686,34 @@ namespace EfrashBatek.Migrations
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
 
+                    b.HasKey("Id");
+
+                    b.HasIndex("CustomerId")
+                        .IsUnique();
+
+                    b.ToTable("WishLists");
+                });
+
+            modelBuilder.Entity("EfrashBatek.Models.WishListItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
                     b.Property<int>("ItemId")
                         .HasColumnType("int");
 
-                    b.HasKey("ID");
+                    b.Property<int>("WishListId")
+                        .HasColumnType("int");
 
-                    b.HasIndex("CustomerId");
+                    b.HasKey("Id");
 
                     b.HasIndex("ItemId");
 
-                    b.ToTable("WishLists");
+                    b.HasIndex("WishListId");
+
+                    b.ToTable("WishListItems");
                 });
 
             modelBuilder.Entity("EfrashBatek.ViewModel.ForgetPasswordVM", b =>
@@ -1109,20 +1127,31 @@ namespace EfrashBatek.Migrations
             modelBuilder.Entity("EfrashBatek.Models.WishList", b =>
                 {
                     b.HasOne("EfrashBatek.Models.Customer", "Customer")
-                        .WithMany("WishList")
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("EfrashBatek.Models.Item", "Item")
-                        .WithMany()
-                        .HasForeignKey("ItemId")
+                        .WithOne("WishList")
+                        .HasForeignKey("EfrashBatek.Models.WishList", "CustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Customer");
+                });
+
+            modelBuilder.Entity("EfrashBatek.Models.WishListItem", b =>
+                {
+                    b.HasOne("EfrashBatek.Models.Item", "Item")
+                        .WithMany("WishListItems")
+                        .HasForeignKey("ItemId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("EfrashBatek.Models.WishList", "WishList")
+                        .WithMany("WishListItems")
+                        .HasForeignKey("WishListId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Item");
+
+                    b.Navigation("WishList");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -1207,6 +1236,8 @@ namespace EfrashBatek.Migrations
                     b.Navigation("Cart_Items");
 
                     b.Navigation("Order_Items");
+
+                    b.Navigation("WishListItems");
                 });
 
             modelBuilder.Entity("EfrashBatek.Models.Order", b =>
@@ -1238,6 +1269,11 @@ namespace EfrashBatek.Migrations
                     b.Navigation("AddressList");
 
                     b.Navigation("Videos");
+                });
+
+            modelBuilder.Entity("EfrashBatek.Models.WishList", b =>
+                {
+                    b.Navigation("WishListItems");
                 });
 #pragma warning restore 612, 618
         }

@@ -29,26 +29,31 @@ namespace EfrashBatek.service
         }
         public void Delete(int Id)
         {
-            var wishlist = context.WishLists.FirstOrDefault(x => x.ID == Id);
-            context.WishLists.Remove(wishlist);
-            context.SaveChanges();
+            var wishlist = context.WishListItems.FirstOrDefault(x => x.ItemId == Id);
+            if (wishlist != null)
+            {
+                context.WishListItems.Remove(wishlist);
+                context.SaveChanges();
+            }
 
         }
 
         public WishList GetById(int id)
         {
             // Find the wishlist that matches the id and include its related items and customer
-            return context.WishLists.FirstOrDefault(w => w.ID == id);
+            return context.WishLists.FirstOrDefault(w => w.Id == id);
         }
-        public List<WishList> GetByAll(int id)
+        public WishList GetByAll(int id)
         {
             // Find the wishlist that matches the id and include its related items and customer
-            return context.WishLists.Where(w => w.CustomerId == id).ToList(); ;
+            return (WishList)context.WishLists.Where(w => w.CustomerId == id) ;
         }
 
         public Customer GetCustomerWithUser(string user)
         {
-            var chechk = context.Customers.FirstOrDefault(x => x.UserId == user);
+            var chechk = context.Customers
+                                .Include(c => c.WishList).Include(c => c.WishList.WishListItems)
+                                .FirstOrDefault(x => x.UserId == user);
             return chechk;
         }
 
