@@ -4,56 +4,6 @@
     ViewData["Title"] = "Index";
     Layout = "";
 }
-@*
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Product.ProductName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Name)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Description)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Price)
-            </th>
-
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-
-            <td>
-                 <img src="~/Image/@item.Image" alt="@item.Image" />
-            </td>
-    
-            <td>
-                    @Html.DisplayFor(model => item.Product.ProductName)
-            </td>
-            <td>
-                    @Html.DisplayFor(model => item.Name)
-            </td>
-            <td>
-                    @Html.DisplayFor(model => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.Price)
-            </td>
-
-            <td>
-                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
-*@
-<!-------------------------------------------------------------->
 <!DOCTYPE html>
 <html>
 <head>
@@ -131,7 +81,7 @@
 
                                 <img src="~/Image/00.webp" alt="Mens Winter Leathers Jackets"
                                      width="300" class="product-img hover">
-                                    <img src="~/Image/1.jpg" alt="MEN Yarn Fleece Full-Zip Jacket"
+                                    <img src="~/Image/products/@item.Image" alt="MEN Yarn Fleece Full-Zip Jacket"
                                      class="product-img default" width="300">
 
                                 <p class="showcase-badge">@item.discount%</p>
@@ -139,7 +89,7 @@
                                 <div class="showcase-actions">
 
                                     <button class="btn-action">
-                                    <a asp-action="Index" asp-controller="WishList"><ion-icon name="heart-outline"></ion-icon></a>
+                                            <a asp-action="AddItemToWishlist" asp-controller="WishList" asp-route-id="@item.ID"><ion-icon name="heart-outline"></ion-icon></a>
                                 </button>
 
                                     <button class="btn-action">

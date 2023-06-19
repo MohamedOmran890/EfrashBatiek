@@ -7,10 +7,14 @@
 
   <ItemGroup>
     <Content Remove="wwwroot\css\add item.css" />
+    <Content Remove="wwwroot\css\additem.css" />
+    <Content Remove="wwwroot\css\bootstrap.min.css" />
     <Content Remove="wwwroot\css\contact us.css" />
     <Content Remove="wwwroot\css\edititem.css" />
     <Content Remove="wwwroot\css\Items.css" />
+    <Content Remove="wwwroot\css\orders.css" />
     <Content Remove="wwwroot\css\seller.css" />
+    <Content Remove="wwwroot\css\wishlist.css" />
     <Content Remove="wwwroot\Image\0.jpg" />
     <Content Remove="wwwroot\Image\00.webp" />
     <Content Remove="wwwroot\Image\1.jpg" />
@@ -121,15 +125,23 @@
     <Content Remove="wwwroot\js\main.js" />
     <Content Remove="wwwroot\js\script.js" />
     <Content Remove="wwwroot\js\site.js" />
+    <Content Remove="wwwroot\lib\jquery\main.js" />
+    <Content Remove="wwwroot\lib\jquery\script.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\css\additem.css" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="wwwroot\css\about us.css" />
     <None Include="wwwroot\css\add item.css" />
+    <None Include="wwwroot\css\additem.css" />
     <None Include="wwwroot\css\addre2.css" />
     <None Include="wwwroot\css\addseller.css" />
     <None Include="wwwroot\css\addshop.css" />
     <None Include="wwwroot\css\admin.css" />
+    <None Include="wwwroot\css\bootstrap.min.css" />
     <None Include="wwwroot\css\cart.css" />
     <None Include="wwwroot\css\cart2.css" />
     <None Include="wwwroot\css\Checkout address.css" />
@@ -276,6 +288,8 @@
     <None Include="wwwroot\js\cart.js" />
     <None Include="wwwroot\js\main.js" />
     <None Include="wwwroot\js\script.js" />
+    <None Include="wwwroot\lib\jquery\main.js" />
+    <None Include="wwwroot\lib\jquery\script.js" />
   </ItemGroup>
 
   <ItemGroup>
@@ -292,9 +306,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\Image\custom\" />
-    <Folder Include="wwwroot\Image\Items\" />
-    <Folder Include="wwwroot\Image\Items\" />
     <Folder Include="wwwroot\Image\Items\" />
     <Folder Include="wwwroot\Image\Wish\" />
   </ItemGroup>

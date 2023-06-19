@@ -9,7 +9,7 @@ namespace EfrashBatek.service
         WishList Update(WishList wishList);
         void Delete(int Id);
         WishList GetById(int Id);
-        public List<WishList> GetByAll(int id);
+        public WishList GetByAll(int id);
 
         Customer GetCustomerWithUser(string user);
         //public void AddItemToWishlist(int wishlistId, int itemId);
