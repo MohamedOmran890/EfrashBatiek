@@ -13,14 +13,15 @@
 
 }
 
-/*body {
-    width: 100%;
-    background: #d5d5d5;
-    background: url(../Image/0.jpg) no-repeat center center/cover;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}*/
+body{
+  min-height: 100vh;
+  width: 100%;
+  background: #d5d5d5;
+  background: url(../Image/0.jpg) no-repeat center center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .grid-container {
   display: grid;
@@ -29,19 +30,17 @@
   padding: 0px;
   width: auto;
 }
-/*.main-home {
-    height: 60vh;
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    align-items: center;
-    margin-top: -50px;
-}*/
+.main-home{
+  height: 60vh;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  align-items: center;
+}
 .item1 {
   grid-column: 1 / span 1;
 }
 .item2 {
-    grid-column: 1 / span 1;
-    
+grid-column: 1 / span 1;
 }
 
 .breadcrumb{
@@ -75,13 +74,12 @@ ul.breadcrumb li a:hover {
   color: #585859;
   text-decoration: underline;
 }
-.container {
-    background: #424242;
-    background: rgba(255, 255, 255,0.5);
-    border-radius: 18px;
-    padding: 20px 60px 30px 40px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-
+.container{
+  margin-left: 20%;
+ background: #f4f4f4
+  border-radius: 18px;
+  padding: 20px 60px 30px 40px;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 .container .content{
   display: flex;
@@ -175,32 +173,11 @@ ul.breadcrumb li a:hover {
   cursor: pointer;
   transition: all 0.3s ease;
 }
-
 .button input[type="button"]:hover{
   background: #fff;
   color: #bc969e;
 }
- /*css by aya*/
 
-.right-side .submit {
-    display: inline-block;
-    margin-top: 12px;
-}
-.right-side .submit input[type="submit"] {
-    color: #fff;
-    font-size: 18px;
-    outline: none;
-    border: none;
-    padding: 8px 16px;
-    border-radius: 6px;
-    background: #cbaab1;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-.submit input[type="submit"]:hover {
-    background: #fff;
-    color: #bc969e;
-}
 
 
 @media (max-width: 950px) {
@@ -243,3 +220,123 @@ ul.breadcrumb li a:hover {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* /// */
