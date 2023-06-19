@@ -24,6 +24,7 @@
                         <th>Order Date</th>
                         <th>Total cost</th>
                         <th>View Order Details </th>
+                        <th>Order code</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -32,9 +33,20 @@
                         <tr>
                         
                             <td>@order.OrderDate.Year/@order.OrderDate.Month/@order.OrderDate.Year</td>
-                            
-                            <td>@order.TotalCost $</td>
-                            <td><a a asp-controller="MyProfile" asp-action="OrderDetails" asp-route-id="@order.ID">View Order Details!</a></td>
+
+                            <td>@String.Format("{0:0.00}", @order.TotalCost) EPG </td>
+                            <td>
+                                @using (Html.BeginForm("OrderDetails", "MyProfile", FormMethod.Post))
+                                {
+
+                                    int x = order.ID;
+                                    @Html.Hidden("id"  , x )
+                                    // Replace "Id" with the actual name of the ID property in your model
+
+                                    <button >view order details </button>
+                                }
+                            </td>
+                            <td> @order.OrderCode</td>
                         </tr>
                   
                 }

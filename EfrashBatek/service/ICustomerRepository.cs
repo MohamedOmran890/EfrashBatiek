@@ -10,11 +10,11 @@ namespace EfrashBatek.service
         int Edit(Customer customer, int id);
         List<Customer> GetAll();
         Customer GetById(int Id);
-
+        Customer GetbyUserId(string userId);
         ICollection<Order> GetOrders(int id);
-         int TotalCustomers();
+        int TotalCustomers();
         Order getOrder(int customerID, int OrderID);
-        
+        Customer GetCustomerbyUserId();
 
     }
 }

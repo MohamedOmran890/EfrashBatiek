@@ -23,13 +23,13 @@ namespace EfrashBatek.Controllers
             this.designRepository = designRepository;
             this.identityRepository = identityRepository;
         }
-
-        // GET: Designs
+        //for Customer
         public  IActionResult Design()
         {
             var ans = designRepository.GetAll();
             return View(ans);
         }
+        //For Each Designer
         public IActionResult MyDesign()
         {
             var userid = identityRepository.GetUserID();
@@ -37,9 +37,9 @@ namespace EfrashBatek.Controllers
             {
                 return RedirectToAction("Login", "Account");
             }
-            designRepository.GetById(userid);
+          var designs=designRepository.GetById(userid);
 
-            return View();
+            return View(designs);
         }
 
         public IActionResult Create()

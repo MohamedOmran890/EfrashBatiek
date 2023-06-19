@@ -1,0 +1,72 @@
+﻿@{
+	Layout = "LayoutProfile";
+}
+
+@model List<Custom>
+<link rel="stylesheet" href="~/css/ordertable.css">
+<div class="tab-pane fade show active" id="guarante" role="tabpanel" aria-labelledby="profile-tab">
+	<div class="tab-content p-4 p-md-5" id="v-pills-tabContent">
+
+
+        <h3 class="mb-4">Orders Settings</h3>
+
+        <center>
+            <br>
+            <br>
+            <br>
+            <br>
+
+            <table id="example" class="order-table" style="margin-left: auto; margin-right: auto; width : 100%;">
+                <thead>
+                    <tr>
+
+                        <th>Name</th>
+                        <th>Phone </th>
+                        <th>View Order Details </th>
+                        <th>Zone </th>
+                       
+                 
+                        <th>Delete Order</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var order in Model)
+                    {
+                        <tr>
+
+                            <td>@order.Name</td>
+
+                            <td> @order.Phone</td>
+                            <td>
+                                @using (Html.BeginForm("ViewCustoms", "MyProfile", FormMethod.Post))
+                                {
+
+                                    int x = order.ID;
+                                    @Html.Hidden("id"  , x )
+                                    // Replace "Id" with the actual name of the ID property in your model
+
+                                    <button>view order details </button>
+                                }
+                            </td>
+                            <td>@order.Zone </td>
+                            <td>
+                            @using (Html.BeginForm("Delete", "Customs", FormMethod.Post))
+                            {
+
+                                int x = order.ID;
+                                @Html.Hidden("id"  , x )
+                    // Replace "Id" with the actual name of the ID property in your model
+
+                                <button>Delete Order ! </button>
+                            }
+                            </td>   
+                        </tr>
+
+                    }
+                </tbody>
+
+            </table>
+        </center>
+
+	</div>
+</div>
