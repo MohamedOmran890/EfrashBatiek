@@ -85,5 +85,11 @@ namespace EfrashBatek.service
             var ans = context.Customers.Count();
             return ans;
         }
+        public Customer GetbyUserId(string Id)
+        {
+            var userid = context.Customers.FirstOrDefault(x => x.UserId == Id);
+            return userid;
+
+        }
     }
 }

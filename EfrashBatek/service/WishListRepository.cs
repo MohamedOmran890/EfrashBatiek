@@ -38,10 +38,12 @@ namespace EfrashBatek.service
         public WishList GetById(int id)
         {
             // Find the wishlist that matches the id and include its related items and customer
-            return context.WishLists
-                .Include(w => w.Items)
-                .Include(w => w.Customer)
-                .FirstOrDefault(w => w.ID == id);
+            return context.WishLists.FirstOrDefault(w => w.ID == id);
+        }
+        public List<WishList> GetByAll(int id)
+        {
+            // Find the wishlist that matches the id and include its related items and customer
+            return context.WishLists.Where(w => w.CustomerId == id).ToList(); ;
         }
 
         public Customer GetCustomerWithUser(string user)
@@ -53,130 +55,130 @@ namespace EfrashBatek.service
 
 
 
-        public void AddItemToWishlist(int wishlistId, int itemId)
-        {
-            var wishlist = context.WishLists.Find(wishlistId);
+        //public void AddItemToWishlist(int wishlistId, int itemId)
+        //{
+        //    var wishlist = context.WishLists.Find(wishlistId);
 
-            if (wishlist != null)
-            {
-                var item = context.Items.Find(itemId);
+        //    if (wishlist != null)
+        //    {
+        //        var item = context.Items.Find(itemId);
 
-                // If the item exists and is not already in the wishlist
-                if (item != null && !wishlist.Items.Contains(item))
-                {
-                    wishlist.Items.Add(item);
+        //        // If the item exists and is not already in the wishlist
+        //        if (item != null && !wishlist.Items.Contains(item))
+        //        {
+        //            wishlist.Items.Add(item);
 
-                    Update(wishlist);
-                }
-            }
-        }
+        //            Update(wishlist);
+        //        }
+        //    }
+        //}
 
 
-        public void AddItemToCart(int wishlistId, int itemId)
-        {
-            var wishlist = context.WishLists.Find(wishlistId);
+        //public void AddItemToCart(int wishlistId, int itemId)
+        //{
+        //    var wishlist = context.WishLists.Find(wishlistId);
 
-            if (wishlist != null)
-            {
-                Item item = context.Items.Find(itemId);
+        //    if (wishlist != null)
+        //    {
+        //        Item item = context.Items.Find(itemId);
 
-                // If the item exists and is in the wishlist
-                if (item != null && wishlist.Items.Contains(item))
-                {
-                    wishlist.Items.Remove(item);
-                    Update(wishlist);
-                    // Find or create a cart for the current user
-                    Cart cart = context.Carts.FirstOrDefault(c => c.CustomerID == wishlist.CustomerID) ?? new Cart
-                    {
-                        CustomerID = wishlist.CustomerID
-                    };
+        //        // If the item exists and is in the wishlist
+        //        if (item != null && wishlist.Items.Contains(item))
+        //        {
+        //            wishlist.Items.Remove(item);
+        //            Update(wishlist);
+        //            // Find or create a cart for the current user
+        //            Cart cart = context.Carts.FirstOrDefault(c => c.CustomerID == wishlist.CustomerID) ?? new Cart
+        //            {
+        //                CustomerID = wishlist.CustomerID
+        //            };
 
-                    bool found = false;
-                    foreach (var Item in cart.items)
-                    {
-                        if (itemId == Item.ItemID)
-                        {
-                            found = true;
-                            Item.Quantity += 1;
-                            break;
-                        }
+        //            bool found = false;
+        //            foreach (var Item in cart.items)
+        //            {
+        //                if (itemId == Item.ItemID)
+        //                {
+        //                    found = true;
+        //                    Item.Quantity += 1;
+        //                    break;
+        //                }
 
-                    }
-                    if (found == false)
-                    {
-                        Cart_Item cartItem = new Cart_Item();
-                        cartItem.ItemID = itemId;
-                        cartItem.CartID = cart.ID;
-                        cartItem.Quantity = 1;
-                        cart.items.Add(cartItem);
+        //            }
+        //            if (found == false)
+        //            {
+        //                Cart_Item cartItem = new Cart_Item();
+        //                cartItem.ItemID = itemId;
+        //                cartItem.CartID = cart.ID;
+        //                cartItem.Quantity = 1;
+        //                cart.items.Add(cartItem);
 
-                    }
+        //            }
 
-                    context.SaveChanges();
-                }
-            }
-        }
+        //            context.SaveChanges();
+        //        }
+        //    }
+        //}
 
         // Add all items from wishlist to cart
-        public void AddAllToCart(int WishlistId, int CartId)
-        {
-            var wishlist = context.WishLists.Find(WishlistId);
-            if (wishlist != null)
-            {
-                Cart cart = context.Carts.FirstOrDefault(c => c.CustomerID == wishlist.CustomerID && c.ID == CartId); // find a cart for the customer ID and with
-                                                                                                                      // a cart ID that matches the provided cartId
-                                                                                                                      //Customer could have many carts
-                if (cart == null) // if no cart exists
-                {
-                    cart = new Cart(); // create a new cart object
-                    cart.CustomerID = wishlist.CustomerID; // set its customer ID property
-                    context.Carts.Add(cart); // add it to the context
-                }
+        //public void AddAllToCart(int WishlistId, int CartId)
+        //{
+        //    var wishlist = context.WishLists.Find(WishlistId);
+        //    if (wishlist != null)
+        //    {
+        //        Cart cart = context.Carts.FirstOrDefault(c => c.CustomerID == wishlist.CustomerID && c.ID == CartId); // find a cart for the customer ID and with
+        //                                                                                                              // a cart ID that matches the provided cartId
+        //                                                                                                              //Customer could have many carts
+        //        if (cart == null) // if no cart exists
+        //        {
+        //            cart = new Cart(); // create a new cart object
+        //            cart.CustomerID = wishlist.CustomerID; // set its customer ID property
+        //            context.Carts.Add(cart); // add it to the context
+        //        }
 
-                foreach (Item item in wishlist.Items) // loop through each item in the wishlist's items collection
-                {
-                    bool found = false;
-                    foreach (var Item in cart.items)
-                    {
-                        if (Item.ItemID == item.ID)
-                        {
-                            found = true;
-                            Item.Quantity += 1;
-                            break;
-                        }
+        //        foreach (Item item in wishlist.Items) // loop through each item in the wishlist's items collection
+        //        {
+        //            bool found = false;
+        //            foreach (var Item in cart.items)
+        //            {
+        //                if (Item.ItemID == item.ID)
+        //                {
+        //                    found = true;
+        //                    Item.Quantity += 1;
+        //                    break;
+        //                }
 
-                    }
-                    if (found == false)
-                    {
-                        Cart_Item cartItem = new Cart_Item();
-                        cartItem.CartID = cart.ID;
-                        cartItem.ItemID = item.ID;
-                        cartItem.Quantity = 1;
-                        cart.items.Add(cartItem);
+        //            }
+        //            if (found == false)
+        //            {
+        //                Cart_Item cartItem = new Cart_Item();
+        //                cartItem.CartID = cart.ID;
+        //                cartItem.ItemID = item.ID;
+        //                cartItem.Quantity = 1;
+        //                cart.items.Add(cartItem);
 
-                    }
-                }
+        //            }
+        //        }
 
-                context.SaveChanges();
-            }
-        }
+        //        context.SaveChanges();
+        //    }
+        //}
 
 
-        public void DeleteFromWishlist(int wishlistId, int itemId)
-        {
-            var wishlist = context.WishLists.Find(wishlistId);
+        //public void DeleteFromWishlist(int wishlistId, int itemId)
+        //{
+        //    var wishlist = context.WishLists.Find(wishlistId);
 
-            if (wishlist != null)
-            {
-                var item = context.Items.Find(itemId);
+        //    if (wishlist != null)
+        //    {
+        //        var item = context.Items.Find(itemId);
 
-                // If the item exists and is in the wishlist
-                if (item != null && wishlist.Items.Contains(item))
-                {
-                    wishlist.Items.Remove(item);
-                    Update(wishlist);
-                }
-            }
-        }
+        //        // If the item exists and is in the wishlist
+        //        if (item != null && wishlist.Items.Contains(item))
+        //        {
+        //            wishlist.Items.Remove(item);
+        //            Update(wishlist);
+        //        }
+        //    }
+        //}
     }
 }
