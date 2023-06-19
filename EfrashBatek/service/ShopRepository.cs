@@ -14,6 +14,7 @@ namespace EfrashBatek.service
         public void Create(Shop shop)
         {
             context.Shops.Add(shop);
+            context.SaveChanges();      
 
         }
         public int Update(int id, Shop shop)

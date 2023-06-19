@@ -9,11 +9,13 @@ namespace EfrashBatek.service
     {
         Context context;
         private readonly UserManager<User> userManager;
+        private readonly IIdentityRepository identityRepository;
 
-        public UserRepository(Context context , UserManager<User> _userManager)
+        public UserRepository(Context context , UserManager<User> _userManager , IIdentityRepository identityRepository)
         {
             this.context = context;
             userManager = _userManager;
+            this.identityRepository = identityRepository;
         }
         public void Create(User user)
         {
@@ -28,15 +30,17 @@ namespace EfrashBatek.service
 			User user = userManager.FindByIdAsync(id ).Result;
 			return user;
 		}
-        public int Update( User user)
+        public int Update( User userr) // id ??
         {
             // omran 
-            var ans = GetbyID(user.Id);
-            ans.FirstName = user.FirstName; 
-            ans.LastName = user.LastName;   
+            var ans = context.Users.FirstOrDefault(i => i.Id == userr.Id);
+
+            ans.FirstName = userr.FirstName; 
+            ans.LastName = userr.LastName;   
+             ans.age = userr.age;
            
-            ans.Email = user.Email; 
-            ans.PhoneNumber = user.PhoneNumber; 
+            ans.Email = userr.Email; 
+            ans.PhoneNumber = userr.PhoneNumber; 
 
           
             if(ans != null )
