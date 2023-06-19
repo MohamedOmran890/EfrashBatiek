@@ -1,0 +1,77 @@
+﻿﻿@{
+    Layout = "CustomerLayout";
+}
+@model Custom
+
+
+<link rel="stylesheet" href="~/css/orderdetails.css">
+
+<br>
+<br>
+<br>
+<br>
+
+<div class="container-fluid">
+    <div class="container">
+        <!-- Title -->
+        <div class="d-flex justify-content-between align-items-center py-3">
+            <h2 class="h5 mb-0"><a href="#" class="text-muted"></a> Order Code : #131321</h2>
+        </div>
+
+        <!-- Main content -->
+        <div class="row">
+            <div class="col-lg-8">
+                <!-- Details -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="mb-3 d-flex justify-content-between">
+                            
+                            <div class="d-flex">
+                                <div class="dropdown">
+                                    <button class="btn btn-link p-0 text-muted" type="button" data-bs-toggle="dropdown">
+                                        <i class="bi bi-three-dots-vertical"></i>
+                                    </button>
+
+                                </div>
+                            </div>
+                        </div>
+                        <table class="table table-borderless">
+                            <tbody>
+
+                                    <tr>
+                                        <!--img & color & name -->
+                                        <td>
+                                            <div class="d-flex mb-2">
+                                                <!---image-->
+                                                <div class="flex-shrink-0">
+                                                    <img src="~/Image/Items/@Model.Image" alt="" width="35" class="img-size">
+                                                </div>
+                                                <!--color & name -->
+                                                <div class="flex-lg-grow-1 ms-3">
+                                                    <h6 class="small mb-0"><a href="#" class="text-reset">Name : @Model.Name </a></h6>
+                                                    <span class="small">Phone @Model.Phone</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <!-- number-->
+                                        <td>@Model.Description</td>
+                                    
+                                        <td>
+                                            <span class="badge bg-success rounded-pill">@Model.Zone</span>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    </tr>
+                             
+
+                            </tbody>
+                          
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+            
+        </div>
+    </div>
+</div>

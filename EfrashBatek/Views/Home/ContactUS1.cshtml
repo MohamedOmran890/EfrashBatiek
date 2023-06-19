@@ -9,10 +9,10 @@
 <head> 
     <meta charset="UTF-8">
     <link rel="icon" type="image/favicon.ico" href="~/Image/favicon.png">
-    <link rel="stylesheet" href="~/css/footer&header.css">
+    <link rel="stylesheet" href="~/css/main.css">
     <link rel="stylesheet" href="~/css/contact us.css">
-    
-      
+                   
+       
     <!--ICONS LINK-->
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
     <!-- Fontawesome CDN Link -->
@@ -20,7 +20,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Efresh Beitak</title>
 </head>
- 
+   
 <body>
     <header>
 
@@ -33,9 +33,9 @@
             <li><a asp-controller="Designs" asp-action="Index">Designs</a></li>
 
 
-
-        </ul>
-
+              
+        </ul>    
+         
 
         <div class="nav-icon">
             <a asp-controller="" asp-action=""><i class='bx bx-search'></i></a>
@@ -44,16 +44,16 @@
             <a asp-controller="WishList" asp-action="Index"><i class='bx bx-heart' undefined></i></a>
             <div class="bx bx-menu" id="menu-icon"></div>
         </div>
-
+           
          
     </header>
-
+    <div >
     <section class="main-home">
         <div class="grid-container">
             <div class="item1">
                 <div class="breadcrumb">
                     <ul class="breadcrumb">
-                        <li><a href="main.html"><i class='bx bx-home'></i></a></li>
+                        <li><a href="main.html"><i class='bx bx-home'></i></a></li> 
                         <li><a href="contact us.html">Contact Us</a></li>
                     </ul>
                 </div>
@@ -106,14 +106,11 @@
             </div>
         </div>
     </section>
-    
+    </div>
+     
+   
+    <footer>
 
-
-
-   @* <footer>
-
-
-    
 
         <!-- contact-section -->
         <section class="contact">
@@ -163,8 +160,7 @@
                 </div>
             </div>
         </section>
-    </footer>*@
-
+    </footer>
     @section Scripts {
         @{
             await Html.RenderPartialAsync("_ValidationScriptsPartial");

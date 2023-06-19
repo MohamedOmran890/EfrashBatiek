@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="css/additem.css">
   <link rel="stylesheet" href="css/seller.css">
 
-</head>
+</head> 
 
 <body>
   <!-- SIDEBAR -->
@@ -65,23 +65,41 @@
     </div>
     <input type="text" id="pro" placeholder="product name">
     <input type="text" id="pro" placeholder="product code">
-    <input type="text" id="pro" placeholder="Brand Name">
     <input type="number" id="pro" placeholder="Quantity in store">
     <textarea id="des" placeholder="Product description"></textarea>
     <div class="product-price">
-      <select id="pro1" class="form-control">
-        <option value="null">Select</option>
-        <option value="57">
-          Qena
-        </option>
-        <option value="57">
-          Cairo
-        </option>
-      </select>
-      <input type="number" id="pro1" placeholder="actual price">
-      <input type="number" id="pro1" placeholder="discount percentage">
-      <input type="number" id="pro1" placeholder="selling price">
-    </div>
+        <select id="pro1" class="form-control">
+            <option value="null">Select</option>
+            <option value="57">
+                Qena
+            </option>
+            <option value="57">
+                Cairo
+            </option>
+        </select>
+        <select id="pro1" class="form-control">
+            <option value="null">Select</option>
+            <option value="57">
+                Qena
+            </option>
+            <option value="57">
+                Cairo
+            </option>
+        </select>
+        <select id="pro1" class="form-control">
+            <option value="null">Select</option>
+            <option value="57">
+                Qena
+            </option>
+            <option value="57">
+                Cairo
+            </option>
+        </select>
+        <input type="number" id="pro1" placeholder="actual price">
+        <input type="number" id="pro1" placeholder="discount percentage">
+        <input type="number" id="pro1" placeholder="selling price">
+        <input asp-for="DateTime" class="form-control" type="date" id="pro1" placeholder="DateTime" />
+    </div> 
     <!-- product image -->
     <div class="product-info">
       <div class="product-image">

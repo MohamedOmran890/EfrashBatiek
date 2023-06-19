@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using EfrashBatek.Models;
 using EfrashBatek.service;
+using System.Net;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.Text.RegularExpressions;
 
 namespace EfrashBatek.Controllers
 {
@@ -47,11 +50,50 @@ namespace EfrashBatek.Controllers
             Category.furniture,
             Category.Kitchen_utensils,
             Category.Home_Appliances,
-            Category.Kitchen_utensils
+      
          
             };
             ViewBag.category=category;
+            Dictionary<Category, List<Product>> categoryToProducts = new Dictionary<Category, List<Product>>();
+            foreach(var cate in category)
+            {
+                List<Product> products = _context.Products.Where(i => i.Category == cate).ToList();
+               categoryToProducts.Add(cate,products);  
+                 
+
+            }
             var all_item=_itemRepository.GetAll();
+            return View(all_item);
+        }
+        public IActionResult Index1()
+        {
+
+            List<Category> category = new List<Category>
+            {
+            Category.furniture,
+            Category.Kitchen_utensils,
+            Category.Home_Appliances,
+               Category.All_Products
+
+
+            };
+           
+            Dictionary<Category, List<Product>> categoryToProducts = new Dictionary<Category, List<Product>>();
+            foreach (var cate in category)
+            {
+                List<Product> products = _context.Products.Where(i => i.Category == cate).ToList();
+                if (!categoryToProducts.ContainsKey(cate))
+                {
+
+                    categoryToProducts.Add(cate, products);
+
+                }
+
+
+            }
+            
+            ViewBag.categoryToProducts = categoryToProducts;
+            var all_item = _itemRepository.GetAll();
             return View(all_item);
         }
 
@@ -75,10 +117,57 @@ namespace EfrashBatek.Controllers
             var selectByproduct =_productRepository.GetByProduct(productName);
             return View(selectByproduct);
         }
-        public IActionResult ItembyCategory(Category category)
+        public IActionResult ItembyCategory(Category productName)
         {
-            var ans = _productRepository.GetByCategory(category);
-            return View(ans);
+           
+            List<Category> categoryy = new List<Category>
+            {
+            Category.furniture,
+            Category.Kitchen_utensils,
+            Category.Home_Appliances,
+            Category.All_Products
+             
+
+
+            };
+
+            Dictionary<Category, List<Product>> categoryToProducts = new Dictionary<Category, List<Product>>();
+            foreach (var cate in categoryy)
+            {
+                List<Product> productss = _context.Products.Where(i => i.Category == cate).ToList();
+                if (!categoryToProducts.ContainsKey(cate))
+                {
+
+                    categoryToProducts.Add(cate, productss);
+
+                }
+
+
+            }
+           
+            ViewBag.categoryToProducts = categoryToProducts;
+            if (productName == Category.All_Products)
+            {
+                var all_item = _itemRepository.GetAll();
+
+                return View("Index1", all_item);
+
+            }
+            List<Product> products = _context.Products.Where(i => i.Category == productName).ToList();
+            List<Item> res = new List<Item>();  
+            foreach (var product in products) {
+                List<Item> ans =_context.Items.Where(i=>i.ProductID == product.ID).ToList();    
+                foreach (var item in ans) { 
+                    res.Add(item);  
+                
+                }
+
+
+
+            }
+
+
+            return View("Index1" ,res);
         }
       
     }

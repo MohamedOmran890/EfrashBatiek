@@ -7,7 +7,8 @@ namespace EfrashBatek.Models
         furniture,
         Home_Appliances,
         Kitchen_utensils,
-        Kitchen
+        Kitchen , 
+        All_Products =10
     }
     public class Brand
     {
