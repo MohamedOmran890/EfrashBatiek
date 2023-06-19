@@ -78,7 +78,7 @@ namespace EfrashBatek.Controllers
        
             context.Customers.Add(customer);
 
-            var result = await _userManager.CreateAsync(user, model.Password);//Created Cookies
+            var result = await _userManager.CreateAsync(user, model.Password);
 
                 if (result.Succeeded)
                 {
