@@ -29,59 +29,37 @@ namespace EfrashBatek.Controllers
             // Get the current customer id from the session or authentication
             //var customerId = HttpContext.Session.GetInt32("CustomerId") ?? 0;
             var userId = _IdentityRepository.GetUserID();
-           // var customerId = _customerRepository.GetbyUserId(userId);
-            if(userId == null)
+            // var customerId = _customerRepository.GetbyUserId(userId);
+            if (userId == null)
             {
                 return RedirectToAction("Login", "Account");
             }
             var ans = _wishlistRepository.GetCustomerWithUser(userId);
-            if(ans == null)
+            if (ans == null)
             {
                 return View(new WishList());
             }
-            var wishlist = _wishlistRepository.GetById(ans.WishList.ID);
+            var wishlist = _wishlistRepository.GetByAll(ans.Id);
 
             return View(wishlist);
         }
-
-       
-
-
 
         [HttpPost]
-        public IActionResult Create(WishList wishlist)
+       public IActionResult AddProductToWishlist(int productId)
         {
-            // Check if the model is valid
-            if (ModelState.IsValid)
+            var user =  _IdentityRepository.GetUserID();
+            var customer = _wishlistRepository.GetCustomerWithUser(user);
+
+            var wishlist = new WishList
             {
-                var customerId = HttpContext.Session.GetInt32("CustomerId") ?? 0;
+                ItemId = productId,
+                CustomerId = customer.Id,
+            };
 
-                wishlist.CustomerID = customerId;
+            _wishlistRepository.Create(wishlist);
 
-                _wishlistRepository.Create(wishlist);
-
-                return RedirectToAction(nameof(Index));
-            }
-
-            // Return the view with the model if not valid
-            return View(wishlist);
+            return RedirectToAction("Index", "Home");
         }
-
-
-
-        [HttpPost]
-        public IActionResult Edit(WishList wishlist)
-        {
-            if (ModelState.IsValid)
-            {
-                _wishlistRepository.Update(wishlist);
-
-                return RedirectToAction(nameof(Index));
-            }
-
-            return View(wishlist);
-        }
-
 
 
         [HttpPost]
@@ -95,21 +73,21 @@ namespace EfrashBatek.Controllers
 
 
 
-        [HttpPost]
-        public IActionResult AddItemToWishlist(int wishlistId, int itemId)
-        {
-            _wishlistRepository.AddItemToWishlist(wishlistId, itemId);
+        //[HttpPost]
+        //public IActionResult AddItemToWishlist(int wishlistId, int itemId)
+        //{
+        //    _wishlistRepository.AddItemToWishlist(wishlistId, itemId);
 
-            return RedirectToAction(nameof(Index));
-        }
+        //    return RedirectToAction(nameof(Index));
+        //}
 
-        [HttpPost]
-        public IActionResult AddItemToCart(int wishlistId, int itemId)
-        {
-            _wishlistRepository.AddItemToCart(wishlistId, itemId);
+        //[HttpPost]
+        //public IActionResult AddItemToCart(int wishlistId, int itemId)
+        //{
+        //    _wishlistRepository.AddItemToCart(wishlistId, itemId);
 
-            return RedirectToAction(nameof(Index));
-        }
+        //    return RedirectToAction(nameof(Index));
+        //}
 
 
         //[HttpPost]
@@ -124,13 +102,13 @@ namespace EfrashBatek.Controllers
 
 
 
-        [HttpPost]
-        public IActionResult DeleteFromWishlist(int wishlistId, int itemId)
-        {
-            _wishlistRepository.DeleteFromWishlist(wishlistId, itemId);
+        //[HttpPost]
+        //public IActionResult DeleteFromWishlist(int wishlistId, int itemId)
+        //{
+        //    _wishlistRepository.DeleteFromWishlist(wishlistId, itemId);
 
-            return RedirectToAction(nameof(Index));
-        }
+        //    return RedirectToAction(nameof(Index));
+        //}
 
     }
 }

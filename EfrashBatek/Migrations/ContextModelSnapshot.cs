@@ -222,14 +222,9 @@ namespace EfrashBatek.Migrations
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("WishListId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("UserId");
-
-                    b.HasIndex("WishListId");
 
                     b.ToTable("Customers");
                 });
@@ -356,9 +351,6 @@ namespace EfrashBatek.Migrations
                     b.Property<int>("ShopID")
                         .HasColumnType("int");
 
-                    b.Property<int?>("WishListID")
-                        .HasColumnType("int");
-
                     b.Property<string>("discount")
                         .HasColumnType("nvarchar(max)");
 
@@ -369,8 +361,6 @@ namespace EfrashBatek.Migrations
                     b.HasIndex("ProductID");
 
                     b.HasIndex("ShopID");
-
-                    b.HasIndex("WishListID");
 
                     b.ToTable("Items");
                 });
@@ -693,12 +683,17 @@ namespace EfrashBatek.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CustomerID")
+                    b.Property<int>("CustomerId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ItemId")
                         .HasColumnType("int");
 
                     b.HasKey("ID");
 
-                    b.HasIndex("CustomerID");
+                    b.HasIndex("CustomerId");
+
+                    b.HasIndex("ItemId");
 
                     b.ToTable("WishLists");
                 });
@@ -944,15 +939,7 @@ namespace EfrashBatek.Migrations
                         .WithMany()
                         .HasForeignKey("UserId");
 
-                    b.HasOne("EfrashBatek.Models.WishList", "WishList")
-                        .WithMany()
-                        .HasForeignKey("WishListId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("User");
-
-                    b.Navigation("WishList");
                 });
 
             modelBuilder.Entity("EfrashBatek.Models.Design", b =>
@@ -1009,10 +996,6 @@ namespace EfrashBatek.Migrations
                         .HasForeignKey("ShopID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.HasOne("EfrashBatek.Models.WishList", null)
-                        .WithMany("Items")
-                        .HasForeignKey("WishListID");
 
                     b.Navigation("Brand");
 
@@ -1126,12 +1109,20 @@ namespace EfrashBatek.Migrations
             modelBuilder.Entity("EfrashBatek.Models.WishList", b =>
                 {
                     b.HasOne("EfrashBatek.Models.Customer", "Customer")
+                        .WithMany("WishList")
+                        .HasForeignKey("CustomerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("EfrashBatek.Models.Item", "Item")
                         .WithMany()
-                        .HasForeignKey("CustomerID")
+                        .HasForeignKey("ItemId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Customer");
+
+                    b.Navigation("Item");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -1197,6 +1188,8 @@ namespace EfrashBatek.Migrations
                     b.Navigation("Customs");
 
                     b.Navigation("Orders");
+
+                    b.Navigation("WishList");
                 });
 
             modelBuilder.Entity("EfrashBatek.Models.Design", b =>
@@ -1245,11 +1238,6 @@ namespace EfrashBatek.Migrations
                     b.Navigation("AddressList");
 
                     b.Navigation("Videos");
-                });
-
-            modelBuilder.Entity("EfrashBatek.Models.WishList", b =>
-                {
-                    b.Navigation("Items");
                 });
 #pragma warning restore 612, 618
         }
