@@ -24,14 +24,14 @@ namespace EfrashBatek.Controllers
         IIdentityRepository _identityRepository;
         ICustomerRepository _customer;
 
-        public CustomsController(Context context, UserManager<User> userManager,
+        public CustomsController(Context context,UserManager<User> userManager,
             ICustomRepository customRepository, IWebHostEnvironment webHostEnvironment, ICustomerRepository customer)
         {
             _context = context;
             _userManager = userManager;
             _customRepository = customRepository;
             Ih = webHostEnvironment;
-
+           
             _customer = customer;
         }
         [HttpPost]
@@ -47,7 +47,7 @@ namespace EfrashBatek.Controllers
 
             _context.SaveChanges();
 
-
+          
 
             return RedirectToAction("ViewCustoms", "MyProfile");
 
@@ -95,7 +95,7 @@ namespace EfrashBatek.Controllers
             {
                 return RedirectToAction("Login", "Account");
             }
-            var zone = new SelectList(Enum.GetValues(typeof(Zone)));
+            var zone= new SelectList(Enum.GetValues(typeof(Zone)));
             ViewData["Zone"] = zone;
             return View();
         }
@@ -125,9 +125,9 @@ namespace EfrashBatek.Controllers
                 Customer customer = _customer.GetCustomerbyUserId();
                 cus.CustomerID = customer.Id;
                 cus.Customer = customer;
-                _customRepository.Create(cus);
-
-
+                _customRepository.Create(cus);  
+             
+               
             }
             //ViewData["CustomerID"] = new SelectList(_context.custom.Zone, "Id", "Id", custom.Zone);
             return RedirectToAction("ViewCustoms", "MyProfile");
@@ -183,7 +183,7 @@ namespace EfrashBatek.Controllers
         //}
 
         // GET: Customs/Delete/5
-
+     
         //// POST: Customs/Delete/5
         //[HttpPost, ActionName("Delete")]
         //[ValidateAntiForgeryToken]
