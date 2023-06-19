@@ -14,6 +14,7 @@
     <Content Remove="wwwroot\css\Items.css" />
     <Content Remove="wwwroot\css\orders.css" />
     <Content Remove="wwwroot\css\seller.css" />
+    <Content Remove="wwwroot\css\wishlist.css" />
     <Content Remove="wwwroot\Image\0.jpg" />
     <Content Remove="wwwroot\Image\00.webp" />
     <Content Remove="wwwroot\Image\1.jpg" />
@@ -305,7 +306,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\Image\custom\" />
     <Folder Include="wwwroot\Image\Items\" />
     <Folder Include="wwwroot\Image\Wish\" />
   </ItemGroup>

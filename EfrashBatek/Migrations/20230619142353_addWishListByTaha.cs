@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace EfrashBatek.Migrations
 {
-    public partial class Wish : Migration
+    public partial class addWishListByTaha : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -485,6 +485,25 @@ namespace EfrashBatek.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "WishLists",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CustomerId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_WishLists", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_WishLists_Customers_CustomerId",
+                        column: x => x.CustomerId,
+                        principalTable: "Customers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Designs",
                 columns: table => new
                 {
@@ -528,32 +547,6 @@ namespace EfrashBatek.Migrations
                     table.ForeignKey(
                         name: "FK_Videos_Items_ItemID",
                         column: x => x.ItemID,
-                        principalTable: "Items",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "WishLists",
-                columns: table => new
-                {
-                    ID = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ItemId = table.Column<int>(type: "int", nullable: false),
-                    CustomerId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_WishLists", x => x.ID);
-                    table.ForeignKey(
-                        name: "FK_WishLists_Customers_CustomerId",
-                        column: x => x.CustomerId,
-                        principalTable: "Customers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_WishLists_Items_ItemId",
-                        column: x => x.ItemId,
                         principalTable: "Items",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Restrict);
@@ -618,6 +611,32 @@ namespace EfrashBatek.Migrations
                         column: x => x.ShopID,
                         principalTable: "Shops",
                         principalColumn: "ID",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "WishListItems",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    WishListId = table.Column<int>(type: "int", nullable: false),
+                    ItemId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_WishListItems", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_WishListItems_Items_ItemId",
+                        column: x => x.ItemId,
+                        principalTable: "Items",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_WishListItems_WishLists_WishListId",
+                        column: x => x.WishListId,
+                        principalTable: "WishLists",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -850,14 +869,20 @@ namespace EfrashBatek.Migrations
                 column: "Order_ItemID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_WishLists_CustomerId",
-                table: "WishLists",
-                column: "CustomerId");
+                name: "IX_WishListItems_ItemId",
+                table: "WishListItems",
+                column: "ItemId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_WishLists_ItemId",
+                name: "IX_WishListItems_WishListId",
+                table: "WishListItems",
+                column: "WishListId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_WishLists_CustomerId",
                 table: "WishLists",
-                column: "ItemId");
+                column: "CustomerId",
+                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -911,7 +936,7 @@ namespace EfrashBatek.Migrations
                 name: "Warrantl_Requests");
 
             migrationBuilder.DropTable(
-                name: "WishLists");
+                name: "WishListItems");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
@@ -924,6 +949,9 @@ namespace EfrashBatek.Migrations
 
             migrationBuilder.DropTable(
                 name: "Order_Items");
+
+            migrationBuilder.DropTable(
+                name: "WishLists");
 
             migrationBuilder.DropTable(
                 name: "designers");
