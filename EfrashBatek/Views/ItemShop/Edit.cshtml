@@ -5,103 +5,180 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit Product</h1>
+<html lang="en" dir="ltr">
 
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit" enctype="multipart/form-data">
-            <div asp-validation-summary="All" class="text-danger"></div>
-            <input type="hidden" asp-for="ID" />
-            <div class="form-group">
-                <label asp-for="Code" class="control-label"></label>
-                <input asp-for="Code"  class="form-control" />
-                <span asp-validation-for="Code" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Price" class="control-label"></label>
-                <input asp-for="Price" class="form-control" />
-                <span asp-validation-for="Price" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Image" class="control-label"></label>
-                <input asp-for="Image" type="file"  class="form-control" />
-                <span asp-validation-for="Image" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Image2" class="control-label"></label>
-                <input asp-for="Image2" type="file" class="form-control" />
-                <span asp-validation-for="Image2" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Image3" class="control-label"></label>
-                <input asp-for="Image3" type="file" class="form-control" />
-                <span asp-validation-for="Image3" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Image4" class="control-label"></label>
-                <input asp-for="Image4" type="file" class="form-control" />
-                <span asp-validation-for="Image4" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Image5" class="control-label"></label>
-                <input asp-for="Image5" type="file" class="form-control" />
-                <span asp-validation-for="Image5" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="discount" class="control-label"></label>
-                <input asp-for="discount" class="form-control" />
-                <span asp-validation-for="discount" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PriceAfterSale" class="control-label"></label>
-                <input asp-for="PriceAfterSale" class="form-control" />
+<head>
+    <meta charset="UTF-8">
+    <title> Edit Item </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <!-- BOOTSTRAB -->
+    <link rel="stylesheet" type="text/css"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="~/css/edititem.css">
+    <link rel="stylesheet" href="~/css/seller.css">
+
+</head>
+
+<body>
+    <!-- SIDEBAR -->
+    <section id="sidebar">
+        <a href="#" class="brand">
+            <i class='bx bxs-smile'></i>
+            <span class="text">Efresh Beitak </span>
+        </a>
+        <ul class="side-menu top">
+            <li>
+                <a asp-action="Seller">
+                    <i class='bx bxs-dashboard'></i>
+                    <span class="text">Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="orders.html">
+                    <i class='bx bx-list-ul'></i>
+                    <span class="text">Order List </span>
+                </a>
+            </li>
+            <li class="active">
+                <a asp-action="Create">
+                    <i class='bx bx-list-plus'></i>
+                    <span class="text">Add Item</span>
+                </a>
+            </li>
+            <li>
+                <a href="Items.html">
+                    <i class='bx bx-list-plus'></i>
+                    <span class="text">Item</span>
+                </a>
+            </li>
+            <li>
+                <a href="###########################CUSTOMIZE ORDER">
+                    <i class='bx bx-list-plus'></i>
+                    <span class="text">Customize Order </span>
+                </a>
+            </li>
+        </ul>
+    </section>
+    <!-- SIDEBAR -->
+    <!-- NAVBAR -->
+    <section id="content">
+        <nav>
+            <i class='bx bx-menu'></i>
+        </nav>
+    </section>
+    <!-- NAVBAR -->
+
+
+ <div class="form">
+        <div class="namee">
+            <h4>edit<span> Item</span></h4>
+        </div>
+   <form asp-action="Edit" enctype="multipart/form-data">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <input type="hidden" asp-for="ID" />
+
+            <input asp-for="Name" class="form-control" type="text" id="pro" placeholder="product name" /> @*doneeeeeeee 2*@
+            <span asp-validation-for="Name" class="text-danger"></span>
+
+            <input asp-for="Code" class="form-control" type="text" id="pro" placeholder="product code" /> @*doneeeeeeee 1*@
+            <span asp-validation-for="Code" class="text-danger"></span>
+
+
+            <input asp-for="QuantityInStore" class="form-control" type="number" id="pro" placeholder="Quantity in store" />  @*doneeeeeeee 4*@
+            <span asp-validation-for="QuantityInStore" class="text-danger"></span>
+
+
+
+            <textarea id="des" placeholder="Product description" asp-for="Description"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+
+
+            <div class="product-price">
+
+
+
+                <input asp-for="PriceAfterSale" type="number" id="pro1" placeholder="selling price" />
                 <span asp-validation-for="PriceAfterSale" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="QuantityInStore" class="control-label"></label>
-                <input asp-for="QuantityInStore" class="form-control" />
-                <span asp-validation-for="QuantityInStore" class="text-danger"></span>
-            </div>
-            @*<div class="form-group">
-                <label asp-for="Brand.Name" class="control-label"></label>
-                <select asp-for="Brand.Name" class="form-control" asp-items="ViewBag.BrandName"></select>
-                <span asp-validation-for="Brand.Name" class="text-danger"></span>
-            </div>
-            
-            <div class="form-group">
-                <label asp-for="Shop.Name" class="control-label"></label>
-                <select asp-for="Shop.Name" class="form-control" asp-items="ViewBag.ShopName"></select>
-                <span asp-validation-for="ShopID" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Product.ProductName" class="control-label"></label>
-                <select asp-for="Product.ProductName" class="form-control" asp-items="ViewBag.ProductName"></select>
-                <span asp-validation-for="ProductID" class="text-danger"></span>
-            </div>*@
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
 
-<div>
-    <a asp-action="Index">My Product</a>
-</div>
+                <select asp-for="Brand_ID" class="form-control" asp-items="ViewBag.BrandName" id="pro"><option value="null">Brand Name</option></select> @*doneeeeeeee 3*@
 
+                <input asp-for="discount" type="number" id="pro1" placeholder="discount percentage" />
+                <span asp-validation-for="discount" class="text-danger"></span>
+
+                <select asp-for="ShopID" class="form-control" asp-items="ViewBag.ShopName" id="pro1"><option value="null">Shop Name</option></select>
+
+                <input asp-for="Price" type="number" id="pro1" placeholder="actual price" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+
+                <select asp-for="ProductID" class="form-control" asp-items="ViewBag.ProductName" id="pro1"> <option value="null">Product Name</option></select>
+
+                <input asp-for="DateTime" class="form-control" type="date" id="pro1" placeholder="DateTime" />
+                <span asp-validation-for="DateTime" class="text-danger"></span>
+
+            </div>
+            <!-- product image -->
+            <div class="product-info">
+                <div class="product-image">
+                    <p class="text">product image</p>
+                </div>
+                <div class="upload-image-sec">
+                    <!-- upload inputs -->
+                    <!-- <p class="text"><img src="image/products/Brown right L shaped sofa.jpg" alt="">upload image</p> -->
+                    <div class="upload-catalouge">
+
+
+                        <label asp-for="Image" for="first-file-upload-btn" class="upload-image control-label"></label>
+                        <input type="file" asp-for="Image" class="form-control" id="first-file-upload-btn" hidden />
+                        <span asp-validation-for="Image" class="text-danger"></span>
+
+                        <label asp-for="Image2" class="upload-image control-label" for="second-file-upload-btn"></label>
+                        <input type="file" asp-for="Image2" class="form-control" id="second-file-upload-btn" hidden />
+                        <span asp-validation-for="Image2" class="text-danger"></span>
+
+                        <label asp-for="Image3" class="upload-image control-label" for="third-file-upload-btn"></label>
+                        <input type="file" asp-for="Image3" class="form-control" id="third-file-upload-btn" hidden />
+                        <span asp-validation-for="Image3" class="text-danger"></span>
+
+                        <label asp-for="Image4" class="upload-image control-label" for="fourth-file-upload-btn"></label>
+                        <input type="file" asp-for="Image4" class="form-control" id="fourth-file-upload-btn" hidden />
+                        <span asp-validation-for="Image4" class="text-danger"></span>
+
+                        <label asp-for="Image5" class="upload-image control-label" for="fifth-file-upload-btn"></label>
+                        <input type="file" asp-for="Image5" class="form-control" id="fifth-file-upload-btn" hidden />
+                        <span asp-validation-for="Image5" class="text-danger"></span>
+
+
+
+
+                    </div>
+                </div>
+            </div>
+        <div class="buttons">
+            <button class="btn" id="add-btn">Save</button>
+        </div>
+   </form>
+  </div>
+    
+</body>
+<!-- SCRIPT -->
+<!-- SCRIPT -->
+<script src="~/js/script.js"></script>
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
 }
+
+
+</html>
+
+
+
+
+
+
+
+

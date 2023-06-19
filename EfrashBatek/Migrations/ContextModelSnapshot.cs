@@ -716,6 +716,29 @@ namespace EfrashBatek.Migrations
                     b.ToTable("WishListItems");
                 });
 
+            modelBuilder.Entity("EfrashBatek.ViewModel.AdminVM", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("AdminVM");
+                });
+
             modelBuilder.Entity("EfrashBatek.ViewModel.ForgetPasswordVM", b =>
                 {
                     b.Property<int>("ID")
@@ -915,7 +938,7 @@ namespace EfrashBatek.Migrations
                     b.HasOne("EfrashBatek.Models.Customer", "Customer")
                         .WithOne("Cart")
                         .HasForeignKey("EfrashBatek.Models.Cart", "CustomerID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Customer");
@@ -926,13 +949,13 @@ namespace EfrashBatek.Migrations
                     b.HasOne("EfrashBatek.Models.Cart", "Cart")
                         .WithMany("items")
                         .HasForeignKey("CartID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("EfrashBatek.Models.Item", "Item")
                         .WithMany("Cart_Items")
                         .HasForeignKey("ItemID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Cart");
@@ -945,7 +968,7 @@ namespace EfrashBatek.Migrations
                     b.HasOne("EfrashBatek.Models.Customer", "Customer")
                         .WithMany("Customs")
                         .HasForeignKey("CustomerID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Customer");
@@ -983,7 +1006,7 @@ namespace EfrashBatek.Migrations
                     b.HasOne("EfrashBatek.Models.Customer", "Customer")
                         .WithMany()
                         .HasForeignKey("OrderItemID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("EfrashBatek.Models.Order_Item", "Order_Item")
@@ -1000,19 +1023,19 @@ namespace EfrashBatek.Migrations
                     b.HasOne("EfrashBatek.Models.Brand", "Brand")
                         .WithMany()
                         .HasForeignKey("Brand_ID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("EfrashBatek.Models.Product", "Product")
                         .WithMany("Items")
                         .HasForeignKey("ProductID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("EfrashBatek.Models.Shop", "Shop")
                         .WithMany("Item")
                         .HasForeignKey("ShopID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Brand");
@@ -1027,13 +1050,13 @@ namespace EfrashBatek.Migrations
                     b.HasOne("EfrashBatek.Models.Address", "Address")
                         .WithMany()
                         .HasForeignKey("AddressID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("EfrashBatek.Models.Customer", "Customer")
                         .WithMany("Orders")
                         .HasForeignKey("CustomerID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Address");
@@ -1046,19 +1069,19 @@ namespace EfrashBatek.Migrations
                     b.HasOne("EfrashBatek.Models.Item", "item")
                         .WithMany("Order_Items")
                         .HasForeignKey("ItemID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("EfrashBatek.Models.Order", "Order")
                         .WithMany("Order_Item")
                         .HasForeignKey("OrderID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("EfrashBatek.Models.Shop", "Shop")
                         .WithMany("Order_Item")
                         .HasForeignKey("ShopID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("item");
@@ -1073,7 +1096,7 @@ namespace EfrashBatek.Migrations
                     b.HasOne("EfrashBatek.Models.Design", "Design")
                         .WithMany("Photos")
                         .HasForeignKey("DesignID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Design");
@@ -1084,7 +1107,7 @@ namespace EfrashBatek.Migrations
                     b.HasOne("EfrashBatek.Models.Shop", "Shop")
                         .WithMany("Staff")
                         .HasForeignKey("ShopID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("EfrashBatek.Models.User", "User")
@@ -1101,7 +1124,7 @@ namespace EfrashBatek.Migrations
                     b.HasOne("EfrashBatek.Models.Item", "Item")
                         .WithMany()
                         .HasForeignKey("ItemID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("EfrashBatek.Models.User", "User")
@@ -1118,7 +1141,7 @@ namespace EfrashBatek.Migrations
                     b.HasOne("EfrashBatek.Models.Order_Item", "Order_Item")
                         .WithMany()
                         .HasForeignKey("Order_ItemID")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Order_Item");
@@ -1129,7 +1152,7 @@ namespace EfrashBatek.Migrations
                     b.HasOne("EfrashBatek.Models.Customer", "Customer")
                         .WithOne("WishList")
                         .HasForeignKey("EfrashBatek.Models.WishList", "CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Customer");
@@ -1140,13 +1163,13 @@ namespace EfrashBatek.Migrations
                     b.HasOne("EfrashBatek.Models.Item", "Item")
                         .WithMany("WishListItems")
                         .HasForeignKey("ItemId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("EfrashBatek.Models.WishList", "WishList")
                         .WithMany("WishListItems")
                         .HasForeignKey("WishListId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Item");
@@ -1159,7 +1182,7 @@ namespace EfrashBatek.Migrations
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -1168,7 +1191,7 @@ namespace EfrashBatek.Migrations
                     b.HasOne("EfrashBatek.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -1177,7 +1200,7 @@ namespace EfrashBatek.Migrations
                     b.HasOne("EfrashBatek.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -1186,13 +1209,13 @@ namespace EfrashBatek.Migrations
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
                         .WithMany()
                         .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("EfrashBatek.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
@@ -1201,7 +1224,7 @@ namespace EfrashBatek.Migrations
                     b.HasOne("EfrashBatek.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
