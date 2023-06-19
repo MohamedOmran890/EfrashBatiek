@@ -14,7 +14,7 @@ namespace EfrashBatek.Models
         [Required]
         public string Description { get; set; }
         [Required]
-        public Zones Zone { get; set; }
+        public Zone Zone { get; set; }
         [Required]
         public string Image { get; set; }
         [ForeignKey("Customer")]
