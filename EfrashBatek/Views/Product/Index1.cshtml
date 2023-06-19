@@ -1,0 +1,350 @@
+﻿@{
+    Layout = null;
+}
+@model IEnumerable<EfrashBatek.Models.Item>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS-link -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <!-- Code by Angela Delise
+    https://codepen.io/angeladelise/pen/yLJdgYx -->
+
+    <link rel="stylesheet" href="~/css/main.css">
+    <link rel="shortcut icon" href="image/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600;700&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+          integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="~/js/script.js"></script>
+    <title>Efresh Beitak</title>
+</head>
+
+
+<body>
+
+
+    <header>
+        <a href="/Home/TrendingProducts" class="logo"><img src="~/Image/logo.png" alt=""></a>
+
+        <ul class="navmenu">
+            <li><a asp-controller="Product" asp-action="Index1">Products</a></li>
+
+            <li><a asp-controller="Customs" asp-action="Create">Custom order</a></li>
+            <li><a asp-controller="Designs" asp-action="Index">Designs</a></li>
+
+
+
+        </ul>
+
+
+        <div class="nav-icon">
+            <a asp-controller="" asp-action=""><i class='bx bx-search'></i></a>
+            <a asp-controller="MyProfile" asp-action="UpdateProfile"><i class='bx bx-user'></i></a>
+            <a asp-controller="Cart" asp-action="Index"><i class='bx bx-cart'></i></a>
+            <a asp-controller="WishList" asp-action="Index"><i class='bx bx-heart' undefined></i></a>
+            <div class="bx bx-menu" id="menu-icon"></div>
+        </div>
+
+
+    </header>
+
+
+    <div class="modal" data-modal>
+
+        <div class="modal-close-overlay" data-modal-overlay></div>
+
+        <div class="modal-content">
+
+            <button class="modal-close-btn" data-modal-close>
+                <ion-icon name="close-outline"></ion-icon>
+            </button>
+
+        </div>
+
+    </div>
+
+    <div>
+
+        <button class="toast-close-btn" data-toast-close>
+            <ion-icon name="close-outline"></ion-icon>
+        </button>
+
+    </div>
+
+
+
+    <main>
+        <!--
+          - PRODUCT
+        -->
+
+        <div class="product-container">
+
+            <div class="container">
+
+
+                <!--
+                  - SIDEBAR
+                -->
+                <!--static-->
+                <div class="sidebar  has-scrollbar" data-mobile-menu>
+                    <!--static-->
+                    <div class="sidebar-category">
+                        <!--static-->
+                        <div class="sidebar-top">
+                            <h2 class="sidebar-title">Category</h2>
+                            <!--static-->
+                            <button class="sidebar-close-btn" data-mobile-menu-close-btn>
+                                <ion-icon name="close-outline"></ion-icon>
+                            </button>
+                        </div>
+
+                        <!--static-->
+                        <ul class="sidebar-menu-category-list">
+
+
+
+                            @foreach (var cate in ViewBag.categoryToProducts)
+                            {
+                                Category categoryName = cate.Key;
+                                List<Product> productList = cate.Value;
+                                <li class="sidebar-menu-category">
+
+
+                                    <!--futrue-->
+                                    <button class="sidebar-accordion-menu" data-accordion-btn>
+
+                                        <div class="menu-title-flex">
+                                            <img src="ّ~/Image/icons/bag.png" alt="furniture" width="20" height="20" class="menu-title-img">
+                                            <a asp-action="ItembyCategory" asp-controller="Product" asp-route-productName="@cate.Key" class="sidebar-submenu-title">
+
+                                            <p class="menu-title">@categoryName</p>
+                                            </a>
+                                        </div>
+
+                                        <div>
+                                            <ion-icon name="add-outline" class="add-icon"></ion-icon>
+                                            <ion-icon name="remove-outline" class="remove-icon"></ion-icon>
+                                        </div>
+
+                                    </button>
+                                    <!--sub-->
+                                    <ul class="sidebar-submenu-category-list" data-accordion>
+                                        @foreach (var product in productList)
+                                        {
+
+
+
+                                            <li class="sidebar-submenu-category">
+                                                <a href="#" class="sidebar-submenu-title">
+                                                    <p class="product-name">@product.ProductName</p>
+                                                    <data value="87" class="stock" title="Available Stock">87</data>
+                                                </a>
+                                            </li>
+
+
+
+                                        }
+                                    </ul>
+                                </li>
+                            }
+
+
+
+
+
+
+                        </ul>
+
+                    </div>
+                </div>
+
+
+
+                <div class="product-box">
+
+                    <!--
+                      - PRODUCT GRID
+                    -->
+                    <br>
+                    <br>
+                    <div class="product-main">
+                        <center>
+                            <h2 class="title">
+                                New
+                                <span>Products</span>
+                            </h2>
+                        </center>
+                        <div class="product-grid">
+                            @foreach(var item in Model )
+                            {
+                                <div class="showcase">
+
+                                    <div class="showcase-banner">
+                                        <a asp-action="ProductaDetails" asp-controller="Item" asp-route-id="@item.ID">
+                                            <img src="~/Image/products/@item.Image2" alt="Mens Winter Leathers Jackets"
+                                                 width="300" class="product-img hover">
+                                            <img asp-action="Index" asp-controller="Item" src="~/Image/products/@item.Image" alt="MEN Yarn Fleece Full-Zip Jacket"
+                                                 class="product-img default" width="300">
+
+                                        </a>
+
+
+
+                                        <p class="showcase-badge">@item.discount</p>
+                                        <div class="showcase-actions">
+
+
+
+                                            @using (Html.BeginForm("AddItemToWishlist", "WishList", FormMethod.Post))
+                                            {
+                                                @Html.Hidden("itemID", item.ID)
+                                                // Replace "Id" with the actual name of the ID property in your model
+
+                                                <button class="btn-action">
+                                                    <ion-icon name="heart-outline"></ion-icon>
+                                                </button>
+
+                                            }
+                                            @using (Html.BeginForm("AddToCart", "Cart", FormMethod.Post))
+                                            {
+                                                @Html.Hidden("itemID", item.ID)
+                                                // Replace "Id" with the actual name of the ID property in your model
+
+                                                <button class="btn-action">
+                                                    <ion-icon name="bag-add-outline"></ion-icon>
+                                                </button>
+                                            }
+
+
+                                        </div>
+
+
+                                    </div>
+
+                                    <div class="showcase-content">
+
+                                        <a asp-action="ProductaDetails" asp-controller="Item" asp-route-id="@item.ID" class="showcase-category">Bed Room</a>
+
+                                        <a asp-action="ProductaDetails" asp-controller="Item" asp-route-id="@item.ID">
+                                            <h3 class="showcase-title">@item.Product?.ProductName</h3>
+                                        </a>
+
+                                        <div class="showcase-rating">
+                                            <ion-icon name="star"></ion-icon>
+                                            <ion-icon name="star"></ion-icon>
+                                            <ion-icon name="star"></ion-icon>
+                                            <ion-icon name="star-outline"></ion-icon>
+                                            <ion-icon name="star-outline"></ion-icon>
+                                        </div>
+
+                                        <div class="price-box">
+                                            <p class="price">
+                                                @String.Format("{0:0.00}", item.Price) EPG
+                                            </p>
+                                            <del>
+                                                @String.Format("{0:0.00}", item.PriceAfterSale) EPG
+                                                EGP
+                                            </del>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                
+                            }
+                          
+
+                           
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!--
+          - FOOTER
+        -->
+
+        <footer>
+
+            <section class="contact">
+                <div class="contact-info">
+                    <div class="first-info">
+                        <img src="image/logo.png" alt="">
+                        <p>+201004443226</p>
+                        <p>efresh.beitak@gmail.com</p>
+
+                    </div>
+
+                    <div class="second-info">
+                        <h4>Support</h4>
+                        <a href="contact us.html">
+                            <p>Contact us</p>
+                        </a>
+                        <a href="about us.html">
+                            <p>About page</p>
+                        </a>
+                        <p>Shopping & Resturns</p>
+                        <p>Privacy</p>
+                    </div>
+
+                    <div class="third-info">
+                        <h4>category</h4>
+                        <p>Home Appliances</p>
+                        <p>Kitchen utensils</p>
+                        <p>Furniture</p>
+                        <p>kitchen</p>
+                    </div>
+
+                    <div class="five">
+                        <h4>JOIN OUR EMAIL NEWSLETTER</h4>
+                        <form>
+                            <div class="form-group">
+                                <input type="text" class="Input" placeholder="Enter Your Email." /><br><br>
+                                <button type="submit" class="btn btn-default submit">
+                                    Submit
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </footer>
+
+
+
+
+
+
+        <!--
+          - custom js link
+        -->
+        <!--
+          - ionicon link
+        -->
+        <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>

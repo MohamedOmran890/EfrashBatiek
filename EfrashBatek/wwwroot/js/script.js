@@ -1,76 +1,71 @@
-const allSideMenu = document.querySelectorAll('#sidebar .side-menu.top li a');
+'use strict';
 
-allSideMenu.forEach(item=> {
-	const li = item.parentElement;
+// modal variables
+const modal = document.querySelector('[data-modal]');
+const modalCloseBtn = document.querySelector('[data-modal-close]');
+const modalCloseOverlay = document.querySelector('[data-modal-overlay]');
 
-	item.addEventListener('click', function () {
-		allSideMenu.forEach(i=> {
-			i.parentElement.classList.remove('active');
-		})
-		li.classList.add('active');
-	})
-});
+// modal function
+const modalCloseFunc = function () { modal.classList.add('closed') }
 
+// modal eventListener
+modalCloseOverlay.addEventListener('click', modalCloseFunc);
+modalCloseBtn.addEventListener('click', modalCloseFunc);
 
+// mobile menu variables
+const mobileMenuOpenBtn = document.querySelectorAll('[data-mobile-menu-open-btn]');
+const mobileMenu = document.querySelectorAll('[data-mobile-menu]');
+const mobileMenuCloseBtn = document.querySelectorAll('[data-mobile-menu-close-btn]');
+const overlay = document.querySelector('[data-overlay]');
 
+for (let i = 0; i < mobileMenuOpenBtn.length; i++) {
 
-// TOGGLE SIDEBAR
-const menuBar = document.querySelector('#content nav .bx.bx-menu');
-const sidebar = document.getElementById('sidebar');
+  // mobile menu function
+  const mobileMenuCloseFunc = function () {
+    mobileMenu[i].classList.remove('active');
+    overlay.classList.remove('active');
+  }
 
-menuBar.addEventListener('click', function () {
-	sidebar.classList.toggle('hide');
-})
+  mobileMenuOpenBtn[i].addEventListener('click', function () {
+    mobileMenu[i].classList.add('active');
+    overlay.classList.add('active');
+  });
 
+  mobileMenuCloseBtn[i].addEventListener('click', mobileMenuCloseFunc);
+  overlay.addEventListener('click', mobileMenuCloseFunc);
 
-
-
-
-
-
-const searchButton = document.querySelector('#content nav form .form-input button');
-const searchButtonIcon = document.querySelector('#content nav form .form-input button .bx');
-const searchForm = document.querySelector('#content nav form');
-
-searchButton.addEventListener('click', function (e) {
-	if(window.innerWidth < 576) {
-		e.preventDefault();
-		searchForm.classList.toggle('show');
-		if(searchForm.classList.contains('show')) {
-			searchButtonIcon.classList.replace('bx-search', 'bx-x');
-		} else {
-			searchButtonIcon.classList.replace('bx-x', 'bx-search');
-		}
-	}
-})
-
-
-
-
-
-if(window.innerWidth < 768) {
-	sidebar.classList.add('hide');
-} else if(window.innerWidth > 576) {
-	searchButtonIcon.classList.replace('bx-x', 'bx-search');
-	searchForm.classList.remove('show');
 }
 
 
-window.addEventListener('resize', function () {
-	if(this.innerWidth > 576) {
-		searchButtonIcon.classList.replace('bx-x', 'bx-search');
-		searchForm.classList.remove('show');
-	}
-})
 
 
 
-const switchMode = document.getElementById('switch-mode');
+// accordion variables
+const accordionBtn = document.querySelectorAll('[data-accordion-btn]');
+const accordion = document.querySelectorAll('[data-accordion]');
 
-switchMode.addEventListener('change', function () {
-	if(this.checked) {
-		document.body.classList.add('dark');
-	} else {
-		document.body.classList.remove('dark');
-	}
-})
+for (let i = 0; i < accordionBtn.length; i++) {
+
+  accordionBtn[i].addEventListener('click', function () {
+
+    const clickedBtn = this.nextElementSibling.classList.contains('active');
+
+    for (let i = 0; i < accordion.length; i++) {
+
+      if (clickedBtn) break;
+
+      if (accordion[i].classList.contains('active')) {
+
+        accordion[i].classList.remove('active');
+        accordionBtn[i].classList.remove('active');
+
+      }
+
+    }
+
+    this.nextElementSibling.classList.toggle('active');
+    this.classList.toggle('active');
+
+  });
+
+}

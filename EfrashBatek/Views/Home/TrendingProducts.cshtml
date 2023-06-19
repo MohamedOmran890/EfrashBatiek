@@ -3,27 +3,33 @@
     Layout = "CustomerLayout";
 
 }
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- CSS-link -->
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
-<!-- Code by Angela Delise
-https://codepen.io/angeladelise/pen/yLJdgYx -->
 
-<link rel="stylesheet" href="~/css/main.css">
-<link rel="shortcut icon" href="~/Image/favicon.ico" type="image/x-icon">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600;700&display=swap"
-      rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
-      integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-      crossorigin="anonymous" referrerpolicy="no-referrer" />
-<link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-<link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
-<link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS-link -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <!-- Code by Angela Delise
+    https://codepen.io/angeladelise/pen/yLJdgYx -->
+
+    <link rel="stylesheet" href="~/css/main.css">
+    <link rel="shortcut icon" href="image/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600;700&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+          integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="~/js/script.js"></script>
+    <title>Efresh Beitak</title>
+
+
 
 <!--main home section-->
 <section class="main-home">
@@ -62,29 +68,21 @@ https://codepen.io/angeladelise/pen/yLJdgYx -->
                         <div class="showcase">
 
                             <div class="showcase-banner">
+                                <a asp-action="ProductaDetails" asp-controller="Item" asp-route-id="@item.ID">
 
-                                <!--image-->
-                                <a asp-action="Index" asp-controller="Item">
-                                    <img src="~/Image/products/@item.Image" alt="Mens Winter Leathers Jackets"
-                                         width="300" class="product-img hover">
-                                </a>
-                                <!--image-->
-                                <img src="~/Image/products/@item.Image2" alt="MEN Yarn Fleece Full-Zip Jacket"
+                               
+                                <img asp-action ="ProductaDetails" asp-controller="Item" asp-route-id="@item.ID" src="~/Image/products/@item.Image2" alt="Mens Winter Leathers Jackets"
+                                     width="300" class="product-img hover">
+                                <img asp-action="ProductaDetails" asp-controller="Item" asp-route-id="@item.ID"  src="~/Image/products/@item.Image" alt="MEN Yarn Fleece Full-Zip Jacket"
                                      class="product-img default" width="300">
-                                <!--discount-->
-                                <p class="showcase-badge">@item.discount%</p>
+                                     </a>
 
+
+
+                                <p class="showcase-badge">@item.discount</p>
                                 <div class="showcase-actions">
 
-                                    @using (Html.BeginForm("AddToCart", "Cart", FormMethod.Post))
-                                    {
-                                        @Html.Hidden("itemID", item.ID)
-                                        // Replace "Id" with the actual name of the ID property in your model
 
-                                        <button type="submit" class="btn-action">
-                                            <i class="ion-icon" data-name="heart-outline"></i>
-                                        </button>
-                                    }
 
                                     @using (Html.BeginForm("AddItemToWishlist", "WishList", FormMethod.Post))
                                     {
@@ -92,44 +90,56 @@ https://codepen.io/angeladelise/pen/yLJdgYx -->
                                         // Replace "Id" with the actual name of the ID property in your model
 
                                         <button class="btn-action">
-                                            <ion-icon name="bag-add-outline"></ion-icon>
+                                            <ion-icon name="heart-outline"></ion-icon>
                                         </button>
 
                                     }
+                                    @using (Html.BeginForm("AddToCart", "Cart", FormMethod.Post))
+                                    {
+                                        @Html.Hidden("itemID", item.ID)
+                                        // Replace "Id" with the actual name of the ID property in your model
 
+                                        <button class="btn-action">
+                                            <ion-icon name="bag-add-outline"></ion-icon>
+                                        </button>
+                                    }
 
 
                                 </div>
 
-                                <div class="showcase-content">
-                                    <!--item category  -->
-                                    <a href="product details.html" class="showcase-category">@item.Product.ProductName</a>
 
-                                    <a href="product details.html">
-                                        <!--item product  -->
-                                        <h3 class="showcase-title">@item.Name</h3>
-                                    </a>
-                                    <!---starts=-->
-                                    <div class="showcase-rating">
-                                        <ion-icon name="star"></ion-icon>
-                                        <ion-icon name="star"></ion-icon>
-                                        <ion-icon name="star"></ion-icon>
-                                        <ion-icon name="star-outline"></ion-icon>
-                                        <ion-icon name="star-outline"></ion-icon>
-                                    </div>
-                                    <!--prices-->
-                                    <div class="price-box">
-                                        <p class="price">
-                                            @String.Format("{0:0.00}", item.Price) EPG
-
-                                        </p>
-                                        <del>@item.PriceAfterSale$</del>
-                                    </div>
-                                </div>
                             </div>
+
+                            <div class="showcase-content">
+
+                                <a asp-action="ProductaDetails" asp-controller="Item" asp-route-id="@item.ID" class="showcase-category">Bed Room</a>
+
+                                <a asp-action="ProductaDetails" asp-controller="Item" asp-route-id="@item.ID">
+                                    <h3 class="showcase-title">@item.Product.ProductName</h3>
+                                </a>
+
+                                <div class="showcase-rating">
+                                    <ion-icon name="star"></ion-icon>
+                                    <ion-icon name="star"></ion-icon>
+                                    <ion-icon name="star"></ion-icon>
+                                    <ion-icon name="star-outline"></ion-icon>
+                                    <ion-icon name="star-outline"></ion-icon>
+                                </div>
+
+                                <div class="price-box">
+                                    <p class="price">
+                                        @String.Format("{0:0.00}", item.Price) EPG
+                                    </p>
+                                    <del>
+                                        @String.Format("{0:0.00}", item.PriceAfterSale) EPG
+                                        EGP
+                                    </del>
+                                </div>
+
+                            </div>
+
                         </div>
 
-                        @*   <a asp-action="AddToCart" asp-controller="Cart" asp-route-id=@item.ID><i class='bx bx-cart'></i></a>*@
                     }
 
 
@@ -160,67 +170,79 @@ https://codepen.io/angeladelise/pen/yLJdgYx -->
 
                     @foreach (var item in Model.Key)
                     {
-                        <div class="showcase">
+                         <div class="showcase">
 
                             <div class="showcase-banner">
-
-                                <!--image-->
-                                <a asp-action="Index" asp-controller="Item">
-                                    <img src="~/Image/products/@item.Image" alt="Mens Winter Leathers Jackets"
+                                <a asp-action="ProductaDetails" asp-controller="Item" asp-route-id="@item.ID">
+                                    <img src="~/Image/products/@item.Image2" alt="Mens Winter Leathers Jackets"
                                          width="300" class="product-img hover">
-                                </a>
-                                <!--image-->
-                                <img src="~/Image/products/@item.Image2" alt="MEN Yarn Fleece Full-Zip Jacket"
-                                     class="product-img default" width="300">
-                                <!--discount-->
-                                <p class="showcase-badge">@item.discount%</p>
+                                    <img asp-action="Index" asp-controller="Item" src="~/Image/products/@item.Image" alt="MEN Yarn Fleece Full-Zip Jacket"
+                                         class="product-img default" width="300">
 
+                                </a>
+                               
+
+
+                                <p class="showcase-badge">@item.discount</p>
                                 <div class="showcase-actions">
 
+
+
+                                    @using (Html.BeginForm("AddItemToWishlist", "WishList", FormMethod.Post))
+                                    {
+                                        @Html.Hidden("itemID", item.ID)
+                                        // Replace "Id" with the actual name of the ID property in your model
+
+                                        <button class="btn-action">
+                                            <ion-icon name="heart-outline"></ion-icon>
+                                        </button>
+
+                                    }
                                     @using (Html.BeginForm("AddToCart", "Cart", FormMethod.Post))
                                     {
-                                        @Html.Hidden("id", item.ID)
+                                        @Html.Hidden("itemID", item.ID)
                                         // Replace "Id" with the actual name of the ID property in your model
-                                        <button type="submit" class="btn-action">
-                                            <i class="ion-icon" data-name="heart-outline"></i>
+
+                                        <button class="btn-action">
+                                            <ion-icon name="bag-add-outline"></ion-icon>
                                         </button>
                                     }
-                                    <button class="btn-action">
-                                        <ion-icon name="bag-add-outline"></ion-icon>
-                                    </button>
+
 
                                 </div>
 
-                                <div class="showcase-content">
-                                    <!--item category  -->
-                                    <!--null execption  item.product.productname-->
-                                    <a href="" class="showcase-category">@item.Product?.ProductName</a>
 
-                                    <a href="product details.html">
-                                        <!--item product  -->
-                                        <h3 class="showcase-title">@item.Name</h3>
-                                    </a>
-                                    <!---starts=-->
-                                    <div class="showcase-rating">
-                                        <ion-icon name="star"></ion-icon>
-                                        <ion-icon name="star"></ion-icon>
-                                        <ion-icon name="star"></ion-icon>
-                                        <ion-icon name="star-outline"></ion-icon>
-                                        <ion-icon name="star-outline"></ion-icon>
-                                    </div>
-                                    <!--prices-->
-                                    <div class="price-box">
-                                        <p class="price">
-                                            @String.Format("{0:0.00}", item.Price) EPG
-
-                                        </p>
-                                        <del>@item.PriceAfterSale$</del>
-                                    </div>
-                                </div>
                             </div>
-                        </div>
 
-                        @*   <a asp-action="AddToCart" asp-controller="Cart" asp-route-id=@item.ID><i class='bx bx-cart'></i></a>*@
+                            <div class="showcase-content">
+
+                                <a asp-action="ProductaDetails" asp-controller="Item" asp-route-id="@item.ID"class="showcase-category">Bed Room</a>
+
+                                <a asp-action="ProductaDetails" asp-controller="Item" asp-route-id="@item.ID">
+                                    <h3 class="showcase-title">@item.Product?.ProductName</h3>
+                                </a>
+
+                                <div class="showcase-rating">
+                                    <ion-icon name="star"></ion-icon>
+                                    <ion-icon name="star"></ion-icon>
+                                    <ion-icon name="star"></ion-icon>
+                                    <ion-icon name="star-outline"></ion-icon>
+                                    <ion-icon name="star-outline"></ion-icon>
+                                </div>
+
+                                <div class="price-box">
+                                    <p class="price">
+                                        @String.Format("{0:0.00}", item.Price) EPG
+                                    </p>
+                                    <del>
+                                        @String.Format("{0:0.00}", item.PriceAfterSale) EPG
+                                        EGP
+                                    </del>
+                                </div>
+
+                            </div>
+
+                        </div>
                     }
 
 
@@ -239,3 +261,5 @@ https://codepen.io/angeladelise/pen/yLJdgYx -->
 </section>
 
 
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

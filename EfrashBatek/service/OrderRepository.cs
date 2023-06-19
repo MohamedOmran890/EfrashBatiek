@@ -8,7 +8,7 @@ namespace EfrashBatek.service
     {
         Context context;
         private readonly IIdentityRepository repository;
-        Order_Item item;
+     
         public OrderRepository(Context context , IIdentityRepository repository )
         {
             this.context = context;

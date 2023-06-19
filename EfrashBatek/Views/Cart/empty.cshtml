@@ -74,7 +74,12 @@
                     <h3>You have 0 item in your bag</h3>
                 </div>
                 <p class="empty">Your cart is empty</p>
+            @using (Html.BeginForm( "Index1", "Product", FormMethod.Post))
+            {
                 <input type="submit" value="start Shopping">
+
+            }
+
 
             </div>
         </div>
