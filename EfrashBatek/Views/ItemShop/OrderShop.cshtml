@@ -85,7 +85,7 @@
                     @foreach(var order in Model)
                     {
                         <tr>
-                            <td>@order.Order.OrderCode</td>
+                            <td>@order.OrderID</td>
                             <td>@order.Order.OrderDate/@order.Order.OrderDate.Month/@order.Order.OrderDate.Year</td>
 
                             <td>@order.Order.Customer.User.FirstName</td>
