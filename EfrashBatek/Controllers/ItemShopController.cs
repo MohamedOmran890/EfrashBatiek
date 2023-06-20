@@ -318,7 +318,17 @@ namespace EfrashBatek.Controllers
             //{
             //    orders = order,
             //};
-            return View(order);
+
+            foreach(var item in order)
+            {
+                item.Order = _context.Orders.FirstOrDefault(i => i.ID == item.OrderID);
+                item.Order.Customer = _context.Customers.FirstOrDefault(i => i.Id == item.Order.CustomerID);
+                item.Order.Customer.User = _context.Users.FirstOrDefault(i => i.Id == item.Order.Customer.UserId);
+                item.item = _context.Items.FirstOrDefault(i => i.ID== item.ItemID);
+
+
+            }
+            return View(order.ToList());
         }
         public IActionResult DeleteOrder(int id)
         {
