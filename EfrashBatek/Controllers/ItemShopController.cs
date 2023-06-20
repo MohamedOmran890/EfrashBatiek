@@ -53,19 +53,19 @@ namespace EfrashBatek.Controllers
         public IActionResult Seller()
         {
             
-            // user- -> selller id --> user --> shopid --> orderitem
-            User user = IdentityRepository.GetUser();
-            Staff seller=  _context.The_Staff.FirstOrDefault(i=>i.UserId == user.Id);
-            var orders = _context.Order_Items.Where(i => i.ShopID == seller.ShopID).ToList();
-            var Dash = new DashboardViewModel
-            {
+            //// user- -> selller id --> user --> shopid --> orderitem
+            //User user = IdentityRepository.GetUser();
+            //Staff seller=  _context.The_Staff.FirstOrDefault(i=>i.UserId == user.Id);
+            //var orders = _context.Order_Items.Where(i => i.ShopID == seller.ShopID).ToList();
+            //var Dash = new DashboardViewModel
+            //{
                  
-                TotalOrders = orders.Count(),   
+            //    TotalOrders = orders.Count(),   
                
-            };
+            //};
 
 
-            return View(Dash);
+            return View();
         }
       
         public IActionResult Orders()
@@ -351,7 +351,7 @@ namespace EfrashBatek.Controllers
             return RedirectToAction("OrderShop","ItemShop");
 
         }
-        public IActionResult Custome()
+        public IActionResult CustomOrder()
         {
             var custom = _context.Customs.ToList();
             return View(custom);

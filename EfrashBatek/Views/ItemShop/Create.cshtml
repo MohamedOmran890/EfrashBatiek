@@ -25,38 +25,34 @@
 
 <body>
     <!-- SIDEBAR -->
+    <
     <section id="sidebar">
         <a href="#" class="brand">
             <i class='bx bxs-smile'></i>
             <span class="text">Efresh Beitak </span>
         </a>
         <ul class="side-menu top">
-            <li>
+            <li class="active">
                 <a asp-action="Seller">
                     <i class='bx bxs-dashboard'></i>
                     <span class="text">Dashboard</span>
                 </a>
             </li>
-            <li class="active">
+            <li>
                 <a asp-action="Orders">
                     <i class='bx bx-list-ul'></i>
                     <span class="text">Order List </span>
                 </a>
             </li>
-            <li >
+            <li>
                 <a asp-action="Create">
                     <i class='bx bx-list-plus'></i>
                     <span class="text">Add Item</span>
                 </a>
             </li>
+            
             <li>
-                <a href="Items.html">
-                    <i class='bx bx-list-plus'></i>
-                    <span class="text">Item</span>
-                </a>
-            </li>
-            <li>
-                <a href="###########################CUSTOMIZE ORDER">
+                <a asp-action="CustomOrder">
                     <i class='bx bx-list-plus'></i>
                     <span class="text">Customize Order </span>
                 </a>
