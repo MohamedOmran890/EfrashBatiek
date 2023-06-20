@@ -141,7 +141,8 @@ namespace EfrashBatek.Controllers
             {
                 // Add user to default role
                 //  await _userManager.AddToRoleAsync(user, "User");
-
+                var roleName = "Seller";
+                await _userManager.AddToRoleAsync(user, roleName);
                 // Redirect the user to the login page
                 _staff.Create(staff);
                 //  await EmailStaffService.SendEmail(model.Email, model.Username, model.Password, model.FirstName);
@@ -265,7 +266,46 @@ namespace EfrashBatek.Controllers
                 return Content("Error Try Again");
 
         }
-       
+        [AllowAnonymous]
+        [HttpGet]
+        public IActionResult AddAdmin()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> AddAdmin(AdminVM model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = new User
+                {
+                    UserName = model.Username,
+                    Email = model.Email,
+                    age = model.Age,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    BirthDate = model.Birthdate,
+                    Gender = (Gender)model.Gender,
+                };
+                var admin = new Admin
+                {
+                    UserId = user.Id
+                };
+                var result = await _userManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
+                {
+                    var roleName = "Admin";
+                    await _userManager.AddToRoleAsync(user, roleName);
+                    await _userManager.ConfirmEmailAsync(user, await _userManager.GenerateEmailConfirmationTokenAsync(user));
+
+                    return RedirectToAction("Index", "Admin");
+                }
+            }
+            return View(model);
+
+        }
+
+
 
 
 
