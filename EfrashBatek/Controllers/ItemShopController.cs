@@ -264,21 +264,26 @@ namespace EfrashBatek.Controllers
                var itm= shopRepository.ItemByShop(shop.ID);
             return View(itm);
         }
+		//test by mee
+		public IActionResult ShopItems()
+        {
+			return View();
+		}
 
-        //[HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> DeleteConfirmedAsync(int id)
-        //{
-        //    var item = _context.Items.Find(id);
-        //    _context.Items.Remove(item);
-        //    await _context.SaveChangesAsync();
-        //    return RedirectToAction(nameof(Index));
-        //}
+		//[HttpPost, ActionName("Delete")]
+		//[ValidateAntiForgeryToken]
+		//public async Task<IActionResult> DeleteConfirmedAsync(int id)
+		//{
+		//    var item = _context.Items.Find(id);
+		//    _context.Items.Remove(item);
+		//    await _context.SaveChangesAsync();
+		//    return RedirectToAction(nameof(Index));
+		//}
 
-        //private bool ItemExists(int id)
-        //{
-        //    return _context.Items.Any(e => e.ID == id);
-        //}
-     
-    }
+		//private bool ItemExists(int id)
+		//{
+		//    return _context.Items.Any(e => e.ID == id);
+		//}
+
+	}
 }
