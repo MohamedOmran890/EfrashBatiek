@@ -10,6 +10,7 @@ using EfrashBatek.service;
 using Microsoft.AspNetCore.Hosting;
 using EfrashBatek.ViewModel;
 using System.IO;
+using Castle.Core.Resource;
 
 namespace EfrashBatek.Controllers
 {
@@ -23,8 +24,13 @@ namespace EfrashBatek.Controllers
         IWebHostEnvironment Ih;
         IIdentityRepository IdentityRepository;
         IStaffRepository staffRepository;
+		ICustomerRepository customer;
+		IOrderRepository order;
+		IShopRepository shop;
 
-        public ItemShopController(Context context, IWebHostEnvironment Ih, IItemRepository itemRepo, IBrandRepository brandRepository, IShopRepository shopRepository, 
+
+		public ItemShopController(Context context, ICustomerRepository customer,
+			IOrderRepository order, IShopRepository shop, IWebHostEnvironment Ih, IItemRepository itemRepo, IBrandRepository brandRepository, IShopRepository shopRepository, 
             IProductRepository productRepository,IIdentityRepository identityRepository,IStaffRepository staffRepository)
         {
             _context = context;
@@ -35,21 +41,26 @@ namespace EfrashBatek.Controllers
             this.Ih = Ih;
             IdentityRepository = identityRepository;
             this.staffRepository = staffRepository;
-        }
+			this.customer = customer;
+			this.order = order;
+			this.shop = shop;
+
+		}
 
         [HttpGet]
         public IActionResult Index()
         {
             return View(itemRepo.GetAll());
         }
-        //bymee
+        //by meeeeee
         [HttpGet]
         public IActionResult Seller()
         {
             return View();
         }
+		
 
-        [HttpGet]
+		[HttpGet]
         public IActionResult Details(int? id)
         {
             if (id == null)

@@ -12,7 +12,7 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace EfrashBatek.Controllers
 {
-    [Authorize(Roles ="Admin")]
+    //[Authorize(Roles ="Admin")]
     public class AdminController : Controller
     {
         ICustomerRepository customer;
