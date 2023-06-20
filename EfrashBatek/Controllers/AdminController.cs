@@ -12,7 +12,7 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace EfrashBatek.Controllers
 {
-    [Authorize(Roles ="Admin")]
+    //[Authorize(Roles ="Admin")]
     public class AdminController : Controller
     {
         ICustomerRepository customer;
@@ -139,6 +139,7 @@ namespace EfrashBatek.Controllers
             var result = await _userManager.CreateAsync(user, model.Password);
             if (result.Succeeded)
             {
+                _userManager.AddToRoleAsync(user, "Seller");
                 // Add user to default role
                 //  await _userManager.AddToRoleAsync(user, "User");
 
@@ -265,7 +266,36 @@ namespace EfrashBatek.Controllers
                 return Content("Error Try Again");
 
         }
-       
+
+        [AllowAnonymous]
+        [HttpGet]
+        public IActionResult AddAdmin()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> AddAdmin(AdminVM model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = new User
+                {
+                    UserName = model.UserName,
+                    Email = model.Email
+                };
+                var result = await _userManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
+                {
+                    _userManager.AddToRoleAsync(user, "Admin");
+                    return RedirectToAction("Dashboard", "Admin");
+                }
+            }
+            return View(model);
+
+        }
+
+
+
 
 
 
