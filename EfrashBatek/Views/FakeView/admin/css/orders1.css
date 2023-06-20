@@ -364,6 +364,27 @@ table.table td a.delete {
   .btn:hover{
     background-color: #d2c7ca;
   }
+/* Media Query for smaller screens */
+@media screen and (max-width: 768px) {
+  /* SIDEBAR */
+  #sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
 
+  .side-menu {
+    margin-top: 20px;
+  }
 
-   
+  /* CONTENT */
+  #content {
+    margin-left: 0;
+  }
+
+  nav {
+    position: relative;
+    left: 0;
+    width: 100%;
+  }
+}
