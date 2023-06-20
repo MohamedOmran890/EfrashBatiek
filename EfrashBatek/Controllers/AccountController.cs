@@ -201,10 +201,19 @@ namespace EfrashBatek.Controllers
         }
         public IActionResult ResetPassword(string Email,string token)
         {
-            ResetPasswordVM model = new ResetPasswordVM();
-            model.Email = Email;
-            model.Token = token;
-            return View(model);
+            if (string.IsNullOrEmpty(token))
+            {
+                ViewBag.Message = "Please check your email and click on the link to reset your password.";
+                return View("Error");
+            }
+            if (token != null)
+            {
+                ResetPasswordVM model = new ResetPasswordVM();
+                model.Email = Email;
+                model.Token = token;
+                return View(model);
+            }
+            return RedirectToAction("Login", "Account");
         }
         [HttpPost]
         public async Task<IActionResult> ResetPassword(ResetPasswordVM model)
