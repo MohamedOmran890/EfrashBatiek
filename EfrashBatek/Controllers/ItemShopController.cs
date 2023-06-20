@@ -10,6 +10,8 @@ using EfrashBatek.service;
 using Microsoft.AspNetCore.Hosting;
 using EfrashBatek.ViewModel;
 using System.IO;
+using Castle.Core.Resource;
+using System.Xml.Schema;
 
 namespace EfrashBatek.Controllers
 {
@@ -23,9 +25,12 @@ namespace EfrashBatek.Controllers
         IWebHostEnvironment Ih;
         IIdentityRepository IdentityRepository;
         IStaffRepository staffRepository;
+        IOrder_ItemRepository order_ItemRepository;
 
         public ItemShopController(Context context, IWebHostEnvironment Ih, IItemRepository itemRepo, IBrandRepository brandRepository, IShopRepository shopRepository, 
-            IProductRepository productRepository,IIdentityRepository identityRepository,IStaffRepository staffRepository)
+            IProductRepository productRepository,
+            IIdentityRepository identityRepository,
+            IStaffRepository staffRepository,IOrder_ItemRepository order_ItemRepository)
         {
             _context = context;
             this.itemRepo = itemRepo;
@@ -35,6 +40,7 @@ namespace EfrashBatek.Controllers
             this.Ih = Ih;
             IdentityRepository = identityRepository;
             this.staffRepository = staffRepository;
+            this.order_ItemRepository = order_ItemRepository;
         }
 
         [HttpGet]
@@ -46,9 +52,22 @@ namespace EfrashBatek.Controllers
         [HttpGet]
         public IActionResult Seller()
         {
+            
+            //// user- -> selller id --> user --> shopid --> orderitem
+            //User user = IdentityRepository.GetUser();
+            //Staff seller=  _context.The_Staff.FirstOrDefault(i=>i.UserId == user.Id);
+            //var orders = _context.Order_Items.Where(i => i.ShopID == seller.ShopID).ToList();
+            //var Dash = new DashboardViewModel
+            //{
+                 
+            //    TotalOrders = orders.Count(),   
+               
+            //};
+
+
             return View();
         }
-        
+      
         public IActionResult Orders()
         {
             return View();
@@ -270,10 +289,15 @@ namespace EfrashBatek.Controllers
                 return RedirectToAction("Login","Account");
             }
             var Seller= staffRepository.GetByUser(user.Id);
+            if(Seller==null)
+            {
+                return RedirectToAction("Login","Account");
+            }
             var shop = shopRepository.GetById(Seller.ShopID);
                var itm= shopRepository.ItemByShop(shop.ID);
             return View(itm);
         }
+
 		
 
 		//[HttpPost, ActionName("Delete")]
@@ -291,5 +315,48 @@ namespace EfrashBatek.Controllers
 		//    return _context.Items.Any(e => e.ID == id);
 		//}
 
-	}
+        public IActionResult OrderShop()
+        {
+            var user = IdentityRepository.GetUser();
+            if (user == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            var Seller = staffRepository.GetByUser(user.Id);
+            if (Seller == null)
+            {
+                return View(new List<Order_Item>());
+            }
+            var shop = shopRepository.GetById(Seller.ShopID);
+            var order = order_ItemRepository.GetAllByShop(shop.ID);
+            //var orders = new DashBoardShopVM
+            //{
+            //    orders = order,
+            //};
+
+            foreach(var item in order)
+            {
+                item.Order = _context.Orders.FirstOrDefault(i => i.ID == item.OrderID);
+                item.Order.Customer = _context.Customers.FirstOrDefault(i => i.Id == item.Order.CustomerID);
+                item.Order.Customer.User = _context.Users.FirstOrDefault(i => i.Id == item.Order.Customer.UserId);
+                item.item = _context.Items.FirstOrDefault(i => i.ID== item.ItemID);
+
+
+            }
+            return View(order.ToList());
+        }
+        public IActionResult DeleteOrder(int id)
+        {
+            order_ItemRepository.Delete(id);
+            return RedirectToAction("OrderShop","ItemShop");
+
+        }
+        public IActionResult CustomOrder()
+        {
+            var custom = _context.Customs.ToList();
+            return View(custom);
+        }
+
+
+    }
 }

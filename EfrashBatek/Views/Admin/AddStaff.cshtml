@@ -43,38 +43,45 @@
     <!--ADD SELLER FORM-->
     <!--Layout -->
     <section id="sidebar">
-        <a asp-action="Index" asp-controller="Admin" class="brand">
+        <a asp-action="TrendingProducts" asp-controller="Home" class="brand">
             <i class='bx bxs-smile'></i>
             <span class="text">Efresh Beitak</span>
         </a>
         <ul class="side-menu top">
             <li>
-                <a asp-action="Dashboard">
+                <a asp-action="Index" asp-controller="Admin">
                     <i class='bx bxs-dashboard'></i>
                     <span class="text">Dashboard</span>
                 </a>
             </li>
             <li>
-                <a asp-action="Orders">
+                <a asp-action="Orders" asp-controller="Admin">
                     <i class='bx bx-list-ul'></i>
                     <span class="text">Order List </span>
                 </a>
             </li>
             <li class="active">
-                <a asp-action="AddStaff">
+                <a asp-action="AddStaff" asp-controller="Admin">
                     <i class='bx bx-list-plus'></i>
                     <span class="text">Add Seller</span>
                 </a>
             </li>
             <li>
-                <a asp-action="AddShop">
+                <a asp-action="AddShop" asp-controller="Admin">
                     <i class='bx bx-list-plus'></i>
                     <span class="text">Add Shop</span>
                 </a>
             </li>
+            <li>
+                <a asp-action="AddAdmin">
+                    <i class='bx bx-list-plus'></i>
+                    <span class="text">Add Admin</span>
+                </a>
+            </li>
+
             <!--Why Seller Details-->
             <li>
-                <a>
+                <a asp-action="SellerDetails" asp-controller="Admin">
                     <i class='bx bxs-group'></i>
                     <span class="text">Seller Details</span>
                 </a>

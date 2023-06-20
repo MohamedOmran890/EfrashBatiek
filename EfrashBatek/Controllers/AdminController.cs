@@ -24,11 +24,12 @@ namespace EfrashBatek.Controllers
         Context _context;
         EmailStaffService EmailStaffService;
         private readonly IUserRepository userRepository;
+        IAdminRepository adminRepository;
 
         public AdminController(UserManager<User>usermanager, ICustomerRepository customer,
             IOrderRepository order, IShopRepository shop, 
             IStaffRepository staff, IOrder_ItemRepository order_item, Context context
-            ,EmailStaffService emailStaffService , IUserRepository userRepository)
+            ,EmailStaffService emailStaffService , IUserRepository userRepository,IAdminRepository adminRepository)
         {
             this.customer = customer;
             this.order = order;
@@ -39,6 +40,7 @@ namespace EfrashBatek.Controllers
             _context = context;
             EmailStaffService = emailStaffService;
             this.userRepository = userRepository;
+            this.adminRepository = adminRepository;
         }
         // done - test 
         public IActionResult Index()
@@ -55,7 +57,7 @@ namespace EfrashBatek.Controllers
                  TotalCustomers = customer.TotalCustomers(),
                  TotalOrders = order.TotalOrders(),
                  Totalshop=shop.TotalShop() ,
-				orders = orderss ,
+				orders = orderss 
 
 			};
             return View(Dash);
@@ -139,14 +141,13 @@ namespace EfrashBatek.Controllers
             var result = await _userManager.CreateAsync(user, model.Password);
             if (result.Succeeded)
             {
-                _userManager.AddToRoleAsync(user, "Seller");
-                // Add user to default role
-                //  await _userManager.AddToRoleAsync(user, "User");
                 var roleName = "Seller";
                 await _userManager.AddToRoleAsync(user, roleName);
+                await _userManager.ConfirmEmailAsync(user, await _userManager.GenerateEmailConfirmationTokenAsync(user));
+
                 // Redirect the user to the login page
                 _staff.Create(staff);
-                //  await EmailStaffService.SendEmail(model.Email, model.Username, model.Password, model.FirstName);
+                  await EmailStaffService.SendEmail(model.Email, model.Username, model.Password, model.FirstName);
                 return Content("Done");
             }
 
@@ -182,7 +183,7 @@ namespace EfrashBatek.Controllers
             if (ModelState.IsValid)
             {
                 shop.Create(obj);
-                return View("Dashboard");
+                return View("Index");
             }
             else
                 return View("AddShop");
@@ -277,19 +278,44 @@ namespace EfrashBatek.Controllers
         [HttpPost]
         public async Task<IActionResult> AddAdmin(AdminVM model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
+             
+                return View(model);
+            }
+          
                 var user = new User
                 {
                     UserName = model.Username,
-                    Email = model.Email
+                    Email = model.Email,
+                    age = model.Age,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    BirthDate = model.Birthdate,
+                    Gender = (Gender)model.Gender,
                 };
-                var result = await _userManager.CreateAsync(user, model.Password);
-                if (result.Succeeded)
+                var admin = new Admin
                 {
-                    _userManager.AddToRoleAsync(user, "Admin");
-                    return RedirectToAction("Dashboard", "Admin");
-                }
+                    UserId = user.Id,
+                };
+            var result = await _userManager.CreateAsync(user, model.Password);
+            if (result.Succeeded)
+            {
+                var roleName = "Admin";
+                await _userManager.AddToRoleAsync(user, roleName);
+                // Redirect the user to the login page
+                adminRepository.Create(admin);
+                //wait EmailStaffService.SendEmail(model.Email, model.Username, model.Password, model.FirstName);
+                await _userManager.ConfirmEmailAsync(user, await _userManager.GenerateEmailConfirmationTokenAsync(user));
+                return RedirectToAction("Index");
+            }
+
+            //if(check==null)
+            //ModelState.AddModelError("","Not Found ShopNumber ");
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError("", error.Description);
+
             }
             return View(model);
 
