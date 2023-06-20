@@ -185,15 +185,16 @@
                     @Html.Hidden("selectedAddressId", y)
                     // Replace "Id" with the actual name of the ID property in your model
 
-                            <div class="summary-checkout">
-                                <a sp-action="Details" asp-controller="Checkout" asp-route-id="@ViewBag.cartID" asp-route-address="@ViewBag.selectedAddressId">
-                                    <button class="checkout-cta">Go to OrderDetails</button>
-
-                                </a>
-                               
-                                
-                            </div>
                 }
+
+                        <div class="summary-checkout">
+                            <a asp-action="Details" asp-controller="Checkout" asp-route-id="@ViewBag.cartID" asp-route-address="@ViewBag.selectedAddressId">
+                                <button class="checkout-cta">Go to OrderDetails</button>
+
+                            </a>
+
+
+                        </div>
                         
                     </div>
                 </aside>
