@@ -21,8 +21,11 @@ namespace EfrashBatek.Controllers
         IShopRepository shopRepository;
         IProductRepository productRepository;
         IWebHostEnvironment Ih;
+        IIdentityRepository IdentityRepository;
+        IStaffRepository staffRepository;
 
-        public ItemShopController(Context context, IWebHostEnvironment Ih, IItemRepository itemRepo, IBrandRepository brandRepository, IShopRepository shopRepository, IProductRepository productRepository)
+        public ItemShopController(Context context, IWebHostEnvironment Ih, IItemRepository itemRepo, IBrandRepository brandRepository, IShopRepository shopRepository, 
+            IProductRepository productRepository,IIdentityRepository identityRepository,IStaffRepository staffRepository)
         {
             _context = context;
             this.itemRepo = itemRepo;
@@ -30,6 +33,8 @@ namespace EfrashBatek.Controllers
             this.shopRepository = shopRepository;
             this.productRepository = productRepository;
             this.Ih = Ih;
+            IdentityRepository = identityRepository;
+            this.staffRepository = staffRepository;
         }
 
         [HttpGet]
@@ -246,6 +251,18 @@ namespace EfrashBatek.Controllers
             }
 
             return View(item);
+        }
+        public IActionResult ShopItem()
+        {
+            var user = IdentityRepository.GetUser();
+            if (user == null)
+            {
+                return RedirectToAction("Login","Account");
+            }
+            var Seller= staffRepository.GetByUser(user.Id);
+            var shop = shopRepository.GetById(Seller.ShopID);
+               var itm= shopRepository.ItemByShop(shop.ID);
+            return View(itm);
         }
 
         //[HttpPost, ActionName("Delete")]
