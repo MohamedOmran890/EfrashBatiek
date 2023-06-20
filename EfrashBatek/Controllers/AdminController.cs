@@ -281,7 +281,7 @@ namespace EfrashBatek.Controllers
             {
                 var user = new User
                 {
-                    UserName = model.UserName,
+                    UserName = model.Username,
                     Email = model.Email
                 };
                 var result = await _userManager.CreateAsync(user, model.Password);
