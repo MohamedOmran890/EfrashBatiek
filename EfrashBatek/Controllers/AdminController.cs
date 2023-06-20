@@ -43,7 +43,7 @@ namespace EfrashBatek.Controllers
         // done - test 
         public IActionResult Index()
         {
-			List<Order> orderss = _context.Orders.Where(i => i.Customer.Id == 11).ToList();
+			List<Order> orderss = _context.Orders.Where(i =>true).ToList();
 			foreach (Order order in orderss)
 			{
 				Customer customerr = _context.Customers.FirstOrDefault(i => i.Id == order.CustomerID);
@@ -63,7 +63,7 @@ namespace EfrashBatek.Controllers
 
         // done test 
         public IActionResult Orders() {
-            List<Order> orderss = _context.Orders.Where(i => i.Customer.Id ==11).ToList();
+            List<Order> orderss = _context.Orders.Where(i => true).ToList();
             foreach (Order order in orderss)
             {
                 Customer customerr = _context.Customers.FirstOrDefault(i => i.Id == order.CustomerID);
