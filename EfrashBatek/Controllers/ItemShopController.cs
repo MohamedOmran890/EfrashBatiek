@@ -48,6 +48,16 @@ namespace EfrashBatek.Controllers
         {
             return View();
         }
+        
+        public IActionResult Orders()
+        {
+            return View();
+        }
+        //test by mee
+        public IActionResult ShopItems()
+        {
+            return View();
+        }
 
         [HttpGet]
         public IActionResult Details(int? id)
@@ -264,11 +274,7 @@ namespace EfrashBatek.Controllers
                var itm= shopRepository.ItemByShop(shop.ID);
             return View(itm);
         }
-		//test by mee
-		public IActionResult ShopItems()
-        {
-			return View();
-		}
+		
 
 		//[HttpPost, ActionName("Delete")]
 		//[ValidateAntiForgeryToken]

@@ -1,0 +1,23 @@
+input {
+    padding: 4px 28px;
+    border-radius: 10px;
+    margin: 5px auto;
+    border: 1px solid #918383;
+    background-color: #f4f4f4;
+    box-shadow: 1px 2px 1px 2px rgb(230, 229, 229);
+    color: #000000;
+    outline: none;
+    font-size: 16px;
+}
+
+button {
+    padding: 4px 28px;
+    border-radius: 10px;
+    margin: 5px auto;
+    border: 1px solid #918383;
+    background-color: #f4f4f4;
+    box-shadow: 1px 2px 1px 2px rgb(230, 229, 229);
+    color: #000000;
+    outline: none;
+    font-size: 16px;
+}
