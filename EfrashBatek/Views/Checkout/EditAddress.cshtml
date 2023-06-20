@@ -142,7 +142,7 @@
 						<div class="total-value final-value" id="basket-total">130.00</div>
 					</div>
 					<div class="summary-checkout">
-						<a href="orderinfo.html"><button class="checkout-cta">Go to Secure Checkout</button></a>
+						<a asp-action="ViewDetails" asp-controller="Checkout" asp-route-id="@ViewBag.cartID"><button class="checkout-cta">Go to Secure Checkout</button></a>
 					</div>
 				</div>
 			</aside>
