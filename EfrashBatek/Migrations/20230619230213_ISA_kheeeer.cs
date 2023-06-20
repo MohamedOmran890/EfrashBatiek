@@ -3,10 +3,25 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace EfrashBatek.Migrations
 {
-    public partial class addWishListByTaha : Migration
+    public partial class ISA_kheeeer : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "AdminVM",
+                columns: table => new
+                {
+                    ID = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AdminVM", x => x.ID);
+                });
+
             migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
@@ -889,6 +904,9 @@ namespace EfrashBatek.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Admin");
+
+            migrationBuilder.DropTable(
+                name: "AdminVM");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");

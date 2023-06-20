@@ -13,5 +13,6 @@ namespace EfrashBatek.service
         Shop GetByTaxCardNumber(string taxCardNumber);
 
          int TotalShop();
+        public List<Item> ItemByShop(int shopId);
     }
 }
