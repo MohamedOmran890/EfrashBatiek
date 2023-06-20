@@ -23,9 +23,12 @@ namespace EfrashBatek.Controllers
         IWebHostEnvironment Ih;
         IIdentityRepository IdentityRepository;
         IStaffRepository staffRepository;
+        IOrder_ItemRepository order_ItemRepository;
 
         public ItemShopController(Context context, IWebHostEnvironment Ih, IItemRepository itemRepo, IBrandRepository brandRepository, IShopRepository shopRepository, 
-            IProductRepository productRepository,IIdentityRepository identityRepository,IStaffRepository staffRepository)
+            IProductRepository productRepository,
+            IIdentityRepository identityRepository,
+            IStaffRepository staffRepository,IOrder_ItemRepository order_ItemRepository)
         {
             _context = context;
             this.itemRepo = itemRepo;
@@ -35,6 +38,7 @@ namespace EfrashBatek.Controllers
             this.Ih = Ih;
             IdentityRepository = identityRepository;
             this.staffRepository = staffRepository;
+            this.order_ItemRepository = order_ItemRepository;
         }
 
         [HttpGet]
@@ -270,10 +274,15 @@ namespace EfrashBatek.Controllers
                 return RedirectToAction("Login","Account");
             }
             var Seller= staffRepository.GetByUser(user.Id);
+            if(Seller==null)
+            {
+                return RedirectToAction("Login","Account");
+            }
             var shop = shopRepository.GetById(Seller.ShopID);
                var itm= shopRepository.ItemByShop(shop.ID);
             return View(itm);
         }
+
 		
 
 		//[HttpPost, ActionName("Delete")]
@@ -291,5 +300,38 @@ namespace EfrashBatek.Controllers
 		//    return _context.Items.Any(e => e.ID == id);
 		//}
 
-	}
+        public IActionResult OrderShop()
+        {
+            var user = IdentityRepository.GetUser();
+            if (user == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            var Seller = staffRepository.GetByUser(user.Id);
+            if (Seller == null)
+            {
+                return View(new List<Order_Item>());
+            }
+            var shop = shopRepository.GetById(Seller.ShopID);
+            var order = order_ItemRepository.GetAllByShop(shop.ID);
+            //var orders = new DashBoardShopVM
+            //{
+            //    orders = order,
+            //};
+            return View(order);
+        }
+        public IActionResult DeleteOrder(int id)
+        {
+            order_ItemRepository.Delete(id);
+            return RedirectToAction("OrderShop","ItemShop");
+
+        }
+        public IActionResult Custome()
+        {
+            var custom = _context.Customs.ToList();
+            return View(custom);
+        }
+
+
+    }
 }
