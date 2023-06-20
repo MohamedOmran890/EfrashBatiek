@@ -27,6 +27,9 @@ namespace EfrashBatek.Controllers
             _customerRepository = customerRepository;
         }
 
+        public IActionResult Index1() { 
+          return View();    
+        }
         // Action that displays the wishlist of the current customer
         public IActionResult Index()
         {
@@ -45,10 +48,13 @@ namespace EfrashBatek.Controllers
             var ans = _wishlistRepository.GetCustomerWithUser(userId);
             if (ans == null)
             {
-                return View(new WishList());
+                return View("Index1" , new WishList());
             }
             //var wishListItems = context.WishListItems.Include(w=> w.Item).FirstOrDefault(w => w.WishListId == ans.WishList.Id).WishList.WishListItems;
             var wishListItems = context.WishListItems.Where(x=>x.WishList.CustomerId==ans.Id).ToList();
+            foreach(var item in wishListItems) {
+                item.Item = context.Items.FirstOrDefault(i => i.ID == item.ItemId);
+            }
             return View(wishListItems);
         }
 

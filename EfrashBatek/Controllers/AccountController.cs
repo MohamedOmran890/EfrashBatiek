@@ -87,7 +87,7 @@ namespace EfrashBatek.Controllers
                 await _userManager.AddToRoleAsync(user, roleName);
 
                 // assign user to customer 
-                _userManager.AddToRoleAsync(user, "Customer");
+                //_userManager.AddToRoleAsync(user, "Customer");
                 var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                 var confirmationLink = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, token = token }, Request.Scheme);
                   await _emailService.SendConfirmationEmail(model.Email, confirmationLink);

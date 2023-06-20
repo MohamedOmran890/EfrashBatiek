@@ -1,0 +1,94 @@
+﻿@*@model List<WishListItem>
+@{
+    Layout = "CustomerLayout";
+}
+
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/favicon.ico" href="/image/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+          integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/wishlist.css">
+    <title>Efresh Beitak</title>
+</head>
+
+<body>
+    <section class="main-home1">
+
+        <div class="container">
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="shopping-cart">
+
+                        <div class="shadow-sm p-3 mt-md-3 mb-5 bg-body-tertiary rounded" style="background-color: #fff">
+                            @if(Model != null)
+                            {
+                                @foreach (var item in Model)
+                                {
+                                    if (item != null)
+                                    {
+                                        
+                                    }
+                                }
+                            }
+
+                            <div class="row mw-500 ">
+                                <div class="col-md-6 my-auto flex1">
+                                    <a asp-action="Details">
+                                        <label class="product-name">
+                                            <img src="~/Image/Items/07045267-e212-40d5-b27d-45e5c6ed9ea8i5.jpg" style="width: 80px; height: 80px" alt="">
+                                            @item.Item?.Name
+                                        </label>
+                                    </a>
+                                </div>
+                                <div class="col-md-2 my-auto flex1">
+                                    <label class="price">@item.Item?.Price</label>
+                                </div>
+                                <div class="col-md-2 col-5 my-auto flex1">
+                                    <div class="remove">
+                                        <a href="" class="btn btn-default btn-xs" style="border: none;">
+                                            <img src="image/trash.png" style="width: 15px; height: 15px" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="add cart">
+                                        <a href="cart.html" class="btn btn-default btn-xs " style="border: none;">
+                                            <img src="image/cart.png" style="width: 15px; height: 15px" alt="">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <a href="cart.html"><button type="button" class="btn btn-default select mw-500">Add All to cart</button></a>
+                </div>
+
+
+    </section>
+
+
+    </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
+*@

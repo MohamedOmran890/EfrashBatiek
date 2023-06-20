@@ -48,5 +48,11 @@ namespace EfrashBatek.service
             var ans = context.Order_Items.ToList();
             return ans;
         }
+        public List<Order_Item> GetAllByShop(int ShopId)
+        {
+            var all = context.Order_Items.Where(x => x.ShopID == ShopId).ToList();
+            return all;
+
+        }
     }
 }

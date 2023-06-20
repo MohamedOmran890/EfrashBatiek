@@ -43,7 +43,7 @@ namespace EfrashBatek.Controllers
         // done - test 
         public IActionResult Index()
         {
-			List<Order> orderss = _context.Orders.Where(i => i.Customer.Id == 11).ToList();
+			List<Order> orderss = _context.Orders.Where(i =>true).ToList();
 			foreach (Order order in orderss)
 			{
 				Customer customerr = _context.Customers.FirstOrDefault(i => i.Id == order.CustomerID);
@@ -63,7 +63,7 @@ namespace EfrashBatek.Controllers
 
         // done test 
         public IActionResult Orders() {
-            List<Order> orderss = _context.Orders.Where(i => i.Customer.Id ==11).ToList();
+            List<Order> orderss = _context.Orders.Where(i => true).ToList();
             foreach (Order order in orderss)
             {
                 Customer customerr = _context.Customers.FirstOrDefault(i => i.Id == order.CustomerID);
@@ -139,14 +139,11 @@ namespace EfrashBatek.Controllers
             var result = await _userManager.CreateAsync(user, model.Password);
             if (result.Succeeded)
             {
-                _userManager.AddToRoleAsync(user, "Seller");
-                // Add user to default role
-                //  await _userManager.AddToRoleAsync(user, "User");
                 var roleName = "Seller";
                 await _userManager.AddToRoleAsync(user, roleName);
                 // Redirect the user to the login page
                 _staff.Create(staff);
-                //  await EmailStaffService.SendEmail(model.Email, model.Username, model.Password, model.FirstName);
+                  await EmailStaffService.SendEmail(model.Email, model.Username, model.Password, model.FirstName);
                 return Content("Done");
             }
 
@@ -182,7 +179,7 @@ namespace EfrashBatek.Controllers
             if (ModelState.IsValid)
             {
                 shop.Create(obj);
-                return View("Dashboard");
+                return View("Index");
             }
             else
                 return View("AddShop");

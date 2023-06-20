@@ -49,13 +49,23 @@ public class CheckoutController : Controller
     {
         var items = cart.LoadFromCookie();
         var list = items.Where(i => i.CartID == cartid).ToList();
-        foreach (var item in list)
+       List<Order_Item> ordersitems= new List<Order_Item>();    
+		foreach (var item in list)
         {
             item.Item = context.Items.FirstOrDefault(i => i.ID == item.ItemID);
+            Order_Item order_item = new Order_Item();
+            order_item.item = item.Item; 
+            ordersitems.Add(order_item);
 
-        }
+
+
+		}
         ViewBag.list = list;
         ViewBag.cartID = cartid;
+        Order order = new Order();
+        order.Order_Item = ordersitems;
+        ViewBag.order = order;  
+       
         return View();  
     }
     [HttpPost]
@@ -81,7 +91,8 @@ public class CheckoutController : Controller
 
 		}
 		ViewBag.list = list;
-        ViewBag.price = totalcost;  
+        ViewBag.price = totalcost;
+		ViewBag.cartID = cartid;
 		return View("Checkout", Address);
 
 	}
@@ -96,7 +107,11 @@ public class CheckoutController : Controller
 	}
     [HttpPost]
 	public IActionResult PaymentMethod(int cartID , int selectedAddressId)
-	{
+    {
+        if (selectedAddressId == 0)
+        {
+            return RedirectToAction("CreateAddress" , cartID);
+        }
         var items = cart.LoadFromCookie();
         var list = items.Where(i => i.CartID == cartID).ToList();
         foreach (var item in list)
@@ -212,6 +227,25 @@ public class CheckoutController : Controller
         return View();
     }
     
+       public ActionResult Details (int id , int address ) {
+
+		var items = cart.LoadFromCookie();
+		var list = items.Where(i => i.CartID == id).ToList();
+        List<Order_Item> itemss = new List<Order_Item>();       
+		foreach (var item in list)
+		{
+			item.Item = context.Items.FirstOrDefault(i => i.ID == item.ItemID);
+            Order_Item orderitem = new Order_Item();
+            orderitem.item = item.Item;
+            itemss.Add(orderitem);
+		}
+        Order order  = new Order();
+        order.Order_Item = itemss;
+        order.Address = context.Addresses.FirstOrDefault(i => i.ID == address);
        
+
+
+		return View ("OrderDetails", order );
+	}
 
 }

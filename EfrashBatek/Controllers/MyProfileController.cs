@@ -263,7 +263,7 @@ namespace EfrashBatek.Controllers
 			ViewBag.Model = user;
 
 
-			if (customer.Orders.Count == 0) { 
+			if (customer.Orders == null ) { 
                 return View("GoShopping");
             }
             else
