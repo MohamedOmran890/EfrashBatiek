@@ -143,6 +143,8 @@ namespace EfrashBatek.Controllers
             {
                 var roleName = "Seller";
                 await _userManager.AddToRoleAsync(user, roleName);
+                await _userManager.ConfirmEmailAsync(user, await _userManager.GenerateEmailConfirmationTokenAsync(user));
+
                 // Redirect the user to the login page
                 _staff.Create(staff);
                   await EmailStaffService.SendEmail(model.Email, model.Username, model.Password, model.FirstName);
