@@ -1,11 +1,7 @@
-﻿@*selllllller
-*@
-@{
+﻿@{
     Layout = null;
 }
-
-﻿@using EfrashBatek.ViewModel
-@model DashboardViewModel
+@model List<Order_Item>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,6 +20,7 @@
 </head>
 
 <body>
+    <
     <section id="sidebar">
         <a href="#" class="brand">
             <i class='bx bxs-smile'></i>
@@ -48,9 +45,9 @@
                     <span class="text">Add Item</span>
                 </a>
             </li>
-
+           
             <li>
-                <a asp-action="CustomOrder">
+                <a href="###########################CUSTOMIZE ORDER">
                     <i class='bx bx-list-plus'></i>
                     <span class="text">Customize Order </span>
                 </a>
@@ -62,6 +59,7 @@
     <section id="content">
         <nav>
             <i class='bx bx-menu'></i>
+            <a href="#" class="nav-link">Categories</a>
             <form action="#">
                 <div class="form-input">
                     <input type="search" placeholder="Search...">
@@ -88,7 +86,7 @@
                         <td>Order Date</td>
                         <td>Customer Name</td>
                         <td>Total</td>
-
+                    
                         <td>Payment Method</td>
                         <td>Shop Name</td>
                         <td>View</td>
@@ -96,56 +94,52 @@
                     </tr>
                 </thead>
                 <tbody>
-
+                 
                     <!-- ORDER 2 -->
-                   @*1 @foreach (var order in Model.orders)
-                    {*@
-                        <tr>      
-                            <td>@*2@order.OrderCode*@</td>
-                            <td>@*3@order.OrderDate.Year/@order.OrderDate.Month/@order.OrderDate.Year*@</td>
+                    @foreach(var order in Model)
+                    {
+                        <tr>
+                            <td>@order.OrderID</td>
+                            <td>@order.Order.OrderDate/@order.Order.OrderDate.Month/@order.Order.OrderDate.Year</td>
 
-                            <td>@*4@order.Customer.User.FirstName*@</td>
-                            <td>@*5@order.TotalCost EGP*@</td>
-
-
-
-
+                            <td>@order.Order.Customer.User.FirstName</td>
+                            <td>@order.item.Price EGP</td>
                             <!------------------------------------------------------- pr01 -->
                             @*<td>
-                        <select id="pro1">
-                        <option value="null">Status</option>
-                        <option class="status delivered" value="delivered">
-                        Delivered
-                        </option>
-                        <option class="status return" value="return">
-                        return
-                        </option>
-                        <option class="status inProgress" value="inProgress">
-                        In Progress
-                        </option>
-                        <option class="status pending" value="pending">
-                        pending
-                        </option>
-                        </select>
-                        <script>
-                        const selectElement = document.querySelector('#pro1');
-                        selectElement.addEventListener('change', function () {
-                        selectElement.classList.remove('clicked-delivered', 'clicked-return', 'clicked-return', 'clicked-inProgress', 'clicked-pending');
-                        selectElement.classList.add('clicked-' + selectElement.value);
-                        });
-                        </script>
-                        </td>*@
-                            <td><span class="status delivered">@*6@order.PaymentMethod*@</span></td>
-                            <td></td>
+                                <select id="pro1">
+                                    <option value="null">Status</option>
+                                    <option class="status delivered" value="delivered">
+                                        Delivered
+                                    </option>
+                                    <option class="status return" value="return">
+                                        return
+                                    </option>
+                                    <option class="status inProgress" value="inProgress">
+                                        In Progress
+                                    </option>
+                                    <option class="status pending" value="pending">
+                                        pending
+                                    </option>
+                                </select>
+                                <script>
+                                    const selectElement = document.querySelector('#pro1');
+                                    selectElement.addEventListener('change', function () {
+                                        selectElement.classList.remove('clicked-delivered', 'clicked-return', 'clicked-return', 'clicked-inProgress', 'clicked-pending');
+                                        selectElement.classList.add('clicked-' + selectElement.value);
+                                    });
+                                </script>
+                            </td>*@
+                            <td><span class="status delivered">@order.Order.PaymentMethod</span></td>
+                            <td>efresh beitak</td>
                             <td>
                                 <button class="btn btn-rounded">View <i class="mdi mdi-download ms-2"></i></button>
 
                             </td>
                             <td>
-                                @* <a class="edit" title="Edit" data-toggle="tooltip">
-                            <i class="material-icons">&#xE254;</i>
-                            </a>*@
-                               @*7 @using (Html.BeginForm("DeleteOrder", "Admin", FormMethod.Post))
+                               @* <a class="edit" title="Edit" data-toggle="tooltip">
+                                    <i class="material-icons">&#xE254;</i>
+                                </a>*@
+                                @using (Html.BeginForm("DeleteOrder", "ItemShop", FormMethod.Post))
                                 {
 
                                     int x = order.ID;
@@ -153,14 +147,14 @@
                                     // Replace "Id" with the actual name of the ID property in your model
 
                                     <button>  <i class="material-icons">&#xE872;</i></button>
-                                }*@
-
+                                }
+                               
 
                             </td>
                         </tr>
                     }
-
-
+                 
+                   
                 </tbody>
             </table>
         </div>

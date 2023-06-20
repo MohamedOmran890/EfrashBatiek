@@ -89,6 +89,11 @@
             {
                 <button onclick="location.href='@Url.Action("Index", "Admin")'">Admin></button>
             }
+            @if (User.IsInRole("Seller"))
+            {
+                <button onclick="location.href='@Url.Action("Create", "ItemShop")'">Shop></button>
+            }
+
 
         </ul>
 
@@ -116,7 +121,7 @@
             <div class="contact-info">
                 <div class="first-info">
                     <img src="~/Image/logo.png" alt="">
-                    <p>+201004443226</p>
+                    <p>+201094248766</p>
                     <p>efresh.beitak@gmail.com</p>
 
                 </div>
