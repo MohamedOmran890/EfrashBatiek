@@ -107,11 +107,11 @@ public class CheckoutController : Controller
 	}
     [HttpPost]
 	public IActionResult PaymentMethod(int cartID , int selectedAddressId)
-	{
-        //if(selectedAddressId == 0)
-        //{
-        //    RedirectToAction("defaultaddress");
-        //}
+    {
+        if (selectedAddressId == 0)
+        {
+            RedirectToAction("reateAddress" , cartID);
+        }
         var items = cart.LoadFromCookie();
         var list = items.Where(i => i.CartID == cartID).ToList();
         foreach (var item in list)
