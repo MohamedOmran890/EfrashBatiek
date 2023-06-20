@@ -23,6 +23,11 @@ namespace EfrashBatek.service
 
             // NewArrivals 
             var newarrivals = context.Items.OrderByDescending(item => item.DateTime).Take(4).ToList();
+            foreach (var item in newarrivals)
+            {
+                item.Product = context.Products.FirstOrDefault(i => i.ID == item.ProductID);
+
+            }
 
             return newarrivals;
         }

@@ -4,8 +4,9 @@ namespace EfrashBatek.Models
 {
     public enum Category
     {
-        furniture,
         Home_Appliances,
+        furniture,
+        electrics,
         Kitchen_utensils,
         Kitchen , 
         All_Products =10

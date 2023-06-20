@@ -27,7 +27,7 @@
     <!-- SIDEBAR -->
     <
     <section id="sidebar">
-        <a href="#" class="brand">
+        <a asp-action="TrendingProducts" asp-controller="Home">
             <i class='bx bxs-smile'></i>
             <span class="text">Efresh Beitak </span>
         </a>
@@ -52,7 +52,13 @@
             </li>
             
             <li>
-                <a asp-action="CustomOrder">
+                <a href="Items.html">
+                    <i class='bx bx-list-plus'></i>
+                    <span class="text">Item</span>
+                </a>
+            </li>
+            <li>
+                <a asp-action="Custome" asp-controller="ItemShop">
                     <i class='bx bx-list-plus'></i>
                     <span class="text">Customize Order </span>
                 </a>
