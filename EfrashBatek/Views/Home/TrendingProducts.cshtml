@@ -108,7 +108,7 @@
 
                             <div class="showcase-content">
 
-                                <a asp-action="ProductaDetails" asp-controller="Item" asp-route-id="@item.ID" class="showcase-category">Bed Room</a>
+                                <a asp-action="ProductaDetails" asp-controller="Item" asp-route-id="@item.ID" class="showcase-category">@item.Name</a>
 
                                 <a asp-action="ProductaDetails" asp-controller="Item" asp-route-id="@item.ID">
                                     <h3 class="showcase-title">@item.Product.ProductName</h3>
@@ -210,7 +210,7 @@
 
                             <div class="showcase-content">
 
-                                <a asp-action="ProductaDetails" asp-controller="Item" asp-route-id="@item.ID"class="showcase-category">Bed Room</a>
+                                <a asp-action="ProductaDetails" asp-controller="Item" asp-route-id="@item.ID"class="showcase-category">@item.Name</a>
 
                                 <a asp-action="ProductaDetails" asp-controller="Item" asp-route-id="@item.ID">
                                     <h3 class="showcase-title">@item.Product?.ProductName</h3>
@@ -226,10 +226,10 @@
 
                                 <div class="price-box">
                                     <p class="price">
-                                        @String.Format("{0:0.00}", item.Price) EPG
+                                        @String.Format("{0:0.00}", item.Price)
                                     </p>
                                     <del>
-                                        @String.Format("{0:0.00}", item.PriceAfterSale) EPG
+                                        @String.Format("{0:0.00}", item.PriceAfterSale)
                                         EGP
                                     </del>
                                 </div>

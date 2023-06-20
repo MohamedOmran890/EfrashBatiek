@@ -6,6 +6,9 @@ namespace EfrashBatek.Models
 {
     public enum ProductName
     {
+        Wood = 1,
+        Electrics,
+        Acrylic,
         LivingRoom,
         YouthAndKidsBedRooms,
         DiningRoom,
@@ -16,8 +19,6 @@ namespace EfrashBatek.Models
         Drinkware,
         Dinnerware,
         Alometal,
-        Wood,
-        Acrylic
 
     }
 

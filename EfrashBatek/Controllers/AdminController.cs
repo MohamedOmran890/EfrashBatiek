@@ -57,7 +57,7 @@ namespace EfrashBatek.Controllers
                  TotalCustomers = customer.TotalCustomers(),
                  TotalOrders = order.TotalOrders(),
                  Totalshop=shop.TotalShop() ,
-				orders = orderss ,
+				orders = orderss 
 
 			};
             return View(Dash);
