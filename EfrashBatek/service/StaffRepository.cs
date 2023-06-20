@@ -14,7 +14,7 @@ namespace EfrashBatek.service
         public void Create(Staff staff)
         {
             context.The_Staff.Add(staff);
-            context.SaveChanges();
+            context.SaveChanges();  
 
         }
         public int Update(int id, Staff staff)
@@ -47,5 +47,11 @@ namespace EfrashBatek.service
             var ans = context.The_Staff.Count();
             return ans;
         }
+        public Staff GetByUser(string userid)
+        {
+            var staffId = context.The_Staff.FirstOrDefault(x => x.UserId == userid);
+            return staffId;
+        }
+
     }
 }

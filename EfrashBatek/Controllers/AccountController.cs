@@ -15,6 +15,7 @@ using System;
 using EfrashBatek.service;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace EfrashBatek.Controllers
 {
@@ -79,10 +80,14 @@ namespace EfrashBatek.Controllers
             context.Customers.Add(customer);
 
             var result = await _userManager.CreateAsync(user, model.Password);
-
-                if (result.Succeeded)
+            if (result.Succeeded)
                 {
+                //
+                var roleName = "Customer";
+                await _userManager.AddToRoleAsync(user, roleName);
 
+                // assign user to customer 
+                _userManager.AddToRoleAsync(user, "Customer");
                 var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                 var confirmationLink = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, token = token }, Request.Scheme);
                   await _emailService.SendConfirmationEmail(model.Email, confirmationLink);
@@ -113,6 +118,7 @@ namespace EfrashBatek.Controllers
             var result = await _userManager.ConfirmEmailAsync(user, token);
             if (result.Succeeded)
             {
+                
                 return RedirectToAction("TrendingProducts","Home");
             }
             else

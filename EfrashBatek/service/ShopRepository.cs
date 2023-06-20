@@ -14,6 +14,7 @@ namespace EfrashBatek.service
         public void Create(Shop shop)
         {
             context.Shops.Add(shop);
+            context.SaveChanges();      
 
         }
         public int Update(int id, Shop shop)
@@ -55,6 +56,11 @@ namespace EfrashBatek.service
         {
             var ans = context.Shops.Count();
             return ans;
+        }
+        public List<Item> ItemByShop(int shopId)
+        {
+            var item = context.Items.Where(x => x.ShopID == shopId).ToList(); ;
+            return item;
         }
     }
 }

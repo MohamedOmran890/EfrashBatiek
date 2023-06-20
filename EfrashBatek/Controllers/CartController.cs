@@ -50,8 +50,8 @@ namespace EfrashBatek.Controllers
             }
             return View(items);
         }
-      
-        public IActionResult AddToCart([FromRoute] int ID)
+
+        public IActionResult AddToCart(int id )
         {
             var HaveSession = HttpContext.Session.GetString("Id");
             if (HaveSession == null)
@@ -59,7 +59,7 @@ namespace EfrashBatek.Controllers
                 return RedirectToAction("Login", "Account");
             }
 
-            cartRepository.AddToCart(ID);
+            cartRepository.AddToCart(id);
             return RedirectToAction("Index");
 
 
