@@ -134,11 +134,15 @@ namespace EfrashBatek.Controllers
         [HttpPost]
 
         // save changes 
-        public IActionResult CreateAddress(Address New)
+        public IActionResult CreateAddress(Address New , int idd)
         {
 
             address.Create(New);
 
+            if(idd == 3)
+            {
+                return RedirectToAction("DefaultAddress", "Checkout");
+			}
             return RedirectToAction("ViewAddress", "MyProfile");
 
 
@@ -182,69 +186,69 @@ namespace EfrashBatek.Controllers
 		{
             List<Order> orders = new List<Order>();
             Customer customer = _customer.GetCustomerbyUserId();
-            if (Isorder == true)
-            {
-                var items = cart.LoadFromCookie();
+            //if (Isorder == true)
+            //{
+            //    var items = cart.LoadFromCookie();
 
-                var list = items.Where(i => i.CartID == cartID).ToList();
-                int totalcost = 0;
-                List<Order_Item> order_Items = new List<Order_Item>();
-                // Get the first 8 characters of the GUID as a string
-                Guid guid = Guid.NewGuid();
-                string code = guid.ToString().Substring(0, 8);
-                Order order = new Order();
-                order.OrderCode = code;
-                foreach (var item in list)
-                {
-                    item.Item = context.Items.FirstOrDefault(i => i.ID == item.ItemID);
-                    totalcost += item.Quantity * (int)item.Item.Price;
-                  
-                    Order_Item order_Item = new Order_Item();
-                    // add item 
-                    order_Item.item = item.Item;
-                    order_Item.ItemID = item.ItemID;
-                    order_Item.Quantity = item.Quantity;
-                    order_Item.OrderState = OrderState.Delivering; 
-                    // note : you should generate it by real shop ..
-                    order_Item.Shop = context.Shops.FirstOrDefault();
-                    order_Items.Add(order_Item);
-                }
+            //    var list = items.Where(i => i.CartID == cartID).ToList();
+            //    int totalcost = 0;
+            //    List<Order_Item> order_Items = new List<Order_Item>();
+            //    // Get the first 8 characters of the GUID as a string
+            //    Guid guid = Guid.NewGuid();
+            //    string code = guid.ToString().Substring(0, 8);
+            //    Order order = new Order();
+            //    order.OrderCode = code;
+            //    foreach (var item in list)
+            //    {
+            //        item.Item = context.Items.FirstOrDefault(i => i.ID == item.ItemID);
+            //        totalcost += item.Quantity * (int)item.Item.Price;
 
-               
+            //        Order_Item order_Item = new Order_Item();
+            //        // add item 
+            //        order_Item.item = item.Item;
+            //        order_Item.ItemID = item.ItemID;
+            //        order_Item.Quantity = item.Quantity;
+            //        order_Item.OrderState = OrderState.Delivering; 
+            //        // note : you should generate it by real shop ..
+            //        order_Item.Shop = context.Shops.FirstOrDefault();
+            //        order_Items.Add(order_Item);
+            //    }
 
-                
-                order.TotalCost = totalcost;
-                DateTime orderDate = DateTime.Now;
 
-                order.OrderDate = orderDate.Date;
-                order.PaymentMethod = PaymentMethod.CashOnDelivery; 
 
-                order.AddressID = selectedAddressId; 
-                order.Address = address.GetbyID(selectedAddressId);
 
-                order.CustomerID = customer.Id;
-             
-                orderr.Create(order);
-                Order  findorder = context.Orders.FirstOrDefault(i => i.OrderCode == code);
-                foreach(var item in order_Items)
-                {
-                    item.OrderID = findorder.ID;
-                   
-                    order_ItemRepository.Create(item);  
-                 
-                }
-       
-                findorder.Order_Item = order_Items;
+            //    order.TotalCost = totalcost;
+            //    DateTime orderDate = DateTime.Now;
 
-                context.Orders.Update(findorder);   
-                context.SaveChanges();  
+            //    order.OrderDate = orderDate.Date;
+            //    order.PaymentMethod = PaymentMethod.CashOnDelivery; 
 
-                cart.Clear();
+            //    order.AddressID = selectedAddressId; 
+            //    order.Address = address.GetbyID(selectedAddressId);
 
-            }
-            
-           
-			
+            //    order.CustomerID = customer.Id;
+
+            //    orderr.Create(order);
+            //    Order  findorder = context.Orders.FirstOrDefault(i => i.OrderCode == code);
+            //    foreach(var item in order_Items)
+            //    {
+            //        item.OrderID = findorder.ID;
+
+            //        order_ItemRepository.Create(item);  
+
+            //    }
+
+            //    findorder.Order_Item = order_Items;
+
+            //    context.Orders.Update(findorder);   
+            //    context.SaveChanges();  
+
+            //    cart.Clear();
+
+            //}
+
+
+
 
 
             orders = context.Orders.Where(i=>i.CustomerID ==  customer.Id).ToList();

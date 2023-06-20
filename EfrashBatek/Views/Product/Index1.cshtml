@@ -218,15 +218,12 @@
                                                 </button>
 
                                             }
-                                            @using (Html.BeginForm("AddToCart", "Cart", FormMethod.Post))
-                                            {
-                                                @Html.Hidden("itemID", item.ID)
-                                                // Replace "Id" with the actual name of the ID property in your model
-
+                                            <a asp-action="AddToCart" asp-controller="Cart" asp-route-id="@item.ID">
                                                 <button class="btn-action">
                                                     <ion-icon name="bag-add-outline"></ion-icon>
                                                 </button>
-                                            }
+                                            </a>
+
 
 
                                         </div>
