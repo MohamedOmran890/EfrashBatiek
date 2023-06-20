@@ -81,12 +81,60 @@ window.addEventListener('resize', function () {
 
 
 
-const switchMode = document.getElementById('switch-mode');
+// const switchMode = document.getElementById('switch-mode');
 
-switchMode.addEventListener('change', function () {
-	if (this.checked) {
-		document.body.classList.add('dark');
-	} else {
-		document.body.classList.remove('dark');
-	}
-})
+// switchMode.addEventListener('change', function () {
+// 	if (this.checked) {
+// 		document.body.classList.add('dark');
+// 	} else {
+// 		document.body.classList.remove('dark');
+// 	}
+// })
+
+
+const deleteItem = (id) => {
+	console.log(id);
+	const confirmationDialog = document.getElementById("confirmation-dialog");
+	const confirmYesButton = document.getElementById("confirm-yes");
+	const confirmNoButton = document.getElementById("confirm-no");
+
+
+	// Show confirmation dialog
+	confirmationDialog.style.display = "flex";
+
+	document.getElementById('deletedItemId').innerText = id
+
+	// Listen for "Yes" button click
+	confirmYesButton.addEventListener("click", function () {
+		const data = {
+			id: id
+		}
+
+		// Fetch delete item and remove from HTML on success
+		/*
+		 fetch(url, param)
+		 .then(
+			const itemToDelete = document.getElementById(id);
+			itemToDelete.remove();
+			alert("Item deleted successfully");
+
+			// Hide confirmation dialog
+			confirmationDialog.style.display = "none";
+		 )
+		*/
+
+		// Perform deletion
+		const itemToDelete = document.getElementById(id);
+		itemToDelete.remove();
+		alert("Item deleted successfully");
+
+		// Hide confirmation dialog
+		confirmationDialog.style.display = "none";
+	});
+
+	// Listen for "No" button click
+	confirmNoButton.addEventListener("click", function () {
+		// Hide confirmation dialog
+		confirmationDialog.style.display = "none";
+	});
+}
