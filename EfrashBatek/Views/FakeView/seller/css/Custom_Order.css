@@ -256,14 +256,14 @@ table.table td a.delete {
 }
 
 .details .recentOrders {
-  margin-left: 18%;
+  /* margin-left: 18%; */
   position: relative;
   display: grid;
   background: var(--white);
   padding: 20px;
   box-shadow: 0 7px 25px rgba(0, 0, 0, 0.08);
   border-radius: 20px;
-  width: 80%;
+  width: 100%;
   height: auto;
 }
 
