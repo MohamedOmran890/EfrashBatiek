@@ -110,7 +110,7 @@ public class CheckoutController : Controller
     {
         if (selectedAddressId == 0)
         {
-            RedirectToAction("reateAddress" , cartID);
+            return RedirectToAction("CreateAddress" , cartID);
         }
         var items = cart.LoadFromCookie();
         var list = items.Where(i => i.CartID == cartID).ToList();
