@@ -48,7 +48,11 @@ namespace EfrashBatek.Controllers
         {
             return View();
         }
-        
+        [HttpGet]
+        public IActionResult Index1()
+        {
+            return View();
+        }
         public IActionResult Orders()
         {
             return View();

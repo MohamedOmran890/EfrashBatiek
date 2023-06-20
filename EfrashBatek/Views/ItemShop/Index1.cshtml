@@ -1,0 +1,368 @@
+﻿@model IEnumerable<EfrashBatek.Models.Item>
+
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS-link -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <!-- Code by Angela Delise
+    https://codepen.io/angeladelise/pen/yLJdgYx -->
+    <link rel="stylesheet" href="~/css/seller.css">
+    <link rel="stylesheet" href="~/css/Items.css">
+    <link rel="shortcut icon" href="image/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600;700&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+          integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <title>Efresh Beitak</title>
+
+</head>
+
+<body>
+
+    <div class="overlay" id="confirmation-dialog">
+        <div class="dialog-container">
+            <h2>Confirm deleteing <span id="deletedItemId"></span> </h2>
+            <div class="actions">
+                <button id="confirm-no" class="btn btn-danger">Cancel</button>
+                <button id="confirm-yes" class="btn btn-primary">Confirm</button>
+            </div>
+        </div>
+    </div>
+    <!-- SIDEBAR -->
+    <section id="sidebar">
+        <a href="#" class="brand">
+            <i class='bx bxs-smile'></i>
+            <span class="text">Efresh Beitak </span>
+        </a>
+        <ul class="side-menu top">
+            <li>
+                <a asp-action="Seller">
+                    <i class='bx bxs-dashboard'></i>
+                    <span class="text">Dashboard</span>
+                </a>
+            </li>
+            <li class="active">
+                <a asp-action="Orders">
+                    <i class='bx bx-list-ul'></i>
+                    <span class="text">Order List </span>
+                </a>
+            </li>
+            <li>
+                <a asp-action="Create">
+                    <i class='bx bx-list-plus'></i>
+                    <span class="text">Add Item</span>
+                </a>
+            </li>
+            <li>
+                <a asp-action="Index1">
+                    <i class='bx bx-list-plus'></i>
+                    <span class="text">Items</span>
+                </a>
+            </li>
+            <li>
+                <a href="###########################CUSTOMIZE ORDER">
+                    <i class='bx bx-list-plus'></i>
+                    <span class="text">Customize Order </span>
+                </a>
+            </li>
+        </ul>
+    </section>
+
+    <section id="content">
+
+        <!-- NAVBAR -->
+        <nav>
+            <i class='bx bx-menu'></i>
+            <a href="#" class="nav-link">Categories</a>
+            <form action="#">
+                <div class="form-input">
+                    <input type="search" placeholder="Search...">
+                    <button type="submit" class="search-btn"><i class='bx bx-search'></i></button>
+                </div>
+            </form>
+        </nav>
+        <!-- NAVBAR -->
+
+        <div class="product-box">
+
+            <!--
+              - PRODUCT GRID
+            -->
+            <br>
+            <br>
+            <div class="product-main">
+                <div class="product-grid">
+
+                   @* <div class="showcase" id="item-1">
+
+                        <div class="showcase-banner">
+
+                            <img src="  image/products/Brown right L shaped sofa.jpg" alt="Mens Winter Leathers Jackets" width="300"
+                                 class="product-img hover">
+                            <img src="  image/products/LF-L000301.jpg" alt="MEN Yarn Fleece Full-Zip Jacket"
+                                 class="product-img default" width="300">
+
+                            <p class="showcase-badge">15%</p>
+
+                            <div class="showcase-actions">
+
+                                <button class="btn-action">
+                                    <a href="edititem.html">
+                                        <i class='bx bxs-edit'></i>
+                                    </a>
+                                </button>
+
+                                <button class="btn-action" onclick="deleteItem('item-1')">
+                                    <i class='bx bxs-trash-alt'></i>
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                        <div class="showcase-content">
+
+                            <a href="product details.html" class="showcase-category">Bed Room</a>
+
+                            <a href="product details.html">
+                                <h3 class="showcase-title">Bed Room</h3>
+                            </a>
+
+                            <div class="showcase-rating">
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star-outline"></ion-icon>
+                                <ion-icon name="star-outline"></ion-icon>
+                            </div>
+
+                            <div class="price-box">
+                                <p class="price">$48.00</p>
+                                <del>$75.00</del>
+                            </div>
+
+                        </div>
+
+                    </div>*@
+
+
+
+                   @* <div class="showcase">
+
+                        <div class="showcase-banner">
+
+                            <img src="  ~/Image/products/Brown right L shaped sofa.jpg" alt="Mens Winter Leathers Jackets" width="300"
+                                 class="product-img hover">
+                            <img src="  ~/Image/products/LF-L000301.jpg" alt="MEN Yarn Fleece Full-Zip Jacket"
+                                 class="product-img default" width="300">
+
+                            <p class="showcase-badge">15%</p>
+
+                            <div class="showcase-actions">
+
+                                <button class="btn-action">
+                                    <a href="edititem.html">
+                                        <i class='bx bxs-edit'></i>
+                                    </a>
+                                </button>
+
+                                <button class="btn-action">
+                                    <i class='bx bxs-trash-alt'></i>
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                        <div class="showcase-content">
+
+                            <a href="product details.html" class="showcase-category">Bed Room</a>
+
+                            <a href="product details.html">
+                                <h3 class="showcase-title">Bed Room</h3>
+                            </a>
+
+                            <div class="showcase-rating">
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star-outline"></ion-icon>
+                                <ion-icon name="star-outline"></ion-icon>
+                            </div>
+
+                            <div class="price-box">
+                                <p class="price">$48.00</p>
+                                <del>$75.00</del>
+                            </div>
+
+                        </div>
+
+                    </div>*@
+
+                    
+
+                    @*<div class="showcase">
+
+                        <div class="showcase-banner">
+
+                            <img src="  ~/Image/products/Brown right L shaped sofa.jpg" alt="Mens Winter Leathers Jackets" width="300"
+                                 class="product-img hover">
+                            <img src="  ~/Image/products/LF-L000301.jpg" alt="MEN Yarn Fleece Full-Zip Jacket"
+                                 class="product-img default" width="300">
+
+                            <p class="showcase-badge">15%</p>
+
+                            <div class="showcase-actions">
+
+                                <button class="btn-action">
+                                    <a href="edititem.html">
+                                        <i class='bx bxs-edit'></i>
+                                    </a>
+                                </button>
+
+                                <button class="btn-action">
+                                    <i class='bx bxs-trash-alt'></i>
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                        <div class="showcase-content">
+
+                            <a href="product details.html" class="showcase-category">Bed Room</a>
+
+                            <a href="product details.html">
+                                <h3 class="showcase-title">Bed Room</h3>
+                            </a>
+
+                            <div class="showcase-rating">
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star"></ion-icon>
+                                <ion-icon name="star-outline"></ion-icon>
+                                <ion-icon name="star-outline"></ion-icon>
+                            </div>
+
+                            <div class="price-box">
+                                <p class="price">$48.00</p>
+                                <del>$75.00</del>
+                            </div>  
+
+                        </div>
+
+                    </div>*@
+                    @if(Model != null)
+                    {
+                       @foreach(var item in Model )
+                            {
+                                <div class="showcase">
+
+                                    <div class="showcase-banner">
+                                        <a asp-action="ProductaDetails" asp-controller="Item" asp-route-id="@item.ID">
+                                            <img src="~/Image/Items/@item.Image2" alt="Mens Winter Leathers Jackets"
+                                                 width="300" class="product-img hover">
+                                            <img asp-action="Index" asp-controller="Item" src="~/Image/Items/@item.Image" alt="MEN Yarn Fleece Full-Zip Jacket"
+                                                 class="product-img default" width="300">
+
+                                        </a>
+
+
+
+                                        <p class="showcase-badge">@item.discount</p>
+                                        <div class="showcase-actions">
+
+
+
+                                            @using (Html.BeginForm("AddItemToWishlist", "WishList", FormMethod.Post))
+                                            {
+                                                @Html.Hidden("itemID", item.ID)
+                                                // Replace "Id" with the actual name of the ID property in your model
+
+                                                <button class="btn-action">
+                                                    <ion-icon name="heart-outline"></ion-icon>
+                                                </button>
+
+                                            }
+                                            <a asp-action="AddToCart" asp-controller="Cart" asp-route-id="@item.ID">
+                                                <button class="btn-action">
+                                                    <ion-icon name="bag-add-outline"></ion-icon>
+                                                </button>
+                                            </a>
+
+
+
+                                        </div>
+
+
+                                    </div>
+
+                                    <div class="showcase-content">
+
+                                        <a asp-action="ProductaDetails" asp-controller="Item" asp-route-id="@item.ID" class="showcase-category">Bed Room</a>
+
+                                        <a asp-action="ProductaDetails" asp-controller="Item" asp-route-id="@item.ID">
+                                            <h3 class="showcase-title">@item.Product?.ProductName</h3>
+                                        </a>
+
+                                        <div class="showcase-rating">
+                                            <ion-icon name="star"></ion-icon>
+                                            <ion-icon name="star"></ion-icon>
+                                            <ion-icon name="star"></ion-icon>
+                                            <ion-icon name="star-outline"></ion-icon>
+                                            <ion-icon name="star-outline"></ion-icon>
+                                        </div>
+
+                                        <div class="price-box">
+                                            <p class="price">
+                                                @String.Format("{0:0.00}", item.Price) EPG
+                                            </p>
+                                            <del>
+                                                @String.Format("{0:0.00}", item.PriceAfterSale) EPG
+                                                EGP
+                                            </del>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                
+                            }
+
+                    }
+               
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    
+</body>
+<script src="~/js/script.js"></script>
+<script src="~/js/cart.js"></script>
+<script src="https://unpkg.com/ionicons@latest/dist/ionicons.js"></script>
+</html>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+
