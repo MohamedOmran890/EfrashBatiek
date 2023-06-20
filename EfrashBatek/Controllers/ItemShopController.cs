@@ -10,6 +10,8 @@ using EfrashBatek.service;
 using Microsoft.AspNetCore.Hosting;
 using EfrashBatek.ViewModel;
 using System.IO;
+using Castle.Core.Resource;
+using System.Xml.Schema;
 
 namespace EfrashBatek.Controllers
 {
@@ -46,9 +48,22 @@ namespace EfrashBatek.Controllers
         [HttpGet]
         public IActionResult Seller()
         {
-            return View();
+            
+            // user- -> selller id --> user --> shopid --> orderitem
+            User user = IdentityRepository.GetUser();
+            Staff seller=  _context.The_Staff.FirstOrDefault(i=>i.UserId == user.Id);
+            var orders = _context.Order_Items.Where(i => i.ShopID == seller.ShopID).ToList();
+            var Dash = new DashboardViewModel
+            {
+                 
+                TotalOrders = orders.Count(),   
+               
+            };
+
+
+            return View(Dash);
         }
-        
+      
         public IActionResult Orders()
         {
             return View();
