@@ -183,7 +183,7 @@ namespace EfrashBatek.Controllers
             if (ModelState.IsValid)
             {
                 shop.Create(obj);
-                return View("Index");
+                return RedirectToAction("Index");   
             }
             else
                 return View("AddShop");
