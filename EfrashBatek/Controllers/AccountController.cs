@@ -83,8 +83,8 @@ namespace EfrashBatek.Controllers
             if (result.Succeeded)
                 {
                 //
-                var roleName = "Customer";
-                await _userManager.AddToRoleAsync(user, roleName);
+                //var roleName = "Customer";
+                //await _userManager.AddToRoleAsync(user, roleName);
 
                 // assign user to customer 
                 //_userManager.AddToRoleAsync(user, "Customer");
