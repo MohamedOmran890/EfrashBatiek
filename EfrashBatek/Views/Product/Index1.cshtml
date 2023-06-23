@@ -46,9 +46,8 @@
 
 
         </ul>
-
-         @if (User.IsInRole("Customer"))
-        {
+            @if (!User.IsInRole("Admin")&&!User.IsInRole("Seller"))
+            {
 
             <div class="nav-icon">
                 <a asp-controller="" asp-action=""><i class='bx bx-search'></i></a>

@@ -85,8 +85,8 @@
                                      class="product-img default" width="300">
 
                                 <p class="showcase-badge">@item.discount%</p>
-                              @if (!User.IsInRole("Admin")&&!User.IsInRole("Seller"))
-                                                {
+                                    @if (!User.IsInRole("Admin") && !User.IsInRole("Seller"))
+                                    {
 
                                         <div class="showcase-actions">
 
