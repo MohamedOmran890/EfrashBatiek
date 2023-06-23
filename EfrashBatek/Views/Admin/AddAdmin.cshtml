@@ -1,24 +1,30 @@
-﻿@model AdminVM
+﻿@model EfrashBatek.ViewModel.AdminVM
 @{
-    Layout = null;
+    Layout = "";
 }
-<!DOCTYPE html>
-<html lang="en">
+
+﻿
+<html lang="en" dir="ltr">
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Admin</title>
+    <title> Add Seller </title>
     <link rel="stylesheet" href="~/css/admin.css">
-    <link rel="stylesheet" href="~/css/seller details.css">
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Boxicons CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <!-- BOOTSTRAB -->
+    <link rel="stylesheet" type="text/css"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="~/css/addseller.css">
+    
 </head>
+
 <body>
+    <!-- NAVBAR -->
+    <!--ADD SELLER FORM-->
+    <!--Layout -->
     <section id="sidebar">
         <a asp-action="TrendingProducts" asp-controller="Home" class="brand">
             <i class='bx bxs-smile'></i>
@@ -49,7 +55,7 @@
                     <span class="text">Add Shop</span>
                 </a>
             </li>
-            <li>
+            <li class="active">
                 <a asp-action="AddAdmin">
                     <i class='bx bx-list-plus'></i>
                     <span class="text">Add Admin</span>
@@ -57,7 +63,7 @@
             </li>
 
             <!--Why Seller Details-->
-            <li class="active">
+            <li>
                 <a asp-action="SellerDetails" asp-controller="Admin">
                     <i class='bx bxs-group'></i>
                     <span class="text">Seller Details</span>
@@ -65,85 +71,110 @@
             </li>
             <li>
                 <a asp-action="Logout" asp-controller="Account" class="nav-link" role="tab">
-						<i class='bx bx-log-out'></i>
+                    <i class='bx bx-log-out'></i>
                     Log Out
                 </a>
             </li>
         </ul>
     </section>
+    <!-- SIDEBAR -->
+    <!-- NAVBAR -->
     <section id="content">
         <nav>
             <i class='bx bx-menu'></i>
-            <a href="#" class="nav-link">Categories</a>
-            <form action="#">
-                <div class="form-input">
-                    <input type="search" placeholder="Search...">
-                    <button type="submit" class="search-btn"><i class='bx bx-search'></i></button>
-                </div>
-            </form>
         </nav>
     </section>
-    <div class="container">
-        <div class="title">Registration</div>
-        <div class="content">
-            <form asp-action="AddAdmin" asp-controller="Admin">
-                <div asp-validation-summary="All" class="text-danger"></div>
-                <div class="user-details">
-                    <div class="input-box">
-                        <input asp-for="FirstName" type="text" placeholder="Enter your first name ">
-                        <span asp-validation-for="FirstName"></span>
-                    </div>
-                    <div class="input-box">
-                        <input asp-for="LastName" type="LastName" placeholder="Enter your last name">
-                        <span asp-validation-for="LastName"></span>
-                    </div>
-                    <div class="input-box">
-                        <input asp-for="Username" type="Username" placeholder="Enter your Username ">
-                        <span asp-validation-for="Username"></span>
-                    </div>
-                    <div class="input-box">
-                        <input asp-for="Email" type="Email" placeholder="Enter your email">
-                        <span asp-validation-for="Email"></span>
-                    </div>
-                    <div class="input-box">
-                        <input asp-for="Password" type="password" placeholder="Enter your password">
-                        <span asp-validation-for="Password"></span>
-                    </div>
-                    <div class="input-box">
-                        <input asp-for="ConfirmPassword" type="ConfirmPassword" placeholder="Confirm your Password">
-                        <span asp-validation-for="ConfirmPassword"></span>
-                    </div>
-                    <div class="input-box">
-                        <input asp-for="Age" type="Age" placeholder="Enter your Age">
-                        <span asp-validation-for="Age" class="text-danger"></span>
-                    </div>
-                    <div class="input-box">
-                        <input asp-for="Birthdate" class="form-control" placeholder="Birthdate" />
-                        <span asp-validation-for="Birthdate" class="text-danger"></span>
-                    </div>
-                    <div class="input-box">
-                        @*<label asp-for="Gender">Gender</label>*@
-                        <select asp-for="Gender" class="form-control">
-                            <option value="null">Gender</option>
-                            <option>
-                                Male
-                            </option>
-                            <option>
-                                Female
-                            </option>
-                            <span asp-validation-for="Gender" class="text-danger"></span>
-                        </select>
-                    </div>
+    <section>
+        <form asp-action="AddAdmin" asp-controller="Admin" method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="col-sm-12 col-md-12 col-lg-9 col-xl-9">
+                <div id="address" role="tabpanel" aria-labelledby="address-tab">
+                    <h3 class="mb-4">Add Admin</h3>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="FirstName"></label>
+                                <input asp-for="FirstName" class="form-control" placeholder="First Name">
+                                <span asp-validation-for="FirstName" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="LastName"></label>
+                                <input asp-for="LastName" class="form-control" placeholder="Last Name">
+                                <span asp-validation-for="LastName" class="text-danger"></span>
 
-                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Email"></label>
+                                <input asp-for="Email" class="form-control" placeholder="Email">
+                                <span asp-validation-for="Email" class="text-danger"></span>
 
-                <div class="button">
-                    <input type="submit" value="Register">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Age"></label>
+                                <input asp-for="Age" type="text" class="form-control" placeholder="Age">
+                                <span asp-validation-for="Age" class="text-danger"></span>
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Username"></label>
+                                <input asp-for="Username" type="text" class="form-control" placeholder="Username">
+                                <span asp-validation-for="Username" class="text-danger"></span>
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Password"></label>
+                                <input asp-for="Password" type="password" class="form-control" placeholder="Password">
+                                <span asp-validation-for="Password" class="text-danger"></span>
+
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="ConfirmPassword"></label>
+                                <input asp-for="ConfirmPassword" type="password" class="form-control" placeholder="ConfirmPassword">
+                                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                            <input asp-for="Birthdate" class="form-control" placeholder="Birthdate" />
+                            <span asp-validation-for="Birthdate" class="text-danger"></span>
+                            </div>
+
+                            <div class="col-md-6">
+                                @*<label asp-for="Gender">Gender</label>*@
+                                <select asp-for="Gender" class="form-control">
+                                    <option value="null">Gender</option>
+                                    <option>
+                                        Male
+                                    </option>
+                                    <option>
+                                        Female
+                                    </option>
+                                    <span asp-validation-for="Gender" class="text-danger"></span>
+                                </select>
+                            </div>
+                        </div>
+                        <input type="submit" class="btnRegister" value="Register" href="default address.html">
+                    </div>
                 </div>
-            </form>
-           
-        </div>
-    </div>
-     <script src="~/js/script.js"></script>
+            </div>
+        </form>
+    </section>
+
+    <!-- SCRIPT -->
+    <script src="~/js/script.js"></script>
 </body>
 </html>
