@@ -97,11 +97,7 @@ namespace EfrashBatek.Controllers
         {
             return View();
         }
-        //Fake
-        public IActionResult AddStaff2()
-        {
-            return View();
-        }
+     
 
         [HttpPost]
         public async Task<IActionResult> SaveStaff(RegisterViewModelStaff model)
