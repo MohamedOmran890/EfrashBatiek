@@ -1,5 +1,6 @@
 ﻿using EfrashBatek.Models;
 using EfrashBatek.service;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.Linq;
 
 namespace EfrashBatek.Controllers
 {
+    [Authorize]
     public class CartController : Controller
     {
         IItemRepository _itemRepository;
