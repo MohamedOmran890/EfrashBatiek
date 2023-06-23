@@ -42,225 +42,224 @@
         <a href="#trending" class="down"><i class='bx bx-down-arrow-alt'></i></a>
     </div>
 </section>
+    // Display the products here
+    <!-- trending-products-section -->
+    <section class="trending-product" id="trending">
+        <div class="center-text">
+            <h2>Our Trending <span>products</span></h2>
+        </div>
 
-<!-- trending-products-section -->
-<section class="trending-product" id="trending">
-    <div class="center-text">
-        <h2>Our Trending <span>products</span></h2>
-    </div>
+        <div class="product-box">
 
-    <div class="product-box">
+            <!--- PRODUCT Trending -->
 
-        <!--- PRODUCT Trending -->
+            <div class="product-main">
 
-        <div class="product-main">
+                <h2 class="title">New Products</h2>
 
-            <h2 class="title">New Products</h2>
-
-            <div class="product-grid">
+                <div class="product-grid">
 
 
-                @if (Model.Value != null)
-                {
-
-                    @foreach (var item in Model.Value)
+                    @if (Model.Value != null)
                     {
-                        <div class="showcase">
 
-                            <div class="showcase-banner">
-                                <a asp-action="ProductaDetails" asp-controller="Item" asp-route-id="@item.ID">
+                        @foreach (var item in Model.Value)
+                        {
+                            <div class="showcase">
 
-                               
-                                <img asp-action ="ProductaDetails" asp-controller="Item" asp-route-id="@item.ID" src="~/Image/Items/@item.Image2" alt="Mens Winter Leathers Jackets"
+                                <div class="showcase-banner">
+                                    <a asp-action="ProductaDetails" asp-controller="Item" asp-route-id="@item.ID">
+
+
+                                        <img asp-action ="ProductaDetails" asp-controller="Item" asp-route-id="@item.ID" src="~/Image/Items/@item.Image2" alt="Mens Winter Leathers Jackets"
                                      width="300" class="product-img hover">
-                                <img asp-action="ProductaDetails" asp-controller="Item" asp-route-id="@item.ID"  src="~/Image/Items/@item.Image" alt="MEN Yarn Fleece Full-Zip Jacket"
+                                        <img asp-action="ProductaDetails" asp-controller="Item" asp-route-id="@item.ID"  src="~/Image/Items/@item.Image" alt="MEN Yarn Fleece Full-Zip Jacket"
                                      class="product-img default" width="300">
-                                     </a>
+                                    </a>
 
 
 
-                                <p class="showcase-badge">@item.discount</p>
-                                @if (User.IsInRole("Customer"))
-                                {
-                                    <div class="showcase-actions">
+                                    <p class="showcase-badge">@item.discount</p>
+                                    @if (!User.IsInRole("Admin") && !User.IsInRole("Seller"))
+                                    {
+                                        <div class="showcase-actions">
 
 
 
-                                        @using (Html.BeginForm("AddItemToWishlist", "WishList", FormMethod.Post))
-                                        {
-                                            @Html.Hidden("itemID", item.ID)
-                                            // Replace "Id" with the actual name of the ID property in your model
+                                            @using (Html.BeginForm("AddItemToWishlist", "WishList", FormMethod.Post))
+                                            {
+                                                @Html.Hidden("itemID", item.ID)
+                                                // Replace "Id" with the actual name of the ID property in your model
 
-                                            <button class="btn-action">
-                                                <ion-icon name="heart-outline"></ion-icon>
-                                            </button>
+                                                <button class="btn-action">
+                                                    <ion-icon name="heart-outline"></ion-icon>
+                                                </button>
 
-                                        }
-                                        <a asp-action="AddToCart" asp-controller="Cart" asp-route-id="@item.ID">
-                                            <button class="btn-action">
-                                                <ion-icon name="bag-add-outline"></ion-icon>
-                                            </button>
-                                        </a>
+                                            }
+                                            <a asp-action="AddToCart" asp-controller="Cart" asp-route-id="@item.ID">
+                                                <button class="btn-action">
+                                                    <ion-icon name="bag-add-outline"></ion-icon>
+                                                </button>
+                                            </a>
 
 
+                                        </div>
+                                    }
+
+
+                                </div>
+
+                                <div class="showcase-content">
+
+                                    <a asp-action="ProductaDetails" asp-controller="Item" asp-route-id="@item.ID" class="showcase-category">@item.Name</a>
+
+                                    <a asp-action="ProductaDetails" asp-controller="Item" asp-route-id="@item.ID">
+                                        <h3 class="showcase-title">@item.Product.ProductName</h3>
+                                    </a>
+
+                                    <div class="showcase-rating">
+                                        <ion-icon name="star"></ion-icon>
+                                        <ion-icon name="star"></ion-icon>
+                                        <ion-icon name="star"></ion-icon>
+                                        <ion-icon name="star-outline"></ion-icon>
+                                        <ion-icon name="star-outline"></ion-icon>
                                     </div>
-                                     }
 
+                                    <div class="price-box">
+                                        <p class="price">
+                                            @String.Format("{0:0.00}", item.Price) EPG
+                                        </p>
+                                        <del>
+                                            @String.Format("{0:0.00}", item.PriceAfterSale) EPG
+                                            EGP
+                                        </del>
+                                    </div>
 
-                            </div>
-
-                            <div class="showcase-content">
-
-                                <a asp-action="ProductaDetails" asp-controller="Item" asp-route-id="@item.ID" class="showcase-category">@item.Name</a>
-
-                                <a asp-action="ProductaDetails" asp-controller="Item" asp-route-id="@item.ID">
-                                    <h3 class="showcase-title">@item.Product.ProductName</h3>
-                                </a>
-
-                                <div class="showcase-rating">
-                                    <ion-icon name="star"></ion-icon>
-                                    <ion-icon name="star"></ion-icon>
-                                    <ion-icon name="star"></ion-icon>
-                                    <ion-icon name="star-outline"></ion-icon>
-                                    <ion-icon name="star-outline"></ion-icon>
-                                </div>
-
-                                <div class="price-box">
-                                    <p class="price">
-                                        @String.Format("{0:0.00}", item.Price) EPG
-                                    </p>
-                                    <del>
-                                        @String.Format("{0:0.00}", item.PriceAfterSale) EPG
-                                        EGP
-                                    </del>
                                 </div>
 
                             </div>
 
-                        </div>
+                        }
+
+
 
                     }
 
 
 
-                }
-
-
-
+                </div>
             </div>
-        </div>
 
 
 
 
 
 
-        <!---Product New Arrivals-->
+            <!---Product New Arrivals-->
 
-        <div class="product-main">
+            <div class="product-main">
 
-            <h2 class="title">New Arrivals </h2>
+                <h2 class="title">New Arrivals </h2>
 
-            <div class="product-grid">
+                <div class="product-grid">
 
 
-                @if (Model.Key != null)
-                {
-
-                    @foreach (var item in Model.Key)
+                    @if (Model.Key != null)
                     {
-                         <div class="showcase">
 
-                            <div class="showcase-banner">
-                                <a asp-action="ProductaDetails" asp-controller="Item" asp-route-id="@item.ID">
-                                    <img src="~/Image/Items/@item.Image2" alt="Mens Winter Leathers Jackets"
+                        @foreach (var item in Model.Key)
+                        {
+                            <div class="showcase">
+
+                                <div class="showcase-banner">
+                                    <a asp-action="ProductaDetails" asp-controller="Item" asp-route-id="@item.ID">
+                                        <img src="~/Image/Items/@item.Image2" alt="Mens Winter Leathers Jackets"
                                          width="300" class="product-img hover">
-                                    <img asp-action="Index" asp-controller="Item" src="~/Image/Items/@item.Image" alt="MEN Yarn Fleece Full-Zip Jacket"
+                                        <img asp-action="Index" asp-controller="Item" src="~/Image/Items/@item.Image" alt="MEN Yarn Fleece Full-Zip Jacket"
                                          class="product-img default" width="300">
 
-                                </a>
-                               
-
-
-                                <p class="showcase-badge">@item.discount</p>
-                                @if (User.IsInRole("Customer"))
-                                {
-
-                                    <div class="showcase-actions">
+                                    </a>
 
 
 
-                                        @using (Html.BeginForm("AddItemToWishlist", "WishList", FormMethod.Post))
-                                        {
-                                            @Html.Hidden("itemID", item.ID)
-                                            // Replace "Id" with the actual name of the ID property in your model
+                                    <p class="showcase-badge">@item.discount</p>
+                                    @if (!User.IsInRole("Admin") && !User.IsInRole("Seller"))
+                                    {
 
-                                            <button class="btn-action">
-                                                <ion-icon name="heart-outline"></ion-icon>
-                                            </button>
-
-                                        }
-                                        <a asp-action="AddToCart" asp-controller="Cart" asp-route-id="@item.ID">
-                                            <button class="btn-action">
-                                                <ion-icon name="bag-add-outline"></ion-icon>
-                                            </button>
-                                        </a>
+                                        <div class="showcase-actions">
 
 
 
+                                            @using (Html.BeginForm("AddItemToWishlist", "WishList", FormMethod.Post))
+                                            {
+                                                @Html.Hidden("itemID", item.ID)
+                                                // Replace "Id" with the actual name of the ID property in your model
 
+                                                <button class="btn-action">
+                                                    <ion-icon name="heart-outline"></ion-icon>
+                                                </button>
+
+                                            }
+                                            <a asp-action="AddToCart" asp-controller="Cart" asp-route-id="@item.ID">
+                                                <button class="btn-action">
+                                                    <ion-icon name="bag-add-outline"></ion-icon>
+                                                </button>
+                                            </a>
+
+
+
+
+                                        </div>
+                                    }
+
+
+                                </div>
+
+                                <div class="showcase-content">
+
+                                    <a asp-action="ProductaDetails" asp-controller="Item" asp-route-id="@item.ID"class="showcase-category">@item.Name</a>
+
+                                    <a asp-action="ProductaDetails" asp-controller="Item" asp-route-id="@item.ID">
+                                        <h3 class="showcase-title">@item.Product?.ProductName</h3>
+                                    </a>
+
+                                    <div class="showcase-rating">
+                                        <ion-icon name="star"></ion-icon>
+                                        <ion-icon name="star"></ion-icon>
+                                        <ion-icon name="star"></ion-icon>
+                                        <ion-icon name="star-outline"></ion-icon>
+                                        <ion-icon name="star-outline"></ion-icon>
                                     </div>
-                                }
 
+                                    <div class="price-box">
+                                        <p class="price">
+                                            @String.Format("{0:0.00}", item.Price)
+                                        </p>
+                                        <del>
+                                            @String.Format("{0:0.00}", item.PriceAfterSale)
+                                            EGP
+                                        </del>
+                                    </div>
 
-                            </div>
-
-                            <div class="showcase-content">
-
-                                <a asp-action="ProductaDetails" asp-controller="Item" asp-route-id="@item.ID"class="showcase-category">@item.Name</a>
-
-                                <a asp-action="ProductaDetails" asp-controller="Item" asp-route-id="@item.ID">
-                                    <h3 class="showcase-title">@item.Product?.ProductName</h3>
-                                </a>
-
-                                <div class="showcase-rating">
-                                    <ion-icon name="star"></ion-icon>
-                                    <ion-icon name="star"></ion-icon>
-                                    <ion-icon name="star"></ion-icon>
-                                    <ion-icon name="star-outline"></ion-icon>
-                                    <ion-icon name="star-outline"></ion-icon>
-                                </div>
-
-                                <div class="price-box">
-                                    <p class="price">
-                                        @String.Format("{0:0.00}", item.Price)
-                                    </p>
-                                    <del>
-                                        @String.Format("{0:0.00}", item.PriceAfterSale)
-                                        EGP
-                                    </del>
                                 </div>
 
                             </div>
+                        }
 
-                        </div>
+
+
                     }
 
 
 
-                }
-
-
-
+                </div>
             </div>
+
+
+
         </div>
 
-
-
-    </div>
-
-</section>
-
+    </section>
 
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

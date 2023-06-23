@@ -35,8 +35,10 @@ namespace EfrashBatek.Controllers
         {
             if (!string.IsNullOrEmpty(SearchString))
             {
-                var itm = context.Items.Where(x => x.Name.Contains(SearchString)).ToList();
-                return View(itm);
+                var filteredItems = context.Items.Where(x => x.Name.Contains(SearchString)).ToList();
+                var trendingItems = _Item.Trending();
+                var pairs = new KeyValuePair<List<Item>, List<Item>>(filteredItems, null);
+                return View(pairs);
             }
             if(Price.HasValue)
             {

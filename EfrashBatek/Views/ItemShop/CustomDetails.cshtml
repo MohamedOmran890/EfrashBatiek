@@ -3,75 +3,165 @@
 }
 @model Custom
 
-
-<link rel="stylesheet" href="~/css/orderdetails.css">
-
-<br>
-<br>
-<br>
-<br>
-
-<div class="container-fluid">
-    <div class="container">
-        <!-- Title -->
-        <div class="d-flex justify-content-between align-items-center py-3">
-            <h2 class="h5 mb-0"><a href="#" class="text-muted"></a> Order Code : #131321</h2>
-        </div>
-
-        <!-- Main content -->
-        <div class="row">
-            <div class="col-lg-8">
-                <!-- Details -->
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <div class="mb-3 d-flex justify-content-between">
-
-                            <div class="d-flex">
-                                <div class="dropdown">
-                                    <button class="btn btn-link p-0 text-muted" type="button" data-bs-toggle="dropdown">
-                                        <i class="bi bi-three-dots-vertical"></i>
-                                    </button>
-
-                                </div>
-                            </div>
-                        </div>
-                        <table class="table table-borderless">
-                            <tbody>
-
-                                <tr>
-                                    <!--img & color & name -->
-                                    <td>
-                                        <div class="d-flex mb-2">
-                                            <!---image-->
-                                            <div class="flex-shrink-0">
-                                                <img src="~/Image/Items/@Model.Image" alt="" width="35" class="img-size">
-                                            </div>
-                                            <!--color & name -->
-                                            <div class="flex-lg-grow-1 ms-3">
-                                                <h6 class="small mb-0"><a href="#" class="text-reset">Name : @Model.Name </a></h6>
-                                                <span class="small">Phone @Model.Phone</span>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <!-- number-->
-                                    <td>@Model.Description</td>
-
-                                    <td>
-                                        <span class="badge bg-success rounded-pill">@Model.Zone</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                </tr>
+<html>
 
 
-                            </tbody>
 
-                        </table>
-                    </div>
-                </div>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS-link -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <!-- Code by Angela Delise
+    https://codepen.io/angeladelise/pen/yLJdgYx -->
 
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="shortcut icon" href="image/favicon.ico" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600;700&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+          integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <!--css profile-->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/favicon.ico" href="~/Image/favicon.png">
+    <!-- CSS-link -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS-link -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <!-- Code by Angela Delise
+    https://codepen.io/angeladelise/pen/yLJdgYx -->
+    @*<link rel="stylesheet" href="css/cart.css">*@
+    <link rel="stylesheet" href="~/css/main.css">
+
+
+
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600;700&display=swap"
+          rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+          integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+
+
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+          integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+    <title>Efresh Beitak</title>
+</head>
+
+
+<body>
+
+
+
+    <div class="container-fluid">
+        <div class="container">
+            <!-- Title -->
+            <div class="d-flex justify-content-between align-items-center py-3">
+                <h2 class="h5 mb-0"><a href="#" class="text-muted"></a> Order Code : #####</h2>
             </div>
 
+            <!-- Main content -->
+            <div class="row">
+                <div class="col-lg-8">
+                    <!-- Details -->
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <div class="mb-3 d-flex justify-content-between">
+                                <div>
+                                    <span class="me-3">Name : @Model.Name</span>
+                                    &nbsp;
+                                    &nbsp;
+                                    &nbsp;
+
+                                    <span class="me-3"> Phone : @Model.Phone</span>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+
+
+
+
+                                    <span>zone : </span>
+                                    <span class="badge rounded-pill bg-info">@Model.Zone</span>
+                                </div>
+                                <div class="d-flex">
+                                    <div class="dropdown">
+                                        <button class="btn btn-link p-0 text-muted" type="button" data-bs-toggle="dropdown">
+                                            <i class="bi bi-three-dots-vertical"></i>
+                                        </button>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <table class="table table-borderless">
+                                <tbody>
+
+                                   
+                                        <tr>
+                                            <!--img & color & name -->
+                                            <td>
+                                                <div class="d-flex mb-2">
+                                                    <!---image-->
+                                                    <div class="flex-shrink-0">
+                                                        <img src="~/Image/Items/@Model.Image" alt="" width="35" class="img-size">
+                                                    </div>
+                                                    <!--color & name -->
+                                                    <div class="flex-lg-grow-1 ms-3">
+                                                        <span class="small">Description: @Model.Description</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                           
+                                        </tr>
+                                        <tr>
+                                        </tr>
+                                    
+
+
+                                </tbody>
+                               
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </div>
     </div>
-</div>
+    
+
+
+</body>
+
+</html>
