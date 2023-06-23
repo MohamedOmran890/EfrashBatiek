@@ -138,9 +138,10 @@
 
                             <div class="showcase-content">
 
-                                <a href="product details.html" class="showcase-category">@item.Name</a>
+                                <a asp-action ="Details" asp-controller="ItemShop" asp-route-id="@item.ID" class="showcase-category">
+                                    @item.Name</a>
 
-                                <a href="product details.html">
+                                <a asp-action="Details" asp-controller="ItemShop" asp-route-id="@item.ID">
                                     <h3 class="showcase-title">@item.Product.ProductName</h3>
                                 </a>
 
