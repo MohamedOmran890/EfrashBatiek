@@ -21,6 +21,12 @@ namespace EfrashBatek.Models
         {
             modelBuilder.Entity<Cart_Item>().HasKey(x => new { x.CartID, x.ItemID });
             base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Order_Item>()
+    .HasMany(o => o.Feedbacks)
+    .WithOne(f => f.Order_Item)
+    .HasForeignKey(f => f.OrderItemID)
+    .OnDelete(DeleteBehavior.Cascade);
+
         }
 
         public DbSet<Address> Addresses { get; set; }

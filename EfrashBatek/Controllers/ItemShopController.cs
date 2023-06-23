@@ -14,6 +14,7 @@ using Castle.Core.Resource;
 using System.Xml.Schema;
 using Microsoft.AspNetCore.Http;
 using System.Net;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EfrashBatek.Controllers
 {
@@ -46,9 +47,10 @@ namespace EfrashBatek.Controllers
             IdentityRepository = identityRepository;
             this.staffRepository = staffRepository;
             this.order_ItemRepository = order_ItemRepository;
+
         }
         //  show all products of shop  
-		public IActionResult ShopItem()
+		public IActionResult ShopItem(string SearchString)
 		{
 			var user = IdentityRepository.GetUser();
 			if (user == null)
@@ -62,17 +64,22 @@ namespace EfrashBatek.Controllers
 			}
 			var shop = shopRepository.GetById(Seller.ShopID);
 			var itm = shopRepository.ItemByShop(shop.ID);
-            foreach(var item in itm)
+            foreach (var item in itm)
             {
                 item.Product = _context.Products.FirstOrDefault(i => i.ID == item.ProductID);
             }
-			return View(itm);
+            if (!string.IsNullOrEmpty(SearchString))
+            {
+                var item = _context.Items.Where(x => x.Name.Contains(SearchString)).ToList();
+                return View(item);
+            }
+
+            return View(itm);
 		}
 
 
         
         [HttpGet]
-        // show  dashboard of sellere
         public IActionResult Seller()
         {
 
@@ -343,10 +350,8 @@ namespace EfrashBatek.Controllers
 
 
 
-
-        // order shop
         // List<Order Items> ??
-        public IActionResult OrderShop()
+        public IActionResult OrderShop(string SearchString)
         {
             var user = IdentityRepository.GetUser();
             if (user == null)
@@ -402,7 +407,11 @@ namespace EfrashBatek.Controllers
                 
                
             }
-            
+            if (!string.IsNullOrEmpty(SearchString))
+            {
+             var itm = _context.Items.Where(x => x.Name.Contains(SearchString)).ToList();           
+                return View(itm);
+            }
 
             return View(ShopOrder);
            

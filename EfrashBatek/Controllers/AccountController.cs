@@ -161,7 +161,7 @@ namespace EfrashBatek.Controllers
                         }
                         else if (await _userManager.IsInRoleAsync(user, "Seller"))
                         {
-                            return RedirectToAction("Index", "ItemShop");
+                            return RedirectToAction("ShopItem", "ItemShop");
                         }
                         else if(await _userManager.IsInRoleAsync(user,"Customer"))
                         {
@@ -169,7 +169,7 @@ namespace EfrashBatek.Controllers
                         }
                         else if(await _userManager.IsInRoleAsync(user,"Shop"))
                         {
-                            return RedirectToAction("Index", "ItemShop");
+                            return RedirectToAction("ShopItem", "ItemShop");
                         }
                         return RedirectToLocal(returnUrl);
                     }

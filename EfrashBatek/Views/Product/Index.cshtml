@@ -85,18 +85,21 @@
                                      class="product-img default" width="300">
 
                                 <p class="showcase-badge">@item.discount%</p>
+                                    @if (User.IsInRole("Customer"))
+                                    {
 
-                                <div class="showcase-actions">
+                                        <div class="showcase-actions">
 
-                                    <button class="btn-action">
-                                            <a asp-action="AddItemToWishlist" asp-controller="WishList" asp-route-id="@item.ID"><ion-icon name="heart-outline"></ion-icon></a>
-                                </button>
+                                            <button class="btn-action">
+                                                <a asp-action="AddItemToWishlist" asp-controller="WishList" asp-route-id="@item.ID"><ion-icon name="heart-outline"></ion-icon></a>
+                                            </button>
 
-                                    <button class="btn-action">
-                                    <a asp-action="AddToCart" asp-controller="Cart" asp-route-Id="@item.ID">ge <ion-icon name="bag-add-outline"></ion-icon></a>
-                                    </button>
+                                            <button class="btn-action">
+                                                <a asp-action="AddToCart" asp-controller="Cart" asp-route-Id="@item.ID">ge <ion-icon name="bag-add-outline"></ion-icon></a>
+                                            </button>
 
-                                </div>
+                                        </div>
+                                    }
 
                             </div>
 

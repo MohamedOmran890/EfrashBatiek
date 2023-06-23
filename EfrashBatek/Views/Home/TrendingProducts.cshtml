@@ -80,28 +80,31 @@
 
 
                                 <p class="showcase-badge">@item.discount</p>
-                                <div class="showcase-actions">
+                                @if (User.IsInRole("Customer"))
+                                {
+                                    <div class="showcase-actions">
 
 
 
-                                    @using (Html.BeginForm("AddItemToWishlist", "WishList", FormMethod.Post))
-                                    {
-                                        @Html.Hidden("itemID", item.ID)
-                                        // Replace "Id" with the actual name of the ID property in your model
+                                        @using (Html.BeginForm("AddItemToWishlist", "WishList", FormMethod.Post))
+                                        {
+                                            @Html.Hidden("itemID", item.ID)
+                                            // Replace "Id" with the actual name of the ID property in your model
 
-                                        <button class="btn-action">
-                                            <ion-icon name="heart-outline"></ion-icon>
-                                        </button>
+                                            <button class="btn-action">
+                                                <ion-icon name="heart-outline"></ion-icon>
+                                            </button>
 
-                                    }
-                                    <a asp-action="AddToCart" asp-controller="Cart" asp-route-id="@item.ID">
-                                        <button class="btn-action">
-                                            <ion-icon name="bag-add-outline"></ion-icon>
-                                        </button>
-                                    </a>
+                                        }
+                                        <a asp-action="AddToCart" asp-controller="Cart" asp-route-id="@item.ID">
+                                            <button class="btn-action">
+                                                <ion-icon name="bag-add-outline"></ion-icon>
+                                            </button>
+                                        </a>
 
 
-                                </div>
+                                    </div>
+                                     }
 
 
                             </div>
@@ -180,30 +183,34 @@
 
 
                                 <p class="showcase-badge">@item.discount</p>
-                                <div class="showcase-actions">
+                                @if (User.IsInRole("Customer"))
+                                {
+
+                                    <div class="showcase-actions">
 
 
 
-                                    @using (Html.BeginForm("AddItemToWishlist", "WishList", FormMethod.Post))
-                                    {
-                                        @Html.Hidden("itemID", item.ID)
-                                        // Replace "Id" with the actual name of the ID property in your model
+                                        @using (Html.BeginForm("AddItemToWishlist", "WishList", FormMethod.Post))
+                                        {
+                                            @Html.Hidden("itemID", item.ID)
+                                            // Replace "Id" with the actual name of the ID property in your model
 
-                                        <button class="btn-action">
-                                            <ion-icon name="heart-outline"></ion-icon>
-                                        </button>
+                                            <button class="btn-action">
+                                                <ion-icon name="heart-outline"></ion-icon>
+                                            </button>
 
-                                    }
-                                    <a asp-action="AddToCart" asp-controller="Cart" asp-route-id="@item.ID">
-                                        <button class="btn-action">
-                                            <ion-icon name="bag-add-outline"></ion-icon>
-                                        </button>
-                                   </a>
-                                       
-                                    
+                                        }
+                                        <a asp-action="AddToCart" asp-controller="Cart" asp-route-id="@item.ID">
+                                            <button class="btn-action">
+                                                <ion-icon name="bag-add-outline"></ion-icon>
+                                            </button>
+                                        </a>
 
 
-                                </div>
+
+
+                                    </div>
+                                }
 
 
                             </div>

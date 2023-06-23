@@ -67,7 +67,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
           integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
-          crossorigin="anonymous" referrerpolicy="no-referrer" />
+          crossorigin="anonymous" referrerpolicy="no-referrer" />F
     <title>Efresh Beitak</title>
 </head>
 
@@ -81,26 +81,22 @@
         <ul class="navmenu">
             <li><a asp-controller="Product" asp-action="Index1">Products</a></li>
             <li><a asp-controller="Home" asp-action="TrendingProducts">Trends</a></li>
+             @if (User.IsInRole("Customer"))
+                                {
+                                
             <li><a asp-controller="Customs" asp-action="Create">Custom order</a></li>
-        
-            @if(User.IsInRole("Admin"))
-            {
-                <button onclick="location.href='@Url.Action("Index", "Admin")'">Admin></button>
-            }
-            @if (User.IsInRole("Seller"))
-            {
-                <button onclick="location.href='@Url.Action("Create", "ItemShop")'">Shop></button>
-            }
-
-
+                                }
         </ul>
 
 
         <div class="nav-icon">
             <a asp-controller="Home" asp-action="TrendingProducts"><i class='bx bx-search'></i></a>
-            <a asp-controller="MyProfile" asp-action="UpdateProfile"><i class='bx bx-user'></i></a>
-            <a asp-controller="Cart" asp-action="Index"><i class='bx bx-cart'></i></a>
-            <a asp-controller="WishList" asp-action="Index"><i class='bx bx-heart' undefined></i></a>
+            @if (User.IsInRole("Customer"))
+            {
+                <a asp-controller="MyProfile" asp-action="UpdateProfile"><i class='bx bx-user'></i></a>
+                <a asp-controller="Cart" asp-action="Index"><i class='bx bx-cart'></i></a>
+                <a asp-controller="WishList" asp-action="Index"><i class='bx bx-heart' undefined></i></a>
+            }
             <div class="bx bx-menu" id="menu-icon"></div>
         </div>
 
