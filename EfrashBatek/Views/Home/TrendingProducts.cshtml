@@ -80,7 +80,7 @@
 
 
                                 <p class="showcase-badge">@item.discount</p>
-                                @if (User.IsInRole("Customer"))
+                                @if (!User.IsInRole("Admin") && !User.IsInRole("Seller"))
                                 {
                                     <div class="showcase-actions">
 
@@ -183,7 +183,7 @@
 
 
                                 <p class="showcase-badge">@item.discount</p>
-                                @if (User.IsInRole("Customer"))
+                                @if (!User.IsInRole("Admin") && !User.IsInRole("Seller"))
                                 {
 
                                     <div class="showcase-actions">
