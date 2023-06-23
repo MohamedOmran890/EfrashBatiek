@@ -1,5 +1,5 @@
 ﻿@{
-    Layout = null;
+    Layout = "";
 }
 @model List<Staff> 
 <!DOCTYPE html>
@@ -60,18 +60,18 @@
                     <span class="text">Add Admin</span>
                 </a>
             </li>
-            <li>
-                <a asp-action="Logout" asp-controller="Account" class="nav-link" role="tab">
-                    <i class="fa fa-user text-center mr-1"></i>
-                    Log Out
-                </a>
-            </li>
 
             <!--Why Seller Details-->
             <li class="active">
                 <a asp-action="SellerDetails" asp-controller="Admin">
-                    <i class='bx bxs-group'></i>
+						<i class='bx bx-log-out'></i>
                     <span class="text">Seller Details</span>
+                </a>
+            </li>
+            <li>
+                <a asp-action="Logout" asp-controller="Account" class="nav-link" role="tab">
+                    <i class="fa fa-user text-center mr-1"></i>
+                    Log Out
                 </a>
             </li>
         </ul>

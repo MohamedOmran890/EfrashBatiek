@@ -19,14 +19,14 @@
                 <div class="user-details">
                     <div class="input-box">
                         <label asp-for="UserName" class="details">Username</label>
-                        <input asp-for="UserName" type="text" placeholder="Enter your username" required>
-                        <span asp-validation-for="UserName"></span>
+                        <input asp-for="UserName" type="text" placeholder="Enter your username">
+                        <span asp-validation-for="UserName" class="text-danger"></span>
 
                     </div>
                     <div class="input-box">
                         <label asp-for="Password" class="details">Password</label>
-                        <input asp-for="Password"  type="password" placeholder="Enter your password" required>
-                        <span asp-validation-for="Password"></span>
+                        <input asp-for="Password"  type="password" placeholder="Enter your password">
+                        <span asp-validation-for="Password"class="text-danger"></span>
 
                     </div>
                 </div>
