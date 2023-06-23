@@ -91,7 +91,7 @@
 
         <div class="nav-icon">
             <a asp-controller="Home" asp-action="TrendingProducts"><i class='bx bx-search'></i></a>
-            @if (User.IsInRole("Customer"))
+            @if (!User.IsInRole("Admin")&&!User.IsInRole("Seller"))
             {
                 <a asp-controller="MyProfile" asp-action="UpdateProfile"><i class='bx bx-user'></i></a>
                 <a asp-controller="Cart" asp-action="Index"><i class='bx bx-cart'></i></a>
