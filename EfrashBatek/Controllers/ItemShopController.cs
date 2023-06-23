@@ -17,6 +17,7 @@ using System.Net;
 
 namespace EfrashBatek.Controllers
 {
+    [Authorize(Roles ="Seller,Admin,Shop")]
     public class ItemShopController : Controller
     {
         private readonly IAddressRepository address;
@@ -414,6 +415,8 @@ namespace EfrashBatek.Controllers
             return RedirectToAction("OrderShop","ItemShop");
 
         }
+
+        [Authorize(Roles = "Seller,Shop,Admin")]
         public IActionResult CustomOrder()
         {
             var custom = _context.Customs.ToList();

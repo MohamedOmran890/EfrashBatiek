@@ -15,9 +15,11 @@ using System.Security.Principal;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Hosting.Server;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EfrashBatek.Controllers
 {
+    [Authorize]
 	public class MyProfileController : Controller
 	{
 		private readonly Context context;

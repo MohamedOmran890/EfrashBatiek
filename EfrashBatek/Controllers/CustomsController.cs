@@ -15,6 +15,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace EfrashBatek.Controllers
 {
+
     public class CustomsController : Controller
     {
         private readonly Context _context;
@@ -100,10 +101,7 @@ namespace EfrashBatek.Controllers
             return View();
         }
 
-        // POST: Customs/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
+             [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(CustomVM custom)
         {
