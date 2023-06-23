@@ -2,6 +2,7 @@
 @{
     Layout =null; 
 }
+@model int
 <!DOCTYPE html>
 <html lang="en">
 
@@ -100,21 +101,21 @@
                                 <tbody>
                                     <tr>
                                         <td>Shipping fee</td>
-                                        <td align="right">$5.43</td>
+                                        <td align="right">0</td>
                                     </tr>
                                     <tr>
-                                        <td>Discount 10%</td>
-                                        <td align="right">-$1.89</td>
+                                        <td>Disount</td>
+                                        <td align="right">0</td>
                                     </tr>
                                     <tr>
                                         <td>Price Total</td>
-                                        <td align="right">$84.82</td>
+                                        <td align="right">@Model EGP</td>
                                     </tr>
                                 </tbody>
                                 <tfoot>
                                     <tr>
                                         <td>Total</td>
-                                        <td align="right">$88.36</td>
+                                        <td align="right">@Model EGP</td>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -157,7 +158,7 @@
                                         <td>
                                             <div class="d-flex mb-2">
                                                 <div class="flex-shrink-0">
-                                                    <img src="~/Image/products/@item.Item?.Image" alt="" width="35" class="img-fluid">
+                                                    <img src="~/Image/Items/@item.Item?.Image" alt="" width="35" class="img-fluid">
                                                 </div>
                                                 <div class="d-flex justify-content-between align-items-center p-3 flex-lg-grow-1 ms-2">
                                                     <span class="small mb-0"><a href="#" class="text-reset">@item.Item?.Name</a></span>
@@ -185,10 +186,16 @@
                     @Html.Hidden("selectedAddressId", y)
                     // Replace "Id" with the actual name of the ID property in your model
 
-                            <div class="summary-checkout">
-                                <a href="orderinfo.html"><button class="checkout-cta">Go to Secure Checkout</button></a>
-                            </div>
                 }
+
+                        <div class="summary-checkout">
+                            <a asp-action="Details" asp-controller="Checkout" asp-route-id="@ViewBag.cartID" asp-route-address="@ViewBag.selectedAddressId">
+                                <button class="checkout-cta">Go to OrderDetails</button>
+
+                            </a>
+
+
+                        </div>
                         
                     </div>
                 </aside>

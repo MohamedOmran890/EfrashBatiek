@@ -1,30 +1,37 @@
-﻿@model Item
+﻿@model Item 
 @{
     Layout = null;
+    ViewData["Title"] = "Create";
 }
+
 <html lang="en" dir="ltr">
 
 <head>
     <meta charset="UTF-8">
-    <title> Edit Item </title>
+    <title> Add Item </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Boxicons CDN Link -->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <!-- BOOTSTRAB -->
+
     <link rel="stylesheet" type="text/css"
           href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <!-- CSS -->
-    <link rel="stylesheet" href="~/css/edititem.css">
+    <link rel="stylesheet" href="~/css/productdetails.css">
+    <link rel="stylesheet" href="~/css/additem.css">
     <link rel="stylesheet" href="~/css/seller.css">
-    <link rel="stylesheet" href="~/css/product details.css">
+
+  
+
 </head>
 
 <body>
     <!-- SIDEBAR -->
+
     <section id="sidebar">
-        <a href="#" class="brand">
+        <a asp-action="TrendingProducts" asp-controller="Home" class="brand">
             <i class='bx bxs-smile'></i>
-            <span class="text">Efresh Beitak </span>
+            <span class="text">Efresh Beitak</span>
         </a>
         <ul class="side-menu top">
             <li>
@@ -34,25 +41,26 @@
                 </a>
             </li>
             <li>
-                <a href="orders.html">
+                <a asp-action="OrderShop">
                     <i class='bx bx-list-ul'></i>
                     <span class="text">Order List </span>
                 </a>
             </li>
-            <li class="active">
+            <li>
                 <a asp-action="Create">
                     <i class='bx bx-list-plus'></i>
                     <span class="text">Add Item</span>
                 </a>
             </li>
             <li>
-                <a href="Items.html">
+                <a asp-action="ShopItem">
                     <i class='bx bx-list-plus'></i>
-                    <span class="text">Item</span>
+                    <span class="text">Items</span>
                 </a>
             </li>
+            
             <li>
-                <a href="###########################CUSTOMIZE ORDER">
+                <a asp-action="CustomOrder" asp-controller="ItemShop">
                     <i class='bx bx-list-plus'></i>
                     <span class="text">Customize Order </span>
                 </a>
@@ -67,8 +75,7 @@
         </nav>
     </section>
     <!-- NAVBAR -->
-
-
+    <!--ADD Product FORM-->
 
 
        

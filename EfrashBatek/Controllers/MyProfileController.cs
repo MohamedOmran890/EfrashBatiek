@@ -15,9 +15,11 @@ using System.Security.Principal;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Hosting.Server;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EfrashBatek.Controllers
 {
+    [Authorize]
 	public class MyProfileController : Controller
 	{
 		private readonly Context context;
@@ -59,8 +61,8 @@ namespace EfrashBatek.Controllers
 
             return View(Customs);  
         }
-        [HttpPost]
-        public IActionResult ViewCustoms(int id )
+    
+        public IActionResult ViewCustomss(int id )
         {
            var model =  context.Customs.FirstOrDefault(i=>i.ID == id);  
 
@@ -263,7 +265,7 @@ namespace EfrashBatek.Controllers
 			ViewBag.Model = user;
 
 
-			if (customer.Orders.Count == 0) { 
+			if (customer.Orders == null ) { 
                 return View("GoShopping");
             }
             else
@@ -273,7 +275,7 @@ namespace EfrashBatek.Controllers
             }
             
         }
-        [HttpPost]
+    
         public IActionResult OrderDetails(int id )
         {
             Order order =  context.Orders.FirstOrDefault(i=>i.ID == id ); 

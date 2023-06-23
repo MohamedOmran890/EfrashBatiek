@@ -1,6 +1,7 @@
 ﻿
 using EfrashBatek.Models;
 using EfrashBatek.service;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -8,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
+[Authorize]
 public class CheckoutController : Controller
     {
         IAddressRepository addressRepository;
@@ -35,11 +37,14 @@ public class CheckoutController : Controller
 
         var items = cart.LoadFromCookie();
         var list = items.Where(i=>i.CartID == cartID).ToList();
+        int total = 0;
               foreach ( var item in list ) {
             item.Item = context.Items.FirstOrDefault(i => i.ID == item.ItemID);
+            total += item.Quantity * (int)item.Item.Price;
         
         }
-        ViewBag.list = list;   
+        ViewBag.list = list;
+        @ViewBag.price = total;
         ViewBag.cartID = cartID;    
                return View("ChooseAddress" , addressRepository.View());   
     }
@@ -49,13 +54,23 @@ public class CheckoutController : Controller
     {
         var items = cart.LoadFromCookie();
         var list = items.Where(i => i.CartID == cartid).ToList();
-        foreach (var item in list)
+       List<Order_Item> ordersitems= new List<Order_Item>();    
+		foreach (var item in list)
         {
             item.Item = context.Items.FirstOrDefault(i => i.ID == item.ItemID);
+            Order_Item order_item = new Order_Item();
+            order_item.item = item.Item; 
+            ordersitems.Add(order_item);
 
-        }
+
+
+		}
         ViewBag.list = list;
         ViewBag.cartID = cartid;
+        Order order = new Order();
+        order.Order_Item = ordersitems;
+        ViewBag.order = order;  
+       
         return View();  
     }
     [HttpPost]
@@ -81,7 +96,8 @@ public class CheckoutController : Controller
 
 		}
 		ViewBag.list = list;
-        ViewBag.price = totalcost;  
+        ViewBag.price = totalcost;
+		ViewBag.cartID = cartid;
 		return View("Checkout", Address);
 
 	}
@@ -96,19 +112,26 @@ public class CheckoutController : Controller
 	}
     [HttpPost]
 	public IActionResult PaymentMethod(int cartID , int selectedAddressId)
-	{
+    {
+        if (selectedAddressId == 0)
+        {
+            return RedirectToAction("CreateAddress" , cartID);
+        }
         var items = cart.LoadFromCookie();
         var list = items.Where(i => i.CartID == cartID).ToList();
+        int total = 0;
         foreach (var item in list)
         {
             item.Item = context.Items.FirstOrDefault(i => i.ID == item.ItemID);
+            total += (int)item.Item.Price * item.Quantity;
 
         }
         ViewBag.list = list;
         ViewBag.cartID = cartID;
+        ViewBag.price = total;
 
         ViewBag.selectedAddressId = selectedAddressId;  
-        return View("Payment");
+        return View("Payment" , total);
 	}
     public IActionResult Confirmation(int cartID , int selectedAddressId)
     {
@@ -136,8 +159,9 @@ public class CheckoutController : Controller
                 order_Item.ItemID = item.ItemID;
                 order_Item.Quantity = item.Quantity;
                 order_Item.OrderState = OrderState.Delivering;
-                // note : you should generate it by real shop ..
-                order_Item.Shop = context.Shops.FirstOrDefault();
+            // note : you should generate it by real shop ..
+            order_Item.Shop = item.Item.Shop;
+            order_Item.ShopID = item.Item.ShopID;   
                 order_Items.Add(order_Item);
             }
 
@@ -148,6 +172,7 @@ public class CheckoutController : Controller
             DateTime orderDate = DateTime.Now;
 
             order.OrderDate = orderDate.Date;
+        order.PaymentMethod = EfrashBatek.Models.PaymentMethod.CashOnDelivery;
        
  
 
@@ -212,6 +237,25 @@ public class CheckoutController : Controller
         return View();
     }
     
+       public ActionResult Details (int id , int address ) {
+
+		var items = cart.LoadFromCookie();
+		var list = items.Where(i => i.CartID == id).ToList();
+        List<Order_Item> itemss = new List<Order_Item>();       
+		foreach (var item in list)
+		{
+			item.Item = context.Items.FirstOrDefault(i => i.ID == item.ItemID);
+            Order_Item orderitem = new Order_Item();
+            orderitem.item = item.Item;
+            itemss.Add(orderitem);
+		}
+        Order order  = new Order();
+        order.Order_Item = itemss;
+        order.Address = context.Addresses.FirstOrDefault(i => i.ID == address);
        
+
+
+		return View ("OrderDetails", order );
+	}
 
 }

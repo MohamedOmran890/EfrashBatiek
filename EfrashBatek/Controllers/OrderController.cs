@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using EfrashBatek.Models;
 using EfrashBatek.service;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EfrashBatek.Controllers
 {
+    [Authorize(Roles ="Admin")]
     public class OrderController : Controller
     {
         private readonly Context _context;
@@ -105,18 +107,6 @@ namespace EfrashBatek.Controllers
 
             return View(ans);
         }
-
-        // POST: Order/Delete/5
-        //[HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> DeleteConfirmed(int id)
-        //{
-        //    var order = await _context.Orders.FindAsync(id);
-        //    _context.Orders.Remove(order);
-        //    await _context.SaveChangesAsync();
-
-        //    return RedirectToAction(nameof(Index));
-        //}
 
         private Order OrderExists(int id)
         {

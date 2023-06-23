@@ -1,0 +1,275 @@
+﻿﻿@{
+    Layout = null;
+}
+@model Order
+
+<html>
+
+
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- CSS-link -->
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+        <!-- Code by Angela Delise
+        https://codepen.io/angeladelise/pen/yLJdgYx -->
+
+        <link rel="stylesheet" href="css/main.css">
+        <link rel="shortcut icon" href="image/favicon.ico" type="image/x-icon">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600;700&display=swap"
+              rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+              integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+              crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+        <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+        <!--css profile-->
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/favicon.ico" href="~/Image/favicon.png">
+        <!-- CSS-link -->
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- CSS-link -->
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+        <!-- Code by Angela Delise
+        https://codepen.io/angeladelise/pen/yLJdgYx -->
+        @*<link rel="stylesheet" href="css/cart.css">*@
+        <link rel="stylesheet" href="~/css/main.css">
+
+
+
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600;700&display=swap"
+              rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+              integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+              crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+        <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+
+
+        <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+
+
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+              integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+              crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+        <title>Efresh Beitak</title>
+    </head>
+
+
+    <body>
+
+
+
+        <div class="container-fluid">
+            <div class="container">
+                <!-- Title -->
+                <div class="d-flex justify-content-between align-items-center py-3">
+                    <h2 class="h5 mb-0"><a href="#" class="text-muted"></a> Order Code : #131321</h2>
+                </div>
+
+                <!-- Main content -->
+                <div class="row">
+                    <div class="col-lg-8">
+                        <!-- Details -->
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <div class="mb-3 d-flex justify-content-between">
+                                    <div>
+                                        <span class="me-3">Date : @Model.OrderDate</span>
+                                        &nbsp;
+                                        &nbsp;
+                                        &nbsp;
+
+                                        <span class="me-3"> Code  : @Model.OrderCode</span>
+                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+
+
+
+
+                                        <span>Payment Mehtod : </span>
+                                        <span class="badge rounded-pill bg-info">@Model.PaymentMethod</span>
+                                    </div>
+                                    <div class="d-flex">
+                                        <div class="dropdown">
+                                            <button class="btn btn-link p-0 text-muted" type="button" data-bs-toggle="dropdown">
+                                                <i class="bi bi-three-dots-vertical"></i>
+                                            </button>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <table class="table table-borderless">
+                                    <tbody>
+
+                                    @foreach (var itemOrder in ViewBag.Items)
+                                        {
+                                            <tr>
+                                                <!--img & color & name -->
+                                                <td>
+                                                    <div class="d-flex mb-2">
+                                                        <!---image-->
+                                                        <div class="flex-shrink-0">
+                                                            <img src="~/Image/Items/@itemOrder.item.Image" alt="" width="35" class="img-size">
+                                                        </div>
+                                                        <!--color & name -->
+                                                        <div class="flex-lg-grow-1 ms-3">
+                                                            <h6 class="small mb-0"><a href="#" class="text-reset">@itemOrder.item.Name </a></h6>
+                                                            <span class="small">Product: @itemOrder.item.Name</span>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <!-- number-->
+                                                <td>@itemOrder.Quantity</td>
+                                                <!--price-->
+                                                <td class="text-end">@String.Format("{0:0.00}", itemOrder.item.Price) EPG </td>                                            <!--state of order -->
+                                                <td>
+                                                    <span class="badge bg-success rounded-pill">@itemOrder.OrderState</span>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                            </tr>
+                                        }
+
+
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td colspan="2">Subtotal</td>
+                                            <td class="text-end"> @Model.TotalCost EGP</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2">Shipping</td>
+                                            <td class="text-end">0.00 EGP</td>
+                                        </tr>
+                                        @* <tr>
+                                        <td colspan="2">Discount (Code: NEWYEAR)</td>
+                                        <td class="text-danger text-end">-10.00 EGP</td>
+                                        </tr>*@
+                                        <tr class="fw-bold">
+                                            <td colspan="2">TOTAL</td>
+                                            <td class="text-end">@Model.TotalCost EGP</td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-lg-4">
+
+                        <!-- Payment -->
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <h3 class="h6">Payment Method</h3>
+                                        <p>
+                                            Cash on Delivery   <br>
+                                            Total: @Model.TotalCost
+                                        </p>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <h3 class="h6">Billing address</h3>
+                                        <address>
+                                            <strong> @Model.Address.FirstName @Model.Address.LastName </strong><br>
+                                            <p>@Model.Address.description<p>
+                                            <p>Qena<p>
+                                                <abbr title="Phone">Phone :</abbr> (+20)@Model.Address.phone;
+                                        </address>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @*  <div class="card mb-4">
+                        <!-- Shipping information -->
+                        <div class="card-body">
+                        <h3 class="h6">Shipping Information</h3>
+                        <strong>FedEx</strong>
+                        <span><a href="main.html" class="text-decoration-underline">FF1234567890</a> <i class="bi bi-box-arrow-up-right"></i> </span>
+                        <hr>
+                        <h3 class="h6">Address</h3>
+                        <address>
+                        <strong>Hazem Abdelsattar</strong><br>
+                        1,1,New Qena , Qena City<br>
+                        Dreams Land , Dreams Schools<br>
+                        <abbr title="Phone">P:</abbr> (+20)1004443226
+                        </address>
+                        </div>
+                        </div>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer>
+
+
+
+
+            <!-- contact-section -->
+            <section class="contact">
+                <div class="contact-info">
+                    <div class="first-info">
+                        <img src="~/Image/logo.png" alt="">
+                        <p>+201094248766</p>
+                        <p>efresh.beitak@gmail.com</p>
+
+                    </div>
+
+
+                    <div class="second-info">
+                        <h4>Support</h4>
+                        <a asp-action="ContactUs" asp-controller="Home">
+                            <p>Contact us</p>
+                        </a>
+                        <a asp-action="AboutUs" asp-controller="Home">
+                            <p>About page</p>
+                        </a>
+
+                    </div>
+
+                    <div class="third-info">
+                        <h4>category</h4>
+                        <p>Home Appliances</p>
+                        <p>Kitchen utensils</p>
+                        <p>Furniture</p>
+                        <p>kitchen</p>
+                    </div>
+
+
+
+
+                </div>
+            </section>
+        </footer>
+       
+
+
+    </body>
+
+</html>
