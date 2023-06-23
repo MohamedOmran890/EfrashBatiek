@@ -81,8 +81,8 @@
         <ul class="navmenu">
             <li><a asp-controller="Product" asp-action="Index1">Products</a></li>
             <li><a asp-controller="Home" asp-action="TrendingProducts">Trends</a></li>
-             @if (User.IsInRole("Customer"))
-                                {
+            @if (!User.IsInRole("Admin") && !User.IsInRole("Seller"))
+            {
                                 
             <li><a asp-controller="Customs" asp-action="Create">Custom order</a></li>
                                 }
