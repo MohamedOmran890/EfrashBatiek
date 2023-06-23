@@ -50,7 +50,11 @@
             {
 
             <div class="nav-icon">
-                <a asp-controller="" asp-action=""><i class='bx bx-search'></i></a>
+                <form asp-action="TrendingProducts" asp-controller="Home" class="navbar-form navbar-left">
+                    <input type="text" name="searchstring" class="form-control" placeholder="Search">
+                    <button type="submit" class="btn btn-info">Submit</button>
+                </form>
+            @*    <a asp-controller="" asp-action=""><i class='bx bx-search'></i></a>*@
             <a asp-controller="MyProfile" asp-action="UpdateProfile"><i class='bx bx-user'></i></a>
             <a asp-controller="Cart" asp-action="Index"><i class='bx bx-cart'></i></a>
             <a asp-controller="WishList" asp-action="Index"><i class='bx bx-heart' undefined></i></a>
