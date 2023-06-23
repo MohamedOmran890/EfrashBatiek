@@ -33,10 +33,16 @@ namespace EfrashBatek.service
         }
         public int Delete(int Id)
         {
-            var ans = context.Order_Items.FirstOrDefault(x => x.ID == Id);
-            context.Order_Items.Remove(ans);
-            int num = context.SaveChanges();
-            return num;
+           foreach (var item in context.Order_Items)
+            {
+                if(item.OrderID ==Id) { 
+                  context.Order_Items.Remove(item); 
+                   
+                }
+            }
+            context.SaveChanges();
+            return 0;
+
         }
         public Order_Item GetById(int Id)
         {

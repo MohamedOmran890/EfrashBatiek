@@ -2,6 +2,7 @@
 @{
     Layout =null; 
 }
+@model int
 <!DOCTYPE html>
 <html lang="en">
 
@@ -100,21 +101,21 @@
                                 <tbody>
                                     <tr>
                                         <td>Shipping fee</td>
-                                        <td align="right">$5.43</td>
+                                        <td align="right">0</td>
                                     </tr>
                                     <tr>
-                                        <td>Discount 10%</td>
-                                        <td align="right">-$1.89</td>
+                                        <td>Disount</td>
+                                        <td align="right">0</td>
                                     </tr>
                                     <tr>
                                         <td>Price Total</td>
-                                        <td align="right">$84.82</td>
+                                        <td align="right">@Model EGP</td>
                                     </tr>
                                 </tbody>
                                 <tfoot>
                                     <tr>
                                         <td>Total</td>
-                                        <td align="right">$88.36</td>
+                                        <td align="right">@Model EGP</td>
                                     </tr>
                                 </tfoot>
                             </table>

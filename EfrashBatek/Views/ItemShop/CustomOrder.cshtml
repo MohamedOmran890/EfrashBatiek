@@ -28,14 +28,14 @@
             <span class="text">Efresh Beitak </span>
         </a>
         <ul class="side-menu top">
-            <li class="active">
+            <li >
                 <a asp-action="Seller">
                     <i class='bx bxs-dashboard'></i>
                     <span class="text">Dashboard</span>
                 </a>
             </li>
             <li>
-                <a asp-action="Orders">
+                <a asp-action="OrderShop">
                     <i class='bx bx-list-ul'></i>
                     <span class="text">Order List </span>
                 </a>
@@ -46,8 +46,14 @@
                     <span class="text">Add Item</span>
                 </a>
             </li>
-
             <li>
+                <a asp-action="ShopItem">
+                    <i class='bx bx-list-plus'></i>
+                    <span class="text">Items</span>
+                </a>
+            </li>
+
+            <li class="active">
                 <a asp-action="CustomOrder">
                     <i class='bx bx-list-plus'></i>
                     <span class="text">Customize Order </span>
@@ -85,7 +91,9 @@
                         <td>Name</td>
                         <td>Phone</td>
                         <td>zone</td>
-                        <td>Descr</td>
+                        <td>Description</td>
+                        <td>View</td>
+
                     </tr>
                 </thead>
                 <tbody>
@@ -99,8 +107,14 @@
 
                             <td>@order.Zone</td>
                             <td>@order.Description </td>
-                        
 
+                            <td>
+                                <a asp-action="CustomDetails" asp-controller="ItemShop" asp-route-id="@order.ID" class="edit" data-toggle="tooltip">
+
+                                    <button class="btn btn-rounded">View <i class="mdi mdi-download ms-2"></i></button>
+
+                                </a>
+                            </td>
                       
                         </tr>
                     }
