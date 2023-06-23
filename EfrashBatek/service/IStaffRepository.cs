@@ -11,5 +11,6 @@ namespace EfrashBatek.service
         Staff GetById(int Id);
         int Update(int id, Staff staff);
         int TotalStaff();
+        Staff GetByUser(string userid);
     }
 }

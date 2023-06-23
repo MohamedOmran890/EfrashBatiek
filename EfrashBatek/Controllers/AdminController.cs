@@ -24,11 +24,12 @@ namespace EfrashBatek.Controllers
         Context _context;
         EmailStaffService EmailStaffService;
         private readonly IUserRepository userRepository;
+        IAdminRepository adminRepository;
 
         public AdminController(UserManager<User>usermanager, ICustomerRepository customer,
             IOrderRepository order, IShopRepository shop, 
             IStaffRepository staff, IOrder_ItemRepository order_item, Context context
-            ,EmailStaffService emailStaffService , IUserRepository userRepository)
+            ,EmailStaffService emailStaffService , IUserRepository userRepository,IAdminRepository adminRepository)
         {
             this.customer = customer;
             this.order = order;
@@ -39,11 +40,12 @@ namespace EfrashBatek.Controllers
             _context = context;
             EmailStaffService = emailStaffService;
             this.userRepository = userRepository;
+            this.adminRepository = adminRepository;
         }
         // done - test 
         public IActionResult Index()
         {
-			List<Order> orderss = _context.Orders.Where(i => i.Customer.Id == 11).ToList();
+			List<Order> orderss = _context.Orders.Where(i =>true).ToList();
 			foreach (Order order in orderss)
 			{
 				Customer customerr = _context.Customers.FirstOrDefault(i => i.Id == order.CustomerID);
@@ -55,7 +57,7 @@ namespace EfrashBatek.Controllers
                  TotalCustomers = customer.TotalCustomers(),
                  TotalOrders = order.TotalOrders(),
                  Totalshop=shop.TotalShop() ,
-				orders = orderss ,
+				orders = orderss 
 
 			};
             return View(Dash);
@@ -63,7 +65,7 @@ namespace EfrashBatek.Controllers
 
         // done test 
         public IActionResult Orders() {
-            List<Order> orderss = _context.Orders.Where(i => i.Customer.Id ==11).ToList();
+            List<Order> orderss = _context.Orders.Where(i => true).ToList();
             foreach (Order order in orderss)
             {
                 Customer customerr = _context.Customers.FirstOrDefault(i => i.Id == order.CustomerID);
@@ -139,12 +141,13 @@ namespace EfrashBatek.Controllers
             var result = await _userManager.CreateAsync(user, model.Password);
             if (result.Succeeded)
             {
-                // Add user to default role
-                //  await _userManager.AddToRoleAsync(user, "User");
+                var roleName = "Seller";
+                await _userManager.AddToRoleAsync(user, roleName);
+                await _userManager.ConfirmEmailAsync(user, await _userManager.GenerateEmailConfirmationTokenAsync(user));
 
                 // Redirect the user to the login page
                 _staff.Create(staff);
-                //  await EmailStaffService.SendEmail(model.Email, model.Username, model.Password, model.FirstName);
+                  await EmailStaffService.SendEmail(model.Email, model.Username, model.Password, model.FirstName);
                 return Content("Done");
             }
 
@@ -180,7 +183,7 @@ namespace EfrashBatek.Controllers
             if (ModelState.IsValid)
             {
                 shop.Create(obj);
-                return View("Dashboard");
+                return RedirectToAction("Index");   
             }
             else
                 return View("AddShop");
@@ -265,7 +268,61 @@ namespace EfrashBatek.Controllers
                 return Content("Error Try Again");
 
         }
-       
+
+        [AllowAnonymous]
+        [HttpGet]
+        public IActionResult AddAdmin()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> AddAdmin(AdminVM model)
+        {
+            if (!ModelState.IsValid)
+            {
+             
+                return View(model);
+            }
+          
+                var user = new User
+                {
+                    UserName = model.Username,
+                    Email = model.Email,
+                    age = model.Age,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    BirthDate = model.Birthdate,
+                    Gender = (Gender)model.Gender,
+                };
+                var admin = new Admin
+                {
+                    UserId = user.Id,
+                };
+            var result = await _userManager.CreateAsync(user, model.Password);
+            if (result.Succeeded)
+            {
+                var roleName = "Admin";
+                await _userManager.AddToRoleAsync(user, roleName);
+                // Redirect the user to the login page
+                adminRepository.Create(admin);
+                //wait EmailStaffService.SendEmail(model.Email, model.Username, model.Password, model.FirstName);
+                await _userManager.ConfirmEmailAsync(user, await _userManager.GenerateEmailConfirmationTokenAsync(user));
+                return RedirectToAction("Index");
+            }
+
+            //if(check==null)
+            //ModelState.AddModelError("","Not Found ShopNumber ");
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError("", error.Description);
+
+            }
+            return RedirectToAction("Index");
+
+        }
+
+
+
 
 
 

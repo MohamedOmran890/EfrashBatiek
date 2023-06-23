@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- CSS-link -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+  <!-- Code by Angela Delise
+ https://codepen.io/angeladelise/pen/yLJdgYx -->
+  <link rel="stylesheet" href="css/custom.css">
+  <link rel="stylesheet" href="css/seller.css">
+  <link rel="stylesheet" href="css/default.css">
+  <link rel="shortcut icon" href="image/favicon.ico" type="image/x-icon">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+  <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+  <title>Efresh Beitak</title>
+</head>
+
+<body>
+  <!-- SIDEBAR -->
+  <section id="sidebar">
+    <a href="#" class="brand">
+      <span class="sidebartext">
+        <image src="image/products/logo.png" width="150" style="margin-top: 40%;margin-left: 25%;"></image>
+      </span>
+    </a>
+    <ul class="side-menu top">
+      <li>
+        <a href="seller.html">
+          <i class='bx bxs-dashboard'></i>
+          <span class="text">Dashboard</span>
+        </a>
+      </li>
+      <li>
+        <a href="orders.html">
+          <i class='bx bx-list-ul'></i>
+          <span class="text">Order List </span>
+        </a>
+      </li>
+      <li>
+        <a href="additem.html">
+          <i class='bx bx-list-plus'></i>
+          <span class="text">Add Item</span>
+        </a>
+      </li>
+      <li>
+        <a href="Items.html">
+          <i class='bx bx-list-plus'></i>
+          <span class="text">Items</span>
+        </a>
+      </li>
+      <li class="active">
+        <a href="Custom_Order.html">
+          <i class='bx bx-list-plus'></i>
+          <span class="text">Customize Order </span>
+        </a>
+      </li>
+
+    </ul>
+  </section>
+  <!-- SIDEBAR -->
+
+    <!-- NAVBAR -->
+    <section id="content">
+      <nav>
+        <i class='bx bx-menu'></i>
+      </nav>
+    </section>
+    <!-- NAVBAR -->
+  
+
+  <!--main home section-->
+  <section class="main-home">
+    <div class="container">
+      <br>
+      <br>
+      <h2>Customization Order Details</h2>
+      <br>
+      <form action="/action_page.php">
+        <label for="fname">Name</label>
+        <output type="text" id="fname" name="firstname" placeholder="Your name..">
+
+        <label for="num">Phone Number</label>
+        <output type="text" id="pnum" name="pnumber" placeholder="Your phone number..">
+
+        <label for="country">Address</label>
+        <select id="country" name="country">
+          <option value="Qena">Qena</option>
+          <option value="New Qena">New Qena</option>
+        </select>
+
+        <label for="subject">Detailed Description</label>
+        <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+
+        <div class="upload-catalouge">
+          <input type="file" class="fileupload" id="first-file-upload-btn" hidden>
+          <label for="first-file-upload-btn" class="upload-image"></label>
+          <input type="file" class="fileupload" id="second-file-upload-btn" hidden>
+          <label for="second-file-upload-btn" class="upload-image"></label>
+          <input type="file" class="fileupload" id="third-file-upload-btn" hidden>
+          <label for="third-file-upload-btn" class="upload-image"></label>
+          <input type="file" class="fileupload" id="fourth-file-upload-btn" hidden>
+          <label for="fourth-file-upload-btn" class="upload-image"></label>
+          <input type="file" class="fileupload" id="fifth-file-upload-btn" hidden>
+          <label for="fifth-file-upload-btn" class="upload-image"></label>
+        </div>
+      </form>
+      <br>
+
+      <a href="custominfo.html"><input type="submit" value="Accept"></a>
+      <a href="custominfo.html"><input type="submit" value="Reject" style="background-color: brown ;color:black;"></a>
+      </form>
+    </div>
+  </section>
+  <!--
+  <div class="search">
+    <svg class="search__icon" viewBox="0 0 512 512" width="95" title="search">
+      <path d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z" />
+    </svg>
+    <input type="text" class="search__input" autofocus placeholder=" ">
+    <svg class="search__close" viewBox="0 0 352 512" width="100" title="times">
+      <path d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z" />
+    </svg>
+    <svg class="search__delete" viewBox="0 0 640 512" width="100" title="backspace">
+      <path d="M576 64H205.26A63.97 63.97 0 0 0 160 82.75L9.37 233.37c-12.5 12.5-12.5 32.76 0 45.25L160 429.25c12 12 28.28 18.75 45.25 18.75H576c35.35 0 64-28.65 64-64V128c0-35.35-28.65-64-64-64zm-84.69 254.06c6.25 6.25 6.25 16.38 0 22.63l-22.62 22.62c-6.25 6.25-16.38 6.25-22.63 0L384 301.25l-62.06 62.06c-6.25 6.25-16.38 6.25-22.63 0l-22.62-22.62c-6.25-6.25-6.25-16.38 0-22.63L338.75 256l-62.06-62.06c-6.25-6.25-6.25-16.38 0-22.63l22.62-22.62c6.25-6.25 16.38-6.25 22.63 0L384 210.75l62.06-62.06c6.25-6.25 16.38-6.25 22.63 0l22.62 22.62c6.25 6.25 6.25 16.38 0 22.63L429.25 256l62.06 62.06z" />
+    </svg>
+  </div> -->
+
+  <script>
+    $(document).ready(function () {
+      $("#cart").click(function () {
+        $(".cartcard").css("position", "fixed");
+        $(".cartcard").css("right", "0px")
+        $("#close").css("right", "0");
+        $(".cartcard").css("z-index", "99999999");
+        $(".brand").css("height", "100vh");
+        $(".down").hide()
+        $(".main-text").css("opacity", "0.5")
+        $("header").addClass("sticky");
+
+
+      })
+    })
+    $(document).ready(function () {
+      $("#close").click(function () {
+        $("header").show()
+        $(".main-text").css("opacity", "1")
+        $(".down").fadeIn()
+      })
+    })
+
+  </script>
+  <script src="js/cart.js"></script>
+  <script src="https://unpkg.com/ionicons@latest/dist/ionicons.js"></script>
+  <!-- SCRIPT -->
+  <script src="js/script.js"></script>
+
+</body>
+
+</html>

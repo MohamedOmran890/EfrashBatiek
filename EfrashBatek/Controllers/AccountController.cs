@@ -16,9 +16,12 @@ using EfrashBatek.service;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authorization.Infrastructure;
 
 namespace EfrashBatek.Controllers
 {
+    [AllowAnonymous]
     public class AccountController : Controller
     {
         private readonly UserManager<User> _userManager;
@@ -83,14 +86,12 @@ namespace EfrashBatek.Controllers
             if (result.Succeeded)
                 {
                 //
-
-                //
-
+                var roleName = "Customer";
+                await _userManager.AddToRoleAsync(user, roleName);
                 var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                 var confirmationLink = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, token = token }, Request.Scheme);
                   await _emailService.SendConfirmationEmail(model.Email, confirmationLink);
                 return View("ConfirmEmail");
-                //return RedirectToAction("ConfirmEmail");
             }
 
           
@@ -148,12 +149,28 @@ namespace EfrashBatek.Controllers
                 }
                 
                 if (user != null)
-                {//ispersistanc to detct user is session or cookies
+                {
                     SignInResult result = await _signInManager.PasswordSignInAsync(user.UserName, model.Password, isPersistent: model.isPersistent, false);
 
                     if (result.Succeeded)
                     {
                         HttpContext.Session.SetString("Id", user.Id);
+                        if (await _userManager.IsInRoleAsync(user, "Admin"))
+                        {
+                            return RedirectToAction("Index", "Admin");
+                        }
+                        else if (await _userManager.IsInRoleAsync(user, "Seller"))
+                        {
+                            return RedirectToAction("Index", "ItemShop");
+                        }
+                        else if(await _userManager.IsInRoleAsync(user,"Customer"))
+                        {
+                            return RedirectToAction("TrendingProducts","Home");
+                        }
+                        else if(await _userManager.IsInRoleAsync(user,"Shop"))
+                        {
+                            return RedirectToAction("Index", "ItemShop");
+                        }
                         return RedirectToLocal(returnUrl);
                     }
                     else
@@ -191,41 +208,63 @@ namespace EfrashBatek.Controllers
                     return View();
                 }
                 var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                var confirmationLink = Url.Action("ResetPassword", "Account", new { userId = user.Id, token = token }, Request.Scheme);
+                var confirmationLink = Url.Action("ResetPassword", "Account", new { userId = user.Id, token = token, clicked = true }, Request.Scheme);
                 await _emailService.SendForgetPassword(model.Email, confirmationLink);
                 return RedirectToAction("ResetPassword", "Account", new { Email = model.Email, Token = token });
             }
             return View(model);
         }
-        public IActionResult ResetPassword(string Email,string token)
+        public IActionResult ResetPassword(string Email,string token,bool clicked=false)
         {
-            ResetPasswordVM model = new ResetPasswordVM();
-            model.Email = Email;
-            model.Token = token;
-            return View(model);
+            if(!clicked)
+            {
+               
+                    return View("Clicked");
+                
+            }
+            if (string.IsNullOrEmpty(token))
+            {
+                ViewBag.Message = "Please check your email and click on the link to reset your password.";
+                return View("Login");
+            }
+            if (token != null)
+            {
+                ResetPasswordVM model = new ResetPasswordVM();
+                model.Email = Email;
+                model.Token = token;
+                return View(model);
+            }
+            return RedirectToAction("Login", "Account");
         }
         [HttpPost]
         public async Task<IActionResult> ResetPassword(ResetPasswordVM model)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 var user = await _userManager.FindByEmailAsync(model.Email);
-                if(user==null)
+                if (user == null)
                 {
-                    ModelState.AddModelError("", "Email Not Found ^^");
+                    ModelState.AddModelError("", "Email Not Found");
                     return View(model);
                 }
-                var result = await _userManager.ResetPasswordAsync(user, model.Token,model.NewPassword);
-              if(result.Succeeded)
+                if (!user.EmailConfirmed)
+                {
+                    ViewBag.Message = "Please check your email and click on the link to reset your password.";
+                    return View("Error"); // Or redirect to another page
+                }
+                var result = await _userManager.ResetPasswordAsync(user, model.Token, model.NewPassword);
+                if (result.Succeeded)
                 {
                     return RedirectToAction("TrendingProducts", "Home");
                 }
-              else
-                    foreach(var error in result.Errors)
+                else
+                {
+                    foreach (var error in result.Errors)
                     {
                         ModelState.AddModelError("", error.Description);
                     }
-                return View(model);
+                    return View(model);
+                }
             }
             return View(model);
         }
@@ -242,5 +281,6 @@ namespace EfrashBatek.Controllers
                 return RedirectToAction(nameof(HomeController.TrendingProducts), "Home");
             }
         }
+      
     }
 }

@@ -47,5 +47,11 @@ namespace EfrashBatek.service
             var ans = context.The_Staff.Count();
             return ans;
         }
+        public Staff GetByUser(string userid)
+        {
+            var staffId = context.The_Staff.FirstOrDefault(x => x.UserId == userid);
+            return staffId;
+        }
+
     }
 }

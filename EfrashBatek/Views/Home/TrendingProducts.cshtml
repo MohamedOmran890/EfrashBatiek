@@ -71,9 +71,9 @@
                                 <a asp-action="ProductaDetails" asp-controller="Item" asp-route-id="@item.ID">
 
                                
-                                <img asp-action ="ProductaDetails" asp-controller="Item" asp-route-id="@item.ID" src="~/Image/products/@item.Image2" alt="Mens Winter Leathers Jackets"
+                                <img asp-action ="ProductaDetails" asp-controller="Item" asp-route-id="@item.ID" src="~/Image/Items/@item.Image2" alt="Mens Winter Leathers Jackets"
                                      width="300" class="product-img hover">
-                                <img asp-action="ProductaDetails" asp-controller="Item" asp-route-id="@item.ID"  src="~/Image/products/@item.Image" alt="MEN Yarn Fleece Full-Zip Jacket"
+                                <img asp-action="ProductaDetails" asp-controller="Item" asp-route-id="@item.ID"  src="~/Image/Items/@item.Image" alt="MEN Yarn Fleece Full-Zip Jacket"
                                      class="product-img default" width="300">
                                      </a>
 
@@ -94,15 +94,11 @@
                                         </button>
 
                                     }
-                                    @using (Html.BeginForm("AddToCart", "Cart", FormMethod.Post))
-                                    {
-                                        @Html.Hidden("itemID", item.ID)
-                                        // Replace "Id" with the actual name of the ID property in your model
-
+                                    <a asp-action="AddToCart" asp-controller="Cart" asp-route-id="@item.ID">
                                         <button class="btn-action">
                                             <ion-icon name="bag-add-outline"></ion-icon>
                                         </button>
-                                    }
+                                    </a>
 
 
                                 </div>
@@ -112,7 +108,7 @@
 
                             <div class="showcase-content">
 
-                                <a asp-action="ProductaDetails" asp-controller="Item" asp-route-id="@item.ID" class="showcase-category">Bed Room</a>
+                                <a asp-action="ProductaDetails" asp-controller="Item" asp-route-id="@item.ID" class="showcase-category">@item.Name</a>
 
                                 <a asp-action="ProductaDetails" asp-controller="Item" asp-route-id="@item.ID">
                                     <h3 class="showcase-title">@item.Product.ProductName</h3>
@@ -174,9 +170,9 @@
 
                             <div class="showcase-banner">
                                 <a asp-action="ProductaDetails" asp-controller="Item" asp-route-id="@item.ID">
-                                    <img src="~/Image/products/@item.Image2" alt="Mens Winter Leathers Jackets"
+                                    <img src="~/Image/Items/@item.Image2" alt="Mens Winter Leathers Jackets"
                                          width="300" class="product-img hover">
-                                    <img asp-action="Index" asp-controller="Item" src="~/Image/products/@item.Image" alt="MEN Yarn Fleece Full-Zip Jacket"
+                                    <img asp-action="Index" asp-controller="Item" src="~/Image/Items/@item.Image" alt="MEN Yarn Fleece Full-Zip Jacket"
                                          class="product-img default" width="300">
 
                                 </a>
@@ -198,15 +194,13 @@
                                         </button>
 
                                     }
-                                    @using (Html.BeginForm("AddToCart", "Cart", FormMethod.Post))
-                                    {
-                                        @Html.Hidden("itemID", item.ID)
-                                        // Replace "Id" with the actual name of the ID property in your model
-
+                                    <a asp-action="AddToCart" asp-controller="Cart" asp-route-id="@item.ID">
                                         <button class="btn-action">
                                             <ion-icon name="bag-add-outline"></ion-icon>
                                         </button>
-                                    }
+                                   </a>
+                                       
+                                    
 
 
                                 </div>
@@ -216,7 +210,7 @@
 
                             <div class="showcase-content">
 
-                                <a asp-action="ProductaDetails" asp-controller="Item" asp-route-id="@item.ID"class="showcase-category">Bed Room</a>
+                                <a asp-action="ProductaDetails" asp-controller="Item" asp-route-id="@item.ID"class="showcase-category">@item.Name</a>
 
                                 <a asp-action="ProductaDetails" asp-controller="Item" asp-route-id="@item.ID">
                                     <h3 class="showcase-title">@item.Product?.ProductName</h3>
@@ -232,10 +226,10 @@
 
                                 <div class="price-box">
                                     <p class="price">
-                                        @String.Format("{0:0.00}", item.Price) EPG
+                                        @String.Format("{0:0.00}", item.Price)
                                     </p>
                                     <del>
-                                        @String.Format("{0:0.00}", item.PriceAfterSale) EPG
+                                        @String.Format("{0:0.00}", item.PriceAfterSale)
                                         EGP
                                     </del>
                                 </div>

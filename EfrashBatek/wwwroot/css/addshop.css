@@ -64,11 +64,11 @@ input[type="number"] {
   margin-left: 70%;
 }
 
-.btnRegister:hover {
-  background: rgb(233, 233, 233);
-  color:#cbaab1;
-  /* Change the background color to red when the button is hovered over */
-}
+    .btnRegister:hover {
+        background: rgb(233, 233, 233);
+        color: #c895a0;
+        /* Change the background color to red when the button is hovered over */
+    }
 
 /* /ADDRESS/ */
 #address {

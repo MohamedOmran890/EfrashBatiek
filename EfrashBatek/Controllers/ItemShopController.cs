@@ -10,41 +10,118 @@ using EfrashBatek.service;
 using Microsoft.AspNetCore.Hosting;
 using EfrashBatek.ViewModel;
 using System.IO;
+using Castle.Core.Resource;
+using System.Xml.Schema;
+using Microsoft.AspNetCore.Http;
+using System.Net;
 
 namespace EfrashBatek.Controllers
 {
+    [Authorize(Roles ="Seller,Admin,Shop")]
     public class ItemShopController : Controller
     {
+        private readonly IAddressRepository address;
         private readonly Context _context;
         IItemRepository itemRepo;
         IBrandRepository brandRepository;
         IShopRepository shopRepository;
         IProductRepository productRepository;
         IWebHostEnvironment Ih;
+        IIdentityRepository IdentityRepository;
+        IStaffRepository staffRepository;
+        IOrder_ItemRepository order_ItemRepository;
 
-        public ItemShopController(Context context, IWebHostEnvironment Ih, IItemRepository itemRepo, IBrandRepository brandRepository, IShopRepository shopRepository, IProductRepository productRepository)
+        public ItemShopController( IAddressRepository address ,  Context context, IWebHostEnvironment Ih, IItemRepository itemRepo, IBrandRepository brandRepository, IShopRepository shopRepository, 
+            IProductRepository productRepository,
+            IIdentityRepository identityRepository,
+            IStaffRepository staffRepository,IOrder_ItemRepository order_ItemRepository)
         {
+            this.address = address;
             _context = context;
             this.itemRepo = itemRepo;
             this.brandRepository = brandRepository;
             this.shopRepository = shopRepository;
             this.productRepository = productRepository;
             this.Ih = Ih;
+            IdentityRepository = identityRepository;
+            this.staffRepository = staffRepository;
+            this.order_ItemRepository = order_ItemRepository;
         }
+        //  show all products of shop  
+		public IActionResult ShopItem()
+		{
+			var user = IdentityRepository.GetUser();
+			if (user == null)
+			{
+				return RedirectToAction("Login", "Account");
+			}
+			var Seller = staffRepository.GetByUser(user.Id);
+			if (Seller == null)
+			{
+				return RedirectToAction("Login", "Account");
+			}
+			var shop = shopRepository.GetById(Seller.ShopID);
+			var itm = shopRepository.ItemByShop(shop.ID);
+            foreach(var item in itm)
+            {
+                item.Product = _context.Products.FirstOrDefault(i => i.ID == item.ProductID);
+            }
+			return View(itm);
+		}
 
+
+        
         [HttpGet]
-        public IActionResult Index()
-        {
-            return View(itemRepo.GetAll());
-        }
-        //bymee
-        [HttpGet]
+        // show  dashboard of sellere
         public IActionResult Seller()
         {
-            return View();
-        }
 
+            // user- -> selller id --> user --> shopid --> orderitem
+            User user = IdentityRepository.GetUser();
+            Staff seller = _context.The_Staff.FirstOrDefault(i => i.UserId == user.Id);
+            var orders = _context.Order_Items.Where(i => i.ShopID == seller.ShopID).ToList();
+            int totalCustomers = 0;
+            List<Customer> cus = _context.Customers.Where(i => true).ToList();  
+            foreach(var customer in cus)
+            {
+                var orderss = _context.Orders.Where(i=>i.CustomerID == customer.Id);
+                bool found = false;
+                foreach(var order in orderss)
+                {
+                    if(order.Order_Item!=null)
+                    {
+                        foreach (var item in order.Order_Item)
+                        {
+                            if (item.ShopID == seller.ShopID)
+                            {
+                                found = true; break;
+                            }
+
+                        }
+
+                    }    
+                    
+                    if (found) break;
+                }
+                if (found) totalCustomers++;
+                
+            }
+            var Dash = new DashboardViewModel
+            {
+
+                TotalOrders = orders.Count(),
+                TotalCustomers = totalCustomers,    
+
+            };
+
+
+            return View(Dash);
+        }
+      
+      
+        
         [HttpGet]
+        // show details of item 
         public IActionResult Details(int? id)
         {
             if (id == null)
@@ -62,10 +139,16 @@ namespace EfrashBatek.Controllers
         }
 
         [HttpGet]
-        //1
+        // create item
+       
         public IActionResult Create()
         {
-            ViewData["BrandName"] = new SelectList(brandRepository.GetAll(), "ID", "Category");
+			var HaveSession = HttpContext.Session.GetString("Id");
+			if (HaveSession == null)
+			{
+				return RedirectToAction("Login", "Account");
+			}
+			ViewData["BrandName"] = new SelectList(brandRepository.GetAll(), "ID", "Category");
             ViewData["ProductName"] = new SelectList(productRepository.GetAll(), "ID", "ProductName");
             ViewData["ShopName"] = new SelectList(shopRepository.GetAll(), "ID", "Name");
             return View();
@@ -73,7 +156,7 @@ namespace EfrashBatek.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        //2
+        //save item
         public async Task<IActionResult> Create(ItemVM item)
         {
             if (ModelState.IsValid)
@@ -132,13 +215,14 @@ namespace EfrashBatek.Controllers
 
                 itemRepo.Create(itm);
                 await _context.SaveChangesAsync();
-                return RedirectToAction("Index");
+                return RedirectToAction("ShopItem");
             }
             ViewData["BrandName"] = new SelectList(brandRepository.GetAll(), "ID", "Name", item.Brand_ID);
             ViewData["ProductName"] = new SelectList(productRepository.GetAll(), "ID", "ProductName", item.ProductID);
             ViewData["ShopName"] = new SelectList(shopRepository.GetAll(), "ID", "Name", item.ShopID);
             return View(item);
         }
+         // edit item
         public IActionResult Edit(int? id)
         {
             if (id == null)
@@ -160,6 +244,7 @@ namespace EfrashBatek.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        // save edit 
         public IActionResult Edit(int id, ItemVM item)
         {
             if (id != item.ID)
@@ -232,36 +317,139 @@ namespace EfrashBatek.Controllers
         }
 
         // GET: Item2/Delete/5
-        public IActionResult Delete(int? id)
+        // delete item
+        public IActionResult Delete(int id)
         {
-            if (id == null)
+            var item = _context.Items.FirstOrDefault(i => i.ID == id);
+            foreach(var item2 in _context.Order_Items)
             {
-                return NotFound();
-            }
+                if(item2.ItemID == id)
+                {
+                    _context.Remove(item2); 
 
-            var item = itemRepo.Delete((int)id);
-            if (item == 0)
+                }
+            }
+            foreach(var item2  in _context.WishListItems)
             {
-                return NotFound();
-            }
 
-            return View(item);
+                 if(item2.ItemId == id) { 
+                
+                _context.Remove(item2); }
+            }
+            _context.Items.Remove(item);
+            _context.SaveChanges();
+            return RedirectToAction("ShopItem");  
         }
 
-        //[HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> DeleteConfirmedAsync(int id)
-        //{
-        //    var item = _context.Items.Find(id);
-        //    _context.Items.Remove(item);
-        //    await _context.SaveChangesAsync();
-        //    return RedirectToAction(nameof(Index));
-        //}
 
-        //private bool ItemExists(int id)
-        //{
-        //    return _context.Items.Any(e => e.ID == id);
-        //}
-     
+
+
+        // order shop
+        // List<Order Items> ??
+        public IActionResult OrderShop()
+        {
+            var user = IdentityRepository.GetUser();
+            if (user == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            var Seller = staffRepository.GetByUser(user.Id);
+            if (Seller == null)
+            {
+                return View(new List<Order_Item>());
+            }
+            var shop = shopRepository.GetById(Seller.ShopID);
+       
+            List<OrderVm> ShopOrder = new List<OrderVm>();
+           
+           var orders =  _context.Orders.ToList();
+            foreach (var order in orders) {
+                order.Order_Item = _context.Order_Items.Where(i => i.OrderID == order.ID).ToList(); 
+
+                var list = order.Order_Item.Where(i => i.ShopID == shop.ID).ToList ();
+            
+                if(list.Count() >0) {
+                    
+                    order.Customer = _context.Customers.FirstOrDefault(i => i.Id == order.CustomerID);
+                    order.Customer.User = _context.Users.FirstOrDefault(i => i.Id == order.Customer.UserId);
+                    int total = 0;
+                    OrderState orderState = OrderState.Delivering; 
+                    foreach (var item in list)
+                    {
+                         orderState= item.OrderState;   
+                        item.item = _context.Items.FirstOrDefault(i => i.ID == item.ItemID);
+                        total += item.Quantity * (int)item.item.Price;
+
+
+                    }
+                     
+                    Order NewObject = new Order();
+                    NewObject.TotalCost = total;
+                    NewObject.OrderCode =order.OrderCode;   
+                    NewObject.OrderDate = order.OrderDate;
+                    Customer customer = new Customer();
+                    customer.User = order.Customer.User;
+                    customer = order.Customer;
+                    NewObject.Customer = customer;
+                    NewObject.ID =order.ID;
+                    OrderVm vm = new OrderVm();
+                    vm.order = NewObject;
+                    vm.state = orderState;
+                    ShopOrder.Add(vm);
+                }
+               
+                
+                
+               
+            }
+            
+
+            return View(ShopOrder);
+           
+
+        }
+        // delete  order 
+        public IActionResult DeleteOrder(int id)
+        {
+            order_ItemRepository.Delete(id);
+            return RedirectToAction("OrderShop","ItemShop");
+
+        }
+
+        [Authorize(Roles = "Seller,Shop,Admin")]
+        public IActionResult CustomOrder()
+        {
+            var custom = _context.Customs.ToList();
+            return View(custom);
+        }
+        public IActionResult OrderDetails(int id)
+        {
+            Order order = _context.Orders.FirstOrDefault(i => i.ID == id);
+            var list = _context.Order_Items.Where(i => i.OrderID == order.ID).ToList();
+            var addresss = address.GetbyID(order.AddressID);
+            order.Address = addresss;
+            var user = IdentityRepository.GetUser();
+            
+            var Seller = staffRepository.GetByUser(user.Id);
+            List<Order_Item> items = new List<Order_Item>();
+            var shop = shopRepository.GetById(Seller.ShopID);
+            foreach (var item in list)
+            {
+                item.item = _context.Items.FirstOrDefault(i => i.ID == item.ItemID);
+                if(item.ShopID == shop.ID)
+                items.Add(item);
+            }
+            order.Order_Item = list;
+
+            ViewBag.Items = items; 
+            return View(order);
+        }
+        public IActionResult CustomDetails(int id)
+        {
+            var model = _context.Customs.FirstOrDefault(i => i.ID == id);
+
+            return View( model);
+        }
+
     }
 }

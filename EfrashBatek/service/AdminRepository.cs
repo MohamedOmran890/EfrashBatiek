@@ -14,6 +14,7 @@ namespace EfrashBatek.service
         public void Create(Admin admin)
         {
             context.Admin.Add(admin);
+            context.SaveChanges();
 
         }
         public int Update(int id, Admin admin)

@@ -98,7 +98,7 @@
 
 		</form>
 
-	@*	<div class="col-sm-12 col-md-12 col-lg-3 col-xl-3">
+		<div class="col-sm-12 col-md-12 col-lg-3 col-xl-3">
 			<aside>
 				<div class="summary">
 					<div class="summary-total-items">
@@ -142,10 +142,10 @@
 						<div class="total-value final-value" id="basket-total">130.00</div>
 					</div>
 					<div class="summary-checkout">
-						<a href="orderinfo.html"><button class="checkout-cta">Go to Secure Checkout</button></a>
+						<a asp-action="ViewDetails" asp-controller="Checkout" asp-route-id="@ViewBag.cartID"><button class="checkout-cta">Go to Secure Checkout</button></a>
 					</div>
 				</div>
 			</aside>
-		</div>*@
+		</div>
 	</div>
 </div>

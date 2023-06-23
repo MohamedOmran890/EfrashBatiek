@@ -13,9 +13,7 @@ namespace EfrashBatek.ViewModel
 
         public string NewPassword { get; set; }
         [Required]
-        [DataType(DataType.Password)]
+        [DataType(DataType.Password),Compare("NewPassword")]
         public string ConfirmPassword { get; set; }
-
-        public string ConfiremPassword { get; set; }
     }
 }

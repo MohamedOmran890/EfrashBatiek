@@ -3,10 +3,31 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace EfrashBatek.Migrations
 {
-    public partial class addWishListByTaha : Migration
+    public partial class first : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "AdminVM",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Username = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ConfirmPassword = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Age = table.Column<int>(type: "int", nullable: false),
+                    Birthdate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Gender = table.Column<short>(type: "smallint", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_AdminVM", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "AspNetRoles",
                 columns: table => new
@@ -165,7 +186,7 @@ namespace EfrashBatek.Migrations
                         column: x => x.RoleId,
                         principalTable: "AspNetRoles",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Restrict );
                 });
 
             migrationBuilder.CreateTable(
@@ -232,7 +253,7 @@ namespace EfrashBatek.Migrations
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Restrict );
                 });
 
             migrationBuilder.CreateTable(
@@ -252,7 +273,7 @@ namespace EfrashBatek.Migrations
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Restrict );
                 });
 
             migrationBuilder.CreateTable(
@@ -270,13 +291,13 @@ namespace EfrashBatek.Migrations
                         column: x => x.RoleId,
                         principalTable: "AspNetRoles",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Restrict );
                     table.ForeignKey(
                         name: "FK_AspNetUserRoles_AspNetUsers_UserId",
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Restrict );
                 });
 
             migrationBuilder.CreateTable(
@@ -296,7 +317,7 @@ namespace EfrashBatek.Migrations
                         column: x => x.UserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Restrict );
                 });
 
             migrationBuilder.CreateTable(
@@ -369,19 +390,19 @@ namespace EfrashBatek.Migrations
                         column: x => x.Brand_ID,
                         principalTable: "Brands",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Restrict );
                     table.ForeignKey(
                         name: "FK_Items_Products_ProductID",
                         column: x => x.ProductID,
                         principalTable: "Products",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Restrict );
                     table.ForeignKey(
                         name: "FK_Items_Shops_ShopID",
                         column: x => x.ShopID,
                         principalTable: "Shops",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Restrict );
                 });
 
             migrationBuilder.CreateTable(
@@ -407,7 +428,7 @@ namespace EfrashBatek.Migrations
                         column: x => x.ShopID,
                         principalTable: "Shops",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Restrict );
                 });
 
             migrationBuilder.CreateTable(
@@ -427,7 +448,7 @@ namespace EfrashBatek.Migrations
                         column: x => x.CustomerID,
                         principalTable: "Customers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Restrict );
                 });
 
             migrationBuilder.CreateTable(
@@ -451,7 +472,7 @@ namespace EfrashBatek.Migrations
                         column: x => x.CustomerID,
                         principalTable: "Customers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Restrict );
                 });
 
             migrationBuilder.CreateTable(
@@ -475,13 +496,13 @@ namespace EfrashBatek.Migrations
                         column: x => x.AddressID,
                         principalTable: "Addresses",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Restrict );
                     table.ForeignKey(
                         name: "FK_Orders_Customers_CustomerID",
                         column: x => x.CustomerID,
                         principalTable: "Customers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Restrict );
                 });
 
             migrationBuilder.CreateTable(
@@ -500,7 +521,7 @@ namespace EfrashBatek.Migrations
                         column: x => x.CustomerId,
                         principalTable: "Customers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Restrict );
                 });
 
             migrationBuilder.CreateTable(
@@ -549,7 +570,7 @@ namespace EfrashBatek.Migrations
                         column: x => x.ItemID,
                         principalTable: "Items",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Restrict );
                 });
 
             migrationBuilder.CreateTable(
@@ -569,13 +590,13 @@ namespace EfrashBatek.Migrations
                         column: x => x.CartID,
                         principalTable: "Carts",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Restrict );
                     table.ForeignKey(
                         name: "FK_Cart_Items_Items_ItemID",
                         column: x => x.ItemID,
                         principalTable: "Items",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Restrict );
                 });
 
             migrationBuilder.CreateTable(
@@ -599,19 +620,19 @@ namespace EfrashBatek.Migrations
                         column: x => x.ItemID,
                         principalTable: "Items",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Restrict );
                     table.ForeignKey(
                         name: "FK_Order_Items_Orders_OrderID",
                         column: x => x.OrderID,
                         principalTable: "Orders",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Restrict );
                     table.ForeignKey(
                         name: "FK_Order_Items_Shops_ShopID",
                         column: x => x.ShopID,
                         principalTable: "Shops",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Restrict );
                 });
 
             migrationBuilder.CreateTable(
@@ -631,13 +652,13 @@ namespace EfrashBatek.Migrations
                         column: x => x.ItemId,
                         principalTable: "Items",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Restrict );
                     table.ForeignKey(
                         name: "FK_WishListItems_WishLists_WishListId",
                         column: x => x.WishListId,
                         principalTable: "WishLists",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Restrict );
                 });
 
             migrationBuilder.CreateTable(
@@ -657,7 +678,7 @@ namespace EfrashBatek.Migrations
                         column: x => x.DesignID,
                         principalTable: "Designs",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Restrict );
                 });
 
             migrationBuilder.CreateTable(
@@ -678,7 +699,7 @@ namespace EfrashBatek.Migrations
                         column: x => x.OrderItemID,
                         principalTable: "Customers",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Restrict );
                     table.ForeignKey(
                         name: "FK_feedbacks_Order_Items_Order_ItemID",
                         column: x => x.Order_ItemID,
@@ -705,7 +726,7 @@ namespace EfrashBatek.Migrations
                         column: x => x.Order_ItemID,
                         principalTable: "Order_Items",
                         principalColumn: "ID",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Restrict );
                 });
 
             migrationBuilder.CreateIndex(
@@ -889,6 +910,9 @@ namespace EfrashBatek.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Admin");
+
+            migrationBuilder.DropTable(
+                name: "AdminVM");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoleClaims");

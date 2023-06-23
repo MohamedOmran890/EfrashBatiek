@@ -1,24 +1,31 @@
 ﻿@{
 	Layout = null;
 }
+﻿@using EfrashBatek.ViewModel
+@model DashboardViewModel
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+	<link rel="stylesheet" href="~/css/orders1.css">
 	<!-- Boxicons -->
 	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 	<!-- My CSS -->
+	<link rel="stylesheet" href="~/css/admin.css">
 	<link rel="stylesheet" href="~/css/seller.css">
-	<title>Seller</title>
+	<link rel="stylesheet" href="~/css/orders1.css">
+
+
+	<title>Admin</title>
 </head>
 <body>
 	<!-- SIDEBAR -->
 	<section id="sidebar">
 		<a href="#" class="brand">
 			<i class='bx bxs-smile'></i>
-			<span class="sidebartext">Efresh Beitak</span>
+			<span class="text">Efresh Beitak </span>
 		</a>
 		<ul class="side-menu top">
 			<li class="active">
@@ -28,7 +35,7 @@
 				</a>
 			</li>
 			<li>
-				<a href="orders.html">
+				<a asp-action="OrderShop">
 					<i class='bx bx-list-ul'></i>
 					<span class="text">Order List </span>
 				</a>
@@ -40,20 +47,28 @@
 				</a>
 			</li>
 			<li>
-				<a href="Items.html">
+				<a asp-action="ShopItem">
 					<i class='bx bx-list-plus'></i>
-					<span class="text">Items</span>
+					<span class="text">Items </span>
+				</a>
+			</li>
+			<li>
+				<a asp-action="CustomOrder">
+					<i class='bx bx-list-plus'></i>
+					<span class="text">Customize Order </span>
 				</a>
 			</li>
 		</ul>
 	</section>
+
 	<!-- SIDEBAR -->
 	<!-- CONTENT -->
+
+
 	<section id="content">
 		<!-- NAVBAR -->
 		<nav>
 			<i class='bx bx-menu'></i>
-			<a href="#" class="nav-link">Categories</a>
 			<form action="#">
 				<div class="form-input">
 					<input type="search" placeholder="Search...">
@@ -82,25 +97,21 @@
 				<li>
 					<i class='bx bxs-calendar-check'></i>
 					<span class="text">
-						<h3>1020</h3>
+				
+						<h3>@Model.TotalOrders</h3>
 						<p>Total Orders</p>
 					</span>
 				</li>
 				<li>
 					<i class='bx bxs-group'></i>
 					<span class="text">
-						<h3>2834</h3>
+						<h3>@Model.TotalCustomers</h3>
 						<p>Customers</p>
 					</span>
 				</li>
-				<li>
-					<i class='bx bx-store-alt'></i>
-					<span class="text">
-						<h3>2543</h3>
-						<p>Total Shops</p>
-					</span>
-				</li>
+
 			</ul>
+
 			<div class="table-data">
 				<div class="order">
 					<div class="head">
@@ -116,15 +127,38 @@
 								<th>Status</th>
 							</tr>
 						</thead>
+						<tbody>
+							@*@foreach (var order in Model.orders)
+							{
+							<tr>
+							<td>
+							<img src="~/Image/img/people.png">
+							<p>@order.Customer.User.FirstName</p>
+							</td>
+							<td>@order.OrderDate.Year/@order.OrderDate.Month/@order.OrderDate.Year</td>
+
+							<td><span class="status completed">@order.PaymentMethod</span></td>
+							</tr>
+							}*@
+
+
+						</tbody>
+					</table>
 				</div>
+
 			</div>
 		</main>
 		<!-- MAIN -->
 	</section>
-	</body>
-	<!-- CONTENT -->
-	<!-- SCRIPT -->
-	<script src="~/js/script.js"></script>
 
 
+
+
+
+
+
+
+</body>
+<!-- SCRIPT -->
+<script src="~/js/script.js"></script>
 </html>

@@ -1,5 +1,6 @@
 ﻿using EfrashBatek.Models;
 using EfrashBatek.service;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -7,6 +8,7 @@ using System.Linq;
 
 namespace EfrashBatek.Controllers
 {
+    [Authorize]
     public class CartController : Controller
     {
         IItemRepository _itemRepository;
@@ -50,8 +52,8 @@ namespace EfrashBatek.Controllers
             }
             return View(items);
         }
-      
-        public IActionResult AddToCart([FromRoute] int ID)
+
+        public IActionResult AddToCart(int id )
         {
             var HaveSession = HttpContext.Session.GetString("Id");
             if (HaveSession == null)
@@ -59,7 +61,7 @@ namespace EfrashBatek.Controllers
                 return RedirectToAction("Login", "Account");
             }
 
-            cartRepository.AddToCart(ID);
+            cartRepository.AddToCart(id);
             return RedirectToAction("Index");
 
 

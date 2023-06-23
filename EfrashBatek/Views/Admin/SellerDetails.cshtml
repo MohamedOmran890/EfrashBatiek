@@ -42,7 +42,7 @@
                     <span class="text">Order List </span>
                 </a>
             </li>
-            <li class="active">
+            <li >
                 <a asp-action="AddStaff" asp-controller="Admin">
                     <i class='bx bx-list-plus'></i>
                     <span class="text">Add Seller</span>
@@ -54,8 +54,15 @@
                     <span class="text">Add Shop</span>
                 </a>
             </li>
-            <!--Why Seller Details-->
             <li>
+                <a asp-action="AddAdmin">
+                    <i class='bx bx-list-plus'></i>
+                    <span class="text">Add Admin</span>
+                </a>
+            </li>
+
+            <!--Why Seller Details-->
+            <li class="active">
                 <a asp-action="SellerDetails" asp-controller="Admin">
                     <i class='bx bxs-group'></i>
                     <span class="text">Seller Details</span>

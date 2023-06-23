@@ -25,7 +25,7 @@
 			<span class="text">Efresh Beitak</span>
 		</a>
 		<ul class="side-menu top">
-			<li>
+			<li class="active">
 				<a asp-action="Index" asp-controller="Admin">
 					<i class='bx bxs-dashboard'></i>
 					<span class="text">Dashboard</span>
@@ -37,7 +37,7 @@
 					<span class="text">Order List </span>
 				</a>
 			</li>
-			<li class="active">
+			<li >
 				<a asp-action="AddStaff" asp-controller="Admin">
 					<i class='bx bx-list-plus'></i>
 					<span class="text">Add Seller</span>
@@ -49,6 +49,13 @@
 					<span class="text">Add Shop</span>
 				</a>
 			</li>
+			<li>
+				<a asp-action="AddAdmin">
+					<i class='bx bx-list-plus'></i>
+					<span class="text">Add Admin</span>
+				</a>
+			</li>
+
 			<!--Why Seller Details-->
 			<li>
 				<a asp-action="SellerDetails" asp-controller="Admin">
@@ -93,7 +100,7 @@
 				<li>
 					<i class='bx bxs-calendar-check'></i>
 					<span class="text">
-						<h3>@Model.Totalshop</h3>
+						<h3>@Model.TotalOrders</h3>
 						<p>Total Orders</p>
 					</span>
 				</li>
@@ -124,8 +131,11 @@
 						<thead>
 							<tr>
 								<th>User</th>
-								<th>Date Order</th>
-								<th>Status</th>
+								<th> Order Date</th>
+									<th>Order Time</th>
+								<th>Paymenth method</th>
+								
+							
 							</tr>
 						</thead>
 						<tbody>
@@ -136,7 +146,8 @@
 										<img src="~/Image/img/people.png">
 										<p>@order.Customer.User.FirstName</p>
 									</td>
-									<td>@order.OrderDate.Year/@order.OrderDate.Month/@order.OrderDate.Year</td>
+									<td>@order.OrderDate.Day/@order.OrderDate.Month/@order.OrderDate.Year</td>
+									<td>@order.OrderDate.Minute</td>
 
 									<td><span class="status completed">@order.PaymentMethod</span></td>
 								</tr>
