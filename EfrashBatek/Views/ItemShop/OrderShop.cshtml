@@ -1,7 +1,7 @@
 ﻿@{
     Layout = null;
 }
-@model List<Order_Item>
+@model List<EfrashBatek.ViewModel.OrderVm>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -27,14 +27,14 @@
             <span class="text">Efresh Beitak </span>
         </a>
         <ul class="side-menu top">
-            <li class="active">
+            <li>
                 <a asp-action="Seller">
                     <i class='bx bxs-dashboard'></i>
                     <span class="text">Dashboard</span>
                 </a>
             </li>
-            <li>
-                <a asp-action="Orders">
+            <li class="active">
+                <a asp-action="OrderShop">
                     <i class='bx bx-list-ul'></i>
                     <span class="text">Order List </span>
                 </a>
@@ -45,9 +45,14 @@
                     <span class="text">Add Item</span>
                 </a>
             </li>
-           
             <li>
-                <a href="###########################CUSTOMIZE ORDER">
+                <a asp-action="ShopItem">
+                    <i class='bx bx-list-plus'></i>
+                    <span class="text">Items</span>
+                </a>
+            </li>
+            <li>
+                <a asp-action="CustomOrder">
                     <i class='bx bx-list-plus'></i>
                     <span class="text">Customize Order </span>
                 </a>
@@ -82,11 +87,11 @@
             <table>
                 <thead>
                     <tr>
-                        <td>Order ID </td>
+                        <td>Order Code</td>
                         <td>Order Date</td>
                         <td>Customer Name</td>
                         <td>Total</td>
-                    
+                        <td>orderStatus</td>
                         <td>Payment Method</td>
                         <td>Shop Name</td>
                         <td>View</td>
@@ -94,20 +99,21 @@
                     </tr>
                 </thead>
                 <tbody>
-                 
+                    @{
+                        int x = 0;
+                    
                     <!-- ORDER 2 -->
                     @foreach(var order in Model)
                     {
                         <tr>
-                            <td>@order.OrderID</td>
-                            <td>@order.Order.OrderDate/@order.Order.OrderDate.Month/@order.Order.OrderDate.Year</td>
+                            <td>@order.order.OrderCode</td>
+                            <td>@order.order.OrderDate.Day/@order.order.OrderDate.Month/@order.order.OrderDate.Year</td>
 
-                            <td>@order.Order.Customer.User.FirstName</td>
-                            <td>@order.item.Price EGP</td>
-                            <!------------------------------------------------------- pr01 -->
-                            @*<td>
-                                <select id="pro1">
-                                    <option value="null">Status</option>
+                            <td>@order.order.Customer.User.FirstName</td>
+                            <td>@order.order.TotalCost  EGP</td>
+                            <td>
+                                <select id="pro1" >
+                                        <option value="">@order.state</option>
                                     <option class="status delivered" value="delivered">
                                         Delivered
                                     </option>
@@ -128,30 +134,28 @@
                                         selectElement.classList.add('clicked-' + selectElement.value);
                                     });
                                 </script>
-                            </td>*@
-                            <td><span class="status delivered">@order.Order.PaymentMethod</span></td>
+                            </td>
+                            <td><span class="status delivered">@order.order.PaymentMethod</span></td>
                             <td>efresh beitak</td>
                             <td>
-                                <button class="btn btn-rounded">View <i class="mdi mdi-download ms-2"></i></button>
+                                <a asp-action="OrderDetails"  asp-route-id="@order.order.ID" class="edit" title="Edit" data-toggle="tooltip">
 
+                                    <button class="btn btn-rounded">View <i class="mdi mdi-download ms-2"></i></button>
+
+                                </a>
                             </td>
                             <td>
-                               @* <a class="edit" title="Edit" data-toggle="tooltip">
-                                    <i class="material-icons">&#xE254;</i>
-                                </a>*@
-                                @using (Html.BeginForm("DeleteOrder", "ItemShop", FormMethod.Post))
-                                {
+                                <a asp-action="DeleteOrder" asp-route-id="@order.order.ID" class="edit" title="Edit" data-toggle="tooltip">
 
-                                    int x = order.ID;
-                                    @Html.Hidden("id"  , x )
-                                    // Replace "Id" with the actual name of the ID property in your model
+                         
 
                                     <button>  <i class="material-icons">&#xE872;</i></button>
-                                }
+                                </a>
                                
 
                             </td>
                         </tr>
+                    }
                     }
                  
                    

@@ -35,13 +35,13 @@
                     <span class="text">Dashboard</span>
                 </a>
             </li>
-            <li>
+            <li class="active">
                 <a asp-action="Orders" asp-controller="Admin">
                     <i class='bx bx-list-ul'></i>
                     <span class="text">Order List </span>
                 </a>
             </li>
-            <li class="active">
+            <li >
                 <a asp-action="AddStaff" asp-controller="Admin">
                     <i class='bx bx-list-plus'></i>
                     <span class="text">Add Seller</span>
@@ -146,7 +146,10 @@
                             <td><span class="status delivered">@order.PaymentMethod</span></td>
                             <td>efresh beitak</td>
                             <td>
-                                <button class="btn btn-rounded">View <i class="mdi mdi-download ms-2"></i></button>
+                               <a asp-action="OrderDetails" asp-controller="ItemShop" asp-route-id="@order.ID">
+                                    <button class="btn btn-rounded">View <i class="mdi mdi-download ms-2"></i></button>
+
+                               </a>
 
                             </td>
                             <td>

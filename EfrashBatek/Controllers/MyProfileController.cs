@@ -59,8 +59,8 @@ namespace EfrashBatek.Controllers
 
             return View(Customs);  
         }
-        [HttpPost]
-        public IActionResult ViewCustoms(int id )
+    
+        public IActionResult ViewCustomss(int id )
         {
            var model =  context.Customs.FirstOrDefault(i=>i.ID == id);  
 
@@ -273,7 +273,7 @@ namespace EfrashBatek.Controllers
             }
             
         }
-        [HttpPost]
+    
         public IActionResult OrderDetails(int id )
         {
             Order order =  context.Orders.FirstOrDefault(i=>i.ID == id ); 

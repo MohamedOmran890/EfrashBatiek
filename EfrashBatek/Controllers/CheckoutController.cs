@@ -35,11 +35,14 @@ public class CheckoutController : Controller
 
         var items = cart.LoadFromCookie();
         var list = items.Where(i=>i.CartID == cartID).ToList();
+        int total = 0;
               foreach ( var item in list ) {
             item.Item = context.Items.FirstOrDefault(i => i.ID == item.ItemID);
+            total += item.Quantity * (int)item.Item.Price;
         
         }
-        ViewBag.list = list;   
+        ViewBag.list = list;
+        @ViewBag.price = total;
         ViewBag.cartID = cartID;    
                return View("ChooseAddress" , addressRepository.View());   
     }
@@ -114,16 +117,19 @@ public class CheckoutController : Controller
         }
         var items = cart.LoadFromCookie();
         var list = items.Where(i => i.CartID == cartID).ToList();
+        int total = 0;
         foreach (var item in list)
         {
             item.Item = context.Items.FirstOrDefault(i => i.ID == item.ItemID);
+            total += (int)item.Item.Price * item.Quantity;
 
         }
         ViewBag.list = list;
         ViewBag.cartID = cartID;
+        ViewBag.price = total;
 
         ViewBag.selectedAddressId = selectedAddressId;  
-        return View("Payment");
+        return View("Payment" , total);
 	}
     public IActionResult Confirmation(int cartID , int selectedAddressId)
     {
@@ -151,8 +157,9 @@ public class CheckoutController : Controller
                 order_Item.ItemID = item.ItemID;
                 order_Item.Quantity = item.Quantity;
                 order_Item.OrderState = OrderState.Delivering;
-                // note : you should generate it by real shop ..
-                order_Item.Shop = context.Shops.FirstOrDefault();
+            // note : you should generate it by real shop ..
+            order_Item.Shop = item.Item.Shop;
+            order_Item.ShopID = item.Item.ShopID;   
                 order_Items.Add(order_Item);
             }
 
@@ -163,6 +170,7 @@ public class CheckoutController : Controller
             DateTime orderDate = DateTime.Now;
 
             order.OrderDate = orderDate.Date;
+        order.PaymentMethod = EfrashBatek.Models.PaymentMethod.CashOnDelivery;
        
  
 

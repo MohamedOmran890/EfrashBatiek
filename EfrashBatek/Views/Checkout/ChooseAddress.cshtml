@@ -80,11 +80,13 @@
                     <div class="addressFORM">
                         <div class="row w-100">
 
-                            <div class="col-sm-12 col-lg-6">
+                           
                                 @if (Model != null)
                                 {
                                     foreach (var address in Model)
-                                    {
+                                    { 
+                                        
+                                        <div class="col-sm-12 col-lg-6">
                                         <div class="addressBOX">
                                             <div class="addressBOX-actions">
                                                 <input type="radio" name="selectedAddressId" value="@address.ID" class="run">
@@ -105,6 +107,7 @@
                                                 <span>@address.phone</span>
                                             </div>
                                         </div>
+                                         </div>
                                     }
                                 }
 
@@ -112,7 +115,7 @@
 
 
                         </div>
-                    </div>
+                  
 
                     int x = ViewBag.cartID;
                     <input type="hidden" name="selectedAddressId" value="" />

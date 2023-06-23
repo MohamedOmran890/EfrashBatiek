@@ -25,26 +25,26 @@
 
 <body>
     <!-- SIDEBAR -->
-    <
+    
     <section id="sidebar">
-        <a asp-action="TrendingProducts" asp-controller="Home">
+        <a asp-action="TrendingProducts" asp-controller="Home" class="brand">
             <i class='bx bxs-smile'></i>
-            <span class="text">Efresh Beitak </span>
+            <span class="text">Efresh Beitak</span>
         </a>
         <ul class="side-menu top">
-            <li class="active">
+            <li >
                 <a asp-action="Seller">
                     <i class='bx bxs-dashboard'></i>
                     <span class="text">Dashboard</span>
                 </a>
             </li>
             <li>
-                <a asp-action="Orders">
+                <a asp-action="OrderShop">
                     <i class='bx bx-list-ul'></i>
                     <span class="text">Order List </span>
                 </a>
             </li>
-            <li>
+            <li class="active">
                 <a asp-action="Create">
                     <i class='bx bx-list-plus'></i>
                     <span class="text">Add Item</span>
@@ -52,13 +52,13 @@
             </li>
             
             <li>
-                <a href="Items.html">
+                <a asp-action="ShopItem">
                     <i class='bx bx-list-plus'></i>
-                    <span class="text">Item</span>
+                    <span class="text">Items</span>
                 </a>
             </li>
             <li>
-                <a asp-action="Custome" asp-controller="ItemShop">
+                <a asp-action="CustomOrder" asp-controller="ItemShop">
                     <i class='bx bx-list-plus'></i>
                     <span class="text">Customize Order </span>
                 </a>
