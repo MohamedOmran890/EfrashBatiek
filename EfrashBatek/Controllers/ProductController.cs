@@ -10,6 +10,7 @@ using EfrashBatek.service;
 using System.Net;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.Text.RegularExpressions;
+using System.Security.Policy;
 
 namespace EfrashBatek.Controllers
 {
@@ -65,7 +66,7 @@ namespace EfrashBatek.Controllers
             var all_item=_itemRepository.GetAll();
             return View(all_item);
         }
-        public IActionResult Index1()
+        public IActionResult Index1(string SearchString)
         {
 
             List<Category> category = new List<Category>
@@ -74,8 +75,6 @@ namespace EfrashBatek.Controllers
             Category.Kitchen_utensils,
             Category.Home_Appliances,
                Category.All_Products
-
-
             };
            
             Dictionary<Category, List<Product>> categoryToProducts = new Dictionary<Category, List<Product>>();
@@ -91,7 +90,12 @@ namespace EfrashBatek.Controllers
 
 
             }
-            
+            if (!string.IsNullOrEmpty(SearchString))
+            {
+                var itm = _context.Items.Where(x => x.Name.Contains(SearchString)).ToList();
+                return View(itm);
+            }
+
             ViewBag.categoryToProducts = categoryToProducts;
             var all_item = _itemRepository.GetAll();
             return View(all_item);
