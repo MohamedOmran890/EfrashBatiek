@@ -12,9 +12,12 @@ using EfrashBatek.ViewModel;
 using System.IO;
 using Castle.Core.Resource;
 using System.Xml.Schema;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 
 namespace EfrashBatek.Controllers
 {
+    [Authorize(Roles ="Seller,Admin,Shop")]
     public class ItemShopController : Controller
     {
         private readonly Context _context;
@@ -97,6 +100,8 @@ namespace EfrashBatek.Controllers
 
         [HttpGet]
         //1
+        [Authorize(Roles = "Seller,Shop")]
+
         public IActionResult Create()
         {
             ViewData["BrandName"] = new SelectList(brandRepository.GetAll(), "ID", "Category");
@@ -108,6 +113,7 @@ namespace EfrashBatek.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         //2
+        [Authorize(Roles = "Seller,Shop")]
         public async Task<IActionResult> Create(ItemVM item)
         {
             if (ModelState.IsValid)
@@ -173,6 +179,7 @@ namespace EfrashBatek.Controllers
             ViewData["ShopName"] = new SelectList(shopRepository.GetAll(), "ID", "Name", item.ShopID);
             return View(item);
         }
+        [Authorize(Roles = "Seller,Shop,Admin")]
         public IActionResult Edit(int? id)
         {
             if (id == null)
@@ -194,6 +201,8 @@ namespace EfrashBatek.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Seller,Shop,Admin")]
+
         public IActionResult Edit(int id, ItemVM item)
         {
             if (id != item.ID)
@@ -266,6 +275,7 @@ namespace EfrashBatek.Controllers
         }
 
         // GET: Item2/Delete/5
+        [Authorize(Roles = "Seller,Shop,Admin")]
         public IActionResult Delete(int? id)
         {
             if (id == null)
@@ -297,24 +307,7 @@ namespace EfrashBatek.Controllers
                var itm= shopRepository.ItemByShop(shop.ID);
             return View(itm);
         }
-
-		
-
-		//[HttpPost, ActionName("Delete")]
-		//[ValidateAntiForgeryToken]
-		//public async Task<IActionResult> DeleteConfirmedAsync(int id)
-		//{
-		//    var item = _context.Items.Find(id);
-		//    _context.Items.Remove(item);
-		//    await _context.SaveChangesAsync();
-		//    return RedirectToAction(nameof(Index));
-		//}
-
-		//private bool ItemExists(int id)
-		//{
-		//    return _context.Items.Any(e => e.ID == id);
-		//}
-
+        [Authorize(Roles = "Seller,Shop,Admin")]
         public IActionResult OrderShop()
         {
             var user = IdentityRepository.GetUser();
@@ -345,12 +338,15 @@ namespace EfrashBatek.Controllers
             }
             return View(order.ToList());
         }
+        [Authorize(Roles = "Seller,Shop,Admin")]
         public IActionResult DeleteOrder(int id)
         {
             order_ItemRepository.Delete(id);
             return RedirectToAction("OrderShop","ItemShop");
 
         }
+
+        [Authorize(Roles = "Seller,Shop,Admin")]
         public IActionResult CustomOrder()
         {
             var custom = _context.Customs.ToList();

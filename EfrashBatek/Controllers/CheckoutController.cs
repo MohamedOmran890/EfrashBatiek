@@ -1,6 +1,7 @@
 ﻿
 using EfrashBatek.Models;
 using EfrashBatek.service;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -8,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
+[Authorize]
 public class CheckoutController : Controller
     {
         IAddressRepository addressRepository;

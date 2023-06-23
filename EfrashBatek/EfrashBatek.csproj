@@ -10,6 +10,8 @@
     <Content Remove="wwwroot\css\additem.css" />
     <Content Remove="wwwroot\css\bootstrap.min.css" />
     <Content Remove="wwwroot\css\contact us.css" />
+    <Content Remove="wwwroot\css\css\dark.css" />
+    <Content Remove="wwwroot\css\css\light.css" />
     <Content Remove="wwwroot\css\custom.css" />
     <Content Remove="wwwroot\css\Custom_Order.css" />
     <Content Remove="wwwroot\css\edititem.css" />
@@ -251,6 +253,8 @@
     <None Include="wwwroot\css\Checkout address.css" />
     <None Include="wwwroot\css\confirmpassword.css" />
     <None Include="wwwroot\css\contact us.css" />
+    <None Include="wwwroot\css\css\light.css" />
+    <None Include="wwwroot\css\css\dark.css" />
     <None Include="wwwroot\css\custom.css" />
     <None Include="wwwroot\css\Custom_Order.css" />
     <None Include="wwwroot\css\default address.css" />

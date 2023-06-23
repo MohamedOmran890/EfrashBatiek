@@ -8,6 +8,8 @@ using Microsoft.EntityFrameworkCore;
 using EfrashBatek.Models;
 using EfrashBatek.service;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
+using System.Data;
 
 namespace EfrashBatek.Controllers
 {
@@ -30,6 +32,7 @@ namespace EfrashBatek.Controllers
             return View(ans);
         }
         //For Each Designer
+        [Authorize(Roles = "Admin,Designer")]
         public IActionResult MyDesign()
         {
             var userid = identityRepository.GetUserID();
@@ -41,7 +44,7 @@ namespace EfrashBatek.Controllers
 
             return View(designs);
         }
-
+        [Authorize(Roles ="Designer")]
         public IActionResult Create()
         {
             ViewData["DesignerID"] = new SelectList(_context.designers, "ID", "NationalCardImage");
@@ -65,7 +68,6 @@ namespace EfrashBatek.Controllers
             return View(design);
         }
 
-        // GET: Designs/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -84,9 +86,7 @@ namespace EfrashBatek.Controllers
 
             return View(design);
         }
-
-        // GET: Designs/Create
-        // GET: Designs/Edit/5
+        [Authorize(Roles = "Admin,Designer")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -104,6 +104,7 @@ namespace EfrashBatek.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin,Designer")]
         public IActionResult Edit(int id, Design design)
         {
             if (id != design.ID)
@@ -126,8 +127,7 @@ namespace EfrashBatek.Controllers
             }
             return View(design);
         }
-
-        // GET: Designs/Delete/5
+        [Authorize(Roles = "Admin,Designer")]
         public IActionResult Delete(int? id)
         {
             if (id == null)
@@ -144,19 +144,5 @@ namespace EfrashBatek.Controllers
             return NotFound();
         }
 
-        //[HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> DeleteConfirmed(int id)
-        //{
-        //    var design = await _context.Designs.FindAsync(id);
-        //    _context.Designs.Remove(design);
-        //    await _context.SaveChangesAsync();
-        //    return RedirectToAction(nameof(Index));
-        //}
-
-        //private bool DesignExists(int id)
-        //{
-        //    return _context.Designs.Any(e => e.ID == id);
-        //}
     }
 }

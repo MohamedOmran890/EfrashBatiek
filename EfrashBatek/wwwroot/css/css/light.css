@@ -1,0 +1,21 @@
+body {
+    background-color: #EEE;
+    color: #222;
+}
+
+h1, h2, h3 {
+    color: #007ACC;
+}
+
+a {
+    color: #666;
+}
+
+button {
+    background-color: #007ACC;
+    color: #EEE;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
