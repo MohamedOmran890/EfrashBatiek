@@ -59,7 +59,8 @@
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 
-
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 
@@ -91,9 +92,9 @@
 
         <div class="nav-icon">
             <form asp-action="TrendingProducts" asp-controller="Home" class="navbar-form navbar-left">
-                <input type="text" name="searchstring" class="form-control" placeholder="Search">
-                <button type="submit" class="btn btn-info">Submit</button>
-            </form>
+                <input type="search" name="searchstring" class="form-controll" placeholder=" Search Now !">
+                          
+           </form>
             @*<a asp-controller="Home" asp-action="TrendingProducts"><i class='bx bx-search'></i></a>*@
             @if (!User.IsInRole("Admin")&&!User.IsInRole("Seller"))
             {

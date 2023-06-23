@@ -7,7 +7,18 @@
     list-style: none;
     text-decoration: none;
 }
-header{
+input.form-controll {
+    
+    height: 30px;
+    position: fixed;
+    width:300px;
+    top:7%;
+    left :  39%;
+  
+  
+    
+}
+header {
     position: fixed;
     width: 100%;
     top: 0;
