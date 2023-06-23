@@ -10,13 +10,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Admin</title>
-    <!-- CSS -->
     <link rel="stylesheet" href="~/css/admin.css">
     <link rel="stylesheet" href="~/css/seller details.css">
-    <!-- SCRIPT -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <!-- Icons -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
 
@@ -58,18 +55,18 @@
                     <span class="text">Add Admin</span>
                 </a>
             </li>
-            <li>
-                <a asp-action="Logout" asp-controller="Account" class="nav-link" role="tab">
-                    <i class="fa fa-user text-center mr-1"></i>
-                    Log Out
-                </a>
-            </li>
 
             <!--Why Seller Details-->
             <li class="active">
                 <a asp-action="SellerDetails" asp-controller="Admin">
                     <i class='bx bxs-group'></i>
                     <span class="text">Seller Details</span>
+                </a>
+            </li>
+            <li>
+                <a asp-action="Logout" asp-controller="Account" class="nav-link" role="tab">
+						<i class='bx bx-log-out'></i>
+                    Log Out
                 </a>
             </li>
         </ul>
@@ -144,15 +141,9 @@
                     <input type="submit" value="Register">
                 </div>
             </form>
-            <div class="forget">
-                Already have an account?
-            </div>
-
-            <div class="forget">
-                <a asp-action="Login" asp-controller="Account">Login</a>
-            </div>
+           
         </div>
     </div>
-
+     <script src="~/js/script.js"></script>
 </body>
 </html>
