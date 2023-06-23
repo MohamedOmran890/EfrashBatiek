@@ -6,6 +6,7 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO.Pipelines;
 using System.Linq;
 using System.Security.Cryptography.Xml;
 using System.Threading.Tasks;
@@ -30,7 +31,7 @@ namespace EfrashBatek.Controllers
             _ContactUs = contact_Us;
         }
 
-        public IActionResult TrendingProducts(string SearchString)
+        public IActionResult TrendingProducts(string SearchString,double? Price)
         {
             if (!string.IsNullOrEmpty(SearchString))
             {
@@ -38,6 +39,13 @@ namespace EfrashBatek.Controllers
                 var trendingItems = _Item.Trending();
                 var pairs = new KeyValuePair<List<Item>, List<Item>>(filteredItems, null);
                 return View(pairs);
+            }
+            if(Price.HasValue)
+            {
+                var products = context.Items.Where(p => p.Price == Price).ToList();
+                var pairprice= new KeyValuePair<List<Item>, List<Item>>(products, null);
+                return View(pairprice);
+
             }
 
             var pair = new KeyValuePair<List<Item>, List<Item>>(_Item.NewArrivals(), _Item.Trending());

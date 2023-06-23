@@ -86,7 +86,16 @@
             {
                                 
             <li><a asp-controller="Customs" asp-action="Create">Custom order</a></li>
-                                }
+             }
+             @if(User.IsInRole("Seller"))
+             {
+                 <li> <a asp-action="Seller" asp-controller="ItemShop">My Shop</a></li>
+             }
+            @if (User.IsInRole("Admin"))
+            {
+                <li> <a asp-action="Index" asp-controller="Admin">Admin</a></li>
+            }
+
         </ul>
 
 
