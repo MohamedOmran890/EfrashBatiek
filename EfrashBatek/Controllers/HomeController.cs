@@ -1,6 +1,7 @@
 ﻿using EfrashBatek.Models;
 using EfrashBatek.service;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -29,17 +30,16 @@ namespace EfrashBatek.Controllers
             _ContactUs = contact_Us;
         }
 
-        public IActionResult TrendingProducts()
+        public IActionResult TrendingProducts(string SearchString)
         {
-
-
+            if (!string.IsNullOrEmpty(SearchString))
+            {
+                var itm = context.Items.Where(x => x.Name.Contains(SearchString)).ToList();
+                return View(itm);
+            }
 
             var pair = new KeyValuePair<List<Item>, List<Item>>(_Item.NewArrivals(), _Item.Trending());
-
-
             return View(pair);
-
-
 
         }
         public IActionResult Privacy()

@@ -12,7 +12,7 @@ using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace EfrashBatek.Controllers
 {
-    [Authorize(Roles ="Admin")]
+    //[Authorize(Roles ="Admin")]
     public class AdminController : Controller
     {
         ICustomerRepository customer;
@@ -148,7 +148,7 @@ namespace EfrashBatek.Controllers
                 // Redirect the user to the login page
                 _staff.Create(staff);
                   await EmailStaffService.SendEmail(model.Email, model.Username, model.Password, model.FirstName);
-                return Content("Done");
+                return RedirectToAction("SellerDetails");
             }
 
             //if(check==null)

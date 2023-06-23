@@ -82,9 +82,11 @@ namespace EfrashBatek.Controllers
 			}
 			User user = identityRepository.GetUser();
 			Customer customer = _customer.GetCustomerbyUserId();
-			List<Order> orders = context.Orders.Where(i => i.CustomerID == customer.Id).ToList();
-			ViewBag.Orders = orders.Count();
-
+            if (customer != null)
+            {
+                List<Order> orders = context.Orders.Where(i => i.CustomerID == customer.Id).ToList();
+                ViewBag.Orders = orders.Count();
+            }
 
 			//...populate other properties
 			ViewBag.Model = user;
