@@ -18,6 +18,7 @@ using System.Collections.Generic;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Authorization.Infrastructure;
+using System.Linq;
 
 namespace EfrashBatek.Controllers
 {
@@ -60,6 +61,12 @@ namespace EfrashBatek.Controllers
         [HttpPost]
         public async Task<IActionResult> SignUp(RegisterViewModel model)
         {
+            var email=context.Users.FirstOrDefault(x=>x.Email==model.Email);
+            if(email!=null)
+            {
+                ModelState.AddModelError("", "The Email is already Found");
+                return View(model);
+            }
             if (!ModelState.IsValid)
             {
                 return View(model);
@@ -208,13 +215,13 @@ namespace EfrashBatek.Controllers
                     return View();
                 }
                 var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                var confirmationLink = Url.Action("ResetPassword", "Account", new { userId = user.Id, token = token, clicked = true }, Request.Scheme);
+                var confirmationLink = Url.Action("ResetPassword", "Account", new { Email = user.Email,Token = token, clicked = true }, Request.Scheme);
                 await _emailService.SendForgetPassword(model.Email, confirmationLink);
                 return RedirectToAction("ResetPassword", "Account", new { Email = model.Email, Token = token });
             }
             return View(model);
         }
-        public IActionResult ResetPassword(string Email,string token,bool clicked=false)
+        public IActionResult ResetPassword(string Email, string Token,bool clicked=false)
         {
             if(!clicked)
             {
@@ -222,26 +229,31 @@ namespace EfrashBatek.Controllers
                     return View("Clicked");
                 
             }
-            if (string.IsNullOrEmpty(token))
+            if (string.IsNullOrEmpty(Token))
             {
                 ViewBag.Message = "Please check your email and click on the link to reset your password.";
                 return View("Login");
             }
-            if (token != null)
+            var model = new ResetPasswordVM
             {
-                ResetPasswordVM model = new ResetPasswordVM();
-                model.Email = Email;
-                model.Token = token;
-                return View(model);
-            }
+                Email = Email,
+                Token = Token
+            };
+            return View(model);
+
             return RedirectToAction("Login", "Account");
         }
         [HttpPost]
         public async Task<IActionResult> ResetPassword(ResetPasswordVM model)
         {
+            if (model == null)
+            {
+                return BadRequest("Invalid model");
+            }
+         
             if (ModelState.IsValid)
             {
-                var user = await _userManager.FindByEmailAsync(model.Email);
+                var user = await _userManager.Users.FirstOrDefaultAsync(u => u.Email == model.Email);
                 if (user == null)
                 {
                     ModelState.AddModelError("", "Email Not Found");
@@ -250,7 +262,7 @@ namespace EfrashBatek.Controllers
                 if (!user.EmailConfirmed)
                 {
                     ViewBag.Message = "Please check your email and click on the link to reset your password.";
-                    return View("Error"); // Or redirect to another page
+                    return View("Error"); 
                 }
                 var result = await _userManager.ResetPasswordAsync(user, model.Token, model.NewPassword);
                 if (result.Succeeded)
