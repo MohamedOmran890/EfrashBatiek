@@ -1,5 +1,5 @@
 # Efresh Baitek
-
+# [Web link](http://efresh-beitak.somee.com/Home/TrendingProducts)
 <img src="https://github.com/MohamedOmran890/EfrashBatiek/blob/master/main.jpg"/>
 
 # Introduction :
@@ -14,16 +14,13 @@
 ### The designer has ability to add designs and market for his self.
 
 
-
-* Web link :
-
 ## The SRS of Efresh Baitek
 # - [SRS Link](https://github.com/MohamedOmran890/EfrashBatiek/blob/master/Efresh%20Beitak%20SRS.pdf)
 
 ## Who Are We ?
 
-- [ALYAA MAMOON ABDELMONEAM](https://github.com/alyaa999) : Team Leader
-- [HAZEM ABDELSATTAR MOHAMMED ALI](https://github.com/Hazem-404) : Vice Team Leader
+- [HAZEM ABDELSATTAR MOHAMMED ALI](https://github.com/Hazem-404) : Team Leader
+- [ALYAA MAMOON ABDELMONEAM](https://github.com/alyaa999) : Vice Team Leader
 - [MOHAMED OMRAN](https://github.com/MohamedOmran890) : Back-End
 - [AYA ABDELKHALEQ AHMED](https://github.com/AyaAbdelkhalk) : Back-End
 - [ESRAA ABDUL-MABADI ABU AL-HAMAD](https://github.com/esraa-netizen) : Back-End
