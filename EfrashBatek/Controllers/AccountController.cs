@@ -214,6 +214,7 @@ namespace EfrashBatek.Controllers
                     ModelState.AddModelError("", "The Email Not Found");
                     return View();
                 }
+                //
                 var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
                 var confirmationLink = Url.Action("ResetPassword", "Account", new { Email = user.Email,Token = token, clicked = true }, Request.Scheme);
                 await _emailService.SendForgetPassword(model.Email, confirmationLink);
