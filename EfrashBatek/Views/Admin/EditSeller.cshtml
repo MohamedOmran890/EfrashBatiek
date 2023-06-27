@@ -61,13 +61,34 @@
                 <tbody>
                     <tr>
                         <td>
+                            <label asp-for="FirstName"></label>
                             <input asp-for="FirstName" type="text" class="form-control" value="@Model.FirstName">
+                        </td>
+                        <td>
+                            <label asp-for="LastName">LastName</label>
+                            <input asp-for="LastName" type="text" class="form-control" value="@Model.LastName">
+                        </td>
+
+                        <td>
+                            <label asp-for="Email"></label>
+                            <input asp-for="Email" type="text" class="form-control" value="@Model.Email">
+                         </td>
+                        <td>
+                            <label asp-for="age"></label>
+                            <input asp-for="age" type="text" class="form-control" value="@Model.age">
+                            
+                        </td>
+                        <td>
+                            <label asp-for="UserName"></label>
+                            <input asp-for="UserName" type="text" class="form-control" value="@Model.UserName">
 
                         </td>
-                        <td> <input asp-for="Email" type="text" class="form-control" value="@Model.Email"></td>
-                        <td> <input asp-for="age" type="text" class="form-control" value="@Model.age"></td>
+
+                        <label asp-for="PhoneNumber"></label>
                         <td> <input asp-for="PhoneNumber" type="text" class="form-control" value="@Model.PhoneNumber"> </td>
 
+                        <td> <input asp-for="Id" type="hidden" class="form-control" value="@Model.Id"> </td>
+                        
                         <td>
                                
                             <input class="btn btn-primary" value="Save Changes" type="submit" style="

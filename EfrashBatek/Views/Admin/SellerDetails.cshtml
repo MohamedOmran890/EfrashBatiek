@@ -125,7 +125,9 @@
                                 <a class="edit" title="Edit" data-toggle="tooltip">
                                    
                                 </a>
-                                    string  x = seller.UserId;
+                                    string  x = seller.User.Id;
+                               
+
                                     @Html.Hidden("id"  , x )
                                     // Replace "Id" with the actual name of the ID property in your model
 

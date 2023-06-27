@@ -4,9 +4,11 @@ using EfrashBatek.ViewModel;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
@@ -25,11 +27,13 @@ namespace EfrashBatek.Controllers
         EmailStaffService EmailStaffService;
         private readonly IUserRepository userRepository;
         IAdminRepository adminRepository;
+        IIdentityRepository identityRepository;
 
         public AdminController(UserManager<User>usermanager, ICustomerRepository customer,
             IOrderRepository order, IShopRepository shop, 
             IStaffRepository staff, IOrder_ItemRepository order_item, Context context
-            ,EmailStaffService emailStaffService , IUserRepository userRepository,IAdminRepository adminRepository)
+            ,EmailStaffService emailStaffService , IUserRepository userRepository,
+            IAdminRepository adminRepository,IIdentityRepository identityRepository)
         {
             this.customer = customer;
             this.order = order;
@@ -41,6 +45,7 @@ namespace EfrashBatek.Controllers
             EmailStaffService = emailStaffService;
             this.userRepository = userRepository;
             this.adminRepository = adminRepository;
+            this.identityRepository = identityRepository;
         }
         // done - test 
         public IActionResult Index()
@@ -78,6 +83,13 @@ namespace EfrashBatek.Controllers
             };
             return View(Dash);
         
+        }
+        public IActionResult OrderDetails(int id)
+        {
+            var order = _context.Orders.Include(p=>p.Order_Item).ThenInclude(p=>p.item).FirstOrDefault(i => i.ID == id);
+          //  var list = _context.Order_Items.Where(i => i.OrderID == order.ID).ToList();
+          //  var user = identityRepository.GetUser();
+                 return View(order);
         }
         // done - test 
         public IActionResult DeleteOrder(int id)
@@ -224,18 +236,14 @@ namespace EfrashBatek.Controllers
         [HttpPost]
         public IActionResult EditSellerr (User user )
         {
-
-
-
-            userRepository.Update(user);
-
-
+            User staff = _context.Users.FirstOrDefault(i => i.Id == user.Id);
+            staff.FirstName = user.FirstName;
+            staff.LastName = user.LastName;
+            staff.UserName = user.UserName;
+            staff.age = user.age;
+            staff.PhoneNumber = user.PhoneNumber;
+            userRepository.Update(staff);
             return RedirectToAction("SellerDetails");
-
-
-
-
-
         }
         public IActionResult ShopDetails()
         {

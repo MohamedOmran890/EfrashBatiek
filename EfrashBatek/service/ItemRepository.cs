@@ -53,23 +53,9 @@ namespace EfrashBatek.service
 
             return items;
         }
-        public int Update(int id, Item item)
+        public int Update(Item item)
         {
-            var ans = context.Items.FirstOrDefault(x => x.ID == id);
-            ans.Name = item.Name;
-            ans.Description = item.Description;
-            ans.Code = item.Code;
-            ans.Price = item.Price;
-            ans.Image = item.Image;
-            ans.Image2 = item.Image2;
-            ans.Image3 = item.Image3;
-            ans.Image4 = item.Image4;
-            ans.Image5 = item.Image5;
-            ans.QuantityInStore = item.QuantityInStore;
-            ans.Brand_ID = item.Brand_ID;
-            ans.ShopID = item.ShopID;
-            ans.ProductID = item.ProductID;
-            context.Items.Update(ans);
+            context.Items.Update(item);
             int num = context.SaveChanges();
             return num;
         }

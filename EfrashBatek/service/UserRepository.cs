@@ -33,18 +33,18 @@ namespace EfrashBatek.service
         public int Update( User userr) // id ??
         {
             // omran 
-            var ans = context.Users.FirstOrDefault(i => i.Id == userr.Id);
+           // var ans = context.Users.FirstOrDefault(i => i.Id == userr.Id);
 
-            ans.FirstName = userr.FirstName; 
-            ans.LastName = userr.LastName;   
-             ans.age = userr.age;
+            //ans.FirstName = userr.FirstName; 
+            //ans.LastName = userr.LastName;   
+            // ans.age = userr.age;
            
-            ans.Email = userr.Email; 
-            ans.PhoneNumber = userr.PhoneNumber; 
+            //ans.Email = userr.Email; 
+            //ans.PhoneNumber = userr.PhoneNumber; 
 
           
-            if(ans != null )
-            context.Users.Update(ans);
+            //if(ans != null )
+            context.Users.Update(userr);
             int num = context.SaveChanges();
             return num;
         }

@@ -252,29 +252,26 @@ namespace EfrashBatek.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         // save edit 
-        public IActionResult Edit(int id, ItemVM item)
+        public IActionResult Edit(ItemVM item)
         {
-            if (id != item.ID)
+            var ItmeEdit = itemRepo.GetById(item.ID)
+;            if (ItmeEdit.ID != item.ID)
             {
                 return NotFound();
             }
 
             if (ModelState.IsValid)
             {
-                Item itm = new Item();
-                itm.Name = item.Name;
-                itm.Code = item.Code;
-                itm.Price = item.Price;
-                itm.Description = item.Description;
-                itm.QuantityInStore = item.QuantityInStore;
-                //itm.Brand.Name = item.Brand.Name;
-                //itm.Product.ProductName = item.Product.ProductName;
-                //itm.Shop.Name = item.Shop.Name;
-                itm.discount = item.discount;
-                itm.PriceAfterSale = item.PriceAfterSale;
-                itm.Brand_ID = item.Brand_ID;
-                itm.ShopID = item.ShopID;
-                itm.ProductID = item.ProductID;
+                ItmeEdit.Name = item.Name;
+                ItmeEdit.Code = item.Code;
+                ItmeEdit.Price = item.Price;
+                ItmeEdit.Description = item.Description;
+                ItmeEdit.QuantityInStore = item.QuantityInStore;
+               ItmeEdit.discount = item.discount;
+                ItmeEdit.PriceAfterSale = item.PriceAfterSale;
+                ItmeEdit.Brand_ID = item.Brand_ID;
+                ItmeEdit.ShopID = item.ShopID;
+                ItmeEdit.ProductID = item.ProductID;
 
 
                 if (item.Image != null && item.Image.Length > 0)
@@ -282,21 +279,21 @@ namespace EfrashBatek.Controllers
                     string Filename = Guid.NewGuid().ToString() + item.Image.FileName;
                     var fs = new FileStream(Path.Combine(Ih.WebRootPath, "Image/Items", Filename), FileMode.Create);
                     item.Image.CopyTo(fs);
-                    itm.Image = Filename;
+                    ItmeEdit.Image = Filename;
                 }
                 if (item.Image2 != null && item.Image2.Length > 0)
                 {
                     string Filename2 = Guid.NewGuid().ToString() + item.Image2.FileName;
                     var fs2 = new FileStream(Path.Combine(Ih.WebRootPath, "Image/Items", Filename2), FileMode.Create);
                     item.Image2.CopyTo(fs2);
-                    itm.Image2 = Filename2;
+                    ItmeEdit.Image2 = Filename2;
                 }
                 if (item.Image3 != null && item.Image3.Length > 0)
                 {
                     string Filename3 = Guid.NewGuid().ToString() + item.Image3.FileName;
                     var fs3 = new FileStream(Path.Combine(Ih.WebRootPath, "Image/Items", Filename3), FileMode.Create);
                     item.Image2.CopyTo(fs3);
-                    itm.Image3 = Filename3;
+                    ItmeEdit.Image3 = Filename3;
                 }
 
                 if (item.Image4 != null && item.Image4.Length > 0)
@@ -304,22 +301,22 @@ namespace EfrashBatek.Controllers
                     string Filename4 = Guid.NewGuid().ToString() + item.Image4.FileName;
                     var fs4 = new FileStream(Path.Combine(Ih.WebRootPath, "Image/Items", Filename4), FileMode.Create);
                     item.Image4.CopyTo(fs4);
-                    itm.Image4 = Filename4;
+                    ItmeEdit.Image4 = Filename4;
                 }
                 if (item.Image5 != null && item.Image5.Length > 0)
                 {
                     string Filename5 = Guid.NewGuid().ToString() + item.Image5.FileName;
                     var fs5 = new FileStream(Path.Combine(Ih.WebRootPath, "Image/Items", Filename5), FileMode.Create);
                     item.Image5.CopyTo(fs5);
-                    itm.Image5 = Filename5;
+                    ItmeEdit.Image5 = Filename5;
                 }
 
-                int check = itemRepo.Update((int)id, itm);
-                return RedirectToAction("Index");
+                int check = itemRepo.Update(ItmeEdit);
+                return RedirectToAction(nameof(ShopItem));
             }
-            //ViewData["BrandName"] = new SelectList(brandRepository.GetAll(), "ID", "Name", item.Brand_ID);
-            //ViewData["ProductName"] = new SelectList(productRepository.GetAll(), "ID", "ProductName", item.ProductID);
-            //ViewData["ShopName"] = new SelectList(shopRepository.GetAll(), "ID", "Name", item.ShopID);
+            ViewData["BrandName"] = new SelectList(brandRepository.GetAll(), "ID", "Name", item.Brand_ID);
+            ViewData["ProductName"] = new SelectList(productRepository.GetAll(), "ID", "ProductName", item.ProductID);
+            ViewData["ShopName"] = new SelectList(shopRepository.GetAll(), "ID", "Name", item.ShopID);
             return View(item);
         }
 
