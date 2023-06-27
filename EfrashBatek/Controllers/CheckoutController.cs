@@ -33,7 +33,7 @@ public class CheckoutController : Controller
     }
    
     // done test 
-    public ActionResult defaultaddress(int cartID ) { 
+    public ActionResult defaultaddress(int cartID) { 
 
         var items = cart.LoadFromCookie();
         var list = items.Where(i=>i.CartID == cartID).ToList();
@@ -74,15 +74,16 @@ public class CheckoutController : Controller
         return View();  
     }
     [HttpPost]
-    public ActionResult CreateAddress(Address address)
+    public ActionResult CreateAddress(Address address , int cartid)
     {
         addressRepository.Create(address);
 
-        return RedirectToAction("defaultAddress" ,"Checkout");
-       
-    }
+		return RedirectToAction("defaultAddress", new { cartID = cartid });
 
-    public IActionResult ViewAddressDetails(int id , int cartid) 
+
+	}
+
+	public IActionResult ViewAddressDetails(int id , int cartid) 
 	{
         
 		var Address = addressRepository .GetbyID(id);

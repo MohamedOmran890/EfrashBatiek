@@ -13,7 +13,7 @@ body {
     justify-content: center;
     align-items: center;
     padding: 10px;
-    background: linear-gradient(135deg, #fff, #cbaab1);
+/*    background: linear-gradient(135deg, #fff, #cbaab1);*/
 }
 .forget {
     text-align: center;
